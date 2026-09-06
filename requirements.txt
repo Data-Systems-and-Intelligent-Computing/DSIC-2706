@@ -1,0 +1,14 @@
+numpy
+pandas
+scipy
+scikit-learn
+librosa
+soundfile
+matplotlib
+pyyaml
+requests
+tqdm
+pytest
+# torch        # uncomment according to selected pretrained model
+# faiss-cpu    # optional
+# umap-learn   # optional visualization

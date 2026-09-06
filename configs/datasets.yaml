@@ -1,0 +1,8 @@
+target_taxon: birds
+species_min_count: 20
+splits:
+  gallery: 0.60
+  query: 0.20
+  calibration: 0.10
+  test: 0.10
+split_group: recording_id

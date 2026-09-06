@@ -1,0 +1,4 @@
+seed: 42
+snr_db: [20, 10, 0, -5]
+retrieval_k: [1, 5, 10]
+bootstrap_repetitions: 2000

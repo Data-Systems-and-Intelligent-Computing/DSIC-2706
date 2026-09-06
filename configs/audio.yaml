@@ -1,0 +1,4 @@
+sample_rate: 32000
+channels: mono
+segment_seconds: 5.0
+normalization: peak

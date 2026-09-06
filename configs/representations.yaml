@@ -1,0 +1,13 @@
+representations:
+  - id: mfcc
+    type: handcrafted
+    enabled: true
+  - id: generic_pretrained
+    type: pretrained
+    model: TBD
+    enabled: true
+  - id: bioacoustic_pretrained
+    type: pretrained
+    model: TBD
+    enabled: true
+similarity: cosine
