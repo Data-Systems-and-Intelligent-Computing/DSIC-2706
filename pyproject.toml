@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dsic2706"
+version = "0.1.0"
+description = "Noise and Domain-Shift Robustness of Audio Representations for Cross-Domain Bioacoustic Retrieval: From Xeno-Canto to ITERA Soundscapes"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    { name = "Fabio Banyu Cyto", email = "fabio.123450104@student.itera.ac.id" }
+]
+keywords = ["bioacoustics", "audio-retrieval", "representation-robustness", "domain-shift", "soundscapes"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence"
+]
+
+dependencies = [
+    "numpy>=1.23.0",
+    "scipy>=1.9.0",
+    "pandas>=1.5.0",
+    "scikit-learn>=1.2.0",
+    "librosa>=0.10.0",
+    "soundfile>=0.12.0",
+    "PyYAML>=6.0",
+    "matplotlib>=3.6.0",
+    "torch>=2.0.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "black",
+    "flake8"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]

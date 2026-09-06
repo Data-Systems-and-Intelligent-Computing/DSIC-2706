@@ -1,0 +1,45 @@
+# Experiments Protocol Configuration
+# Topic: DSIC27-06 Paired Robustness & Open-Set Retrieval Benchmark
+
+experiments:
+  random_seed: 42
+
+  # E1: Clean Retrieval
+  clean_retrieval:
+    top_k: [1, 5, 10]
+    metrics: ["mAP", "Recall@k", "Precision@k"]
+
+  # E2: Controlled Environmental Noise (Additive Noise Mixing)
+  controlled_noise:
+    snr_levels_db: [20, 10, 0, -5]    # Tingkat derau bertahap (high to severe noise)
+    noise_source: "itera_background"  # Bank derau kampus ITERA
+    random_seed: 42
+    metrics: ["mAP@k", "Recall@k", "relative_retention", "absolute_drop"]
+
+  # E3: Open-Set Threshold & Rejection
+  open_set:
+    calibration_split_ratio: 0.2      # 20% data query dialokasikan untuk kalibrasi tau
+    frozen_threshold_tau: null        # Nilai tau ditentukan dari kalibrasi (dibekukan sebelum testing)
+    target_precision_or_f1: "max_f1"  # Objective pemilihan tau pada calibration split
+    metrics: ["AUROC", "AUPRC", "F1_at_tau", "FPR_at_tau", "FAR"]
+
+  # E4: Real Domain Shift
+  real_domain_shift:
+    soundscape_target: "itera_soundscapes"
+    metrics: ["candidate_matches", "manual_verification_rate"]
+
+  # E5: Failure Analysis
+  failure_analysis:
+    min_failure_cases: 20
+    categories:
+      - "low_snr"
+      - "anthropogenic_interference"
+      - "overlapping_vocalizations"
+      - "similar_acoustic_structure"
+      - "reverberation_distance"
+
+  # Statistical Testing
+  statistics:
+    bootstrap_iterations: 1000
+    confidence_interval: 0.95
+    correction: "holm"

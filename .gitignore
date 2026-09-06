@@ -1,0 +1,77 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Distribution / packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Environment variables
+.env
+!.env.example
+
+# Large Audio Files (Bab 15: Jangan commit berkas WAV/MP3 besar)
+*.mp3
+*.wav
+*.flac
+*.ogg
+*.m4a
+
+# Preserve manifest directories and README
+!data/README.md
+!data/manifests/
+!data/manifests/*.csv
+!data/itera_soundscape_annotations/
+!data/itera_soundscape_annotations/*.csv
+
+# Local legacy scratch & audit folders
+Audit Pembaruan/
+Dataset/
+Administrasi/
+jurnal/*.pdf
+!jurnal/referensi_jurnal_TA_bioakustik.csv
+
+# Pretrained model checkpoints & weights
+*.pt
+*.pth
+*.bin
+*.onnx
+*.h5
+*.ckpt
+
+# Temporary embeddings & cache
+*.npy
+*.npz
+*.pkl
+cache/
+tmp/
+temp/
+
+# IDE & OS
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store
+Thumbs.db

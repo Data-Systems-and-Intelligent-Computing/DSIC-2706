@@ -1,0 +1,16 @@
+# Audio Processing Configuration
+# Topic: DSIC27-06 Audio Representation Robustness for Bioacoustic Retrieval
+
+audio:
+  target_sample_rate: 32000    # Standar sampling rate (kompatibel dengan BirdNET & PANNs)
+  mono: true                   # Seluruh audio dikonversi ke single-channel mono
+  duration_sec: 5.0            # Panjang segmen representasi audio (detik)
+  target_length_samples: 160000 # 32000 * 5.0
+  normalization:
+    type: "rms"                # RMS energy normalization
+    target_rms: 0.05           # Menghindari clipping amplitudo
+  stft:
+    n_fft: 1024
+    hop_length: 512
+    win_length: 1024
+    window: "hann"

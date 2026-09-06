@@ -1,0 +1,42 @@
+# Audio Representations Configuration
+# Topic: DSIC27-06 Bioacoustic Similarity Retrieval
+
+representations:
+  # R0: Baseline Hand-crafted (Sesuai Katalog DSIC27-06 & Davis & Mermelstein 1980)
+  R0_mfcc:
+    name: "MFCC_Baseline"
+    type: "handcrafted"
+    n_mfcc: 20
+    n_mels: 64
+    fmin: 150
+    fmax: 15000
+    pooling: "mean_std"        # Statistik temporal: mean (20) + std (20) = 40-dim vektor
+    embedding_dim: 40
+    metric: "cosine"
+
+  # R1: Generic Pretrained Audio Embedding (Kong et al. 2020 / Hershey et al. 2017)
+  R1_panns:
+    name: "PANNs_CNN14"
+    type: "deep_generic"
+    checkpoint: "Cnn14_mAP=0.431.pth"
+    architecture: "CNN14"
+    sample_rate: 32000
+    embedding_dim: 2048
+    frozen: true
+    metric: "cosine"
+
+  # R2: Bioacoustic-Specific Pretrained Embedding (Kahl et al. 2021 / Ghani et al. 2023)
+  R2_bioacoustic:
+    name: "BirdNET_GlobalBirdsong"
+    type: "deep_bioacoustic"
+    checkpoint: "BirdNET_GLOBAL_6K_V2.4_Model_FP32.tflite"
+    sample_rate: 48000          # Resampled automatically to 48kHz for BirdNET inference
+    embedding_dim: 1024         # Intermediate feature vector (bukan output softmax probabilitas spesies)
+    frozen: true
+    metric: "cosine"
+
+  # R3: Control Negatif
+  R3_random:
+    name: "Random_Ranking"
+    type: "control"
+    metric: "random"

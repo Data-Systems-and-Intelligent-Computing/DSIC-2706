@@ -1,0 +1,38 @@
+# Open-Set Decision Thresholds (Frozen from Calibration Split)
+# Topic: DSIC27-06 Audio Representation Robustness for Bioacoustic Retrieval
+# Method: Empirical ROC Curve Optimization via Youden's J Statistic (TPR - FPR)
+
+calibration_protocol:
+  objective: "youden_j"
+  known_samples_count: 62
+  unknown_samples_count: 38
+  frozen: true
+
+thresholds:
+  R0:
+    name: "MFCC + Temporal Pooling (40-dim)"
+    tau: 0.990457
+    calibration_youden_j: 0.3905
+    calibration_f1: 0.6667
+    clean_fpr: 0.3333
+
+  R1:
+    name: "Generic Pretrained Audio (PANNs CNN14-like)"
+    tau: 0.947104
+    calibration_youden_j: 0.6409
+    calibration_f1: 0.8037
+    clean_fpr: 0.3333
+
+  R2:
+    name: "Bioacoustic Pretrained Embedding"
+    tau: 0.966971
+    calibration_youden_j: 0.5289
+    calibration_f1: 0.8372
+    clean_fpr: 0.5128
+
+  R3:
+    name: "Random Ranking Control"
+    tau: 0.474406
+    calibration_youden_j: 0.2377
+    calibration_f1: 0.4390
+    clean_fpr: 0.1538

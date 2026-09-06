@@ -1,0 +1,12 @@
+# Rekam Jejak Audit Reproducibility DSIC-2706
+# Tanggal: 06 September 2026
+
+target_birds_manifest.csv : 40eb8264906a282f1b0728fe4112eebfaeecbb8bb41f4a95610ec875704a2984
+dataset_split.csv         : 35d353fff8fb818a0d760705aaf879b5e7b829955fe89b8fa37a5fdd846fb93b
+unknown_open_set_manifest : 5cf720efb064c1b7593c6f8819eb3108c4cb64fffc99ae3b7a5a87679808fb89
+
+# Metrik R2 @ SNR 0 dB (Fresh Deterministic Run)
+mAP@10    : 0.158901
+Recall@10 : 0.147780
+Top1_Acc  : 0.329787
+Frozen Tau: 0.966971
