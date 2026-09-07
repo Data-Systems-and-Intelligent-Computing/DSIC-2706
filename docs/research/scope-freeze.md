@@ -61,3 +61,9 @@ Tingkat degradasi derau aditif dibekukan pada 5 level:
 3. **SNR 10 dB** (Derau sedang)
 4. **SNR 0 dB** (Derau berat / sinyal sebanding derau)
 5. **SNR -5 dB** (Derau ekstrem / derau melebihi sinyal)
+
+---
+
+## 4. Batasan Partisi & Kalibrasi Ambang (M-09)
+Pemisahan ketat (*Strict Global Recordist-Disjoint*) berlaku 100% antara **Gallery** (42 perekam) dan **Query Clean** (26 perekam unik, 0 overlap). Subset kalibrasi terpisah secara independen pada tingkat berkas audio (62 klip), namun berbagi 19 perekam dengan subset `query_clean` (total 29 perekam gabungan query + kalibrasi). Hal ini didokumentasikan secara transparan sebagai keterbatasan metodologis yang berpotensi memicu bias optimistik lokal pada recall di ambang batas $\tau$, namun metrik retrieval primer (`mAP@10` dan `Recall@10`) pada eksperimen E1 dan E2 tetap 100% terlindung dari kebocoran perekam.
+

@@ -6,10 +6,11 @@ Fokus penelitian ini bukan membuat classifier spesies baru, melainkan menguji **
 
 Judul kerja artikel yang direkomendasikan:
 
-> **Noise and Domain-Shift Robustness of Audio Representations for Cross-Domain Bioacoustic Retrieval: From Xeno-Canto to ITERA Soundscapes**
+> **Noise and Domain-Shift Robustness of Audio Representations for Cross-Domain Bioacoustic Retrieval: From Xeno-Canto to Environmental Soundscapes**
 
 **Peneliti:** Fabio Banyu Cyto (NIM: 123450104)  
 **Kelompok Riset:** DSIC Research Group — Program Studi Sains Data, Institut Teknologi Sumatera  
+
 
 ---
 
@@ -174,14 +175,13 @@ dsic-2706-bioacoustic-retrieval/
 │   └── E6_external_validation/
 │
 ├── results/
-│   ├── raw/
-│   ├── processed/
-│   ├── tables/
-│   ├── figures/
-│   └── failure_cases/
+│   ├── raw/                           (20 file log mentah peringkat per-kueri)
+│   ├── processed/                     (snr_robustness, threshold_transfer, failure_analysis)
+│   ├── tables/                        (tabel sinkronisasi naskah)
+│   └── figures/                       (grafik publikasi 300 DPI dengan 95% CI)
 │
-├── scripts/
 ├── notebooks/
+│   ├── 01_evaluasi_benchmark_dan_visualisasi.ipynb   <- [NOTEBOOK RESMI EVALUASI & AUDIT]
 │   └── exploratory/
 ├── paper/
 │   ├── manuscript.md
@@ -197,22 +197,18 @@ dsic-2706-bioacoustic-retrieval/
 ## 7. Quick Start & Eksekusi
 
 ```bash
-# Instal dependensi
+# 1. Instal dependensi resmi
 pip install -r requirements.txt
 
-# Menjalankan seluruh unit test ilmiah & validasi kebocoran
-make test
-# atau: python run_tests.py
+# 2. Menjalankan seluruh pengujian saintifik (9/9 Uji Lolos)
+python run_tests.py
 
-# Membangun partisi data bebas kebocoran (Strict Recordist-Disjoint)
-make manifest
+# 3. Menjalankan benchmark komparatif empiris (E1, E2, E3, E5)
+python src/run_benchmark.py
 
-# Menjalankan pipeline sanity check (E0)
-make sanity
+# 4. Membuka notebook visualisasi interaktif di VS Code / Jupyter
+# Buka file: notebooks/01_evaluasi_benchmark_dan_visualisasi.ipynb lalu klik "Run All"
 
-# Menjalankan eksperimen komparatif lengkap (E1-E3)
-make evaluate
-
-# Menghasilkan kurva visualisasi publikasi
-make figures
+# 5. Menghasilkan ulang figur grafik publikasi (resolusi 300 DPI + 95% Bootstrap CI)
+python scripts/make_figures.py
 ```
