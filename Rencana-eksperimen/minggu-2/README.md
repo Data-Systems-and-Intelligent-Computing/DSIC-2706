@@ -1,7 +1,7 @@
 # Rencana Eksperimen — Minggu 2
 **Fokus:** Controlled Noise Robustness (Paired SNR Stress-Testing)  
 **Target Garis Waktu:** Hari 8 – Hari 14  
-**Status Eksekusi:** **SELESAI 100% (GATE MINGGU 2 PASSED)**  
+**Status Eksekusi:** **SELESAI (Kriteria Teknis Terpenuhi, Siap Ditinjau)**  
 
 ---
 
@@ -51,10 +51,10 @@
 
 ---
 
-## 🛡️ Evaluasi Gate Minggu 2
-> **Syarat Lolos:** *Tidak ada fenomena ceiling (mentok di atas) atau floor total (semua nol), pasangan query konsisten, dan baseline kontrol acak masuk akal.*
+## 🛡️ Evaluasi Kesiapan Gate Minggu 2
+> **Kriteria Acuan:** *Tidak ada fenomena ceiling (mentok di atas) atau floor total (semua nol), pasangan query konsisten, dan baseline kontrol acak masuk akal.*
 
-* **Status:** **LOLOS 100% (PASSED)**
+* **Status Verifikasi Internal:** **Kriteria Teknis Terpenuhi (Menunggu Evaluasi Pembimbing)**
 * **Justifikasi Ilmiah:**
   1. **Tidak Ada Ceiling/Floor:** Rentang skor bergerak wajar dari 0.24 hingga 0.09 (tidak ada skor 1.0 yang mencurigakan, dan tidak ada angka 0.00 total).
   2. **Konsistensi Berpasangan:** Seluruh 94 query diuji pada sampel yang identik di setiap level SNR.

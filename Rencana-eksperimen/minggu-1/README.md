@@ -1,7 +1,7 @@
 # Rencana Eksperimen — Minggu 1
 **Fokus:** Dataset, Manifest, Standarisasi Audio, dan Feasibility Pipeline  
 **Target Garis Waktu:** Hari 1 – Hari 7  
-**Status Eksekusi:** **SELESAI 100% (GATE MINGGU 1 PASSED)**  
+**Status Eksekusi:** **SELESAI (Kriteria Teknis Terpenuhi, Siap Ditinjau)**  
 
 ---
 
@@ -64,10 +64,10 @@
 
 ---
 
-## 🛡️ Evaluasi Gate Minggu 1
-> **Syarat Lolos:** *Minimal tiga representasi termasuk MFCC berhasil menghasilkan embedding dan retrieval pipeline terbukti bebas leakage.*
+## 🛡️ Evaluasi Kesiapan Gate Minggu 1
+> **Kriteria Acuan:** *Minimal tiga representasi termasuk MFCC berhasil menghasilkan embedding dan retrieval pipeline terbukti bebas leakage.*
 
-* **Status:** **LOLOS 100% (PASSED)**
+* **Status Verifikasi Internal:** **Kriteria Teknis Terpenuhi (Menunggu Evaluasi Pembimbing)**
 * **Bukti Verifikasi:**
   Jalankan perintah unit test otomatis berikut:
   ```bash

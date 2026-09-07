@@ -20,13 +20,13 @@ Temuan utama menunjukkan bahwa pada kondisi derau ekstrem (SNR -5 dB), represent
 Berikut adalah audit posisi pengerjaan riil dibandingkan dengan target roadmap 30 hari yang diberikan oleh dosen pembimbing:
 
 ### 🟢 Status Keseluruhan: **AHEAD OF SCHEDULE (Lebih Cepat dari Jadwal)**
-Secara teknis algoritma, rekayasa data, dan eksperimen komputasi, **kita saat ini berada di akhir Minggu ke-2 menuju Minggu ke-3**. Target teknis pada **Gate Minggu 1** dan **Gate Minggu 2** telah **LOLOS 100% (PASSED)** dengan bukti artefak dan kode yang konkret.
+Secara teknis algoritma, rekayasa data, dan eksperimen komputasi, **kita saat ini berada di akhir Minggu ke-2 menuju Minggu ke-3**. Kriteria teknis pada **Gate Minggu 1** dan **Gate Minggu 2** telah **terpenuhi secara internal dan siap ditinjau oleh dosen pembimbing** dengan bukti artefak dan kode yang konkret.
 
 ```
-[ Minggu 1: Dataset & Feasibility ]   ======> SELESAI 100% (Gate 1 PASSED)
-[ Minggu 2: Controlled Noise Test ]   ======> SELESAI 100% (Gate 2 PASSED)
-[ Minggu 3: Open-Set & Field Eval ]   ======> 60% SELESAI (Kalibrasi Tau Selesai, Menunggu Rekaman Fisik ITERA)
-[ Minggu 4: Statistik & Penulisan ]   ======> Draf Awal Siap
+[ Minggu 1: Dataset & Feasibility ]   ======> Kriteria Teknis Terpenuhi (Siap Ditinjau)
+[ Minggu 2: Controlled Noise Test ]   ======> Kriteria Teknis Terpenuhi (Siap Ditinjau)
+[ Minggu 3: Open-Set & Field Eval ]   ======> 60% Selesai (Dalam Pengerjaan)
+[ Minggu 4: Statistik & Penulisan ]   ======> Draf Awal Siap (Terjadwal)
 ```
 
 ---
@@ -38,10 +38,10 @@ Secara teknis algoritma, rekayasa data, dan eksperimen komputasi, **kita saat in
 | **Minggu 1: Hari 1-2** | • Bekukan target 10-20 burung<br>• Manifest Xeno-Canto & lisensi<br>• Bekukan sample rate & durasi | **SELESAI** | • Manifes 16 spesies (416 audio): `data/manifests/target_birds_manifest.csv`<br>• Konfigurasi audio (32 kHz, 5.0 detik): `configs/audio.yaml` |
 | **Minggu 1: Hari 3-4** | • Implementasi MFCC + Cosine<br>• Smoke test PANNs & Bioacoustic<br>• Pilih checkpoint representasi | **SELESAI** | • Kode ekstraktor: `src/dsic2706/features/` (`mfcc.py`, `panns.py`, `bioacoustic.py`)<br>• Engine pencarian: `src/dsic2706/retrieval/engine.py`<br>• Skrip uji: `run_tests.py` & `experiments/e0_pipeline_sanity/` |
 | **Minggu 1: Hari 5-7** | • Ambil/kurasi background ITERA<br>• Split gallery/query/calibration<br>• Buat baseline clean retrieval | **85% SELESAI** | • Protokol rekam ITERA: `docs/protocols/itera-recording.md`<br>• Manifes split: `data/manifests/dataset_split.csv`<br>• Baseline retrieval: `results/tables/snr_robustness_table.csv` (Kolom `clean`) |
-| **GATE MINGGU 1** | **Minimal 3 representasi (termasuk MFCC) menghasilkan embedding & pipeline bebas leakage** | **LOLOS (100%)** | **`python run_tests.py` lolos 7/7 unit test; Irisan perekam Galeri vs Query tepat 0 (Zero Leakage)** |
+| **GATE MINGGU 1** | **Minimal 3 representasi (termasuk MFCC) menghasilkan embedding & pipeline bebas leakage** | **Kriteria Terpenuhi (Siap Ditinjau)** | **`python run_tests.py` lolos 7/7 unit test; Irisan perekam Galeri vs Query tepat 0 (Zero Leakage)** |
 | **Minggu 2: Hari 8-10**| • Implementasi mixing SNR reproducible<br>• Pilot level SNR (20 s/d -5 dB)<br>• Bekukan noise segment & seed | **SELESAI** | • Modul derau deterministik (seed 42): `src/dsic2706/audio/noise.py`<br>• Definisi level SNR: `configs/audio.yaml` |
 | **Minggu 2: Hari 11-14**| • Jalankan E1-E2 seluruh query<br>• Simpan ranking per query<br>• Buat robustness curve awal | **SELESAI** | • Tabel hasil E2: `results/tables/snr_robustness_table.csv`<br>• Grafik mAP@10: `results/figures/robustness_curve_map10.png`<br>• Grafik retensi: `results/figures/relative_retention_curve.png` |
-| **GATE MINGGU 2** | **Tidak ada ceiling/floor total, query pairs konsisten, kontrol acak masuk akal** | **LOLOS (100%)** | **Nilai mAP terdistribusi alami (0.24 -> 0.09), Kontrol acak ($R_3$) stabil di 0.018–0.022** |
+| **GATE MINGGU 2** | **Tidak ada ceiling/floor total, query pairs konsisten, kontrol acak masuk akal** | **Kriteria Terpenuhi (Siap Ditinjau)** | **Nilai mAP terdistribusi alami (0.24 -> 0.09), Kontrol acak ($R_3$) stabil di 0.018–0.022** |
 | **Minggu 3: Hari 15-18**| • Susun unknown/background set<br>• Kalibrasi threshold ($\tau$) pada calibration split<br>• Jalankan open-set test semua SNR | **SELESAI** | • Dataset unknown (77 audio): `data/manifests/unknown_open_set_manifest.csv`<br>• Kalibrasi ROC & Youden's J: `src/dsic2706/open_set/threshold.py` ($\tau^* = 0.9905$)<br>• Tabel open-set: `results/tables/openset_evaluation_table.csv` |
 | **Minggu 3: Hari 19-21**| • Anotasi subset real soundscape ITERA<br>• Validasi eksternal tanpa re-tuning<br>• Audit minimal 20 failure cases | **50% SELESAI** | • Audit kegagalan retrieval: `results/tables/failure_analysis_table.csv`<br>• *Catatan:* Menunggu perekaman audio fisik di Embung & Arboretum ITERA |
 | **Minggu 4: Hari 22-30**| • Paired bootstrap CI & kurva final<br>• Naskah laporan & artikel v0.8<br>• Freeze code & materi bimbingan | **DALAM PROGRES** | • Draf panduan: `docs/PANDUAN_MEETING_PEMBIMBING.md`<br>• Catatan progres: `docs/README.md` & `docs/CATATAN_PROGRES_BIMBINGAN.md` |

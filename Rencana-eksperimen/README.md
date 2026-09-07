@@ -12,12 +12,12 @@ Repositori ini memuat rencana kerja eksperimental 4 minggu (30 hari) untuk topik
 
 ## 🗺️ Peta Navigasi Rencana Eksperimen
 
-| Direktori Rencana | Fokus & Target Mingguan | Status Gate | Tautan Dokumen |
+| Direktori Rencana | Fokus & Target Mingguan | Kesiapan Kriteria Gate | Tautan Dokumen |
 | :--- | :--- | :---: | :--- |
-| **[Minggu 1](./minggu-1/README.md)** | Dataset, Manifest, Standarisasi Audio, & Feasibility Pipeline | **LOLOS (PASSED 100%)** | [Buka Rencana Minggu 1](./minggu-1/README.md) |
-| **[Minggu 2](./minggu-2/README.md)** | Controlled Noise Robustness (Paired SNR Stress-Testing) | **LOLOS (PASSED 100%)** | [Buka Rencana Minggu 2](./minggu-2/README.md) |
-| **[Minggu 3](./minggu-3/README.md)** | Open-Set Rejection, Kalibrasi $\tau^*$, & Validasi Soundscape Lapangan | **60% SELESAI (On Going)** | [Buka Rencana Minggu 3](./minggu-3/README.md) |
-| **[Minggu 4](./minggu-4/README.md)** | Statistik Inferensial (Bootstrap CI), Artikel Ilmiah, & Freeze Code | **DRAF SIAP (Dijadwalkan)** | [Buka Rencana Minggu 4](./minggu-4/README.md) |
+| **[Minggu 1](./minggu-1/README.md)** | Dataset, Manifest, Standarisasi Audio, & Feasibility Pipeline | **Kriteria Teknis Terpenuhi (Siap Ditinjau)** | [Buka Rencana Minggu 1](./minggu-1/README.md) |
+| **[Minggu 2](./minggu-2/README.md)** | Controlled Noise Robustness (Paired SNR Stress-Testing) | **Kriteria Teknis Terpenuhi (Siap Ditinjau)** | [Buka Rencana Minggu 2](./minggu-2/README.md) |
+| **[Minggu 3](./minggu-3/README.md)** | Open-Set Rejection, Kalibrasi $\tau^*$, & Validasi Soundscape Lapangan | **Dalam Pengerjaan (Sebagian Siap Ditinjau)** | [Buka Rencana Minggu 3](./minggu-3/README.md) |
+| **[Minggu 4](./minggu-4/README.md)** | Statistik Inferensial (Bootstrap CI), Artikel Ilmiah, & Freeze Code | **Draf Awal Siap (Terjadwal)** | [Buka Rencana Minggu 4](./minggu-4/README.md) |
 
 ---
 
