@@ -22,9 +22,8 @@
   * Menyusun naskah Bab 3 (Metode Penelitian), Bab 4 (Hasil dan Pembahasan), serta sub-bab *Threats to Validity*.
   * Merapikan atribuisi sitasi, sumber dataset Xeno-Canto, dan deklarasi etika penelitian bioakustik.
 * **Kesiapan Draf:**
-  * Draf panduan lengkap dan catatan hasil riset telah terintegrasi di:
-    * [`docs/CATATAN_PROGRES_BIMBINGAN.md`](../../docs/CATATAN_PROGRES_BIMBINGAN.md)
-    * [`docs/PANDUAN_MEETING_PEMBIMBING.md`](../../docs/PANDUAN_MEETING_PEMBIMBING.md)
+  * Draf laporan dan catatan hasil riset telah terintegrasi di:
+    * [`CATATAN_PROGRES_BIMBINGAN.md`](../CATATAN_PROGRES_BIMBINGAN.md)
 
 ---
 

@@ -44,7 +44,7 @@ Secara teknis algoritma, rekayasa data, dan eksperimen komputasi, **kita saat in
 | **GATE MINGGU 2** | **Tidak ada ceiling/floor total, query pairs konsisten, kontrol acak masuk akal** | **Kriteria Terpenuhi (Siap Ditinjau)** | **Nilai mAP terdistribusi alami (0.24 -> 0.09), Kontrol acak ($R_3$) stabil di 0.018–0.022** |
 | **Minggu 3: Hari 15-18**| • Susun unknown/background set<br>• Kalibrasi threshold ($\tau$) pada calibration split<br>• Jalankan open-set test semua SNR | **SELESAI** | • Dataset unknown (77 audio): `data/manifests/unknown_open_set_manifest.csv`<br>• Kalibrasi ROC & Youden's J: `src/dsic2706/open_set/threshold.py` ($\tau^* = 0.9905$)<br>• Tabel open-set: `results/tables/openset_evaluation_table.csv` |
 | **Minggu 3: Hari 19-21**| • Anotasi subset real soundscape ITERA<br>• Validasi eksternal tanpa re-tuning<br>• Audit minimal 20 failure cases | **50% SELESAI** | • Audit kegagalan retrieval: `results/tables/failure_analysis_table.csv`<br>• *Catatan:* Menunggu perekaman audio fisik di Embung & Arboretum ITERA |
-| **Minggu 4: Hari 22-30**| • Paired bootstrap CI & kurva final<br>• Naskah laporan & artikel v0.8<br>• Freeze code & materi bimbingan | **DALAM PROGRES** | • Draf panduan: `PANDUAN_MEETING_PEMBIMBING.md`<br>• Catatan progres: `README.md` & `CATATAN_PROGRES_BIMBINGAN.md` |
+| **Minggu 4: Hari 22-30**| • Paired bootstrap CI & kurva final<br>• Naskah laporan & artikel v0.8<br>• Freeze code & materi bimbingan | **DALAM PROGRES** | • Catatan progres: `README.md` & `CATATAN_PROGRES_BIMBINGAN.md` |
 
 ---
 

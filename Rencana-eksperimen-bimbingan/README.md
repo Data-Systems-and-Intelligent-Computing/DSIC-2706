@@ -35,6 +35,5 @@ Struktur dokumentasi di folder `Rencana-eksperimen-bimbingan/` ini dirancang unt
 
 ---
 
-## 📚 Dokumen Pegangan & Rekam Jejak Bimbingan
-* 📖 **[Catatan Progres Lengkap & FAQ Teknis (CATATAN_PROGRES_BIMBINGAN.md)](./CATATAN_PROGRES_BIMBINGAN.md)**: Rekam jejak seluruh data, parameter audio, tabel hasil benchmark, serta penjelasan konsep teknis.
-* 🗣️ **[Panduan Pembicaraan Meeting Bimbingan (PANDUAN_MEETING_PEMBIMBING.md)](./PANDUAN_MEETING_PEMBIMBING.md)**: Panduan ringkas berbicara dan menyampaikan progres di hadapan dosen pembimbing.
+## 📚 Dokumen Rekam Jejak Bimbingan
+* 📖 **[Catatan Progres Riset (CATATAN_PROGRES_BIMBINGAN.md)](./CATATAN_PROGRES_BIMBINGAN.md)**: Rekam jejak seluruh data, parameter audio, hasil eksperimen benchmark, serta agenda tahapan riset.
