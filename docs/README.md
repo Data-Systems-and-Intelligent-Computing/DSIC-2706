@@ -9,7 +9,7 @@
 ---
 
 ## 📌 Ringkasan Eksekutif (TL;DR)
-Laporan ini memuat rekam jejak lengkap, transparan, dan dapat direproduksi (*reproducible*) dari pengerjaan Tugas Akhir DSIC-2706. Hingga saat ini, seluruh repositori telah disinkronkan secara modular mengikuti standar template riset pembimbing. Eksperimen dasar (**E0: Pipeline Sanity**, **E1: Ekstraksi Representasi Audio**, dan **E2: Paired Noise Stress-Testing**) telah selesai dijalankan pada 416 audio burung (16 spesies) dan 77 audio satwa non-burung dengan partisi ketat **Zero Recordist Leakage**. 
+Dokumen ini memuat rekam jejak lengkap, transparan, dan dapat direproduksi (*reproducible*) dari pengerjaan Tugas Akhir DSIC-2706. Hingga saat ini, seluruh repositori telah disinkronkan secara modular mengikuti standar template riset pembimbing. Eksperimen dasar (**E0: Pipeline Sanity**, **E1: Ekstraksi Representasi Audio**, dan **E2: Paired Noise Stress-Testing**) telah selesai dijalankan pada 416 audio burung (16 spesies) dan 77 audio satwa non-burung dengan partisi ketat **Zero Recordist Leakage**. 
 
 Temuan utama menunjukkan bahwa pada kondisi derau ekstrem (SNR -5 dB), representasi khusus bioakustik (**Bioacoustic Pretrained**) memiliki retensi kualitas perolehan kemiripan (**38.9%**) yang hampir **2 kali lipat lebih tangguh** dibanding representasi audio umum/generik PANNs (**19.6%**) dan fitur klasik MFCC (**27.4%**).
 
