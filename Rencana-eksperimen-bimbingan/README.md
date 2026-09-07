@@ -23,12 +23,18 @@ Repositori ini memuat rencana kerja eksperimental 4 minggu (30 hari) untuk topik
 
 ## 📑 Hubungan Terhadap Logbook Pertemuan Bimbingan
 
-Struktur dokumentasi di folder `Rencana-eksperimen/` ini dirancang untuk menjadi bukti fisik pendukung pada **Logbook 14 Pertemuan** dan **Checklist Artefak Minimum Tugas Akhir**:
+Struktur dokumentasi di folder `Rencana-eksperimen-bimbingan/` ini dirancang untuk menjadi bukti fisik pendukung pada **Logbook 14 Pertemuan** dan **Checklist Artefak Minimum Tugas Akhir**:
 
 * **P1 (Penetapan Topik & RQ):** [docs/research/research_boundaries.md](../docs/research/research_boundaries.md)
-* **P2 (Dataset, Pembanding, & Ukuran Keberhasilan):** [Rencana-eksperimen/minggu-1/README.md](./minggu-1/README.md)
-* **P3 (Rencana Eksperimen & Protokol Pengukuran):** [Rencana-eksperimen/minggu-2/README.md](./minggu-2/README.md) dan [docs/protocols/itera-recording.md](../docs/protocols/itera-recording.md)
-* **P4 (Hasil Pembanding Pertama):** [Rencana-eksperimen/minggu-2/README.md](./minggu-2/README.md#hasil-benchmark-komparatif)
+* **P2 (Dataset, Pembanding, & Ukuran Keberhasilan):** [Rencana Minggu 1](./minggu-1/README.md)
+* **P3 (Rencana Eksperimen & Protokol Pengukuran):** [Rencana Minggu 2](./minggu-2/README.md) dan [docs/protocols/itera-recording.md](../docs/protocols/itera-recording.md)
+* **P4 (Hasil Pembanding Pertama):** [Rencana Minggu 2](./minggu-2/README.md#hasil-benchmark-komparatif)
 * **P5 (Kesiapan Data & Pipeline Bebas Leakage):** [tests/integration/test_split_leakage.py](../tests/integration/test_split_leakage.py)
-* **P6 (Eksperimen Utama & Open-Set Calibration):** [Rencana-eksperimen/minggu-3/README.md](./minggu-3/README.md)
+* **P6 (Eksperimen Utama & Open-Set Calibration):** [Rencana Minggu 3](./minggu-3/README.md)
 * **P7 (Eksperimen Domain Shift Real Soundscape ITERA):** [docs/protocols/itera-recording.md](../docs/protocols/itera-recording.md)
+
+---
+
+## 📚 Dokumen Pegangan & Rekam Jejak Bimbingan
+* 📖 **[Catatan Progres Lengkap & FAQ Teknis (CATATAN_PROGRES_BIMBINGAN.md)](./CATATAN_PROGRES_BIMBINGAN.md)**: Rekam jejak seluruh data, parameter audio, tabel hasil benchmark, serta penjelasan konsep teknis.
+* 🗣️ **[Panduan Pembicaraan Meeting Bimbingan (PANDUAN_MEETING_PEMBIMBING.md)](./PANDUAN_MEETING_PEMBIMBING.md)**: Panduan ringkas berbicara dan menyampaikan progres di hadapan dosen pembimbing.
