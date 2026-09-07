@@ -9,15 +9,48 @@
 ---
 
 ## 📌 Ringkasan Eksekutif (TL;DR)
-Dokumen ini memuat rekam jejak lengkap, transparan, dan dapat direproduksi (*reproducible*) dari pengerjaan Tugas Akhir DSIC-2706. Hingga saat ini, seluruh repositori telah disinkronkan secara modular mengikuti standar template riset pembimbing. Eksperimen dasar (**E0: Pipeline Sanity**, **E1: Ekstraksi Representasi Audio**, dan **E2: Paired Noise Stress-Testing**) telah selesai dijalankan pada 416 audio burung (16 spesies) dan 77 audio satwa non-burung dengan partisi ketat **Zero Recordist Leakage**. 
+Laporan ini memuat rekam jejak lengkap, transparan, dan dapat direproduksi (*reproducible*) dari pengerjaan Tugas Akhir DSIC-2706. Hingga saat ini, seluruh repositori telah disinkronkan secara modular mengikuti standar template riset pembimbing. Eksperimen dasar (**E0: Pipeline Sanity**, **E1: Ekstraksi Representasi Audio**, dan **E2: Paired Noise Stress-Testing**) telah selesai dijalankan pada 416 audio burung (16 spesies) dan 77 audio satwa non-burung dengan partisi ketat **Zero Recordist Leakage**. 
 
 Temuan utama menunjukkan bahwa pada kondisi derau ekstrem (SNR -5 dB), representasi khusus bioakustik (**Bioacoustic Pretrained**) memiliki retensi kualitas perolehan kemiripan (**38.9%**) yang hampir **2 kali lipat lebih tangguh** dibanding representasi audio umum/generik PANNs (**19.6%**) dan fitur klasik MFCC (**27.4%**).
 
 ---
 
-## 🧭 Bagian 1: Latar Belakang, Motivasi, & Relevansi SDGs
+## ⏱️ Bagian 1: Posisi Progres Saat Ini vs Timeline 30 Hari Dosen Pembimbing
 
-### 1.1 Masalah Riil di Lapangan
+Berikut adalah audit posisi pengerjaan riil dibandingkan dengan target roadmap 30 hari yang diberikan oleh dosen pembimbing:
+
+### 🟢 Status Keseluruhan: **AHEAD OF SCHEDULE (Lebih Cepat dari Jadwal)**
+Secara teknis algoritma, rekayasa data, dan eksperimen komputasi, **kita saat ini berada di akhir Minggu ke-2 menuju Minggu ke-3**. Target teknis pada **Gate Minggu 1** dan **Gate Minggu 2** telah **LOLOS 100% (PASSED)** dengan bukti artefak dan kode yang konkret.
+
+```
+[ Minggu 1: Dataset & Feasibility ]   ======> SELESAI 100% (Gate 1 PASSED)
+[ Minggu 2: Controlled Noise Test ]   ======> SELESAI 100% (Gate 2 PASSED)
+[ Minggu 3: Open-Set & Field Eval ]   ======> 60% SELESAI (Kalibrasi Tau Selesai, Menunggu Rekaman Fisik ITERA)
+[ Minggu 4: Statistik & Penulisan ]   ======> Draf Awal Siap
+```
+
+---
+
+### 📋 Matriks Rincian Timeline, Status, & Bukti Fisik
+
+| Periode Roadmap | Target Pembimbing | Status Riil | Bukti Fisik di Repositori |
+| :--- | :--- | :---: | :--- |
+| **Minggu 1: Hari 1-2** | • Bekukan target 10-20 burung<br>• Manifest Xeno-Canto & lisensi<br>• Bekukan sample rate & durasi | **SELESAI** | • Manifes 16 spesies (416 audio): `data/manifests/target_birds_manifest.csv`<br>• Konfigurasi audio (32 kHz, 5.0 detik): `configs/audio.yaml` |
+| **Minggu 1: Hari 3-4** | • Implementasi MFCC + Cosine<br>• Smoke test PANNs & Bioacoustic<br>• Pilih checkpoint representasi | **SELESAI** | • Kode ekstraktor: `src/dsic2706/features/` (`mfcc.py`, `panns.py`, `bioacoustic.py`)<br>• Engine pencarian: `src/dsic2706/retrieval/engine.py`<br>• Skrip uji: `run_tests.py` & `experiments/e0_pipeline_sanity/` |
+| **Minggu 1: Hari 5-7** | • Ambil/kurasi background ITERA<br>• Split gallery/query/calibration<br>• Buat baseline clean retrieval | **85% SELESAI** | • Protokol rekam ITERA: `docs/protocols/itera-recording.md`<br>• Manifes split: `data/manifests/dataset_split.csv`<br>• Baseline retrieval: `results/tables/snr_robustness_table.csv` (Kolom `clean`) |
+| **GATE MINGGU 1** | **Minimal 3 representasi (termasuk MFCC) menghasilkan embedding & pipeline bebas leakage** | **LOLOS (100%)** | **`python run_tests.py` lolos 7/7 unit test; Irisan perekam Galeri vs Query tepat 0 (Zero Leakage)** |
+| **Minggu 2: Hari 8-10**| • Implementasi mixing SNR reproducible<br>• Pilot level SNR (20 s/d -5 dB)<br>• Bekukan noise segment & seed | **SELESAI** | • Modul derau deterministik (seed 42): `src/dsic2706/audio/noise.py`<br>• Definisi level SNR: `configs/audio.yaml` |
+| **Minggu 2: Hari 11-14**| • Jalankan E1-E2 seluruh query<br>• Simpan ranking per query<br>• Buat robustness curve awal | **SELESAI** | • Tabel hasil E2: `results/tables/snr_robustness_table.csv`<br>• Grafik mAP@10: `results/figures/robustness_curve_map10.png`<br>• Grafik retensi: `results/figures/relative_retention_curve.png` |
+| **GATE MINGGU 2** | **Tidak ada ceiling/floor total, query pairs konsisten, kontrol acak masuk akal** | **LOLOS (100%)** | **Nilai mAP terdistribusi alami (0.24 -> 0.09), Kontrol acak ($R_3$) stabil di 0.018–0.022** |
+| **Minggu 3: Hari 15-18**| • Susun unknown/background set<br>• Kalibrasi threshold ($\tau$) pada calibration split<br>• Jalankan open-set test semua SNR | **SELESAI** | • Dataset unknown (77 audio): `data/manifests/unknown_open_set_manifest.csv`<br>• Kalibrasi ROC & Youden's J: `src/dsic2706/open_set/threshold.py` ($\tau^* = 0.9905$)<br>• Tabel open-set: `results/tables/openset_evaluation_table.csv` |
+| **Minggu 3: Hari 19-21**| • Anotasi subset real soundscape ITERA<br>• Validasi eksternal tanpa re-tuning<br>• Audit minimal 20 failure cases | **50% SELESAI** | • Audit kegagalan retrieval: `results/tables/failure_analysis_table.csv`<br>• *Catatan:* Menunggu perekaman audio fisik di Embung & Arboretum ITERA |
+| **Minggu 4: Hari 22-30**| • Paired bootstrap CI & kurva final<br>• Naskah laporan & artikel v0.8<br>• Freeze code & materi bimbingan | **DALAM PROGRES** | • Draf panduan: `docs/PANDUAN_MEETING_PEMBIMBING.md`<br>• Catatan progres: `docs/README.md` & `docs/CATATAN_PROGRES_BIMBINGAN.md` |
+
+---
+
+## 🧭 Bagian 2: Latar Belakang, Motivasi, & Relevansi SDGs
+
+### 2.1 Masalah Riil di Lapangan
 Pemantauan keanekaragaman hayati secara konvensional (misal pengamatan visual burung di hutan atau kebun raya) memiliki keterbatasan besar: memakan waktu, mahal, mengganggu habitat satwa liar, dan bergantung pada subjektivitas pengamat. Metode modern menggunakan **Passive Acoustic Monitoring (PAM)**, yaitu meletakkan alat perekam suara nirawak di alam liar untuk merekam suara lingkungan (*soundscape*) secara terus-menerus.
 
 Namun, penerapan kecerdasan buatan (*Artificial Intelligence*) pada PAM menghadapi tiga tantangan besar:
@@ -25,7 +58,7 @@ Namun, penerapan kecerdasan buatan (*Artificial Intelligence*) pada PAM menghada
 2. **Derau Lingkungan (*Environmental Noise*):** Rekaman alam terbuka selalu tercemar suara angin, hujan lebat, aliran air, gemerisik daun, dan bising kendaraan (*anthrophony*).
 3. **Pergeseran Domain (*Domain Shift*):** Model yang diuji pada rekaman studio/fokal bersih (misal dari basis data Xeno-Canto) sering kali gagal total (*catastrophic failure*) ketika diuji pada rekaman lingkungan nyata (*soundscape* terbuka di ITERA).
 
-### 1.2 Relevansi dengan Sustainable Development Goals (SDGs)
+### 2.2 Relevansi dengan Sustainable Development Goals (SDGs)
 Penelitian analitik data audio ini secara langsung mendukung agenda global pembangunan berkelanjutan:
 * **SDG 15: Ekosistem Darat (Life on Land) — Target 15.5 & 15.9 [UTAMA]:** Menyediakan instrumen pemantauan keanekaragaman hayati berbasis bioakustik yang otomatis, akurat, non-invasif, dan tangguh terhadap cuaca buruk untuk perlindungan habitat satwa liar.
 * **SDG 11: Kota dan Pemukiman yang Berkelanjutan (Target 11.7):** Menguji ketahanan akustik di ruang terbuka hijau kampus (Embung dan Arboretum ITERA) guna memantau koeksistensi satwa liar di tengah pembangunan kawasan urban/pendidikan.
@@ -34,7 +67,7 @@ Penelitian analitik data audio ini secara langsung mendukung agenda global pemba
 
 ---
 
-## 🛠️ Bagian 2: Kronologi Pekerjaan yang Telah Diselesaikan
+## 🛠️ Bagian 3: Kronologi Pekerjaan Teknis yang Telah Diselesaikan
 
 ### Tahap 1: Penyelarasan Arsitektur Repositori (100% Sesuai Template Pembimbing)
 Kode lokal telah direstrukturisasi secara profesional agar sesuai dengan repositori resmi DSIC:
@@ -75,11 +108,11 @@ Untuk menjamin hasil pengujian bebas dari bias "hafalan alat rekam":
 
 ---
 
-## 📊 Bagian 3: Hasil Eksperimen & Temuan Ilmiah (Hasil Run)
+## 📊 Bagian 4: Hasil Eksperimen & Temuan Ilmiah (Hasil Run)
 
 Seluruh metrik dihitung secara adil dan berpasangan (*paired*) pada 94 query yang identik di setiap tingkatan derau:
 
-### 3.1 Tabel Kualitas Perolehan Kemiripan (mAP@10)
+### 4.1 Tabel Kualitas Perolehan Kemiripan (mAP@10)
 *mAP@10 (Mean Average Precision pada Top-10 hasil retrieval teratas):*
 
 | Kondisi Derau | $R_0$: MFCC (Klasik) | $R_1$: Generic Audio (PANNs) | $R_2$: Bioacoustic (Spesifik) | $R_3$: Random (Kontrol Acak) |
@@ -90,7 +123,7 @@ Seluruh metrik dihitung secara adil dan berpasangan (*paired*) pada 94 query yan
 | **SNR 0 dB (Derau Sama Kuat)**| 0.0409 | 0.1109 | **0.1589** | 0.0149 |
 | **SNR -5 dB (Derau Ekstrem)** | 0.0282 | 0.0450 | **0.0936** | 0.0179 |
 
-### 3.2 Tabel Retensi Kualitas Relatif Terhadap Kondisi Bersih (%)
+### 4.2 Tabel Retensi Kualitas Relatif Terhadap Kondisi Bersih (%)
 *Menunjukkan berapa persen performa model yang mampu bertahan hidup saat derau meningkat dibandingkan saat kondisi bersih:*
 
 | Kondisi Derau | $R_0$: MFCC | $R_1$: Generic Audio | $R_2$: Bioacoustic Pretrained |
@@ -101,7 +134,7 @@ Seluruh metrik dihitung secara adil dan berpasangan (*paired*) pada 94 query yan
 | **SNR 0 dB** | 39.8% | 48.2% | **66.0%** |
 | **SNR -5 dB** | 27.4% | 19.6% | **38.9%** (Hampir 2x lipat $R_1$) |
 
-### 3.3 Temuan Ilmiah Utama (Validasi Hipotesis)
+### 4.3 Temuan Ilmiah Utama (Validasi Hipotesis)
 1. **Validasi Hipotesis H1 & H2 (Ketahanan Representasi Spesifik Domain):**
    * Pada derau ringan hingga sedang (20 dB dan 10 dB), model umum ($R_1$) memiliki performa yang sangat kompetitif dengan model bioakustik ($R_2$).
    * Namun, begitu memasuki derau berat (0 dB dan -5 dB), performa model umum **runtuh secara drastis** (retensi anjlok ke 19.6%).
@@ -115,7 +148,7 @@ Seluruh metrik dihitung secara adil dan berpasangan (*paired*) pada 94 query yan
 
 ---
 
-## 🔬 Bagian 4: PANDUAN KONSEP KUNCI & BEDAH TEKNIS (FAQ Mahasiswa)
+## 🔬 Bagian 5: PANDUAN KONSEP KUNCI & BEDAH TEKNIS (FAQ Mahasiswa)
 
 *Bagian ini menjelaskan secara gamblang konsep-konsep teknis penting yang sering menjadi pertanyaan saat bimbingan dan sidang skripsi:*
 
@@ -237,8 +270,8 @@ Seluruh metrik dihitung secara adil dan berpasangan (*paired*) pada 94 query yan
 
 ---
 
-## 📅 Bagian 5: Agenda Tahapan Selanjutnya (Next Steps)
-1. **Perekaman Derau Lingkungan Asli ITERA (Minggu ke-2):**
+## 📅 Bagian 6: Agenda Tahapan Selanjutnya (Next Steps)
+1. **Perekaman Derau Lingkungan Asli ITERA (Minggu ke-2 / Minggu ke-3 Lapangan):**
    * Melakukan pengambilan sampel suara murni lingkungan (*noise-only soundscape*) tanpa suara burung di dua lokasi target: **Embung ITERA** dan **Arboretum/Kebun Raya ITERA** sesuai protokol pada `docs/protocols/itera-recording.md`.
 2. **Eksperimen E3 (Domain-Shift Xeno-Canto to ITERA Soundscapes):**
    * Mengganti derau sintetis dengan rekaman derau nyata dari ITERA untuk menguji ketahanan model pada kondisi fisik kampus yang sesungguhnya.
@@ -261,4 +294,4 @@ python -m dsic2706.cli sanity
 # 3. Menjalankan pengujian ketahanan derau komparatif (E2)
 python -m dsic2706.cli noise-robustness
 ```
-Semua artefak grafik kurva retensi tersimpan secara otomatis di direktori `artifacts/`.
+Semua artefak grafik kurva retensi tersimpan secara otomatis di direktori `results/figures/` dan tabel di `results/tables/`.
