@@ -1,3 +1,6 @@
+
+from pathlib import Path
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 """
 Script: src/plot_results.py
 Fungsi: Menghasilkan grafik ilmiah wajib (Bab 18 Dokumen Audit):
@@ -9,8 +12,8 @@ import os
 import pandas as pd
 import matplotlib.pyplot as plt
 
-RESULTS_DIR = "d:/FILE AND TASK/TA/results/processed"
-FIG_DIR = "d:/FILE AND TASK/TA/results/figures"
+RESULTS_DIR = str(PROJECT_ROOT / "results/processed")
+FIG_DIR = str(PROJECT_ROOT / "results/figures")
 os.makedirs(FIG_DIR, exist_ok=True)
 
 df_snr = pd.read_csv(os.path.join(RESULTS_DIR, "snr_robustness_table.csv"))

@@ -1,3 +1,6 @@
+
+from pathlib import Path
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 """
 Script: src/run_benchmark.py
 Fungsi: Menjalankan benchmark paired retrieval lengkap untuk R0 (MFCC), R1 (Generic), R2 (Bioacoustic), dan R3 (Random Control).
@@ -9,12 +12,12 @@ import sys
 import pandas as pd
 import numpy as np
 
-sys.path.insert(0, "d:/FILE AND TASK/TA")
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from src.evaluate import run_experiment_for_representation
 from src.analyze_failures import audit_failure_cases
 
 REPRESENTATIONS = ["R0", "R1", "R2", "R3"]
-RESULTS_DIR = "d:/FILE AND TASK/TA/results/processed"
+RESULTS_DIR = str(PROJECT_ROOT / "results/processed")
 os.makedirs(RESULTS_DIR, exist_ok=True)
 
 all_snr_rows = []

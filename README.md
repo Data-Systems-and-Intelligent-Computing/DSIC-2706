@@ -18,10 +18,10 @@ Judul kerja artikel yang direkomendasikan:
 - [x] **Target Taxon Freeze:** 16 spesies burung representatif Sumatera dibekukan (`configs/datasets.yaml`).
 - [x] **Data Integrity Audit:** 416 berkas audio burung + 77 berkas non-burung terverifikasi (0 berkas korup, $\ge 15$ klip/spesies).
 - [x] **Leakage-Free Partition:** **Strict Global Recordist-Disjoint Cut** ($\mathcal{R}_{\text{Gallery}} \cap \mathcal{R}_{\text{Query}} = \emptyset$, 42 perekam Gallery vs 29 perekam Query Clean, **0 overlap**).
-- [x] **Unit Testing:** 7/7 unit testing lolos 100% (`python run_tests.py`).
-- [x] **Comparative Benchmark:** $R_0$ (MFCC), $R_1$ (PANNs), $R_2$ (Bioacoustic), dan $R_3$ (Random Control) melintasi Clean, 20 dB, 10 dB, 0 dB, dan -5 dB tereksekusi penuh.
-- [x] **Open-Set Threshold Transfer:** Ambang batas $\tau^*$ terkalibrasi empiris via Youden's $J$ ROC dan dibekukan.
-- [x] **Reproducibility:** Deterministik tervalidasi hingga 6 digit desimal (`python src/verify_reproducibility.py`).
+- [x] **Unit Testing:** 9/9 unit testing lolos 100% (`python run_tests.py`), mencakup integritas hash manifes dan dimensi embedding model deep learning asli.
+- [x] **Comparative Benchmark:** $R_0$ (MFCC), $R_1$ (PANNs CNN14 asli 2048-d), $R_2$ (BirdNET V2.4 asli 1024-d), dan $R_3$ (Random Control) melintasi Clean, 20 dB, 10 dB, 0 dB, dan -5 dB tereksekusi penuh.
+- [x] **Open-Set Threshold Transfer:** Ambang batas $\tau^*$ terkalibrasi empiris via Youden's $J$ ROC dan dibekukan dengan injeksi derau pada unknown audio ($\Delta\text{FPR} \neq 0$).
+- [x] **Reproducibility & Visualisasi:** Deterministik tervalidasi hingga 6 digit desimal, visualisasi dengan 95% Bootstrap CI, dan interaktif notebook resmi di `notebooks/01_evaluasi_benchmark_dan_visualisasi.ipynb`.
 
 ---
 
@@ -73,9 +73,9 @@ Judul kerja artikel yang direkomendasikan:
 | Kode | Representasi | Dimensi | Peran |
 |---|---|:---:|---|
 | **R0** | MFCC (20 koefisien) + mean/std pooling | 40-dim | Baseline klasik katalog |
-| **R1** | Generic pretrained audio embedding (PANNs-like) | 2048-dim | Deep embedding generik |
-| **R2** | Bioacoustic pretrained embedding (BirdNET-like) | 1024-dim | Domain-specific representation |
-| **R3** | Random ranking control | 64-dim | Negative control |
+| **R1** | Generic pretrained audio embedding (PANNs CNN14 AudioSet) | 2048-dim | Deep embedding generik |
+| **R2** | Bioacoustic pretrained embedding (BirdNET V2.4 Backbone) | 1024-dim | Domain-specific representation |
+| **R3** | Random ranking control | 40-dim | Negative control |
 
 Semua representasi utama menggunakan **cosine similarity** agar perbandingan tidak tercampur oleh metrik retrieval yang berbeda.
 
@@ -84,22 +84,22 @@ Semua representasi utama menggunakan **cosine similarity** agar perbandingan tid
 ## 5. Ringkasan Hasil Benchmark Komparatif (Terkini)
 
 ### A. Kualitas Retrieval (mAP@10) vs Tingkat Derau Lingkungan
-| Kondisi Derau (SNR) | $R_0$: MFCC Baseline | $R_1$: Generic Audio (PANNs) | $R_2$: Bioacoustic Pretrained | $R_3$: Random Control |
+| Kondisi Derau (SNR) | $R_0$: MFCC Baseline | $R_1$: Generic Audio (PANNs) | $R_2$: Bioacoustic Pretrained (BirdNET) | $R_3$: Random Control |
 | :--- | :---: | :---: | :---: | :---: |
-| **Clean** | 0.1029 | 0.2299 | **0.2408** | 0.0183 |
-| **SNR 20 dB** | 0.0770 | **0.2342** | 0.2315 | 0.0223 |
-| **SNR 10 dB** | 0.0549 | **0.2239** | 0.2137 | 0.0209 |
-| **SNR 0 dB** | 0.0409 | 0.1109 | **0.1589** | 0.0149 |
-| **SNR -5 dB** | 0.0282 | 0.0450 | **0.0936** | 0.0179 |
+| **Clean** | 0.1029 | 0.2069 | **0.5876** | 0.0209 |
+| **SNR 20 dB** | 0.0770 | 0.1890 | **0.5736** | 0.0194 |
+| **SNR 10 dB** | 0.0549 | 0.1602 | **0.5561** | 0.0295 |
+| **SNR 0 dB** | 0.0409 | 0.0756 | **0.5091** | 0.0236 |
+| **SNR -5 dB** | 0.0282 | 0.0438 | **0.4710** | 0.0203 |
 
 ### B. Retensi Kualitas Relatif (% terhadap Kondisi Clean)
-| Kondisi Derau (SNR) | $R_0$: MFCC Baseline | $R_1$: Generic Audio | $R_2$: Bioacoustic Pretrained |
+| Kondisi Derau (SNR) | $R_0$: MFCC Baseline | $R_1$: Generic Audio (PANNs) | $R_2$: Bioacoustic Pretrained (BirdNET) |
 | :--- | :---: | :---: | :---: |
-| **Clean** | 100.0% | 100.0% | 100.0% |
-| **SNR 20 dB** | 74.8% | 101.9% | **96.1%** |
-| **SNR 10 dB** | 53.4% | 97.4% | **88.7%** |
-| **SNR 0 dB** | 39.8% | 48.2% | **66.0%** |
-| **SNR -5 dB** | 27.4% | 19.6% | **38.9%** |
+| **Clean** | 100.0% | 100.0% | **100.0%** |
+| **SNR 20 dB** | 74.8% | 91.4% | **97.6%** |
+| **SNR 10 dB** | 53.4% | 77.4% | **94.6%** |
+| **SNR 0 dB** | 39.8% | 36.5% | **86.6%** |
+| **SNR -5 dB** | 27.4% | 21.2% | **80.1%** |
 
 ---
 

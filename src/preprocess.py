@@ -1,3 +1,6 @@
+
+from pathlib import Path
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 """
 Script: src/preprocess.py
 Fungsi: Pipeline pra-pemrosesan audio terstandardisasi.
@@ -16,7 +19,7 @@ import numpy as np
 import soundfile as sf
 import librosa
 
-CONFIG_PATH = "d:/FILE AND TASK/TA/configs/audio.yaml"
+CONFIG_PATH = str(PROJECT_ROOT / "configs/audio.yaml")
 
 
 def load_config():
@@ -76,6 +79,8 @@ def preprocess_audio(file_path: str, target_sr: int = TARGET_SR, target_samples:
     """
     Memuat dan menstandarkan satu berkas audio menjadi vektor numpy 1D (160000 sampel).
     """
+    if not os.path.isabs(file_path):
+        file_path = os.path.join(str(PROJECT_ROOT), file_path)
     if not os.path.exists(file_path):
         raise FileNotFoundError(f"File audio tidak ditemukan: {file_path}")
 

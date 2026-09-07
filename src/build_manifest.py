@@ -1,3 +1,6 @@
+
+from pathlib import Path
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 """
 Script: src/build_manifest.py
 Fungsi: Membangun partisi data bebas kebocoran (leakage-free split) untuk eksperimen retrieval.
@@ -17,9 +20,9 @@ import sys
 import random
 import pandas as pd
 
-TARGET_MANIFEST = "d:/FILE AND TASK/TA/data/manifests/target_birds_manifest.csv"
-UNKNOWN_MANIFEST = "d:/FILE AND TASK/TA/data/manifests/unknown_open_set_manifest.csv"
-OUTPUT_SPLIT = "d:/FILE AND TASK/TA/data/manifests/dataset_split.csv"
+TARGET_MANIFEST = str(PROJECT_ROOT / "data/manifests/target_birds_manifest.csv")
+UNKNOWN_MANIFEST = str(PROJECT_ROOT / "data/manifests/unknown_open_set_manifest.csv")
+OUTPUT_SPLIT = str(PROJECT_ROOT / "data/manifests/dataset_split.csv")
 
 RANDOM_SEED = 42
 random.seed(RANDOM_SEED)

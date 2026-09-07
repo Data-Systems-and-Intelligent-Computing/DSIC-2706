@@ -1,3 +1,6 @@
+
+from pathlib import Path
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 """
 Script: src/mix_noise.py
 Fungsi: Engine pencampuran derau aditif terkontrol (Controlled Additive Noise Mixing).
@@ -24,7 +27,7 @@ try:
 except ImportError:
     from preprocess import TARGET_SR, TARGET_SAMPLES, TARGET_RMS, normalize_rms
 
-NOISE_DIR = "d:/FILE AND TASK/TA/data/itera_noise"
+NOISE_DIR = str(PROJECT_ROOT / "data/itera_noise")
 
 
 def compute_signal_power(x: np.ndarray) -> float:

@@ -1,3 +1,6 @@
+
+from pathlib import Path
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 """
 Script: src/isolate_unknown_open_set.py
 Fungsi: Memisahkan rekaman satwa non-burung (Grasshoppers, Frogs, Land Mammals, Bats)
@@ -9,12 +12,12 @@ import os
 import shutil
 import pandas as pd
 
-SRC_CATALOG = "d:/FILE AND TASK/TA/Dataset/Bioakustik_Sumatera/katalog_metadata_bioakustik.csv"
-DEST_DIR = "d:/FILE AND TASK/TA/data/unknown_open_set"
-DEST_CATALOG = "d:/FILE AND TASK/TA/data/manifests/unknown_open_set_manifest.csv"
+SRC_CATALOG = str(PROJECT_ROOT / "Dataset/Bioakustik_Sumatera/katalog_metadata_bioakustik.csv")
+DEST_DIR = str(PROJECT_ROOT / "data/unknown_open_set")
+DEST_CATALOG = str(PROJECT_ROOT / "data/manifests/unknown_open_set_manifest.csv")
 
 os.makedirs(DEST_DIR, exist_ok=True)
-os.makedirs("d:/FILE AND TASK/TA/data/manifests", exist_ok=True)
+os.makedirs(str(PROJECT_ROOT / "data/manifests"), exist_ok=True)
 
 if not os.path.exists(SRC_CATALOG):
     print(f"[-] Katalog sumber tidak ditemukan: {SRC_CATALOG}")

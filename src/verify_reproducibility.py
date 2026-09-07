@@ -1,3 +1,6 @@
+
+from pathlib import Path
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 """
 Script: src/verify_reproducibility.py
 Fungsi: Memverifikasi Reproducibility penuh dari single fresh command (Bab 24 Dokumen Audit).
@@ -11,13 +14,13 @@ import hashlib
 import numpy as np
 import pandas as pd
 
-sys.path.insert(0, "d:/FILE AND TASK/TA")
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from src.preprocess import preprocess_audio
 from src.embeddings import AudioRepresentationExtractor
 from src.mix_noise import mix_audio_at_snr
 from src.retrieve import compute_query_retrieval, evaluate_retrieval_corpus
 
-SPLIT_PATH = "d:/FILE AND TASK/TA/data/manifests/dataset_split.csv"
+SPLIT_PATH = str(PROJECT_ROOT / "data/manifests/dataset_split.csv")
 
 
 def get_file_sha256(path):

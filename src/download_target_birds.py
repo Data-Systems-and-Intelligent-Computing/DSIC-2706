@@ -1,3 +1,6 @@
+
+from pathlib import Path
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 """
 Script: src/download_target_birds.py
 Fungsi: Mengumpulkan dan mengunduh rekaman 15 spesies burung target Sumatera dari Xeno-Canto.
@@ -29,9 +32,9 @@ HEADERS = {
     "User-Agent": "BioacousticResearchITERA/1.0 (Academic Research; dsic.itera.ac.id)"
 }
 
-TARGET_DIR = "d:/FILE AND TASK/TA/data/xeno_canto"
-MANIFEST_PATH = "d:/FILE AND TASK/TA/data/manifests/target_birds_manifest.csv"
-EXISTING_DIR = "d:/FILE AND TASK/TA/Dataset/Bioakustik_Sumatera"
+TARGET_DIR = str(PROJECT_ROOT / "data/xeno_canto")
+MANIFEST_PATH = str(PROJECT_ROOT / "data/manifests/target_birds_manifest.csv")
+EXISTING_DIR = str(PROJECT_ROOT / "Dataset/Bioakustik_Sumatera")
 
 # 15 Spesies Burung Target Sumatera Terpilih (100% rekaman terbuka dan terverifikasi di Indonesia)
 FROZEN_TARGET_SPECIES = [

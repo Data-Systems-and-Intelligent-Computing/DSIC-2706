@@ -1,0 +1,95 @@
+query_id,species_key,recordist,top1_match,max_similarity_score,AP@10,Recall@10,Precision@10
+806242,Aethopyga_siparaja,Ding Li Yong,0,0.4323748052120209,0.0,0.0,0.0
+203106,Aethopyga_siparaja,Surya Fajriani,0,0.3796483874320984,0.0,0.0,0.0
+930796,Aethopyga_siparaja,Ding Li Yong,0,0.3901467025279999,0.0365079365079365,0.1111111111111111,0.2
+19050,Aethopyga_siparaja,Sander Pieterse &amp; Ben Wielstra,0,0.48370081186294556,0.0,0.0,0.0
+894701,Aethopyga_siparaja,Ding Li Yong,0,0.41565239429473877,0.0,0.0,0.0
+106117,Batrachostomus_cornutus,Bram Demeulemeester,0,0.37450990080833435,0.0,0.0,0.0
+106118,Batrachostomus_cornutus,Bram Demeulemeester,0,0.3853997588157654,0.0,0.0,0.0
+106120,Batrachostomus_cornutus,Bram Demeulemeester,0,0.3811177611351013,0.05555555555555556,0.18181818181818182,0.2
+618795,Brachypteryx_montana,Teus Luijendijk,0,0.4058091342449188,0.014285714285714285,0.038461538461538464,0.1
+90803,Brachypteryx_montana,Fabian Ducry &amp; David Marques,0,0.40508323907852173,0.0,0.0,0.0
+431514,Brachypteryx_montana,Brian Cox,0,0.4663429856300354,0.016666666666666666,0.038461538461538464,0.1
+70339,Brachypteryx_montana,David Gibbs,0,0.4082956910133362,0.03333333333333333,0.038461538461538464,0.1
+618731,Brachypteryx_montana,Teus Luijendijk,0,0.48536643385887146,0.0125,0.038461538461538464,0.1
+943916,Carpococcyx_viridis,Kim Chuah Lim,0,0.34847909212112427,0.0,0.0,0.0
+56936,Carpococcyx_viridis,Fabian Ducry &amp; David Marques,0,0.4074755907058716,0.0,0.0,0.0
+39501,Carpococcyx_viridis,Brian Cox,0,0.37982645630836487,0.0,0.0,0.0
+56937,Carpococcyx_viridis,Fabian Ducry &amp; David Marques,0,0.3800463080406189,0.0,0.0,0.0
+196215,Carpococcyx_viridis,yann muzika,0,0.3509431779384613,0.0,0.0,0.0
+56938,Carpococcyx_viridis,Fabian Ducry &amp; David Marques,0,0.40362292528152466,0.0,0.0,0.0
+943912,Carpococcyx_viridis,Kim Chuah Lim,0,0.3753071427345276,0.0,0.0,0.0
+85992,Carpococcyx_viridis,John Gregory,0,0.5144637823104858,0.0,0.0,0.0
+894950,Dicaeum_trigonostigma,Ding Li Yong,0,0.4559628367424011,0.05,0.05263157894736842,0.1
+34523,Dicaeum_trigonostigma,Tjalle Boorsma,0,0.43518099188804626,0.05357142857142857,0.10526315789473684,0.2
+648922,Dicaeum_trigonostigma,Ding Li Yong,0,0.4737637937068939,0.0,0.0,0.0
+431494,Dicrurus_hottentottus,Brian Cox,0,0.33752623200416565,0.07857142857142857,0.09090909090909091,0.2
+176899,Dicrurus_hottentottus,Peter Wilton,0,0.4570973515510559,0.0365079365079365,0.09090909090909091,0.2
+931276,Dicrurus_hottentottus,Ding Li Yong,0,0.42240405082702637,0.06666666666666667,0.09090909090909091,0.2
+924367,Dicrurus_hottentottus,Ding Li Yong,0,0.39261627197265625,0.01111111111111111,0.045454545454545456,0.1
+823280,Dicrurus_hottentottus,Greg Irving,0,0.39803749322891235,0.0,0.0,0.0
+825282,Dicrurus_hottentottus,Greg Irving,0,0.3825681507587433,0.05,0.045454545454545456,0.1
+825283,Dicrurus_hottentottus,Greg Irving,0,0.38809680938720703,0.0125,0.045454545454545456,0.1
+176898,Dicrurus_hottentottus,Peter Wilton,0,0.44470372796058655,0.0,0.0,0.0
+648652,Gypsophila_rufipectus,Ding Li Yong,0,0.42552146315574646,0.0,0.0,0.0
+497648,Gypsophila_rufipectus,Ding Li Yong,0,0.46259576082229614,0.05,0.05555555555555555,0.1
+23118,Gypsophila_rufipectus,George Wagner,0,0.4200438857078552,0.04,0.1111111111111111,0.2
+648651,Gypsophila_rufipectus,Ding Li Yong,0,0.381765753030777,0.0,0.0,0.0
+70301,Gypsophila_rufipectus,David Gibbs,0,0.40668028593063354,0.05833333333333333,0.1111111111111111,0.2
+963352,Gypsophila_rufipectus,Daan Drukker,0,0.4653981328010559,0.0,0.0,0.0
+497649,Gypsophila_rufipectus,Ding Li Yong,1,0.4241488575935364,0.2,0.1111111111111111,0.2
+963345,Gypsophila_rufipectus,Daan Drukker,0,0.42658549547195435,0.01,0.05555555555555555,0.1
+479600,Halcyon_smyrnensis,Prayitno Goenarto,0,0.42886704206466675,0.01111111111111111,0.08333333333333333,0.1
+431504,Halcyon_smyrnensis,Brian Cox,0,0.45518144965171814,0.0,0.0,0.0
+537745,Halcyon_smyrnensis,Advento,0,0.48379963636398315,0.0,0.0,0.0
+431502,Halcyon_smyrnensis,Brian Cox,0,0.4201053977012634,0.0,0.0,0.0
+481181,Halcyon_smyrnensis,Prayitno Goenarto,0,0.41302749514579773,0.0,0.0,0.0
+431520,Horornis_vulcanius,Brian Cox,0,0.3825208842754364,0.0,0.0,0.0
+453085,Horornis_vulcanius,Brendan Sloan,0,0.6736997365951538,0.01111111111111111,0.04,0.1
+431521,Horornis_vulcanius,Brian Cox,0,0.4429040551185608,0.03333333333333333,0.04,0.1
+618791,Horornis_vulcanius,Teus Luijendijk,1,0.36517590284347534,0.1,0.04,0.1
+618724,Horornis_vulcanius,Teus Luijendijk,0,0.46857452392578125,0.01111111111111111,0.04,0.1
+453239,Horornis_vulcanius,Brendan Sloan,0,0.39153704047203064,0.13333333333333333,0.12,0.3
+34481,Malacopteron_affine,Tjalle Boorsma,0,0.39258670806884766,0.0,0.0,0.0
+530111,Malacopteron_affine,Matt Slaymaker,0,0.4819903075695038,0.0,0.0,0.0
+594323,Malacopteron_affine,Prayitno Goenarto,0,0.4015536308288574,0.0,0.0,0.0
+34479,Malacopteron_affine,Tjalle Boorsma,0,0.45888251066207886,0.0,0.0,0.0
+34480,Malacopteron_affine,Tjalle Boorsma,0,0.3579387664794922,0.0,0.0,0.0
+24406,Malacopteron_affine,Sander Pieterse &amp; Ben Wielstra,0,0.4706955552101135,0.0,0.0,0.0
+578766,Malacopteron_affine,Muhammad Iqbal,0,0.4799538552761078,0.0,0.0,0.0
+90890,Myophonus_melanurus,Fabian Ducry &amp; David Marques,0,0.3810057044029236,0.0,0.0,0.0
+431617,Myophonus_melanurus,Brian Cox,0,0.3458351194858551,0.0,0.0,0.0
+431615,Myophonus_melanurus,Brian Cox,0,0.46928319334983826,0.0,0.0,0.0
+431536,Napothera_albostriata,Brian Cox,0,0.4272047281265259,0.0,0.0,0.0
+431530,Napothera_albostriata,Brian Cox,0,0.38329586386680603,0.0,0.0,0.0
+648646,Napothera_albostriata,Ding Li Yong,0,0.4503364562988281,0.0,0.0,0.0
+195583,Napothera_albostriata,Marc Thibault,0,0.4316994547843933,0.0,0.0,0.0
+431533,Napothera_albostriata,Brian Cox,0,0.36623719334602356,0.0,0.0,0.0
+195587,Napothera_albostriata,Marc Thibault,0,0.40854546427726746,0.0625,0.125,0.1
+195585,Napothera_albostriata,Marc Thibault,0,0.44809529185295105,0.0625,0.125,0.1
+431487,Orthotomus_ruficeps,Brian Cox,0,0.4202044606208801,0.07857142857142857,0.14285714285714285,0.2
+571751,Orthotomus_ruficeps,Muhammad Iqbal,0,0.43539488315582275,0.0,0.0,0.0
+535411,Orthotomus_ruficeps,Andres Angulo Rubiano,0,0.45777419209480286,0.0,0.0,0.0
+1098429,Orthotomus_ruficeps,yasinchumaedi,0,0.43155163526535034,0.025,0.07142857142857142,0.1
+431498,Orthotomus_ruficeps,Brian Cox,0,0.362921804189682,0.06666666666666667,0.14285714285714285,0.2
+895144,Orthotomus_ruficeps,Ding Li Yong,0,0.3994176685810089,0.0,0.0,0.0
+604617,Orthotomus_ruficeps,Prayitno Goenarto,0,0.46783310174942017,0.0,0.0,0.0
+895137,Orthotomus_ruficeps,Ding Li Yong,0,0.3876573145389557,0.0325,0.14285714285714285,0.2
+34503,Orthotomus_ruficeps,Tjalle Boorsma,0,0.4135792553424835,0.03888888888888888,0.14285714285714285,0.2
+20097,Orthotomus_ruficeps,Sander Pieterse &amp; Ben Wielstra,0,0.4007290005683899,0.0,0.0,0.0
+389508,Pnoepyga_pusilla,Oscar Campbell,0,0.4467356503009796,0.0,0.0,0.0
+42265,Pnoepyga_pusilla,George Wagner,0,0.503025233745575,0.0,0.0,0.0
+940265,Pnoepyga_pusilla,Ding Li Yong,0,0.39439859986305237,0.0,0.0,0.0
+39474,Pnoepyga_pusilla,Brian Cox,0,0.5048763155937195,0.0,0.0,0.0
+389504,Pnoepyga_pusilla,Oscar Campbell,0,0.4189313054084778,0.12083333333333332,0.12,0.3
+90936,Pnoepyga_pusilla,Fabian Ducry &amp; David Marques,0,0.40709251165390015,0.08273809523809524,0.12,0.3
+90919,Pnoepyga_pusilla,Fabian Ducry &amp; David Marques,0,0.3840407133102417,0.0125,0.04,0.1
+56932,Polyplectron_chalcurum,Fabian Ducry &amp; David Marques,0,0.39058786630630493,0.0,0.0,0.0
+70193,Polyplectron_chalcurum,David Gibbs,0,0.408229798078537,0.02,0.07142857142857142,0.1
+90808,Polyplectron_chalcurum,Fabian Ducry &amp; David Marques,0,0.434023916721344,0.0,0.0,0.0
+33419,Spilornis_cheela,Tjalle Boorsma,0,0.4729262590408325,0.0,0.0,0.0
+570921,Spilornis_cheela,Muhammad Iqbal,0,0.37257757782936096,0.0,0.0,0.0
+965048,Spilornis_cheela,Daan Drukker,0,0.5977022051811218,0.0,0.0,0.0
+618811,Spilornis_cheela,Teus Luijendijk,1,0.34401533007621765,0.1,0.04,0.1
+482239,Spilornis_cheela,Frank Rheindt,0,0.4398978352546692,0.016666666666666666,0.04,0.1
+33420,Spilornis_cheela,Tjalle Boorsma,0,0.34518614411354065,0.0,0.0,0.0

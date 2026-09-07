@@ -24,6 +24,10 @@ from tests.unit.test_cosine import (
     test_retrieval_ranking_logic,
 )
 from tests.unit.test_threshold_freeze import test_threshold_frozen_evaluation
+from tests.unit.test_manifest_and_models import (
+    test_manifest_sha256_integrity,
+    test_model_embedding_dimensions,
+)
 
 
 def run_all_tests():
@@ -39,6 +43,8 @@ def run_all_tests():
         ("Cosine Similarity Mathematical Bounds", test_cosine_similarity_properties),
         ("Retrieval Ranking & Metric Logic", test_retrieval_ranking_logic),
         ("Open-Set Threshold Freeze Validation", test_threshold_frozen_evaluation),
+        ("Manifest SHA-256 Integrity Verification (M-06)", test_manifest_sha256_integrity),
+        ("Model Embedding Dimension Compliance (C-01)", test_model_embedding_dimensions),
     ]
 
     passed = 0

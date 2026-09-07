@@ -1,0 +1,95 @@
+query_id,species_key,recordist,top1_match,max_similarity_score,AP@10,Recall@10,Precision@10
+806242,Aethopyga_siparaja,Ding Li Yong,0,0.46082061529159546,0.0,0.0,0.0
+203106,Aethopyga_siparaja,Surya Fajriani,0,0.3834227919578552,0.0,0.0,0.0
+930796,Aethopyga_siparaja,Ding Li Yong,0,0.4082036018371582,0.0,0.0,0.0
+19050,Aethopyga_siparaja,Sander Pieterse &amp; Ben Wielstra,0,0.4621987044811249,0.0,0.0,0.0
+894701,Aethopyga_siparaja,Ding Li Yong,0,0.4543716609477997,0.014285714285714285,0.05555555555555555,0.1
+106117,Batrachostomus_cornutus,Bram Demeulemeester,0,1.0,0.0,0.0,0.0
+106118,Batrachostomus_cornutus,Bram Demeulemeester,0,0.4346085488796234,0.0,0.0,0.0
+106120,Batrachostomus_cornutus,Bram Demeulemeester,0,0.43742823600769043,0.03333333333333333,0.09090909090909091,0.1
+618795,Brachypteryx_montana,Teus Luijendijk,0,0.4680072069168091,0.0,0.0,0.0
+90803,Brachypteryx_montana,Fabian Ducry &amp; David Marques,0,0.3774406909942627,0.0,0.0,0.0
+431514,Brachypteryx_montana,Brian Cox,0,0.45405203104019165,0.014285714285714285,0.038461538461538464,0.1
+70339,Brachypteryx_montana,David Gibbs,0,0.44327399134635925,0.0,0.0,0.0
+618731,Brachypteryx_montana,Teus Luijendijk,0,0.4419776499271393,0.02,0.038461538461538464,0.1
+943916,Carpococcyx_viridis,Kim Chuah Lim,0,0.36566558480262756,0.0,0.0,0.0
+56936,Carpococcyx_viridis,Fabian Ducry &amp; David Marques,0,0.38644540309906006,0.0,0.0,0.0
+39501,Carpococcyx_viridis,Brian Cox,0,1.0000001192092896,0.047619047619047616,0.14285714285714285,0.1
+56937,Carpococcyx_viridis,Fabian Ducry &amp; David Marques,0,0.3446483016014099,0.0,0.0,0.0
+196215,Carpococcyx_viridis,yann muzika,0,0.41992902755737305,0.0,0.0,0.0
+56938,Carpococcyx_viridis,Fabian Ducry &amp; David Marques,0,0.3924972712993622,0.028571428571428574,0.14285714285714285,0.1
+943912,Carpococcyx_viridis,Kim Chuah Lim,0,0.42735058069229126,0.0,0.0,0.0
+85992,Carpococcyx_viridis,John Gregory,0,0.446206659078598,0.0,0.0,0.0
+894950,Dicaeum_trigonostigma,Ding Li Yong,0,0.39496302604675293,0.0,0.0,0.0
+34523,Dicaeum_trigonostigma,Tjalle Boorsma,0,1.0000001192092896,0.1275,0.15789473684210525,0.3
+648922,Dicaeum_trigonostigma,Ding Li Yong,0,0.40681764483451843,0.02,0.05263157894736842,0.1
+431494,Dicrurus_hottentottus,Brian Cox,0,0.3887673616409302,0.05,0.045454545454545456,0.1
+176899,Dicrurus_hottentottus,Peter Wilton,0,0.4746014475822449,0.02,0.045454545454545456,0.1
+931276,Dicrurus_hottentottus,Ding Li Yong,0,0.47425520420074463,0.0,0.0,0.0
+924367,Dicrurus_hottentottus,Ding Li Yong,0,0.44608253240585327,0.0,0.0,0.0
+823280,Dicrurus_hottentottus,Greg Irving,0,0.37131446599960327,0.0,0.0,0.0
+825282,Dicrurus_hottentottus,Greg Irving,0,0.3959568738937378,0.0,0.0,0.0
+825283,Dicrurus_hottentottus,Greg Irving,0,0.3648800253868103,0.05,0.045454545454545456,0.1
+176898,Dicrurus_hottentottus,Peter Wilton,0,0.4048989415168762,0.06190476190476191,0.09090909090909091,0.2
+648652,Gypsophila_rufipectus,Ding Li Yong,0,0.4380881190299988,0.0,0.0,0.0
+497648,Gypsophila_rufipectus,Ding Li Yong,0,0.3609327971935272,0.02,0.05555555555555555,0.1
+23118,Gypsophila_rufipectus,George Wagner,0,0.3978637754917145,0.0,0.0,0.0
+648651,Gypsophila_rufipectus,Ding Li Yong,0,0.4272250533103943,0.0,0.0,0.0
+70301,Gypsophila_rufipectus,David Gibbs,0,0.46929389238357544,0.025,0.05555555555555555,0.1
+963352,Gypsophila_rufipectus,Daan Drukker,0,0.41111481189727783,0.0325,0.1111111111111111,0.2
+497649,Gypsophila_rufipectus,Ding Li Yong,0,0.3428446054458618,0.025,0.05555555555555555,0.1
+963345,Gypsophila_rufipectus,Daan Drukker,0,0.41072872281074524,0.0125,0.05555555555555555,0.1
+479600,Halcyon_smyrnensis,Prayitno Goenarto,0,0.41882699728012085,0.0,0.0,0.0
+431504,Halcyon_smyrnensis,Brian Cox,1,0.38345351815223694,0.1,0.08333333333333333,0.1
+537745,Halcyon_smyrnensis,Advento,0,0.3854019045829773,0.0,0.0,0.0
+431502,Halcyon_smyrnensis,Brian Cox,0,0.4116031527519226,0.03333333333333333,0.08333333333333333,0.1
+481181,Halcyon_smyrnensis,Prayitno Goenarto,1,0.5467544794082642,0.1,0.08333333333333333,0.1
+431520,Horornis_vulcanius,Brian Cox,0,0.38733360171318054,0.0,0.0,0.0
+453085,Horornis_vulcanius,Brendan Sloan,0,0.38893774151802063,0.0,0.0,0.0
+431521,Horornis_vulcanius,Brian Cox,0,0.39866432547569275,0.04523809523809523,0.08,0.2
+618791,Horornis_vulcanius,Teus Luijendijk,0,0.488081693649292,0.05,0.04,0.1
+618724,Horornis_vulcanius,Teus Luijendijk,0,0.44153738021850586,0.06999999999999999,0.08,0.2
+453239,Horornis_vulcanius,Brendan Sloan,0,0.43247953057289124,0.17666666666666667,0.12,0.3
+34481,Malacopteron_affine,Tjalle Boorsma,0,0.4717162549495697,0.0,0.0,0.0
+530111,Malacopteron_affine,Matt Slaymaker,0,0.5753439664840698,0.017857142857142856,0.14285714285714285,0.1
+594323,Malacopteron_affine,Prayitno Goenarto,0,0.5999293327331543,0.0,0.0,0.0
+34479,Malacopteron_affine,Tjalle Boorsma,0,0.42886799573898315,0.023809523809523808,0.14285714285714285,0.1
+34480,Malacopteron_affine,Tjalle Boorsma,0,0.45376187562942505,0.0,0.0,0.0
+24406,Malacopteron_affine,Sander Pieterse &amp; Ben Wielstra,0,0.39385196566581726,0.023809523809523808,0.14285714285714285,0.1
+578766,Malacopteron_affine,Muhammad Iqbal,0,0.545159637928009,0.0,0.0,0.0
+90890,Myophonus_melanurus,Fabian Ducry &amp; David Marques,0,0.3516821265220642,0.037037037037037035,0.1111111111111111,0.1
+431617,Myophonus_melanurus,Brian Cox,0,0.41873282194137573,0.0,0.0,0.0
+431615,Myophonus_melanurus,Brian Cox,0,0.43416914343833923,0.0,0.0,0.0
+431536,Napothera_albostriata,Brian Cox,0,0.39383620023727417,0.0,0.0,0.0
+431530,Napothera_albostriata,Brian Cox,0,1.0000001192092896,0.0,0.0,0.0
+648646,Napothera_albostriata,Ding Li Yong,0,0.41350775957107544,0.0,0.0,0.0
+195583,Napothera_albostriata,Marc Thibault,0,0.3810890316963196,0.0625,0.125,0.1
+431533,Napothera_albostriata,Brian Cox,0,0.37894976139068604,0.0,0.0,0.0
+195587,Napothera_albostriata,Marc Thibault,0,0.42582857608795166,0.0,0.0,0.0
+195585,Napothera_albostriata,Marc Thibault,0,0.4181675612926483,0.0,0.0,0.0
+431487,Orthotomus_ruficeps,Brian Cox,0,0.34738799929618835,0.0,0.0,0.0
+571751,Orthotomus_ruficeps,Muhammad Iqbal,0,0.3814813196659088,0.0,0.0,0.0
+535411,Orthotomus_ruficeps,Andres Angulo Rubiano,0,0.389417439699173,0.02,0.07142857142857142,0.1
+1098429,Orthotomus_ruficeps,yasinchumaedi,0,0.5063022971153259,0.0,0.0,0.0
+431498,Orthotomus_ruficeps,Brian Cox,0,1.0000001192092896,0.0,0.0,0.0
+895144,Orthotomus_ruficeps,Ding Li Yong,0,0.3946983218193054,0.0,0.0,0.0
+604617,Orthotomus_ruficeps,Prayitno Goenarto,0,0.5135160684585571,0.0,0.0,0.0
+895137,Orthotomus_ruficeps,Ding Li Yong,0,0.4859986901283264,0.0,0.0,0.0
+34503,Orthotomus_ruficeps,Tjalle Boorsma,0,1.0000001192092896,0.0,0.0,0.0
+20097,Orthotomus_ruficeps,Sander Pieterse &amp; Ben Wielstra,0,1.0000001192092896,0.0,0.0,0.0
+389508,Pnoepyga_pusilla,Oscar Campbell,0,0.5460121035575867,0.03333333333333333,0.04,0.1
+42265,Pnoepyga_pusilla,George Wagner,0,0.5589560270309448,0.03888888888888888,0.08,0.2
+940265,Pnoepyga_pusilla,Ding Li Yong,0,0.528129518032074,0.08333333333333333,0.08,0.2
+39474,Pnoepyga_pusilla,Brian Cox,0,0.443042129278183,0.05,0.04,0.1
+389504,Pnoepyga_pusilla,Oscar Campbell,0,0.4555526673793793,0.0,0.0,0.0
+90936,Pnoepyga_pusilla,Fabian Ducry &amp; David Marques,1,0.4107469320297241,0.12857142857142856,0.08,0.2
+90919,Pnoepyga_pusilla,Fabian Ducry &amp; David Marques,0,0.5295549631118774,0.0,0.0,0.0
+56932,Polyplectron_chalcurum,Fabian Ducry &amp; David Marques,0,0.4354873299598694,0.0,0.0,0.0
+70193,Polyplectron_chalcurum,David Gibbs,0,0.41640204191207886,0.0,0.0,0.0
+90808,Polyplectron_chalcurum,Fabian Ducry &amp; David Marques,0,0.45224273204803467,0.0,0.0,0.0
+33419,Spilornis_cheela,Tjalle Boorsma,0,0.42159801721572876,0.05357142857142857,0.08,0.2
+570921,Spilornis_cheela,Muhammad Iqbal,0,0.4097898006439209,0.07333333333333333,0.08,0.2
+965048,Spilornis_cheela,Daan Drukker,0,0.33568698167800903,0.05,0.04,0.1
+618811,Spilornis_cheela,Teus Luijendijk,0,0.4728991985321045,0.0,0.0,0.0
+482239,Spilornis_cheela,Frank Rheindt,0,0.39277029037475586,0.03428571428571429,0.08,0.2
+33420,Spilornis_cheela,Tjalle Boorsma,0,0.43051087856292725,0.05833333333333333,0.08,0.2

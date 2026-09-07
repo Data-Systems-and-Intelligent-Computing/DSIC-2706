@@ -1,12 +1,13 @@
-# Rekam Jejak Audit Reproducibility DSIC-2706
-# Tanggal: 06 September 2026
+# Rekam Jejak Audit Integritas & Reproducibility DSIC-2706
+# Tanggal: 07 September 2026
+# Perintah Pembuat: python scripts/update_manifest_hashes.py
 
-target_birds_manifest.csv : 40eb8264906a282f1b0728fe4112eebfaeecbb8bb41f4a95610ec875704a2984
-dataset_split.csv         : 35d353fff8fb818a0d760705aaf879b5e7b829955fe89b8fa37a5fdd846fb93b
-unknown_open_set_manifest : 5cf720efb064c1b7593c6f8819eb3108c4cb64fffc99ae3b7a5a87679808fb89
+target_birds_manifest.csv : 0a72779153a70b1abdc7f106c0fb248840c17cc07b88611c666dad887f3c99e4
+dataset_split.csv : af51a1026b6ae493897973ba25671bbea647df04996a3172ddec0631a51edee5
+unknown_open_set_manifest.csv : 34cd49eb11cac703ed418f2d4077e5d93d7e503add74bd1eaa7e9c390e3ec3af
 
-# Metrik R2 @ SNR 0 dB (Fresh Deterministic Run)
-mAP@10    : 0.158901
-Recall@10 : 0.147780
-Top1_Acc  : 0.329787
-Frozen Tau: 0.966971
+# Baseline Verifikasi Model Asli R2 (BirdNET) @ SNR 0 dB:
+mAP@10    : 0.509081
+Recall@10 : 0.368139
+Top1_Acc  : 0.755319
+Frozen Tau: 0.648770
