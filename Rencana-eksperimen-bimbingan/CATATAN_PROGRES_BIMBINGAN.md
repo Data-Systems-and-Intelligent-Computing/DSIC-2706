@@ -4,18 +4,26 @@
 **Mahasiswa:** Fabio Banyu Cyto (NIM: 123450104)  
 **Dosen Pembimbing:** Bapak Ardika  
 **Institusi:** Program Studi Sains Data, Institut Teknologi Sumatera (ITERA)  
-**Terakhir Diperbarui:** 07 September 2026 (Pembaruan Pasca-Audit Supervisi Pembimbing)  
+**Terakhir Diperbarui:** 11 September 2026 (Penyelesaian Resmi Gate 1: 14 Spesies Sumatera, E0 Sanity Check & E1 Clean Retrieval)  
 
 ---
 
-## 📌 Ringkasan Eksekutif & Status Kejujuran Akademis
+## Ringkasan Eksekutif & Status Kejujuran Akademis
 
 Dokumen ini adalah **buku catatan progres resmi dan rekam jejak tindak lanjut revisi bimbingan**. Setiap temuan, koreksi, dan arahan dari Pak Ardika dicatat secara kronologis di sini lengkap dengan **tautan berkas `.py` yang langsung bisa diklik, bukti hasil eksekusi (*terminal run output*), data numerik empiris, dan visualisasi grafik** tanpa ada manipulasi atau klaim palsu.
 
 > [!IMPORTANT]
-> ### 🔍 Pernyataan Batasan Ruang Lingkup & Kejujuran Data (Fakta Sebenarnya):
-> 1. **Eksperimen yang Sudah Selesai 100%:** Eksperimen benchmark komparatif representasi audio ($R_0, R_1, R_2, R_3$) melintasi tingkat derau terkendali (*controlled additive noise* SNR Clean s/d -5 dB) pada korpus Xeno-Canto (416 rekaman burung Sumatera dan 77 satwa non-burung) dengan partisi bebas kebocoran (*Strict Global Recordist-Disjoint*).
-> 2. **Hal yang Belum Dikerjakan (Tidak Diklaim):** Pengambilan sampel audio soundscape dan derau lingkungan di lapangan kampus ITERA (Embung dan Arboretum) **belum dilakukan di lapangan**. Seluruh klaim seolah-olah soundscape ITERA sudah diuji telah dihapus total dari naskah dan dokumen, diposisikan sebagai tahap penelitian lanjutan lapangan sesuai Keputusan Pembimbing D-03.
+> ### Pernyataan Batasan Ruang Lingkup & Kejujuran Data (Fakta Sebenarnya):
+> 1. **Eksperimen yang Sudah Selesai 100% (Gate 1 / Minggu Ke-1):**
+>    * Kurasi dataset **14 spesies burung Sumatera (162 rekaman audio MP3)** dengan menghapus seluruh data asing/Malaysia.
+>    * Manifes terverifikasi: [`data/manifests/target_birds_manifest.csv`](../data/manifests/target_birds_manifest.csv) dan [`data/manifests/dataset_split.csv`](../data/manifests/dataset_split.csv) (Zero ID & Path Overlap).
+>    * Pembekuan prapemrosesan audio (32 kHz, 5s, Mono, RMS 0.05) lengkap dengan bukti audit 150 file: [`results/processed/preprocessing_verification_table.csv`](../results/processed/preprocessing_verification_table.csv) dan gambar 4-panel [`results/figures/preprocessing_before_after_comparison.png`](../results/figures/preprocessing_before_after_comparison.png).
+>    * Eksekusi E0 Pipeline Sanity Check (`PASSED` / Lolos).
+>    * Eksekusi E1 Clean Retrieval pada seluruh 14 spesies: $R_2$ (BirdNET: 78.57%) > $R_1$ (PANNs: 57.14%) > $R_0$ (MFCC: 28.57%) >> $R_3$ (Random: 7.14%).
+> 2. **Hal yang Belum Dikerjakan (Belum Dilakukan / Terjadwal):**
+>    * **Minggu 2 (E2):** Controlled Noise Robustness (Paired SNR stress-testing pada 20dB s/d -5dB).
+>    * **Minggu 3 (E3/E4):** Kalibrasi ambang batas $\tau$ dan open-set rejection satwa non-burung.
+>    * **Minggu 4 (E5/E6):** Analisis kasus kegagalan, uji signifikansi statistik inferensial (Bootstrap CI 95%), serta validasi lapangan soundscape kampus ITERA (Embung dan Arboretum).
 
 ---
 
@@ -38,7 +46,41 @@ Semua nama berkas di bawah ini berupa **tautan langsung** yang dapat diklik di V
 
 ---
 
-## 💻 BUKTI HASIL EKSEKUSI NYATA (*TERMINAL RUN OUTPUT*)
+## BUKTI RESMI HASIL EKSEKUSI GATE 1 (14 SPESIES SUMATERA - 11 SEPTEMBER 2026)
+
+Tahap Gate 1 (Minggu Ke-1) telah selesai 100% dan tervalidasi secara komputasi di Google Colab pada dataset 14 spesies burung Sumatera (162 rekaman audio MP3).
+
+### 1. Verifikasi Prapemrosesan Audio (150 Berkas: 136 Gallery + 14 Query)
+* **Laju Sampel (*Sample Rate*):** Diseragamkan dari variasi 22.050–48.000 Hz menjadi **32.000 Hz** (konstan).
+* **Durasi Sinyal:** Dari rekaman bervariasi 2.5–188.3 detik (rerata 40.1s), algoritma otomatis memilih segmen energi vokal tertinggi tepat **5.0 detik** (160.000 sampel).
+* **Normalisasi Energi RMS:** Dinormalisasi dari 0.0024–0.2796 menjadi tepat **0.0500 +- 0.0004**.
+* **Puncak Amplitudo (*Peak*):** Dibatasi aman pada **0.1682–1.0000** sehingga bebas dari distorsi kliping sinyal.
+* **Tautan Berkas Hasil:**
+  * Tabel Audit Prapemrosesan: [`results/processed/preprocessing_verification_table.csv`](../results/processed/preprocessing_verification_table.csv)
+  * Gambar Komparasi 4-Panel: [`results/figures/preprocessing_before_after_comparison.png`](../results/figures/preprocessing_before_after_comparison.png)
+
+### 2. Hasil Evaluasi E1 Clean Retrieval pada Seluruh 14 Spesies
+| Kode | Representasi Audio | Dimensi | Top-1 Accuracy | mAP@10 | MRR | Recall@10 | Precision@10 | Status |
+| :---: | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **$R_2$** | **BirdNET Backbone** | 1024 | **78.57%** | **0.5439** | **0.8004** | **0.5402** | **0.4643** | Terbaik (Bioakustik) |
+| **$R_1$** | **PANNs CNN14** | 2048 | **57.14%** | **0.2510** | **0.6641** | **0.3374** | **0.2929** | Menengah (Generik) |
+| **$R_0$** | **MFCC Baseline** | 40 | **28.57%** | **0.1447** | **0.4060** | **0.2136** | **0.2071** | Rendah (Handcrafted) |
+| **$R_3$** | **Random Control** | 40 | **7.14%** | **0.0177** | **0.1912** | **0.0292** | **0.0357** | Kontrol Acak Murni |
+
+* **Tautan Berkas Hasil E1:**
+  * Tabel Metrik Ringkasan: [`results/processed/clean_retrieval_table.csv`](../results/processed/clean_retrieval_table.csv)
+  * Tabel Rincian Per Kueri: [`results/processed/per_query_clean_retrieval.csv`](../results/processed/per_query_clean_retrieval.csv)
+  * Gambar Grafik Batang: [`results/figures/clean_retrieval_benchmark.png`](../results/figures/clean_retrieval_benchmark.png)
+  * Notebook Resmi Terverifikasi: [`notebooks/E1_Clean_Retrieval.ipynb`](../notebooks/E1_Clean_Retrieval.ipynb)
+
+### 3. Status Pelaksanaan Minggu 2 s.d 4:
+* **Minggu 2 (E2 - Paired Noise Stress-Testing):** **BELUM DILAKUKAN** (Tahap berikutnya).
+* **Minggu 3 (E3/E4 - Open-Set Rejection & Kalibrasi Tau):** **BELUM DILAKUKAN** (Terjadwal).
+* **Minggu 4 (E5/E6 - Failure Cases & Naskah Akhir):** **BELUM DILAKUKAN** (Terjadwal).
+
+---
+
+## BUKTI HASIL EKSEKUSI LAINNYA
 
 Berikut adalah bukti rekaman terminal saat skrip-skrip inti dieksekusi:
 
