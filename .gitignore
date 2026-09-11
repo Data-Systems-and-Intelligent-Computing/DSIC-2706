@@ -44,6 +44,7 @@ wheels/
 !data/manifests/*.csv
 !data/itera_soundscape_annotations/
 !data/itera_soundscape_annotations/*.csv
+data/xeno_canto/**/Screenshot*.png
 
 # Local legacy scratch & audit folders
 Audit Pembaruan/
