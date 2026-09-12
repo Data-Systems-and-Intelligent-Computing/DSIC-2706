@@ -6,7 +6,7 @@ Fokus penelitian ini bukan membuat classifier spesies baru, melainkan menguji **
 
 Judul kerja artikel yang direkomendasikan:
 
-> **Noise and Domain-Shift Robustness of Audio Representations for Cross-Domain Bioacoustic Retrieval: From Xeno-Canto to ITERA Soundscapes**
+> **Noise and Domain-Shift Robustness of Frozen Audio Representations for Bioacoustic Similarity Retrieval: A Controlled Evaluation on BirdCLEF+ 2026 with Field-Recorded Tropical Noise**
 
 ## 1. Pertanyaan penelitian
 

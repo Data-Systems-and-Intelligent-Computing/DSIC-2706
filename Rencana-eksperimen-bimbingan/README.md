@@ -2,7 +2,7 @@
 
 Repositori ini memuat rencana kerja eksperimental 4 minggu (30 hari) dan rekam jejak bimbingan untuk topik penelitian:
 **"Mencari Audio yang Mirip Ketika Datanya Terbatas" (DSIC-2706)**  
-*Noise and Domain-Shift Robustness of Audio Representations for Cross-Domain Bioacoustic Retrieval: From Xeno-Canto to Environmental Soundscapes*
+*Noise and Domain-Shift Robustness of Frozen Audio Representations for Bioacoustic Similarity Retrieval: A Controlled Evaluation on BirdCLEF+ 2026 with Field-Recorded Tropical Noise*
 
 * **Mahasiswa:** Fabio Banyu Cyto (NIM: 123450104)
 * **Dosen Pembimbing:** Bapak Ardika
