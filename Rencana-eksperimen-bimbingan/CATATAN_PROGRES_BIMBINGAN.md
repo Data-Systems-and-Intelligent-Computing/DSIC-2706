@@ -67,12 +67,12 @@ Tahap Gate 1-R (Minggu Ke-1 Revisi) telah selesai 100% pada dataset BirdCLEF+ 20
   * Irisan ID Rekaman: **0 overlap** (Gallery $\cap$ Query = 0, Gallery $\cap$ Calib = 0, Query $\cap$ Calib = 0).
   * Irisan Path Berkas: **0 overlap** di seluruh ketiga subset.
   * Irisan Perekam (*Strict Author-Disjoint*): **0 overlap** ($377 + 68 + 95 = 540$ author unik global, 100% independen).
-* **Tautan Manifes:**
-  * Manifes Partisi Resmi: [`data/manifests/dataset_split.csv`](../data/manifests/dataset_split.csv)
-  * Spesies Target Terpilih (20 Taksa): [`data/manifests/species_freeze.csv`](../data/manifests/species_freeze.csv)
-  * Spesies Non-Target Tereksklusi (186 Taksa): [`data/manifests/species_excluded.csv`](../data/manifests/species_excluded.csv)
-  * Inventaris Mesin Dataset: [`data/manifests/birdclef_inventory.json`](../data/manifests/birdclef_inventory.json)
-  * Metadata Komprehensif Excel (22 Sheet): [`data/manifests/Metadata_BirdCLEF.xlsx`](../data/manifests/Metadata_BirdCLEF.xlsx)
+* **Tautan & Penjelasan Berkas Manifes Data:**
+  * **Manifes Partisi Resmi ([`data/manifests/dataset_split.csv`](../data/manifests/dataset_split.csv)):** Manifes kanonikal seluruh 4.351 berkas audio yang membagi data ke peran Galeri (3.653 klip), Kueri Bersih (200 klip), dan Kalibrasi (498 klip) dengan pemisahan perekam mutlak (*Strict Global Recordist-Disjoint*, 0 kebocoran ID/author/path).
+  * **Spesies Target Terpilih / 20 Taksa ([`data/manifests/species_freeze.csv`](../data/manifests/species_freeze.csv)):** Daftar 20 spesies burung Neotropis terpilih dari pool 156 kandidat §11.3 berdasarkan peringkat diversitas perekam tertinggi ($n_{\text{author}} \ge 105$) guna menjamin independensi data kueri vs galeri.
+  * **Spesies Non-Target Tereksklusi / 186 Taksa ([`data/manifests/species_excluded.csv`](../data/manifests/species_excluded.csv)):** Transparansi eliminasi 186 taksa non-target (136 spesies tersisih murni akibat kuota batas 20 spesies, dan 50 spesies tidak memenuhi ambang kualitas/volume §11.3).
+  * **Inventaris Mesin Dataset ([`data/manifests/birdclef_inventory.json`](../data/manifests/birdclef_inventory.json)):** Berkas JSON hasil ekstraksi terotomatisasi dari skrip inventarisasi langsung terhadap berkas audio guna menjamin seluruh angka statistik korpus valid tanpa ada yang diketik tangan.
+  * **Metadata Komprehensif Excel / 22 Sheet ([`data/manifests/Metadata_BirdCLEF.xlsx`](../data/manifests/Metadata_BirdCLEF.xlsx)):** Buku kerja metadata 22 lembar kerja yang memetakan profil taksonomi, sebaran koordinat geospasial, durasi audio, dan statistik perekam untuk setiap spesies target.
 
 ### 2. Hasil Evaluasi E1 Clean Retrieval pada 20 Spesies Burung Target (Gate 1-R)
 | Kode | Representasi Audio | Dimensi | Top-1 Accuracy | mAP@10 | MRR | Recall@10 | Precision@10 | Status Metodologis |
@@ -85,23 +85,20 @@ Tahap Gate 1-R (Minggu Ke-1 Revisi) telah selesai 100% pada dataset BirdCLEF+ 20
 * **Temuan Saintifik E1:**
   1. **Kontrol Positif H5 Terbukti Mutlak:** Seluruh representasi ($R_2 \gg R_1 \gg R_0 \gg R_3$) secara konsisten dan signifikan melampaui kontrol acak $R_3$.
   2. **Keunggulan Bioakustik Spesifik Domain:** Representasi bioakustik $R_2$ mencapai Top-1 Accuracy 95.00% dan mAP@10 0.9126 pada kondisi tanpa kebocoran perekam.
-* **Tautan Berkas Hasil E1 (Rezim Aktif Tunggal):**
-  * Tabel Metrik Ringkasan Kanonik: [`results/processed/clean_retrieval_table.csv`](../results/processed/clean_retrieval_table.csv)
-  * Tabel Rincian Per Kueri (800 Baris Lengkap Kolom `author`): [`results/processed/per_query_clean_retrieval.csv`](../results/processed/per_query_clean_retrieval.csv)
-  * Catatan Eksekusi Mesin (S-01): [`results/processed/execution_note_E1.json`](../results/processed/execution_note_E1.json)
-  * Gambar Visualisasi Benchmark: [`results/figures/clean_retrieval_benchmark.png`](../results/figures/clean_retrieval_benchmark.png)
-  * Peta Persebaran Geospasial: [`results/figures/birdclef_geospatial_distribution_map.png`](../results/figures/birdclef_geospatial_distribution_map.png)
-  * Notebook E0 Sanity Check: [`notebooks/E0_Pipeline_Sanity_Check.ipynb`](../notebooks/E0_Pipeline_Sanity_Check.ipynb)
-  * Notebook E1 Clean Retrieval: [`notebooks/E1_Clean_Retrieval.ipynb`](../notebooks/E1_Clean_Retrieval.ipynb)
+* **Tautan & Penjelasan Berkas Hasil E1 (Rezim Aktif Tunggal):**
+  * **Tabel Metrik Ringkasan Kanonik ([`results/processed/clean_retrieval_table.csv`](../results/processed/clean_retrieval_table.csv)):** Berkas tabel resmi luaran E1 yang memuat metrik agregat makro (Top-1 Accuracy, mAP@10, MRR, Recall@10, Precision@10) lintas 4 representasi audio ($R_0, R_1, R_2, R_3$).
+  * **Tabel Rincian Per Kueri ([`results/processed/per_query_clean_retrieval.csv`](../results/processed/per_query_clean_retrieval.csv)):** Log granular 800 baris evaluasi kueri yang mencatat ID kueri, spesies target, author perekam, kecocokan Top-1, skor kemiripan maksimum, dan metrik ranking per kueri sesuai standar audit H5.2.
+  * **Catatan Eksekusi Mesin ([`results/processed/execution_note_E1.json`](../results/processed/execution_note_E1.json)):** Rekam jejak audit sistem otomatis yang mencatat stempel waktu eksekusi, versi pustaka, SHA commit git, dan parameter hardware.
+  * **Gambar Visualisasi Benchmark ([`results/figures/clean_retrieval_benchmark.png`](../results/figures/clean_retrieval_benchmark.png)):** Grafik visual resolusi tinggi (300 DPI) yang membandingkan performa Top-1, mAP@10, dan MRR keempat representasi audio pada kondisi bersih.
+  * **Peta Persebaran Geospasial ([`results/figures/birdclef_geospatial_distribution_map.png`](../results/figures/birdclef_geospatial_distribution_map.png)):** Peta sebaran spasial koordinat lintang/bujur perekaman audio 20 spesies burung target di wilayah Neotropis / Pantanal.
+  * **Notebook E0 Pipeline Sanity Check ([`notebooks/E0_Pipeline_Sanity_Check.ipynb`](../notebooks/E0_Pipeline_Sanity_Check.ipynb)):** Notebook verifikasi gerbang anti-kebocoran data dan smoke test fitur sebelum benchmark penuh.
+  * **Notebook E1 Clean Retrieval ([`notebooks/E1_Clean_Retrieval.ipynb`](../notebooks/E1_Clean_Retrieval.ipynb)):** Notebook utama inferensi embedding dan tolok ukur perolehan kemiripan bersih.
 
 ---
 
-## ARSIP: HASIL EKSEKUSI GATE 1 LAMA (14 SPESIES SUMATERA — 11 SEPTEMBER 2026)
-*(Catatan: Korpus lama ini telah dibatalkan melalui keputusan DEC-09 per 12 September 2026 karena keterbatasan volume sampel query $n=14$, dan seluruh berkas hasil eksperimennya telah diarsipkan secara aman di [`results/archive/2026-09-07_xenocanto16spesies/`](../results/archive/2026-09-07_xenocanto16spesies/)).*
+## BUKTI HASIL EKSEKUSI SUITE PENGUJIAN SAINTIFIK & INTEGRITAS
 
-## BUKTI HASIL EKSEKUSI LAINNYA
-
-Berikut adalah bukti rekaman terminal saat skrip-skrip inti dieksekusi:
+Berikut adalah bukti rekaman eksekusi terkini dari lingkungan aktif yang memvalidasi seluruh pipeline Gate 1-R:
 
 ### Bukti Run 1: Verifikasi Dimensi Vektor Model Asli ([`src/embeddings.py`](../src/embeddings.py))
 Perintah yang dijalankan: `python src/embeddings.py`
@@ -116,7 +113,7 @@ Perintah yang dijalankan: `python src/embeddings.py`
 ============================================================
 ```
 
-### Bukti Run 2: Suite Pengujian Integritas Saintifik ([`run_tests.py`](../run_tests.py))
+### Bukti Run 2: Suite Pengujian Integritas Saintifik Penuh ([`run_tests.py`](../run_tests.py))
 Perintah yang dijalankan: `python run_tests.py`
 ```text
 ================================================================================
@@ -138,82 +135,30 @@ GPU number: 1
 ================================================================================
 ```
 
-### Bukti Run 3: Penambangan Kasus Kegagalan Riil ([`src/analyze_failures.py`](../src/analyze_failures.py))
-Perintah yang dijalankan: `python src/analyze_failures.py`
+### Bukti Run 3: Sinkronisasi Dinamis Checksum SHA-256 Manifes ([`scripts/update_manifest_hashes.py`](../scripts/update_manifest_hashes.py))
+Perintah yang dijalankan: `python scripts/update_manifest_hashes.py`
 ```text
 ======================================================================
-[*] Menambang Kasus Kegagalan Nyata dari results/raw/...
+=== PENGHITUNGAN ULANG SHA-256 MANIFES INTEGRITAS (M-06) ===
 ======================================================================
-[+] Berhasil menambang 30 kasus kegagalan nyata kueri Xeno-Canto!
-Distribusi Penyebab:
-  - low_snr_masking          : 20 kasus (66.7%)
-  - acoustic_feature_overlap : 6 kasus (20.0%)
-  - inter_species_confusion  : 4 kasus (13.3%)
-[+] Tabel disimpan di: D:\FILE AND TASK\TA\results\processed\failure_analysis_table.csv
+[+] dataset_split.csv              : 4fb0681aab39415384cf85c2f43b3b83f932ed08a97364d19c50e39fd9b27d3e
+[+] species_freeze.csv             : 2267c13535546b02a090ad67ca4eecdf443dc11e348f44b3a3d7fea51bc71f6a
+[+] species_excluded.csv           : 36046986f5b16b718c778b3115e773abf949fa5861c7f6ccd9b6765a09289ec7
+[+] itera_noise_manifest.csv       : 6f2eea8985be845260836653400d8ccef675c19cf5c628ce98d89fc5fe0de3c7
+======================================================================
+[SUKSES] Hash integritas berhasil diperbarui di: artifacts/reproducibility/manifest_sha256.txt
 ======================================================================
 ```
-
-### Bukti Run 4: Pembuatan Grafik Publikasi 300 DPI ([`scripts/make_figures.py`](../scripts/make_figures.py))
-Perintah yang dijalankan: `python scripts/make_figures.py`
-```text
-============================================================
-=== MEMBUAT GAMBAR GRAFIK DENGAN PITA GALAT 95% CI ===
-============================================================
-[+] Gambar berhasil disimpan di: D:\FILE AND TASK\TA\results\figures\robustness_curve_map10.png
-[+] Disinkronkan ke: D:\FILE AND TASK\TA\paper\figures\robustness_curve_map10.png
-```
-
----
-
-## 📊 HASIL EKSPERIMEN NYATA PASCA-PERBAIKAN MODEL ASLI
-
-Berikut adalah angka komputasi nyata dari hasil inferensi model deep learning asli yang tersimpan di berkas [`results/processed/snr_robustness_table.csv`](../results/processed/snr_robustness_table.csv):
-
-### 1. Kualitas Retrieval (mAP@10) Lintas Kondisi Derau
-Setiap nilai dihasilkan dari pengujian 94 kueri bersih terhadap 260 rekaman galeri independen (*Strict Recordist-Disjoint*, 0 tumpang tindih perekam):
-
-| Kondisi Derau (SNR) | $R_0$: MFCC Baseline (40-d) | $R_1$: Generic Audio (PANNs 2048-d) | $R_2$: Bioacoustic (BirdNET 1024-d) | $R_3$: Random Control (40-d) |
-| :--- | :---: | :---: | :---: | :---: |
-| **Clean (Tanpa Derau)** | 0.1029 | 0.2069 | **0.5876** | 0.0209 |
-| **SNR 20 dB (Derau Ringan)** | 0.0770 | 0.1890 | **0.5736** | 0.0194 |
-| **SNR 10 dB (Derau Sedang)** | 0.0549 | 0.1602 | **0.5561** | 0.0295 |
-| **SNR 0 dB (Derau Berat)** | 0.0409 | 0.0756 | **0.5091** | 0.0236 |
-| **SNR -5 dB (Derau Ekstrem)** | 0.0282 | 0.0438 | **0.4710** | 0.0203 |
-
-### 2. Retensi Kualitas Relatif (% terhadap Kondisi Bersih)
-| Kondisi Derau (SNR) | $R_0$: MFCC Baseline | $R_1$: Generic Audio (PANNs) | $R_2$: Bioacoustic Pretrained (BirdNET) |
-| :--- | :---: | :---: | :---: |
-| **Clean** | 100.0% | 100.0% | **100.0%** |
-| **SNR 20 dB** | 74.8% | 91.4% | **97.6%** |
-| **SNR 10 dB** | 53.4% | 77.4% | **94.6%** |
-| **SNR 0 dB** | 39.8% | 36.5% | **86.6%** |
-| **SNR -5 dB** | 27.4% | 21.2% | **80.1%** |
-
-### 3. Temuan Kunci Sesuai Arahan Dosen:
-1. **Koreksi Hipotesis H1 & H2:** Benar sesuai catatan Pak Ardika, *"titik awal rendah tidak sama dengan runtuh cepat"*. Representasi generik $R_1$ (PANNs CNN14) mengalami keruntuhan katastropik saat derau meningkat (retensi anjlok ke **21.2%** pada SNR -5 dB), bahkan secara relatif lebih rapuh dibanding baseline klasik $R_0$ MFCC (**27.4%**).
-2. **Keunggulan Bioakustik Spesifik Domain ($R_2$ BirdNET Asli):** Setelah model BirdNET asli dimuat, representasi bioakustik menunjukkan ketahanan yang luar biasa: mempertahankan retensi relatif **80.1%** pada SNR -5 dB dengan akurasi Top-1 tetap di angka **71.3%** (mAP@10 = 0.4710).
-
----
-
-## 📈 BUKTI VISUALISASI GRAFIK DENGAN PITA GALAT (95% CI)
-
-Grafik komparasi ilmiah beresolusi 300 DPI yang memperlihatkan kurva mAP@10 dengan pita galat Bootstrap 95% Confidence Interval dan kurva retensi relatif telah dibuat dan tersimpan di:
-- **Tautan Berkas:** [`results/figures/robustness_curve_map10.png`](../results/figures/robustness_curve_map10.png)
-- **Salinan untuk Naskah:** [`paper/figures/robustness_curve_map10.png`](../paper/figures/robustness_curve_map10.png)
-
-![Kurva Ketahanan Retrieval](../results/figures/robustness_curve_map10.png)
 
 ---
 
 ## 📓 BUKTI JUPYTER NOTEBOOK RESMI (GATE 1-R BIRDCLEF+ 2026)
 
-Seluruh alur kerja Gate 1-R, mulai dari eksplorasi data, verifikasi prapemrosesan, *sanity check* bebas kebocoran, hingga evaluasi *clean retrieval* dieksekusi secara transparan pada 4 notebook resmi berikut:
-1. **EDA & Eksplorasi Spasial:** [`notebooks/EDA_Tugas_Akhir.ipynb`](../notebooks/EDA_Tugas_Akhir.ipynb) — Peta geospasial Pantanal, distribusi 20 spesies target, dan analisis fisik audio.
-2. **Verifikasi Prapemrosesan:** [`notebooks/Preprocessing Verification.ipynb`](../notebooks/Preprocessing%20Verification.ipynb) — Standarisasi 32 kHz, durasi 5.0s, normalisasi RMS 0.05.
-3. **E0 Pipeline Sanity Check:** [`notebooks/E0_Pipeline_Sanity_Check.ipynb`](../notebooks/E0_Pipeline_Sanity_Check.ipynb) — Zero leakage ID/Path/Author overlap pada 4.351 klip audio.
-4. **E1 Clean Retrieval Benchmark:** [`notebooks/E1_Clean_Retrieval.ipynb`](../notebooks/E1_Clean_Retrieval.ipynb) — Benchmark $R_0$ s/d $R_3$ pada 200 kueri bersih.
-
-*(Catatan arsip: Notebook lama 14 spesies Sumatera telah dipindahkan ke [`results/archive/2026-09-07_xenocanto16spesies/notebooks/01_evaluasi_benchmark_dan_visualisasi.ipynb`](../results/archive/2026-09-07_xenocanto16spesies/notebooks/01_evaluasi_benchmark_dan_visualisasi.ipynb)).*
+Seluruh alur kerja aktif Gate 1-R dieksekusi secara transparan pada 4 notebook resmi berikut di folder `notebooks/`:
+1. **EDA & Eksplorasi Spasial ([`notebooks/EDA_Tugas_Akhir.ipynb`](../notebooks/EDA_Tugas_Akhir.ipynb)):** Pemetaan geospasial sebaran koordinat 20 spesies burung Neotropis di kawasan Pantanal, verifikasi kriteria inklusi §11.3, dan inspeksi integritas format berkas audio fisik.
+2. **Verifikasi Prapemrosesan ([`notebooks/Preprocessing Verification.ipynb`](../notebooks/Preprocessing%20Verification.ipynb)):** Standardisasi sinyal audio ke sampling rate 32 kHz, pemotongan segmen 5,0 detik berbasis jendela energi tertinggi, dan verifikasi normalisasi RMS energi ke nilai konstan 0.05.
+3. **E0 Pipeline Sanity Check ([`notebooks/E0_Pipeline_Sanity_Check.ipynb`](../notebooks/E0_Pipeline_Sanity_Check.ipynb)):** Gerbang asersi anti-kebocoran data (*zero overlap* ID/author/path pada 4.351 klip) dan pembuktian hipotesis kontrol negatif H5 ($R_2 > R_1 > R_0 \gg R_3$).
+4. **E1 Clean Retrieval Benchmark ([`notebooks/E1_Clean_Retrieval.ipynb`](../notebooks/E1_Clean_Retrieval.ipynb)):** Ekstraksi representasi audio beku lengkap dan perhitungan tolok ukur perolehan kemiripan (*similarity retrieval*) pada 200 kueri bersih terhadap 3.653 rekaman galeri.
 
 ---
 

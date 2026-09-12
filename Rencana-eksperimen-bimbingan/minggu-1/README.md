@@ -75,7 +75,6 @@ Direktori `notebooks/` saat ini hanya memuat 4 berkas kanonikal:
 3. `notebooks/E0_Pipeline_Sanity_Check.ipynb` — Gerbang anti-kebocoran data dan *smoke test* 4 representasi.
 4. `notebooks/E1_Clean_Retrieval.ipynb` — Ekstraksi embedding lengkap dan tolok ukur *clean retrieval*.
 
-*Catatan Pengarsipan:* Seluruh berkas notebook dan tabel eksperimen 14 spesies Sumatra lama telah diarsipkan secara aman di `results/archive/2026-09-07_xenocanto16spesies/`.
 
 ---
 

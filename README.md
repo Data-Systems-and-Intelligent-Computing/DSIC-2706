@@ -73,8 +73,6 @@ Sesuai audit 12 September 2026 (**DEC-09**), korpus eksperimen utama dialihkan k
 - **Spesies Target**: 20 spesies burung terkurasi ketat (§11.3: koleksi Xeno-Canto, Aves, rating \(\ge 3.0\), klip \(\ge 20\), perekam \(\ge 3\)). Dari 156 kandidat lolos ambang, 20 spesies dipilih berdasarkan diversitas perekam tertinggi (\(n_{\text{author}}\)), sedangkan 136 tersisih murni akibat kuota 20 taksa (DEC-10).
 - **Total Korpus Aktif**: 4.351 berkas rekaman audio.
 - **Standar Prapemrosesan**: Durasi 5,0 detik (160.000 sampel), laju sampel 32 kHz, mono, normalisasi energi RMS = 0.05.
-- **Koleksi Awal Xeno-Canto (14 Spesies)**: Korpus awal kurasi manual Xeno-Canto Sumatera telah diarsipkan secara aman di `results/archive/2026-09-07_xenocanto16spesies/` sebagai rekam jejak audit.
-
 ### Bank Derau Aditif (E2) & Negatif Open-Set (E3): Rekaman AudioMoth ITERA
 - Perekaman nyata *ambient soundscape* kampus ITERA (Embung, Hutan Mini/Arboretum, dan area antropogenik) menggunakan perangkat **AudioMoth**.
 - **Derau sintetis (pink noise) resmi ditinggalkan** per DEC-09 karena tidak memiliki validitas ekologis untuk bioakustik tropis.
