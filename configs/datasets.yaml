@@ -1,69 +1,36 @@
 datasets:
   target_birds:
-    source: Xeno-Canto
-    geographic_focus: Sumatra & Indonesia Verified
-    num_species: 14
-    manifest_path: data/manifests/target_birds_manifest.csv
+    source: BirdCLEF+ 2026 train_audio
+    geographic_focus: Pantanal, Mato Grosso do Sul, Brazil
+    num_species: 20
+    freeze_manifest_path: data/manifests/species_freeze.csv
     split_manifest_path: data/manifests/dataset_split.csv
-    audio_directory: data/xeno_canto/
-    species_list:
-    - species_key: Apalharpactes mackloti
-      scientific_name: Apalharpactes mackloti
-      common_name: Sumatran Trogon
-    - species_key: Batrachostomus_poliolophus
-      scientific_name: Batrachostomus poliolophus
-      common_name: Sumatran Frogmouth
-    - species_key: Caprimulgus_pulchellus
-      scientific_name: Caprimulgus pulchellus
-      common_name: Salvadori's Nightjar
-    - species_key: Carpococcyx_viridis
-      scientific_name: Carpococcyx viridis
-      common_name: Sumatran Ground Cuckoo
-    - species_key: Erythropitta_venusta
-      scientific_name: Erythropitta venusta
-      common_name: Graceful Pitta
-    - species_key: Gypsophila_rufipectus
-      scientific_name: Gypsophila rufipectus
-      common_name: Rusty-breasted Wren-Babbler
-    - species_key: Hydrornis_schneideri
-      scientific_name: Hydrornis schneideri
-      common_name: Schneider's Pitta
-    - species_key: Ixos_sumatranus
-      scientific_name: Ixos sumatranus
-      common_name: Sumatran Bulbul
-    - species_key: Lophura_inornata
-      scientific_name: Lophura inornata
-      common_name: Salvadori's Pheasant
-    - species_key: Myophonus_melanurus
-      scientific_name: Myophonus melanurus
-      common_name: Shiny Whistling Thrush
-    - species_key: Napothera_albostriata
-      scientific_name: Napothera albostriata
-      common_name: Sumatran Wren-Babbler
-    - species_key: Pellorneum_buettikoferi
-      scientific_name: Pellorneum buettikoferi
-      common_name: Sumatran Babbler
-    - species_key: Picus_dedemi
-      scientific_name: Picus dedemi
-      common_name: Sumatran Woodpecker
-    - species_key: Polyplectron_chalcurum
-      scientific_name: Polyplectron chalcurum
-      common_name: Bronze-tailed Peacock-Pheasant
-  unknown_open_set:
-    source: Sumatran Non-Bird Fauna
-    manifest_path: data/manifests/unknown_open_set_manifest.csv
-    audio_directory: data/unknown_open_set/
-    taxa_included:
-    - Insects (Cicadas/Orthoptera)
-    - Amphibians (Frogs/Toads)
-    - Mammals (Primates/Bats)
+    audio_directory: data/BirdClef/train_audio/
+    selection_rules:
+      class_name: Aves
+      collection: XC
+      rating_min: 3.0
+      n_klip_min: 20
+      n_author_min: 3
+  open_set_negatives:
+    types:
+      type_a:
+        description: Unknown birds from BirdCLEF+ 2026 not in gallery
+        source: BirdCLEF+ 2026 train_audio
+      type_b:
+        description: Non-bird taxa from BirdCLEF+ 2026 (Amphibia, Reptilia, Mammalia, Insecta)
+        source: BirdCLEF+ 2026 train_audio
+      type_c:
+        description: Pure background environmental noise from ITERA campus
+        source: data/itera_noise/
   itera_noise:
     directory: data/itera_noise/
+    manifest_path: data/manifests/itera_noise_manifest.csv
     sampling_rate: 32000
     sub_locations:
-    - Embung ITERA (Aquatic / Amphibian ambient)
-    - Arboretum / Kebun Raya ITERA (Forest canopy biophony)
-    - Area Terbuka / Gedung Kuliah (Anthropogenic traffic/construction)
-  itera_soundscape:
-    annotations_directory: data/itera_soundscape_annotations/
-    validation_subset_minutes: 30
+      - Embung ITERA (Aquatic / Amphibian ambient)
+      - Arboretum / Kebun Raya ITERA (Forest canopy biophony)
+      - Area Terbuka / Gedung Kuliah (Anthropogenic traffic/HVAC)
+  domain_shift_e4:
+    source: BirdCLEF+ 2026 train_soundscapes
+    directory: data/BirdClef/train_soundscapes/

@@ -1,29 +1,31 @@
 # Catatan Progres Riset & Rekam Jejak Revisi Bimbingan (DSIC-2706)
 **Topik:** Mencari Audio yang Mirip Ketika Datanya Terbatas  
-**Judul Kerja:** *Noise and Domain-Shift Robustness of Audio Representations for Cross-Domain Bioacoustic Retrieval: From Xeno-Canto to Environmental Soundscapes*  
+**Judul Kerja:** *Noise and Domain-Shift Robustness of Frozen Audio Representations for Bioacoustic Similarity Retrieval: A Controlled Evaluation on BirdCLEF+ 2026 with Field-Recorded Tropical Noise*  
 **Mahasiswa:** Fabio Banyu Cyto (NIM: 123450104)  
 **Dosen Pembimbing:** Bapak Ardika  
 **Institusi:** Program Studi Sains Data, Institut Teknologi Sumatera (ITERA)  
-**Terakhir Diperbarui:** 11 September 2026 (Penyelesaian Resmi Gate 1: 14 Spesies Sumatera, E0 Sanity Check & E1 Clean Retrieval)  
+**Terakhir Diperbarui:** 12 September 2026 (Penyelesaian Resmi Revisi Audit Gate 1-R: Pivot BirdCLEF+ 2026, E0 Sanity Check, E1 Clean Retrieval, dan Penutupan Bug Integritas)  
 
 ---
 
 ## Ringkasan Eksekutif & Status Kejujuran Akademis
 
-Dokumen ini adalah **buku catatan progres resmi dan rekam jejak tindak lanjut revisi bimbingan**. Setiap temuan, koreksi, dan arahan dari Pak Ardika dicatat secara kronologis di sini lengkap dengan **tautan berkas `.py` yang langsung bisa diklik, bukti hasil eksekusi (*terminal run output*), data numerik empiris, dan visualisasi grafik** tanpa ada manipulasi atau klaim palsu.
+Dokumen ini adalah **buku catatan progres resmi dan rekam jejak tindak lanjut revisi bimbingan**. Setiap temuan, koreksi, dan arahan dari Pak Ardika dicatat secara kronologis di sini lengkap dengan **tautan berkas `.py`/`.csv`/`.ipynb` yang langsung bisa diklik, bukti hasil eksekusi (*terminal run output*), data numerik empiris, dan visualisasi grafik** tanpa ada manipulasi atau klaim palsu.
 
 > [!IMPORTANT]
-> ### Pernyataan Batasan Ruang Lingkup & Kejujuran Data (Fakta Sebenarnya):
-> 1. **Eksperimen yang Sudah Selesai 100% (Gate 1 / Minggu Ke-1):**
->    * Kurasi dataset **14 spesies burung Sumatera (162 rekaman audio MP3)** dengan menghapus seluruh data asing/Malaysia.
->    * Manifes terverifikasi: [`data/manifests/target_birds_manifest.csv`](../data/manifests/target_birds_manifest.csv) dan [`data/manifests/dataset_split.csv`](../data/manifests/dataset_split.csv) (Zero ID & Path Overlap).
->    * Pembekuan prapemrosesan audio (32 kHz, 5s, Mono, RMS 0.05) lengkap dengan bukti audit 150 file: [`results/processed/preprocessing_verification_table.csv`](../results/processed/preprocessing_verification_table.csv) dan gambar 4-panel [`results/figures/preprocessing_before_after_comparison.png`](../results/figures/preprocessing_before_after_comparison.png).
->    * Eksekusi E0 Pipeline Sanity Check (`PASSED` / Lolos).
->    * Eksekusi E1 Clean Retrieval pada seluruh 14 spesies: $R_2$ (BirdNET: 78.57%) > $R_1$ (PANNs: 57.14%) > $R_0$ (MFCC: 28.57%) >> $R_3$ (Random: 7.14%).
-> 2. **Hal yang Belum Dikerjakan (Belum Dilakukan / Terjadwal):**
->    * **Minggu 2 (E2):** Controlled Noise Robustness (Paired SNR stress-testing pada 20dB s/d -5dB).
->    * **Minggu 3 (E3/E4):** Kalibrasi ambang batas $\tau$ dan open-set rejection satwa non-burung.
->    * **Minggu 4 (E5/E6):** Analisis kasus kegagalan, uji signifikansi statistik inferensial (Bootstrap CI 95%), serta validasi lapangan soundscape kampus ITERA (Embung dan Arboretum).
+> ### Status Kepatuhan Revisi Audit Keputusan Kedua (12 September 2026 - Gate 1-R):
+> 1. **Eksperimen & Infrastruktur yang Sudah Selesai 100% (Gate 1-R / Minggu 1):**
+>    * **Pivot Dataset Resmi (DEC-09 & DEC-10):** Beralih dari kurasi manual 14 spesies Sumatera ke **BirdCLEF+ 2026 (20 spesies burung Neotropis Pantanal, 4.351 berkas audio fisik)** untuk mengatasi kelangkaan sampel ($n=14$ kueri pada M-10) dan kebocoran perekam (C-04).
+>    * **Pembekuan Spesies Objektif (H2):** [`data/manifests/species_freeze.csv`](../data/manifests/species_freeze.csv) (20 spesies dengan $n_{\text{author}} \ge 105$) dan [`data/manifests/species_excluded.csv`](../data/manifests/species_excluded.csv) (186 taksa non-target dengan alasan penolakan eksplisit dari pool 156 spesies yang lolos seluruh ambang §11.3).
+>    * **Partisi Bebas Bocor (*Strict Author-Disjoint* — H3):** [`data/manifests/dataset_split.csv`](../data/manifests/dataset_split.csv) membagi 3.653 galeri (377 author), 200 kueri bersih (68 author), dan 498 kalibrasi (95 author). Terbukti **0 overlap ID rekaman, 0 overlap path file, dan 0 overlap author/perekam** (540 author unik global, 100% disjoint).
+>    * **Penutupan Bug Pengujian Integritas (H3.2):** Memperbaiki bug kedalaman path `SPLIT_PATH` dan menghapus total klausa *silent pass* (`if not exists: return`) di [`tests/test_split_leakage.py`](../tests/test_split_leakage.py) sehingga pengujian terbukti gagal keras melempar `AssertionError` saat kebocoran disuntikkan.
+>    * **Eksekusi E0 Pipeline Sanity Check (H4):** Lulus penuh pada audio BirdCLEF nyata dengan verifikasi parameter audio di [`configs/audio.yaml`](../configs/audio.yaml) (32 kHz, 5s window, RMS 0.05).
+>    * **Eksekusi E1 Clean Retrieval (H5):** Selesai pada 20 spesies burung: $R_2$ (BirdNET: **95.0%**) > $R_1$ (PANNs: **60.0%**) > $R_0$ (MFCC: **27.5%**) >> $R_3$ (Random: **6.5%**).
+>    * **Pemisahan Rezim Hasil Lama (C-05 / H5.3):** Hasil Xeno-Canto 14 spesies lama telah diarsipkan penuh ke [`results/archive/2026-09-07_xenocanto16spesies/`](../results/archive/2026-09-07_xenocanto16spesies/). Direktori [`results/processed/`](../results/processed/) kini murni hanya memuat satu rezim hasil aktif didampingi catatan eksekusi [`execution_note_E1.json`](../results/processed/execution_note_E1.json).
+>    * **Integritas Checksum & Suite Pengujian (M-06 / H7):** Hash manifes di [`artifacts/reproducibility/manifest_sha256.txt`](../artifacts/reproducibility/manifest_sha256.txt) membaca baseline E1 secara dinamis dan meloloskan **9/9 pengujian saintifik di [`run_tests.py`](../run_tests.py) (100.0% PASS)**.
+> 2. **Pekerjaan yang Masih Terjadwal / Pending (Menunggu Lapangan):**
+>    * **H6 (Derau Lapangan AudioMoth ITERA):** Skema manifes [`data/manifests/itera_noise_manifest.csv`](../data/manifests/itera_noise_manifest.csv) sudah siap; perekaman fisik di kampus ITERA (3 lokasi $\times 2$ daypart, target $\ge 30$ segmen 60s bebas burung) dan penyalinan `CONFIG.TXT` dijadwalkan untuk persiapan eksperimen Minggu 2 (E2).
+>    * **D-07:** Konfirmasi formal Pembimbing 1 terkait lisensi kompetisi Kaggle untuk publikasi artikel/skripsi.
 
 ---
 
@@ -43,42 +45,59 @@ Semua nama berkas di bawah ini berupa **tautan langsung** yang dapat diklik di V
 | 8 | **M-06** | **Manifes hash SHA-256 belum mencakup kondisi terkini:** Checksum manifes belum diperbarui pasca-normalisasi data. | Menghitung ulang nilai checksum SHA-256 riil untuk seluruh 3 berkas manifes CSV dan memvalidasinya lewat unit test otomatis. | • [`scripts/update_manifest_hashes.py`](../scripts/update_manifest_hashes.py)<br>• [`artifacts/reproducibility/manifest_sha256.txt`](../artifacts/reproducibility/manifest_sha256.txt) | **Integritas Manifes:**<br>3 CSV lolos checksum SHA-256 pada `run_tests.py` |
 | 9 | **M-07 & m-08** | **Redundansi berkas & artefak usang:** Terdapat duplikat file referensi jurnal dan file tabel evaluasi lama yang sudah tidak relevan. | Menghapus `jurnal/referensi_jurnal_TA_bioakustik (1).csv`, menghapus `openset_evaluation_table.csv`, dan menyinkronkan seluruh tabel resmi ke `paper/tables/`. | • [`paper/tables/`](../paper/tables/) | **Direktori Rapi:**<br>0 Berkas Duplikat Usang |
 | 10 | **m-09** | **Catatan metodologi tumpang tindih perekam kalibrasi:** Subset kalibrasi dan query_clean masih berbagi 19 perekam. | Mendokumentasikan secara transparan batasan ini di naskah skripsi (§6.2 *Threats to Validity*) dan di `scope-freeze.md` Bagian 4 sebagai potensi bias optimistik lokal pada recall $\tau$, sementara metrik primer mAP@10 pada E1/E2 tetap 100% bebas kebocoran. | • [`paper/manuscript.md`](../paper/manuscript.md)<br>• [`docs/research/scope-freeze.md`](../docs/research/scope-freeze.md) | **Transparansi Ilmiah:**<br>Tercatat di Bab 6.2<br>*Threats to Validity* |
+| 11 | **DEC-09 & M-10** | **Daya statistik runtuh ($n=14$ kueri) & derau sintetis:** Korpus 14 spesies Sumatera terlalu kecil dan jatuh ke pink noise sintetis. | **Pivot Dataset Resmi:** Beralih ke BirdCLEF+ 2026 (20 spesies burung, 4.351 klip) dan memposisikan AudioMoth ITERA sebagai bank derau aditif E2 serta negatif open-set E3. | • [`docs/research/decision-log.md`](../docs/research/decision-log.md)<br>• [`docs/research/scope-freeze.md`](../docs/research/scope-freeze.md)<br>• [`data/manifests/dataset_split.csv`](../data/manifests/dataset_split.csv) | **Data Cukup Kuat:**<br>• Galeri: 3.653 klip<br>• Kueri: 200 klip bersih<br>• Kalibrasi: 498 klip |
+| 12 | **DEC-10 & H2** | **Seleksi spesies tidak terlacak:** Menghindari pola pembuangan spesies tanpa jejak keputusan terverifikasi. | Menyaring dari pool 156 spesies yang memenuhi seluruh kriteria §11.3 (rating $\ge 3.0$, $\ge 20$ klip, $\ge 3$ author), memilih Top 20 dengan $n_{\text{author}}$ tertinggi (105–129 author). 136 sisanya dicatat di `species_excluded.csv`. | • [`scripts/select_birdclef_species.py`](../scripts/select_birdclef_species.py)<br>• [`data/manifests/species_freeze.csv`](../data/manifests/species_freeze.csv)<br>• [`data/manifests/species_excluded.csv`](../data/manifests/species_excluded.csv) | **Manifes Objektif:**<br>• 20 Spesies Target<br>• 186 Spesies Eksklusi<br>(136 kuota + 50 substantif) |
+| 13 | **C-04 & H3.2** | **Kebocoran perekam & bug pengujian *silent pass*:** Pengujian kebocoran data keluar diam-diam tanpa asersi saat path salah hitung kedalaman direktori. | Menghapus total seluruh klausa `if not exists: return`, membetulkan resolusi path dinamis, dan menambahkan asersi pasangan kalibrasi. Terbukti gagal melempar `AssertionError` saat disuntik kebocoran author. | • [`tests/test_split_leakage.py`](../tests/test_split_leakage.py)<br>• [`tests/integration/test_split_leakage.py`](../tests/integration/test_split_leakage.py)<br>• [`run_tests.py`](../run_tests.py) | **Gerbang Penguji Aktif:**<br>• 0 ID overlap<br>• 0 Path overlap<br>• 0 Author overlap<br>(540 author disjoint) |
+| 14 | **C-05 & H5.3** | **Rezim ganda hasil eksperimen:** Berkas hasil Xeno-Canto lama dan BirdCLEF baru tercampur dalam satu folder. | Mengarsipkan seluruh berkas CSV mentah dan tabel lama ke `results/archive/2026-09-07_xenocanto16spesies/`. Direktori `results/processed/` kini murni hanya memuat hasil BirdCLEF aktif beserta catatan eksekusi JSON. | • [`results/archive/`](../results/archive/)<br>• [`results/processed/clean_retrieval_table.csv`](../results/processed/clean_retrieval_table.csv)<br>• [`results/processed/execution_note_E1.json`](../results/processed/execution_note_E1.json) | **Satu Rezim Aktif:**<br>Tabel kanonik E1 + 800 baris per-query (kolom author lengkap) |
+| 15 | **H6 & H7** | **Manifes integritas usang & derau AudioMoth:** Skrip hash meng-hash berkas usang dan baseline E1 di-hardcode. | Memperbarui `scripts/update_manifest_hashes.py`: mengganti target lama ke `itera_noise_manifest.csv`, membaca baseline E1 secara dinamis, dan meloloskan 9/9 pengujian integritas saintifik. | • [`scripts/update_manifest_hashes.py`](../scripts/update_manifest_hashes.py)<br>• [`data/manifests/itera_noise_manifest.csv`](../data/manifests/itera_noise_manifest.csv)<br>• [`artifacts/reproducibility/manifest_sha256.txt`](../artifacts/reproducibility/manifest_sha256.txt) | **9/9 Pengujian PASS:**<br>100% lulus pada `run_tests.py` |
 
 ---
 
-## BUKTI RESMI HASIL EKSEKUSI GATE 1 (14 SPESIES SUMATERA - 11 SEPTEMBER 2026)
+## BUKTI RESMI HASIL EKSEKUSI GATE 1-R (BIRDCLEF+ 2026 — REVISI 12 SEPTEMBER 2026)
 
-Tahap Gate 1 (Minggu Ke-1) telah selesai 100% dan tervalidasi secara komputasi di Google Colab pada dataset 14 spesies burung Sumatera (162 rekaman audio MP3).
+Tahap Gate 1-R (Minggu Ke-1 Revisi) telah selesai 100% pada dataset BirdCLEF+ 2026 (20 spesies burung Neotropis Pantanal, 4.351 berkas audio terkurasi) dengan split author-disjoint ketat.
 
-### 1. Verifikasi Prapemrosesan Audio (150 Berkas: 136 Gallery + 14 Query)
-* **Laju Sampel (*Sample Rate*):** Diseragamkan dari variasi 22.050–48.000 Hz menjadi **32.000 Hz** (konstan).
-* **Durasi Sinyal:** Dari rekaman bervariasi 2.5–188.3 detik (rerata 40.1s), algoritma otomatis memilih segmen energi vokal tertinggi tepat **5.0 detik** (160.000 sampel).
-* **Normalisasi Energi RMS:** Dinormalisasi dari 0.0024–0.2796 menjadi tepat **0.0500 +- 0.0004**.
-* **Puncak Amplitudo (*Peak*):** Dibatasi aman pada **0.1682–1.0000** sehingga bebas dari distorsi kliping sinyal.
-* **Tautan Berkas Hasil:**
-  * Tabel Audit Prapemrosesan: [`results/processed/preprocessing_verification_table.csv`](../results/processed/preprocessing_verification_table.csv)
-  * Gambar Komparasi 4-Panel: [`results/figures/preprocessing_before_after_comparison.png`](../results/figures/preprocessing_before_after_comparison.png)
+### 1. Komposisi Dataset & Partisi Author-Disjoint Global (4.351 Klip Audio)
+* **Total Baris Dataset:** 4.351 klip audio format OGG/FLAC (32.000 Hz, jendela 5.0 detik, mono, RMS 0.05).
+* **Partisi Subset:**
+  * **Gallery:** 3.653 klip audio dari **377 perekam (*author*) unik**.
+  * **Query Clean:** 200 klip audio bersih dari **68 perekam (*author*) unik** (tepat 10 klip per spesies dari 20 taksa).
+  * **Calibration:** 498 klip audio dari **95 perekam (*author*) unik** (untuk kalibrasi ambang batas open-set $\tau$).
+* **Verifikasi Bebas Kebocoran (Zero Overlap Leakage):**
+  * Irisan ID Rekaman: **0 overlap** (Gallery $\cap$ Query = 0, Gallery $\cap$ Calib = 0, Query $\cap$ Calib = 0).
+  * Irisan Path Berkas: **0 overlap** di seluruh ketiga subset.
+  * Irisan Perekam (*Strict Author-Disjoint*): **0 overlap** ($377 + 68 + 95 = 540$ author unik global, 100% independen).
+* **Tautan Manifes:**
+  * Manifes Partisi Resmi: [`data/manifests/dataset_split.csv`](../data/manifests/dataset_split.csv)
+  * Spesies Target Terpilih (20 Taksa): [`data/manifests/species_freeze.csv`](../data/manifests/species_freeze.csv)
+  * Spesies Non-Target Tereksklusi (186 Taksa): [`data/manifests/species_excluded.csv`](../data/manifests/species_excluded.csv)
+  * Inventaris Mesin Dataset: [`data/manifests/birdclef_inventory.json`](../data/manifests/birdclef_inventory.json)
+  * Metadata Komprehensif Excel (22 Sheet): [`data/manifests/Metadata_BirdCLEF.xlsx`](../data/manifests/Metadata_BirdCLEF.xlsx)
 
-### 2. Hasil Evaluasi E1 Clean Retrieval pada Seluruh 14 Spesies
-| Kode | Representasi Audio | Dimensi | Top-1 Accuracy | mAP@10 | MRR | Recall@10 | Precision@10 | Status |
+### 2. Hasil Evaluasi E1 Clean Retrieval pada 20 Spesies Burung Target (Gate 1-R)
+| Kode | Representasi Audio | Dimensi | Top-1 Accuracy | mAP@10 | MRR | Recall@10 | Precision@10 | Status Metodologis |
 | :---: | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **$R_2$** | **BirdNET Backbone** | 1024 | **78.57%** | **0.5439** | **0.8004** | **0.5402** | **0.4643** | Terbaik (Bioakustik) |
-| **$R_1$** | **PANNs CNN14** | 2048 | **57.14%** | **0.2510** | **0.6641** | **0.3374** | **0.2929** | Menengah (Generik) |
-| **$R_0$** | **MFCC Baseline** | 40 | **28.57%** | **0.1447** | **0.4060** | **0.2136** | **0.2071** | Rendah (Handcrafted) |
-| **$R_3$** | **Random Control** | 40 | **7.14%** | **0.0177** | **0.1912** | **0.0292** | **0.0357** | Kontrol Acak Murni |
+| **$R_2$** | **BirdNET Backbone V2.4 (ONNX)** | 1024 | **95.00%** | **0.9126** | **0.9658** | **0.0528** | **0.9280** | Terbaik (Bioakustik Pretrained) |
+| **$R_1$** | **PANNs CNN14 AudioSet (PyTorch)** | 2048 | **60.00%** | **0.4152** | **0.7005** | **0.0291** | **0.5025** | Menengah (Generic Audio) |
+| **$R_0$** | **MFCC Baseline Handcrafted** | 40 | **27.50%** | **0.1319** | **0.4224** | **0.0123** | **0.2175** | Rendah (Baseline Klasik) |
+| **$R_3$** | **Random Control (Kontrol Negatif)** | 40 | **6.50%** | **0.0190** | **0.1779** | **0.0028** | **0.0530** | Kontrol Acak Murni |
 
-* **Tautan Berkas Hasil E1:**
-  * Tabel Metrik Ringkasan: [`results/processed/clean_retrieval_table.csv`](../results/processed/clean_retrieval_table.csv)
-  * Tabel Rincian Per Kueri: [`results/processed/per_query_clean_retrieval.csv`](../results/processed/per_query_clean_retrieval.csv)
-  * Gambar Grafik Batang: [`results/figures/clean_retrieval_benchmark.png`](../results/figures/clean_retrieval_benchmark.png)
-  * Notebook Resmi Terverifikasi: [`notebooks/E1_Clean_Retrieval.ipynb`](../notebooks/E1_Clean_Retrieval.ipynb)
-
-### 3. Status Pelaksanaan Minggu 2 s.d 4:
-* **Minggu 2 (E2 - Paired Noise Stress-Testing):** **BELUM DILAKUKAN** (Tahap berikutnya).
-* **Minggu 3 (E3/E4 - Open-Set Rejection & Kalibrasi Tau):** **BELUM DILAKUKAN** (Terjadwal).
-* **Minggu 4 (E5/E6 - Failure Cases & Naskah Akhir):** **BELUM DILAKUKAN** (Terjadwal).
+* **Temuan Saintifik E1:**
+  1. **Kontrol Positif H5 Terbukti Mutlak:** Seluruh representasi ($R_2 \gg R_1 \gg R_0 \gg R_3$) secara konsisten dan signifikan melampaui kontrol acak $R_3$.
+  2. **Keunggulan Bioakustik Spesifik Domain:** Representasi bioakustik $R_2$ mencapai Top-1 Accuracy 95.00% dan mAP@10 0.9126 pada kondisi tanpa kebocoran perekam.
+* **Tautan Berkas Hasil E1 (Rezim Aktif Tunggal):**
+  * Tabel Metrik Ringkasan Kanonik: [`results/processed/clean_retrieval_table.csv`](../results/processed/clean_retrieval_table.csv)
+  * Tabel Rincian Per Kueri (800 Baris Lengkap Kolom `author`): [`results/processed/per_query_clean_retrieval.csv`](../results/processed/per_query_clean_retrieval.csv)
+  * Catatan Eksekusi Mesin (S-01): [`results/processed/execution_note_E1.json`](../results/processed/execution_note_E1.json)
+  * Gambar Visualisasi Benchmark: [`results/figures/clean_retrieval_benchmark.png`](../results/figures/clean_retrieval_benchmark.png)
+  * Peta Persebaran Geospasial: [`results/figures/birdclef_geospatial_distribution_map.png`](../results/figures/birdclef_geospatial_distribution_map.png)
+  * Notebook E0 Sanity Check: [`notebooks/E0_Pipeline_Sanity_Check.ipynb`](../notebooks/E0_Pipeline_Sanity_Check.ipynb)
+  * Notebook E1 Clean Retrieval: [`notebooks/E1_Clean_Retrieval.ipynb`](../notebooks/E1_Clean_Retrieval.ipynb)
 
 ---
+
+## ARSIP: HASIL EKSEKUSI GATE 1 LAMA (14 SPESIES SUMATERA — 11 SEPTEMBER 2026)
+*(Catatan: Korpus lama ini telah dibatalkan melalui keputusan DEC-09 per 12 September 2026 karena keterbatasan volume sampel query $n=14$, dan seluruh berkas hasil eksperimennya telah diarsipkan secara aman di [`results/archive/2026-09-07_xenocanto16spesies/`](../results/archive/2026-09-07_xenocanto16spesies/)).*
 
 ## BUKTI HASIL EKSEKUSI LAINNYA
 
