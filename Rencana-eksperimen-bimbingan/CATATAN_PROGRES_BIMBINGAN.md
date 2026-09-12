@@ -205,15 +205,19 @@ Grafik komparasi ilmiah beresolusi 300 DPI yang memperlihatkan kurva mAP@10 deng
 
 ---
 
-## 📓 BUKTI JUPYTER NOTEBOOK INTERAKTIF RESMI
+## 📓 BUKTI JUPYTER NOTEBOOK RESMI (GATE 1-R BIRDCLEF+ 2026)
 
-Seluruh bukti komparasi di atas, verifikasi pemuatan bobot model asli, tabel metrik interaktif, grafik pita galat, dan 30 sampel kegagalan nyata telah dieksekusi dan disimpan langsung di:
-- **Tautan Berkas Notebook:** [`notebooks/01_evaluasi_benchmark_dan_visualisasi.ipynb`](../notebooks/01_evaluasi_benchmark_dan_visualisasi.ipynb)  
-*(Ukuran berkas ~328 KB dengan seluruh keluaran sel visual tersimpan permanen)*.
+Seluruh alur kerja Gate 1-R, mulai dari eksplorasi data, verifikasi prapemrosesan, *sanity check* bebas kebocoran, hingga evaluasi *clean retrieval* dieksekusi secara transparan pada 4 notebook resmi berikut:
+1. **EDA & Eksplorasi Spasial:** [`notebooks/EDA_Tugas_Akhir.ipynb`](../notebooks/EDA_Tugas_Akhir.ipynb) — Peta geospasial Pantanal, distribusi 20 spesies target, dan analisis fisik audio.
+2. **Verifikasi Prapemrosesan:** [`notebooks/Preprocessing Verification.ipynb`](../notebooks/Preprocessing%20Verification.ipynb) — Standarisasi 32 kHz, durasi 5.0s, normalisasi RMS 0.05.
+3. **E0 Pipeline Sanity Check:** [`notebooks/E0_Pipeline_Sanity_Check.ipynb`](../notebooks/E0_Pipeline_Sanity_Check.ipynb) — Zero leakage ID/Path/Author overlap pada 4.351 klip audio.
+4. **E1 Clean Retrieval Benchmark:** [`notebooks/E1_Clean_Retrieval.ipynb`](../notebooks/E1_Clean_Retrieval.ipynb) — Benchmark $R_0$ s/d $R_3$ pada 200 kueri bersih.
+
+*(Catatan arsip: Notebook lama 14 spesies Sumatera telah dipindahkan ke [`results/archive/2026-09-07_xenocanto16spesies/notebooks/01_evaluasi_benchmark_dan_visualisasi.ipynb`](../results/archive/2026-09-07_xenocanto16spesies/notebooks/01_evaluasi_benchmark_dan_visualisasi.ipynb)).*
 
 ---
 
 ## 📅 RENCANA TAHAP BERIKUTNYA PASCA-BIMBINGAN:
-1. Membuka berkas notebook [01_evaluasi_benchmark_dan_visualisasi.ipynb](../notebooks/01_evaluasi_benchmark_dan_visualisasi.ipynb) bersama Pak Ardika pada sesi bimbingan berikutnya sebagai bukti penyelesaian audit.
-2. Meminta arahan lebih lanjut dari Pak Ardika terkait jadwal pengambilan data lapangan di kampus ITERA (Embung/Arboretum).
-3. Melanjutkan penulisan draf Bab 4 Skripsi berdasarkan angka-angka empiris yang telah tervalidasi ini.
+1. Membuka dan mendiskusikan 4 notebook resmi Gate 1-R bersama Pak Ardika pada sesi bimbingan berikutnya sebagai bukti penyelesaian audit Gate 1-R.
+2. Meminta arahan dan izin terkait pelaksanaan perekaman fisik AudioMoth di kampus ITERA (H6: Embung, Arboretum, Antropogenik) untuk persiapan eksperimen Minggu 2 (E2: Controlled Noise Robustness).
+3. Mengonfirmasi keputusan formal D-07 mengenai kepatuhan aturan kompetisi Kaggle BirdCLEF+ 2026 untuk skripsi dan artikel ilmiah.

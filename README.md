@@ -679,3 +679,241 @@ Untuk tools-nya sebenarnya tidak berat. **Python** menjadi pusat pipeline. `libr
 Jadi **tidak perlu Spark, Hadoop, training GPU besar, database kompleks, atau membuat aplikasi mobile** untuk menjawab RQ ini. GPU akan membantu mempercepat ekstraksi pretrained embedding, tetapi setelah embedding tersimpan, cosine retrieval-nya ringan.
 
 Yang paling penting: penelitian ini bukan pertanyaan **“model mana paling akurat?”**, tetapi pertanyaan **“ketika lingkungan makin buruk, representation mana yang kehilangan kemampuan similarity retrieval paling lambat, dan apakah keputusan accept/reject-nya tetap stabil ketika pindah ke kondisi lapangan nyata?”** begitulah inti eksperimennya.
+
+---
+
+## 8. Daftar Periksa H1
+* **Kepatuhan:**
+  - [x] Aturan kompetisi dibaca dan disetujui
+  - [x] Klausul penggunaan akademik disalin ke `docs/protocols/birdclef-license.md` beserta URL dan tanggal akses
+  - [ ] Pertanyaan D-07 diajukan ke Supervisor 1
+* **Unduhan:**
+  - [x] Ruang disk diperiksa sebelum mengunduh
+  - [x] Data terunduh dan diekstrak
+  - [x] `data/birdclef2026/` masuk `.gitignore`
+  - [x] Lima berkas audio diuji baca (FLAC/OGG) — pada H1, bukan H4
+* **Inventaris:**
+  - [x] `scripts/inventory_birdclef.py` ditulis dan dijalankan
+  - [x] `data/manifests/birdclef_inventory.json` dihasilkan
+  - [x] Sepuluh butir §1.2 seluruhnya terjawab
+  - [x] Tidak ada angka dataset yang diketik tangan ke dokumen mana pun
+* **Keputusan:**
+  - [x] Kelayakan dataset dinilai (§3.1)
+  - [x] Laju sampel analisis ditetapkan dan dibekukan (§3.2)
+  - [x] Kelayakan E4 dinilai (§3.3)
+  - [x] Penanganan Unknown diputuskan (§3.4)
+
+---
+
+## BAGIAN V — TEKNIS LAB MINGGU 2–4
+Bagian ini melengkapi Bagian II yang hanya mencakup Minggu 1. Penomoran hari mengikuti Rencana Kerja 1 Bulan pada §19: Minggu 2 adalah H8–H14, Minggu 3 adalah H15–H21, dan Minggu 4 adalah H22–H30. Setiap minggu ditutup satu gate yang harus diverifikasi Supervisor 1 sebelum minggu berikutnya dimulai.
+Prinsip yang berlaku di seluruh bagian ini sama dengan Bagian II: setiap pemeriksaan mutu ditulis sebagai gerbang yang menggagalkan eksekusi, bukan sebagai baris laporan yang hanya dicetak.
+
+### MINGGU 2 (H8–H14) — E2 Controlled Noise Robustness
+
+#### H8 — Bekukan mesin pencampuran SNR
+Empat pekerjaan, seluruhnya prasyarat sebelum satu pun angka dihasilkan:
+1. Hapus jalur cadangan pink noise pada `src/mix_noise.py` dan ubah menjadi melempar galat bila bank derau kosong. Selama jalur itu hidup, eksperimen dapat berjalan memakai derau sintetis tanpa ada yang menyadarinya — persis penyebab temuan M-05 tidak terdeteksi selama dua audit.
+2. Implementasikan pemasangan query ke segmen derau secara deterministik dengan seed tetap, lalu simpan pemasangannya sebagai manifes. Pemasangan acak tanpa catatan membuat hasil tidak dapat direproduksi.
+3. Sebarkan tipe lokasi derau merata pada setiap tingkat SNR. Bila query pada 0 dB kebetulan mendapat derau antropogenik sedangkan pada 10 dB mendapat ambien vegetasi, perbedaan performa akan bercampur perbedaan jenis derau.
+4. Tambahkan uji unit yang memverifikasi SNR terukur pada sinyal hasil pencampuran sesuai target dalam toleransi yang ditetapkan, misalnya ±0,5 dB.
+Jalankan pula kontrol B6 no-op audio transform dari §13: lakukan resample dan write-read tanpa menambah derau, lalu tunjukkan bahwa prapemrosesan itu sendiri tidak menyebabkan penurunan mAP yang berarti. Kontrol ini menjadi penting karena derau AudioMoth diturunkan lajunya ke laju analisis sementara audio BirdCLEF mungkin tidak.
+
+#### H9 — Pilot tingkat SNR, lalu bekukan gridnya
+Jalankan subset kecil, misalnya 3 spesies × 5 query × seluruh representasi, pada grid SNR kandidat. Tujuannya satu: memastikan grid tidak mengalami ceiling maupun floor total.
+- jika seluruh representasi masih hampir sempurna pada −5 dB -> grid terlalu ringan, tambahkan kondisi lebih berat
+- jika seluruh representasi kolaps sudah pada 0 dB -> grid terlalu berat, geser ke atas
+- jika R3 acak tidak jauh di bawah R0/R1/R2 -> pipeline atau metrik bermasalah, hentikan
+Setelah pilot, grid SNR dibekukan dan dicatat pada decision-log sebagai keputusan bernomor. Grid tidak boleh diubah lagi setelah main run dimulai, dan tidak boleh dipilih setelah melihat representasi mana yang menang. Ini syarat §16 butir 6 dan merupakan pembeda antara eksperimen terkontrol dan penyesuaian post-hoc.
+
+#### H10 — Bekukan segmen derau dan seed
+Manifes pemasangan query ke segmen derau dibekukan dan di-checksum. Verifikasi bahwa menjalankan ulang dari seed yang sama menghasilkan pemasangan yang identik.
+
+#### H11–H12 — Jalankan E1 dan E2 untuk seluruh query
+Jalankan seluruh kombinasi representasi × kondisi SNR. Dua hal yang wajib disimpan dan sering terlupakan:
+1. Ranking per query, bukan hanya metrik agregat. Tanpa ini, analisis kegagalan pada Minggu 3 tidak mungkin dilakukan dan auditor tidak dapat memeriksa ulang apa pun.
+2. Catatan eksekusi di samping setiap tabel: waktu, SHA Git, konfigurasi efektif, dimensi embedding aktual, versi pustaka, dan run_id.
+Simpan pula run yang gagal, jangan dibuang. Run gagal adalah data untuk analisis kegagalan, bukan sampah.
+
+#### H13 — Kurva ketahanan awal
+Hasilkan mAP@10 terhadap SNR, Recall@k terhadap SNR, dan relative retention terhadap SNR untuk setiap representasi.
+Laporkan skor mentah berdampingan dengan retensi relatif, tidak hanya rasionya. Representasi dengan skor bersih rendah dapat tampak stabil secara semu. Audit sebelumnya menemukan kontrol acak R3 mencapai retensi 1,409 pada 10 dB — itu artefak aritmetika ketika penyebut mendekati nol, bukan temuan, dan wajib diberi catatan kaki.
+
+#### H14 — Buffer dan verifikasi Gate 2
+Hari ini sengaja dikosongkan sebagai penyangga. Bila H8–H13 berjalan lancar, pakai untuk analisis sekunder tipe derau: bandingkan mAP@10 pada SNR yang sama menurut derau perairan, vegetasi, dan antropogenik. Datanya sudah ada sehingga biayanya hampir nol.
+
+#### Gate 2 — daftar periksa kelulusan
+- [ ] Jalur cadangan pink noise dihapus; bank derau kosong menyebabkan galat, bukan derau sintetis.
+- [ ] Grid SNR dibekukan setelah pilot dan tercatat di decision-log sebelum main run.
+- [ ] Tidak ada ceiling maupun floor total pada grid beku.
+- [ ] Kontrol acak R3 jauh di bawah R0, R1, dan R2 pada seluruh kondisi.
+- [ ] Pasangan query konsisten: query yang sama muncul pada seluruh kondisi SNR.
+- [ ] Ranking per query tersimpan untuk seluruh kombinasi representasi × kondisi.
+- [ ] Pemasangan query↔segmen derau deterministik dan dapat direproduksi dari seed.
+- [ ] Tipe lokasi derau tersebar merata pada setiap tingkat SNR.
+- [ ] Kontrol B6 no-op lulus.
+- [ ] Skor mentah dan retensi relatif sama-sama dilaporkan.
+- [ ] Catatan eksekusi menyertai setiap tabel hasil.
+
+### MINGGU 3 (H15–H21) — E3 Open-Set, E4 Domain Shift, E5 Failure Analysis
+
+#### H15 — Susun tiga jenis unknown, dengan pembagian terstratifikasi
+Himpunan unknown terdiri atas tiga jenis yang harus dipisahkan sejak awal dan dilaporkan terpisah sampai akhir:
+| Jenis | Isi | Menguji |
+|---|---|---|
+| (a) Unknown mirip | Spesies burung BirdCLEF yang tidak ada di gallery | Penolakan terhadap unknown yang mirip secara biologis |
+| (b) Unknown non-burung | Takson non-burung BirdCLEF: amfibi, reptil, mamalia, serangga | Penolakan terhadap satwa lain pada bentang suara yang sama |
+| (c) Derau murni | Segmen background-only ITERA | Penolakan terhadap kondisi tanpa satwa target sama sekali |
+
+Pembagian kalibrasi dan uji wajib terstratifikasi menurut takson dengan seed tetap. Audit sebelumnya menemukan pembagian dilakukan dengan potongan posisional sehingga proporsi mamalia bergeser dari 42,5 persen saat kalibrasi menjadi 17,9 persen saat pengujian — dan ketidakstabilan ambang menjadi bercampur dengan pergeseran komposisi takson. Proporsi takson pada kedua sisi dicatat di manifes.
+Pastikan pula unknown yang dipakai untuk kalibrasi tidak dipakai lagi sebagai unknown uji.
+
+#### H16 — Kalibrasi dan pembekuan ambang τ
+Pilih τ dari calibration split saja, memakai Youden's J sesuai DEC-04. Setelah dipilih, τ dicatat nilainya, di-commit, dan tidak boleh disentuh lagi. Test set tidak boleh dipakai untuk mencari τ dalam keadaan apa pun.
+Tambahkan gerbang: skrip evaluasi menolak berjalan bila nilai τ yang dipakai berbeda dari nilai yang tercatat pada berkas beku.
+
+#### H17 — Uji transfer ambang lintas SNR
+Jalankan τ beku pada kondisi bersih dan seluruh tingkat SNR. Laporkan AUPRC, AUROC, F1 pada τ, FPR/FAR, dan recall pada titik operasi — masing-masing terpisah untuk unknown jenis (a), (b), dan (c).
+Perhatikan bahwa kestabilan ambang punya dua sisi yang dapat berlawanan arah. Audit sebelumnya menemukan R2 paling stabil pada sisi FPR namun justru paling dalam penurunannya pada sisi recall. Keduanya harus dilaporkan, dan kesimpulan tidak boleh digeneralkan dari satu sisi saja.
+
+#### H18 — E4 pergeseran domain nyata
+Jalankan pipeline beku pada train_soundscapes BirdCLEF. Tiga larangan yang mengikat:
+1. Jangan mengkalibrasi ulang τ memakai label soundscape.
+2. Jangan mengubah representasi, gallery, atau prapemrosesan.
+3. Jangan memakai test_soundscapes — labelnya tersembunyi dan tidak berguna di sini.
+Laporkan selisih antara campuran terkontrol dan soundscape nyata pada tingkat SNR yang sebanding. Selisih inilah yang menjawab H3, dan wajib dilaporkan terpisah dari E2 karena pergeseran domain nyata mencakup jarak, reverberasi, respons mikrofon, dan tumpang tindih panggilan sekaligus — bukan sekadar penjumlahan derau.
+
+#### H19–H20 — E5 analisis kegagalan
+Audit minimal 20 kasus kegagalan, mencakup false positive dan false negative. Kelompokkan penyebabnya menurut kategori §14: tumpang tindih panggilan, derau antropogenik, SNR rendah, vokalisasi spesies mirip, jarak dan reverberasi, event pendek, serta sidik jari latar.
+Diagnosis wajib ditulis manusia setelah mendengarkan kasusnya. Audit sebelumnya menemukan kolom diagnosis berisi satu kalimat template yang hanya berganti nama spesies; tabel semacam itu tidak memenuhi syarat analisis kegagalan meskipun query_id dan skornya nyata.
+
+#### H21 — Buffer dan verifikasi Gate 3
+Penyangga untuk pekerjaan yang meleset. Bila lancar, pakai untuk menyiapkan distribusi skor kemiripan known versus unknown dan kurva precision-recall open-set yang menjadi butir wajib §18.
+
+#### Gate 3 — daftar periksa kelulusan
+- [ ] Tiga jenis unknown disusun terpisah dan dilaporkan terpisah.
+- [ ] Pembagian kalibrasi/uji terstratifikasi menurut takson; proporsinya tercatat.
+- [ ] Unknown kalibrasi tidak dipakai ulang sebagai unknown uji.
+- [ ] τ dipilih hanya dari calibration, dibekukan, dan di-commit sebelum menyentuh test.
+- [ ] Skrip menolak berjalan bila τ menyimpang dari nilai beku.
+- [ ] AUPRC, AUROC, F1@τ, FPR/FAR tersedia untuk seluruh kondisi SNR.
+- [ ] Sisi FPR dan sisi recall dilaporkan terpisah, tanpa generalisasi.
+- [ ] E4 dijalankan tanpa kalibrasi ulang dan tanpa test_soundscapes.
+- [ ] Selisih campuran terkontrol versus soundscape nyata dilaporkan.
+- [ ] Minimal 20 kasus kegagalan diaudit dengan diagnosis yang ditulis manusia.
+- [ ] Tidak ada diagnosis template yang berulang.
+
+### MINGGU 4 (H22–H30) — Statistik, Penulisan, Reproduksi
+
+#### H22–H23 — Statistik berpasangan
+Ini penutup temuan M-03 yang terbuka sejak audit pertama. Bootstrap yang ada sebelumnya me-resample tiap kondisi secara terpisah; yang disyaratkan adalah bootstrap berpasangan atas selisih per query.
+```python
+untuk b = 1..1000:
+    ambil ulang INDEKS QUERY dengan pengembalian
+    d_b = rata-rata( AP_R2[idx] - AP_R1[idx] )
+CI 95% = persentil 2,5 dan 97,5 dari {d_b}
+selisih terdukung bila CI tidak memuat nol
+```
+Unit resampling adalah query atau rekaman, bukan tiap salinan berderau; salinan berderau dari query yang sama bukan sampel independen penuh. Terapkan koreksi Holm untuk banyak perbandingan berpasangan antar representasi dan antar SNR. Interval kepercayaan dimasukkan ke tabel dan ditampilkan sebagai pita atau batang galat pada gambar.
+Analisis utama ditetapkan sebelum melihat hasil uji penuh. Ambang efek minimum yang dianggap bermakna secara praktis juga ditetapkan di muka, bukan setelah melihat angka.
+Perlu diantisipasi bahwa sebagian selisih mungkin memiliki CI yang memuat nol. Bila itu terjadi, hasilnya tetap dilaporkan apa adanya. Hasil nol atau MFCC yang kompetitif tetap bernilai ilmiah bila eksperimennya terkontrol, dan §17 menegaskan penelitian dinilai dari validitas protokol, bukan dari kemenangan deep embedding.
+
+#### H24 — Gambar dan tabel wajib
+Gunakan daftar 11 butir pada §18 sebagai daftar periksa, bukan sebagai saran. Setiap butir yang tidak dibuat harus punya alasan tertulis.
+
+#### H25–H26 — Penulisan
+Tulis Metode, Hasil, dan Threats to Validity. Empat hal yang wajib muncul dan mudah terlewat:
+1. Hapus kata “signifikan” dari abstrak dan pembahasan kecuali didukung CI berpasangan yang tidak memuat nol.
+2. Bahas kontaminasi pralatih secara eksplisit: BirdNET dilatih pada Xeno-Canto sedangkan train_audio BirdCLEF bersumber dari Xeno-Canto dan iNaturalist. Ini syarat quality gate artikel pada §25.
+3. Nyatakan ketidakcocokan geografis: spesies Pantanal, derau Sumatera. Derau diperlakukan sebagai gangguan akustik terkendali, bukan skenario ekologis.
+4. Nyatakan sidik jari AudioMoth: seluruh derau berasal dari satu jenis perangkat dengan satu pengaturan gain.
+
+#### H27 — Rapikan manifes dan atribusi
+Atribusi author BirdCLEF, lisensi per rekaman, klausul aturan kompetisi, CONFIG.TXT AudioMoth per sesi, serta seluruh checksum manifes. Checksum dijalankan sebagai langkah terakhir setelah seluruh data final, bukan di tengah.
+
+#### H28 — Reproduksi segar
+Dari klona bersih pada mesin yang berbeda, jalankan satu perintah dan hasilkan kembali satu tabel utama dan satu plot utama. Ini butir wajib quality gate skripsi pada §24 dan merupakan satu-satunya uji yang benar-benar membuktikan reproduktibilitas.
+Bila reproduksi gagal, itu temuan yang harus diselesaikan, bukan dilewati dengan menjalankan ulang di mesin asal.
+
+#### H29 — Pembekuan
+Bekukan kode, konfigurasi, dan hasil. Beri tag Git pada commit yang menjadi dasar naskah, dan catat tag itu di naskah.
+
+#### H30 — Draft artikel v0.8 dan materi sidang
+Periksa §24 dan §25 butir demi butir sebelum menyatakan selesai.
+
+#### Gate 4 — daftar periksa kelulusan
+- [ ] Bootstrap berpasangan dengan indeks query sebagai unit resampling.
+- [ ] Koreksi Holm diterapkan dan didokumentasikan.
+- [ ] CI 95% masuk tabel dan tampil sebagai pita/batang galat pada gambar.
+- [ ] Ambang efek minimum ditetapkan sebelum melihat hasil penuh.
+- [ ] Seluruh 11 butir gambar dan tabel wajib §18 tersedia atau beralasan.
+- [ ] Kata “signifikan” hanya dipakai bila didukung CI berpasangan.
+- [ ] Kontaminasi pralatih dibahas eksplisit.
+- [ ] Ketidakcocokan geografis dan sidik jari AudioMoth dinyatakan.
+- [ ] Manifes, lisensi, atribusi, dan CONFIG.TXT lengkap.
+- [ ] Seluruh checksum sinkron dan suite pengujian lulus.
+- [ ] Reproduksi segar dari klona bersih berhasil untuk satu tabel dan satu plot.
+- [ ] Kode, konfigurasi, dan hasil dibekukan serta diberi tag Git.
+- [ ] Seluruh butir §24 terpenuhi.
+
+### Jalur Minimum Bila Tertinggal
+Bila jadwal meleset, urutan pengorbanan ditetapkan di muka agar keputusan tidak diambil dalam keadaan panik. Prioritas dari yang paling wajib dipertahankan:
+| Prioritas | Komponen | Keputusan bila waktu tidak cukup |
+|---|---|---|
+| 1 — wajib | E1 clean retrieval + E2 kurva ketahanan SNR | Tidak boleh dikorbankan; ini jawaban RQ1 dan RQ2 |
+| 2 — wajib | Statistik berpasangan dengan CI | Tidak boleh dikorbankan; tanpa ini klaim tidak dapat dipertahankan |
+| 3 — wajib | E3 open-set dengan τ beku | Boleh disederhanakan menjadi unknown jenis (a) dan (c) saja, jenis (b) ditunda |
+| 4 — penting | E5 analisis kegagalan | Pertahankan minimal 20 kasus; jangan diturunkan jumlahnya |
+| 5 — dapat diturunkan | E4 pergeseran domain | Boleh turun menjadi pemeriksaan kualitatif, dengan keterbatasan dinyatakan |
+| 6 — dapat dibuang | E6 validasi eksternal / ESC-50 | Buang lebih dulu; sifatnya opsional sejak awal |
+| 7 — dapat dibuang | Analisis sekunder tipe derau | Buang; datanya tetap tersimpan untuk pengembangan lanjutan |
+
+Yang tidak boleh dilakukan ketika tertinggal: mengurangi jumlah repetisi di bawah rancangan, memilih grid SNR setelah melihat hasil, mengkalibrasi ulang τ pada test set, atau menurunkan jumlah kasus kegagalan di bawah 20. Seluruhnya merusak validitas, bukan sekadar mengurangi cakupan.
+
+### Risiko Minggu 2–4 dan Mitigasinya
+| Risiko | Dampak | Mitigasi |
+|---|---|---|
+| Grid SNR mengalami ceiling atau floor | Kurva ketahanan tidak informatif | Pilot H9 sebelum main run; geser grid lalu bekukan |
+| Bank derau tidak cukup untuk seluruh query | E2 tidak lengkap | Pantau kecukupan sejak Minggu 1; rekam lebih banyak daripada target |
+| Waktu inferensi R1/R2 terlalu lama | H11–H12 mundur | Ukur waktu pada pilot H9; siapkan cache embedding gallery |
+| train_soundscapes terlalu sedikit atau tanpa label memadai | E4 tidak kuantitatif | Nilai kelayakan sudah pada H1; bila tidak memadai, E4 turun menjadi kualitatif |
+| CI berpasangan memuat nol | Klaim keunggulan tidak terdukung | Laporkan apa adanya; hasil nol tetap sah menurut §17 |
+| Reproduksi segar gagal pada H28 | Quality gate skripsi tidak terpenuhi | Uji klona bersih lebih awal, jangan menunggu H28 |
+| Naskah mengklaim lebih dari yang didukung data | Temuan berulang dari tiga audit | Periksa setiap klaim terhadap tabel sebelum submit |
+
+### LAMPIRAN A — REGISTER KEPUTUSAN
+| Kode | Keputusan / status | Tindak lanjut |
+|---|---|---|
+| **DEC-09** | Pivot dataset ke BirdCLEF+ 2026 dan derau AudioMoth | Wajib dicatat pada decision-log.md pada commit yang sama |
+| **D-07** | Kepatuhan aturan kompetisi untuk skripsi + artikel | Supervisor 1 decision required sebelum penggunaan data lanjut |
+| **D-08** | Menerima hilangnya kerangka biodiversitas Sumatera dari eksperimen utama | Rekomendasi Supervisor 2: terima |
+| **D-09** | Memindahkan E4 ke train_soundscapes BirdCLEF | Rekomendasi Supervisor 2: ya |
+| **D-10** | Filter utama collection == XC dan rating >= 3 | Terapkan; bila spesies <15, longgarkan rating ke >=2 dan catat |
+| **D-05** | Komposisi dataset lama | Digantikan oleh DEC-09 + scope-freeze v3.0 |
+| **D-06** | Rezim hasil lama | Digantikan; hasil lama diarsipkan |
+| **D-04** | Status Gate 1 lama | Rekomendasi: tidak lulus dan digantikan Gate 1-R |
+
+### LAMPIRAN B — CHECKLIST PENUTUP AUDIT KEDUA
+- [ ] D-07 s.d. D-10 diputuskan Supervisor 1.
+- [x] DEC-09 tercatat dan scope-freeze v3.0 dibuat.
+- [x] BirdCLEF inventory berasal dari skrip.
+- [x] Species freeze berasal dari aturan kode.
+- [x] Dataset split author-disjoint dan test failure aktif.
+- [x] Notebook dan tests memakai satu jalur src/.
+- [x] E1 menghasilkan tabel agregat + per-query.
+- [ ] AudioMoth memiliki CONFIG.TXT per sesi dan noise manifest lengkap.
+- [ ] Pink-noise fallback dihapus/diubah menjadi error (dieksekusi saat AudioMoth tersedia pada H8).
+- [x] Hasil Xeno-Canto lama diarsipkan, tidak dihapus.
+- [x] Semua manifests dan checksums sinkron.
+- [ ] Gate 1-R diverifikasi ulang Supervisor 1.
+- [ ] Kedudukan variabel (§10.6) disepakati: konfigurasi AudioMoth adalah variabel kontrol, bukan variabel bebas.
+- [ ] Satu konfigurasi AudioMoth dibekukan untuk seluruh bank derau; tidak ada pencampuran pengaturan.
+- [ ] Uji kliping per lokasi dilakukan sebelum sesi sebenarnya.
+- [ ] Konversi UTC ke WIB dikerjakan di skrip manifes, bukan manual.
+- [ ] Grid SNR dibekukan setelah pilot H9 dan tercatat di decision-log.
+- [ ] Gate 2, Gate 3, dan Gate 4 diverifikasi Supervisor 1 pada akhir tiap minggu.
+
+### LAMPIRAN C — CATATAN PROVENANS DOKUMEN
+Dokumen keputusan kedua ini disusun dari lima sumber internal yang diberikan pada 12 September 2026: audit pertama DSIC-2706, README final revisi pivot, teknis lab Gate 1-R, protokol AudioMoth ITERA, dan lembar inventarisasi BirdCLEF+ 2026. Tidak ada fakta dataset yang belum diinventarisasi yang diperlakukan sebagai terverifikasi.
+
+Pembaruan 12 September 2026 menambahkan tiga hal. Pertama, §10.6 yang menetapkan kedudukan variabel bebas, terikat, dan kontrol, serta menegaskan bahwa seluruh pengaturan AudioMoth berkedudukan sebagai variabel kontrol. Kedua, §2.1.1 sampai §2.1.5 pada Bagian III yang membaca tangkapan layar AudioMoth Configuration App yang diberikan pada tanggal yang sama; pembacaan itu bersifat penilaian terhadap pengaturan yang terlihat di layar, dan nilai yang benar-benar dipakai tetap harus diverifikasi pada perangkat karena pada tangkapan layar tersebut perangkat belum terhubung sehingga Device ID dan versi firmware masih kosong. Ketiga, Bagian V yang memuat rincian hari-ke-hari Minggu 2 sampai Minggu 4 beserta Gate 2, Gate 3, Gate 4, jalur minimum bila tertinggal, dan tabel risiko. Fakta BirdCLEF+ 2026 yang dicatat sebagai terverifikasi berasal dari penelusuran halaman kompetisi Kaggle dan LifeCLEF pada 12 September 2026. Fakta yang belum diverifikasi tetap ditandai sebagai keluaran wajib H1 dan tidak boleh diasumsikan.
