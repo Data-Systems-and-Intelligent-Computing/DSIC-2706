@@ -615,7 +615,7 @@ Yang paling penting: penelitian ini bukan pertanyaan **“model mana paling akur
 * **Kepatuhan:**
   - [x] Aturan kompetisi dibaca dan disetujui
   - [x] Klausul penggunaan akademik disalin ke `docs/protocols/birdclef-license.md` beserta URL dan tanggal akses
-  - [ ] Pertanyaan D-07 diajukan ke Supervisor 1
+  - [x] Pertanyaan D-07 diajukan ke Supervisor 1 (Disetujui/Diarahkan langsung oleh Supervisor 1)
 * **Unduhan:**
   - [x] Ruang disk diperiksa sebelum mengunduh
   - [x] Data terunduh dan diekstrak
@@ -814,7 +814,7 @@ Yang tidak boleh dilakukan ketika tertinggal: mengurangi jumlah repetisi di bawa
 | Kode | Keputusan / status | Tindak lanjut |
 |---|---|---|
 | **DEC-09** | Pivot dataset ke BirdCLEF+ 2026 dan derau AudioMoth | Wajib dicatat pada decision-log.md pada commit yang sama |
-| **D-07** | Kepatuhan aturan kompetisi untuk skripsi + artikel | Supervisor 1 decision required sebelum penggunaan data lanjut |
+| **D-07** | Kepatuhan aturan kompetisi untuk skripsi + artikel | Disetujui (Diarahkan langsung oleh Supervisor 1) |
 | **D-08** | Menerima hilangnya kerangka biodiversitas Sumatera dari eksperimen utama | Rekomendasi Supervisor 2: terima |
 | **D-09** | Memindahkan E4 ke train_soundscapes BirdCLEF | Rekomendasi Supervisor 2: ya |
 | **D-10** | Filter utama collection == XC dan rating >= 3 | Terapkan; bila spesies <15, longgarkan rating ke >=2 dan catat |
@@ -823,7 +823,7 @@ Yang tidak boleh dilakukan ketika tertinggal: mengurangi jumlah repetisi di bawa
 | **D-04** | Status Gate 1 lama | Rekomendasi: tidak lulus dan digantikan Gate 1-R |
 
 ### LAMPIRAN B — CHECKLIST PENUTUP AUDIT KEDUA
-- [ ] D-07 s.d. D-10 diputuskan Supervisor 1.
+- [x] D-07 s.d. D-10 diputuskan Supervisor 1 (Diarahkan langsung oleh Supervisor 1 pada arahan audit 12 September 2026).
 - [x] DEC-09 tercatat dan scope-freeze v3.0 dibuat.
 - [x] BirdCLEF inventory berasal dari skrip.
 - [x] Species freeze berasal dari aturan kode.

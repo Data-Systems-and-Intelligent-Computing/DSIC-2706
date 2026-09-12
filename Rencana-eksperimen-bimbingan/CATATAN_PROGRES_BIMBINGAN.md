@@ -25,7 +25,7 @@ Dokumen ini adalah **buku catatan progres resmi dan rekam jejak tindak lanjut re
 >    * **Integritas Checksum & Suite Pengujian (M-06 / H7):** Hash manifes di [`artifacts/reproducibility/manifest_sha256.txt`](../artifacts/reproducibility/manifest_sha256.txt) membaca baseline E1 secara dinamis dan meloloskan **9/9 pengujian saintifik di [`run_tests.py`](../run_tests.py) (100.0% PASS)**.
 > 2. **Pekerjaan yang Masih Terjadwal / Pending (Menunggu Lapangan):**
 >    * **H6 (Derau Lapangan AudioMoth ITERA):** Skema manifes [`data/manifests/itera_noise_manifest.csv`](../data/manifests/itera_noise_manifest.csv) sudah siap; perekaman fisik di kampus ITERA (3 lokasi $\times 2$ daypart, target $\ge 30$ segmen 60s bebas burung) dan penyalinan `CONFIG.TXT` dijadwalkan untuk persiapan eksperimen Minggu 2 (E2).
->    * **D-07:** Konfirmasi formal Pembimbing 1 terkait lisensi kompetisi Kaggle untuk publikasi artikel/skripsi.
+>    * **D-07:** Disetujui/Diarahkan langsung oleh Pembimbing 1 (Bapak Ardika) saat menginstruksikan pivot ke dataset BirdCLEF+ 2026; protokol lisensi tercatat di [`docs/protocols/birdclef-license.md`](../docs/protocols/birdclef-license.md).
 
 ---
 
@@ -220,4 +220,4 @@ Seluruh alur kerja Gate 1-R, mulai dari eksplorasi data, verifikasi prapemrosesa
 ## 📅 RENCANA TAHAP BERIKUTNYA PASCA-BIMBINGAN:
 1. Membuka dan mendiskusikan 4 notebook resmi Gate 1-R bersama Pak Ardika pada sesi bimbingan berikutnya sebagai bukti penyelesaian audit Gate 1-R.
 2. Meminta arahan dan izin terkait pelaksanaan perekaman fisik AudioMoth di kampus ITERA (H6: Embung, Arboretum, Antropogenik) untuk persiapan eksperimen Minggu 2 (E2: Controlled Noise Robustness).
-3. Mengonfirmasi keputusan formal D-07 mengenai kepatuhan aturan kompetisi Kaggle BirdCLEF+ 2026 untuk skripsi dan artikel ilmiah.
+3. Melaporkan kepatuhan protokol lisensi kompetisi Kaggle BirdCLEF+ 2026 (D-07) pada [`docs/protocols/birdclef-license.md`](../docs/protocols/birdclef-license.md) yang telah disusun sesuai arahan beliau.
