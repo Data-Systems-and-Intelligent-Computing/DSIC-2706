@@ -54,84 +54,51 @@ Yang **bukan** kontribusi utama:
 
 ## 4. Representasi yang dibandingkan
 
-| Kode | Representasi | Peran |
-|---|---|---|
-| R0 | MFCC + mean/std pooling | Baseline katalog |
-| R1 | Generic pretrained audio embedding, misalnya PANNs | Deep embedding generik |
-| R2 | Satu bioacoustic pretrained embedding yang stabil | Domain-specific representation |
-| R3 | Random ranking | Negative control |
+| Kode | Representasi | Dimensi | Peran | Checkpoint / Sumber |
+|---|---|---|---|---|
+| **R0** | MFCC (40 koefisien + delta + delta-delta, mean/std pooling) | 40-d | Baseline akustik klasik | `librosa` feature extractor |
+| **R1** | PANNs CNN14 (AudioSet general audio pretrained) | 2048-d | Deep embedding generik | `checkpoints/Cnn14_mAP=0.431.pth` |
+| **R2** | BirdNET Backbone (Avian bioacoustic domain pretrained) | 1024-d | Domain-specific representation | Pustaka `birdnet` resmi |
+| **R3** | Random Control (Vektor acak terdistribusi seragam) | 40-d | Negative control | Deterministik (`seed=42`) |
 
-Semua representasi utama menggunakan **cosine similarity** agar perbandingan tidak tercampur oleh metric retrieval yang berbeda.
+Semua representasi utama dinormalisasi ke *unit sphere* (\(\|\mathbf{x}\|_2 = 1.0\)) dan dievaluasi menggunakan **cosine similarity** agar perbandingan mencerminkan kualitas representasi intrinsik, bukan perbedaan algoritma retrieval.
 
-Main experiment memakai **frozen representations**. Fine-tuning hanya boleh dilakukan setelah eksperimen utama selesai.
+Seluruh eksperimen utama menggunakan **frozen representations** (tanpa *fine-tuning*).
 
-## 5. Dataset dan perannya
+## 5. Dataset dan perannya (Pembaruan DEC-09 / Gate 1-R)
 
-### Xeno-Canto
+Sesuai audit 12 September 2026 (**DEC-09**), korpus eksperimen utama dialihkan ke **BirdCLEF+ 2026** guna menjamin kecukupan daya statistik (\(n=200\) kueri bersih) dan integritas data bebas bocor:
 
-Digunakan sebagai *reference bank/gallery* dan clean query.
+### Galeri dan Kueri Bersih: BirdCLEF+ 2026
+- **Spesies Target**: 20 spesies burung terkurasi ketat (§11.3: koleksi Xeno-Canto, Aves, rating \(\ge 3.0\), klip \(\ge 20\), perekam \(\ge 3\)). Dari 156 kandidat lolos ambang, 20 spesies dipilih berdasarkan diversitas perekam tertinggi (\(n_{\text{author}}\)), sedangkan 136 tersisih murni akibat kuota 20 taksa (DEC-10).
+- **Total Korpus Aktif**: 4.351 berkas rekaman audio.
+- **Standar Prapemrosesan**: Durasi 5,0 detik (160.000 sampel), laju sampel 32 kHz, mono, normalisasi energi RMS = 0.05.
+- **Koleksi Awal Xeno-Canto (14 Spesies)**: Korpus awal kurasi manual Xeno-Canto Sumatera telah diarsipkan secara aman di `results/archive/2026-09-07_xenocanto16spesies/` sebagai rekam jejak audit.
 
-Target awal yang realistis:
+### Bank Derau Aditif (E2) & Negatif Open-Set (E3): Rekaman AudioMoth ITERA
+- Perekaman nyata *ambient soundscape* kampus ITERA (Embung, Hutan Mini/Arboretum, dan area antropogenik) menggunakan perangkat **AudioMoth**.
+- **Derau sintetis (pink noise) resmi ditinggalkan** per DEC-09 karena tidak memiliki validitas ekologis untuk bioakustik tropis.
+- Folder `data/itera_noise/` diisi rekaman berdurasi 5 detik tanpa suara burung target untuk eksperimen E2 (pencampuran SNR terkontrol) dan E3 (penolakan open-set).
 
-- 10–20 spesies burung;
-- minimum jumlah rekaman per spesies ditentukan sebelum pengambilan final;
-- gallery dan query dipisahkan berdasarkan `recording_id`;
-- bila data mencukupi, gunakan `recordist-disjoint split` sebagai robustness check.
+### Real Soundscape Validation (E4)
+- Menggunakan subset teranotasi dari `train_soundscapes` BirdCLEF+ 2026 untuk mengukur kesenjangan (*gap*) antara derau terkontrol dan pergeseran domain nyata.
 
-Metadata minimum:
+## 6. Split penelitian (Strict Recordist-Disjoint)
 
-- recording ID;
-- scientific name;
-- common name;
-- recordist;
-- locality/country;
-- tanggal;
-- quality;
-- license;
-- URL;
-- checksum.
-
-### Background noise ITERA
-
-Background-only audio dari beberapa kondisi, misalnya:
-
-- Embung ITERA;
-- Arboretum/Kebun Raya;
-- area terbuka/antropogenik.
-
-Noise bank digunakan untuk membuat controlled mixture pada beberapa SNR.
-
-### Real ITERA soundscape
-
-Digunakan sebagai external domain validation. Untuk evaluasi kuantitatif, hanya gunakan subset yang dianotasi atau diverifikasi manual.
-
-### External public validation
-
-BirdCLEF/BirdSet atau ESC-50 bersifat **opsional** dan hanya dikerjakan setelah main experiment selesai.
-
-## 6. Split penelitian
-
-Pisahkan set berikut secara eksplisit:
+Partisi data dibekukan di `data/manifests/dataset_split.csv` menggunakan pembagian identitas perekam mutlak (*Strict Global Recordist-Disjoint*, `seed=42`):
 
 ```text
-Xeno-Canto
-├── gallery
-├── clean-query
-├── threshold-calibration
-└── retrieval/open-set-test
-
-ITERA
-├── background-noise-bank
-├── threshold-calibration-background
-└── annotated-real-soundscape-test
+BirdCLEF+ 2026 (4.351 klip | 20 spesies)
+├── gallery      : 3.653 klip (377 perekam unik) -> Koleksi referensi pencarian
+├── query_clean  :   200 klip ( 68 perekam unik) -> 10 kueri bersih per spesies
+└── calibration  :   498 klip ( 95 perekam unik) -> Kalibrasi ambang jarak open-set
 ```
 
-Aturan penting:
-
-- tidak boleh ada recording yang sama di gallery dan query;
-- calibration set tidak boleh dipakai sebagai final test;
-- threshold tidak boleh diubah setelah test result dilihat;
-- real ITERA soundscape tidak dipakai untuk melatih atau memilih representation utama.
+Jaminan integritas matematis:
+- **Zero Recordist Overlap**: 0 perekam beririsan antar galeri, kueri, dan kalibrasi.
+- **Zero Recording ID Overlap**: 0 rekaman muncul lebih dari satu peran.
+- **Zero Filepath Overlap**: 0 duplikasi berkas fisik.
+- Diverifikasi otomatis oleh `tests/test_split_leakage.py` dan `tests/integration/test_split_leakage.py`.
 
 ## 7. Controlled noise experiment
 
@@ -213,139 +180,101 @@ Threshold dipilih hanya dari calibration split dan kemudian **dibekukan**.
 - inference time;
 - UMAP/t-SNE hanya untuk visualisasi, bukan success criterion.
 
-## 10. Rencana eksperimen
+## 10. Rencana eksperimen dan Status Eksekusi
 
-### E0 — Pipeline sanity
+### E0 — Pipeline Sanity Check (Status: SELESAI & LULUS 100%)
+- **Notebook**: `notebooks/E0_Pipeline_Sanity_Check.ipynb`
+- Partisi data *Strict Global Recordist-Disjoint* (`seed=42`) lolos uji kebocoran 100% (*zero leakage assertion gate* aktif).
+- *Smoke test* ekstraksi fitur R0, R1, R2, R3 pada audio riil `XC1053050.ogg` terverifikasi presisi dimensi, bernorma L2 unit, dan bebas `NaN`/`Inf`.
+- Uji hipotesis kontrol negatif H5 terbukti valid: model terlatih secara signifikan mengungguli tebakan acak (\(R2=85.0\% > R1=40.0\% > R0=5.0\% \gg R3=10.0\%\)).
 
-- bekukan sample rate, segment duration, channel rule, normalization;
-- jalankan MFCC, generic embedding, dan bioacoustic embedding pada subset kecil;
-- pastikan random ranking lebih buruk dari representation nyata;
-- audit split leakage.
+### E1 — Clean Retrieval Benchmark (Status: SELESAI & LULUS 100%)
+- **Notebook**: `notebooks/E1_Clean_Retrieval.ipynb`
+- Menguji 200 kueri bersih terhadap 3.653 rekaman galeri lintas 20 spesies burung target.
+- Hasil evaluasi kanonikal tersimpan di `results/processed/clean_retrieval_table.csv` dan `paper/tables/clean_retrieval_table.csv`:
 
-### E1 — Clean retrieval
+| Representasi | Top-1 Accuracy (%) | mAP@10 | MRR | Precision@10 | Recall@10 |
+|---|:---:|:---:|:---:|:---:|:---:|
+| **R0: MFCC Baseline (40-d)** | 27.5% | 0.1319 | 0.4224 | 0.2175 | 0.0123 |
+| **R1: PANNs CNN14 (2048-d)** | 60.0% | 0.4152 | 0.7005 | 0.5025 | 0.0291 |
+| **R2: BirdNET Backbone (1024-d)** | **95.0%** | **0.9126** | **0.9658** | **0.9280** | **0.0528** |
+| **R3: Random Control (40-d)** | 6.5% | 0.0190 | 0.1779 | 0.0530 | 0.0028 |
 
-- gallery tetap;
-- clean query terpisah;
-- hitung retrieval metrics;
-- simpan ranking per query, bukan hanya aggregate score.
+- Rekaman per-kueri (*query-level log*) lengkap tersimpan di `results/processed/per_query_clean_retrieval.csv` (memuat `author`, `top1_match`, `max_similarity`, `P@10`, `R@10`, dan `AP@10` per rekaman).
+- Visualisasi metrik tersimpan di `results/figures/clean_retrieval_benchmark.png` dan `paper/figures/clean_retrieval_benchmark.png`.
 
-### E2 — Controlled noise robustness
+### E2 — Controlled Noise Robustness (Jadwal: Minggu 2 / H8–H14)
+- 200 kueri bersih dipasangkan secara deterministik dengan rekaman derau AudioMoth ITERA pada 4 tingkat SNR: +20 dB, +10 dB, 0 dB, dan -5 dB.
+- Mengukur kurva degradasi performa (*relative robustness retention*) untuk seluruh representasi.
 
-- gunakan query yang sama dari E1;
-- campur background ITERA pada beberapa SNR;
-- hitung kurva degradasi untuk seluruh representation.
+### E3 — Open-Set Threshold (Jadwal: Minggu 3 / H15–H21)
+- Penentuan ambang kemiripan \(\tau\) dari 498 klip set kalibrasi menggunakan Youden's J pada target FAR 5% dan 10%.
+- Pengujian transfer ambang beku terhadap unknown mirip (burung non-target), unknown non-burung, dan derau murni ITERA.
 
-### E3 — Open-set threshold
+### E4 — Real Soundscape Domain Shift (Jadwal: Minggu 3 / H18)
+- Evaluasi pipeline beku pada rekaman bentang suara nyata (`train_soundscapes` BirdCLEF) tanpa *re-tuning* ambang.
 
-- buat calibration known/unknown;
-- pilih threshold hanya dari calibration;
-- bekukan threshold;
-- evaluasi threshold pada clean dan noisy test.
+### E5 — Failure Case Analysis (Jadwal: Minggu 3 / H19–H20)
+- Audit mendalam minimal 20 kasus salah temu (*false accept* dan *false reject*) yang dianalisis secara manual per kueri.
 
-### E4 — Real soundscape domain shift
+### E6 — External Public Validation (Opsional)
+- Pengujian generalisasi eksternal setelah E0–E5 tuntas.
 
-- jalankan frozen pipeline pada annotated ITERA subset;
-- jangan re-tune threshold menggunakan label test ITERA;
-- ukur gap controlled-noise vs real soundscape.
-
-### E5 — Failure analysis
-
-Audit minimal 20 kasus:
-
-- overlapping calls;
-- low SNR;
-- anthropogenic noise;
-- similar vocalizations;
-- long-distance/reverberation;
-- short event;
-- background signature;
-- false accept unknown species.
-
-### E6 — External public validation
-
-Opsional untuk artikel setelah E0–E5 selesai.
-
-## 11. Struktur repository
+## 11. Struktur repository (Status Aktif Pasca-Pembersihan)
 
 ```text
-dsic-2706-bioacoustic-retrieval/
-├── README.md
-├── .gitignore
-├── .env.example
-├── pyproject.toml
-├── requirements.txt
-├── Makefile
-│
-├── configs/
-│   ├── audio.yaml
-│   ├── datasets.yaml
-│   ├── representations.yaml
-│   ├── experiments.yaml
-│   └── thresholds.yaml
-│
-├── docs/
-│   ├── research/
-│   │   ├── research-charter.md
-│   │   ├── rq.md
-│   │   ├── hypotheses.md
-│   │   ├── novelty-boundary.md
-│   │   ├── scope-freeze.md
-│   │   └── decision-log.md
-│   └── protocols/
-│       ├── xeno-canto-selection.md
-│       ├── itera-recording.md
-│       ├── annotation.md
-│       └── open-set.md
+DSIC-2706/
+├── README.md                                          # Dokumentasi utama dan roadmap lab
+├── pyproject.toml / requirements.txt                  # Dependensi lingkungan Python
+├── run_tests.py                                       # Suite uji saintifik otomatis (9/9 lulus)
 │
 ├── data/
-│   ├── README.md
 │   ├── manifests/
-│   ├── xeno_canto/
-│   ├── itera_noise/
-│   └── itera_soundscape_annotations/
+│   │   ├── dataset_split.csv                          # Manifes kanonik 4.351 klip (Recordist-Disjoint)
+│   │   ├── species_freeze.csv                         # 20 spesies target resmi (DEC-10)
+│   │   ├── species_excluded.csv                       # Transparansi eliminasi 186 taksa
+│   │   └── itera_noise_manifest.csv                   # Manifes bank derau AudioMoth ITERA
+│   ├── BirdClef/                                      # Data primer BirdCLEF+ 2026
+│   ├── itera_noise/                                   # Wadah rekaman soundscape AudioMoth ITERA
+│   └── xeno_canto/                                    # Aset arsip rekaman mentah Xeno-Canto
 │
-├── src/
-│   └── dsic2706/
-│       ├── data/
-│       ├── audio/
-│       ├── features/
-│       ├── retrieval/
-│       ├── open_set/
-│       ├── evaluation/
-│       ├── analysis/
-│       └── utils/
+├── notebooks/                                         # 4 Notebook Resmi Gate 1-R
+│   ├── EDA_Tugas_Akhir.ipynb                          # Eksplorasi dataset & inventarisasi
+│   ├── Preprocessing Verification.ipynb               # Validasi pemotongan & normalisasi RMS
+│   ├── E0_Pipeline_Sanity_Check.ipynb                 # Verifikasi anti-kebocoran & smoke test
+│   └── E1_Clean_Retrieval.ipynb                       # Tolok ukur retrieval kueri bersih
 │
-├── tests/
-│   ├── unit/
-│   ├── integration/
-│   └── reproducibility/
+├── src/                                               # Modul pemrosesan terpusat
+│   ├── preprocess.py                                  # Audio pipeline (32 kHz, 5s, RMS 0.05)
+│   ├── embeddings.py                                  # Ekstraktor representasi (R0, R1, R2, R3)
+│   ├── mix_noise.py                                   # Engine pencampuran SNR terkontrol
+│   └── evaluate.py                                    # Komputasi metrik Information Retrieval
 │
-├── experiments/
-│   ├── E0_pipeline_sanity/
-│   ├── E1_clean_retrieval/
-│   ├── E2_noise_robustness/
-│   ├── E3_open_set_threshold/
-│   ├── E4_real_soundscape/
-│   ├── E5_failure_analysis/
-│   └── E6_external_validation/
+├── tests/                                             # Suite pengujian saintifik
+│   ├── test_split_leakage.py                          # Verifikasi matematis zero leakage
+│   ├── test_snr_mixing.py                             # Verifikasi akurasi rumus SNR
+│   ├── test_cosine.py                                 # Verifikasi batas kesamaan kosinus
+│   ├── test_threshold_freeze.py                      # Verifikasi stabilitas ambang beku
+│   ├── unit/                                          # Uji integritas manifes SHA-256 & model
+│   └── integration/                                   # Uji integrasi kebocoran partisi
 │
 ├── results/
-│   ├── raw/
-│   ├── processed/
-│   ├── tables/
-│   ├── figures/
-│   └── failure_cases/
+│   ├── features/                                      # Cache embedding NPZ (R0, R1, R2, R3)
+│   ├── processed/                                     # Tabel hasil evaluasi kanonikal
+│   ├── figures/                                       # Grafik saintifik E1
+│   └── archive/                                       # Arsip aman hasil & skrip lama
+│       └── 2026-09-07_xenocanto16spesies/             # Arsip eksperimen 14-spesies Gate 1
 │
-├── scripts/
-├── notebooks/
-│   └── exploratory/
 ├── paper/
-│   ├── manuscript.md
-│   ├── figures/
-│   ├── tables/
-│   └── bibliography/
-└── artifacts/
-    └── reproducibility/
+│   ├── figures/                                       # Gambar resolusi tinggi untuk naskah
+│   └── tables/                                        # Tabel metrik tersinkronisasi
+│
+├── docs/research/
+│   ├── decision-log.md                                # Catatan keputusan resmi (DEC-01 s.d DEC-10)
+│   └── scope-freeze.md                                # Pembekuan cakupan versi 3.0
+│
+└── Rencana-eksperimen-bimbingan/
+    └── CATATAN_PROGRES_BIMBINGAN.md                   # Log mingguan bimbingan TA
 ```
 
 ## 12. Tools
