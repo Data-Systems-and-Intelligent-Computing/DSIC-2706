@@ -52,6 +52,16 @@ def test_zero_recordist_leakage_global():
     """Memverifikasi strict global recordist/author disjoint di ketiga subset (0 author overlap)."""
     df = pd.read_csv(SPLIT_PATH)
     rec_col = "author" if "author" in df.columns else "recordist"
+    
+    # Penanganan eksplisit author == "Unknown" (Audit H2.1 & H3.2, Checklist Gate 1-R)
+    # Rekaman dengan author tak dikenal (Unknown/NaN/kosong) tidak boleh masuk ke split
+    # untuk mencegah pengelompokan semu atau lolos/gagal kebocoran secara semu.
+    unknown_mask = df[rec_col].astype(str).str.strip().str.lower().isin(["unknown", "nan", "none", ""])
+    assert not unknown_mask.any(), (
+        f"[H2.1/H3.2 AUDIT ERROR] Ditemukan {unknown_mask.sum()} rekaman dengan author == 'Unknown' "
+        f"atau kosong pada {SPLIT_PATH.name}!"
+    )
+
     gallery_recs = set(df[df['split_role'] == 'gallery'][rec_col].dropna().unique())
     query_recs = set(df[df['split_role'] == 'query_clean'][rec_col].dropna().unique())
     calib_recs = set(df[df['split_role'] == 'calibration'][rec_col].dropna().unique())

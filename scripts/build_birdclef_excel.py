@@ -6,11 +6,15 @@ from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 from openpyxl.utils import get_column_letter
 import pandas as pd
 
-PROJECT_ROOT = Path(r"D:\FILE AND TASK\TA")
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 SPLIT_CSV = PROJECT_ROOT / "data" / "manifests" / "dataset_split.csv"
 FREEZE_CSV = PROJECT_ROOT / "data" / "manifests" / "species_freeze.csv"
 TRAIN_CSV = PROJECT_ROOT / "data" / "BirdClef" / "train.csv"
-CACHE_FILE = Path(r"C:\Users\Fabio\.gemini\antigravity\brain\29c8c496-9c02-45a8-aece-af8d01cc9493\scratch\xc_api_cache.json")
+CACHE_FILE = PROJECT_ROOT / "data" / "manifests" / "xc_api_cache.json"
+if not CACHE_FILE.exists():
+    scratch_cache = Path.home() / ".gemini" / "antigravity" / "brain" / "29c8c496-9c02-45a8-aece-af8d01cc9493" / "scratch" / "xc_api_cache.json"
+    if scratch_cache.exists():
+        CACHE_FILE = scratch_cache
 
 OUTPUT_EXCEL_MANIFESTS = PROJECT_ROOT / "data" / "manifests" / "Metadata_BirdCLEF.xlsx"
 OUTPUT_EXCEL_BIRDCLEF = PROJECT_ROOT / "data" / "BirdClef" / "Metadata_BirdCLEF.xlsx"
