@@ -50,8 +50,6 @@ data/xeno_canto/**/Screenshot*.png
 Audit Pembaruan/
 Dataset/
 Administrasi/
-jurnal/*.pdf
-!jurnal/referensi_jurnal_TA_bioakustik.csv
 
 # Pretrained model checkpoints & weights
 *.pt
