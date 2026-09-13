@@ -91,4 +91,4 @@ Audit mendalam dilakukan terhadap 30 kasus kegagalan nyata yang terekam pada `re
 
 ---
 ## References
-*(Sinkron dengan matriks referensi pada `jurnal/referensi_jurnal_TA_bioakustik.csv`)*
+*(Sinkron dengan matriks referensi pada `paper/bibliography/referensi_jurnal_modern.csv`)*
