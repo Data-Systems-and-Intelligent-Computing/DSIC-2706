@@ -39,25 +39,39 @@ Pemberi lisensi tidak dapat mencabut kebebasan di atas selama Anda mematuhi kete
 
 ## 2. Klausul Penggunaan Data Kompetisi Kaggle (Competition Rules)
 
-Sesuai dengan aturan resmi kompetisi (*Competition Rules*), klausul utama yang berlaku:
+Berikut adalah teks verbatim dari bagian **Data Access and Use** pada aturan kompetisi BirdCLEF+ 2026:
 
-### 2.1 Penggunaan yang Diizinkan
+> **DATA ACCESS AND USE:**
+>
+> "Unless otherwise specified in the Competition Specific Terms above, you may access and use the Competition Data for non-commercial purposes only. You may access and use the Competition Data specifically including:
+>
+> (a) participating in the Competition;
+> (b) participating in Kaggle.com forums; and
+> (c) academic research and education.
+>
+> You agree to use reasonable and suitable measures to prevent persons who have not agreed to these Rules from gaining access to the Competition Data. You agree not to transmit, duplicate, publish, redistribute, or otherwise provide the Competition Data to any party not participating in the Competition.
+>
+> You agree to notify Kaggle immediately upon learning of any potential, suspected, or actual unauthorized access, transmission, or copying of the Competition Data and will cooperate with Kaggle and the Competition Sponsor in mitigating any resulting harm.
+>
+> The Competition Sponsor may disqualify you if you use the Competition Data in a manner not permitted by the Competition Website, these Rules, or the terms of the Creative Commons license. If these Rules conflict with such license terms, these Rules will govern."
 
-> "You may access and use the Competition Data for **non-commercial purposes only**, including for participating in the Competition and on Kaggle.com forums, and for **academic research and education**."
+### 2.1 Ringkasan Klausul Utama
 
-### 2.2 Larangan Redistribusi
+| # | Aspek | Ketentuan |
+|---|---|---|
+| a | **Penggunaan yang Diizinkan** | Non-komersial saja, termasuk partisipasi kompetisi, forum Kaggle, riset akademik, dan pendidikan |
+| b | **Larangan Redistribusi** | Dilarang mentransmisikan, menduplikasi, mempublikasikan, meredistribusikan, atau menyebarkan data kepada pihak yang belum menyetujui aturan |
+| c | **Keamanan Data** | Peserta wajib mengambil langkah wajar untuk mencegah akses oleh pihak yang belum menyetujui aturan |
+| d | **Kewajiban Pemberitahuan** | Wajib memberitahu Kaggle segera jika terjadi akses/transmisi/penyalinan tidak sah |
+| e | **Klausul Preseden** | Jika aturan kompetisi bertentangan dengan ketentuan lisensi CC, aturan kompetisi yang berlaku |
 
-Peserta dilarang:
-- Memperjualbelikan atau menyebarluaskan dataset kompetisi kepada pihak ketiga tanpa izin tertulis dari penyelenggara.
-- Mempublikasikan ulang audio mentah (*raw audio files*) secara publik di repositori Git atau platform lain.
+### 2.2 Lisensi Solusi Pemenang
 
-### 2.3 Kewajiban Pemberitahuan
+Pemenang hadiah (total prize pool \$50,000) diwajibkan melisensikan solusi kemenangan mereka di bawah lisensi *open-source* yang disetujui OSI (misal Apache 2.0 atau MIT) dan menyediakan kode reproduksi lengkap.
 
-Peserta wajib memberitahukan Kaggle segera apabila terjadi akses atau transmisi tidak sah terhadap Competition Data, dan bekerja sama untuk memperbaiki masalah tersebut.
+### 2.3 Data Eksternal
 
-### 2.4 Lisensi Solusi Pemenang
-
-Pemenang hadiah diwajibkan memberikan lisensi *open-source* untuk solusi kemenangan mereka, kecuali dalam kasus di mana data masukan atau model pra-latih menggunakan lisensi yang tidak kompatibel.
+Data eksternal diizinkan **hanya jika tersedia secara publik dan dapat diakses secara setara oleh semua peserta tanpa biaya**, serta diumumkan di forum kompetisi.
 
 ---
 
