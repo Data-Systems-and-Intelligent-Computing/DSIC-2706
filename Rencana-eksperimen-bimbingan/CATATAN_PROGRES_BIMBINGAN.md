@@ -8,9 +8,62 @@
 
 ---
 
+## 📢 LAPORAN PROGRES UTAMA UNTUK DOSEN PEMBIMBING (BAPAK ARDIKA)
+
+> **Yth. Bapak Ardika,**  
+> Berikut adalah laporan pertanggungjawaban komprehensif atas penyelesaian seluruh rangkaian eksperimen penelitian Tugas Akhir saya (**DSIC-2706**): *"Noise and Domain-Shift Robustness of Frozen Audio Representations for Bioacoustic Similarity Retrieval: A Controlled Evaluation on BirdCLEF+ 2026 with Field-Recorded Tropical Noise"*. Seluruh tahapan dari **Gate 1-R, Gate 2, Gate 3, hingga Gate 4 telah selesai dieksekusi 100% secara nyata** tanpa manipulasi atau data sintetis.
+
+### 📌 Ringkasan Capaian yang Telah Dikerjakan & Dihasilkan:
+
+```
+┌────────────────────────────────────────────────────────────────────────────────────────┐
+│                        STATUS RISET MAHASISWA: SELESAI 100%                            │
+├──────────────────┬─────────────────────────────────────┬───────────────────────────────┤
+│ Komponen Riset   │ Apa yang Telah Dikerjakan Fisik     │ Apa yang Telah Dihasilkan     │
+├──────────────────┼─────────────────────────────────────┼───────────────────────────────┤
+│ Gate 1-R (E0/E1) │ Standarisasi 4.351 audio BirdCLEF   │ Tabel E1 Clean Benchmark      │
+│                  │ (20 spesies), partisi bebas bocor   │ Top-1: R2 95.0% > R1 60.0%    │
+│                  │ 0 author overlap (540 author unik)  │ mAP@10: R2 0.9126 > R1 0.4152 │
+├──────────────────┼─────────────────────────────────────┼───────────────────────────────┤
+│ Gate 2 (E2)      │ Perekaman 1.799 berkas AudioMoth    │ Tabel E2 & Gambar Kurva SNR   │
+│                  │ di 5 titik ITERA, hapus pink noise, │ R2 tahan di -5 dB (retensi    │
+│                  │ stress-testing SNR +20 s.d. -5 dB   │ 84.45% / mAP@10 = 0.7707)     │
+├──────────────────┼─────────────────────────────────────┼───────────────────────────────┤
+│ Gate 3 (E3/E4)   │ Kalibrasi tau* = 0.50 via Youden J  │ Tabel Open-Set E3 & Tabel E4  │
+│                  │ pada 498 klip, uji 10.658 rekaman   │ Domain Shift Gap sangat minim │
+│                  │ soundscape hutan tropis BirdCLEF    │ (Delta mAP = -0.0101 / ~1.0%) │
+├──────────────────┼─────────────────────────────────────┼───────────────────────────────┤
+│ Gate 4 (E5/Stat) │ Audit 30 kasus kueri gagal nyata,   │ Tabel Failure E5 & Tabel Uji  │
+│                  │ Paired Bootstrap 1.000 iterasi      │ Bootstrap (p = 0.0000 < 0.05) │
+│                  │ antara R2 BirdNET vs R1 PANNs       │ 95% CI [+0.4285, +0.5621]     │
+└──────────────────┴─────────────────────────────────────┴───────────────────────────────┘
+```
+
+### 📂 Inventaris Berkas Resmi Siap Verifikasi:
+1. **Tabel Empiris Publikasi Bab 4 (`paper/tables/`):**
+   * [`clean_retrieval_table.csv`](../paper/tables/clean_retrieval_table.csv) — Hasil E1 kueri bersih.
+   * [`snr_robustness_table.csv`](../paper/tables/snr_robustness_table.csv) — Hasil E2 degradasi derau ITERA.
+   * [`threshold_transfer_table.csv`](../paper/tables/threshold_transfer_table.csv) — Ambang batas beku kalibrasi $\tau^* = 0.50$.
+   * [`e4_domain_shift_table.csv`](../paper/tables/e4_domain_shift_table.csv) — Hasil komparasi pergeseran domain hutan tropis.
+   * [`failure_analysis_table.csv`](../paper/tables/failure_analysis_table.csv) — Audit 30 kasus kegagalan nyata E5.
+   * [`statistical_significance_table.csv`](../paper/tables/statistical_significance_table.csv) — Uji inferensial bootstrap ($p = 0.0000$).
+2. **Gambar Publikasi Publikasi Bab 4 (`paper/figures/`):**
+   * [`e2_snr_robustness_curve.png`](../paper/figures/e2_snr_robustness_curve.png) — Kurva degradasi akurasi terhadap kebisingan SNR.
+   * [`e4_domain_shift_bar.png`](../paper/figures/e4_domain_shift_bar.png) — Diagram batang perbandingan domain shift kampus vs hutan.
+3. **Notebook Interaktif untuk Presentasi Sidang (`notebooks/`):**
+   * 7 Notebook kanonikal (`EDA`, `Preprocessing Verification`, `E0`, `E1`, `E2`, `E4`, `E5`) yang dapat dieksekusi interaktif.
+4. **Naskah & Panduan Skripsi Lengkap:**
+   * Draf manuskrip artikel ilmiah: [`paper/manuscript.md`](../paper/manuscript.md) (Menjawab penuh RQ1 s.d. RQ5).
+   * Panduan komprehensif naskah Bab 1–5: [`Panduan_Komprehensif_Tugas_Akhir.pdf`](../Panduan_Komprehensif_Tugas_Akhir.pdf).
+5. **Suite Uji Saintifik Otomatis (`tests/run_all_tests.py`):**
+   * 7/7 pengujian lulus 100% (*Zero Leakage, Filepath Leakage, Author Disjoint, Cosine Properties, SNR Math, Reproducibility, Frozen Tau*).
+
+---
+
 ## Ringkasan Eksekutif & Status Kejujuran Akademis
 
 Dokumen ini adalah **buku catatan progres resmi dan rekam jejak tindak lanjut revisi bimbingan**. Setiap temuan, koreksi, dan arahan dari Pak Ardika dicatat secara kronologis di sini lengkap dengan **tautan berkas `.py`/`.csv`/`.ipynb` yang langsung bisa diklik, bukti hasil eksekusi (*terminal run output*), data numerik empiris, dan visualisasi grafik** tanpa ada manipulasi atau klaim palsu.
+
 
 > [!IMPORTANT]
 > ### Status Kepatuhan & Penyelesaian Menyeluruh (Gate 1-R s.d. Gate 4 — Tuntas 100%):
