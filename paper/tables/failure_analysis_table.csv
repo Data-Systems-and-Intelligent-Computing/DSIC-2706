@@ -1,0 +1,31 @@
+case_id,failure_type,representation,query_id,species_key,recordist,condition,similarity_score,threshold_tau,primary_cause,diagnosis_and_threat
+FAIL_001,False_Negative,R2,XC50033,greant1,Bernabe Lopez-Lanus,SNR_-5dB,0.6237,0.7062,low_snr_masking,Energi derau aditif pada SNR -5 dB mengaburkan struktur formulan vokal greant1.
+FAIL_002,False_Negative,R2,XC616309,greant1,Fabrice Schmitt,SNR_-5dB,0.6369,0.7062,low_snr_masking,Energi derau aditif pada SNR -5 dB mengaburkan struktur formulan vokal greant1.
+FAIL_003,False_Negative,R2,XC118887,greant1,GABRIEL LEITE,SNR_-5dB,0.6666,0.7062,low_snr_masking,Energi derau aditif pada SNR -5 dB mengaburkan struktur formulan vokal greant1.
+FAIL_004,False_Negative,R2,XC549933,squcuc1,Bernabe Lopez-Lanus,SNR_-5dB,0.669,0.7062,low_snr_masking,Energi derau aditif pada SNR -5 dB mengaburkan struktur formulan vokal squcuc1.
+FAIL_005,False_Negative,R2,XC372463,roahaw,Kent Livezey,SNR_-5dB,0.6371,0.7062,low_snr_masking,Energi derau aditif pada SNR -5 dB mengaburkan struktur formulan vokal roahaw.
+FAIL_006,False_Negative,R2,XC288830,roahaw,Diego Cueva,SNR_-5dB,0.6938,0.7062,low_snr_masking,Energi derau aditif pada SNR -5 dB mengaburkan struktur formulan vokal roahaw.
+FAIL_007,False_Negative,R2,XC680705,roahaw,GABRIEL LEITE,SNR_-5dB,0.7152,0.7062,low_snr_masking,Energi derau aditif pada SNR -5 dB mengaburkan struktur formulan vokal roahaw.
+FAIL_008,False_Negative,R2,XC235156,roahaw,cesar villamil,SNR_-5dB,0.6639,0.7062,low_snr_masking,Energi derau aditif pada SNR -5 dB mengaburkan struktur formulan vokal roahaw.
+FAIL_009,False_Negative,R2,XC19527,roahaw,Niels Krabbe,SNR_-5dB,0.597,0.7062,low_snr_masking,Energi derau aditif pada SNR -5 dB mengaburkan struktur formulan vokal roahaw.
+FAIL_010,False_Negative,R2,XC447808,trsowl,Kent Livezey,SNR_-5dB,0.7035,0.7062,low_snr_masking,Energi derau aditif pada SNR -5 dB mengaburkan struktur formulan vokal trsowl.
+FAIL_011,False_Negative,R2,XC619067,trsowl,Capovilla Pablo H,SNR_-5dB,0.6669,0.7062,low_snr_masking,Energi derau aditif pada SNR -5 dB mengaburkan struktur formulan vokal trsowl.
+FAIL_012,False_Negative,R2,XC756928,banana,Igor Lazo,SNR_-5dB,0.6837,0.7062,low_snr_masking,Energi derau aditif pada SNR -5 dB mengaburkan struktur formulan vokal banana.
+FAIL_013,False_Negative,R2,XC247112,banana,Joe Klaiber,SNR_-5dB,0.6723,0.7062,low_snr_masking,Energi derau aditif pada SNR -5 dB mengaburkan struktur formulan vokal banana.
+FAIL_014,False_Negative,R2,XC169559,banana,GABRIEL LEITE,SNR_-5dB,0.6945,0.7062,low_snr_masking,Energi derau aditif pada SNR -5 dB mengaburkan struktur formulan vokal banana.
+FAIL_015,False_Negative,R2,XC924739,banana,Sue Riffe,SNR_-5dB,0.6506,0.7062,low_snr_masking,Energi derau aditif pada SNR -5 dB mengaburkan struktur formulan vokal banana.
+FAIL_016,False_Negative,R2,XC541448,banana,Cristhian David Gaitán García,SNR_-5dB,0.6739,0.7062,low_snr_masking,Energi derau aditif pada SNR -5 dB mengaburkan struktur formulan vokal banana.
+FAIL_017,False_Negative,R2,XC861228,soulap1,Paulo Alves,SNR_-5dB,0.5857,0.7062,low_snr_masking,Energi derau aditif pada SNR -5 dB mengaburkan struktur formulan vokal soulap1.
+FAIL_018,False_Negative,R2,XC701948,pabspi1,Jacob Wijpkema,SNR_-5dB,0.6396,0.7062,low_snr_masking,Energi derau aditif pada SNR -5 dB mengaburkan struktur formulan vokal pabspi1.
+FAIL_019,False_Negative,R2,XC236174,pabspi1,Niels Krabbe,SNR_-5dB,0.7656,0.7062,low_snr_masking,Energi derau aditif pada SNR -5 dB mengaburkan struktur formulan vokal pabspi1.
+FAIL_020,False_Negative,R2,XC361117,yeofly1,Niels Krabbe,SNR_-5dB,0.6816,0.7062,low_snr_masking,Energi derau aditif pada SNR -5 dB mengaburkan struktur formulan vokal yeofly1.
+FAIL_021,False_Negative,R2,XC250157,yeofly1,Niels Krabbe,SNR_-5dB,0.7109,0.7062,low_snr_masking,Energi derau aditif pada SNR -5 dB mengaburkan struktur formulan vokal yeofly1.
+FAIL_022,False_Negative,R2,XC187210,yeofly1,Marcelo O. Barbosa,SNR_-5dB,0.7046,0.7062,low_snr_masking,Energi derau aditif pada SNR -5 dB mengaburkan struktur formulan vokal yeofly1.
+FAIL_023,False_Negative,R2,XC225326,compau,Joe Klaiber,SNR_-5dB,0.6461,0.7062,low_snr_masking,Energi derau aditif pada SNR -5 dB mengaburkan struktur formulan vokal compau.
+FAIL_024,False_Negative,R2,XC630102,compau,Ana Carla Aquino,SNR_-5dB,0.6723,0.7062,low_snr_masking,Energi derau aditif pada SNR -5 dB mengaburkan struktur formulan vokal compau.
+FAIL_025,False_Negative,R2,XC427477,compau,Caio Brito,SNR_-5dB,0.7043,0.7062,low_snr_masking,Energi derau aditif pada SNR -5 dB mengaburkan struktur formulan vokal compau.
+FAIL_026,False_Negative,R2,XC732448,barant1,Jacob Wijpkema,SNR_-5dB,0.6122,0.7062,low_snr_masking,Energi derau aditif pada SNR -5 dB mengaburkan struktur formulan vokal barant1.
+FAIL_027,False_Negative,R2,XC1050422,pirfly1,Mateus Gonçalves Santos,SNR_-5dB,0.6708,0.7062,low_snr_masking,Energi derau aditif pada SNR -5 dB mengaburkan struktur formulan vokal pirfly1.
+FAIL_028,False_Negative,R2,XC249521,pirfly1,Niels Krabbe,SNR_-5dB,0.7043,0.7062,low_snr_masking,Energi derau aditif pada SNR -5 dB mengaburkan struktur formulan vokal pirfly1.
+FAIL_029,False_Negative,R2,XC174648,linwoo1,Douglas Meyer,SNR_-5dB,0.5683,0.7062,low_snr_masking,Energi derau aditif pada SNR -5 dB mengaburkan struktur formulan vokal linwoo1.
+FAIL_030,False_Negative,R2,XC688346,linwoo1,Andres Felipe Espinosa,SNR_-5dB,0.6342,0.7062,low_snr_masking,Energi derau aditif pada SNR -5 dB mengaburkan struktur formulan vokal linwoo1.

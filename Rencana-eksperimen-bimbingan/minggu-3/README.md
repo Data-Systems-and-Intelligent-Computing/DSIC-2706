@@ -1,7 +1,7 @@
 # Rencana Eksperimen — Minggu 3 (GATE 3)
 **Fokus:** Open-Set Rejection, Kalibrasi Ambang Batas ($\tau$), dan Rencana Pengujian Lapangan  
 **Target Garis Waktu:** Minggu Ke-3  
-**Status Eksekusi:** **BELUM DILAKUKAN (TAHAP MENDATANG / TERJADWAL)**  
+**Status Eksekusi:** **SELESAI 100%**  
 
 ---
 
