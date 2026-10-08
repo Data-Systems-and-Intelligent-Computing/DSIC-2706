@@ -19,7 +19,7 @@ Kedua metode disimpan sebagai kolom `trigger_method` pada `data/manifests/itera_
 ## 4. Lokasi
 Tipe akustik yang diwakili (boleh lebih dari tiga titik fisik):
 
-1. **Perairan / Embung E** — ambien terbuka, angin, aktivitas tepi air.
+1. **Perairan / Embung F** — ambien terbuka, angin, aktivitas tepi air.
 2. **Vegetasi / Kebun Raya** — kanopi, serangga siang, gemerisik daun.
 3. **Antropogenik** — Masjid At-Tanwir, Gedung F, sekitar GKU 1 (kendaraan, HVAC, aktivitas manusia).
 

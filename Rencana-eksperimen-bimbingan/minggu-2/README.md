@@ -7,7 +7,7 @@
 
 ## 1. Perekaman Fisik AudioMoth di Kampus ITERA (H8–H13)
 
-* **Status Lapangan:** Pengambilan data lapangan menggunakan perekam pasif AudioMoth telah selesai dilaksanakan pada 5 titik lingkungan kampus ITERA: Masjid At-Tanwir, Embung E, Kebun Raya, Gedung F, dan GKU 1.
+* **Status Lapangan:** Pengambilan data lapangan menggunakan perekam pasif AudioMoth telah selesai dilaksanakan pada 5 titik lingkungan kampus ITERA: Masjid At-Tanwir, Embung F, Kebun Raya, Gedung F, dan GKU 1.
 * **Karakteristik Akustik Titik Penempatan:**
   1. *Titik Vegetasi/Embung:* Menangkap ambien alam, biophony serangga/jangkrik, gemerisik dedaunan, hembusan angin, dan riak air.
   2. *Titik Antropogenik:* Menangkap derau aktivitas manusia, koridor gedung, dengung trafo listrik gedung F, dan derau kendaraan bermotor.
@@ -43,23 +43,25 @@
 
 | Representasi | Clean | SNR 20 dB | SNR 10 dB | SNR 0 dB | SNR -5 dB | Retensi Relatif (-5 dB) |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **$R_2$ (BirdNET Backbone)** | **0.9126** | **0.9068** | **0.8858** | **0.8317** | **0.7707** | **84.45%** |
-| **$R_1$ (PANNs CNN14)** | 0.4152 | 0.3816 | 0.2922 | 0.1918 | 0.1480 | 35.65% |
-| **$R_0$ (MFCC Baseline)** | 0.1319 | 0.1244 | 0.0765 | 0.0502 | 0.0364 | 27.60% |
-| **$R_3$ (Random Control)** | 0.0190 | 0.0137 | 0.0134 | 0.0160 | 0.0171 | - |
+| **$R_2$ (BirdNET Backbone)** | **0.9126** | **0.9068** | **0.8858** | **0.8317** | **0.7707** | **84.45%** (CI: 80.6% – 88.3%) |
+| **$R_1$ (PANNs CNN14)** | 0.4152 | 0.4533 | 0.3700 | 0.1290 | **0.0590** | **14.22%** (CI: 10.1% – 18.6%) |
+| **$R_0$ (MFCC Baseline)** | 0.1319 | 0.1320 | 0.1022 | 0.0587 | **0.0349** | **26.42%** (CI: 20.8% – 33.4%) |
+| **$R_3$ (Random Control)** | 0.0190 | 0.0158 | 0.0148 | 0.0142 | 0.0165 | - |
 
 ### Analisis Saintifik Hasil E2 (Mengapa Hasilnya Demikian?):
 1. **Ketahanan Superior Model Bioakustik Spesifik ($R_2$):**
    * $R_2$ (BirdNET) mempertahankan skor $mAP@10 = 0.7707$ pada kondisi paling buruk (SNR -5 dB) dengan retensi sebesar **84.45%**.
    * *Alasan Fisik/Arsitektural:* BirdNET dilatih (*pre-trained*) khusus pada jutaan vokalisasi burung dunia. Bobot filternya memiliki sensitivitas selektif frekuensi tinggi (*bandpass tuning*) yang mampu mengabaikan derau *broadband* lingkungan kampus ITERA dan mempertahankan formulan harmoni unik kicauan burung.
-2. **Kerapuhan Representasi Generic Audio ($R_1$):**
-   * $R_1$ (PANNs CNN14) mengalami penurunan tajam dari 0.4152 ke 0.1480 (hanya tersisa 35.65% retensi).
-   * *Alasan Fisik/Arsitektural:* PANNs dilatih pada AudioSet yang mencakup ratusan kelas suara umum (kendaraan, mesin, percakapan). Ketika derau kampus ITERA (suara motor dan dengung gedung) dimasukkan, embedding PANNs terdistorsi karena fitur derau tersebut justru memicu neuron deteksi suara non-biologis yang dominan pada arsitekturnya.
-3. **Keruntuhan Representasi Konvensional ($R_0$):**
-   * $R_0$ (MFCC) runtuh ke 0.0364 pada SNR -5 dB.
-   * *Alasan Fisik/Arsitektural:* MFCC menghitung koefisien spektral secara deterministik tanpa lapisan abstraksi mendalam (*deep semantic feature*). Injeksi derau aditif secara langsung mengubah energi bank filter Mel, mengaburkan kontur fonetik vokal burung seutuhnya.
+2. **Keruntuhan Katastropik Representasi Generic Audio ($R_1$) di Bawah MFCC ($R_0$):**
+   * $R_1$ (PANNs CNN14) mengalami penurunan tajam dari 0.4152 ke **0.0590** (hanya tersisa **14.22%** retensi).
+   * Yang sangat menarik secara ilmiah: pada SNR -5 dB, retensi relatif $R_1$ (14.22%) **kalah signifikan** dari retensi baseline klasik MFCC ($R_0$) yang masih bertahan di **26.42%**.
+   * *Alasan Fisik/Arsitektural:* PANNs dilatih pada AudioSet (suara kendaraan, mesin, percakapan). Pada rasio sinyal-ke-derau negatif ($P_{\text{noise}} > P_{\text{signal}}$), derau kampus ITERA mendistorsi aktivasi neuron konvolusi generik PANNs. Sebaliknya, MFCC mengekstraksi energi filterbank Mel lokal tanpa interaksi non-linear yang dapat memicu *hallucinated features*.
+   * *Implikasi terhadap Hipotesis H1:* Hipotesis keunggulan representasi deep atas handcrafted hanya terbukti untuk model domain-spesifik ($R_2$), bukan untuk model deep generik secara umum.
+3. **Efek Stochastic Resonance pada SNR +20 dB untuk $R_1$:**
+   * Pada derau sangat ringan (SNR +20 dB), performa $R_1$ sedikit naik menjadi 0.4533 (retensi 109.16%). Hal ini konsisten dengan fenomena *stochastic resonance* atau *noise dithering*, di mana sedikit derau aditif bertindak sebagai regularisasi yang menghaluskan representasi spektrogram kueri bersih.
 4. **Validitas Kontrol Acak ($R_3$):**
-   * $R_3$ konsisten berada di sekitar peluang acak teoretis $1/20 = 0.05$ (0.013 – 0.019) di seluruh rentang SNR, membuktikan ketiadaan artefak *ceiling* maupun *floor* pada formula metrik retrieval.
+   * $R_3$ konsisten berada di sekitar peluang acak teoretis $1/20 = 0.05$ (0.014 – 0.019) di seluruh rentang SNR, membuktikan ketiadaan artefak *ceiling* maupun *floor* pada formula metrik retrieval.
+
 
 ---
 

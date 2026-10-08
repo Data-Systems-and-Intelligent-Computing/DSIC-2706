@@ -100,4 +100,5 @@ Penelitian bioakustik konvensional biasanya melatih model *Machine Learning* (se
 2. **Evaluasi Zero-Shot Retrieval:** Alih-alih melakukan klasifikasi kaku, Anda menggunakan pendekatan *Retrieval* (sistem pencarian kemiripan). Sistem ini fleksibel: jika ada burung baru, cukup tambahkan suaranya ke Galeri tanpa perlu melatih ulang model AI.
 3. **Open-Set Rejection (Kalibrasi $\tau^*$ - E3):** Sistem memiliki kemampuan menolak (*reject*) sinyal non-burung menggunakan ambang batas beku $\tau^* = 0.50$ via Youden's J, meminimalisir deteksi palsu (*False Positive*).
 4. **Uji Validitas Domain Shift Hutan Tropis (E4):** Menguji model pada ribuan *soundscape* bentang alam asli BirdCLEF dan membuktikan secara empiris bahwa BirdNET bersifat *domain-invariant* dengan kesenjangan performa sangat minim ($\Delta mAP@10 = -0.0101$).
-5. **Uji Signifikansi Inferensial (Bootstrap Resampling):** Keunggulan model bioakustik BirdNET atas model generik dibuktikan secara inferensial melalui 1.000 iterasi bootstrap ($p = 0.0000 < 0.05$).
+5. **Uji Signifikansi Inferensial (Bootstrap Resampling):** Keunggulan model bioakustik BirdNET atas model generik dibuktikan secara inferensial melalui 1.000 iterasi bootstrap ($p < 0.001$, 95% CI $[+0.4504, +0.5473]$) serta retensi superior pada derau ekstrem ($p < 0.001$).
+

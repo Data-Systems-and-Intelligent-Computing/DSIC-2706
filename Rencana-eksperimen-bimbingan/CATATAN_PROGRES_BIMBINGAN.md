@@ -73,7 +73,7 @@ Dokumen ini adalah **buku catatan progres resmi dan rekam jejak tindak lanjut re
 >    * **Partisi Bebas Bocor (*Strict Author-Disjoint* — H3):** [`data/manifests/dataset_split.csv`](../data/manifests/dataset_split.csv) membagi 3.653 galeri (377 author), 200 kueri bersih (68 author), dan 498 kalibrasi (95 author). Terbukti **0 overlap ID rekaman, 0 overlap path file, dan 0 overlap author/perekam** (540 author unik global, 100% disjoint).
 >    * **Eksekusi E0 & E1:** Lulus penuh pada audio BirdCLEF nyata: $R_2$ (BirdNET: **95.0%** / mAP **0.9126**) > $R_1$ (PANNs: **60.0%** / mAP **0.4152**) > $R_0$ (MFCC: **27.5%** / mAP **0.1319**) >> $R_3$ (Random: **6.5%** / mAP **0.0190**).
 > 2. **Gate 2 (Minggu 2) — Tuntas 100%:**
->    * **Akuisisi Derau Lapangan AudioMoth ITERA:** Terkumpul **1.799 berkas audio WAV fisik** dari 5 lokasi kampus ITERA (Masjid At-Tanwir, Embung E, Kebun Raya, Gedung F, GKU 1).
+>    * **Akuisisi Derau Lapangan AudioMoth ITERA:** Terkumpul **1.799 berkas audio WAV fisik** dari 5 lokasi kampus ITERA (Masjid At-Tanwir, Embung F, Kebun Raya, Gedung F, GKU 1).
 >    * **Manifes Kriptografis SHA-256:** [`data/manifests/itera_noise_manifest.csv`](../data/manifests/itera_noise_manifest.csv) memuat 1.799 berkas lengkap dengan checksum SHA-256 dan verifikasi `verified_bird_free: True`.
 >    * **Pembersihan Pink Noise (DEC-09):** Fungsi fallback derau sintetis dihapus total dari `src/mix_noise.py`.
 >    * **Eksekusi E2 (Paired SNR Stress-Testing):** Pengujian kueri berpasangan pada grid SNR (+20 dB, +10 dB, 0 dB, -5 dB). $R_2$ mempertahankan retensi **84.45%** ($mAP = 0.7707$) pada kondisi ekstrem -5 dB.
@@ -131,17 +131,18 @@ Semua nama berkas di bawah ini berupa **tautan langsung** yang dapat diklik di V
 ---
 
 ### 2. BUKTI GATE 2: Perekaman Fisik AudioMoth & Hasil E2 Paired Noise Degradation
-* **Koleksi Bank Derau:** 1.799 berkas audio WAV AudioMoth dari 5 titik lingkungan kampus ITERA terdaftar di [`data/manifests/itera_noise_manifest.csv`](../data/manifests/itera_noise_manifest.csv).
+* **Koleksi Bank Derau:** 1.799 berkas audio WAV AudioMoth dari 5 titik lingkungan kampus ITERA terdaftar di [`data/manifests/itera_noise_manifest.csv`](../data/manifests/itera_noise_manifest.csv) dengan trigger frequency dan amplitude (memenuhi DEC-12).
 * **Penghapusan Fallback Sintetis:** `src/mix_noise.py` bebas dari pink noise; memicu `FileNotFoundError` fatal jika data fisik kosong.
 * **Tabel Hasil Empiris E2 Degradasi Derau ([`paper/tables/snr_robustness_table.csv`](../paper/tables/snr_robustness_table.csv)):**
 
 | Representasi | Clean | SNR 20 dB | SNR 10 dB | SNR 0 dB | SNR -5 dB | Retensi Relatif (-5 dB) |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **$R_2$ (BirdNET Backbone)** | **0.9126** | **0.9068** | **0.8858** | **0.8317** | **0.7707** | **84.45%** |
-| **$R_1$ (PANNs CNN14)** | 0.4152 | 0.3816 | 0.2922 | 0.1918 | 0.1480 | 35.65% |
-| **$R_0$ (MFCC Baseline)** | 0.1319 | 0.1244 | 0.0765 | 0.0502 | 0.0364 | 27.60% |
-| **$R_3$ (Random Control)** | 0.0190 | 0.0137 | 0.0134 | 0.0160 | 0.0171 | - |
+| **$R_2$ (BirdNET Backbone)** | **0.9126** | **0.9068** | **0.8858** | **0.8317** | **0.7707** | **84.45%** (CI: 80.6% – 88.3%) |
+| **$R_1$ (PANNs CNN14)** | 0.4152 | 0.4533 | 0.3700 | 0.1290 | **0.0590** | **14.22%** (CI: 10.1% – 18.6%) |
+| **$R_0$ (MFCC Baseline)** | 0.1319 | 0.1320 | 0.1022 | 0.0587 | **0.0349** | **26.42%** (CI: 20.8% – 33.4%) |
+| **$R_3$ (Random Control)** | 0.0190 | 0.0158 | 0.0148 | 0.0142 | 0.0165 | - |
 
+*Analisis Kritis:* Pada derau ekstrem SNR -5 dB, retensi PANNs ($R_1$, 14.22%) anjlok drastis dan kalah dibandingkan MFCC ($R_0$, 26.42%). Hal ini menunjukkan bahwa hipotesis H1 hanya berlaku untuk representasi spesifik bioakustik ($R_2$), bukan model deep generik. Pada SNR +20 dB, $R_1$ mengalami stochastic resonance dengan retensi 109.16%.  
 *Visualisasi kurva degradasi publikasi: [`paper/figures/e2_snr_robustness_curve.png`](../paper/figures/e2_snr_robustness_curve.png).*
 
 ---
@@ -166,13 +167,18 @@ Semua nama berkas di bawah ini berupa **tautan langsung** yang dapat diklik di V
 
 ### 4. BUKTI GATE 4: Audit Kegagalan E5 & Hasil Uji Statistik Inferensial Bootstrap
 * **Audit Kegagalan Nyata E5 ([`paper/tables/failure_analysis_table.csv`](../paper/tables/failure_analysis_table.csv)):**
-  * Membedah 30 kasus kueri gagal nyata: *Low SNR Masking* (66.67%), *Acoustic Feature Overlap* (20.00%), dan *Inter-Species Confusion / Short Call* (13.33%).
+  * Membedah 30 kasus kueri gagal nyata yang ditelusuri dari log mentah `results/raw/`.
   * Demonstrasi interaktif: [`notebooks/E5_Failure_Analysis.ipynb`](../notebooks/E5_Failure_Analysis.ipynb).
 * **Hasil Uji Statistik Inferensial (Paired Bootstrap 1.000 Iterasi — [`paper/tables/statistical_significance_table.csv`](../paper/tables/statistical_significance_table.csv)):**
 
-| Komparasi Model | Rata-Rata Selisih ($\Delta mAP@10$) | 95% Confidence Interval (CI) | Nilai Empiris $p$-value | Kesimpulan Signifikansi ($\alpha = 0.05$) |
-| :--- | :---: | :---: | :---: | :---: |
-| **$R_2$ (BirdNET) vs $R_1$ (PANNs)** | **+0.4974** | **[+0.4285, +0.5621]** | **$p = 0.0000$** | **Signifikan Mutlak ($H_0$ Ditolak)** |
+| Pengujian | Komparasi Model | Rata-Rata Selisih | 95% Confidence Interval (CI) | $p$-value Empiris | Kesimpulan Hipotesis |
+| :--- | :--- | :---: | :---: | :---: | :---: |
+| **Clean mAP@10** | **$R_2$ (BirdNET) vs $R_1$ (PANNs)** | **+0.4974** | **[+0.4504, +0.5473]** | **$p < 0.001$** | $H_0$ Ditolak (Signifikan) |
+| **Clean mAP@10** | **$R_2$ (BirdNET) vs $R_0$ (MFCC)** | **+0.7807** | **[+0.7423, +0.8183]** | **$p < 0.001$** | $H_0$ Ditolak (Signifikan) |
+| **Clean mAP@10** | **$R_1$ (PANNs) vs $R_0$ (MFCC)** | **+0.2833** | **[+0.2351, +0.3308]** | **$p < 0.001$** | $H_0$ Ditolak (Signifikan) |
+| **Retensi SNR -5 dB** | **$R_2$ vs $R_1$** | **+0.7020** | **[+0.6402, +0.7571]** | **$p < 0.001$** | $H_0$ Ditolak (Signifikan) |
+| **Retensi SNR -5 dB** | **$R_0$ vs $R_1$** | **+0.1223** | **[+0.0581, +0.1994]** | **$p < 0.001$** | $H_0$ Ditolak (Signifikan) |
+
 
 ---
 

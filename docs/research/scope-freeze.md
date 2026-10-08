@@ -35,11 +35,21 @@ Daftar resmi **20 spesies burung target** dengan total **4.351 rekaman audio** t
 | 20 | `trokin` | *Tyrannus melancholicus* | Tropical Kingbird | 220 | 105 | 4.0 |
 | **Total** | **20 Spesies** | | | **5.426 Klip Kandidat** | **629 Author Global** | **4.0** |
 
+> [!NOTE]
+> **Penjelasan Selisih Klip Kandidat (5.426) vs Korpus Aktif (4.351):**  
+> Selisih sebanyak 1.075 klip ($5.426 - 4.351$) tersaring keluar secara objektif melalui aturan kurasi §11.3 dan integritas partisi:
+> 1. Eliminasi rekaman dengan metadata `author == 'Unknown'` atau kosong (mencegah kebocoran semu pada author-disjoint split sesuai H2.1).
+> 2. Penerapan filter kualitas rekaman *rating* $\ge 3.0$.
+> 3. Eliminasi rekaman audio berdurasi rusak/ekstrem (< 1 detik atau berkas tidak terbaca) saat prapemrosesan energi RMS.
+> 
+> Dengan demikian, tepat **4.351 rekaman audio** masuk ke partisi aktif bebas bocor: **3.653 Galeri + 200 Kueri + 498 Kalibrasi = 4.351 Rekaman**.
+
 #### Distribusi Partisi Dataset Split (`data/manifests/dataset_split.csv`):
 - **Galeri (*Gallery Bank*):** 3.653 rekaman (377 author independen).
 - **Kueri Bersih (*Query Clean*):** Tepat 200 rekaman (20 spesies x 10 kueri per spesies; 68 author independen).
 - **Subset Kalibrasi (*Calibration*):** 498 rekaman (95 author independen).
 - **Status Kebocoran Perekam:** **Strict Global Author-Disjoint** (0 author tumpang tindih antara Galeri, Kueri, maupun Kalibrasi).
+
 
 ---
 
@@ -69,7 +79,7 @@ Tingkat degradasi derau aditif dibekukan pada 5 level:
 
 ## 4. Peran Baru Rekaman AudioMoth Kampus ITERA
 Sesuai audit keputusan kedua, rekaman AudioMoth ITERA **tidak lagi menjadi validasi retrieval spesies**, melainkan murni dipersempit menjadi:
-1. **Bank derau lingkungan nyata (E2):** Segmen *background-only* bebas vokalisasi burung dari tipe lokasi perairan (Embung E), vegetasi (Kebun Raya), dan antropogenik (Masjid At-Tanwir, Gedung F, GKU 1).
+1. **Bank derau lingkungan nyata (E2):** Segmen *background-only* bebas vokalisasi burung dari tipe lokasi perairan (Embung F), vegetasi (Kebun Raya), dan antropogenik (Masjid At-Tanwir, Gedung F, GKU 1).
 2. **Sampel negatif open-set (E3):** Sebagai data uji negatif jenis *pure background*.
 
 ### Amandemen lapangan (1 Oktober 2026)

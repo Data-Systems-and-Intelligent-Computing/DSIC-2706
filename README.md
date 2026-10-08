@@ -74,11 +74,12 @@ Sesuai audit 12 September 2026 (**DEC-09**), korpus eksperimen utama dialihkan k
 - **Total Korpus Aktif**: 4.351 berkas rekaman audio.
 - **Standar Prapemrosesan**: Durasi 5,0 detik (160.000 sampel), laju sampel 32 kHz, mono, normalisasi energi RMS = 0.05.
 ### Bank Derau Aditif (E2) & Negatif Open-Set (E3): Rekaman AudioMoth ITERA
-- Perekaman *ambient* kampus ITERA dengan **AudioMoth** di lokasi perairan (Embung E), vegetasi (Kebun Raya), dan antropogenik (Masjid At-Tanwir, Gedung F, GKU 1).
+- Perekaman *ambient* kampus ITERA dengan **AudioMoth** di lokasi perairan (Embung F), vegetasi (Kebun Raya), dan antropogenik (Masjid At-Tanwir, Gedung F, GKU 1).
 - **Hanya siang hari** (DEC-11): izin kampus tidak memperbolehkan malam; syarat “2 daypart” dicabut.
-- **Dua metode perangkat** (DEC-12): **frequency trigger** dan **amplitude trigger**, agar mixer memilih berkas bertanda di manifes tanpa filter digital di kode. Frequency sudah diambil 18–30 Sep 2026; amplitude **belum**.
+- **Dua metode perangkat** (DEC-12): **frequency trigger** dan **amplitude trigger**, agar mixer memilih berkas bertanda di manifes tanpa filter digital di kode. Kedua metode telah selesai diambil di 5 lokasi kampus ITERA (1.799 berkas audio WAV fisik).
 - **Derau sintetis (pink noise) resmi ditinggalkan** per DEC-09.
-- Segmen 5 detik *bird-free* untuk E2/E3 baru sah setelah `data/manifests/itera_noise_manifest.csv` terisi (saat ini masih skema kosong).
+- Segmen 5 detik *bird-free* untuk E2/E3 telah resmi dibekukan di `data/manifests/itera_noise_manifest.csv` lengkap dengan checksum SHA-256 untuk seluruh 1.799 berkas audio.
+
 
 ### Real Soundscape Validation (E4)
 - Menggunakan subset teranotasi dari `train_soundscapes` BirdCLEF+ 2026 untuk mengukur kesenjangan (*gap*) antara derau terkontrol dan pergeseran domain nyata.
