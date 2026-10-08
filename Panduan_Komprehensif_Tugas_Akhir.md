@@ -6,17 +6,18 @@ Jangan khawatir, sangat wajar merasa kebingungan di tengah eksperimen yang kompl
 
 ## 1. Posisi Anda Saat Ini (*Progress Tracker*)
 
-Tugas Akhir ini pada dasarnya memiliki alur eksperimen yang terbagi menjadi beberapa fase. Berikut adalah status Anda hari ini:
+Tugas Akhir ini pada dasarnya memiliki alur eksperimen yang terbagi menjadi beberapa fase. Berikut adalah status Anda saat ini:
 
-- [x] **Tahap 1: Pengumpulan Data** (AudioMoth ITERA & Spesies BirdCLEF) ➔ **SELESAI**
-- [x] **Tahap 2: Registrasi Integritas Data** (Manifes SHA-256 & Metadata) ➔ **SELESAI**
-- [x] **Tahap 3 & 4 (Eksperimen E1 & E2):** Evaluasi *Clean* & Pencampuran Derau Terkontrol SNR ➔ **SELESAI HARI INI**
-- [x] **Eksperimen E3:** Kalibrasi Ambang Batas (*Open-Set Rejection*) ➔ **SELESAI HARI INI**
-- [x] **Eksperimen E5:** *Failure Analysis* (Mendiagnosis mengapa sistem salah) ➔ **SELESAI HARI INI**
-- [ ] **Eksperimen E4:** *Domain Shift* (Uji coba pada *soundscape* alam bebas seutuhnya) ➔ **BELUM**
-- [ ] **Penulisan Naskah Bab 4 & Bab 5** (Memasukkan grafik dan tabel ke draf skripsi) ➔ **BELUM**
+- [x] **Tahap 1: Pengumpulan Data** (AudioMoth ITERA & Spesies BirdCLEF+ 2026) ➔ **SELESAI**
+- [x] **Tahap 2: Registrasi Integritas Data** (Manifes SHA-256 & Metadata Bebas Bocor) ➔ **SELESAI**
+- [x] **Tahap 3 & 4 (Eksperimen E1 & E2):** Evaluasi *Clean* & Pencampuran Derau Terkontrol SNR ➔ **SELESAI**
+- [x] **Eksperimen E3:** Kalibrasi Ambang Batas (*Open-Set Rejection* $\tau^* = 0.50$) ➔ **SELESAI**
+- [x] **Eksperimen E4:** *Real Soundscape Domain Shift* (Uji coba pada *soundscape* alam bebas tropis) ➔ **SELESAI**
+- [x] **Eksperimen E5:** *Failure Analysis* (Mendiagnosis 30 kasus kegagalan nyata) ➔ **SELESAI**
+- [x] **Evaluasi Statistik Inferensial:** Paired Bootstrap Resampling 1.000 iterasi ($p = 0.0000 < 0.05$) ➔ **SELESAI**
+- [ ] **Penulisan Naskah Bab 4 & Bab 5** (Memasukkan grafik dan tabel siap pakai ke draf skripsi Word) ➔ **SIAP DIMULAI**
 
-**Kesimpulan Progress:** Secara teknis (kodingan dan komputasi eksperimen utama), Anda sudah **90% selesai**. Yang tersisa hanyalah 1 eksperimen terakhir (E4) dan mulai menulis naskah Bab 4 (Pembahasan) berdasarkan grafik-grafik yang sudah kita *generate*.
+**Kesimpulan Progress:** Secara teknis (kodingan, komputasi seluruh model AI E0 s.d. E5, pengujian statistik inferensial, pembuatan tabel dan grafik publikasi), Anda sudah **100% SELESAI**. Semua bahan empiris sudah tersedia lengkap di folder `paper/tables/` dan `paper/figures/`.
 
 ---
 
@@ -34,36 +35,40 @@ Vektor burung dari alam liar (*Query*) kemudian dicocokkan dengan vektor burung 
 
 Berikut adalah arsitektur sistem tugas akhir Anda (Diagram ini bisa Anda jadikan rujukan untuk menggambar di Bab 3 Metodologi):
 
-```mermaid
-flowchart TD
-    subgraph Data Input
-        Q[Kueri Audio Bersih\nBirdCLEF 5 detik]
-        N[Derau Lapangan\nITERA AudioMoth]
-    end
-
-    subgraph Tahap Pencampuran (Tahap 4)
-        M((Mixer SNR))
-        Q --> M
-        N --> M
-        M -->|Audio Bising\nSNR: 20, 10, 0, -5 dB| Audio[Audio Terdegradasi]
-    end
-
-    subgraph Ekstraksi Representasi (Tahap 3)
-        Audio --> E_R0[R0: MFCC Baseline]
-        Audio --> E_R1[R1: PANNs CNN14]
-        Audio --> E_R2[R2: BirdNET]
-        Audio --> E_R3[R3: Random Control]
-    end
-
-    subgraph Retrieval & Evaluasi (E1, E2, E3)
-        E_R2 -->|Vektor Kueri| Cosine[Perhitungan Cosine Similarity]
-        Gal[Galeri Suara Spesies\nBirdCLEF] --> Cosine
-        
-        Cosine --> Rank[Ranking & Evaluasi mAP@10]
-        Cosine --> OpenSet{Ambang Batas / Tau\nApakah Spesies Dikenal?}
-        OpenSet -->|Skor < Tau| Reject[Tolak / Unknown]
-        OpenSet -->|Skor >= Tau| Accept[Terima / Klasifikasi]
-    end
+```text
++-----------------------+     +------------------------+
+|  Kueri Audio Bersih   |     | Derau Fisik AudioMoth  |
+|  BirdCLEF (5 detik)   |     | Lingkungan Kampus ITERA|
++-----------+-----------+     +-----------+------------+
+            |                             |
+            +------------+   +------------+
+                         |   |
+                         v   v
+                [ Mixer Daya SNR ]
+             (Clean, 20, 10, 0, -5 dB)
+                         |
+                         v
+             [ Audio Terdegradasi ]
+                         |
+       +-----------------+-----------------+
+       |                 |                 |
+       v                 v                 v
+[ R0: MFCC 40-d ] [ R1: PANNs 2048-d ] [ R2: BirdNET 1024-d ]
+       |                 |                 |
+       +-----------------+-----------------+
+                         |
+                         v
+             [ Cosine Similarity Match ] <--- [ Galeri Suara Spesies ]
+                         |
+          +--------------+--------------+
+          |                             |
+          v                             v
+[ Ranking Top-k & mAP@10 ]    [ Ambang Batas tau* = 0.50 ]
+                              /                        \
+                    Skor >= 0.50                      Skor < 0.50
+                         |                                 |
+                         v                                 v
+                 [ Diterima / Match ]              [ Ditolak / Unknown ]
 ```
 
 ---
@@ -91,6 +96,8 @@ Jika dosen penguji bertanya: *"Apa bedanya skripsi kamu dengan penelitian klasif
 Penelitian bioakustik konvensional biasanya melatih model *Machine Learning* (seperti CNN/ResNet) menggunakan dataset yang sangat bersih. **Namun, ketika model tersebut dibawa ke alam liar (seperti di kampus ITERA), model tersebut gagal total.** Mengapa? Karena di lapangan ada suara angin, hujan lebat, motor, dan serangga (Distorsi Domain Akustik). Selain itu, model konvensional akan "memaksa" menebak spesies burung meskipun yang terekam sebenarnya hanya suara klakson motor (*Closed-set assumption*).
 
 ### Kebaruan Skripsi Anda (Novelty)
-1. **Pendekatan Degradasi Terkontrol (Paired Noise Degradation):** Anda tidak hanya menguji model, tapi Anda **menyuntikkan derau asli dari kampus ITERA** pada berbagai tingkatan yang dikontrol secara matematis (SNR -5 dB hingga 20 dB). Ini membuktikan batas kritis (*breaking point*) dari AI pengenal suara burung terhadap bising lingkungan tropis.
-2. **Evaluasi Zero-Shot Retrieval:** Alih-alih melakukan klasifikasi kaku, Anda menggunakan pendekatan *Retrieval* (sistem pencarian kemiripan). Sistem ini jauh lebih fleksibel karena jika ada burung spesies baru besok, Anda cukup menambahkan suaranya ke Galeri, tanpa perlu men-*training* ulang model AI yang memakan waktu berhari-hari.
-3. **Open-Set Rejection (Kalibrasi Tau):** Tugas akhir Anda memiliki kemampuan untuk **Menolak (*Reject*)**. Jika suara yang terekam AudioMoth tidak mirip dengan spesies target mana pun, sistem Anda berani mengatakan *"Ini bukan spesies target (Unknown)"* berkat penghitungan statistik Youden's J, meminimalisir deteksi palsu (*False Positive*).
+1. **Pendekatan Degradasi Terkontrol (Paired Noise Degradation - E2):** Anda menyuntikkan derau asli dari kampus ITERA pada berbagai tingkatan yang dikontrol secara matematis (SNR -5 dB hingga +20 dB). Ini membuktikan batas kritis (*breaking point*) AI pengenal suara burung terhadap bising lingkungan tropis.
+2. **Evaluasi Zero-Shot Retrieval:** Alih-alih melakukan klasifikasi kaku, Anda menggunakan pendekatan *Retrieval* (sistem pencarian kemiripan). Sistem ini fleksibel: jika ada burung baru, cukup tambahkan suaranya ke Galeri tanpa perlu melatih ulang model AI.
+3. **Open-Set Rejection (Kalibrasi $\tau^*$ - E3):** Sistem memiliki kemampuan menolak (*reject*) sinyal non-burung menggunakan ambang batas beku $\tau^* = 0.50$ via Youden's J, meminimalisir deteksi palsu (*False Positive*).
+4. **Uji Validitas Domain Shift Hutan Tropis (E4):** Menguji model pada ribuan *soundscape* bentang alam asli BirdCLEF dan membuktikan secara empiris bahwa BirdNET bersifat *domain-invariant* dengan kesenjangan performa sangat minim ($\Delta mAP@10 = -0.0101$).
+5. **Uji Signifikansi Inferensial (Bootstrap Resampling):** Keunggulan model bioakustik BirdNET atas model generik dibuktikan secara inferensial melalui 1.000 iterasi bootstrap ($p = 0.0000 < 0.05$).
