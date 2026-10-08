@@ -70,7 +70,7 @@ Seluruh eksperimen utama menggunakan **frozen representations** (tanpa *fine-tun
 Sesuai audit 12 September 2026 (**DEC-09**), korpus eksperimen utama dialihkan ke **BirdCLEF+ 2026** guna menjamin kecukupan daya statistik (\(n=200\) kueri bersih) dan integritas data bebas bocor:
 
 ### Galeri dan Kueri Bersih: BirdCLEF+ 2026
-- **Spesies Target**: 20 spesies burung terkurasi ketat (§11.3: koleksi Xeno-Canto, Aves, rating \(\ge 3.0\), klip \(\ge 20\), perekam \(\ge 3\)). Dari 156 kandidat lolos ambang, 20 spesies dipilih berdasarkan diversitas perekam tertinggi (\(n_{\text{author}}\)), sedangkan 136 tersisih murni akibat kuota 20 taksa (DEC-10).
+- **Spesies Target**: 20 spesies burung terkurasi ketat (§11.3: koleksi BirdCLEF, Aves, rating \(\ge 3.0\), klip \(\ge 20\), perekam \(\ge 3\)). Dari 156 kandidat lolos ambang, 20 spesies dipilih berdasarkan diversitas perekam tertinggi (\(n_{\text{author}}\)), sedangkan 136 tersisih murni akibat kuota 20 taksa (DEC-10).
 - **Total Korpus Aktif**: 4.351 berkas rekaman audio.
 - **Standar Prapemrosesan**: Durasi 5,0 detik (160.000 sampel), laju sampel 32 kHz, mono, normalisasi energi RMS = 0.05.
 ### Bank Derau Aditif (E2) & Negatif Open-Set (E3): Rekaman AudioMoth ITERA
@@ -236,7 +236,7 @@ DSIC-2706/
 │   │   └── itera_noise_manifest.csv                   # Manifes bank derau AudioMoth ITERA
 │   ├── BirdClef/                                      # Data primer BirdCLEF+ 2026
 │   ├── itera_noise/                                   # Wadah rekaman soundscape AudioMoth ITERA
-│   └── xeno_canto/                                    # Aset arsip rekaman mentah Xeno-Canto
+│   └── xeno_canto/                                    # Aset arsip rekaman mentah BirdCLEF
 │
 ├── notebooks/                                         # 4 Notebook Resmi Gate 1-R
 │   ├── EDA_Tugas_Akhir.ipynb                          # Eksplorasi dataset & inventarisasi
@@ -401,7 +401,7 @@ Yang tidak di-commit:
 ### Minggu 1
 
 - target species freeze;
-- manifest Xeno-Canto;
+- manifest BirdCLEF;
 - recording/preprocessing protocol;
 - MFCC + dua embedding smoke test;
 - clean retrieval baseline.
@@ -446,7 +446,7 @@ Penelitian utama dianggap selesai bila:
 - [ ] threshold berasal hanya dari calibration;
 - [ ] open-set metrics tersedia;
 - [ ] real soundscape external check selesai;
-- [ ] minimal 20 failure cases diaudit *(rezim BirdCLEF; arsip Xeno-Canto tidak dihitung)*;
+- [ ] minimal 20 failure cases diaudit *(rezim BirdCLEF; arsip BirdCLEF tidak dihitung)*;
 - [ ] confidence interval tersedia *(kurva E2)*;
 - [x] data manifest, seed, config, dan version model terdokumentasi *(split E1; manifes derau belum)*;
 - [x] satu tabel dan satu figure dapat direproduksi dari fresh run *(E1)*;
@@ -463,7 +463,7 @@ Luaran aplikasi seperti candidate biodiversity observations di ITERA hanya merup
 Alur besarnya kira-kira seperti ini:
 
 ```text
-Xeno-Canto
+BirdCLEF
    ↓
 pilih 10–20 spesies burung
    ↓
@@ -494,7 +494,7 @@ uji pada real soundscape ITERA
 
 Secara eksperimen bisa seperti berikut.
 
-1. **Mulai dari membuat “bank referensi” burung, bukan langsung merekam ITERA.** Mahasiswa memilih sekitar 10–20 spesies target terlebih dahulu. Audio referensinya dikumpulkan dari Xeno-Canto, kemudian dibuat manifest yang menyimpan spesies, recording ID, recordist, lokasi, lisensi, dan attribution. Audio kemudian distandardisasi: sample rate, durasi potongan, mono/stereo, dan normalisasi harus sama. Xeno-Canto kemudian dipisah menjadi **gallery** dan **query**; rekaman yang sama tidak boleh bocor ke kedua sisi. Pada minggu pertama audit juga mensyaratkan manifest, preprocessing, split, dan clean baseline sudah selesai. 
+1. **Mulai dari membuat “bank referensi” burung, bukan langsung merekam ITERA.** Mahasiswa memilih sekitar 10–20 spesies target terlebih dahulu. Audio referensinya dikumpulkan dari BirdCLEF, kemudian dibuat manifest yang menyimpan spesies, recording ID, recordist, lokasi, lisensi, dan attribution. Audio kemudian distandardisasi: sample rate, durasi potongan, mono/stereo, dan normalisasi harus sama. BirdCLEF kemudian dipisah menjadi **gallery** dan **query**; rekaman yang sama tidak boleh bocor ke kedua sisi. Pada minggu pertama audit juga mensyaratkan manifest, preprocessing, split, dan clean baseline sudah selesai. 
 
    Misalnya ada suara burung A. Beberapa rekamannya masuk ke gallery sebagai “koleksi yang dicari”, sedangkan rekaman burung A yang berbeda menjadi query. Jadi sistem diberi satu query dan ditanya: **dari seluruh gallery, audio mana yang paling mirip?**
 
@@ -589,7 +589,7 @@ Yang menarik secara penelitian bukan hanya mencari \(\tau\) terbaik. Yang kita u
 
 Misalnya \(\tau=0.72\) bagus pada clean audio, tetapi ketika 0 dB hampir semua unknown ikut diterima. Itu adalah hasil ilmiah yang penting.
 
-6. **Terakhir barulah masuk real soundscape ITERA.** Ini berbeda dengan eksperimen noise sintetis. Pada controlled mixing, kita tahu persis ground truth-nya karena vocalization berasal dari query Xeno-Canto yang diketahui. Pada real soundscape, masalahnya jauh lebih sulit: jarak mikrofon berubah, reverberasi, suara kendaraan, overlap beberapa burung, arah sumber, respons mikrofon, dan lain-lain terjadi bersamaan. Karena itu audit memisahkan **controlled noise** dan **real domain shift**. Frozen pipeline dijalankan pada subset soundscape ITERA yang sudah dianotasi, dan threshold tidak boleh di-*retune* menggunakan label test ITERA. 
+6. **Terakhir barulah masuk real soundscape ITERA.** Ini berbeda dengan eksperimen noise sintetis. Pada controlled mixing, kita tahu persis ground truth-nya karena vocalization berasal dari query BirdCLEF yang diketahui. Pada real soundscape, masalahnya jauh lebih sulit: jarak mikrofon berubah, reverberasi, suara kendaraan, overlap beberapa burung, arah sumber, respons mikrofon, dan lain-lain terjadi bersamaan. Karena itu audit memisahkan **controlled noise** dan **real domain shift**. Frozen pipeline dijalankan pada subset soundscape ITERA yang sudah dianotasi, dan threshold tidak boleh di-*retune* menggunakan label test ITERA. 
 
    Jadi hasil akhir yang menarik bukan:
 
@@ -753,7 +753,7 @@ Gunakan daftar 11 butir pada §18 sebagai daftar periksa, bukan sebagai saran. S
 #### H25–H26 — Penulisan
 Tulis Metode, Hasil, dan Threats to Validity. Empat hal yang wajib muncul dan mudah terlewat:
 1. Hapus kata “signifikan” dari abstrak dan pembahasan kecuali didukung CI berpasangan yang tidak memuat nol.
-2. Bahas kontaminasi pralatih secara eksplisit: BirdNET dilatih pada Xeno-Canto sedangkan train_audio BirdCLEF bersumber dari Xeno-Canto dan iNaturalist. Ini syarat quality gate artikel pada §25.
+2. Bahas kontaminasi pralatih secara eksplisit: BirdNET dilatih pada BirdCLEF sedangkan train_audio BirdCLEF bersumber dari BirdCLEF dan iNaturalist. Ini syarat quality gate artikel pada §25.
 3. Nyatakan ketidakcocokan geografis: spesies Pantanal, derau Sumatera. Derau diperlakukan sebagai gangguan akustik terkendali, bukan skenario ekologis.
 4. Nyatakan sidik jari AudioMoth: seluruh derau berasal dari satu jenis perangkat dengan satu pengaturan gain.
 
@@ -832,7 +832,7 @@ Yang tidak boleh dilakukan ketika tertinggal: mengurangi jumlah repetisi di bawa
 - [x] E1 menghasilkan tabel agregat + per-query.
 - [ ] AudioMoth memiliki CONFIG.TXT per sesi dan noise manifest lengkap.
 - [ ] Pink-noise fallback dihapus/diubah menjadi error (dieksekusi saat AudioMoth tersedia pada H8).
-- [x] Hasil Xeno-Canto lama diarsipkan, tidak dihapus.
+- [x] Hasil BirdCLEF lama diarsipkan, tidak dihapus.
 - [x] Semua manifests dan checksums sinkron.
 - [ ] Gate 1-R diverifikasi ulang Supervisor 1.
 - [ ] Kedudukan variabel (§10.6) disepakati: konfigurasi AudioMoth adalah variabel kontrol, bukan variabel bebas.

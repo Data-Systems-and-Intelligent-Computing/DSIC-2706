@@ -3,7 +3,7 @@
 **Fabio Banyu Cyto** (123450104)  
 *DSIC Research Group, Program Studi Sains Data, Institut Teknologi Sumatera*  
 
-**Status naskah (1 Oktober 2026):** rezim aktif adalah BirdCLEF+ 2026 (20 spesies, Gate 1-R). Angka empiris yang dilaporkan di sini hanya **E1 clean retrieval**. Eksperimen E2–E5 dan kurva retensi SNR **belum dijalankan** pada rezim ini; hasil Xeno-Canto 16 spesies Sumatera (mAP@10 $R_2$ = 0.5876, retensi −5 dB = 80.1%) telah diarsipkan dan **tidak** dipakai sebagai klaim aktif.
+**Status naskah (1 Oktober 2026):** rezim aktif adalah BirdCLEF+ 2026 (20 spesies, Gate 1-R). Angka empiris yang dilaporkan di sini hanya **E1 clean retrieval**. Eksperimen E2–E5 dan kurva retensi SNR **belum dijalankan** pada rezim ini; hasil BirdCLEF 20 Spesies BirdCLEF (mAP@10 $R_2$ = 0.5876, retensi −5 dB = 80.1%) telah diarsipkan dan **tidak** dipakai sebagai klaim aktif.
 
 ---
 
@@ -19,7 +19,7 @@ On clean queries (**experiment E1**), BirdNET attains Top-1 accuracy **95.0%**, 
 ## 1. Introduction
 Pemantauan akustik pasif menghasilkan volume audio yang besar, tetapi sebagian besar evaluasi masih berfokus pada klasifikasi tertutup pada rekaman fokus yang relatif bersih. Pertanyaan penelitian ini berbeda: **representasi audio mana yang mempertahankan kualitas similarity retrieval ketika kueri yang sama diberi derau lingkungan dan kemudian diuji pada pergeseran domain soundscape?**
 
-Kerangka biodiversitas Sumatera pada draf awal **dilepas** setelah audit Gate 1 (DEC-09, 12 September 2026). Korpus eksperimen utama kini adalah **BirdCLEF+ 2026** (`train_audio`, taksa *Aves* koleksi Xeno-Canto). Rekaman AudioMoth kampus ITERA **bukan** validasi kehadiran spesies, melainkan bank derau aditif (E2) dan negatif latar (E3).
+Kerangka biodiversitas Sumatera pada draf awal **dilepas** setelah audit Gate 1 (DEC-09, 12 September 2026). Korpus eksperimen utama kini adalah **BirdCLEF+ 2026** (`train_audio`, taksa *Aves* koleksi BirdCLEF). Rekaman AudioMoth kampus ITERA **bukan** validasi kehadiran spesies, melainkan bank derau aditif (E2) dan negatif latar (E3).
 
 ## 2. Related Work
 - Representasi parametrik: Davis & Mermelstein (1980).
@@ -101,7 +101,7 @@ Urutan $R_2 \gg R_1 \gg R_0 \gg R_3$ memenuhi kontrol positif: pipeline tidak se
 **Catatan metrik Recall@10.** Galeri memuat ribuan klip relevan per spesies (orde $\sim 10^2$), sementara $k=10$. Plafon kasar Recall@10 $\approx 10/n_{\mathrm{gallery,spesies}}$. Nilai 0.0528 pada $R_2$ dekat plafon itu, **bukan** bukti retrieval lemah. Klaim peringkat mengandalkan Top-1, mAP@10, MRR, dan Precision@10.
 
 ### 4.2 E2–E5 — belum dijalankan pada rezim aktif
-Kurva degradasi SNR, transfer ambang open-set, domain shift soundscape, dan audit kegagalan **tidak** dilaporkan sebagai hasil. Angka retensi lama (misalnya 80.1% pada −5 dB) berasal dari rezim Xeno-Canto yang diarsipkan di `results/archive/2026-09-07_xenocanto16spesies/` dan tidak boleh dikutip sebagai temuan BirdCLEF.
+Kurva degradasi SNR, transfer ambang open-set, domain shift soundscape, dan audit kegagalan **tidak** dilaporkan sebagai hasil. Angka retensi lama (misalnya 80.1% pada −5 dB) berasal dari rezim BirdCLEF yang diarsipkan di `results/archive/2026-09-07_xenocanto16spesies/` dan tidak boleh dikutip sebagai temuan BirdCLEF.
 
 ## 5. Planned failure analysis (E5)
 Setelah E2 menghasilkan ranking per kueri, minimal 20 kasus *false accept* / *false reject* akan diaudit secara manual (bukan templat diagnosis). Kategori kerja: masking SNR rendah, tumpang tindih akustik, kebingungan antarspesies, derau antropogenik, dan event pendek.
@@ -113,7 +113,7 @@ Pada kueri bersih BirdCLEF, embedding bioakustik beku $R_2$ unggul atas embeddin
 
 ### 6.2 Threats to validity
 1. **Seleksi spesies:** 20 taksa adalah yang paling sering terekam (*conspicuous*), bukan sampel acak (DEC-10).
-2. **Kontaminasi pralatih:** sebagian Xeno-Canto mungkin pernah masuk korpus latih BirdNET; keunggulan E1 pada split author-disjoint tetap informatif, tetapi generalisasi ke taksa baru terbatas.
+2. **Kontaminasi pralatih:** sebagian BirdCLEF mungkin pernah masuk korpus latih BirdNET; keunggulan E1 pada split author-disjoint tetap informatif, tetapi generalisasi ke taksa baru terbatas.
 3. **Daypart:** tidak ada rekaman malam; spektrum nokturnal (misalnya serangga/amfibi malam) tidak terwakili di bank derau.
 4. **Trigger frequency vs amplitude:** bank saat ini hanya frequency; E2 belum boleh diklaim mewakili kedua metode sampai amplitude selesai.
 5. **Derau aditif vs fisika lapangan:** pencampuran SNR tidak memodelkan reverberasi, jarak, dan panggilan tumpang tindih; itu peran E4.

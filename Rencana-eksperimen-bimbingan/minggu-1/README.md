@@ -9,7 +9,7 @@
 
 Sesuai arahan Audit Keputusan Kedua tanggal 12 September 2026, eksperimen beralih dari korpus awal 14 spesies manual ke korpus **BirdCLEF+ 2026** guna menjamin daya statistik ($n=200$ kueri bersih) dan independensi rekaman:
 
-* **Spesies Terpilih:** **20 spesies burung Neotropis** (total 4.351 berkas audio fisik) yang lolos seleksi objektif §11.3 (koleksi Xeno-Canto, Aves, rating $\ge 3.0$, klip $\ge 20$, author $\ge 3$). Dari pool 156 kandidat yang lolos ambang, 20 spesies dipilih berdasarkan diversitas perekam tertinggi ($n_{\text{author}} \ge 105$).
+* **Spesies Terpilih:** **20 spesies burung Neotropis** (total 4.351 berkas audio fisik) yang lolos seleksi objektif §11.3 (koleksi BirdCLEF, Aves, rating $\ge 3.0$, klip $\ge 20$, author $\ge 3$). Dari pool 156 kandidat yang lolos ambang, 20 spesies dipilih berdasarkan diversitas perekam tertinggi ($n_{\text{author}} \ge 105$).
 * **Transparansi Eksklusi:** 136 spesies kandidat tersisih murni karena kuota 20 taksa, dan 50 spesies tersisih karena kriteria substantif (§11.3), seluruhnya tercatat di `species_excluded.csv`.
 * **Parameter Preprocessing Dibekukan:**
   * Sample Rate: **32.000 Hz** (Mono)

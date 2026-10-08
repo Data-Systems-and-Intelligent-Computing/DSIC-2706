@@ -7,7 +7,7 @@ Dokumen ini mencatat batasan ruang lingkup taksonomi, pra-pemrosesan, dan parame
 ## 1. Taksonomi Target (20 Spesies Burung Neotropis Pantanal)
 
 ### Amandemen Resmi Bertanggal (Versi 3.0 — 12 September 2026 / Keputusan Kedua)
-Berdasarkan audit Gate 1 tanggal 12 September 2026 dan keputusan pembimbing (DEC-09 dan DEC-10), ruang lingkup dataset utama dialihkan ke **BirdCLEF+ 2026 (`train_audio`)** dengan memfilter taksa burung (*Aves*) koleksi Xeno-Canto berkategori rating >= 3.0 serta memilih 20 taksa dengan diversitas perekam unik tertinggi ($N_{\text{author}}$) guna menjamin keabsahan partisi *author-disjoint split*.
+Berdasarkan audit Gate 1 tanggal 12 September 2026 dan keputusan pembimbing (DEC-09 dan DEC-10), ruang lingkup dataset utama dialihkan ke **BirdCLEF+ 2026 (`train_audio`)** dengan memfilter taksa burung (*Aves*) koleksi BirdCLEF berkategori rating >= 3.0 serta memilih 20 taksa dengan diversitas perekam unik tertinggi ($N_{\text{author}}$) guna menjamin keabsahan partisi *author-disjoint split*.
 
 Daftar resmi **20 spesies burung target** dengan total **4.351 rekaman audio** terkelola:
 
@@ -44,7 +44,7 @@ Daftar resmi **20 spesies burung target** dengan total **4.351 rekaman audio** t
 ---
 
 ### Catatan Historis Ruang Lingkup Sebelumnya
-- **Versi 2.0 (07 September 2026):** 16 taksa burung Sumatera (416 rekaman, kurasi manual Xeno-Canto). Dibatalkan oleh audit Gate 1 (12 September 2026) karena kelangkaan data kueri independen ($n=14$), kebocoran perekam (C-04), dan ketergantungan derau sintetis (M-05).
+- **Versi 2.0 (07 September 2026):** 16 taksa burung Sumatera (416 rekaman, kurasi manual BirdCLEF). Dibatalkan oleh audit Gate 1 (12 September 2026) karena kelangkaan data kueri independen ($n=14$), kebocoran perekam (C-04), dan ketergantungan derau sintetis (M-05).
 - **Versi 1.0 (Draf Awal):** 16 spesies kosmopolitan umum (digantikan oleh Versi 2.0).
 
 ---

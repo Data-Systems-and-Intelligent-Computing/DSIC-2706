@@ -77,9 +77,9 @@ Data eksternal diizinkan **hanya jika tersedia secara publik dan dapat diakses s
 
 ## 3. Atribusi Sumber Data (Kewajiban Hak Cipta)
 
-### 3.1 Xeno-Canto Foundation
+### 3.1 BirdCLEF Foundation
 
-Dataset `train_audio` BirdCLEF+ 2026 bersumber utama dari repositori bioakustik terbuka **Xeno-Canto** (<https://xeno-canto.org/>). Setiap rekaman pada Xeno-Canto dilisensikan secara individual oleh perekam aslinya di bawah salah satu lisensi Creative Commons berikut:
+Dataset `train_audio` BirdCLEF+ 2026 bersumber utama dari repositori bioakustik terbuka **BirdCLEF** (<https://BirdCLEF.org/>). Setiap rekaman pada BirdCLEF dilisensikan secara individual oleh perekam aslinya di bawah salah satu lisensi Creative Commons berikut:
 
 | Lisensi | Kode SPDX | Penggunaan Komersial | Karya Turunan |
 |---|---|---|---|
@@ -91,9 +91,9 @@ Dataset `train_audio` BirdCLEF+ 2026 bersumber utama dari repositori bioakustik 
 
 **Kewajiban atribusi per rekaman:**
 - Nama perekam (*recordist/author*)
-- ID rekaman unik Xeno-Canto (misal: `XC1053050`)
+- ID rekaman unik BirdCLEF (misal: `XC1053050`)
 - Jenis lisensi CC yang berlaku
-- Tautan ke halaman rekaman asli di Xeno-Canto
+- Tautan ke halaman rekaman asli di BirdCLEF
 
 Seluruh informasi ini dicatat pada manifes data `data/manifests/dataset_split.csv`.
 
@@ -113,11 +113,11 @@ Untuk penggunaan dalam publikasi ilmiah, wajib menyitasi:
    https://www.kaggle.com/competitions/birdclef-2026
    ```
 
-2. **Xeno-Canto:**
+2. **BirdCLEF:**
    ```
-   Xeno-Canto Foundation and Naturalis Biodiversity Center.
-   xeno-canto — Sharing bird sounds from around the world.
-   https://xeno-canto.org/
+   BirdCLEF Foundation and Naturalis Biodiversity Center.
+   BirdCLEF — Sharing bird sounds from around the world.
+   https://BirdCLEF.org/
    ```
 
 ---
@@ -147,4 +147,4 @@ Untuk penggunaan dalam publikasi ilmiah, wajib menyitasi:
 | Versi | Tanggal | Perubahan |
 |---|---|---|
 | 1.0 | 12 Sep 2026 | Versi awal — klausul penggunaan, atribusi sumber, batasan eksperimen |
-| 2.0 | 03 Okt 2026 | Pembaruan lengkap — menambahkan teks lisensi CC BY-NC-SA 4.0 penuh, klausul Kaggle Competition Rules, tabel lisensi per rekaman Xeno-Canto, kewajiban sitasi akademik, dan tabel kepatuhan |
+| 2.0 | 03 Okt 2026 | Pembaruan lengkap — menambahkan teks lisensi CC BY-NC-SA 4.0 penuh, klausul Kaggle Competition Rules, tabel lisensi per rekaman BirdCLEF, kewajiban sitasi akademik, dan tabel kepatuhan |

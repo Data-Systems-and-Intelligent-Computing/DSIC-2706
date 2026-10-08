@@ -42,7 +42,7 @@ Penelitian ini mengevaluasi **ketahanan representasi audio beku (*frozen represe
 2. [`open-set.md`](./protocols/open-set.md) — Prosedur kalibrasi ambang batas $\tau^*$ menggunakan Youden's J pada target FAR 5% dan 10%.
 3. [`birdclef-license.md`](./protocols/birdclef-license.md) — Klausul kepatuhan lisensi kompetisi BirdCLEF untuk penggunaan akademik dan skripsi.
 4. [`annotation.md`](./protocols/annotation.md) — Standar anotasi rekaman bentang suara (*soundscapes*).
-5. [`xeno-canto-selection.md`](./protocols/xeno-canto-selection.md) — Kriteria awal penyaringan rekaman audio.
+5. [`BirdCLEF-selection.md`](./protocols/BirdCLEF-selection.md) — Kriteria awal penyaringan rekaman audio.
 
 ---
 
