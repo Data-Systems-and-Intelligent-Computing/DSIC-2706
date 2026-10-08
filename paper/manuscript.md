@@ -82,35 +82,101 @@ Tercatat pada `paper/tables/snr_robustness_table.csv` dan `paper/figures/e2_snr_
 ---
 
 ### 3.3 Jawaban RQ3: Kalibrasi Ambang Batas Open-Set (Eksperimen E3)
-* *Status Metodologis:* Kalibrasi ambang batas open-set pada partisi kalibrasi mandiri (498 klip). Uji transfer ambang batas $\tau$ memerlukan pembedaan tegas antara sinyal target dan koleksi unknown sejati (derau murni latar ITERA dan audio non-burung) agar penghitungan Youden's Index $J = \text{TPR} - \text{FPR}$ memiliki landasan biner yang sah.
+Ambang batas kemiripan kosinus ($\tau^*$) dioptimasi secara objektif pada subset kalibrasi terpisah ($N=498$ kueri burung target kalibrasi berpasangan dengan $N=498$ kontrol negatif *unknown*: 249 berkas derau murni latar AudioMoth ITERA dan 249 berkas audio spesies non-target BirdCLEF). Optimasi kurva ROC empiris melalui **Youden's Index** ($J = \text{TPR} - \text{FPR}$) menghasilkan nilai ambang batas optimal yang kemudian **DIBEKUKAN** secara permanen:
+
+* **$R_2$ (BirdNET):** $\tau^* = 0.7128$ (Kalibrasi Youden $J = 0.4779$, AUROC = 0.8147, F1 = 0.7358, TPR = 0.7269, FPR = 0.2490)
+* **$R_1$ (PANNs):** $\tau^* = 0.9117$ (Kalibrasi Youden $J = 0.2791$, AUROC = 0.6741, F1 = 0.6745, TPR = 0.7470, FPR = 0.4679)
+* **$R_0$ (MFCC):** $\tau^* = 0.9953$ (Kalibrasi Youden $J = 0.0622$, AUROC = 0.5150, F1 = 0.4601, TPR = 0.3996, FPR = 0.3373)
+* **$R_3$ (Random):** $\tau^* = 0.5090$ (Kalibrasi Youden $J = 0.0783$, AUROC = 0.5331, F1 = 0.6203)
+
+Ambang batas beku diuji pada **Test Set Terpisah** ($N=200$ kueri burung target berpasangan dengan $N=200$ kueri *unknown test* disjoint) di bawah kondisi bersih dan injeksi derau aditif berpasangan (+20 dB hingga -5 dB). Rangkuman hasil tercatat pada `paper/tables/threshold_transfer_table.csv`:
+
+| Model | Kondisi | SNR (dB) | AUROC | AUPRC | Recall@$\tau^*$ | FPR@$\tau^*$ | F1@$\tau^*$ | $\Delta$Recall | $\Delta$FPR |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **$R_2$ (BirdNET)** | Clean | $\infty$ | **0.8849** | **0.8902** | 0.8600 | **0.2850** | **0.8019** | Baseline | Baseline |
+| | SNR 20dB | +20 | 0.8756 | 0.8911 | 0.8050 | 0.2750 | 0.7740 | -0.0550 | -0.0100 |
+| | SNR 10dB | +10 | 0.8698 | 0.8822 | 0.7950 | 0.2050 | 0.7950 | -0.0650 | -0.0800 |
+| | SNR 0dB | 0 | 0.8083 | 0.8131 | 0.5950 | 0.1500 | 0.6819 | -0.2650 | -0.1350 |
+| | SNR -5dB | -5 | **0.7575** | **0.7701** | 0.4450 | **0.0950** | 0.5779 | -0.4150 | **-0.1900** |
+| **$R_1$ (PANNs)** | Clean | $\infty$ | **0.7714** | **0.7477** | 0.8100 | **0.4150** | **0.7281** | Baseline | Baseline |
+| | SNR 20dB | +20 | 0.7525 | 0.7075 | 0.8700 | 0.4900 | 0.7373 | +0.0600 | +0.0750 |
+| | SNR 10dB | +10 | 0.7123 | 0.6728 | 0.8100 | 0.5100 | 0.6983 | 0.0000 | +0.0950 |
+| | SNR 0dB | 0 | 0.5544 | 0.5643 | 0.7000 | 0.6200 | 0.6034 | -0.1100 | +0.2050 |
+| | SNR -5dB | -5 | **0.5348** | **0.6029** | 0.7550 | **0.8150** | 0.5875 | -0.0550 | **+0.4000** |
+| **$R_0$ (MFCC)** | Clean | $\infty$ | 0.5683 | 0.5474 | 0.4350 | 0.3600 | 0.4847 | Baseline | Baseline |
+| | SNR -5dB | -5 | 0.6067 | 0.5688 | 0.2850 | 0.1850 | 0.3878 | -0.1500 | -0.1750 |
+| **$R_3$ (Random)** | Clean | $\infty$ | 0.5389 | 0.5304 | 0.6900 | 0.6350 | 0.5935 | Baseline | Baseline |
+| | SNR -5dB | -5 | 0.5508 | 0.5256 | 0.7500 | 0.6900 | 0.6148 | +0.0600 | +0.0550 |
+
+*Temuan Ilmiah RQ3 & Hipotesis H4:*
+1. **Divergensi Ekstrem FPR:** Pada model generik $R_1$, penurunan SNR ke -5 dB memicu inflasi False Positive masif ($\text{FPR} \to \mathbf{81.5\%}$, $\Delta\text{FPR} = +40.0\%$). Derau lingkungan menyebabkan representasi audio umum memetakan sinyal asing ke ruang fitur densitas tinggi yang salah dikenali sebagai suara burung target.
+2. **Penolakan Selektif Konservatif pada BirdNET:** Sebaliknya, $R_2$ mempertahankan resolusi separasi tinggi (AUROC 0.7575–0.8849). Pada SNR -5 dB, FPR $R_2$ justru menyusut ke **9.50%** ($\Delta\text{FPR} = -0.1900$), membuktikan bahwa BirdNET menolak derau secara andal, meskipun hal ini menuntut kompromi penalti Target Recall ke 44.50% karena kompresi magnitudo skor kosinus global.
 
 ---
 
-### 3.4 Jawaban RQ4: Kesenjangan Sumber Derau Soundscape (Eksperimen E4)
-Tercatat pada `paper/tables/e4_domain_shift_table.csv`:
-* Pengujian E4 mencampurkan potongan acak dari 10.658 rekaman soundscape hutan tropis BirdCLEF sebagai derau aditif untuk mengukur sensitivitas terhadap karakteristik spektral sumber derau yang berbeda (derau antropogenik kampus ITERA vs biophony serangga hutan tropis).
-* *Hasil:* Pada $R_2$, mAP@10 pada SNR -5 dB adalah 0.7606 (dibandingkan 0.7707 pada derau ITERA, selisih -0.0101). Namun pada $R_1$ pada SNR 0 dB, terdapat kesenjangan yang lebih lebar (E4 = 0.19 vs E2 = 0.13), menunjukkan bahwa model generik sangat sensitif terhadap profil spektral sumber derau.
-* *Batasan Riset:* E4 merupakan pengujian derau aditif terkontrol, bukan deteksi bentang alam kontinu di lapangan yang memodelkan jarak fisik dan atenuasi akustik 3D.
+### 3.4 Jawaban RQ4: Sensitivitas Profil Spektral Sumber Derau (Eksperimen E4)
+Eksperimen E4 membandingkan ketahanan temu kembali kueri ketika sumber derau dialihkan dari derau antropogenik/terbuka kampus ITERA (E2) ke derau latar belakang *soundscape* hutan tropis BirdCLEF (E4). Seluruh hasil per-kueri disimpan pada `results/raw/E4_{rep}_raw.csv`, dan tabel komparatif lengkap tersaji pada `paper/tables/e4_domain_shift_table.csv`:
+
+| Model | Kondisi | SNR (dB) | mAP@10 (E2 ITERA) | mAP@10 (E4 Soundscape) | Gap ($\Delta$ E4 - E2) | Retensi E2 | Retensi E4 |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **$R_2$ (BirdNET)** | Clean | $\infty$ | 0.9126 | 0.9126 | 0.0000 | 100.0% | 100.0% |
+| | SNR 20dB | +20 | 0.9068 | 0.9188 | +0.0121 | 99.36% | 100.68% |
+| | SNR 10dB | +10 | 0.8858 | 0.9026 | +0.0169 | 97.06% | 98.91% |
+| | SNR 0dB | 0 | 0.8317 | 0.8299 | -0.0018 | 91.13% | 90.94% |
+| | SNR -5dB | -5 | **0.7707** | **0.7606** | **-0.0101** | **84.45%** | **83.34%** |
+| **$R_1$ (PANNs)** | Clean | $\infty$ | 0.4152 | 0.4152 | 0.0000 | 100.0% | 100.0% |
+| | SNR 20dB | +20 | 0.4533 | 0.3816 | -0.0717 | 109.16% | 91.89% |
+| | SNR 10dB | +10 | 0.3700 | 0.2922 | -0.0778 | 89.10% | 70.36% |
+| | SNR 0dB | 0 | 0.1290 | 0.1918 | **+0.0628** | 31.06% | 46.19% |
+| | SNR -5dB | -5 | **0.0590** | **0.1480** | **+0.0890** | **14.22%** | **35.64%** |
+| **$R_0$ (MFCC)** | Clean | $\infty$ | 0.1319 | 0.1319 | 0.0000 | 100.0% | 100.0% |
+| | SNR -5dB | -5 | **0.0349** | **0.0364** | **+0.0016** | **26.42%** | **27.62%** |
+| **$R_3$ (Random)** | Clean | $\infty$ | 0.0190 | 0.0190 | 0.0000 | 100.0% | 100.0% |
+| | SNR -5dB | -5 | 0.0165 | 0.0171 | +0.0006 | 86.84% | 90.12% |
+
+*Pembahasan RQ4 & Hipotesis H3:*
+1. **Invariansi Bioakustik ($R_2$):** Pada BirdNET, gap mAP@10 antara kedua sumber derau sangat kecil ($\Delta\text{mAP} \approx \pm 0.01$). Uji paired bootstrap menunjukkan selisih rata-rata pada SNR -5 dB adalah **-0.0097** dengan 95% CI $[-0.0479, +0.0275]$ ($p = 0.610$, tidak signifikan). Hal ini membuktikan bahwa representasi BirdNET bersifat invarian terhadap profil spektral derau latar aditif.
+2. **Sensitivitas Spektral Model Generik ($R_1$):** Sebaliknya, model PANNs sangat rentan terhadap variasi spektral derau: pada SNR -5 dB, performa di bawah derau ITERA merosot jauh lebih tajam dibanding *soundscape* tropis (0.0590 vs 0.1480, $\Delta = +0.0890$, 95% CI $[+0.0572, +0.1210]$, $p < 0.001$). Derau lingkungan ITERA yang didominasi energi frekuensi rendah-menengah (angin terbuka dan resonansi air embung) lebih merusak representasi konvolusional PANNs daripada derau latar kanopi hutan.
+3. **Batasan Metodologis:** Eksperimen E4 mengevaluasi sensitivitas profil spektral derau aditif. Evaluasi *real in-situ soundscape domain shift* yang mencakup atenuasi transmisi jarak, reverberasi fisik, dan polifoni multi-spesies simultan merupakan agenda penelitian lanjutan setelah ketersediaan anotasi batas waktu-frekuensi (*bounding-box*) pada rekaman bentang alam ITERA (`data/itera_soundscape_annotations/`).
 
 ---
 
 ### 3.5 Jawaban RQ5: Analisis Kasus Kegagalan & Uji Signifikansi Statistik
-Tercatat pada `paper/tables/statistical_significance_table.csv` (dihasilkan oleh `src/bootstrap_inference.py`):
 
-| Komparasi Model | Domain Uji | Rata-Rata Selisih | 95% Confidence Interval (CI) | $p$-value Empiris | Kesimpulan Hipotesis |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| **$R_2$ (BirdNET) vs $R_1$ (PANNs)** | Clean mAP@10 | **+0.4974** | **[+0.4504, +0.5473]** | **$p < 0.001$** | $H_0$ Ditolak (Signifikan) |
-| **$R_2$ (BirdNET) vs $R_0$ (MFCC)** | Clean mAP@10 | **+0.7807** | **[+0.7423, +0.8183]** | **$p < 0.001$** | $H_0$ Ditolak (Signifikan) |
-| **$R_1$ (PANNs) vs $R_0$ (MFCC)** | Clean mAP@10 | **+0.2833** | **[+0.2351, +0.3308]** | **$p < 0.001$** | $H_0$ Ditolak (Signifikan) |
-| **$R_2$ vs $R_1$** | Retensi SNR -5 dB | **+0.7020** | **[+0.6402, +0.7571]** | **$p < 0.001$** | $H_0$ Ditolak (Signifikan) |
-| **$R_0$ vs $R_1$** | Retensi SNR -5 dB | **+0.1223** | **[+0.0581, +0.1994]** | **$p < 0.001$** | $H_0$ Ditolak (Signifikan) |
+#### A. Uji Signifikansi Statistik Inferensial (Paired Bootstrap 1.000 Iterasi)
+Tercatat pada `paper/tables/statistical_significance_table.csv`:
 
-*Pembahasan RQ5:* Uji paired bootstrap resampling 1.000 iterasi membuktikan secara meyakinkan bahwa keunggulan absolut BirdNET pada kueri bersih serta keunggulan retensinya pada derau ekstrem adalah nyata secara statistik ($p < 0.001$). Terlebih lagi, terbukti secara inferensial bahwa MFCC mempertahankan retensi relatif lebih tinggi daripada PANNs pada SNR -5 dB.
+| Pengujian | Komparasi Model | Mean Difference | 95% Confidence Interval (CI) | $p$-value Empiris | Signifikan ($\alpha=0.05$) | Kesimpulan Hipotesis |
+| :--- | :--- | :---: | :---: | :---: | :---: | :--- |
+| **Clean Retrieval (mAP@10)** | $R_2$ (BirdNET) vs $R_1$ (PANNs) | **+0.4981** | **[+0.4504, +0.5473]** | **$p < 0.001$** | Ya | H5 Terpenuhi: Keunggulan mutlak BirdNET |
+| **Clean Retrieval (mAP@10)** | $R_2$ (BirdNET) vs $R_0$ (MFCC) | **+0.7811** | **[+0.7421, +0.8183]** | **$p < 0.001$** | Ya | $R_2$ melampaui baseline klasik |
+| **Clean Retrieval (mAP@10)** | $R_1$ (PANNs) vs $R_0$ (MFCC) | **+0.2830** | **[+0.2355, +0.3308]** | **$p < 0.001$** | Ya | $R_1$ unggul atas MFCC pada kondisi bersih |
+| **Retensi Relatif SNR -5 dB** | $R_2$ (BirdNET) vs $R_1$ (PANNs) | **+0.7020** | **[+0.6424, +0.7571]** | **$p < 0.001$** | Ya | H1 Bersyarat: Retensi $R_2$ (84.5%) unggul mutlak atas $R_1$ (14.2%) |
+| **Retensi Relatif SNR -5 dB** | $R_0$ (MFCC) vs $R_1$ (PANNs) | **+0.1223** | **[+0.0581, +0.1994]** | **$p < 0.001$** | Ya | Retensi MFCC (26.4%) melampaui PANNs (14.2%) |
+| **Sensitivitas Derau (-5 dB)** | $R_2$ (E4 Soundscape vs E2 ITERA) | **-0.0097** | **[-0.0479, +0.0275]** | **$p = 0.610$** | Tidak | H3 Terdukung: Invarian sumber derau |
+| **Sensitivitas Derau (-5 dB)** | $R_1$ (E4 Soundscape vs E2 ITERA) | **+0.0892** | **[+0.0572, +0.1210]** | **$p < 0.001$** | Ya | PANNs sangat rentan terhadap jenis derau |
+
+#### B. Audit Kasus Kegagalan Berstrata (Stratified Failure Analysis E5)
+Tercatat pada `paper/tables/failure_analysis_table.csv` ($N=30$ kasus berstrata: 10 kasus Clean dan 20 kasus SNR -5 dB):
+
+1. **Distribusi Moda Kegagalan:**
+   * **Open-Set False Rejection (16 kasus, 53.3%):** Didominasi oleh $R_2$ pada SNR -5 dB (9 kasus). Model berhasil mengidentifikasi takson yang tepat pada peringkat Top-1, namun skor kosinus tertekan derau ke rentang 0.6399–0.7084, jatuh tepat di bawah $\tau^* = 0.7128$ (margin -0.0044 s.d. -0.0729).
+   * **Top-1 Confusion Above Tau (10 kasus, 33.3%):** Didominasi oleh $R_1$ pada SNR -5 dB (7 kasus) dan Clean (3 kasus). Model menghasilkan skor tinggi yang melampaui ambang batas ($\text{sim} > \tau^*$), namun salah mencocokkan takson galeri akibat kedekatan fitur artefak derau.
+   * **Total Retrieval Collapse (4 kasus, 13.3%):** Kueri tertolak ambang batas dan peringkat Top-1 salah secara simultan akibat durasi kueri terfragmentasi atau variasi vokal antar-perekam yang tinggi.
+2. **Taksonomi Penyebab Akustik Primer:**
+   * *Low-SNR Energetic Masking (13 kasus):* Energi derau mendominasi kicauan target, menggeser spektral centroid ke rentang 5.000–5.300 Hz dan mengaburkan garis harmoni vokal.
+   * *Noise-Induced Representation Shift (7 kasus):* Kerusakan struktur spasio-temporal pada embedding konvolusional PANNs akibat artefak derau broadband.
+   * *Temporal Fragmentation / Short Calls (5 kasus):* Durasi kicauan kueri terlalu singkat (< 1.5 detik) sehingga pooling temporal menghasilkan representasi fitur yang renggang.
+   * *Acoustic Feature Overlap (3 kasus):* Kemiripan nada tinggi peluit frekuensi (> 4.5 kHz) antar-spesies berbeda (misal *coffal1* tertukar dengan *baffal1* atau *linwoo1*).
+   * *Intra-Species Vocal Variation (2 kasus):* Perbedaan dialek geografis antar-rekaman perekam independen (*author-disjoint*).
 
 ---
 
 ## 4. Kesimpulan & Rekomendasi
-Penelitian ini membuktikan bahwa:
-1. Representasi spesifik domain bioakustik ($R_2$ BirdNET) memberikan performa retrieval terbaik pada kueri bersih (Top-1 95.0%, mAP 0.9126) dan ketahanan derau superior (retensi 84.45% pada -5 dB).
-2. Representasi deep learning audio umum ($R_1$ PANNs) mengalami keruntuhan katastropik pada SNR -5 dB (retensi hanya 14.22%), bahkan kalah dalam retensi relatif dibandingkan MFCC (26.42%).
+Penelitian ini memberikan tolok ukur komparatif yang ketat dan sepenuhnya dapat direproduksi (*reproducible*) untuk temu kembali kemiripan bioakustik:
+1. **Keunggulan Bioacoustic Pretrained Representation:** $R_2$ (BirdNET V2.4) unggul secara mutlak pada kueri bersih (Top-1 95.0%, mAP@10 0.9126, MRR 0.9658) dan mempertahankan ketahanan derau terbaik (retensi 84.45% pada SNR -5 dB). Keunggulan ini terbukti signifikan secara statistik melalui uji bootstrap 1.000 iterasi ($p < 0.001$).
+2. **Koreksi Hipotesis H1 (Keruntuhan Representasi Audio Generik):** Model *deep learning* audio umum ($R_1$ PANNs CNN14) mengalami keruntuhan performa katastropik di bawah derau ekstrem -5 dB (retensi anjlok ke 14.22%), bahkan kalah secara signifikan dari baseline *hand-crafted* MFCC (retensi 26.42%). Hipotesis H1 bahwa "deep pretrained representation selalu lebih tahan derau daripada baseline klasik" hanya berlaku untuk model spesifik bioakustik, bukan untuk model audio generik.
+3. **Dinamika Penolakan Open-Set (H4):** Ambang batas $\tau^*$ yang dibekukan dari partisi kalibrasi terpisah menunjukkan bahwa model generik mengalami ledakan alarm palsu (FPR 81.5% pada -5 dB), sedangkan BirdNET mempertahankan penolakan selektif yang konservatif (FPR 9.5%), membuktikan ketahanan penolakan kelas terbuka bioakustik.
+4. **Sensitivitas Sumber Derau (H3):** BirdNET terbukti invarian terhadap pergantian profil spektral sumber derau ($\Delta\text{mAP} \approx \pm 0.01$, $p = 0.610$), sementara PANNs sangat terpengaruh oleh karakteristik spektrum derau lingkungan ($\Delta = +0.0892$, $p < 0.001$).
+5. **Rekomendasi Implementasi:** Untuk sistem pemantauan bioakustik pasif lapangan berbasis representasi beku, penggunaan embedding khusus bioakustik (BirdNET) adalah keharusan mutlak dibandingkan model audio umum, disertai penyesuaian ambang batas dinamis berbasis SNR estimasi untuk mengantisipasi *open-set false rejection* pada kondisi derau ekstrem.
 3. Seluruh temuan statistik didukung oleh uji paired bootstrap 1.000 iterasi dengan $p < 0.001$.

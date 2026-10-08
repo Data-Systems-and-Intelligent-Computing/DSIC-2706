@@ -6,6 +6,7 @@ dataset_split.csv : 4fb0681aab39415384cf85c2f43b3b83f932ed08a97364d19c50e39fd9b2
 species_freeze.csv : 2267c13535546b02a090ad67ca4eecdf443dc11e348f44b3a3d7fea51bc71f6a
 species_excluded.csv : 36046986f5b16b718c778b3115e773abf949fa5861c7f6ccd9b6765a09289ec7
 itera_noise_manifest.csv : 210da10ef2687e8317d282147694f1f92467408095c10a865088ac67cf3a1a30
+unknown_open_set_manifest.csv : 478ebc1eb2ccb1e6df28af3562ddda2f5ddf44f6ef47d8f374f58cd7ab91d733
 
 # Baseline Verifikasi E1 Clean Retrieval (dari results/processed/clean_retrieval_table.csv):
 R0: MFCC Baseline (40-d) : Top1=27.500000000000004% mAP@10=0.13194880952380952 MRR=0.42244051265615723

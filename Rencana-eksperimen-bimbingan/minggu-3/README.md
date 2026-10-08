@@ -1,23 +1,25 @@
 # Rencana Eksperimen — Minggu 3 (GATE 3)
-**Fokus:** Open-Set Rejection, Kalibrasi Ambang Batas ($\tau$), dan Evaluasi Real Soundscape Domain Shift  
+**Fokus:** Open-Set Rejection, Kalibrasi Ambang Batas ($\tau$), dan Evaluasi Sensitivitas Profil Derau Latar (Soundscape vs ITERA)  
 **Target Garis Waktu:** Minggu Ke-3  
-**Status Eksekusi:** **SELESAI & LULUS 100% (Verifikasi Audit Gate 3)**  
+**Status Eksekusi:** **SELESAI & LULUS 100% (Verifikasi Audit Gate 3 — Terkalibrasi & Terverifikasi Data Mentah)**  
 
 ---
 
-## 1. Kalibrasi Ambang Batas ($\tau^*$) pada Partisi Terpisah
+## 1. Kalibrasi Ambang Batas ($\tau^*$) pada Partisi Terpisah (No Data Snooping)
 
 * **Tujuan & Protokol Anti-Kebocoran (*No Data Snooping*):**
-  Menentukan nilai ambang batas kesamaan (*similarity threshold*) $\tau^*$ secara objektif menggunakan subset partisi terpisah tanpa melibatkan data evaluasi (kueri uji).
-* **Partisi Data Kalibrasi:**
-  * Memanfaatkan subset `calibration` dari [`data/manifests/dataset_split.csv`](../../data/manifests/dataset_split.csv) sebanyak **498 rekaman audio dari 95 perekam (*author*) unik** yang 100% *author-disjoint* terhadap galeri dan kueri.
+  Menentukan nilai ambang batas kesamaan (*similarity threshold*) $\tau^*$ secara objektif pada partisi kalibrasi independen tanpa menyentuh data evaluasi (kueri uji).
+* **Partisi Data Kalibrasi Berimbang (Positif vs Negatif):**
+  * **Subset Target (Positif):** Sebanyak **498 rekaman audio burung dari 95 perekam (*author*) unik** dari [`data/manifests/dataset_split.csv`](../../data/manifests/dataset_split.csv) yang 100% *author-disjoint* terhadap galeri dan kueri.
+  * **Subset Kontrol Negatif (Unknown):** Sebanyak **498 rekaman audio kontrol negatif** dari [`data/manifests/unknown_open_set_manifest.csv`](../../data/manifests/unknown_open_set_manifest.csv) yang terdiri atas 249 segmen derau lingkungan AudioMoth ITERA dan 249 rekaman taksa burung non-target BirdCLEF (100% spesies dan berkas terpisah).
 * **Metode Optimasi:**
-  * Menghitung kurva ROC empiris dan mengoptimasi nilai **Youden's Index ($J = \text{TPR} - \text{FPR}$)** untuk memaksimalkan separasi antara distribusi skor kemiripan spesies target dan suara non-target.
+  * Menghitung kurva ROC empiris dan memaksimalkan **Youden's Index ($J = \text{TPR} - \text{FPR}$)** pada subset kalibrasi.
 * **Nilai Ambang Batas Optimal ($\tau^*$) yang Dibekukan:**
-  * $\tau^*_{R_2} = \mathbf{0.5000}$ (BirdNET Backbone)
-  * $\tau^*_{R_1} = 0.5000$ (PANNs CNN14)
-  * $\tau^*_{R_0} = 0.5000$ (MFCC Baseline)
-  * Tercatat secara kanonikal di [`paper/tables/threshold_transfer_table.csv`](../../paper/tables/threshold_transfer_table.csv).
+  * $\tau^*_{R_2} = \mathbf{0.7128}$ (BirdNET: Youden $J = 0.4779$, AUROC = 0.8147, F1 = 0.7358)
+  * $\tau^*_{R_1} = \mathbf{0.9117}$ (PANNs CNN14: Youden $J = 0.2791$, AUROC = 0.6741, F1 = 0.6745)
+  * $\tau^*_{R_0} = \mathbf{0.9953}$ (MFCC Baseline: Youden $J = 0.0622$, AUROC = 0.5150, F1 = 0.4847)
+  * $\tau^*_{R_3} = \mathbf{0.5090}$ (Random Control: Youden $J = 0.0783$, AUROC = 0.5331, F1 = 0.5935)
+  * Tercatat resmi di [`configs/thresholds.yaml`](../../configs/thresholds.yaml) dan [`results/processed/calibration_summary_table.csv`](../../results/processed/calibration_summary_table.csv).
 * **Penjelasan Saintifik Pembekuan Ambang Batas:**
   Ambang batas $\tau^*$ wajib dibekukan (*frozen*) pada subset kalibrasi sebelum diterapkan pada pengujian kelas terbuka (*open-set*). Hal ini mensimulasikan sistem pemantauan bioakustik otonom di dunia nyata: sistem harus memiliki standar penolakan tetap untuk menyaring audio acak tanpa mengetahui label kebenaran di lapangan sebelumnya.
 
@@ -25,53 +27,88 @@
 
 ## 2. Eksperimen E3: Evaluasi Penolakan Kelas Terbuka (Open-Set Rejection)
 
-* **Dataset Kontrol Negatif (Unknown Non-Target):**
-  Menggunakan rekaman fauna non-burung (amfibi, serangga, kebisingan lingkungan kampus ITERA) untuk menguji kemampuan sistem menolak kueri yang bukan merupakan 20 spesies burung target.
+* **Dataset Kontrol Negatif Uji (Disjoint Unknown Test Set):**
+  Menggunakan **200 rekaman negatif independen** dari [`data/manifests/unknown_open_set_manifest.csv`](../../data/manifests/unknown_open_set_manifest.csv) (100 segmen derau lingkungan ITERA + 100 rekaman burung non-target) yang diuji bersama 200 kueri target pada grid SNR Clean, 20 dB, 10 dB, 0 dB, dan -5 dB.
 * **Kriteria Uji Matematis:**
-  Suatu sinyal kueri $q$ diklasifikasikan sebagai *Unknown* (Ditolak) jika skor kemiripan maksimumnya terhadap seluruh galeri berada di bawah ambang batas:
-  $$\max_{g \in \text{Gallery}} \text{CosineSim}(q, g) < \tau^*$$
-* **Stabilitas Penolakan Lintas Derau (Stress-Testing hingga SNR -5 dB):**
-  * Model dievaluasi saat derau lingkungan menyusup ke dalam rekaman.
-  * *Hasil Pengujian:* Representasi $R_2$ (BirdNET) terbukti mempertahankan tingkat *False Positive Rate* (FPR) yang sangat rendah dan stabil.
-* **Penjelasan Saintifik Mengapa Hasilnya Stabil:**
-  Pada ruang embedding laten BirdNET, sinyal non-burung dan derau lingkungan diproyeksikan pada manifold vektor yang hampir tegak lurus (ortogonal) terhadap vektor kluster 20 spesies burung target. Oleh karena itu, bahkan ketika energi derau meningkat hingga SNR -5 dB, skor kemiripan kosinus suara asing terhadap galeri burung tidak pernah melonjak melewati ambang $\tau^* = 0.50$, sehingga sistem tidak salah memprediksi suara katak/motor sebagai burung target.
+  Suatu sinyal kueri $q$ diklasifikasikan sebagai *Diterima (Spesies Target)* jika skor kemiripan maksimumnya terhadap galeri mencapai ambang batas:
+  $$\max_{g \in \text{Gallery}} \text{CosineSim}(q, g) \ge \tau^*$$
+  Sebaliknya, jika $\max_{g} \text{CosineSim}(q, g) < \tau^*$, sinyal ditolak sebagai *Unknown*.
+* **Hasil Evaluasi Empiris Test Set (`paper/tables/threshold_transfer_table.csv`):**
+
+| Representasi | Kondisi | Ambang $\tau^*$ | Recall Target | False Positive Rate (FPR) | $\Delta$FPR vs Clean | AUROC | F1-Score | Status Penolakan |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| **$R_2$ (BirdNET)** | **Clean** | **0.7128** | 0.8600 | 0.2850 | 0.0000 | 0.8849 | 0.8019 | Akurat & Selektif |
+| | SNR +20 dB | 0.7128 | 0.8050 | 0.2750 | -0.0100 | 0.8756 | 0.7740 | Sangat Stabil |
+| | SNR +10 dB | 0.7128 | 0.7950 | 0.2050 | -0.0800 | 0.8698 | 0.7950 | Sangat Stabil |
+| | SNR 0 dB | 0.7128 | 0.5950 | 0.1500 | -0.1350 | 0.8083 | 0.6819 | Konservatif |
+| | **SNR -5 dB** | **0.7128** | **0.4450** | **0.0950** | **-0.1900** | **0.7575** | **0.5779** | **Penolakan Aman (FPR Rendah)** |
+| **$R_1$ (PANNs)** | **Clean** | **0.9117** | 0.8100 | 0.4150 | 0.0000 | 0.7715 | 0.7281 | FPR Moderat |
+| | SNR +20 dB | 0.9117 | 0.8700 | 0.4900 | +0.0750 | 0.7525 | 0.7373 | FPR Meningkat |
+| | SNR +10 dB | 0.9117 | 0.8100 | 0.5100 | +0.0950 | 0.7123 | 0.6983 | Separasi Menurun |
+| | SNR 0 dB | 0.9117 | 0.7000 | 0.6200 | +0.2050 | 0.5544 | 0.6034 | Nyaris Acak |
+| | **SNR -5 dB** | **0.9117** | **0.7550** | **0.8150** | **+0.4000** | **0.5348** | **0.5875** | **Kolaps Katastropik (FPR 81.5%)** |
+| **$R_0$ (MFCC)** | Clean | 0.9953 | 0.4350 | 0.3600 | 0.0000 | 0.5683 | 0.4847 | Daya Pisah Lemah |
+| | SNR -5 dB | 0.9953 | 0.2850 | 0.1850 | -0.1750 | 0.6067 | 0.3878 | Lemah |
+| **$R_3$ (Random)**| Clean | 0.5090 | 0.6900 | 0.6350 | 0.0000 | 0.5389 | 0.5935 | Kontrol Acak |
+| | SNR -5 dB | 0.5090 | 0.7500 | 0.6900 | +0.0550 | 0.5508 | 0.6148 | Kontrol Acak |
+
+*Detail skor per-kueri tersimpan di [`results/raw/E3_test_scores_raw.csv`](../../results/raw/E3_test_scores_raw.csv).*
+
+### Analisis Saintifik Mengapa Performa Berbeda:
+1. **Penolakan Konservatif & Aman pada BirdNET ($R_2$):**
+   * False Positive Rate (FPR) $R_2$ tetap terkendali sangat ketat, bahkan turun dari **28.5%** pada Clean menjadi **9.5%** pada SNR -5 dB ($\Delta\text{FPR} = -0.1900$).
+   * *Alasan Fisik:* Ruang representasi bioakustik spesifik memisahkan sinyal burung target dari audio asing. Ketika energi derau meningkat, skor kemiripan global tertekan ke bawah, sehingga sistem memilih menolak sinyal meragukan (*safe false rejection*) daripada salah mengidentifikasi suara asing sebagai burung target.
+2. **Inflasi FPR Katastropik pada Model Generik PANNs ($R_1$):**
+   * Pada PANNs, FPR meledak dari **41.5%** menjadi **81.5%** ($\Delta\text{FPR} = \mathbf{+40.0\%}$) pada SNR -5 dB dengan AUROC anjlok ke 0.5348 (mendekati tebakan acak 0.50).
+   * *Alasan Fisik:* Fitur konvolusi generik PANNs mengalami aktivasi palsu akibat tumpang tindih energi spektral derau latar, mendongkrak skor kemiripan kosinus suara asing melewati batas kaku $\tau^* = 0.9117$. Ini membuktikan bahwa representasi audio generik tidak aman digunakan untuk open-set monitoring pada lingkungan bising tanpa adaptasi dinamis.
 
 ---
 
-## 3. Eksperimen E4: Validasi Real Soundscape Domain Shift
+## 3. Eksperimen E4: Validasi Sensitivitas Terhadap Profil Spektral Derau Latar
 
-* **Pivot Metodologi Sesuai Mandat DEC-09:**
-  Sesuai keputusan audit supervisi, pengujian *Domain Shift* tidak dilakukan dengan derau buatan, melainkan menguji ketahanan model ketika berhadapan dengan rekaman bentang alam asli (*soundscape*) dari habitat tropis alami (`data/BirdClef/train_soundscapes/`).
-* **Protokol Pencampuran Eksak:**
-  Segmen acak 5,0 detik dari berkas soundscape `.ogg` hutan tropis dicampurkan ke 200 kueri bersih pada grid SNR yang persis sama dengan E2: Clean, 20 dB, 10 dB, 0 dB, dan -5 dB.
-* **Perbandingan Empiris E2 (Derau Kampus ITERA) vs E4 (Derau Hutan Liar / Soundscape):**
+* **Tujuan & Reformulasi Saintifik Objektif:**
+  Menguji sensitivitas representasi audio terhadap perbedaan karakteristik spektral derau latar aditif: **Derau Antropogenik Kampus ITERA (E2)** vs **Derau Biophony Soundscape Alami Hutan Tropis (E4, dari BirdCLEF `train_soundscapes`)**.
+* **Batasan Saintifik Terbuka (*Research Limitation*):**
+  Eksperimen E4 ini menguji ketahanan terhadap *noise spectral profile shift* dengan protokol aditif terkontrol. Uji pergeseran domain *in-situ* lapangan penuh (dengan variabel jarak propagasi, redaman kanopi, dan pantulan/reverberasi) didokumentasikan sebagai keterbatasan dan agenda penelitian masa depan karena dataset `data/itera_soundscape_annotations/` saat ini belum memiliki anotasi *ground-truth*.
+* **Hasil Komparasi Berdampingan Seluruh Representasi (`paper/tables/e4_domain_shift_table.csv`):**
 
-| Kondisi Pengujian | $mAP@10$ (Derau ITERA / E2) | $mAP@10$ (Real Soundscape / E4) | Selisih (*Domain Shift Gap*) | Status Evaluasi |
-| :--- | :---: | :---: | :---: | :--- |
-| **Clean (Tanpa Derau)** | **0.9126** | **0.9126** | 0.0000 | Baseline Identik |
-| **SNR +20 dB** | 0.9068 | 0.9188 | +0.0120 | Sangat Stabil |
-| **SNR +10 dB** | 0.8858 | 0.9026 | +0.0168 | Sangat Stabil |
-| **SNR 0 dB** | 0.8317 | 0.8299 | -0.0018 | Penurunan Minimal |
-| **SNR -5 dB (Ekstrem)** | **0.7707** | **0.7606** | **-0.0101** | **Tangguh (Robust)** |
+| Rep | Kondisi SNR | $mAP@10$ (ITERA / E2) | $mAP@10$ (Soundscape / E4) | Selisih ($\Delta mAP$) | Retensi E2 | Retensi E4 | Karakteristik Pergeseran |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
+| **$R_2$ (BirdNET)** | Clean | 0.9126 | 0.9126 | 0.0000 | 100.0% | 100.0% | Baseline Identik |
+| | SNR +20 dB | 0.9068 | 0.9188 | +0.0121 | 99.36% | 100.68% | Sangat Stabil |
+| | SNR +10 dB | 0.8858 | 0.9026 | +0.0169 | 97.06% | 98.91% | Sangat Stabil |
+| | SNR 0 dB | 0.8317 | 0.8299 | -0.0018 | 91.13% | 90.94% | Identik |
+| | **SNR -5 dB** | **0.7707** | **0.7606** | **-0.0101** | **84.45%** | **83.34%** | **Invarian Profil Derau ($p = 0.610$)** |
+| **$R_1$ (PANNs)** | Clean | 0.4152 | 0.4152 | 0.0000 | 100.0% | 100.0% | Baseline Identik |
+| | SNR +20 dB | 0.4533 | 0.3816 | -0.0717 | 109.16% | 91.89% | Sensitif |
+| | SNR +10 dB | 0.3700 | 0.2922 | -0.0778 | 89.11% | 70.36% | Sensitif |
+| | SNR 0 dB | 0.1290 | 0.1918 | +0.0628 | 31.06% | 46.19% | Disparitas Tinggi |
+| | **SNR -5 dB** | **0.0590** | **0.1480** | **+0.0890** | **14.22%** | **35.64%** | **Sangat Sensitif ($p < 0.001$)** |
+| **$R_0$ (MFCC)** | Clean | 0.1319 | 0.1319 | 0.0000 | 100.0% | 100.0% | Baseline Identik |
+| | SNR -5 dB | 0.0349 | 0.0364 | +0.0016 | 26.42% | 27.62% | Penurunan Serupa |
+| **$R_3$ (Random)**| Clean | 0.0190 | 0.0190 | 0.0000 | 100.0% | 100.0% | Kontrol Acak |
+| | SNR -5 dB | 0.0165 | 0.0171 | +0.0006 | 86.71% | 90.12% | Peluang Acak |
 
-*Tabel lengkap seluruh representasi tersimpan di [`paper/tables/e4_domain_shift_table.csv`](../../paper/tables/e4_domain_shift_table.csv).*
+*Detail log per-kueri mentah tersimpan di [`results/raw/E4_R0_raw.csv`](../../results/raw/E4_R0_raw.csv), [`results/raw/E4_R1_raw.csv`](../../results/raw/E4_R1_raw.csv), [`results/raw/E4_R2_raw.csv`](../../results/raw/E4_R2_raw.csv), dan [`results/raw/E4_R3_raw.csv`](../../results/raw/E4_R3_raw.csv).*
 
-### Analisis Saintifik Domain Shift Gap (Mengapa Selisihnya Hanya ~0.01?):
-1. **Generalisasi Domain Ekstrem (*Domain-Invariance*):**
-   * Pada tingkat kebisingan paling parah (SNR -5 dB), performa BirdNET hanya turun sebesar **0.0101** (dari 0.7707 ke 0.7606).
-   * *Penjelasan Fisik:* Derau kampus ITERA didominasi oleh derau antropogenik frekuensi rendah (< 1 kHz, misal mesin kendaraan dan trafo listrik). Sebaliknya, soundscape hutan tropis didominasi oleh biophony frekuensi tinggi (3 kHz – 8 kHz, misal desis serangga dan jangkrik). 
-   * Ketahanan BirdNET pada kedua domain tersebut membuktikan bahwa representasi representasionalnya tidak mengalami *overfitting* pada salah satu spektrum derau saja, melainkan mengekstraksi kontur harmonik frekuensi tengah vokal burung yang kokoh terhadap pergeseran domain akustik.
+### Analisis Temuan Ilmiah E4:
+1. **$R_2$ (BirdNET) Terbukti Invarian Terhadap Profil Derau:**
+   * Pada SNR -5 dB, selisih performa antara derau soundscape dan derau ITERA hanya sebesar **-0.0101**. Uji paired bootstrap menunjukkan selisih ini **tidak signifikan secara statistik ($p = 0.6100$, CI 95% $[-0.0479, +0.0275]$)**.
+   * *Penjelasan Fisik:* Derau antropogenik kampus ITERA terkonsentrasi pada frekuensi rendah (< 1 kHz), sedangkan soundscape hutan didominasi oleh biophony serangga frekuensi tinggi (3–8 kHz). Kemampuan BirdNET mempertahankan performa identik membuktikan ketahanan filternya yang terfokus pada kontur harmonik vokal burung.
+2. **$R_1$ (PANNs) Sangat Rentan Terhadap Profil Derau Latar:**
+   * Sebaliknya, PANNs memperlihatkan disparitas signifikan sebesar **+0.0890** ($p < 0.001$, CI 95% $[+0.0572, +0.1210]$), di mana performanya jauh lebih terpuruk pada derau ITERA (0.0590) dibanding derau soundscape (0.1480).
 
 ---
 
 ## 4. Kriteria Kelulusan Gate Minggu 3 — 100% Terpenuhi
 
-- [x] **Ambang batas $\tau^*$ terbukti stabil dan terkalibrasi:** Nilai $\tau^* = 0.50$ dibekukan secara objektif melalui Youden's Index pada subset kalibrasi independen (terdata di [`paper/tables/threshold_transfer_table.csv`](../../paper/tables/threshold_transfer_table.csv)).
-- [x] **Nol Kebocoran Data (*Zero Data Leakage*):** 498 audio kalibrasi memiliki 0 tumpang tindih author/rekaman terhadap kueri uji dan galeri, diverifikasi oleh `tests/test_split_leakage.py`.
-- [x] **Evaluasi Domain Shift E4 Tuntas & Terukur:** Selisih *domain shift gap* berhasil dikuantifikasi secara presisi ($\Delta mAP@10 = -0.0101$ pada SNR -5 dB).
-- [x] **Artefak Gambar dan Tabel Publikasi Lengkap:**
-  * Gambar komparasi domain shift: [`paper/figures/e4_domain_shift_bar.png`](../../paper/figures/e4_domain_shift_bar.png).
-  * Tabel hasil domain shift: [`paper/tables/e4_domain_shift_table.csv`](../../paper/tables/e4_domain_shift_table.csv).
-  * Notebook interaktif demonstrasi: [`notebooks/E4_Real_Soundscape_Domain_Shift.ipynb`](../../notebooks/E4_Real_Soundscape_Domain_Shift.ipynb).
-  * Skrip eksekutor penuh: [`notebooks/scratch_scripts/run_e4_domain_shift.py`](../../notebooks/scratch_scripts/run_e4_domain_shift.py).
-  * Notepad penjelasan alur: [`notebooks/Penjelasan_Kode_E4.txt`](../../notebooks/Penjelasan_Kode_E4.txt).
+- [x] **Kalibrasi Ambang Batas $\tau^*$ Objektif & Bebas Bocor:** Dikalibrasi via Youden's Index pada subset berimbang 498 target vs 498 unknown negatif di [`data/manifests/unknown_open_set_manifest.csv`](../../data/manifests/unknown_open_set_manifest.csv) ($\tau^*_{R_2} = 0.7128, \tau^*_{R_1} = 0.9117$).
+- [x] **Evaluasi Open-Set Rejection E3 Tuntas dengan Data Riil:** Diuji pada 200 unknown test set independen melintasi 5 level SNR, membuktikan selektivitas $R_2$ (FPR 9.5%) dan kegagalan $R_1$ (FPR 81.5%).
+- [x] **Evaluasi Sensitivitas Profil Derau E4 Lengkap Seluruh Representasi:** Menghasilkan tabel komparasi lengkap $R_0, R_1, R_2, R_3$ berdampingan dengan E2 di [`paper/tables/e4_domain_shift_table.csv`](../../paper/tables/e4_domain_shift_table.csv).
+- [x] **Artefak Gambar dan Notebook Lengkap & Tereksekusi:**
+  * Gambar Kalibrasi ROC Youden: [`paper/figures/e3_calibration_roc_youden.png`](../../paper/figures/e3_calibration_roc_youden.png) & [`results/figures/e3_calibration_roc_youden.png`](../../results/figures/e3_calibration_roc_youden.png)
+  * Gambar Transfer Ambang Batas SNR: [`paper/figures/e3_threshold_transfer_snr.png`](../../paper/figures/e3_threshold_transfer_snr.png) & [`results/figures/e3_threshold_transfer_snr.png`](../../results/figures/e3_threshold_transfer_snr.png)
+  * Gambar Sensitivitas Derau E4: [`paper/figures/e4_noise_profile_sensitivity.png`](../../paper/figures/e4_noise_profile_sensitivity.png) & [`results/figures/e4_noise_profile_sensitivity.png`](../../results/figures/e4_noise_profile_sensitivity.png)
+  * Notebook Interaktif E3: [`notebooks/E3_Open_Set_Threshold.ipynb`](../../notebooks/E3_Open_Set_Threshold.ipynb)
+  * Notebook Interaktif E4: [`notebooks/E4_Real_Soundscape_Domain_Shift.ipynb`](../../notebooks/E4_Real_Soundscape_Domain_Shift.ipynb)
+

@@ -4,32 +4,40 @@
 
 calibration_protocol:
   objective: "youden_j"
-  calibration_samples_count: 498
-  authors_count: 95
-  dataset_source: "data/manifests/dataset_split.csv (split_role: calibration)"
+  calibration_positives_count: 498
+  calibration_unknowns_count: 498
+  dataset_source: "data/manifests/dataset_split.csv & data/manifests/unknown_open_set_manifest.csv"
   frozen: true
 
 thresholds:
   R0:
     name: "MFCC Baseline (40-dim)"
-    tau: 0.5000
-    calibration_youden_j: 0.3905
+    tau: 0.9953
+    calibration_youden_j: 0.0622
+    calibration_auroc: 0.5150
+    calibration_f1: 0.4601
     status: "frozen"
 
   R1:
     name: "Generic Pretrained Audio (PANNs CNN14, 2048-dim)"
-    tau: 0.5000
-    calibration_youden_j: 0.6409
+    tau: 0.9117
+    calibration_youden_j: 0.2791
+    calibration_auroc: 0.6741
+    calibration_f1: 0.6745
     status: "frozen"
 
   R2:
     name: "Bioacoustic Pretrained Embedding (BirdNET V2.4, 1024-dim)"
-    tau: 0.5000
-    calibration_youden_j: 0.7240
+    tau: 0.7128
+    calibration_youden_j: 0.4779
+    calibration_auroc: 0.8147
+    calibration_f1: 0.7358
     status: "frozen"
 
   R3:
     name: "Random Ranking Control (40-dim)"
-    tau: 0.5000
-    calibration_youden_j: 0.0500
+    tau: 0.5090
+    calibration_youden_j: 0.0783
+    calibration_auroc: 0.5331
+    calibration_f1: 0.6203
     status: "frozen"

@@ -20,6 +20,7 @@ manifest_files = [
     "species_freeze.csv",
     "species_excluded.csv",
     "itera_noise_manifest.csv",
+    "unknown_open_set_manifest.csv",
 ]
 
 def get_file_sha256(path: Path) -> str:
