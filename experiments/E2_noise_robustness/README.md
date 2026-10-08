@@ -6,7 +6,7 @@ Menguji ketahanan (*robustness*) representasi audio ketika kueri bersih mengalam
 ## 2. Sumber Derau & Penghapusan Derau Sintetis
 * Sesuai keputusan audit **DEC-09**, derau sintetis pink noise ditinggalkan seutuhnya.
 * Menggunakan rekaman suara lingkungan murni (*ambient soundscape*) dari kampus ITERA yang direkam menggunakan perangkat **AudioMoth** (`data/itera_noise/`).
-* *Catatan Lapangan:* Perekaman fisik AudioMoth di kampus ITERA dijadwalkan pada Minggu 2 (H8–H14).
+* **Catatan Lapangan (1 Oktober 2026):** Frequency trigger sudah diambil siang hari di lima lokasi (DEC-11/DEC-12). Amplitude trigger **belum**. Manifes *bird-free* belum dibekukan. E2 masih **TERJADWAL**.
 
 ## 3. Skema Pengujian Terpasang (*Paired Noise Mixing*)
 * 200 kueri bersih yang sama dari E1 dipasangkan secara deterministik (`seed=42`) dengan segmen derau AudioMoth.

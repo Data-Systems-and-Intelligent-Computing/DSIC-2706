@@ -48,9 +48,9 @@ def save_raw_query_metrics(rep_code: str, condition: str, raw_metrics: list, que
     rows = []
     for i, m in enumerate(raw_metrics):
         row = {
-            "query_id": query_df.iloc[i]["id"],
+            "query_id": query_df.iloc[i]["recording_id"],
             "species_key": query_df.iloc[i]["species_key"],
-            "recordist": query_df.iloc[i]["recordist"],
+            "recordist": query_df.iloc[i].get("author", "Unknown"),
             "top1_match": m["top1_match"],
             "max_similarity_score": m["max_score"],
             "AP@10": m.get("AP@10", 0.0),

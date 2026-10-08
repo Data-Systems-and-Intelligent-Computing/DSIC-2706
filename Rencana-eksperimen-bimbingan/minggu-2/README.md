@@ -1,12 +1,12 @@
 # Rencana Eksperimen — Minggu 2 (GATE 2)
 **Fokus:** Akuisisi Data Lapangan AudioMoth ITERA & Controlled Noise Robustness (Paired SNR Stress-Testing)  
 **Target Garis Waktu:** Minggu Ke-2 (H8–H14)  
-**Status Eksekusi:** **TERJADWAL / BELUM DILAKUKAN (Menunggu Perekaman Fisik Lapangan AudioMoth)**  
+**Status Eksekusi:** Frequency siang sudah dikumpulkan; amplitude dan manifes *bird-free* **belum**; E2 **belum dijalankan**.  
 
 ---
 
 ## 1. Perekaman Fisik AudioMoth di Kampus ITERA (H8–H13)
-* **Status Lapangan:** **Belum Dilakukan**. Unit AudioMoth dijadwalkan dipasang di kampus ITERA pada Minggu 2.
+* **Status Lapangan:** Frequency trigger (Low/Medium/High, 32 kHz, 55 s/5 s) diambil 18–30 Sep 2026 siang hari di Masjid At-Tanwir, Embung E, Kebun Raya, Gedung F, dan GKU 1. **Amplitude trigger belum.** Malam tidak diizinkan (DEC-11). Kedua metode wajib agar kode mixer tidak memfilter ulang (DEC-12).
 * **Titik Penempatan:**
   1. *Titik Vegetasi/Embung:* Ambien alam, biophony serangga/jangkrik, gemerisik dedaunan, dan angin.
   2. *Titik Antropogenik:* Dekat koridor gedung/jalan kampus untuk menangkap derau aktivitas manusia dan kendaraan.

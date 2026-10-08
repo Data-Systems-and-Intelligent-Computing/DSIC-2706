@@ -74,9 +74,11 @@ Sesuai audit 12 September 2026 (**DEC-09**), korpus eksperimen utama dialihkan k
 - **Total Korpus Aktif**: 4.351 berkas rekaman audio.
 - **Standar Prapemrosesan**: Durasi 5,0 detik (160.000 sampel), laju sampel 32 kHz, mono, normalisasi energi RMS = 0.05.
 ### Bank Derau Aditif (E2) & Negatif Open-Set (E3): Rekaman AudioMoth ITERA
-- Perekaman nyata *ambient soundscape* kampus ITERA (Embung, Hutan Mini/Arboretum, dan area antropogenik) menggunakan perangkat **AudioMoth**.
-- **Derau sintetis (pink noise) resmi ditinggalkan** per DEC-09 karena tidak memiliki validitas ekologis untuk bioakustik tropis.
-- Folder `data/itera_noise/` diisi rekaman berdurasi 5 detik tanpa suara burung target untuk eksperimen E2 (pencampuran SNR terkontrol) dan E3 (penolakan open-set).
+- Perekaman *ambient* kampus ITERA dengan **AudioMoth** di lokasi perairan (Embung E), vegetasi (Kebun Raya), dan antropogenik (Masjid At-Tanwir, Gedung F, GKU 1).
+- **Hanya siang hari** (DEC-11): izin kampus tidak memperbolehkan malam; syarat “2 daypart” dicabut.
+- **Dua metode perangkat** (DEC-12): **frequency trigger** dan **amplitude trigger**, agar mixer memilih berkas bertanda di manifes tanpa filter digital di kode. Frequency sudah diambil 18–30 Sep 2026; amplitude **belum**.
+- **Derau sintetis (pink noise) resmi ditinggalkan** per DEC-09.
+- Segmen 5 detik *bird-free* untuk E2/E3 baru sah setelah `data/manifests/itera_noise_manifest.csv` terisi (saat ini masih skema kosong).
 
 ### Real Soundscape Validation (E4)
 - Menggunakan subset teranotasi dari `train_soundscapes` BirdCLEF+ 2026 untuk mengukur kesenjangan (*gap*) antara derau terkontrol dan pergeseran domain nyata.
@@ -296,7 +298,7 @@ Untuk audio lapangan:
 
 - AudioMoth / field recorder bila tersedia;
 - WAV lebih disarankan;
-- konfigurasi recorder, lokasi, daypart, dan timestamp dicatat.
+- konfigurasi recorder, lokasi, timestamp siang, `trigger_method` (frequency | amplitude), dan gain dicatat.
 
 ## 13. Quick start
 
@@ -433,22 +435,22 @@ Untuk skripsi empat bulan, bulan berikutnya dapat digunakan untuk memperbesar da
 
 Penelitian utama dianggap selesai bila:
 
-- [ ] target taxon dan species list dibekukan;
-- [ ] split bebas duplicate leakage;
-- [ ] MFCC baseline selesai;
-- [ ] generic pretrained representation selesai;
-- [ ] satu bioacoustic representation selesai;
-- [ ] clean retrieval selesai;
+- [x] target taxon dan species list dibekukan;
+- [x] split bebas duplicate leakage;
+- [x] MFCC baseline selesai;
+- [x] generic pretrained representation selesai;
+- [x] satu bioacoustic representation selesai;
+- [x] clean retrieval selesai;
 - [ ] minimal tiga noisy conditions selesai;
-- [ ] `mAP@k` dan `Recall@k` dihitung;
+- [x] `mAP@k` dan `Recall@k` dihitung *(E1; E2 belum)*;
 - [ ] threshold berasal hanya dari calibration;
 - [ ] open-set metrics tersedia;
 - [ ] real soundscape external check selesai;
-- [ ] minimal 20 failure cases diaudit;
-- [ ] confidence interval tersedia;
-- [ ] data manifest, seed, config, dan version model terdokumentasi;
-- [ ] satu tabel dan satu figure dapat direproduksi dari fresh run;
-- [ ] tidak ada klaim kehadiran spesies tanpa verifikasi manual.
+- [ ] minimal 20 failure cases diaudit *(rezim BirdCLEF; arsip Xeno-Canto tidak dihitung)*;
+- [ ] confidence interval tersedia *(kurva E2)*;
+- [x] data manifest, seed, config, dan version model terdokumentasi *(split E1; manifes derau belum)*;
+- [x] satu tabel dan satu figure dapat direproduksi dari fresh run *(E1)*;
+- [x] tidak ada klaim kehadiran spesies tanpa verifikasi manual.
 
 ## 18. Publication boundary
 

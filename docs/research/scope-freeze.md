@@ -69,5 +69,9 @@ Tingkat degradasi derau aditif dibekukan pada 5 level:
 
 ## 4. Peran Baru Rekaman AudioMoth Kampus ITERA
 Sesuai audit keputusan kedua, rekaman AudioMoth ITERA **tidak lagi menjadi validasi retrieval spesies**, melainkan murni dipersempit menjadi:
-1. **Bank derau lingkungan nyata (E2):** Segmen *background-only* bebas vokalisasi burung dari 3 tipe lokasi (Embung, Arboretum, Antropogenik) pada 2 waktu (*daypart*).
+1. **Bank derau lingkungan nyata (E2):** Segmen *background-only* bebas vokalisasi burung dari tipe lokasi perairan (Embung E), vegetasi (Kebun Raya), dan antropogenik (Masjid At-Tanwir, Gedung F, GKU 1).
 2. **Sampel negatif open-set (E3):** Sebagai data uji negatif jenis *pure background*.
+
+### Amandemen lapangan (1 Oktober 2026)
+- **DEC-11 — Daypart:** hanya **siang**; malam tidak diizinkan kampus. Rencana awal “2 daypart” **dibatalkan** sebagai syarat desain.
+- **DEC-12 — Metode trigger:** wajib **frequency** dan **amplitude** di perangkat, agar mixer tidak menambahkan filter digital. Frequency sudah diambil (18–30 Sep 2026). Amplitude **belum** diambil dan menjadi prasyarat main run E2.

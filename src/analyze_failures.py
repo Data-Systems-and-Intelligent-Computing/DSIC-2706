@@ -40,10 +40,10 @@ def extract_real_failures_from_raw(min_cases: int = 20) -> pd.DataFrame:
     if SPLIT_PATH.exists():
         df_split = pd.read_csv(SPLIT_PATH)
         for _, r in df_split.iterrows():
-            df_meta[str(r["id"])] = {
+            df_meta[str(r["recording_id"])] = {
                 "scientific_name": r.get("scientific_name", ""),
                 "common_name": r.get("common_name", ""),
-                "recordist": r.get("recordist", ""),
+                "recordist": r.get("author", ""),
                 "locality": r.get("locality", ""),
             }
 
