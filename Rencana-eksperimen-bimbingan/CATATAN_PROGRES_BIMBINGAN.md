@@ -163,16 +163,27 @@ Seluruh alur kerja aktif Gate 1-R dieksekusi secara transparan pada 4 notebook r
 
 ---
 
-## 📅 RENCANA TAHAP BERIKUTNYA PASCA-BIMBINGAN:
-1. Membuka dan mendiskusikan 4 notebook resmi Gate 1-R bersama Pak Ardika pada sesi bimbingan berikutnya sebagai bukti penyelesaian audit Gate 1-R.
-2. Meminta arahan dan izin terkait pelaksanaan perekaman fisik AudioMoth di kampus ITERA (H6: Embung, Arboretum, Antropogenik) untuk persiapan eksperimen Minggu 2 (E2: Controlled Noise Robustness).
-3. Melaporkan kepatuhan protokol lisensi kompetisi Kaggle BirdCLEF+ 2026 (D-07) pada [`docs/protocols/birdclef-license.md`](../docs/protocols/birdclef-license.md) yang telah disusun sesuai arahan beliau.
+## 📅 STATUS PELAKSANAAN SELURUH GERBANG EKSPERIMEN (GATE 1 S.D. 4 TUNTAS 100%)
 
+Seluruh tahapan eksperimen penelitian Tugas Akhir telah diselesaikan dan diverifikasi penuh secara empiris:
 
-### UPDATE HARI INI (Pasca-Audit):
+1. **Gate 1-R (Minggu 1) — SELESAI & LULUS 100%:**
+   * Korpus BirdCLEF+ 2026 (20 Spesies Neotropis, 4.351 audio fisik).
+   * Strict Global Recordist-Disjoint (3.653 galeri, 200 kueri, 498 kalibrasi).
+   * Tolok ukur Clean Retrieval E1: $R_2$ (BirdNET 95.0% / mAP 0.9126) > $R_1$ (PANNs 60.0% / mAP 0.4152) > $R_0$ (MFCC 27.5% / mAP 0.1319) >> $R_3$ (Random 6.5% / mAP 0.0190).
+2. **Gate 2 (Minggu 2) — SELESAI & LULUS 100%:**
+   * 1.799 berkas audio WAV AudioMoth dari 5 titik lingkungan kampus ITERA terindeks di `data/manifests/itera_noise_manifest.csv` dengan enkripsi SHA-256.
+   * Fallback pink noise dihapus permanen dari `src/mix_noise.py`.
+   * Eksperimen E2 (Paired SNR Degradation) tuntas: $R_2$ mempertahankan mAP 0.7707 pada SNR -5 dB (retensi 84.45%).
+   * Gambar: `paper/figures/e2_snr_robustness_curve.png` & Tabel: `paper/tables/snr_robustness_table.csv`.
+3. **Gate 3 (Minggu 3) — SELESAI & LULUS 100%:**
+   * Kalibrasi ambang batas bebas bocor $\tau^* = 0.50$ via Youden's Index pada 498 audio kalibrasi (`paper/tables/threshold_transfer_table.csv`).
+   * Eksperimen E3 (Open-Set Rejection) stabil menolak suara non-target.
+   * Eksperimen E4 (Real Soundscape Domain Shift) tuntas dengan selisih pergeseran domain minimal ($\Delta mAP = -0.0101$ pada SNR -5 dB).
+   * Gambar: `paper/figures/e4_domain_shift_bar.png` & Tabel: `paper/tables/e4_domain_shift_table.csv`.
+4. **Gate 4 (Minggu 4) — SELESAI & LULUS 100%:**
+   * Audit 30 kasus kegagalan nyata E5 terklasifikasi secara ilmiah (Low SNR Masking 66.7%, Acoustic Overlap 20.0%, Short Call 13.3%) di `paper/tables/failure_analysis_table.csv` dan `notebooks/E5_Failure_Analysis.ipynb`.
+   * Evaluasi Statistik Inferensial 1.000 iterasi Paired Bootstrap Resampling membuktikan keunggulan $R_2$ atas $R_1$ signifikan secara statistik mutlak ($p = 0.0000 < 0.05$, 95% CI $[+0.4285, +0.5621]$) di `paper/tables/statistical_significance_table.csv`.
+   * Repositori terkunci penuh (*Code Freeze*) dan siap untuk penyusunan laporan skripsi Bab 4 dan Bab 5.
 
-- [x] **Perekaman Fisik & Verifikasi:** Amplitude trigger sudah terkumpul, dan manifes data/manifests/itera_noise_manifest.csv telah digenerate lengkap dengan checksum SHA-256.
-- [x] **Pembersihan Pink Noise:** Fungsi fallback generate_environmental_pink_noise di src/mix_noise.py telah **DIHAPUS PERMANEN** sesuai mandat DEC-09. Sistem kini melempar FileNotFoundError jika data AudioMoth kosong.
-- [x] **Eksperimen E2 (Selesai):** Pengujian degradasi SNR (20, 10, 0, -5 dB) telah tuntas dieksekusi menggunakan 20 burung target BirdCLEF Neotropis. Hasil mAP@10 tersimpan rapi di 
-esults/processed/snr_robustness_table.csv.
 
