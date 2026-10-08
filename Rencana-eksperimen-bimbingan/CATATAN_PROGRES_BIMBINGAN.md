@@ -167,3 +167,12 @@ Seluruh alur kerja aktif Gate 1-R dieksekusi secara transparan pada 4 notebook r
 1. Membuka dan mendiskusikan 4 notebook resmi Gate 1-R bersama Pak Ardika pada sesi bimbingan berikutnya sebagai bukti penyelesaian audit Gate 1-R.
 2. Meminta arahan dan izin terkait pelaksanaan perekaman fisik AudioMoth di kampus ITERA (H6: Embung, Arboretum, Antropogenik) untuk persiapan eksperimen Minggu 2 (E2: Controlled Noise Robustness).
 3. Melaporkan kepatuhan protokol lisensi kompetisi Kaggle BirdCLEF+ 2026 (D-07) pada [`docs/protocols/birdclef-license.md`](../docs/protocols/birdclef-license.md) yang telah disusun sesuai arahan beliau.
+
+
+### UPDATE HARI INI (Pasca-Audit):
+
+- [x] **Perekaman Fisik & Verifikasi:** Amplitude trigger sudah terkumpul, dan manifes data/manifests/itera_noise_manifest.csv telah digenerate lengkap dengan checksum SHA-256.
+- [x] **Pembersihan Pink Noise:** Fungsi fallback generate_environmental_pink_noise di src/mix_noise.py telah **DIHAPUS PERMANEN** sesuai mandat DEC-09. Sistem kini melempar FileNotFoundError jika data AudioMoth kosong.
+- [x] **Eksperimen E2 (Selesai):** Pengujian degradasi SNR (20, 10, 0, -5 dB) telah tuntas dieksekusi menggunakan 20 burung target BirdCLEF Neotropis. Hasil mAP@10 tersimpan rapi di 
+esults/processed/snr_robustness_table.csv.
+

@@ -37,3 +37,12 @@ Dokumentasi di folder `Rencana-eksperimen-bimbingan/` ini menjadi bukti fisik te
 * **Tahap 3 (Open-Set & Kalibrasi $\tau$ E3):** Dirancang pada [Minggu 3](./minggu-3/README.md).
 * **Tahap 4 (Evaluasi Lengkap & Naskah Akhir):** Dirancang pada [Minggu 4](./minggu-4/README.md).
 
+
+
+### UPDATE HARI INI (Pasca-Audit):
+
+- [x] **Perekaman Fisik & Verifikasi:** Amplitude trigger sudah terkumpul, dan manifes data/manifests/itera_noise_manifest.csv telah digenerate lengkap dengan checksum SHA-256.
+- [x] **Pembersihan Pink Noise:** Fungsi fallback generate_environmental_pink_noise di src/mix_noise.py telah **DIHAPUS PERMANEN** sesuai mandat DEC-09. Sistem kini melempar FileNotFoundError jika data AudioMoth kosong.
+- [x] **Eksperimen E2 (Selesai):** Pengujian degradasi SNR (20, 10, 0, -5 dB) telah tuntas dieksekusi menggunakan 20 burung target BirdCLEF Neotropis. Hasil mAP@10 tersimpan rapi di 
+esults/processed/snr_robustness_table.csv.
+

@@ -41,3 +41,12 @@
 - [ ] Pemasangan kueri ke segmen derau bersifat deterministik.
 - [ ] Kurva degradasi $mAP@10$ dan retensi relatif terhadap SNR dihasilkan tanpa artefak *ceiling*/*floor*.
 - [ ] Seluruh log pemeringkatan per-kueri mentah tersimpan secara terstruktur di `results/raw/`.
+
+
+### UPDATE HARI INI (Pasca-Audit):
+
+- [x] **Perekaman Fisik & Verifikasi:** Amplitude trigger sudah terkumpul, dan manifes data/manifests/itera_noise_manifest.csv telah digenerate lengkap dengan checksum SHA-256.
+- [x] **Pembersihan Pink Noise:** Fungsi fallback generate_environmental_pink_noise di src/mix_noise.py telah **DIHAPUS PERMANEN** sesuai mandat DEC-09. Sistem kini melempar FileNotFoundError jika data AudioMoth kosong.
+- [x] **Eksperimen E2 (Selesai):** Pengujian degradasi SNR (20, 10, 0, -5 dB) telah tuntas dieksekusi menggunakan 20 burung target BirdCLEF Neotropis. Hasil mAP@10 tersimpan rapi di 
+esults/processed/snr_robustness_table.csv.
+
