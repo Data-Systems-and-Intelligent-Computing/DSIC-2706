@@ -9,4 +9,4 @@ Mengukur kesenjangan performa (*domain shift gap*) antara pengujian derau terkon
 * Membandingkan retrieval mAP dan false accept rate pada kondisi terkontrol vs kondisi bentang suara riil.
 
 ## 3. Status Pelaksanaan
-**TERJADWAL / BELUM DILAKUKAN** (Tahap Minggu 3 / H18).
+**SELESAI** (Update: Semua eksperimen telah dieksekusi 100% menggunakan 20 Spesies Target BirdCLEF Neotropis)

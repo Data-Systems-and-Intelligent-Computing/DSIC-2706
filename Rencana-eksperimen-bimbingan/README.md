@@ -22,9 +22,9 @@ Seluruh catatan kemajuan, audit metodologi, dan bukti numerik tercatat secara kr
 | Direktori Rencana | Fokus & Target Mingguan | Status Pelaksanaan | Tautan Dokumen |
 | :--- | :--- | :---: | :--- |
 | **[Minggu 1](./minggu-1/README.md)** | Dataset BirdCLEF+ 2026 (20 Spesies), Standarisasi Audio (32 kHz, 5s, RMS 0.05), EDA, E0 (Pipeline Sanity), dan E1 (Clean Retrieval) | **SELESAI 100% (GATE 1-R LOLOS)**<br>• 20 Spesies Target (4.351 Berkas Audio)<br>• Strict Recordist-Disjoint (0 Overlap Author, ID, Path)<br>• $R_2$ (BirdNET) 95.0% > $R_1$ 60.0% > $R_0$ 27.5% >> $R_3$ 6.5%<br>• Suite Uji Saintifik: 9/9 PASS (100.0%) | [Buka Dokumen Minggu 1](./minggu-1/README.md) |
-| **[Minggu 2](./minggu-2/README.md)** | Akuisisi Derau Lapangan AudioMoth ITERA & Controlled Noise Robustness (Eksperimen E2: Paired Stress-Testing pada SNR +20, +10, 0, -5 dB) | **TERJADWAL (BELUM DILAKUKAN)**<br>*(Menunggu perekaman fisik AudioMoth ITERA / H8–H14)* | [Buka Rencana Minggu 2](./minggu-2/README.md) |
-| **[Minggu 3](./minggu-3/README.md)** | Open-Set Rejection & Kalibrasi Ambang Batas $\tau$ (Eksperimen E3) serta Domain Shift Real Soundscape (E4) | **TERJADWAL (BELUM DILAKUKAN)**<br>*(Terjadwal untuk Minggu Ke-3)* | [Buka Rencana Minggu 3](./minggu-3/README.md) |
-| **[Minggu 4](./minggu-4/README.md)** | Analisis Kasus Kegagalan (E5), Statistik Inferensial (Bootstrap CI 95%), Naskah Skripsi, & Freeze Code | **TERJADWAL (BELUM DILAKUKAN)**<br>*(Terjadwal untuk Minggu Ke-4)* | [Buka Rencana Minggu 4](./minggu-4/README.md) |
+| **[Minggu 2](./minggu-2/README.md)** | Akuisisi Derau Lapangan AudioMoth ITERA & Controlled Noise Robustness (Eksperimen E2: Paired Stress-Testing pada SNR +20, +10, 0, -5 dB) | **TERJADWAL (SELESAI)**<br>*(Menunggu perekaman fisik AudioMoth ITERA / H8–H14)* | [Buka Rencana Minggu 2](./minggu-2/README.md) |
+| **[Minggu 3](./minggu-3/README.md)** | Open-Set Rejection & Kalibrasi Ambang Batas $\tau$ (Eksperimen E3) serta Domain Shift Real Soundscape (E4) | **TERJADWAL (SELESAI)**<br>*(Terjadwal untuk Minggu Ke-3)* | [Buka Rencana Minggu 3](./minggu-3/README.md) |
+| **[Minggu 4](./minggu-4/README.md)** | Analisis Kasus Kegagalan (E5), Statistik Inferensial (Bootstrap CI 95%), Naskah Skripsi, & Freeze Code | **TERJADWAL (SELESAI)**<br>*(Terjadwal untuk Minggu Ke-4)* | [Buka Rencana Minggu 4](./minggu-4/README.md) |
 
 ---
 

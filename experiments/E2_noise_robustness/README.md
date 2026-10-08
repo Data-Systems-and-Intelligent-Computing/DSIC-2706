@@ -14,4 +14,4 @@ Menguji ketahanan (*robustness*) representasi audio ketika kueri bersih mengalam
   $$x_{\text{noisy}} = x_{\text{clean}} + \alpha \cdot n_{\text{noise}}, \quad \alpha = \sqrt{\frac{P_{\text{signal}}}{P_{\text{noise}} \cdot 10^{\text{SNR}/10}}}$$
 
 ## 4. Status Pelaksanaan
-**TERJADWAL / BELUM DILAKUKAN** (Tahap Minggu 2 / H8–H14).
+**SELESAI** (Update: Semua eksperimen telah dieksekusi 100% menggunakan 20 Spesies Target BirdCLEF Neotropis)

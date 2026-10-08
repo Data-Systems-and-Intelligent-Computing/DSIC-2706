@@ -14,4 +14,4 @@ Mengevaluasi kestabilan ambang batas kemiripan (similarity threshold $\\tau$) ya
 3. Derau murni: Segmen ambient soundscape AudioMoth ITERA tanpa satwa.
 
 ## 4. Status Pelaksanaan
-**TERJADWAL / BELUM DILAKUKAN** (Tahap Minggu 3 / H15–H21).
+**SELESAI** (Update: Semua eksperimen telah dieksekusi 100% menggunakan 20 Spesies Target BirdCLEF Neotropis)
