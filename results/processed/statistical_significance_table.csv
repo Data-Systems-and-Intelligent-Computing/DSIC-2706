@@ -1,0 +1,2 @@
+Comparison,Mean_mAP_Diff,CI_95_Lower,CI_95_Upper,p_value,Significant_at_0.05
+R2 (BirdNET) vs R1 (PANNs),0.4981,0.4504,0.5473,0.0,True
