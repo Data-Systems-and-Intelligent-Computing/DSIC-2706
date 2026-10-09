@@ -60,9 +60,9 @@
 2. **Koreksi Hipotesis H1 & Retensi SNR -5 dB ($R_0$ vs $R_1$):**
    * Uji retensi ketahanan derau pada SNR -5 dB membuktikan bahwa baseline klasik MFCC ($R_0$, retensi 26.4%) justru **mengungguli PANNs ($R_1$, retensi 14.2%) secara signifikan** dengan $\Delta = +0.1223$, CI 95% $[+0.0581, +0.1994]$, dan $p < 0.001$.
    * *Temuan Saintifik:* Hipotesis keunggulan *deep pretrained representations* atas *handcrafted features* di bawah derau lingkungan hanya terbukti untuk model domain-spesifik bioakustik ($R_2$), bukan untuk representasi deep generic audio secara umum.
-3. **Uji Invariansi Domain E4 vs E2:**
-   * Untuk $R_2$, nilai $p = 0.6100$ dan CI 95% yang mencakup 0 ($[-0.0479, +0.0275]$) memberikan bukti statistik formal bahwa performa BirdNET invarian terhadap pergantian profil spektral derau latar belakang.
-   * Sebaliknya, untuk $R_1$, nilai $p < 0.001$ membuktikan bahwa model generic audio mengalami bias signifikan terhadap jenis derau tertentu.
+3. **Uji Sensitivitas Profil Derau E4 vs E2:**
+   * Untuk $R_2$, nilai $p = 0.6100$ dan CI 95% yang mencakup 0 ($[-0.0479, +0.0275]$) mengindikasikan tidak terdeteksi perbedaan performa yang signifikan secara statistik antara derau kampus ITERA dan soundscape BirdCLEF. Ketiadaan perbedaan signifikan ini menunjukkan stabilitas retensi terhadap variasi spektral derau aditif, bukan bukti ekuivalensi absolut.
+   * Sebaliknya, untuk $R_1$, nilai $p < 0.001$ membuktikan bahwa model generic audio mengalami sensitivitas signifikan terhadap perbedaan profil spektral derau.
 
 ---
 
@@ -92,8 +92,8 @@
 
 ## 4. Kriteria Kelulusan Gate Minggu 4 — 100% Terpenuhi
 
-- [x] **Audit Terstratifikasi Kasus Kegagalan E5 Selesai:** 30 kasus nyata terstratifikasi (Clean & -5 dB) terklasifikasi secara kuantitatif (Open-Set False Rejection 53.3%, Top-1 Confusion 33.3%, Total Collapse 13.3%) di [`paper/tables/failure_analysis_table.csv`](../../paper/tables/failure_analysis_table.csv) dan [`notebooks/E5_Failure_Analysis.ipynb`](../../notebooks/E5_Failure_Analysis.ipynb).
-- [x] **Uji Statistik Inferensial Komprehensif (1.000 Iterasi) Tuntas:** 7 skenario hipotesis diuji dengan Paired Bootstrap, membuktikan $R_2$ unggul ($p < 0.001$, CI $[+0.4504, +0.5473]$), retensi MFCC unggul atas PANNs ($p < 0.001$), serta invariansi profil derau $R_2$ ($p = 0.6100$).
+- [x] **Audit Terstratifikasi Kasus Kegagalan E5 Selesai:** 30 kasus nyata terstratifikasi lintas 16 takson (Clean & -5 dB) terklasifikasi secara objektif (Top-1 Confusion Above Tau 36.67%, Open-Set False Rejection 36.67%, Total Collapse 26.67%) di [`paper/tables/failure_analysis_table.csv`](../../paper/tables/failure_analysis_table.csv) dan [`notebooks/E5_Failure_Analysis.ipynb`](../../notebooks/E5_Failure_Analysis.ipynb).
+- [x] **Uji Statistik Inferensial Komprehensif (1.000 Iterasi) Tuntas:** 7 skenario hipotesis diuji dengan Paired Bootstrap, membuktikan $R_2$ unggul ($p < 0.001$, CI $[+0.4504, +0.5473]$), retensi MFCC unggul atas PANNs ($p < 0.001$), serta tidak terdeteksi perbedaan signifikan profil derau pada $R_2$ ($p = 0.6100$).
 - [x] **Seluruh Tabel dan Gambar Publikasi Bab 4 Terintegrasi:** Lengkap di direktori `paper/tables/` dan `paper/figures/`.
 - [x] **Naskah Skripsi & Catatan Bimbingan Sinkron:** Seluruh angka di `paper/manuscript.md` dan `Rencana-eksperimen-bimbingan/CATATAN_PROGRES_BIMBINGAN.md` cocok 100% dengan data mentah.
 - [x] **Repositori Lolos Uji Integritas 100%:** `python run_tests.py` lolos **9 dari 9 (100%)**.

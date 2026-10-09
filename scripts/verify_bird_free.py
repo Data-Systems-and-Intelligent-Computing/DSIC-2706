@@ -4,9 +4,9 @@ Fungsi: Audit empiris terhadap 1.799 berkas derau ITERA dan evaluasi saintifik l
 Menghasilkan laporan resmi: artifacts/reproducibility/bird_free_audit_report.md
 
 Audit mencakup:
-1. Verifikasi Biogeografis: 100% bebas dari 20 spesies target Neotropis (Disjoint Realm: Sundaland vs Neotropics).
-2. Audit Akustik 10 Lokasi & Konfigurasi Trigger: Analisis distribusi energi frekuensi (1-4 kHz dan 4-8 kHz).
-3. Dekonstruksi 39 Kasus False Acceptance E3 (BirdNET R2): Korelasi trigger frekuensi di kanopi pohon (GKU 1 & Gedung F) dengan biofoni lokal.
+1. Verifikasi Biogeografis: 100% bebas dari 20 spesies burung target Neotropis (Disjoint Realm: Sundaland vs Neotropics).
+2. Audit Akustik 10 Lokasi & Konfigurasi Trigger: Analisis distribusi energi frekuensi hardware summary.
+3. Dekonstruksi 39 Kasus False Acceptance E3 (BirdNET R2): Analisis distribusi skor kosinus dan perumusan hipotesis kerja bioakustik.
 4. Keterbatasan Eksperimen E4: Soundscape BirdCLEF mengandung biofoni latar belakang alami.
 """
 
@@ -28,7 +28,6 @@ def load_all_analysis_summaries():
         if csv_file.name.startswith("analysis_summary"):
             try:
                 df = pd.read_csv(csv_file)
-                # Ambil folder induk sebagai lokasi & mode
                 folder_name = csv_file.parent.name
                 df["location_mode"] = folder_name
                 summaries.append(df)
@@ -37,6 +36,11 @@ def load_all_analysis_summaries():
     if summaries:
         return pd.concat(summaries, ignore_index=True)
     return pd.DataFrame()
+
+def fmt_pct(val):
+    if pd.isna(val) or val is None:
+        return "N/A"
+    return f"{val:.1f}%"
 
 def main():
     print("[*] Menjalankan Verifikasi dan Audit Empiris Derau ITERA (DSIC-2706)...")
@@ -55,15 +59,16 @@ def main():
     loc_stats = []
     if not hardware_summary.empty:
         for loc, grp in hardware_summary.groupby("location_mode"):
+            filter_val = grp["filter_type"].dropna().iloc[0] if ("filter_type" in grp and not grp["filter_type"].dropna().empty) else "High-pass / Default"
             loc_stats.append({
                 "Lokasi & Filter": loc,
                 "Jumlah File": len(grp),
-                "Filter Type": grp["filter_type"].iloc[0] if "filter_type" in grp else "Unknown",
+                "Filter Type": filter_val,
                 "Mean RMS": grp["rms"].mean() if "rms" in grp else 0.0,
-                "Mean Sub-1kHz (%)": grp["band_sub1k"].mean() if "band_sub1k" in grp else 0.0,
-                "Mean 1-4kHz (%)": grp["band_1k_4k"].mean() if "band_1k_4k" in grp else 0.0,
-                "Mean 4-8kHz (%)": grp["band_4k_8k"].mean() if "band_4k_8k" in grp else 0.0,
-                "Mean >8kHz (%)": grp["band_above8k"].mean() if "band_above8k" in grp else 0.0,
+                "Mean Sub-1kHz": grp["band_sub1k"].mean() if "band_sub1k" in grp else np.nan,
+                "Mean 1-4kHz": grp["band_1k_4k"].mean() if "band_1k_4k" in grp else np.nan,
+                "Mean 4-8kHz": grp["band_4k_8k"].mean() if "band_4k_8k" in grp else np.nan,
+                "Mean >8kHz": grp["band_above8k"].mean() if "band_above8k" in grp else np.nan,
             })
     df_loc_stats = pd.DataFrame(loc_stats).sort_values("Lokasi & Filter")
 
@@ -118,20 +123,20 @@ def main():
 **Proyek:** DSIC-2706 — Noise and Domain-Shift Robustness of Frozen Audio Representations for Bioacoustic Similarity Retrieval  
 **Tanggal Audit:** 9 Oktober 2026  
 **Status Audit:** Terverifikasi Lengkap (Empirically Audited & Disclosed)  
-**Tujuan Dokumen:** Memenuhi temuan audit mengenai verifikasi klaim `verified_bird_free: True` pada 1.799 berkas derau lapangan ITERA, mendokumentasikan komposisi biofoni lokal, serta menjelaskan keterbatasan alami biofoni pada soundscape BirdCLEF.
+**Tujuan Dokumen:** Memenuhi evaluasi saintifik mengenai label `verified_bird_free: True` pada 1.799 berkas derau lapangan ITERA, mendokumentasikan karakteristik spektral perangkat keras, menganalisis faktor false acceptance pada E3, serta menjelaskan keterbatasan alami biofoni pada soundscape BirdCLEF.
 
 ---
 
 ## 1. Ringkasan Eksekutif & Klarifikasi Definisi "Bird-Free"
 
-Pada manifes `data/manifests/itera_noise_manifest.csv`, terdapat 1.799 berkas audio dengan kolom boolean `verified_bird_free: True`. Audit ini mengklarifikasi secara ketat batasan semantik dari label tersebut:
+Pada manifes `data/manifests/itera_noise_manifest.csv`, terdapat 1.799 berkas audio dengan kolom boolean `verified_bird_free: True`. Batasan semantik dari label tersebut didefinisikan secara ketat sebagai berikut:
 
 1. **Definisi yang Valid (Target-Bird-Free = 100%):**  
    Seluruh 1.799 berkas derau lingkungan ITERA **100.0% bebas dari 20 spesies burung target Neotropis**. Tidak ada satu pun vokalisasi dari spesies target (*Brotogeris jugularis*, *Trogon melanurus*, dsb.) yang masuk ke dalam bank derau, karena pemisahan biogeografis absolut antara Alam Neotropis (Amerika Tropis) dan Alam Sundaland/Indomalayan (Sumatera, Indonesia).
 2. **Koreksi & Pembatasan Saintifik (Acoustically Silent / Biophony-Free = False):**  
-   Label `verified_bird_free` **TIDAK DAPAT** ditafsirkan sebagai rekaman anechoic murni atau bebas dari seluruh suara hayati. Perekaman outdoor di lingkungan tropis kampus ITERA secara alami menangkap **biofoni lokal Sundaland** (stridulasi jangkrik/serangga malam, katak, serta kicauan burung urban lokal seperti *Passer montanus* / Burung Gereja dan *Pycnonotus aurigaster* / Kutilang).
-3. **Implikasi terhadap False Acceptance (FPR E3):**  
-   Adanya biofoni lokal (terutama pada perekaman kanopi pohon ber-filter frekuensi di Gedung F dan Sekitar GKU 1) secara langsung menjelaskan mengapa representasi BirdNET ($R_2$) menghasilkan False Positive Rate sebesar **39,0%** terhadap derau murni ITERA pada kondisi Clean. Model mendeteksi energi akustik burung lokal/serangga pada pita 1–8 kHz, bukan berhalusinasi terhadap keheningan.
+   Label `verified_bird_free` **TIDAK DAPAT** ditafsirkan sebagai rekaman anechoic murni atau bebas dari seluruh suara hayati. Perekaman outdoor di lingkungan tropis kampus ITERA secara alami menangkap biofoni lokal (stridulasi jangkrik/serangga malam, katak, serta fauna lokal).
+3. **Dinamika False Acceptance (FPR E3):**  
+   Pada kondisi Clean, representasi BirdNET ($R_2$) menghasilkan False Positive Rate sebesar **39,0%** terhadap 100 berkas derau ITERA pada ambang batas tau* = 0.7128. Rerata kesamaan kosinus derau terhadap galeri berada pada 0.683 (std = 0.064), sehingga ekor atas distribusinya secara probabilistik melampaui tau*. Tren observasional menunjukkan tingkat false accept lebih tinggi pada rekaman outdoor tertentu (seperti Gedung F dan GKU 1), yang dihipotesiskan berkaitan dengan biofoni lokal atau karakteristik akustik lingkungan, namun memerlukan anotasi aural manual lanjutan untuk pembuktian definitif.
 
 ---
 
@@ -145,12 +150,16 @@ Berikut adalah rekapitulasi energi spektral terukur dari 1.799 berkas derau:
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 """
     for row in loc_stats:
-        report_content += f"| `{row['Lokasi & Filter']}` | {row['Jumlah File']} | {row['Filter Type']} | {row['Mean RMS']:.4f} | {row['Mean Sub-1kHz (%)']:.1f}% | {row['Mean 1-4kHz (%)']:.1f}% | {row['Mean 4-8kHz (%)']:.1f}% | {row['Mean >8kHz (%)']:.1f}% |\n"
+        report_content += (
+            f"| `{row['Lokasi & Filter']}` | {row['Jumlah File']} | {row['Filter Type']} | "
+            f"{row['Mean RMS']:.4f} | {fmt_pct(row['Mean Sub-1kHz'])} | {fmt_pct(row['Mean 1-4kHz'])} | "
+            f"{fmt_pct(row['Mean 4-8kHz'])} | {fmt_pct(row['Mean >8kHz'])} |\n"
+        )
 
     report_content += f"""
 ### Observasi Akustik Utama:
-- **Pita 1–8 kHz (Karakteristik Biofoni):** Pada perekaman dengan *Frequency Trigger* (terutama di Sekitar GKU 1 dan Gedung F), energi spektral pada pita 1–4 kHz dan 4–8 kHz mencapai **>50%** dari total daya sinyal. Hal ini mengonfirmasi bahwa trigger frekuensi 4.0 kHz secara aktif dipicu oleh biofoni tajam di kanopi pohon (jangkrik, tonggeret/Cicada, dan kicauan burung lokal).
-- **Dominasi Sub-1kHz (Antropofoni & Geofoni):** Lokasi seperti Masjid At-Tanwir dan Embung F (Amplitudo) didominasi oleh energi frekuensi rendah (< 1 kHz, rata-rata 75–85%), yang mencerminkan derau hembusan angin, dengung mesin pendingin (AC), dan aktivitas kendaraan kampus.
+- **Dominasi Sub-1kHz (Antropofoni & Geofoni):** Sebagian besar rekaman lapangan luar ruangan didominasi oleh energi frekuensi rendah (< 1 kHz, rata-rata 57–83%), mencerminkan hembusan angin terbuka, resonansi air di Embung F, dan aktivitas kampus. Pada `Gedung F Frequency`, energi sub-1kHz mencapai rata-rata 83,2%, sementara pita 1–4 kHz menyumbang 13,4% dan 4–8 kHz menyumbang 2,5%.
+- **Variasi Pita 1–4 kHz:** Pada konfigurasi tertentu seperti `Sekitar GKU 1 Amplitudo` (64,8%), `Gedung F Amplitudo` (52,2%), dan `Sekitar GKU 1 Frequency` (31,8%), terdapat proporsi energi yang lebih signifikan pada pita 1–4 kHz. Nilai `N/A` pada kolom >8 kHz menunjukkan batas filter analisis perangkat keras pada subset tertentu.
 
 ---
 
@@ -167,19 +176,19 @@ Pecahan 39 kasus *False Acceptance* derau berdasarkan lokasi dan jenis trigger d
 | :--- | :---: | :---: | :---: |
 {fa_analysis_md}
 
-### Temuan Kritis:
-1. **Konsentrasi Ekstrem pada Trigger Frekuensi Pohon:**  
-   Perekaman `Gedung F Frequency` menghasilkan **8/8 (100,0%)** false accept, dan `Sekitar GKU 1 Frequency` menghasilkan **9/11 (81,8%)** false accept. Kedua lokasi ini menyumbang **43,6%** dari seluruh false accept derau.
-2. **Mekanisme Bioakustik:**  
-   Mikrofon AudioMoth yang dipasang di pohon dekat GKU 1 dan Gedung F memicu perekaman saat mendeteksi osilasi pada 4 kHz. Di Sumatera, frekuensi ini merupakan domain resonansi utama dari serangga pohon tropis dan kicauan *Passer montanus*. Representasi beku BirdNET memetakan pola frekuensi harmonik tersebut ke ruang embedding yang mendekati vokalisasi burung galeri target (Sim >= 0.7128).
-3. **Bukan Halusinasi Terhadap Keheningan:**  
-   Lokasi yang relatif hening dengan dominasi suara rendah (seperti `Masjid At-tanwir Amplitudo` dan `Kebun Raya Amplitudo`) memiliki tingkat penolakan yang sangat tinggi (False Accept hanya 9,1% dan 16,7%). Ini membuktikan bahwa BirdNET menolak derau lingkungan non-biologis dengan baik, namun rentan tertipu oleh biofoni non-target.
+### Temuan dan Hipotesis Kerja:
+1. **Distribusi False Accept Berdasarkan Lokasi (Keterbatasan Ukuran Sampel):**  
+   Pada subset uji kontrol negatif ($N=100$ berkas derau), ukuran sampel per lokasi berkisar antara 5 hingga 14 berkas. Perekaman `Gedung F Frequency` mencatat 8/8 (100,0%) false accept, dan `Sekitar GKU 1 Frequency` mencatat 9/11 (81,8%) false accept. Sebaliknya, lokasi seperti `Kebun Raya Frequency` mencatat 0/11 (0,0%) dan `Masjid At-tanwir Amplitudo` mencatat 1/11 (9,1%).
+2. **Hipotesis Kerja Mekanisme Bioakustik (Belum Dibuktikan Definitif):**  
+   Penyebab spesifik dari false accept pada 8 berkas `Gedung F Frequency` belum diverifikasi secara definitif melalui pendengaran aural manual atau detektor bioakustik per detik. Hipotesis bahwa rekaman tersebut menangkap biofoni lokal (seperti serangga kanopi atau kicauan burung urban setempat) ditempatkan sebagai **hipotesis kerja** yang memerlukan investigasi ornitologis lanjutan.
+3. **Dinamika Representasi Kemiripan Kosinus:**  
+   Dari perspektif komputasi representasi beku, ruang embedding BirdNET menghasilkan distribusi kesamaan kosinus terhadap derau lingkungan dengan rata-rata empiris sekitar 0.683 (rentang 0.523 - 0.817, simpangan baku 0.064). Karena ambang batas tau* = 0.7128 berada dekat dengan persentil ke-75 dari distribusi derau, secara matematis sekitar 39% derau lingkungan akan memiliki skor di atas ambang batas. Hal ini mengonfirmasi bahwa ambang batas tunggal tau* yang dikalibrasi pada kondisi bersih tidak secara otomatis memberikan kekebalan terhadap sinyal derau lingkungan yang memiliki magnitudo kemiripan moderat.
 
 ---
 
 ## 4. Keterbatasan Biofoni Latar Belakang pada Eksperimen E4 (BirdCLEF Soundscapes)
 
-Pada Eksperimen E4 (*Domain Shift Sensitivitas Profil Derau*), sinyal query dicampur dengan rekaman *train_soundscapes* BirdCLEF 2026. Audit saintifik mencatat batasan metodologis berikut:
+Pada Eksperimen E4 (*Sensitivitas Profil Derau Spektral*), sinyal query dicampur dengan rekaman *train_soundscapes* BirdCLEF 2026. Batasan metodologis yang dicatat adalah:
 
 1. **Keberadaan Biofoni Latar Belakang Alami:**  
    Soundscape BirdCLEF merupakan rekaman habitat alami berkelanjutan (panjang 60 detik) yang diambil di cagar alam Neotropis. Secara inheren, rekaman tersebut mengandung vokalisasi burung latar belakang alami (*background chorus*) dan suara serangga tropis.

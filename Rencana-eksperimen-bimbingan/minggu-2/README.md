@@ -57,8 +57,8 @@
    * Yang sangat menarik secara ilmiah: pada SNR -5 dB, retensi relatif $R_1$ (14.22%) **kalah signifikan** dari retensi baseline klasik MFCC ($R_0$) yang masih bertahan di **26.42%**.
    * *Alasan Fisik/Arsitektural:* PANNs dilatih pada AudioSet (suara kendaraan, mesin, percakapan). Pada rasio sinyal-ke-derau negatif ($P_{\text{noise}} > P_{\text{signal}}$), derau kampus ITERA mendistorsi aktivasi neuron konvolusi generik PANNs. Sebaliknya, MFCC mengekstraksi energi filterbank Mel lokal tanpa interaksi non-linear yang dapat memicu *hallucinated features*.
    * *Implikasi terhadap Hipotesis H1:* Hipotesis keunggulan representasi deep atas handcrafted hanya terbukti untuk model domain-spesifik ($R_2$), bukan untuk model deep generik secara umum.
-3. **Efek Stochastic Resonance pada SNR +20 dB untuk $R_1$:**
-   * Pada derau sangat ringan (SNR +20 dB), performa $R_1$ sedikit naik menjadi 0.4533 (retensi 109.16%). Hal ini konsisten dengan fenomena *stochastic resonance* atau *noise dithering*, di mana sedikit derau aditif bertindak sebagai regularisasi yang menghaluskan representasi spektrogram kueri bersih.
+3. **Anomali Peningkatan Performa pada SNR +20 dB untuk $R_1$:**
+   * Pada derau sangat ringan (SNR +20 dB), performa $R_1$ mengalami sedikit peningkatan menjadi 0.4533 (retensi 109.16%). Temuan ini dicatat secara objektif sebagai observasi empiris yang belum terjelaskan (*unexplained empirical observation*), yang memerlukan pengujian akustik independen lanjutan untuk memverifikasi mekanismenya.
 4. **Validitas Kontrol Acak ($R_3$):**
    * $R_3$ konsisten berada di sekitar peluang acak teoretis $1/20 = 0.05$ (0.014 – 0.019) di seluruh rentang SNR, membuktikan ketiadaan artefak *ceiling* maupun *floor* pada formula metrik retrieval.
 
