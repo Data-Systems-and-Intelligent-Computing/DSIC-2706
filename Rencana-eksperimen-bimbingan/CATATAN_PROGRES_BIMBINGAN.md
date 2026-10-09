@@ -151,7 +151,7 @@ Semua nama berkas di bawah ini berupa **tautan langsung** yang dapat diklik di V
 | **$R_0$ (MFCC Baseline)** | 0.1319 | 0.1320 | 0.1022 | 0.0587 | **0.0349** | **26.42%** (CI: 20.8% – 33.4%) |
 | **$R_3$ (Random Control)** | 0.0190 | 0.0158 | 0.0148 | 0.0142 | 0.0165 | - |
 
-*Analisis Kritis:* Pada derau ekstrem SNR -5 dB, retensi PANNs ($R_1$, 14.22%) anjlok drastis dan kalah dibandingkan MFCC ($R_0$, 26.42%). Hal ini menunjukkan bahwa hipotesis H1 hanya berlaku untuk representasi spesifik bioakustik ($R_2$), bukan model deep generik. Pada SNR +20 dB, $R_1$ mengalami stochastic resonance dengan retensi 109.16%.  
+*Analisis Kritis:* Pada derau ekstrem SNR -5 dB, retensi PANNs ($R_1$, 14.22%) anjlok drastis dan kalah dibandingkan MFCC ($R_0$, 26.42%). Hal ini menunjukkan bahwa hipotesis H1 hanya berlaku untuk representasi spesifik bioakustik ($R_2$), bukan model deep generik. Pada SNR +20 dB, $R_1$ mengalami sedikit peningkatan performa (retensi 109.16%), dicatat sebagai pengamatan empiris yang memerlukan penyelidikan lanjutan.  
 *Visualisasi kurva degradasi publikasi: [`paper/figures/e2_snr_robustness_curve.png`](../paper/figures/e2_snr_robustness_curve.png).*
 
 ---
@@ -207,10 +207,10 @@ Semua nama berkas di bawah ini berupa **tautan langsung** yang dapat diklik di V
 
 ---
 
-### 4. BUKTI GATE 4: Audit Kegagalan Berstrata E5 & Uji Statistik Inferensial Bootstrap
-* **Audit Kegagalan Berstrata E5 ([`paper/tables/failure_analysis_table.csv`](../paper/tables/failure_analysis_table.csv)):**
-  * Membedah 30 kasus kueri gagal nyata berstrata: 10 kasus Clean (5 $R_2$ + 5 $R_1$) dan 20 kasus SNR -5 dB (10 $R_2$ + 10 $R_1$).
-  * Kuantisasi moda kegagalan: **Open-Set False Rejection (16 kasus / 53.3%)**, **Top-1 Confusion > $\tau^*$ (10 kasus / 33.3%)**, dan **Total Retrieval Collapse (4 kasus / 13.3%)**.
+### 4. BUKTI GATE 4: Audit Kegagalan Terstratifikasi Lintas Spesies E5 & Uji Statistik Inferensial Bootstrap
+* **Audit Kegagalan Terstratifikasi Lintas Spesies E5 ([`paper/tables/failure_analysis_table.csv`](../paper/tables/failure_analysis_table.csv)):**
+  * Membedah 30 kasus kueri gagal nyata terstratifikasi acak dari 16 taksa burung unik: 10 kasus Clean (5 $R_2$ + 5 $R_1$) dan 20 kasus SNR -5 dB (10 $R_2$ + 10 $R_1$).
+  * Kuantisasi moda kegagalan: **Top-1 Confusion Above Tau (11 kasus / 36.67%)**, **Open-Set False Rejection (11 kasus / 36.67%)**, dan **Total Retrieval Collapse (8 kasus / 26.67%)**.
   * Demonstrasi interaktif: [`notebooks/E5_Failure_Analysis.ipynb`](../notebooks/E5_Failure_Analysis.ipynb) dan grafik [`paper/figures/e5_failure_analysis.png`](../paper/figures/e5_failure_analysis.png).
 * **Hasil Uji Statistik Inferensial (Paired Bootstrap 1.000 Iterasi — [`paper/tables/statistical_significance_table.csv`](../paper/tables/statistical_significance_table.csv)):**
 
@@ -221,7 +221,7 @@ Semua nama berkas di bawah ini berupa **tautan langsung** yang dapat diklik di V
 | **Clean Retrieval (mAP@10)** | $R_1$ (PANNs) vs $R_0$ (MFCC) | **+0.2830** | **[+0.2355, +0.3308]** | **$p < 0.001$** | Ya | $R_1$ unggul atas MFCC pada kondisi bersih |
 | **Retensi Relatif SNR -5 dB** | $R_2$ (BirdNET) vs $R_1$ (PANNs) | **+0.7020** | **[+0.6424, +0.7571]** | **$p < 0.001$** | Ya | H1 Bersyarat: Retensi $R_2$ (84.5%) unggul mutlak atas $R_1$ (14.2%) |
 | **Retensi Relatif SNR -5 dB** | $R_0$ (MFCC) vs $R_1$ (PANNs) | **+0.1223** | **[+0.0581, +0.1994]** | **$p < 0.001$** | Ya | Retensi MFCC (26.4%) melampaui PANNs (14.2%) |
-| **Sensitivitas Derau (-5 dB)** | $R_2$ (E4 Soundscape vs E2 ITERA) | **-0.0097** | **[-0.0479, +0.0275]** | **$p = 0.610$** | Tidak | H3 Terdukung: Invarian sumber derau |
+| **Sensitivitas Derau (-5 dB)** | $R_2$ (E4 Soundscape vs E2 ITERA) | **-0.0097** | **[-0.0479, +0.0275]** | **$p = 0.610$** | Tidak | H3 Tidak Diuji (Deferred): Soundscape ITERA belum teranotasi; data aditif menunjukkan stabilitas profil spektral |
 | **Sensitivitas Derau (-5 dB)** | $R_1$ (E4 Soundscape vs E2 ITERA) | **+0.0892** | **[+0.0572, +0.1210]** | **$p < 0.001$** | Ya | PANNs sangat rentan terhadap jenis derau |
 
 ---

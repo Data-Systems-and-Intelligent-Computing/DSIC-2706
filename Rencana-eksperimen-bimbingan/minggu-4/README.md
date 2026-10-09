@@ -14,21 +14,21 @@
 * **Metodologi Analisis Akustik Bebas Template:**
   Menggunakan [`src/analyze_failures.py`](../../src/analyze_failures.py) untuk menghitung parameter bioakustik fisik langsung dari gelombang audio: frekuensi pusat (*spectral centroid*), lebar pita (*bandwidth*), selisih skor terhadap ambang batas (*margin to tau*), dan selisih kemiripan terhadap taksa target (*retrieval gap*).
 
-### Distribusi Empiris Taksonomi Kegagalan (`paper/tables/failure_analysis_table.csv`):
+#### Distribusi Empiris Taksonomi Kegagalan (`paper/tables/failure_analysis_table.csv`):
 
 | Kategori Taksonomi Kegagalan | Proporsi (%) | Jumlah Kasus | Sebaran Model & Kondisi | Karakteristik Bioakustik Utama |
 | :--- | :---: | :---: | :--- | :--- |
-| **1. Open-Set False Rejection** | **53.33%** | **16 kasus** | • $R_2$ Clean (4)<br>• $R_1$ Clean (1)<br>• $R_2$ SNR -5 dB (10)<br>• $R_1$ SNR -5 dB (1) | Top-1 kueri berhasil mencocokkan spesies target yang benar (True Positive), namun skor kemiripan kosinus sedikit tertekan di bawah ambang batas kaku $\tau^*$ akibat atenuasi energi derau atau fragmentasi durasi kicauan (margin tipis $-0.0044$ s.d. $-0.0729$). |
-| **2. Top-1 Confusion (Above Tau)** | **33.33%** | **10 kasus** | • $R_1$ Clean (3)<br>• $R_1$ SNR -5 dB (7) | Skor kemiripan kosinus melampaui ambang batas $\tau^*$, namun sistem salah memprediksi spesies galeri non-target (terjadi 100% pada model generik $R_1$, terutama tertukar dengan `pirfly1` dan `baffal1` akibat kedekatan fitur spektro-temporal generik). |
-| **3. Total Retrieval Collapse** | **13.33%** | **4 kasus** | • $R_2$ Clean (1)<br>• $R_1$ Clean (1)<br>• $R_1$ SNR -5 dB (2) | Kegagalan ganda di mana skor kemiripan anjlok di bawah ambang batas $\tau^*$ DAN kandidat Top-1 yang diajukan salah spesies akibat masking derau total atau variasi vokal antar-individu (*intra-species variation*). |
+| **1. Top-1 Confusion (Above Tau)** | **36.67%** | **11 kasus** | • $R_1$ Clean (2)<br>• $R_1$ SNR -5 dB (9) | Skor kemiripan melampaui $\tau^*$, namun sistem mencocokkan taksa galeri yang keliru akibat kedekatan manifold laten generik ($R_1$). |
+| **2. Open-Set False Rejection** | **36.67%** | **11 kasus** | • $R_2$ Clean (3)<br>• $R_2$ SNR -5 dB (8) | Top-1 kueri benar mencocokkan taksa target, namun skor kemiripan tertekan di bawah $\tau^*$ akibat atenuasi energi derau atau variasi amplitudo sinyal. |
+| **3. Total Retrieval Collapse** | **26.67%** | **8 kasus** | • $R_2$ Clean (2)<br>• $R_1$ Clean (3)<br>• $R_2$ SNR -5 dB (2)<br>• $R_1$ SNR -5 dB (1) | Kegagalan ganda di mana skor kemiripan anjlok di bawah ambang batas $\tau^*$ DAN Top-1 memprediksi taksa yang keliru. |
 
 *Tabel lengkap 30 kasus rinci per-kueri tersimpan di [`paper/tables/failure_analysis_table.csv`](../../paper/tables/failure_analysis_table.csv).*
 
 ### Analisis Saintifik Mengapa Kegagalan Terjadi:
 1. **Dilema Penolakan Kaku pada $R_2$ (BirdNET):**
-   * Pada kondisi bising ekstrem (SNR -5 dB), 10 dari 10 kegagalan $R_2$ tergolong *Open-Set False Rejection*. Model sebenarnya menempatkan rekaman spesies yang benar di peringkat #1, tetapi karena skor kemiripan turun tipis di bawah $\tau^* = 0.7128$ (misalnya 0.7084 pada `sobtyr1`, margin hanya -0.0044), sistem menolaknya sebagai audio asing. Ini membuktikan bahwa pembekuan $\tau^*$ yang rigid mempertahankan keselamatan deteksi (*low false alarms*) dengan mengorbankan sebagian recall pada sinyal terdistorsi.
+   * Pada kondisi bising ekstrem (SNR -5 dB), sebagian besar kegagalan $R_2$ tergolong *Open-Set False Rejection*. Model sebenarnya menempatkan rekaman taksa yang benar di peringkat #1, tetapi karena skor kemiripan turun tipis di bawah $\tau^* = 0.7128$ (margin -0.0044 s.d. -0.0729), sistem menolaknya sebagai audio asing. Ini membuktikan bahwa pembekuan $\tau^*$ yang rigid mempertahankan keselamatan deteksi (*low false alarms*) dengan konsekuensi penurunan recall.
 2. **Kelemahan Arsitektural Representasi Generik Audio ($R_1$):**
-   * Pada $R_1$ (PANNs), kegagalan didominasi oleh *Top-1 Confusion Above Tau* (7 kasus pada SNR -5 dB dan 3 kasus pada Clean). Derau aditif menginduksi pergeseran representasi laten (*noise-induced representation shift*), membuat embedding suara kueri salah menempel ke spesies burung lain (`pirfly1`) dengan skor kemiripan palsu yang tinggi (> 0.92, di atas $\tau^* = 0.9117$).
+   * Pada $R_1$ (PANNs), kegagalan didominasi oleh *Top-1 Confusion Above Tau* (9 kasus pada SNR -5 dB dan 2 kasus pada Clean). Derau aditif menginduksi pergeseran representasi laten (*latent representation confusion*), membuat embedding suara kueri salah menempel ke taksa burung lain dengan skor kemiripan palsu yang tinggi (di atas $\tau^* = 0.9117$).
 3. **Artefak & Notebook Demonstrasi:**
    * Notebook interaktif: [`notebooks/E5_Failure_Analysis.ipynb`](../../notebooks/E5_Failure_Analysis.ipynb).
    * Visualisasi audit terstratifikasi: [`paper/figures/e5_failure_analysis.png`](../../paper/figures/e5_failure_analysis.png).
@@ -46,12 +46,12 @@
 
 | Skenario Pengujian | Komparasi Model / Kondisi | Rata-Rata Selisih ($\Delta$) | 95% Confidence Interval (CI) | $p$-value Empiris | Status Signifikan ($\alpha = 0.05$) | Kesimpulan Saintifik |
 | :--- | :--- | :---: | :---: | :---: | :---: | :--- |
-| **Clean Retrieval (mAP@10)** | $R_2$ (BirdNET) vs $R_1$ (PANNs) | **+0.4981** | **[+0.4504, +0.5473]** | **$p < 0.001$** | **Signifikan** | $R_2$ unggul mutlak atas model generik audio audio |
+| **Clean Retrieval (mAP@10)** | $R_2$ (BirdNET) vs $R_1$ (PANNs) | **+0.4981** | **[+0.4504, +0.5473]** | **$p < 0.001$** | **Signifikan** | $R_2$ unggul mutlak atas model generik audio |
 | **Clean Retrieval (mAP@10)** | $R_2$ (BirdNET) vs $R_0$ (MFCC) | **+0.7811** | **[+0.7421, +0.8183]** | **$p < 0.001$** | **Signifikan** | $R_2$ unggul mutlak atas baseline klasik |
 | **Clean Retrieval (mAP@10)** | $R_1$ (PANNs) vs $R_0$ (MFCC) | **+0.2830** | **[+0.2355, +0.3308]** | **$p < 0.001$** | **Signifikan** | $R_1$ unggul atas MFCC pada kondisi bersih |
 | **Retensi Relatif SNR -5 dB** | $R_2$ (BirdNET) vs $R_1$ (PANNs) | **+0.7020** | **[+0.6424, +0.7571]** | **$p < 0.001$** | **Signifikan** | Retensi $R_2$ (84.5%) unggul mutlak atas $R_1$ (14.2%) |
 | **Retensi Relatif SNR -5 dB** | $R_0$ (MFCC) vs $R_1$ (PANNs) | **+0.1223** | **[+0.0581, +0.1994]** | **$p < 0.001$** | **Signifikan** | Retensi MFCC (26.4%) melampaui PANNs (14.2%) secara signifikan |
-| **Sensitivitas Derau (-5 dB)** | $R_2$ (E4 Soundscape vs E2 ITERA) | **-0.0097** | **[-0.0479, +0.0275]** | **$p = 0.6100$** | **Tidak Signifikan** | $R_2$ invarian terhadap profil spektral derau |
+| **Sensitivitas Derau (-5 dB)** | $R_2$ (E4 Soundscape vs E2 ITERA) | **-0.0097** | **[-0.0479, +0.0275]** | **$p = 0.6100$** | **Tidak Signifikan** | H3 Tidak Diuji (Deferred): Soundscape ITERA belum teranotasi; data aditif menunjukkan stabilitas profil spektral |
 | **Sensitivitas Derau (-5 dB)** | $R_1$ (E4 Soundscape vs E2 ITERA) | **+0.0892** | **[+0.0572, +0.1210]** | **$p < 0.001$** | **Signifikan** | PANNs sangat sensitif terhadap profil spektral derau |
 
 ### Analisis Temuan Ilmiah Signifikansi Statistik:

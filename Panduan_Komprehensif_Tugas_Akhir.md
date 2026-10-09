@@ -11,10 +11,10 @@ Tugas Akhir ini pada dasarnya memiliki alur eksperimen yang terbagi menjadi bebe
 - [x] **Tahap 1: Pengumpulan Data** (AudioMoth ITERA & Spesies BirdCLEF+ 2026) ➔ **SELESAI**
 - [x] **Tahap 2: Registrasi Integritas Data** (Manifes SHA-256 & Metadata Bebas Bocor) ➔ **SELESAI**
 - [x] **Tahap 3 & 4 (Eksperimen E1 & E2):** Evaluasi *Clean* & Pencampuran Derau Terkontrol SNR ➔ **SELESAI**
-- [x] **Eksperimen E3:** Kalibrasi Ambang Batas (*Open-Set Rejection* $\tau^* = 0.50$) ➔ **SELESAI**
-- [x] **Eksperimen E4:** *Real Soundscape Domain Shift* (Uji coba pada *soundscape* alam bebas tropis) ➔ **SELESAI**
-- [x] **Eksperimen E5:** *Failure Analysis* (Mendiagnosis 30 kasus kegagalan nyata) ➔ **SELESAI**
-- [x] **Evaluasi Statistik Inferensial:** Paired Bootstrap Resampling 1.000 iterasi ($p = 0.0000 < 0.05$) ➔ **SELESAI**
+- [x] **Eksperimen E3:** Kalibrasi Ambang Batas (*Open-Set Rejection* $\tau^*_{R_2} = 0.7128, \tau^*_{R_1} = 0.9117$) ➔ **SELESAI**
+- [x] **Eksperimen E4:** Sensitivitas Profil Spektral Derau Latar (Soundscape vs Derau Kampus) ➔ **SELESAI**
+- [x] **Eksperimen E5:** *Failure Analysis* (Mendiagnosis 30 kasus kegagalan nyata terstratifikasi lintas spesies) ➔ **SELESAI**
+- [x] **Evaluasi Statistik Inferensial:** Paired Bootstrap Resampling 1.000 iterasi ($p < 0.001$, 95% CI $[+0.4504, +0.5473]$) ➔ **SELESAI**
 - [ ] **Penulisan Naskah Bab 4 & Bab 5** (Memasukkan grafik dan tabel siap pakai ke draf skripsi Word) ➔ **SIAP DIMULAI**
 
 **Kesimpulan Progress:** Secara teknis (kodingan, komputasi seluruh model AI E0 s.d. E5, pengujian statistik inferensial, pembuatan tabel dan grafik publikasi), Anda sudah **100% SELESAI**. Semua bahan empiris sudah tersedia lengkap di folder `paper/tables/` dan `paper/figures/`.
@@ -63,12 +63,12 @@ Berikut adalah arsitektur sistem tugas akhir Anda (Diagram ini bisa Anda jadikan
           +--------------+--------------+
           |                             |
           v                             v
-[ Ranking Top-k & mAP@10 ]    [ Ambang Batas tau* = 0.50 ]
-                              /                        \
-                    Skor >= 0.50                      Skor < 0.50
-                         |                                 |
-                         v                                 v
-                 [ Diterima / Match ]              [ Ditolak / Unknown ]
+[ Ranking Top-k & mAP@10 ]    [ Ambang Batas tau* (R2: 0.7128) ]
+                              /                                \
+                    Skor >= tau*                              Skor < tau*
+                         |                                         |
+                         v                                         v
+                 [ Diterima / Match ]                      [ Ditolak / Unknown ]
 ```
 
 ---
@@ -98,7 +98,7 @@ Penelitian bioakustik konvensional biasanya melatih model *Machine Learning* (se
 ### Kebaruan Skripsi Anda (Novelty)
 1. **Pendekatan Degradasi Terkontrol (Paired Noise Degradation - E2):** Anda menyuntikkan derau asli dari kampus ITERA pada berbagai tingkatan yang dikontrol secara matematis (SNR -5 dB hingga +20 dB). Ini membuktikan batas kritis (*breaking point*) AI pengenal suara burung terhadap bising lingkungan tropis.
 2. **Evaluasi Zero-Shot Retrieval:** Alih-alih melakukan klasifikasi kaku, Anda menggunakan pendekatan *Retrieval* (sistem pencarian kemiripan). Sistem ini fleksibel: jika ada burung baru, cukup tambahkan suaranya ke Galeri tanpa perlu melatih ulang model AI.
-3. **Open-Set Rejection (Kalibrasi $\tau^*$ - E3):** Sistem memiliki kemampuan menolak (*reject*) sinyal non-burung menggunakan ambang batas beku $\tau^* = 0.50$ via Youden's J, meminimalisir deteksi palsu (*False Positive*).
-4. **Uji Validitas Domain Shift Hutan Tropis (E4):** Menguji model pada ribuan *soundscape* bentang alam asli BirdCLEF dan membuktikan secara empiris bahwa BirdNET bersifat *domain-invariant* dengan kesenjangan performa sangat minim ($\Delta mAP@10 = -0.0101$).
-5. **Uji Signifikansi Inferensial (Bootstrap Resampling):** Keunggulan model bioakustik BirdNET atas model generik dibuktikan secara inferensial melalui 1.000 iterasi bootstrap ($p < 0.001$, 95% CI $[+0.4504, +0.5473]$) serta retensi superior pada derau ekstrem ($p < 0.001$).
+3. **Open-Set Rejection (Kalibrasi $\tau^*$ - E3):** Sistem memiliki kemampuan menolak (*reject*) sinyal non-burung menggunakan ambang batas beku ($\tau^*_{R_2} = 0.7128$) via Youden's J pada partisi kalibrasi terpisah. Uji lintas SNR membuktikan pergeseran titik operasi (H4): BirdNET mempertahankan penolakan konservatif aman (FPR 9.5%), sementara PANNs mengalami inflasi FPR hingga 81.5%.
+4. **Uji Sensitivitas Profil Spektral Derau Latar (E4):** Menguji representasi terhadap perbedaan spektral derau (kampus vs hutan tropis BirdCLEF), membuktikan bahwa BirdNET mempertahankan performa stabil ($p = 0.6100$, CI 95% $[-0.0479, +0.0275]$), sedangkan model generic audio PANNs sangat rentan terhadap jenis derau ($p < 0.001$). Batasan pergeseran domain in-situ penuh didokumentasikan secara transparan.
+5. **Uji Signifikansi Inferensial (Bootstrap Resampling):** Keunggulan model bioakustik BirdNET atas model generik dibuktikan secara inferensial melalui 1.000 iterasi bootstrap ($p < 0.001$, 95% CI $[+0.4504, +0.5473]$), keunggulan retensi MFCC atas PANNs pada SNR -5 dB ($p < 0.001$), serta invariansi profil derau BirdNET ($p = 0.6100$).
 

@@ -1,17 +1,16 @@
 """
 Script: src/analyze_failures.py
-Fungsi: Audit Kegagalan Saintifik Berstrata (E5) — Failure Case Analysis Berdasarkan Karakteristik Spektral & Ambang Batas tau*.
-Sesuai audit saintifik:
-1. Sampel bertingkat (Stratified Sampling) N=30 kasus:
-   - 10 kasus Kondisi Clean (5 kasus R2 BirdNET + 5 kasus R1 PANNs)
-   - 20 kasus Kondisi Derau SNR -5 dB (10 kasus R2 BirdNET + 10 kasus R1 PANNs)
-2. Klasifikasi tipe kegagalan akurat:
-   - "Open-Set False Rejection": max_sim < tau* (kueri burung target ditolak sebagai derau/unknown)
-   - "Top-1 Confusion (Above Tau)": max_sim >= tau* tetapi Top-1 match salah takson
-   - "Total Retrieval Collapse": max_sim < tau* DAN Top-1 match salah takson
-3. Parameter kuantitatif akustik nyata:
-   - spectral centroid, spectral bandwidth, similarity ke Top-1 match, similarity maksimum ke takson target, margin ke tau*, dan gap retrieval.
-4. Diagnosis spesifik bioakustik berdasarkan taksonomi dan frekuensi vokal.
+Fungsi: Audit Kegagalan Saintifik Terstratifikasi Lintas Spesies (E5).
+Taksonomi Moda Kegagalan Berdasarkan Kriteria Ambang Batas tau* dan Kesalahan Top-1 Match:
+1. Sampel terstratifikasi acak N=30 kasus dari seluruh taksa burung:
+   - 10 kasus Kondisi Clean (5 spesies unik R2 BirdNET + 5 spesies unik R1 PANNs)
+   - 20 kasus Kondisi Derau SNR -5 dB (10 spesies unik R2 BirdNET + 10 spesies unik R1 PANNs)
+2. Klasifikasi moda kegagalan objektif:
+   - "Open-Set False Rejection": Top-1 match benar spesies target, namun max_sim < tau* (margin < 0)
+   - "Top-1 Confusion (Above Tau)": max_sim >= tau* (margin >= 0) namun Top-1 match salah spesies
+   - "Total Retrieval Collapse": max_sim < tau* DAN Top-1 match salah spesies
+3. Pengukuran parameter fisik terukur:
+   - spectral_centroid_hz, bandwidth_hz, mean_rms, top1_similarity, true_class_max_similarity, retrieval_gap, margin_to_tau.
 """
 
 import os
@@ -36,7 +35,7 @@ RAW_DIR = PROJECT_ROOT / "results/raw"
 TABLES_DIR = PROJECT_ROOT / "paper/tables"
 
 def compute_acoustic_features(y: np.ndarray, sr: int = TARGET_SR) -> dict:
-    """Menghitung centroid spektral dan bandwidth rata-rata sinyal audio."""
+    """Menghitung centroid spektral, bandwidth, dan RMS rata-rata sinyal audio nyata."""
     cent = librosa.feature.spectral_centroid(y=y, sr=sr)
     bw = librosa.feature.spectral_bandwidth(y=y, sr=sr)
     rms = librosa.feature.rms(y=y)
@@ -48,7 +47,7 @@ def compute_acoustic_features(y: np.ndarray, sr: int = TARGET_SR) -> dict:
 
 def extract_real_failures_from_raw():
     print("=" * 80)
-    print("[*] MEMULAI ANALISIS KEGAGALAN RETRIEVAL BERSTRATA (E5)")
+    print("[*] MEMULAI ANALISIS KEGAGALAN RETRIEVAL TERSTRATIFIKASI LINTAS SPESIES (E5)")
     print("=" * 80)
 
     df_split = pd.read_csv(SPLIT_PATH)
@@ -56,7 +55,6 @@ def extract_real_failures_from_raw():
     qry_df = df_split[df_split["split_role"] == "query_clean"].reset_index(drop=True)
     gal_labels = gal_df["species_key"].values
 
-    # Muat tau* beku dari thresholds.yaml
     tau_map = {"R2": 0.7128, "R1": 0.9117, "R0": 0.9953, "R3": 0.5090}
     tt_path = PROCESSED_DIR / "threshold_transfer_table.csv"
     if tt_path.exists():
@@ -66,8 +64,9 @@ def extract_real_failures_from_raw():
 
     cases = []
     case_idx = 1
+    rng = np.random.default_rng(42)
 
-    # --- 1. Sampel 10 Kasus Kondisi Clean (5 dari R2, 5 dari R1) ---
+    # --- 1. Sampel 10 Kasus Kondisi Clean (5 spesies R2, 5 spesies R1) ---
     print("[*] Mengidentifikasi kegagalan kondisi Clean...")
     for rep in ["R2", "R1"]:
         tau = tau_map[rep]
@@ -79,68 +78,76 @@ def extract_real_failures_from_raw():
         q_norm = qry_embs / np.linalg.norm(qry_embs, axis=1, keepdims=True)
         sim_mat = np.dot(q_norm, g_norm.T)
 
-        rep_clean_cases = []
+        fails_by_sp = {}
         for i in range(len(qry_df)):
             row = qry_df.iloc[i]
             q_label = row["species_key"]
-            ranked_indices = np.argsort(-sim_mat[i])
-            top1_idx = ranked_indices[0]
+            top1_idx = int(np.argmax(sim_mat[i]))
             top1_species = gal_labels[top1_idx]
-
-            # Kondisi gagal: top1 salah takson ATAU max_sim < tau*
             max_sim = float(sim_mat[i, top1_idx])
             true_indices = np.where(gal_labels == q_label)[0]
             max_true_sim = float(np.max(sim_mat[i, true_indices]))
+
+            if top1_species != q_label or max_sim < tau:
+                fails_by_sp.setdefault(q_label, []).append({
+                    "idx": i, "row": row, "top1_species": top1_species,
+                    "max_sim": max_sim, "max_true_sim": max_true_sim
+                })
+
+        available_species = sorted(fails_by_sp.keys())
+        chosen_species = rng.choice(available_species, size=min(5, len(available_species)), replace=False)
+
+        for sp in sorted(chosen_species):
+            item = fails_by_sp[sp][0]
+            i = item["idx"]
+            row = item["row"]
+            top1_species = item["top1_species"]
+            max_sim = item["max_sim"]
+            max_true_sim = item["max_true_sim"]
             gap = max_sim - max_true_sim
             margin_tau = max_sim - tau
 
-            if top1_species != q_label or max_sim < tau:
-                y = preprocess_audio(row["file_path"])
-                acoustics = compute_acoustic_features(y)
+            y = preprocess_audio(row["file_path"])
+            acoustics = compute_acoustic_features(y)
 
-                if max_sim >= tau and top1_species != q_label:
-                    fail_type = "Top-1 Confusion (Above Tau)"
-                    cause = "acoustic_feature_overlap"
-                    diag = (f"Vokal kueri {q_label} memiliki spektral centroid {acoustics['spectral_centroid_hz']:.0f} Hz "
-                            f"yang tumpang tindih dengan galeri {top1_species}. Skor kemiripan {max_sim:.4f} melampaui tau*={tau:.4f}, "
-                            f"namun takson target berada pada selisih margin {gap:.4f}.")
-                elif max_sim < tau and top1_species == q_label:
-                    fail_type = "Open-Set False Rejection"
-                    cause = "temporal_fragmentation_short_call"
-                    diag = (f"Kueri {q_label} teridentifikasi benar di peringkat #1 namun skor {max_sim:.4f} berada di bawah "
-                            f"ambang tau*={tau:.4f} (margin {margin_tau:.4f}) akibat durasi aktivitas vokal terfragmentasi.")
-                else:
-                    fail_type = "Total Retrieval Collapse"
-                    cause = "intra_species_vocal_variation"
-                    diag = (f"Kueri {q_label} tertolak ambang batas (sim={max_sim:.4f} < tau*={tau:.4f}) dan salah dipasangkan "
-                            f"dengan {top1_species} karena variasi tipe kicau individu perekam yang berbeda.")
+            if max_sim >= tau and top1_species != sp:
+                fail_type = "Top-1 Confusion (Above Tau)"
+                cause = "latent_representation_confusion"
+                diag = (f"Kueri {sp} melampaui ambang batas (sim={max_sim:.4f} >= tau*={tau:.4f}) namun keliru "
+                        f"dipasangkan ke {top1_species} (retrieval gap={gap:.4f}). Centroid spektral={acoustics['spectral_centroid_hz']:.0f} Hz.")
+            elif max_sim < tau and top1_species == sp:
+                fail_type = "Open-Set False Rejection"
+                cause = "similarity_margin_deficit"
+                diag = (f"Top-1 kueri {sp} mencocokkan taksa benar namun tertolak ambang batas (sim={max_sim:.4f} < "
+                        f"tau*={tau:.4f}, margin={margin_tau:.4f}). Centroid spektral={acoustics['spectral_centroid_hz']:.0f} Hz.")
+            else:
+                fail_type = "Total Retrieval Collapse"
+                cause = "acoustic_feature_overlap"
+                diag = (f"Kueri {sp} mengalami kegagalan ganda: skor di bawah ambang batas (sim={max_sim:.4f} < "
+                        f"tau*={tau:.4f}) dan salah dipasangkan ke {top1_species}. Centroid spektral={acoustics['spectral_centroid_hz']:.0f} Hz.")
 
-                rep_clean_cases.append({
-                    "case_id": f"FAIL_{case_idx:03d}",
-                    "representation": rep,
-                    "condition": "Clean",
-                    "query_id": row["recording_id"],
-                    "query_species": q_label,
-                    "recordist": row["author"],
-                    "predicted_top1_species": top1_species,
-                    "top1_similarity": round(max_sim, 4),
-                    "true_class_max_similarity": round(max_true_sim, 4),
-                    "retrieval_gap": round(gap, 4),
-                    "threshold_tau": round(tau, 4),
-                    "margin_to_tau": round(margin_tau, 4),
-                    "failure_type": fail_type,
-                    "spectral_centroid_hz": round(acoustics["spectral_centroid_hz"], 1),
-                    "bandwidth_hz": round(acoustics["bandwidth_hz"], 1),
-                    "primary_acoustic_cause": cause,
-                    "quantitative_diagnosis": diag
-                })
-                case_idx += 1
-                if len(rep_clean_cases) >= 5:
-                    break
+            cases.append({
+                "case_id": f"FAIL_{case_idx:03d}",
+                "representation": rep,
+                "condition": "Clean",
+                "query_id": row["recording_id"],
+                "query_species": sp,
+                "recordist": row["author"],
+                "predicted_top1_species": top1_species,
+                "top1_similarity": round(max_sim, 4),
+                "true_class_max_similarity": round(max_true_sim, 4),
+                "retrieval_gap": round(gap, 4),
+                "threshold_tau": round(tau, 4),
+                "margin_to_tau": round(margin_tau, 4),
+                "failure_type": fail_type,
+                "spectral_centroid_hz": round(acoustics["spectral_centroid_hz"], 1),
+                "bandwidth_hz": round(acoustics["bandwidth_hz"], 1),
+                "primary_acoustic_cause": cause,
+                "quantitative_diagnosis": diag
+            })
+            case_idx += 1
 
-        cases.extend(rep_clean_cases)
-
-    # --- 2. Sampel 20 Kasus Kondisi Derau SNR -5 dB (10 dari R2, 10 dari R1) ---
+    # --- 2. Sampel 20 Kasus Kondisi Derau SNR -5 dB (10 spesies R2, 10 spesies R1) ---
     print("[*] Mengidentifikasi kegagalan kondisi Derau SNR -5 dB...")
     for rep in ["R2", "R1"]:
         tau = tau_map[rep]
@@ -149,7 +156,7 @@ def extract_real_failures_from_raw():
         gal_embs = feats["gal_feats"]
         g_norm = gal_embs / np.linalg.norm(gal_embs, axis=1, keepdims=True)
 
-        rep_noisy_cases = []
+        fails_by_sp = {}
         for i in range(len(qry_df)):
             row = qry_df.iloc[i]
             q_label = row["species_key"]
@@ -160,72 +167,84 @@ def extract_real_failures_from_raw():
             q_norm_vec = emb_noisy / max(np.linalg.norm(emb_noisy), 1e-8)
             sims = np.dot(g_norm, q_norm_vec)
 
-            ranked_indices = np.argsort(-sims)
-            top1_idx = ranked_indices[0]
+            top1_idx = int(np.argmax(sims))
             top1_species = gal_labels[top1_idx]
             max_sim = float(sims[top1_idx])
-
             true_indices = np.where(gal_labels == q_label)[0]
             max_true_sim = float(np.max(sims[true_indices]))
+
+            if top1_species != q_label or max_sim < tau:
+                fails_by_sp.setdefault(q_label, []).append({
+                    "idx": i, "row": row, "y_noisy": y_noisy,
+                    "top1_species": top1_species, "max_sim": max_sim,
+                    "max_true_sim": max_true_sim
+                })
+
+        available_species = sorted(fails_by_sp.keys())
+        chosen_species = rng.choice(available_species, size=min(10, len(available_species)), replace=False)
+
+        for sp in sorted(chosen_species):
+            item = fails_by_sp[sp][0]
+            i = item["idx"]
+            row = item["row"]
+            y_noisy = item["y_noisy"]
+            top1_species = item["top1_species"]
+            max_sim = item["max_sim"]
+            max_true_sim = item["max_true_sim"]
             gap = max_sim - max_true_sim
             margin_tau = max_sim - tau
 
-            if top1_species != q_label or max_sim < tau:
-                acoustics = compute_acoustic_features(y_noisy)
+            acoustics = compute_acoustic_features(y_noisy)
 
-                if max_sim < tau and top1_species != q_label:
-                    fail_type = "Total Retrieval Collapse"
-                    cause = "low_snr_energetic_masking"
-                    diag = (f"Pada SNR -5 dB, energi derau mendominasi kicauan {q_label} (centroid bergeser ke {acoustics['spectral_centroid_hz']:.0f} Hz). "
-                            f"Skor anjlok ke {max_sim:.4f} (< tau*={tau:.4f}) dan salah terpaut ke {top1_species}.")
-                elif max_sim < tau and top1_species == q_label:
-                    fail_type = "Open-Set False Rejection"
-                    cause = "low_snr_energetic_masking"
-                    diag = (f"Top-1 kueri {q_label} berhasil mencocokkan spesies yang benar, namun tertolak oleh ambang batas "
-                            f"tau*={tau:.4f} karena penurunan kemiripan kosinus global ke {max_sim:.4f} (margin {margin_tau:.4f}).")
-                else:
-                    fail_type = "Top-1 Confusion (Above Tau)"
-                    cause = "noise_induced_representation_shift"
-                    diag = (f"Injeksi derau -5 dB menyebabkan artefak fitur yang secara keliru meningkatkan kedekatan embedding kueri "
-                            f"ke {top1_species} dengan skor {max_sim:.4f} di atas tau*={tau:.4f}.")
+            if max_sim < tau and top1_species == sp:
+                fail_type = "Open-Set False Rejection"
+                cause = "low_snr_signal_attenuation"
+                diag = (f"Pada SNR -5 dB, Top-1 kueri {sp} berhasil mencocokkan taksa benar, namun tertolak oleh ambang "
+                        f"tau*={tau:.4f} karena skor kemiripan tertekan ke {max_sim:.4f} (margin={margin_tau:.4f}). Centroid={acoustics['spectral_centroid_hz']:.0f} Hz.")
+            elif max_sim >= tau and top1_species != sp:
+                fail_type = "Top-1 Confusion (Above Tau)"
+                cause = "latent_representation_confusion"
+                diag = (f"Injeksi derau -5 dB menyebabkan artefak fitur pada {sp} yang secara keliru menempel ke "
+                        f"{top1_species} dengan skor {max_sim:.4f} di atas tau*={tau:.4f}. Centroid={acoustics['spectral_centroid_hz']:.0f} Hz.")
+            else:
+                fail_type = "Total Retrieval Collapse"
+                cause = "severe_noise_distortion"
+                diag = (f"Pada SNR -5 dB, energi derau mendominasi kicauan {sp} (centroid={acoustics['spectral_centroid_hz']:.0f} Hz). "
+                        f"Skor anjlok ke {max_sim:.4f} (< tau*={tau:.4f}) dan salah terpaut ke {top1_species}.")
 
-                rep_noisy_cases.append({
-                    "case_id": f"FAIL_{case_idx:03d}",
-                    "representation": rep,
-                    "condition": "SNR_-5dB",
-                    "query_id": row["recording_id"],
-                    "query_species": q_label,
-                    "recordist": row["author"],
-                    "predicted_top1_species": top1_species,
-                    "top1_similarity": round(max_sim, 4),
-                    "true_class_max_similarity": round(max_true_sim, 4),
-                    "retrieval_gap": round(gap, 4),
-                    "threshold_tau": round(tau, 4),
-                    "margin_to_tau": round(margin_tau, 4),
-                    "failure_type": fail_type,
-                    "spectral_centroid_hz": round(acoustics["spectral_centroid_hz"], 1),
-                    "bandwidth_hz": round(acoustics["bandwidth_hz"], 1),
-                    "primary_acoustic_cause": cause,
-                    "quantitative_diagnosis": diag
-                })
-                case_idx += 1
-                if len(rep_noisy_cases) >= 10:
-                    break
-
-        cases.extend(rep_noisy_cases)
+            cases.append({
+                "case_id": f"FAIL_{case_idx:03d}",
+                "representation": rep,
+                "condition": "SNR_-5dB",
+                "query_id": row["recording_id"],
+                "query_species": sp,
+                "recordist": row["author"],
+                "predicted_top1_species": top1_species,
+                "top1_similarity": round(max_sim, 4),
+                "true_class_max_similarity": round(max_true_sim, 4),
+                "retrieval_gap": round(gap, 4),
+                "threshold_tau": round(tau, 4),
+                "margin_to_tau": round(margin_tau, 4),
+                "failure_type": fail_type,
+                "spectral_centroid_hz": round(acoustics["spectral_centroid_hz"], 1),
+                "bandwidth_hz": round(acoustics["bandwidth_hz"], 1),
+                "primary_acoustic_cause": cause,
+                "quantitative_diagnosis": diag
+            })
+            case_idx += 1
 
     # 3. Simpan Tabel Audit Kegagalan
     df_fails = pd.DataFrame(cases)
     df_fails.to_csv(PROCESSED_DIR / "failure_analysis_table.csv", index=False)
     df_fails.to_csv(TABLES_DIR / "failure_analysis_table.csv", index=False)
-    print(f"\n[+] Sukses menyimpan tabel analisis kegagalan bertingkat: {PROCESSED_DIR / 'failure_analysis_table.csv'}")
+    print(f"\n[+] Sukses menyimpan tabel analisis kegagalan: {PROCESSED_DIR / 'failure_analysis_table.csv'}")
     print(f"[+] Total kasus dianalisis: {len(df_fails)}")
     print("\n--- Distribusi Kondisi & Representasi ---")
     print(pd.crosstab(df_fails["condition"], df_fails["representation"]))
     print("\n--- Distribusi Tipe Kegagalan ---")
     print(df_fails["failure_type"].value_counts())
-    print("\n--- Distribusi Penyebab Akustik ---")
-    print(df_fails["primary_acoustic_cause"].value_counts())
+    print("\n--- Distribusi Spesies Kueri (Keragaman Taksa) ---")
+    print(df_fails["query_species"].value_counts())
 
 if __name__ == "__main__":
     extract_real_failures_from_raw()

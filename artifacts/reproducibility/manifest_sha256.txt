@@ -2,11 +2,11 @@
 # Tanggal: 09 October 2026
 # Perintah Pembuat: python scripts/update_manifest_hashes.py
 
-dataset_split.csv : 4fb0681aab39415384cf85c2f43b3b83f932ed08a97364d19c50e39fd9b27d3e
-species_freeze.csv : 2267c13535546b02a090ad67ca4eecdf443dc11e348f44b3a3d7fea51bc71f6a
-species_excluded.csv : 36046986f5b16b718c778b3115e773abf949fa5861c7f6ccd9b6765a09289ec7
-itera_noise_manifest.csv : 210da10ef2687e8317d282147694f1f92467408095c10a865088ac67cf3a1a30
-unknown_open_set_manifest.csv : 478ebc1eb2ccb1e6df28af3562ddda2f5ddf44f6ef47d8f374f58cd7ab91d733
+dataset_split.csv : be0880fbe9464914cf1e2fa734d4649b1928c7faa1b4ec4c6a221ea09374fc8f
+species_freeze.csv : 99b39fb7ee820469894e3f388f3a1975509a68d928d00d5c407ff1654fc4dc5f
+species_excluded.csv : cba001486e48401c1b50625d7bf13ab8efae633a3ea8658e652248c0f1040ae1
+itera_noise_manifest.csv : a4138bd13e437801d18dc7afde52e0dab50aa5d56ac27091ab0a4ba68fb6f72d
+unknown_open_set_manifest.csv : 795e3ba755a0a39f91568cd9fca8251c005bee94a53586bedfef4b720e829e6d
 
 # Baseline Verifikasi E1 Clean Retrieval (dari results/processed/clean_retrieval_table.csv):
 R0: MFCC Baseline (40-d) : Top1=27.500000000000004% mAP@10=0.13194880952380952 MRR=0.42244051265615723
