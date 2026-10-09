@@ -31,11 +31,11 @@
 ├──────────────────┼─────────────────────────────────────┼───────────────────────────────┤
 │ Gate 3 (E3/E4)   │ Rekonstruksi E3: 498 unknown calib  │ Tabel E3: R2 tau*=0.7128 beku │
 │                  │ & 200 unknown test (ITERA + non-tgt)│ (Youden J=0.478, AUROC=0.885) │
-│                  │ Uji E4: komparasi 4 representasi    │ Tabel E4: R2 invarian derau   │
+│                  │ Uji E4: komparasi 4 representasi    │ Tabel E4: R2 stabil spektral  │
 │                  │ derau ITERA vs soundscape tropis    │ (p=0.610), R1 sensitif (p<0.001)│
 ├──────────────────┼─────────────────────────────────────┼───────────────────────────────┤
-│ Gate 4 (E5/Stat) │ Audit 30 kasus berstrata (Clean     │ Tabel Failure E5 (16 False    │
-│                  │ vs -5 dB) berbasis centroid & bw;   │ Rejection, 10 Confusion > tau)│
+│ Gate 4 (E5/Stat) │ Audit 30 kasus berstrata (Clean     │ Tabel Failure E5 (11 Confuse, │
+│                  │ vs -5 dB) lintas 16 takson;         │ 11 Rejection, 8 Collapse)     │
 │                  │ Paired Bootstrap 1.000 iterasi      │ Bootstrap 7 uji (p < 0.001,   │
 │                  │ estimasi 95% CI performa & retensi  │ 95% CI [+0.4504, +0.5473])    │
 └──────────────────┴─────────────────────────────────────┴───────────────────────────────┘
@@ -89,9 +89,9 @@ Dokumen ini adalah **buku catatan progres resmi dan rekam jejak tindak lanjut re
 > 3. **Gate 3 (Minggu 3) — Tuntas 100%:**
 >    * **Kalibrasi Ambang Batas Bebas Bocor ($\tau^*$):** $\tau^*$ dioptimasi via Youden's Index ($J = \text{TPR} - \text{FPR}$) pada subset kalibrasi independen (498 burung target kalibrasi + 498 kontrol negatif unknown: 249 derau ITERA + 249 spesies non-target). Ambang beku: $R_2 = 0.7128$ ($J=0.4779$, AUROC 0.8147), $R_1 = 0.9117$ ($J=0.2791$), $R_0 = 0.9953$, $R_3 = 0.5090$ ([`configs/thresholds.yaml`](../configs/thresholds.yaml)).
 >    * **Evaluasi Open-Set E3 Lintas Derau:** Evaluasi pada 200 kueri target berpasangan dengan 200 unknown test disjoint. $R_2$ mempertahankan AUROC 0.8849 (Clean) dan 0.7575 (-5 dB) dengan FPR menyusut konservatif dari 28.5% ke 9.5%. Sebaliknya, model generik $R_1$ mengalami inflasi FPR ekstrem hingga **81.5%** pada -5 dB ([`notebooks/E3_Open_Set_Threshold.ipynb`](../notebooks/E3_Open_Set_Threshold.ipynb)).
->    * **Evaluasi Sensitivitas Sumber Derau E4:** Pengujian komparatif 4 representasi pada derau soundscape hutan tropis BirdCLEF vs derau ITERA E2. $R_2$ terbukti invarian terhadap profil derau ($\Delta mAP = -0.0101$, $p=0.610$), sementara $R_1$ sangat sensitif ($\Delta = +0.0890$ pada -5 dB, $p < 0.001$) ([`notebooks/E4_Real_Soundscape_Domain_Shift.ipynb`](../notebooks/E4_Real_Soundscape_Domain_Shift.ipynb)).
+>    * **Evaluasi Sensitivitas Sumber Derau E4:** Pengujian komparatif 4 representasi pada derau soundscape hutan tropis BirdCLEF vs derau ITERA E2. Pada $R_2$, tidak terdeteksi perbedaan performa yang signifikan secara statistik antara kedua profil derau ($\Delta mAP = -0.0097$, $p=0.610$), sementara $R_1$ sangat sensitif ($\Delta = +0.0890$ pada -5 dB, $p < 0.001$) ([`notebooks/E4_Real_Soundscape_Domain_Shift.ipynb`](../notebooks/E4_Real_Soundscape_Domain_Shift.ipynb)).
 > 4. **Gate 4 (Minggu 4) — Tuntas 100%:**
->    * **Audit Kasus Kegagalan Berstrata E5:** 30 kasus kegagalan nyata terklasifikasi secara ilmiah (10 kasus Clean: 5 $R_2$ + 5 $R_1$; 20 kasus SNR -5 dB: 10 $R_2$ + 10 $R_1$) di [`paper/tables/failure_analysis_table.csv`](../paper/tables/failure_analysis_table.csv) dan didemonstrasikan di [`notebooks/E5_Failure_Analysis.ipynb`](../notebooks/E5_Failure_Analysis.ipynb). Moda kegagalan terkuantisasi: False Rejection (16 kasus), Top-1 Confusion > tau* (10 kasus), Total Collapse (4 kasus).
+>    * **Audit Kasus Kegagalan Berstrata E5:** 30 kasus kegagalan nyata terklasifikasi secara ilmiah lintas 16 takson di [`paper/tables/failure_analysis_table.csv`](../paper/tables/failure_analysis_table.csv) dan didemonstrasikan di [`notebooks/E5_Failure_Analysis.ipynb`](../notebooks/E5_Failure_Analysis.ipynb). Moda kegagalan terkuantisasi: Top-1 Confusion Above Tau (11 kasus), Open-Set False Rejection (11 kasus), Total Collapse (8 kasus).
 >    * **Uji Statistik Inferensial (Bootstrap Resampling):** 1.000 iterasi paired bootstrap resampling membuktikan keunggulan BirdNET atas PANNs signifikan secara statistik mutlak ($p < 0.001$, 95% CI $[+0.4504, +0.5473]$) dan retensi $R_2$ atas $R_1$ signifikan ($p < 0.001$, 95% CI $[+0.6424, +0.7571]$) di [`paper/tables/statistical_significance_table.csv`](../paper/tables/statistical_significance_table.csv).
 >    * **Suite Pengujian Saintifik:** 9/9 pengujian lolos 100% pada [`run_tests.py`](../run_tests.py).
 
