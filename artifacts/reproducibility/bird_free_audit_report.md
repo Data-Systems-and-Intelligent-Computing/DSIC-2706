@@ -67,13 +67,38 @@ Pecahan 39 kasus *False Acceptance* derau berdasarkan lokasi dan jenis trigger d
 | `Sekitar GKU 1 Amplitudo` | 11 | 7 | 63.6% |
 | `Sekitar GKU 1 Frequency` | 11 | 9 | 81.8% |
 
-### Temuan dan Hipotesis Kerja:
-1. **Distribusi False Accept Berdasarkan Lokasi (Keterbatasan Ukuran Sampel):**  
-   Pada subset uji kontrol negatif ($N=100$ berkas derau), ukuran sampel per lokasi berkisar antara 5 hingga 14 berkas. Perekaman `Gedung F Frequency` mencatat 8/8 (100,0%) false accept, dan `Sekitar GKU 1 Frequency` mencatat 9/11 (81,8%) false accept. Sebaliknya, lokasi seperti `Kebun Raya Frequency` mencatat 0/11 (0,0%) dan `Masjid At-tanwir Amplitudo` mencatat 1/11 (9,1%).
-2. **Hipotesis Kerja Mekanisme Bioakustik (Belum Dibuktikan Definitif):**  
-   Penyebab spesifik dari false accept pada 8 berkas `Gedung F Frequency` belum diverifikasi secara definitif melalui pendengaran aural manual atau detektor bioakustik per detik. Hipotesis bahwa rekaman tersebut menangkap biofoni lokal (seperti serangga kanopi atau kicauan burung urban setempat) ditempatkan sebagai **hipotesis kerja** yang memerlukan investigasi ornitologis lanjutan.
-3. **Dinamika Representasi Kemiripan Kosinus:**  
-   Dari perspektif komputasi representasi beku, ruang embedding BirdNET menghasilkan distribusi kesamaan kosinus terhadap derau lingkungan dengan rata-rata empiris sekitar 0.683 (rentang 0.523 - 0.817, simpangan baku 0.064). Karena ambang batas tau* = 0.7128 berada pada persentil ke-61 dari distribusi derau (39% derau berada di atas ambang batas), secara matematis 39 dari 100 derau lingkungan akan memiliki skor di atas ambang batas. Hal ini mengonfirmasi bahwa ambang batas tunggal tau* yang dikalibrasi pada kondisi bersih tidak secara otomatis memberikan kekebalan terhadap sinyal derau lingkungan yang memiliki magnitudo kemiripan moderat.
+### Audit Empiris 8 Berkas Gedung F Frequency (100% False Accept):
+
+Audit akustik dan inferensi representasi beku BirdNET terhadap 8 berkas fisik di `Gedung F Frequency` mengungkap temuan empiris konkret:
+
+| Berkas WAV | Sesi & Filter | Max Cosine Sim | Status (tau*=0.7128) | Top-1 Matched Species | Sim Top-1 | Sub-1kHz (%) | 1–4 kHz (%) | Peak Freq (Hz) |
+| :--- | :--- | :---: | :---: | :--- | :---: | :---: | :---: | :---: |
+| `20260923_162500T.WAV` | High Freq | 0.7335 | False Accept | Bananaquit (`banana`) | 0.7335 | 98.7% | 1.0% | 547 Hz |
+| `20260923_101900T.WAV` | Low Freq | 0.7581 | False Accept | White-tipped Dove (`whtdov`) | 0.7581 | 87.4% | 11.1% | 516 Hz |
+| `20260923_113900T.WAV` | Medium Freq | 0.7253 | False Accept | White-tipped Dove (`whtdov`) | 0.7253 | 98.0% | 1.7% | 500 Hz |
+| `20260923_110100T.WAV` | Low Freq | 0.7794 | False Accept | White-tipped Dove (`whtdov`) | 0.7794 | 96.8% | 2.7% | 1891 Hz |
+| `20260923_164600T.WAV` | High Freq | 0.7185 | False Accept | S. Beardless Tyrannulet (`sobtyr1`) | 0.7185 | 95.4% | 3.6% | 875 Hz |
+| `20260923_170000T.WAV` | High Freq | 0.7486 | False Accept | Bananaquit (`banana`) | 0.7486 | 95.2% | 2.9% | 594 Hz |
+| `20260923_102700T.WAV` | Low Freq | 0.7531 | False Accept | Bananaquit (`banana`) | 0.7531 | 99.1% | 0.7% | 750 Hz |
+| `20260923_120400T.WAV` | Medium Freq | 0.8018 | False Accept | White-tipped Dove (`whtdov`) | 0.8018 | 91.9% | 6.2% | 641 Hz |
+
+### Temuan Empiris dan Pembongkaran Hipotesis Awal:
+1. **Bukan Kicauan Burung Frekuensi Tinggi / Serangga:**  
+   Hipotesis awal bahwa false accept dipicu oleh kicauan frekuensi tinggi burung gereja atau serangga pada 4 kHz **terbantahkan secara fisik**. Spektrum FFT membuktikan seluruh 8 berkas didominasi oleh energi frekuensi rendah **sub-1kHz (rata-rata 95,4%)**, dengan puncak resonansi terpusat pada pita **500 Hz – 750 Hz** (dengungan hembusan angin kanopi dan resonansi gedung).
+2. **Korelasi Akustik Semantik BirdNET terhadap Columbidae:**  
+   Dalam ruang fitur 1024-dimensi BirdNET, dengungan frekuensi rendah 500–750 Hz ini dipetakan sangat dekat dengan profil vokal burung yang memiliki karakter dengungan nada rendah (*low-pitched hollow coo*), terutama burung merpati **White-tipped Dove (*Leptotila verreauxi* / `whtdov`)** dan vokal serak **Southern Beardless Tyrannulet (`sobtyr1`)**.
+3. **Pola Konsentrasi False Accept Lintas 39 Kasus Derau ITERA:**  
+   Pencocokan BirdNET pada seluruh 39 berkas derau ITERA yang melampaui tau* menunjukkan konsentrasi taksonomik yang sangat nyata:
+   - *Southern Beardless Tyrannulet* (`sobtyr1`): **18 dari 39 kasus (46,2%)**
+   - *White-tipped Dove* (`whtdov`): **10 dari 39 kasus (25,6%)**
+   - *Bananaquit* (`banana`): **4 kasus (10,3%)**
+   - *Lineated Woodpecker* (`linwoo1`): **3 kasus (7,7%)**
+   - *Roadside Hawk* (`roahaw`): **2 kasus (5,1%)**
+   - *Yellow-olive Flatbill* (`yeofly1`): **1 kasus (2,6%)**
+   - *Common Squirrel-Cuckoo* (`squirrel1`): **1 kasus (2,6%)**  
+   Dua spesies dengan karakter dengungan/getaran nada rendah (`sobtyr1` dan `whtdov`) menyumbang **71,8%** (28/39) dari seluruh kesalahan penerimaan derau!
+4. **Dinamika Ambang Batas Matematis:**  
+   Distribusi kesamaan kosinus BirdNET terhadap derau memiliki rerata empiris 0.683 (std = 0.064). Karena tau* = 0.7128 berada pada persentil ke-61, secara alami 39% derau lingkungan melampaui ambang batas. Fenomena ini membuktikan bahwa representasi bioakustik beku rentan mengalami kebingungan semantik terhadap dengungan lingkungan frekuensi rendah alami, sehingga mengonfirmasi perlunya penyesuaian ambang batas adaptif.
 
 ---
 
