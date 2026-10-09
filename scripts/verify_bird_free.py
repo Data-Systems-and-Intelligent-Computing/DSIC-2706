@@ -194,11 +194,6 @@ Pada Eksperimen E4 (*Domain Shift Sensitivitas Profil Derau*), sinyal query dica
 
 1. Kolom `verified_bird_free` pada `itera_noise_manifest.csv` dipertahankan dengan catatan dokumentasi resmi bahwa verifikasi tersebut merujuk pada **Target-Avian-Free Verification** (bebas dari 20 takson target).
 2. Peneliti selanjutnya yang menggunakan bank data ini untuk pengujian deteksi bioakustik disarankan memisahkan subset `Amplitudo` (didominasi geofoni/antropofoni murni) dari subset `Frequency` (mengandung biofoni lokal Sundaland).
-
----
-**Diperiksa & Diverifikasi oleh:**  
-Tim Peneliti Tugas Akhir DSIC-2706  
-Program Studi Sains Data, Institut Teknologi Sumatera  
 """
 
     with open(REPORT_PATH, "w", encoding="utf-8", newline="\n") as f:
