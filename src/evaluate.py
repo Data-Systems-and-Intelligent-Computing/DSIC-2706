@@ -36,9 +36,12 @@ from src.retrieve import evaluate_retrieval_corpus, compute_query_retrieval
 from src.calibrate_threshold import calibrate_threshold_tau, evaluate_open_set_with_frozen_tau
 
 SPLIT_PATH = PROJECT_ROOT / "data/manifests/dataset_split.csv"
+UNK_PATH = PROJECT_ROOT / "data/manifests/unknown_open_set_manifest.csv"
+FEATURES_DIR = PROJECT_ROOT / "results/features"
 RESULTS_DIR = PROJECT_ROOT / "results/processed"
 RAW_DIR = PROJECT_ROOT / "results/raw"
 
+FEATURES_DIR.mkdir(parents=True, exist_ok=True)
 RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 RAW_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -52,6 +55,7 @@ def save_raw_query_metrics(rep_code: str, condition: str, raw_metrics: list, que
             "species_key": query_df.iloc[i]["species_key"],
             "recordist": query_df.iloc[i].get("author", "Unknown"),
             "top1_match": m["top1_match"],
+            "RR": m.get("RR", 0.0),
             "max_similarity_score": m["max_score"],
             "AP@10": m.get("AP@10", 0.0),
             "Recall@10": m.get("R@10", 0.0),
@@ -68,14 +72,22 @@ def run_experiment_for_representation(rep_code: str = "R0", snr_list: list = [20
         raise FileNotFoundError(f"Split file tidak ditemukan: {SPLIT_PATH}")
 
     df_split = pd.read_csv(SPLIT_PATH)
-    gallery_df = df_split[df_split['split_role'] == 'gallery'].copy()
-    query_clean_df = df_split[df_split['split_role'] == 'query_clean'].copy()
-    calib_df = df_split[df_split['split_role'] == 'calibration'].copy()
-    unknown_df = df_split[df_split['split_role'] == 'unknown_test'].copy()
+    gallery_df = df_split[df_split['split_role'] == 'gallery'].copy().reset_index(drop=True)
+    query_clean_df = df_split[df_split['split_role'] == 'query_clean'].copy().reset_index(drop=True)
+    calib_df = df_split[df_split['split_role'] == 'calibration'].copy().reset_index(drop=True)
+
+    if UNK_PATH.exists():
+        df_unk = pd.read_csv(UNK_PATH)
+        calib_unk_df = df_unk[df_unk['split_role'] == 'unknown_calibration'].copy().reset_index(drop=True)
+        test_unk_df = df_unk[df_unk['split_role'] == 'unknown_test'].copy().reset_index(drop=True)
+    else:
+        calib_unk_df = pd.DataFrame()
+        test_unk_df = pd.DataFrame()
 
     print(f"\n======================================================================")
     print(f"[*] MENJALANKAN EVALUASI REPRESENTASI [{rep_code}]")
-    print(f"[*] Gallery: {len(gallery_df)}, Query Clean: {len(query_clean_df)}, Calib: {len(calib_df)}, Unknown: {len(unknown_df)}")
+    print(f"[*] Gallery: {len(gallery_df)}, Query Clean: {len(query_clean_df)}, Calib: {len(calib_df)}")
+    print(f"[*] Unknown Calib: {len(calib_unk_df)}, Unknown Test: {len(test_unk_df)}")
     print(f"======================================================================")
 
     extractor = AudioRepresentationExtractor(rep_code)
@@ -89,7 +101,7 @@ def run_experiment_for_representation(rep_code: str = "R0", snr_list: list = [20
         emb = extractor.extract(y)
         gallery_embs.append(emb)
         gallery_labels.append(r['species_key'])
-    gallery_embs = np.array(gallery_embs)
+    gallery_embs = np.array(gallery_embs, dtype=np.float32)
 
     # 2. Ekstraksi Preprocessed Clean Queries
     print("[*] Memuat sinyal audio Clean Query...")
@@ -102,7 +114,7 @@ def run_experiment_for_representation(rep_code: str = "R0", snr_list: list = [20
 
     # 3. E1: Clean Evaluation
     print("[*] Menjalankan E1: Clean Retrieval...")
-    query_clean_embs = np.array([extractor.extract(y) for y in query_clean_audios])
+    query_clean_embs = np.array([extractor.extract(y) for y in query_clean_audios], dtype=np.float32)
     clean_summary, clean_raw = evaluate_retrieval_corpus(
         query_embs=query_clean_embs,
         query_labels=query_labels,
@@ -111,7 +123,20 @@ def run_experiment_for_representation(rep_code: str = "R0", snr_list: list = [20
     )
     clean_map10 = clean_summary["mAP@10"]
     save_raw_query_metrics(rep_code, "Clean", clean_raw, query_clean_df)
-    print(f"    [E1 Clean] mAP@10: {clean_map10:.4f}, Recall@10: {clean_summary['Recall@10']:.4f}, Top1: {clean_summary['mean_top1']:.4f}")
+
+    # Cache clean embeddings untuk eksperimen E3, E4, E5
+    cache_path = FEATURES_DIR / f"clean_embeddings_{rep_code}.npz"
+    np.savez_compressed(
+        cache_path,
+        gal_feats=gallery_embs,
+        qry_feats=query_clean_embs,
+        gal_labels=np.array(gallery_labels),
+        qry_labels=np.array(query_labels),
+        gal_ids=gallery_df['recording_id'].values,
+        qry_ids=query_clean_df['recording_id'].values
+    )
+    print(f"    [Cache] Embeddings tersimpan di: {cache_path.name}")
+    print(f"    [E1 Clean] mAP@10: {clean_map10:.4f}, Recall@10: {clean_summary['Recall@10']:.4f}, Top1: {clean_summary['mean_top1']:.4f}, MRR: {clean_summary.get('MRR', 0.0):.4f}")
 
     # 4. E2: Controlled Noise Robustness (Paired Test)
     print("\n[*] Menjalankan E2: Paired Noise Degradation...")
@@ -123,6 +148,7 @@ def run_experiment_for_representation(rep_code: str = "R0", snr_list: list = [20
         "condition": "Clean",
         "snr_db": 999,
         "mAP@10": clean_map10,
+        "MRR": clean_summary.get("MRR", 0.0),
         "Recall@10": clean_summary["Recall@10"],
         "Precision@10": clean_summary["Precision@10"],
         "Top1_Accuracy": clean_summary["mean_top1"],
@@ -158,6 +184,7 @@ def run_experiment_for_representation(rep_code: str = "R0", snr_list: list = [20
             "condition": f"SNR_{snr}dB",
             "snr_db": snr,
             "mAP@10": noisy_map10,
+            "MRR": noisy_summary.get("MRR", 0.0),
             "Recall@10": noisy_summary["Recall@10"],
             "Precision@10": noisy_summary["Precision@10"],
             "Top1_Accuracy": noisy_summary["mean_top1"],
@@ -176,12 +203,6 @@ def run_experiment_for_representation(rep_code: str = "R0", snr_list: list = [20
         res = compute_query_retrieval(emb, r['species_key'], gallery_embs, gallery_labels)
         calib_scores.append(res["max_score"])
         calib_targets.append(1)
-
-    # Ambil separuh unknown untuk kalibrasi
-    n_unk = len(unknown_df)
-    n_calib_unk = min(len(calib_df), n_unk // 2)
-    calib_unk_df = unknown_df.iloc[:n_calib_unk]
-    test_unk_df = unknown_df.iloc[n_calib_unk:]
 
     for _, r in calib_unk_df.iterrows():
         y = preprocess_audio(r['file_path'])

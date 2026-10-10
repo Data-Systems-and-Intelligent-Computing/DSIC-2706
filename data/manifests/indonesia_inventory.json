@@ -1,0 +1,12 @@
+{
+  "total_recordings": 1217,
+  "total_species": 20,
+  "min_clips_per_species": 30,
+  "max_clips_per_species": 137,
+  "avg_clips_per_species": 60.9,
+  "min_recordists_per_species": 14,
+  "max_recordists_per_species": 35,
+  "avg_recordists_per_species": 22.5,
+  "total_sumatra_clips": 168,
+  "sumatra_representation_pct": 13.8
+}

@@ -65,6 +65,13 @@ def select_highest_energy_window(y: np.ndarray, sr: int, window_samples: int) ->
     return y[best_start:best_start + window_samples]
 
 
+def compute_rms(y: np.ndarray) -> float:
+    """Menghitung root-mean-square (RMS) energy dari sinyal audio."""
+    if len(y) == 0:
+        return 0.0
+    return float(np.sqrt(np.mean(y ** 2)))
+
+
 def normalize_rms(y: np.ndarray, target_rms: float = 0.05) -> np.ndarray:
     """Normalisasi level energi RMS sinyal audio."""
     current_rms = np.sqrt(np.mean(y ** 2))

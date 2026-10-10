@@ -6,10 +6,10 @@ dataset_split.csv : 46878991f27b9edc3711d4f986a601cd49d01660c78ba93c7bac95cfa570
 species_freeze.csv : 29200624d0f914c9eb32ab95a69773a3cbff33d7db6888aadbef363d3cd0971e
 species_excluded.csv : 6eb7b7f86ebd4997fee7d92fca83553fe2b2183b58e76316e86df6fb66cb6d4c
 itera_noise_manifest.csv : a4138bd13e437801d18dc7afde52e0dab50aa5d56ac27091ab0a4ba68fb6f72d
-unknown_open_set_manifest.csv : 795e3ba755a0a39f91568cd9fca8251c005bee94a53586bedfef4b720e829e6d
+unknown_open_set_manifest.csv : 9c1afaea07d6d63fea305a97499f5a10bdae115379b856782ad9961c55718c0b
 
 # Baseline Verifikasi E1 Clean Retrieval (dari results/processed/clean_retrieval_table.csv):
-R0: MFCC Baseline (40-d) : Top1=27.500000000000004% mAP@10=0.13194880952380952 MRR=0.42244051265615723
-R1: PANNs CNN14 (2048-d) : Top1=60.0% mAP@10=0.41523432539682537 MRR=0.7005128099577479
-R2: BirdNET Backbone (1024-d) : Top1=95.0% mAP@10=0.9126194444444444 MRR=0.9657797619047619
-R3: Random Control (40-d) : Top1=6.5% mAP@10=0.01900952380952381 MRR=0.17789747862256608
+ : Top1=% mAP@10=0.6358 MRR=0.8646
+ : Top1=% mAP@10=0.1768 MRR=0.5079
+ : Top1=% mAP@10=0.0691 MRR=0.3081
+ : Top1=% mAP@10=0.0232 MRR=0.1815

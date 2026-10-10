@@ -104,7 +104,7 @@ def create_and_execute_notebook():
         "axes[1].bar(x - width/2, df_calib['calib_recall'], width, label='Target Recall (TPR)', color='#3b528b', alpha=0.85)\n"
         "axes[1].bar(x + width/2, df_calib['calib_fpr'], width, label='False Positive Rate (FPR)', color='#d62728', alpha=0.85)\n"
         "axes[1].set_xticks(x)\n"
-        "axes[1].set_xticklabels([f\"{r['representation']}\\n(tau*={r['frozen_tau']:.3f})\" for _, r in df_calib.iterrows()], fontsize=10)\n"
+        "axes[1].set_xticklabels([f\"{r['representation']}\\n(tau*={r['frozen_tau']:.4f})\" for _, r in df_calib.iterrows()], fontsize=10)\n"
         "axes[1].set_ylabel('Rate', fontsize=11)\n"
         "axes[1].set_title('B. Trade-off Sensitivitas vs Spesifisitas pada tau* Beku', fontsize=12, fontweight='bold')\n"
         "axes[1].set_ylim(0, 1.0)\n"
@@ -123,7 +123,7 @@ def create_and_execute_notebook():
     # Cell 4: Test Set Transfer Table
     c4 = (
         "df_transfer = pd.read_csv(PROCESSED_DIR / 'threshold_transfer_table.csv')\n"
-        "print('=== HASIL EVALUASI TRANSFER AMBANG BATAS BEKU PADA TEST SET (N=400: 200 KNOWN + 200 UNKNOWN) ===')\n"
+        "print('=== HASIL EVALUASI TRANSFER AMBANG BATAS BEKU PADA TEST SET (N=620: 310 TARGET + 310 NEGATIF UNKNOWN) ===')\n"
         "display(df_transfer[['representation', 'condition', 'snr_db', 'AUROC', 'AUPRC', 'Recall_at_tau', 'False_Positive_Rate', 'F1_at_tau', 'delta_Recall', 'delta_FPR']])"
     )
     cells.append(nbf.v4.new_code_cell(c4))
@@ -191,19 +191,15 @@ def create_and_execute_notebook():
     cells.append(nbf.v4.new_markdown_cell(
         "### Pembahasan dan Temuan Kunci Eksperimen E3:\n\n"
         "1. **Keabsahan Metodologi (Strict Split & No Snooping):**\n"
-        "   - Ambang batas optimal $\\tau^*$ diperoleh secara empiris melalui kurva ROC dan optimasi Youden's Index ($J = \\text{TPR} - \\text{FPR}$) "
-        "pada subset kalibrasi yang terpisah ($N=498$ target bird positif dan $N=498$ kontrol negatif unknown: 249 derau ITERA + 249 spesies non-target).\n"
-        "   - Nilai $\\tau^*$ yang diperoleh dibekukan secara permanen: $R_2 = 0.7128$, $R_1 = 0.9117$, $R_0 = 0.9953$, dan $R_3 = 0.5090$.\n\n"
-        "2. **Jawaban terhadap Sub-RQ2 & Hipotesis H4:**\n"
-        "   - **Divergensi Perilaku Ekstrem antara Representasi Generik ($R_1$) dan Bioakustik ($R_2$):**\n"
-        "     - Pada $R_1$ (PANNs CNN14), ketika SNR memburuk ke -5 dB, FPR melonjak secara drastis dari **41.5% menjadi 81.5%** (inflasi $\\Delta\\text{FPR} = +40.0\\%$). "
-        "Ini membuktikan fenomena kerentanan representasi audio generik: derau lingkungan membuat model memetakan sinyal asing ke wilayah fitur berdensitas tinggi, "
-        "sehingga false alarm mendominasi sistem.\n"
-        "     - Sebaliknya, pada $R_2$ (BirdNET), representasi mempertahankan kemampuan diskriminasi yang jauh lebih tinggi (AUROC tetap di kisaran 0.7575 s.d. 0.8849). "
-        "FPR $R_2$ bahkan menyusut secara konservatif dari **28.5% ke 9.5%** pada SNR -5 dB (penurunan skor kosinus global), meskipun hal ini diiringi kompromi penurunan Target Recall ke 44.5%.\n"
-        "   - **Kontrol Acak ($R_3$) & MFCC ($R_0$):**\n"
-        "     - $R_3$ memiliki AUROC $\\approx 0.50$ pada seluruh kondisi (performa tebakan acak murni).\n"
-        "     - $R_0$ (MFCC) mengalami degradasi separasi parah dengan FPR mencapai 75.5% pada SNR 0 dB.\n"
+        "   - Ambang batas optimal $\\tau^*$ diperoleh secara empiris melalui optimasi indeks Youden ($J = \\text{TPR} - \\text{FPR}$) "
+        "pada subset kalibrasi independen ($N=466$: 233 kueri target burung Indonesia + 233 negatif unknown: 117 spesies non-target + 116 derau AudioMoth ITERA).\n"
+        "   - Nilai $\\tau^*$ yang diperoleh dibekukan secara permanen: $R_2 = 0.7071$, $R_1 = 0.8974$, $R_0 = 0.9958$, dan $R_3 = 0.4481$.\n\n"
+        "2. **Jawaban terhadap Sub-RQ2 & Hipotesis H4 (Pergeseran Titik Operasi):**\n"
+        "   - Pada $R_2$ (BirdNET), representasi mempertahankan daya diskriminasi yang kokoh (AUROC tetap stabil di rentang 0.7208 s.d. 0.7611). "
+        "Pada derau ekstrem SNR -5 dB, FPR BirdNET justru menyusut secara konservatif dari **20.0% ke 8.06%** akibat kompresi energi sinyal dan atenuasi skor kemiripan kosinus global. "
+        "Namun, konsekuensinya adalah penurunan Target Recall dari 59.0% ke 23.9%.\n"
+        "   - Sebaliknya, pada model generik $R_1$ (PANNs CNN14), AUROC merosot tajam dari 0.7141 ke 0.5980 saat derau meningkat ke -5 dB, membuktikan bahwa representasi generik kehilangan kapasitas pemisahan antara sinyal burung target dan derau lingkungan.\n"
+        "   - Kontrol acak $R_3$ mempertahankan AUROC $\\approx 0.50$ pada seluruh kondisi, menegaskan validitas kalibrasi open-set.\n"
     ))
 
     nb.cells = cells

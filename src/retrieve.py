@@ -44,9 +44,13 @@ def compute_query_retrieval(query_emb: np.ndarray,
     relevance = np.array([1 if lbl == query_label else 0 for lbl in sorted_labels], dtype=int)
     total_relevant = int(np.sum(relevance))
 
+    hits_indices = np.where(relevance == 1)[0]
+    rr = float(1.0 / (hits_indices[0] + 1)) if len(hits_indices) > 0 else 0.0
+
     results = {
         "max_score": float(sorted_scores[0]) if len(sorted_scores) > 0 else 0.0,
         "top1_match": int(relevance[0]) if len(relevance) > 0 else 0,
+        "RR": rr,
         "total_relevant_in_gallery": total_relevant
     }
 
@@ -102,7 +106,8 @@ def evaluate_retrieval_corpus(query_embs: np.ndarray,
 
     summary = {
         "num_queries": n_queries,
-        "mean_top1": float(np.mean([m["top1_match"] for m in all_metrics]))
+        "mean_top1": float(np.mean([m["top1_match"] for m in all_metrics])),
+        "MRR": float(np.mean([m.get("RR", 0.0) for m in all_metrics]))
     }
 
     for k in k_values:

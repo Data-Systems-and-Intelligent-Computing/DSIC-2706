@@ -1,11 +1,12 @@
 """
 Script: scripts/run_e4_domain_shift.py
-Fungsi: Eksekusi Eksperimen E4 — Sensitivitas Profil Spektral Sumber Derau (Noise Spectral Profile Sensitivity).
-Sesuai audit saintifik:
-1. Membandingkan performa retrieval pada derau lapangan ITERA (E2) vs background soundscape tropis BirdCLEF (E4).
-2. Memuat gallery embeddings dari results/features/clean_embeddings_{rep}.npz untuk efisiensi komputasi.
-3. Menyimpan hasil evaluasi per-query mentah (raw query metrics) ke results/raw/E4_{rep}_raw.csv untuk memungkinkan bootstrap confidence intervals.
-4. Menghasilkan tabel komparatif lengkap E2 vs E4 lintas seluruh representasi (R0, R1, R2, R3).
+Fungsi: Eksekusi Eksperimen E4 — Sensitivitas Profil Spektral Sumber Derau
+        Lintas Habitat Lingkungan Nyata Kampus ITERA.
+        Membandingkan ketahanan representasi (R0, R1, R2, R3) ketika kueri
+        didegradasi oleh derau dari 3 profil akustik habitat berbeda di ITERA:
+        1. Kebun Raya ITERA (Vegetasi Lebat Tropis / Dominasi Biophony Serangga)
+        2. Embung F ITERA (Perairan Terbuka / Resonansi Air & Angin)
+        3. Gedung F ITERA (Koridor Bangunan / Derau Struktural & Antropogenik)
 """
 
 import os
@@ -14,31 +15,65 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 import librosa
+import soundfile as sf
+import matplotlib.pyplot as plt
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.preprocess import preprocess_audio, TARGET_SR, TARGET_SAMPLES
+from src.preprocess import preprocess_audio, TARGET_SR
 from src.embeddings import AudioRepresentationExtractor
 from src.mix_noise import compute_signal_power
 from src.retrieve import evaluate_retrieval_corpus
 
 SPLIT_PATH = PROJECT_ROOT / "data/manifests/dataset_split.csv"
-SOUNDSCAPE_DIR = PROJECT_ROOT / "data/BirdClef/train_soundscapes"
+NOISE_MANIFEST_PATH = PROJECT_ROOT / "data/manifests/itera_noise_manifest.csv"
+NOISE_DIR = PROJECT_ROOT / "data/itera_noise"
 FEATURES_DIR = PROJECT_ROOT / "results/features"
 PROCESSED_DIR = PROJECT_ROOT / "results/processed"
 RAW_DIR = PROJECT_ROOT / "results/raw"
 TABLES_DIR = PROJECT_ROOT / "paper/tables"
+FIG_DIR = PROJECT_ROOT / "results/figures"
+PAPER_FIG_DIR = PROJECT_ROOT / "paper/figures"
 
-def get_soundscape_noise_segment(samples: int, seed: int = 42) -> np.ndarray:
-    """Mengambil segmen acak dari dataset soundscape alam bebas BirdCLEF."""
+for d in [PROCESSED_DIR, RAW_DIR, TABLES_DIR, FIG_DIR, PAPER_FIG_DIR]:
+    d.mkdir(parents=True, exist_ok=True)
+
+
+def load_habitat_noise_files():
+    """Mengelompokkan berkas derau ITERA berdasarkan 3 profil habitat utama."""
+    df_noise = pd.read_csv(NOISE_MANIFEST_PATH)
+    habitats = {
+        "Kebun_Raya": [],
+        "Embung_F": [],
+        "Gedung_F": []
+    }
+    for _, r in df_noise.iterrows():
+        fn = r["filename"]
+        p = NOISE_DIR / fn
+        if not p.exists():
+            continue
+        if "Kebun Raya" in fn:
+            habitats["Kebun_Raya"].append(p)
+        elif "Embung F" in fn:
+            habitats["Embung_F"].append(p)
+        elif "Gedung F" in fn:
+            habitats["Gedung_F"].append(p)
+
+    for hab, files in habitats.items():
+        print(f"[*] Habitat [{hab}]: {len(files)} berkas audio derau valid.")
+        if len(files) == 0:
+            raise FileNotFoundError(f"Tidak ada berkas derau untuk habitat {hab}!")
+    return habitats
+
+
+def get_habitat_noise_segment(files: list, samples: int, seed: int = 42) -> np.ndarray:
+    """Mengambil segmen acak dari daftar berkas derau habitat tertentu."""
     rng = np.random.default_rng(seed)
-    ogg_files = sorted([f for f in os.listdir(SOUNDSCAPE_DIR) if f.endswith('.ogg')])
-    selected = str(SOUNDSCAPE_DIR / ogg_files[rng.integers(0, len(ogg_files))])
-    
+    selected = files[rng.integers(0, len(files))]
     try:
-        y, _ = librosa.load(selected, sr=TARGET_SR, mono=True)
+        y, _ = librosa.load(str(selected), sr=TARGET_SR, mono=True)
         if len(y) >= samples:
             start = rng.integers(0, len(y) - samples + 1)
             return y[start:start + samples].astype(np.float32)
@@ -47,64 +82,59 @@ def get_soundscape_noise_segment(samples: int, seed: int = 42) -> np.ndarray:
             y = np.tile(y, repeats)
             return y[:samples].astype(np.float32)
     except Exception as e:
-        print(f"[-] Gagal membaca soundscape {selected}: {e}")
+        print(f"[-] Gagal membaca derau {selected}: {e}")
         return np.zeros(samples, dtype=np.float32)
 
-def mix_with_soundscape(clean: np.ndarray, snr_db: float, seed: int = 42) -> np.ndarray:
-    """Mencampur sinyal dengan derau soundscape pada rasio SNR tertentu secara eksak."""
-    noise = get_soundscape_noise_segment(samples=len(clean), seed=seed)
-    
+
+def mix_with_habitat_noise(clean: np.ndarray, noise_files: list, snr_db: float, seed: int = 42) -> np.ndarray:
+    """Mencampur sinyal bersih dengan derau habitat tertentu pada SNR eksak."""
+    noise = get_habitat_noise_segment(noise_files, samples=len(clean), seed=seed)
     p_signal = compute_signal_power(clean)
     p_noise = compute_signal_power(noise)
-    
+
     if p_signal <= 1e-12 or p_noise <= 1e-12:
         return clean
-        
+
     target_p_noise = p_signal / (10.0 ** (snr_db / 10.0))
     alpha = np.sqrt(target_p_noise / p_noise)
     noisy = clean + alpha * noise
-    
+
     max_amp = np.max(np.abs(noisy))
     if max_amp > 1.0:
         noisy = noisy / max_amp
-        
+
     return noisy.astype(np.float32)
+
 
 def main():
     print("=" * 80)
-    print("[*] MEMULAI EKSEKUSI E4: SENSITIVITAS PROFIL SPEKTRAL DERAU (SOUNDSCAPE VS ITERA)")
+    print("[*] MEMULAI E4: SENSITIVITAS PROFIL SPEKTRAL DERAU LINTAS HABITAT KAMPUS ITERA")
     print("=" * 80)
 
-    if not SOUNDSCAPE_DIR.exists():
-        raise FileNotFoundError(f"Direktori soundscape tidak ditemukan di {SOUNDSCAPE_DIR}!")
+    habitats = load_habitat_noise_files()
 
     df_split = pd.read_csv(SPLIT_PATH)
-    gallery_df = df_split[df_split['split_role'] == 'gallery'].reset_index(drop=True)
-    query_df = df_split[df_split['split_role'] == 'query_clean'].reset_index(drop=True)
+    gallery_df = df_split[df_split["split_role"] == "gallery"].reset_index(drop=True)
+    query_df = df_split[df_split["split_role"] == "query_clean"].reset_index(drop=True)
 
     print(f"[*] Total Galeri: {len(gallery_df)}, Total Kueri: {len(query_df)}")
 
     # Muat audio bersih kueri
     print("[*] Memuat sinyal kueri bersih...")
-    query_audios = [preprocess_audio(r['file_path']) for _, r in query_df.iterrows()]
-    query_labels = list(query_df['species_key'])
-    gallery_labels = list(gallery_df['species_key'])
+    query_audios = [preprocess_audio(r["file_path"]) for _, r in query_df.iterrows()]
+    query_labels = list(query_df["species_key"])
+    gallery_labels = list(gallery_df["species_key"])
 
     snr_list = [20, 10, 0, -5]
     representations = ["R0", "R1", "R2", "R3"]
 
     e4_summary_rows = []
 
-    # Muat tabel E2 untuk perbandingan side-by-side
-    e2_table_path = PROCESSED_DIR / "snr_robustness_table.csv"
-    df_e2 = pd.read_csv(e2_table_path)
-
     for rep in representations:
         print(f"\n" + "-" * 60)
         print(f"[*] MEMPROSES E4 REPRESENTASI [{rep}]")
         print("-" * 60)
 
-        # Muat galeri yang sudah tersimpan
         feat_path = FEATURES_DIR / f"clean_embeddings_{rep}.npz"
         feat_data = np.load(feat_path)
         gallery_embs = feat_data["gal_feats"]
@@ -119,84 +149,132 @@ def main():
         clean_map = clean_summary["mAP@10"]
         print(f"    [Clean] mAP@10: {clean_map:.4f}, Top1: {clean_summary['mean_top1']:.4f}")
 
-        e4_raw_records = []
-        for i, q_raw in enumerate(clean_raw):
-            row_dict = dict(q_raw)
-            row_dict["query_id"] = query_df.iloc[i]["recording_id"]
-            row_dict["species_key"] = query_df.iloc[i]["species_key"]
-            row_dict["condition"] = "Clean"
-            row_dict["snr_db"] = 999
-            row_dict["representation"] = rep
-            e4_raw_records.append(row_dict)
-
-        # Ambil baseline E2 clean untuk perbandingan
-        e2_clean_row = df_e2[(df_e2["representation"] == rep) & (df_e2["condition"] == "Clean")].iloc[0]
-
+        # Catat baris Clean
         e4_summary_rows.append({
             "representation": rep,
+            "habitat": "Baseline",
             "condition": "Clean",
             "snr_db": 999,
-            "mAP@10_E4_Soundscape": clean_map,
-            "Top1_E4": clean_summary["mean_top1"],
-            "mAP@10_E2_ITERA": e2_clean_row["mAP@10"],
-            "delta_mAP10_E4_minus_E2": clean_map - e2_clean_row["mAP@10"],
-            "retention_E4": 1.0,
-            "retention_E2": 1.0
+            "mAP@10": clean_map,
+            "Top1_Accuracy": clean_summary["mean_top1"],
+            "Precision@10": clean_summary["Precision@10"],
+            "Recall@10": clean_summary["Recall@10"],
+            "relative_retention": 1.0
         })
 
-        # Evaluasi per level SNR
-        for snr in snr_list:
-            noisy_embs = []
-            for i, y_clean in enumerate(query_audios):
-                y_noisy = mix_with_soundscape(y_clean, snr_db=snr, seed=100 + i)
-                noisy_embs.append(extractor.extract(y_noisy))
-            noisy_embs = np.array(noisy_embs)
+        all_hab_raw_rows = []
 
-            noisy_summary, noisy_raw = evaluate_retrieval_corpus(
-                noisy_embs, query_labels, gallery_embs, gallery_labels
-            )
-            noisy_map = noisy_summary["mAP@10"]
-            retention_e4 = noisy_map / max(clean_map, 1e-6)
+        # Evaluasi per habitat dan per SNR
+        for hab_name, hab_files in habitats.items():
+            for snr in snr_list:
+                noisy_embs = []
+                for i, y_c in enumerate(query_audios):
+                    y_n = mix_with_habitat_noise(y_c, hab_files, snr_db=snr, seed=5000 + i)
+                    emb_n = extractor.extract(y_n)
+                    noisy_embs.append(emb_n)
+                noisy_embs = np.array(noisy_embs, dtype=np.float32)
 
-            # Cari baris E2 yang bersesuaian
-            e2_noisy_row = df_e2[(df_e2["representation"] == rep) & (df_e2["condition"] == f"SNR_{snr}dB")].iloc[0]
-            delta_map = noisy_map - e2_noisy_row["mAP@10"]
+                h_summary, h_raw = evaluate_retrieval_corpus(
+                    noisy_embs, query_labels, gallery_embs, gallery_labels
+                )
+                h_map = h_summary["mAP@10"]
+                h_ret = h_map / max(clean_map, 1e-6)
 
-            print(f"    [SNR {snr:3d} dB] E4 Soundscape: {noisy_map:.4f} (Ret: {retention_e4*100:.1f}%) | "
-                  f"E2 ITERA: {e2_noisy_row['mAP@10']:.4f} | Gap (E4-E2): {delta_map:+.4f}")
+                print(f"    [{hab_name:10s} | SNR {snr:3d} dB] mAP@10: {h_map:.4f} (Ret: {h_ret*100:.1f}%), Top1: {h_summary['mean_top1']:.4f}")
 
-            for i, q_raw in enumerate(noisy_raw):
-                row_dict = dict(q_raw)
-                row_dict["query_id"] = query_df.iloc[i]["recording_id"]
-                row_dict["species_key"] = query_df.iloc[i]["species_key"]
-                row_dict["condition"] = f"SNR_{snr}dB"
-                row_dict["snr_db"] = snr
-                row_dict["representation"] = rep
-                e4_raw_records.append(row_dict)
+                e4_summary_rows.append({
+                    "representation": rep,
+                    "habitat": hab_name,
+                    "condition": f"SNR_{snr}dB",
+                    "snr_db": snr,
+                    "mAP@10": h_map,
+                    "Top1_Accuracy": h_summary["mean_top1"],
+                    "Precision@10": h_summary["Precision@10"],
+                    "Recall@10": h_summary["Recall@10"],
+                    "relative_retention": h_ret
+                })
 
-            e4_summary_rows.append({
-                "representation": rep,
-                "condition": f"SNR_{snr}dB",
-                "snr_db": snr,
-                "mAP@10_E4_Soundscape": noisy_map,
-                "Top1_E4": noisy_summary["mean_top1"],
-                "mAP@10_E2_ITERA": e2_noisy_row["mAP@10"],
-                "delta_mAP10_E4_minus_E2": delta_map,
-                "retention_E4": retention_e4,
-                "retention_E2": e2_noisy_row["relative_retention"]
-            })
+                for i, r_item in enumerate(h_raw):
+                    r_item_dict = dict(r_item)
+                    r_item_dict["query_id"] = query_df.iloc[i]["recording_id"]
+                    r_item_dict["species_key"] = query_df.iloc[i]["species_key"]
+                    r_item_dict["habitat"] = hab_name
+                    r_item_dict["condition"] = f"SNR_{snr}dB"
+                    r_item_dict["snr_db"] = snr
+                    r_item_dict["representation"] = rep
+                    all_hab_raw_rows.append(r_item_dict)
 
-        # Simpan raw query file untuk representasi ini
-        df_raw_rep = pd.DataFrame(e4_raw_records)
+        # Simpan raw query metrics E4
+        df_raw_e4 = pd.DataFrame(all_hab_raw_rows)
         raw_out_path = RAW_DIR / f"E4_{rep}_raw.csv"
-        df_raw_rep.to_csv(raw_out_path, index=False)
-        print(f"    [+] Disimpan raw per-query E4: {raw_out_path}")
+        df_raw_e4.to_csv(raw_out_path, index=False)
+        print(f"    [+] Raw scores E4 {rep} disimpan di: {raw_out_path}")
 
     # Simpan tabel ringkasan komparatif E4
-    df_e4_summary = pd.DataFrame(e4_summary_rows)
-    df_e4_summary.to_csv(PROCESSED_DIR / "e4_domain_shift_table.csv", index=False)
-    df_e4_summary.to_csv(TABLES_DIR / "e4_domain_shift_table.csv", index=False)
-    print(f"\n[+] Sukses menyimpan tabel komparatif E4: {PROCESSED_DIR / 'e4_domain_shift_table.csv'}")
+    df_e4_table = pd.DataFrame(e4_summary_rows)
+    table_path = PROCESSED_DIR / "e4_domain_shift_table.csv"
+    df_e4_table.to_csv(table_path, index=False)
+    df_e4_table.to_csv(TABLES_DIR / "e4_domain_shift_table.csv", index=False)
+    print(f"\n[+] Tabel komparatif E4 berhasil disimpan di: {table_path}")
+
+    # Visualisasi Sensitivitas Profil Spektral Lintas Habitat
+    print("[*] Membuat grafik komparatif E4...")
+    plt.style.use("seaborn-v0_8-whitegrid" if "seaborn-v0_8-whitegrid" in plt.style.available else "default")
+    fig, axes = plt.subplots(1, 2, figsize=(15, 5.5), dpi=300)
+
+    hab_colors = {
+        "Kebun_Raya": "#2ca02c", # Hijau vegetasi
+        "Embung_F": "#1f77b4",   # Biru perairan
+        "Gedung_F": "#d62728"    # Merah koridor bangunan
+    }
+    hab_labels = {
+        "Kebun_Raya": "Kebun Raya (Biophony Vegetasi)",
+        "Embung_F": "Embung F (Perairan & Angin)",
+        "Gedung_F": "Gedung F (Koridor Struktural)"
+    }
+
+    snr_order = [20, 10, 0, -5]
+    snr_str = ["+20 dB", "+10 dB", "0 dB", "-5 dB"]
+
+    # Subplot 1: Ketahanan BirdNET (R2) Lintas Habitat
+    sub_r2 = df_e4_table[df_e4_table["representation"] == "R2"]
+    for hab in ["Kebun_Raya", "Embung_F", "Gedung_F"]:
+        hab_data = sub_r2[sub_r2["habitat"] == hab].set_index("snr_db").reindex(snr_order)
+        axes[0].plot(snr_str, hab_data["mAP@10"], marker="o", linewidth=2.2, color=hab_colors[hab], label=hab_labels[hab])
+
+    axes[0].set_title("A. Sensitivitas BirdNET (R2) Lintas Habitat ITERA", fontsize=12, fontweight="bold")
+    axes[0].set_xlabel("Tingkat Derau (SNR)", fontsize=11)
+    axes[0].set_ylabel("mAP@10", fontsize=11)
+    axes[0].set_ylim(0.4, 0.7)
+    axes[0].legend(fontsize=9.5)
+
+    # Subplot 2: Perbandingan Retensi SNR -5 dB Lintas Model & Habitat
+    sub_severe = df_e4_table[df_e4_table["snr_db"] == -5]
+    x_models = np.arange(4)
+    model_names = ["R2", "R1", "R0", "R3"]
+    w = 0.25
+
+    for idx, hab in enumerate(["Kebun_Raya", "Embung_F", "Gedung_F"]):
+        hab_vals = [sub_severe[(sub_severe["representation"] == m) & (sub_severe["habitat"] == hab)]["relative_retention"].values[0] * 100 for m in model_names]
+        axes[1].bar(x_models + (idx - 1) * w, hab_vals, width=w, color=hab_colors[hab], alpha=0.85, label=hab_labels[hab])
+
+    axes[1].set_xticks(x_models)
+    axes[1].set_xticklabels(["R2 (BirdNET)", "R1 (PANNs)", "R0 (MFCC)", "R3 (Random)"], fontweight="bold")
+    axes[1].set_title("B. Retensi Relatif pada Derau Ekstrem (-5 dB SNR)", fontsize=12, fontweight="bold")
+    axes[1].set_xlabel("Representasi Fitur", fontsize=11)
+    axes[1].set_ylabel("Retensi Relatif (% dari Clean)", fontsize=11)
+    axes[1].set_ylim(0, 100)
+    axes[1].legend(fontsize=9.5)
+
+    plt.tight_layout()
+    fig_path = FIG_DIR / "e4_noise_profile_sensitivity.png"
+    plt.savefig(fig_path, dpi=300)
+    plt.savefig(PAPER_FIG_DIR / "e4_noise_profile_sensitivity.png", dpi=300)
+    plt.close()
+
+    print(f"[+] Grafik E4 berhasil disimpan di: {fig_path}")
+    print("=" * 80)
+
 
 if __name__ == "__main__":
     main()

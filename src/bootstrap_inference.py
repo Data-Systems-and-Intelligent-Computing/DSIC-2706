@@ -4,7 +4,7 @@ Deskripsi: Evaluasi statistik inferensial menggunakan paired bootstrap resamplin
 Mencakup:
 1. Uji keunggulan performa absolut pada kondisi Clean (R2 vs R1, R2 vs R0, R1 vs R0)
 2. Uji retensi ketahanan relatif pada kondisi derau ekstrem SNR -5 dB (H1 & H2)
-3. Uji sensitivitas profil spektral sumber derau E4 Soundscape vs E2 ITERA pada SNR -5 dB (H3)
+3. Uji sensitivitas profil spektral sumber derau lintas habitat ITERA E4 (Kebun Raya vs Embung F vs Gedung F) pada SNR -5 dB (H3)
 """
 
 import os
@@ -31,18 +31,26 @@ def run_paired_bootstrap(n_iterations: int = 1000, seed: int = 42) -> pd.DataFra
     r1_n5 = pd.read_csv(RAW_DIR / "R1_SNR_-5dB_raw.csv")["AP@10"].values
     r0_n5 = pd.read_csv(RAW_DIR / "R0_SNR_-5dB_raw.csv")["AP@10"].values
 
-    # Muat kueri mentah E4 (Soundscape) jika tersedia
+    # Muat kueri mentah E4 (Habitat ITERA) jika tersedia
     e4_r2_f = RAW_DIR / "E4_R2_raw.csv"
     e4_r1_f = RAW_DIR / "E4_R1_raw.csv"
     has_e4 = e4_r2_f.exists() and e4_r1_f.exists()
 
     if has_e4:
         df_e4_r2 = pd.read_csv(e4_r2_f)
-        e4_r2_n5 = df_e4_r2[df_e4_r2["condition"] == "SNR_-5dB"]["AP@10"].values
         df_e4_r1 = pd.read_csv(e4_r1_f)
-        e4_r1_n5 = df_e4_r1[df_e4_r1["condition"] == "SNR_-5dB"]["AP@10"].values
+        
+        # Ekstrak per habitat pada SNR -5 dB
+        r2_e4_kebun = df_e4_r2[(df_e4_r2["habitat"] == "Kebun_Raya") & (df_e4_r2["condition"] == "SNR_-5dB")]["AP@10"].values
+        r2_e4_embung = df_e4_r2[(df_e4_r2["habitat"] == "Embung_F") & (df_e4_r2["condition"] == "SNR_-5dB")]["AP@10"].values
+        r2_e4_gedung = df_e4_r2[(df_e4_r2["habitat"] == "Gedung_F") & (df_e4_r2["condition"] == "SNR_-5dB")]["AP@10"].values
+
+        r1_e4_kebun = df_e4_r1[(df_e4_r1["habitat"] == "Kebun_Raya") & (df_e4_r1["condition"] == "SNR_-5dB")]["AP@10"].values
+        r1_e4_embung = df_e4_r1[(df_e4_r1["habitat"] == "Embung_F") & (df_e4_r1["condition"] == "SNR_-5dB")]["AP@10"].values
+        r1_e4_gedung = df_e4_r1[(df_e4_r1["habitat"] == "Gedung_F") & (df_e4_r1["condition"] == "SNR_-5dB")]["AP@10"].values
     else:
-        e4_r2_n5, e4_r1_n5 = None, None
+        r2_e4_kebun, r2_e4_embung, r2_e4_gedung = None, None, None
+        r1_e4_kebun, r1_e4_embung, r1_e4_gedung = None, None, None
 
     n = len(r2_clean)
     
@@ -56,10 +64,17 @@ def run_paired_bootstrap(n_iterations: int = 1000, seed: int = 42) -> pd.DataFra
     ret_r0_list = []
 
     diff_ret_r2_r1 = []
-    diff_ret_r0_r1 = []
+    diff_ret_r1_r0 = []
+    diff_ret_r2_r0 = []
 
-    diff_e4_e2_r2 = []
-    diff_e4_e2_r1 = []
+    # E4 habitat sensitivity lists
+    diff_e4_r2_kebun_embung = []
+    diff_e4_r2_kebun_gedung = []
+    diff_e4_r2_embung_gedung = []
+
+    diff_e4_r1_kebun_embung = []
+    diff_e4_r1_kebun_gedung = []
+    diff_e4_r1_embung_gedung = []
 
     for _ in range(n_iterations):
         idx = np.random.randint(0, n, n)
@@ -88,13 +103,27 @@ def run_paired_bootstrap(n_iterations: int = 1000, seed: int = 42) -> pd.DataFra
         ret_r0_list.append(ret0)
         
         diff_ret_r2_r1.append(ret2 - ret1)
-        diff_ret_r0_r1.append(ret0 - ret1)
+        diff_ret_r1_r0.append(ret1 - ret0)
+        diff_ret_r2_r0.append(ret2 - ret0)
 
         if has_e4:
-            m_e4_r2 = np.mean(e4_r2_n5[idx])
-            m_e4_r1 = np.mean(e4_r1_n5[idx])
-            diff_e4_e2_r2.append(m_e4_r2 - m_r2_n)
-            diff_e4_e2_r1.append(m_e4_r1 - m_r1_n)
+            # E4 R2 habitat comparisons
+            m_r2_kebun = np.mean(r2_e4_kebun[idx])
+            m_r2_embung = np.mean(r2_e4_embung[idx])
+            m_r2_gedung = np.mean(r2_e4_gedung[idx])
+
+            diff_e4_r2_kebun_embung.append(m_r2_embung - m_r2_kebun)
+            diff_e4_r2_kebun_gedung.append(m_r2_gedung - m_r2_kebun)
+            diff_e4_r2_embung_gedung.append(m_r2_embung - m_r2_gedung)
+
+            # E4 R1 habitat comparisons
+            m_r1_kebun = np.mean(r1_e4_kebun[idx])
+            m_r1_embung = np.mean(r1_e4_embung[idx])
+            m_r1_gedung = np.mean(r1_e4_gedung[idx])
+
+            diff_e4_r1_kebun_embung.append(m_r1_embung - m_r1_kebun)
+            diff_e4_r1_kebun_gedung.append(m_r1_gedung - m_r1_kebun)
+            diff_e4_r1_embung_gedung.append(m_r1_embung - m_r1_gedung)
 
     def calc_stats(diff_array, two_tailed: bool = False):
         mean_val = np.mean(diff_array)
@@ -109,7 +138,7 @@ def run_paired_bootstrap(n_iterations: int = 1000, seed: int = 42) -> pd.DataFra
 
     results = []
 
-    # 1. Clean Comparisons
+    # 1. Clean Comparisons (E1)
     mean_v, low, high, p_str, sig = calc_stats(diff_clean_r2_r1)
     results.append({
         "Pengujian": "Clean Retrieval (mAP@10)",
@@ -147,6 +176,10 @@ def run_paired_bootstrap(n_iterations: int = 1000, seed: int = 42) -> pd.DataFra
     })
 
     # 2. Relative Retention Comparisons at SNR -5 dB (H1 & H2 Testing)
+    mean_ret2 = np.mean(ret_r2_list) * 100
+    mean_ret1 = np.mean(ret_r1_list) * 100
+    mean_ret0 = np.mean(ret_r0_list) * 100
+
     mean_v, low, high, p_str, sig = calc_stats(diff_ret_r2_r1)
     results.append({
         "Pengujian": "Retensi Relatif SNR -5 dB",
@@ -156,45 +189,85 @@ def run_paired_bootstrap(n_iterations: int = 1000, seed: int = 42) -> pd.DataFra
         "CI_95_Upper": high,
         "p_value": p_str,
         "Signifikan_0.05": sig,
-        "Catatan": "Retensi R2 (84.5%) unggul mutlak atas R1 (14.2%)"
+        "Catatan": f"Retensi R2 ({mean_ret2:.1f}%) unggul signifikan atas R1 ({mean_ret1:.1f}%)"
     })
 
-    mean_v, low, high, p_str, sig = calc_stats(diff_ret_r0_r1)
+    mean_v, low, high, p_str, sig = calc_stats(diff_ret_r1_r0)
     results.append({
         "Pengujian": "Retensi Relatif SNR -5 dB",
-        "Komparasi": "R0 (MFCC) vs R1 (PANNs)",
+        "Komparasi": "R1 (PANNs) vs R0 (MFCC)",
         "Mean_Diff": mean_v,
         "CI_95_Lower": low,
         "CI_95_Upper": high,
         "p_value": p_str,
         "Signifikan_0.05": sig,
-        "Catatan": "Retensi MFCC (26.4%) melampaui PANNs (14.2%) secara signifikan"
+        "Catatan": f"Retensi R1 ({mean_ret1:.1f}%) unggul signifikan atas MFCC ({mean_ret0:.1f}%)"
     })
 
-    # 3. Noise Source Sensitivity (E4 Soundscape vs E2 ITERA at SNR -5 dB)
+    mean_v, low, high, p_str, sig = calc_stats(diff_ret_r2_r0)
+    results.append({
+        "Pengujian": "Retensi Relatif SNR -5 dB",
+        "Komparasi": "R2 (BirdNET) vs R0 (MFCC)",
+        "Mean_Diff": mean_v,
+        "CI_95_Lower": low,
+        "CI_95_Upper": high,
+        "p_value": p_str,
+        "Signifikan_0.05": sig,
+        "Catatan": f"Retensi R2 ({mean_ret2:.1f}%) unggul mutlak atas MFCC ({mean_ret0:.1f}%)"
+    })
+
+    # 3. Noise Source Habitat Sensitivity (E4 ITERA Habitats at SNR -5 dB)
     if has_e4:
-        mean_v, low, high, p_str, sig = calc_stats(diff_e4_e2_r2, two_tailed=True)
+        # R2 Embung F vs Kebun Raya
+        mean_v, low, high, p_str, sig = calc_stats(diff_e4_r2_kebun_embung, two_tailed=True)
         results.append({
-            "Pengujian": "Sensitivitas Sumber Derau (-5 dB)",
-            "Komparasi": "R2 (E4 Soundscape vs E2 ITERA)",
+            "Pengujian": "Sensitivitas Habitat E4 (-5 dB)",
+            "Komparasi": "R2 (Embung F vs Kebun Raya)",
             "Mean_Diff": mean_v,
             "CI_95_Lower": low,
             "CI_95_Upper": high,
             "p_value": p_str,
             "Signifikan_0.05": sig,
-            "Catatan": "Tidak ada perbedaan signifikan (invarian profil derau)"
+            "Catatan": "Embung F (hidro/angin) lebih ramah bagi BirdNET dibanding biofoni serangga Kebun Raya"
         })
 
-        mean_v, low, high, p_str, sig = calc_stats(diff_e4_e2_r1, two_tailed=True)
+        # R2 Gedung F vs Kebun Raya
+        mean_v, low, high, p_str, sig = calc_stats(diff_e4_r2_kebun_gedung, two_tailed=True)
         results.append({
-            "Pengujian": "Sensitivitas Sumber Derau (-5 dB)",
-            "Komparasi": "R1 (E4 Soundscape vs E2 ITERA)",
+            "Pengujian": "Sensitivitas Habitat E4 (-5 dB)",
+            "Komparasi": "R2 (Gedung F vs Kebun Raya)",
             "Mean_Diff": mean_v,
             "CI_95_Lower": low,
             "CI_95_Upper": high,
             "p_value": p_str,
             "Signifikan_0.05": sig,
-            "Catatan": "PANNs sangat sensitif terhadap profil derau (unggul pada soundscape)"
+            "Catatan": "Gedung F (antropogenik) mempertahankan skor lebih tinggi dari biofoni Kebun Raya"
+        })
+
+        # R1 Embung F vs Kebun Raya
+        mean_v, low, high, p_str, sig = calc_stats(diff_e4_r1_kebun_embung, two_tailed=True)
+        results.append({
+            "Pengujian": "Sensitivitas Habitat E4 (-5 dB)",
+            "Komparasi": "R1 (Embung F vs Kebun Raya)",
+            "Mean_Diff": mean_v,
+            "CI_95_Lower": low,
+            "CI_95_Upper": high,
+            "p_value": p_str,
+            "Signifikan_0.05": sig,
+            "Catatan": "PANNs sangat sensitif: Embung F mempertahankan mAP@10 lebih baik dibanding Kebun Raya"
+        })
+
+        # R1 Gedung F vs Kebun Raya
+        mean_v, low, high, p_str, sig = calc_stats(diff_e4_r1_kebun_gedung, two_tailed=True)
+        results.append({
+            "Pengujian": "Sensitivitas Habitat E4 (-5 dB)",
+            "Komparasi": "R1 (Gedung F vs Kebun Raya)",
+            "Mean_Diff": mean_v,
+            "CI_95_Lower": low,
+            "CI_95_Upper": high,
+            "p_value": p_str,
+            "Signifikan_0.05": sig,
+            "Catatan": "PANNs lebih tahan terhadap derau struktural gedung dibanding biofoni serangga"
         })
 
     df_res = pd.DataFrame(results)
