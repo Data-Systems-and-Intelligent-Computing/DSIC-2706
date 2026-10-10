@@ -46,14 +46,21 @@ RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 RAW_DIR.mkdir(parents=True, exist_ok=True)
 
 
-def save_raw_query_metrics(rep_code: str, condition: str, raw_metrics: list, query_df: pd.DataFrame):
+def save_raw_query_metrics(rep_code: str, condition: str, raw_metrics: list, query_df: pd.DataFrame, noise_files: list = None):
     """Menyimpan hasil pemeringkatan mentah per-kueri ke results/raw/ (S-02)."""
     rows = []
     for i, m in enumerate(raw_metrics):
+        if noise_files is not None and i < len(noise_files):
+            n_file = noise_files[i]
+        elif condition == "Clean":
+            n_file = "None (Clean)"
+        else:
+            n_file = "Unknown"
         row = {
             "query_id": query_df.iloc[i]["recording_id"],
             "species_key": query_df.iloc[i]["species_key"],
             "recordist": query_df.iloc[i].get("author", "Unknown"),
+            "noise_file": n_file,
             "top1_match": m["top1_match"],
             "RR": m.get("RR", 0.0),
             "max_similarity_score": m["max_score"],
@@ -122,7 +129,7 @@ def run_experiment_for_representation(rep_code: str = "R0", snr_list: list = [20
         gallery_labels=gallery_labels
     )
     clean_map10 = clean_summary["mAP@10"]
-    save_raw_query_metrics(rep_code, "Clean", clean_raw, query_clean_df)
+    save_raw_query_metrics(rep_code, "Clean", clean_raw, query_clean_df, noise_files=["None (Clean)"] * len(query_clean_df))
 
     # Cache clean embeddings untuk eksperimen E3, E4, E5
     cache_path = FEATURES_DIR / f"clean_embeddings_{rep_code}.npz"
@@ -158,11 +165,13 @@ def run_experiment_for_representation(rep_code: str = "R0", snr_list: list = [20
 
     for snr in snr_list:
         noisy_embs = []
+        noise_files_used = []
         for i, y_clean in enumerate(query_clean_audios):
             # Campurkan noise dengan seed terikat pada index query untuk reproducibility
-            y_noisy = mix_audio_at_snr(y_clean, snr_db=snr, seed=42 + i)
+            y_noisy, n_path = mix_audio_at_snr(y_clean, snr_db=snr, seed=42 + i, return_noise_info=True)
             emb_noisy = extractor.extract(y_noisy)
             noisy_embs.append(emb_noisy)
+            noise_files_used.append(n_path)
         noisy_embs = np.array(noisy_embs)
 
         noisy_summary, noisy_raw = evaluate_retrieval_corpus(
@@ -171,7 +180,7 @@ def run_experiment_for_representation(rep_code: str = "R0", snr_list: list = [20
             gallery_embs=gallery_embs,
             gallery_labels=gallery_labels
         )
-        save_raw_query_metrics(rep_code, f"SNR_{snr}dB", noisy_raw, query_clean_df)
+        save_raw_query_metrics(rep_code, f"SNR_{snr}dB", noisy_raw, query_clean_df, noise_files=noise_files_used)
 
         noisy_map10 = noisy_summary["mAP@10"]
         rel_ret = noisy_map10 / max(clean_map10, 1e-6)

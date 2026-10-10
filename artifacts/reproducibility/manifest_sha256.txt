@@ -1,5 +1,5 @@
 # Rekam Jejak Audit Integritas & Reproducibility DSIC-2706
-# Tanggal: 10 October 2026
+# Tanggal: 11 October 2026
 # Perintah Pembuat: python scripts/update_manifest_hashes.py
 
 dataset_split.csv : 46878991f27b9edc3711d4f986a601cd49d01660c78ba93c7bac95cfa570329a
@@ -7,6 +7,8 @@ species_freeze.csv : 29200624d0f914c9eb32ab95a69773a3cbff33d7db6888aadbef363d3cd
 species_excluded.csv : 6eb7b7f86ebd4997fee7d92fca83553fe2b2183b58e76316e86df6fb66cb6d4c
 itera_noise_manifest.csv : a4138bd13e437801d18dc7afde52e0dab50aa5d56ac27091ab0a4ba68fb6f72d
 unknown_open_set_manifest.csv : 9c1afaea07d6d63fea305a97499f5a10bdae115379b856782ad9961c55718c0b
+download_manifest.csv : 006a7b82966b9195cb4b92651cd67223f921fb70dddf08a39ce20c216f4a93ba
+download_audit_log.csv : 006a7b82966b9195cb4b92651cd67223f921fb70dddf08a39ce20c216f4a93ba
 
 # Baseline Verifikasi E1 Clean Retrieval (dari results/processed/clean_retrieval_table.csv):
  : Top1=% mAP@10=0.6358 MRR=0.8646

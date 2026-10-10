@@ -4,8 +4,8 @@
 
 calibration_protocol:
   objective: "youden_j"
-  calibration_positives_count: 233
-  calibration_unknowns_count: 233
+  calibration_positives_count: 498
+  calibration_unknowns_count: 498
   dataset_source: "data/manifests/dataset_split.csv & data/manifests/unknown_open_set_manifest.csv"
   frozen: true
 
@@ -38,6 +38,6 @@ thresholds:
     name: "Random Ranking Control (40-dim)"
     tau: 0.4481
     calibration_youden_j: 0.1202
-    calibration_auroc: 0.5662
+    calibration_auroc: 0.5663
     calibration_f1: 0.6293
     status: "frozen"

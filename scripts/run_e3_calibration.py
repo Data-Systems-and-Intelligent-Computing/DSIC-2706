@@ -162,6 +162,7 @@ def main():
         for i, sc in enumerate(pos_clean_scores):
             all_raw_e3_scores.append({
                 "representation": rep, "condition": "Clean", "snr_db": 999,
+                "noise_file": "None (Clean)",
                 "query_id": query_pos_df.iloc[i]["recording_id"],
                 "target_type": "known_bird", "similarity_score": sc,
                 "frozen_tau": frozen_tau, "predicted_accept": int(sc >= frozen_tau), "ground_truth": 1
@@ -169,6 +170,7 @@ def main():
         for i, sc in enumerate(neg_clean_scores):
             all_raw_e3_scores.append({
                 "representation": rep, "condition": "Clean", "snr_db": 999,
+                "noise_file": "None (Clean)",
                 "query_id": test_neg_df.iloc[i]["unknown_id"],
                 "target_type": "unknown_control", "similarity_score": sc,
                 "frozen_tau": frozen_tau, "predicted_accept": int(sc >= frozen_tau), "ground_truth": 0
@@ -186,12 +188,15 @@ def main():
             raw_pos_csv = RAW_DIR / f"{rep}_SNR_{snr}dB_raw.csv"
             raw_pos_df = pd.read_csv(raw_pos_csv)
             pos_noisy_scores = raw_pos_df["max_similarity_score"].values
+            pos_noise_files = raw_pos_df["noise_file"].values if "noise_file" in raw_pos_df.columns else ["Unknown"] * len(raw_pos_df)
 
             # Inject noise pada unknown test queries dengan seed berpasangan
             neg_noisy_embs = []
+            neg_noise_files = []
             for j, y_neg in enumerate(test_neg_audios):
-                y_neg_noisy = mix_audio_at_snr(y_neg, snr_db=snr, seed=1000 + j)
+                y_neg_noisy, n_path = mix_audio_at_snr(y_neg, snr_db=snr, seed=1000 + j, return_noise_info=True)
                 neg_noisy_embs.append(extractor.extract(y_neg_noisy))
+                neg_noise_files.append(n_path)
             neg_noisy_embs = np.array(neg_noisy_embs)
             neg_noisy_scores = compute_max_similarities(neg_noisy_embs, gallery_embs)
 
@@ -215,6 +220,7 @@ def main():
             for i, sc in enumerate(pos_noisy_scores):
                 all_raw_e3_scores.append({
                     "representation": rep, "condition": f"SNR_{snr}dB", "snr_db": snr,
+                    "noise_file": pos_noise_files[i],
                     "query_id": query_pos_df.iloc[i]["recording_id"],
                     "target_type": "known_bird", "similarity_score": sc,
                     "frozen_tau": frozen_tau, "predicted_accept": int(sc >= frozen_tau), "ground_truth": 1
@@ -222,6 +228,7 @@ def main():
             for i, sc in enumerate(neg_noisy_scores):
                 all_raw_e3_scores.append({
                     "representation": rep, "condition": f"SNR_{snr}dB", "snr_db": snr,
+                    "noise_file": neg_noise_files[i],
                     "query_id": test_neg_df.iloc[i]["unknown_id"],
                     "target_type": "unknown_control", "similarity_score": sc,
                     "frozen_tau": frozen_tau, "predicted_accept": int(sc >= frozen_tau), "ground_truth": 0

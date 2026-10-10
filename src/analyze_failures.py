@@ -130,6 +130,7 @@ def extract_real_failures_from_raw():
                 "case_id": f"FAIL_{case_idx:03d}",
                 "representation": rep,
                 "condition": "Clean",
+                "noise_file": "None (Clean)",
                 "query_id": row["recording_id"],
                 "query_species": sp,
                 "recordist": row["author"],
@@ -161,7 +162,7 @@ def extract_real_failures_from_raw():
             row = qry_df.iloc[i]
             q_label = row["species_key"]
             y_clean = preprocess_audio(row["file_path"])
-            y_noisy = mix_audio_at_snr(y_clean, snr_db=-5, seed=42 + i)
+            y_noisy, n_path = mix_audio_at_snr(y_clean, snr_db=-5, seed=42 + i, return_noise_info=True)
 
             emb_noisy = extractor.extract(y_noisy)
             q_norm_vec = emb_noisy / max(np.linalg.norm(emb_noisy), 1e-8)
@@ -176,6 +177,7 @@ def extract_real_failures_from_raw():
             if top1_species != q_label or max_sim < tau:
                 fails_by_sp.setdefault(q_label, []).append({
                     "idx": i, "row": row, "y_noisy": y_noisy,
+                    "noise_file": n_path,
                     "top1_species": top1_species, "max_sim": max_sim,
                     "max_true_sim": max_true_sim
                 })
@@ -188,6 +190,7 @@ def extract_real_failures_from_raw():
             i = item["idx"]
             row = item["row"]
             y_noisy = item["y_noisy"]
+            n_file = item["noise_file"]
             top1_species = item["top1_species"]
             max_sim = item["max_sim"]
             max_true_sim = item["max_true_sim"]
@@ -216,6 +219,7 @@ def extract_real_failures_from_raw():
                 "case_id": f"FAIL_{case_idx:03d}",
                 "representation": rep,
                 "condition": "SNR_-5dB",
+                "noise_file": n_file,
                 "query_id": row["recording_id"],
                 "query_species": sp,
                 "recordist": row["author"],

@@ -7,7 +7,9 @@ from ..features.embeddings import AudioRepresentationExtractor
 from ..retrieval.engine import evaluate_retrieval_corpus, compute_query_retrieval
 from ..open_set.calibration import calibrate_threshold_tau, evaluate_open_set_with_frozen_tau
 
-SPLIT_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))), "data", "manifests", "dataset_split.csv")
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
+SPLIT_PATH = os.path.join(PROJECT_ROOT, "data", "manifests", "dataset_split.csv")
+RAW_DIR = os.path.join(PROJECT_ROOT, "results", "raw")
 
 
 def run_experiment_for_representation(rep_code: str = "R0", snr_list: list = [20, 10, 0, -5]) -> dict:
@@ -15,10 +17,10 @@ def run_experiment_for_representation(rep_code: str = "R0", snr_list: list = [20
         raise FileNotFoundError(f"Split file tidak ditemukan: {SPLIT_PATH}")
 
     df_split = pd.read_csv(SPLIT_PATH)
-    gallery_df = df_split[df_split['split_role'] == 'gallery'].copy()
-    query_clean_df = df_split[df_split['split_role'] == 'query_clean'].copy()
-    calib_df = df_split[df_split['split_role'] == 'calibration'].copy()
-    unknown_df = df_split[df_split['split_role'] == 'unknown_test'].copy()
+    gallery_df = df_split[df_split['split_role'] == 'gallery'].copy().reset_index(drop=True)
+    query_clean_df = df_split[df_split['split_role'] == 'query_clean'].copy().reset_index(drop=True)
+    calib_df = df_split[df_split['split_role'] == 'calibration'].copy().reset_index(drop=True)
+    unknown_df = df_split[df_split['split_role'] == 'unknown_test'].copy().reset_index(drop=True)
 
     extractor = AudioRepresentationExtractor(rep_code)
 
@@ -41,13 +43,30 @@ def run_experiment_for_representation(rep_code: str = "R0", snr_list: list = [20
 
     # 3. E1: Clean Evaluation
     query_clean_embs = np.array([extractor.extract(y) for y in query_clean_audios])
-    clean_summary, _ = evaluate_retrieval_corpus(
+    clean_summary, clean_raw = evaluate_retrieval_corpus(
         query_embs=query_clean_embs,
         query_labels=query_labels,
         gallery_embs=gallery_embs,
         gallery_labels=gallery_labels
     )
     clean_map10 = clean_summary["mAP@10"]
+
+    if os.path.exists(RAW_DIR):
+        clean_rows = []
+        for i, m in enumerate(clean_raw):
+            clean_rows.append({
+                "query_id": query_clean_df.iloc[i]["recording_id"],
+                "species_key": query_clean_df.iloc[i]["species_key"],
+                "recordist": query_clean_df.iloc[i].get("author", "Unknown"),
+                "noise_file": "None (Clean)",
+                "top1_match": m["top1_match"],
+                "RR": m.get("RR", 0.0),
+                "max_similarity_score": m["max_score"],
+                "AP@10": m.get("AP@10", 0.0),
+                "Recall@10": m.get("R@10", 0.0),
+                "Precision@10": m.get("P@10", 0.0),
+            })
+        pd.DataFrame(clean_rows).to_csv(os.path.join(RAW_DIR, f"{rep_code}_Clean_raw.csv"), index=False)
 
     snr_results = [{
         "representation": rep_code,
@@ -64,12 +83,14 @@ def run_experiment_for_representation(rep_code: str = "R0", snr_list: list = [20
     # 4. E2: Noise Robustness
     for snr in snr_list:
         noisy_embs = []
+        noise_files_used = []
         for i, y_clean in enumerate(query_clean_audios):
-            y_noisy = mix_audio_at_snr(y_clean, snr_db=snr, seed=42 + i)
+            y_noisy, n_path = mix_audio_at_snr(y_clean, snr_db=snr, seed=42 + i, return_noise_path=True)
             noisy_embs.append(extractor.extract(y_noisy))
+            noise_files_used.append(n_path)
         noisy_embs = np.array(noisy_embs)
 
-        noisy_summary, _ = evaluate_retrieval_corpus(
+        noisy_summary, noisy_raw = evaluate_retrieval_corpus(
             query_embs=noisy_embs,
             query_labels=query_labels,
             gallery_embs=gallery_embs,
@@ -78,6 +99,23 @@ def run_experiment_for_representation(rep_code: str = "R0", snr_list: list = [20
         noisy_map10 = noisy_summary["mAP@10"]
         rel_ret = noisy_map10 / max(clean_map10, 1e-6)
         abs_drop = clean_map10 - noisy_map10
+
+        if os.path.exists(RAW_DIR):
+            noisy_rows = []
+            for i, m in enumerate(noisy_raw):
+                noisy_rows.append({
+                    "query_id": query_clean_df.iloc[i]["recording_id"],
+                    "species_key": query_clean_df.iloc[i]["species_key"],
+                    "recordist": query_clean_df.iloc[i].get("author", "Unknown"),
+                    "noise_file": noise_files_used[i],
+                    "top1_match": m["top1_match"],
+                    "RR": m.get("RR", 0.0),
+                    "max_similarity_score": m["max_score"],
+                    "AP@10": m.get("AP@10", 0.0),
+                    "Recall@10": m.get("R@10", 0.0),
+                    "Precision@10": m.get("P@10", 0.0),
+                })
+            pd.DataFrame(noisy_rows).to_csv(os.path.join(RAW_DIR, f"{rep_code}_SNR_{snr}dB_raw.csv"), index=False)
 
         snr_results.append({
             "representation": rep_code,

@@ -24,7 +24,7 @@ if str(PROJECT_ROOT) not in sys.path:
 
 from src.preprocess import preprocess_audio, TARGET_SR
 from src.embeddings import AudioRepresentationExtractor
-from src.mix_noise import compute_signal_power
+from src.mix_noise import compute_signal_power, get_e3_reserved_noise_files
 from src.retrieve import evaluate_retrieval_corpus
 
 SPLIT_PATH = PROJECT_ROOT / "data/manifests/dataset_split.csv"
@@ -42,8 +42,9 @@ for d in [PROCESSED_DIR, RAW_DIR, TABLES_DIR, FIG_DIR, PAPER_FIG_DIR]:
 
 
 def load_habitat_noise_files():
-    """Mengelompokkan berkas derau ITERA berdasarkan 3 profil habitat utama."""
+    """Mengelompokkan berkas derau ITERA berdasarkan 3 profil habitat utama (eksklusif dari unknown E3)."""
     df_noise = pd.read_csv(NOISE_MANIFEST_PATH)
+    e3_reserved = get_e3_reserved_noise_files()
     habitats = {
         "Kebun_Raya": [],
         "Embung_F": [],
@@ -52,7 +53,7 @@ def load_habitat_noise_files():
     for _, r in df_noise.iterrows():
         fn = r["filename"]
         p = NOISE_DIR / fn
-        if not p.exists():
+        if not p.exists() or p.name.lower() in e3_reserved:
             continue
         if "Kebun Raya" in fn:
             habitats["Kebun_Raya"].append(p)
@@ -62,38 +63,60 @@ def load_habitat_noise_files():
             habitats["Gedung_F"].append(p)
 
     for hab, files in habitats.items():
-        print(f"[*] Habitat [{hab}]: {len(files)} berkas audio derau valid.")
+        print(f"[*] Habitat [{hab}]: {len(files)} berkas audio derau valid (disjoint dari E3).")
         if len(files) == 0:
             raise FileNotFoundError(f"Tidak ada berkas derau untuk habitat {hab}!")
     return habitats
 
 
-def get_habitat_noise_segment(files: list, samples: int, seed: int = 42) -> np.ndarray:
-    """Mengambil segmen acak dari daftar berkas derau habitat tertentu."""
+def get_habitat_noise_segment(files: list, samples: int, seed: int = 42, return_path: bool = False):
+    """Mengambil segmen acak dari daftar berkas derau habitat tertentu dengan penolakan derau senyap."""
     rng = np.random.default_rng(seed)
-    selected = files[rng.integers(0, len(files))]
-    try:
-        y, _ = librosa.load(str(selected), sr=TARGET_SR, mono=True)
-        if len(y) >= samples:
-            start = rng.integers(0, len(y) - samples + 1)
-            return y[start:start + samples].astype(np.float32)
-        else:
-            repeats = int(np.ceil(samples / len(y)))
-            y = np.tile(y, repeats)
-            return y[:samples].astype(np.float32)
-    except Exception as e:
-        print(f"[-] Gagal membaca derau {selected}: {e}")
-        return np.zeros(samples, dtype=np.float32)
+    max_attempts = 10
+    for attempt in range(max_attempts):
+        selected = files[rng.integers(0, len(files))]
+        try:
+            y, _ = librosa.load(str(selected), sr=TARGET_SR, mono=True)
+            if len(y) >= samples:
+                start = rng.integers(0, len(y) - samples + 1)
+                seg = y[start:start + samples].astype(np.float32)
+            else:
+                repeats = int(np.ceil(samples / len(y)))
+                y = np.tile(y, repeats)
+                seg = y[:samples].astype(np.float32)
+
+            raw_rms = np.sqrt(np.mean(seg ** 2))
+            if raw_rms < 1e-4:
+                continue
+
+            try:
+                rel_path = str(Path(selected).relative_to(NOISE_DIR)).replace("\\", "/")
+            except ValueError:
+                rel_path = Path(selected).name
+
+            if return_path:
+                return seg, rel_path
+            return seg
+        except Exception as e:
+            if attempt == max_attempts - 1:
+                raise RuntimeError(f"Gagal memuat derau habitat {selected}: {e}")
+
+    raise ValueError(f"[FATAL] Terdeteksi segmen derau senyap pada habitat setelah {max_attempts} percobaan pengambilan!")
 
 
-def mix_with_habitat_noise(clean: np.ndarray, noise_files: list, snr_db: float, seed: int = 42) -> np.ndarray:
+def mix_with_habitat_noise(clean: np.ndarray, noise_files: list, snr_db: float, seed: int = 42, return_noise_path: bool = False):
     """Mencampur sinyal bersih dengan derau habitat tertentu pada SNR eksak."""
-    noise = get_habitat_noise_segment(noise_files, samples=len(clean), seed=seed)
+    noise, rel_path = get_habitat_noise_segment(noise_files, samples=len(clean), seed=seed, return_path=True)
     p_signal = compute_signal_power(clean)
     p_noise = compute_signal_power(noise)
 
-    if p_signal <= 1e-12 or p_noise <= 1e-12:
-        return clean
+    if p_signal <= 1e-12:
+        if return_noise_path:
+            return clean.copy(), rel_path
+        return clean.copy()
+
+    if p_noise <= 1e-10:
+        raise ValueError(f"[FATAL] Derau fisik habitat terdeteksi senyap ({rel_path})!")
 
     target_p_noise = p_signal / (10.0 ** (snr_db / 10.0))
     alpha = np.sqrt(target_p_noise / p_noise)
@@ -103,7 +126,10 @@ def mix_with_habitat_noise(clean: np.ndarray, noise_files: list, snr_db: float, 
     if max_amp > 1.0:
         noisy = noisy / max_amp
 
-    return noisy.astype(np.float32)
+    res = noisy.astype(np.float32)
+    if return_noise_path:
+        return res, rel_path
+    return res
 
 
 def main():
@@ -164,14 +190,29 @@ def main():
 
         all_hab_raw_rows = []
 
+        # Catat baris mentah Baseline Clean
+        for i, r_item in enumerate(clean_raw):
+            r_item_dict = dict(r_item)
+            r_item_dict["query_id"] = query_df.iloc[i]["recording_id"]
+            r_item_dict["species_key"] = query_df.iloc[i]["species_key"]
+            r_item_dict["recordist"] = query_df.iloc[i].get("author", "Unknown")
+            r_item_dict["noise_file"] = "None (Clean)"
+            r_item_dict["habitat"] = "Baseline"
+            r_item_dict["condition"] = "Clean"
+            r_item_dict["snr_db"] = 999
+            r_item_dict["representation"] = rep
+            all_hab_raw_rows.append(r_item_dict)
+
         # Evaluasi per habitat dan per SNR
         for hab_name, hab_files in habitats.items():
             for snr in snr_list:
                 noisy_embs = []
+                used_noise_paths = []
                 for i, y_c in enumerate(query_audios):
-                    y_n = mix_with_habitat_noise(y_c, hab_files, snr_db=snr, seed=5000 + i)
+                    y_n, n_rel = mix_with_habitat_noise(y_c, hab_files, snr_db=snr, seed=5000 + i, return_noise_path=True)
                     emb_n = extractor.extract(y_n)
                     noisy_embs.append(emb_n)
+                    used_noise_paths.append(n_rel)
                 noisy_embs = np.array(noisy_embs, dtype=np.float32)
 
                 h_summary, h_raw = evaluate_retrieval_corpus(
@@ -198,6 +239,8 @@ def main():
                     r_item_dict = dict(r_item)
                     r_item_dict["query_id"] = query_df.iloc[i]["recording_id"]
                     r_item_dict["species_key"] = query_df.iloc[i]["species_key"]
+                    r_item_dict["recordist"] = query_df.iloc[i].get("author", "Unknown")
+                    r_item_dict["noise_file"] = used_noise_paths[i]
                     r_item_dict["habitat"] = hab_name
                     r_item_dict["condition"] = f"SNR_{snr}dB"
                     r_item_dict["snr_db"] = snr
