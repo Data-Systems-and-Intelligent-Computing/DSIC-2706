@@ -1,10 +1,10 @@
 # Rekam Jejak Audit Integritas & Reproducibility DSIC-2706
-# Tanggal: 09 October 2026
+# Tanggal: 10 October 2026
 # Perintah Pembuat: python scripts/update_manifest_hashes.py
 
-dataset_split.csv : be0880fbe9464914cf1e2fa734d4649b1928c7faa1b4ec4c6a221ea09374fc8f
-species_freeze.csv : 99b39fb7ee820469894e3f388f3a1975509a68d928d00d5c407ff1654fc4dc5f
-species_excluded.csv : cba001486e48401c1b50625d7bf13ab8efae633a3ea8658e652248c0f1040ae1
+dataset_split.csv : 46878991f27b9edc3711d4f986a601cd49d01660c78ba93c7bac95cfa570329a
+species_freeze.csv : 29200624d0f914c9eb32ab95a69773a3cbff33d7db6888aadbef363d3cd0971e
+species_excluded.csv : 6eb7b7f86ebd4997fee7d92fca83553fe2b2183b58e76316e86df6fb66cb6d4c
 itera_noise_manifest.csv : a4138bd13e437801d18dc7afde52e0dab50aa5d56ac27091ab0a4ba68fb6f72d
 unknown_open_set_manifest.csv : 795e3ba755a0a39f91568cd9fca8251c005bee94a53586bedfef4b720e829e6d
 

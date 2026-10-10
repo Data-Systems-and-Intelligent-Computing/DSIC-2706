@@ -1,0 +1,221 @@
+ranking,scientific_name,en,total_klip,author_unik,klip_sumatera,rating_A,rating_B,rating_C,rating_AB_pct
+1,Pnoepyga pusilla,Pygmy Cupwing,105,35,18,18,74,11,87.6
+2,Cacomantis sepulcralis,Rusty-breasted Cuckoo,85,32,2,31,40,12,83.5
+3,Malacocincla sepiaria,Horsfield's Babbler,68,32,7,37,25,6,91.2
+4,Phyllergates cucullatus,Mountain Tailorbird,137,29,10,17,98,18,83.9
+5,Brachypteryx leucophris,Lesser Shortwing,66,26,9,14,40,10,81.8
+6,Caprimulgus macrurus,Large-tailed Nightjar,48,26,4,2,29,16,64.6
+7,Pycnonotus aurigaster,Sooty-headed Bulbul,44,26,1,6,14,18,45.5
+8,Psilopogon armillaris,Flame-fronted Barbet,60,25,0,7,28,19,58.3
+9,Cinnyris jugularis,Olive-backed Sunbird,123,23,4,20,65,23,69.1
+10,Tanysiptera galatea,Common Paradise Kingfisher,128,22,0,51,39,36,70.3
+11,Pitta sordida,Hooded Pitta,62,22,5,6,46,6,83.9
+12,Orthotomus sepium,Olive-backed Tailorbird,51,22,0,14,27,10,80.4
+13,Cuculus lepidus,Sunda Cuckoo,42,22,3,8,26,7,81.0
+14,Pitta maxima,Ivory-breasted Pitta,77,21,0,35,36,5,92.2
+15,Oriolus chinensis,Black-naped Oriole,76,20,0,20,42,14,81.6
+16,Eclectus roratus,Eclectus Parrot,68,20,0,26,37,4,92.6
+17,Otus magicus,Moluccan Scops Owl,65,20,0,22,33,9,84.6
+18,Caprimulgus affinis,Savanna Nightjar,31,20,3,5,19,6,77.4
+19,Dicrurus bracteatus,Spangled Drongo,105,19,0,48,44,13,87.6
+20,Dicrurus hottentottus,Hair-crested Drongo,91,19,15,20,48,19,74.7
+21,Rhyticeros plicatus,Blyth's Hornbill,66,19,0,33,21,11,81.8
+22,Megapodius freycinet,Dusky Megapode,55,19,0,27,23,4,90.9
+23,Horornis vulcanius,Sunda Bush Warbler,48,19,13,24,17,7,85.4
+24,Ducula aenea,Green Imperial Pigeon,45,19,2,3,22,18,55.6
+25,Brachypteryx montana,White-browed Shortwing,40,19,13,17,15,8,80.0
+26,Culicicapa ceylonensis,Grey-headed Canary-flycatcher,38,19,8,0,30,7,78.9
+27,Geoffroyus geoffroyi,Red-cheeked Parrot,73,18,0,31,34,8,89.0
+28,Phylloscopus poliocephalus,Island Leaf Warbler,68,18,0,28,26,14,79.4
+29,Diphyllodes respublica,Wilson's Bird-of-paradise,61,18,0,55,5,1,98.4
+30,Aegithina tiphia,Common Iora,39,18,10,4,16,16,51.3
+31,Locustella montis,Javan Bush Warbler,39,18,0,19,18,1,94.9
+32,Cyanoderma melanothorax,Crescent-chested Babbler,38,18,0,3,9,23,31.6
+33,Pachycephala nudigula,Bare-throated Whistler,38,18,0,22,11,4,86.8
+34,Cacomantis merulinus,Plaintive Cuckoo,28,18,2,3,13,12,57.1
+35,Macropygia doreya,Sultan's Cuckoo-Dove,61,17,0,14,30,15,72.1
+36,Origma murina,Rusty Mouse-warbler,58,17,0,34,20,4,93.1
+37,Myiagra alecto,Shining Flycatcher,55,17,0,23,25,7,87.3
+38,Paradisaea rubra,Red Bird-of-paradise,48,17,0,40,7,1,97.9
+39,Hydrornis guajanus,Javan Banded Pitta,46,17,0,10,23,9,71.7
+40,Otus manadensis,Sulawesi Scops Owl,40,17,0,20,18,2,95.0
+41,Cacomantis variolosus,Brush Cuckoo,39,17,0,17,20,2,94.9
+42,Semioptera wallacii,Standardwing,37,17,0,29,7,1,97.3
+43,Syma torotoro,Yellow-billed Kingfisher,37,17,0,24,13,0,100.0
+44,Napothera epilepidota,Eyebrowed Wren-Babbler,35,17,10,4,18,13,62.9
+45,Rhipidura rufiventris,Northern Fantail,61,16,0,26,32,2,95.1
+46,Ficedula westermanni,Little Pied Flycatcher,39,16,0,0,21,18,53.8
+47,Gallus varius,Green Junglefowl,30,16,0,12,13,4,83.3
+48,Gerygone sulphurea,Golden-bellied Gerygone,26,16,2,4,14,7,69.2
+49,Anthreptes malacensis,Brown-throated Sunbird,22,16,5,1,13,4,63.6
+50,Corvus enca,Slender-billed Crow,60,15,7,32,23,5,91.7
+51,Tesia superciliaris,Javan Tesia,52,15,0,28,21,3,94.2
+52,Pellorneum celebense,Sulawesi Babbler,42,15,0,21,17,4,90.5
+53,Spilornis cheela,Crested Serpent Eagle,35,15,11,2,23,8,71.4
+54,Orthotomus ruficeps,Ashy Tailorbird,30,15,20,6,21,3,90.0
+55,Parus cinereus,Cinereous Tit,29,15,6,4,17,8,72.4
+56,Centropus bengalensis,Lesser Coucal,28,15,1,3,5,12,28.6
+57,Pitta elegans,Elegant Pitta,27,15,0,11,12,3,85.2
+58,Reinwardtoena reinwardti,Great Cuckoo-Dove,27,15,0,8,11,7,70.4
+59,Poecilodryas hypoleuca,Black-sided Robin,54,14,0,34,18,2,96.3
+60,Leptocoma aspasia,Black Sunbird,42,14,0,15,24,3,92.9
+61,Ficedula hyperythra,Snowy-browed Flycatcher,41,14,4,1,15,23,39.0
+62,Hypothymis azurea,Black-naped Monarch,41,14,19,0,30,10,73.2
+63,Todiramphus chloris,Collared Kingfisher,40,14,3,8,22,8,75.0
+64,Accipiter hiogaster,Variable Goshawk,39,14,0,4,32,2,92.3
+65,Amaurornis moluccana,Pale-vented Bush-hen,35,14,0,10,18,5,80.0
+66,Pachycephala fulvotincta,Rusty-breasted Whistler,34,14,0,8,15,9,67.6
+67,Phylloscopus grammiceps,Sunda Warbler,33,14,6,14,16,2,90.9
+68,Lyncornis macrotis,Great Eared Nightjar,31,14,1,8,15,7,74.2
+69,Arborophila javanica,Chestnut-bellied Partridge,29,14,0,11,9,6,69.0
+70,Hemiprocne longipennis,Grey-rumped Treeswift,29,14,2,5,11,12,55.2
+71,Ducula lacernulata,Dark-backed Imperial Pigeon,28,14,0,3,17,6,71.4
+72,Tanygnathus sumatranus,Blue-backed Parrot,28,14,0,12,10,5,78.6
+73,Pellorneum rostratum,White-chested Babbler,26,14,13,14,9,3,88.5
+74,Pomatorhinus montanus,Javan Scimitar Babbler,26,14,0,6,13,6,73.1
+75,Erythropitta macklotii,Papuan Pitta,20,14,0,4,12,3,80.0
+76,Spilopelia chinensis,Spotted Dove,20,14,3,0,10,9,50.0
+77,Malia grata,Malia,45,13,0,21,23,1,97.8
+78,Dicrurus paradiseus,Greater Racket-tailed Drongo,43,13,11,9,20,12,67.4
+79,Pachycephala cinerea,Mangrove Whistler,39,13,20,12,17,10,74.4
+80,Ptilinopus melanospilus,Black-naped Fruit Dove,35,13,0,7,17,10,68.6
+81,Actenoides monachus,Green-backed Kingfisher,34,13,0,19,8,6,79.4
+82,Melidora macrorrhina,Hook-billed Kingfisher,34,13,0,15,19,0,100.0
+83,Aplonis metallica,Metallic Starling,33,13,0,14,16,2,90.9
+84,Alcippe pyrrhoptera,Javan Fulvetta,32,13,0,13,17,2,93.8
+85,Diphyllodes magnificus,Magnificent Bird-of-paradise,32,13,0,23,6,3,90.6
+86,Gypsophila rufipectus,Rusty-breasted Wren-Babbler,31,13,31,14,17,0,100.0
+87,Otus lempiji,Sunda Scops Owl,31,13,6,6,16,6,71.0
+88,Zosterops japonicus,Warbling White-eye,30,13,3,8,16,6,80.0
+89,Pachycephala mentalis,Black-chinned Whistler,26,13,0,15,8,3,88.5
+90,Tanygnathus megalorynchos,Great-billed Parrot,26,13,0,6,14,3,76.9
+91,Corvus florensis,Flores Crow,25,13,0,10,10,3,80.0
+92,Cicinnurus regius,King Bird-of-paradise,23,13,0,13,8,2,91.3
+93,Glaucidium castanopterum,Javan Owlet,23,13,0,4,8,7,52.2
+94,Prinia familiaris,Bar-winged Prinia,20,13,6,3,10,6,65.0
+95,Eudynamys melanorhynchus,Black-billed Koel,47,12,0,22,21,4,91.5
+96,Eos squamata,Violet-necked Lory,36,12,0,4,26,6,83.3
+97,Cacatua galerita,Sulphur-crested Cockatoo,35,12,0,19,14,2,94.3
+98,Ducula basilica,Cinnamon-bellied Imperial Pigeon,35,12,0,13,17,4,85.7
+99,Pitta concinna,Ornate Pitta,34,12,0,18,13,2,91.2
+100,Rhipidura leucophrys,Willie Wagtail,34,12,0,16,17,1,97.1
+101,Cacatua alba,White Cockatoo,31,12,0,15,13,1,90.3
+102,Cyornis omissus,Sulawesi Blue Flycatcher,31,12,0,7,18,6,80.6
+103,Cracticus cassicus,Hooded Butcherbird,29,12,0,15,12,2,93.1
+104,Tesia everetti,Russet-capped Tesia,29,12,0,16,9,4,86.2
+105,Todiramphus nigrocyaneus,Blue-black Kingfisher,27,12,0,14,11,2,92.6
+106,Dicrurus montanus,Sulawesi Drongo,26,12,0,10,14,2,92.3
+107,Otus alfredi,Flores Scops Owl,26,12,0,11,9,2,76.9
+108,Arachnothera longirostra,Little Spiderhunter,23,12,7,0,17,5,73.9
+109,Ninox ochracea,Ochre-bellied Boobook,23,12,0,6,14,3,87.0
+110,Picus puniceus,Crimson-winged Woodpecker,21,12,2,3,13,4,76.2
+111,Rhipidura threnothorax,Sooty Thicket Fantail,21,12,0,6,12,2,85.7
+112,Surniculus lugubris,Square-tailed Drongo-Cuckoo,21,12,1,2,8,7,47.6
+113,Brachypodius melanocephalos,Black-headed Bulbul,20,12,9,0,8,9,40.0
+114,Locustella castanea,Sulawesi Bush Warbler,84,11,0,50,29,5,94.0
+115,Dicrurus densus,Wallacean Drongo,48,11,0,22,25,1,97.9
+116,Pachycephala sulfuriventer,Sulphur-vented Whistler,40,11,0,10,28,2,95.0
+117,Philemon buceroides,Helmeted Friarbird,39,11,0,12,23,4,89.7
+118,Paradisaea minor,Lesser Bird-of-paradise,34,11,0,24,10,0,100.0
+119,Oriolus phaeochromus,Dusky-brown Oriole,31,11,0,12,17,2,93.5
+120,Corvus typicus,Piping Crow,30,11,0,12,12,6,80.0
+121,Leucopsar rothschildi,Bali Myna,30,11,0,17,11,0,93.3
+122,Ptilinopus viridis,Claret-breasted Fruit Dove,29,11,0,10,15,4,86.2
+123,Aethopyga siparaja,Crimson Sunbird,26,11,9,5,6,13,42.3
+124,Mixornis flavicollis,Grey-cheeked Tit-Babbler,26,11,0,0,16,10,61.5
+125,Amaurornis phoenicurus,White-breasted Waterhen,25,11,5,0,20,4,80.0
+126,Macropygia ruficeps,Little Cuckoo-Dove,25,11,7,3,14,5,68.0
+127,Dicaeum trigonostigma,Orange-bellied Flowerpecker,24,11,9,7,14,3,87.5
+128,Cisticola exilis,Golden-headed Cisticola,23,11,0,6,9,4,65.2
+129,Epimachus fastosus,Black Sicklebill,23,11,0,16,6,1,95.7
+130,Lichmera limbata,Indonesian Honeyeater,23,11,0,10,9,3,82.6
+131,Ninox sumbaensis,Little Sumba Hawk-Owl,23,11,0,14,9,0,100.0
+132,Carterornis chrysomela,Golden Monarch,22,11,0,10,10,1,90.9
+133,Psilopogon australis,Yellow-eared Barbet,22,11,0,2,7,6,40.9
+134,Zosterops atriceps,Cream-throated White-eye,22,11,0,8,9,4,77.3
+135,Halcyon cyanoventris,Javan Kingfisher,21,11,0,2,14,5,76.2
+136,Carpococcyx viridis,Sumatran Ground Cuckoo,20,11,20,13,5,1,90.0
+137,Napothera albostriata,Sumatran Wren-Babbler,20,11,20,11,8,1,95.0
+138,Rhyticeros cassidix,Knobbed Hornbill,20,11,0,6,12,1,90.0
+139,Lycocorax pyrrhopterus,Halmahera Paradise-crow,52,10,0,17,28,7,86.5
+140,Centropus celebensis,Bay Coucal,46,10,0,15,24,7,84.8
+141,Rhipidura dryas,Arafura Fantail,37,10,0,11,20,4,83.8
+142,Culicicapa helianthea,Citrine Canary-flycatcher,33,10,0,16,17,0,100.0
+143,Ninox ios,Cinnabar Boobook,32,10,0,10,17,5,84.4
+144,Geokichla dohertyi,Chestnut-backed Thrush,31,10,0,7,20,3,87.1
+145,Chrysococcyx minutillus,Little Bronze Cuckoo,30,10,3,3,14,10,56.7
+146,Aegotheles crinifrons,Moluccan Owlet-nightjar,28,10,0,14,13,1,96.4
+147,Pitohui cerviniventris,Raja Ampat Pitohui,28,10,0,19,4,5,82.1
+148,Ducula perspicillata,Spectacled Imperial Pigeon,27,10,0,8,13,5,77.8
+149,Accipiter trinotatus,Spot-tailed Sparrowhawk,25,10,0,4,19,2,92.0
+150,Dacelo gaudichaud,Rufous-bellied Kookaburra,24,10,0,10,13,1,95.8
+151,Mulleripicus fulvus,Ashy Woodpecker,24,10,0,5,16,3,87.5
+152,Rhipidura maculipectus,Black Thicket Fantail,24,10,0,14,9,1,95.8
+153,Centropus menbeki,Ivory-billed Coucal,22,10,0,10,7,5,77.3
+154,Melampitta lugubris,Lesser Melampitta,22,10,0,17,5,0,100.0
+155,Stachyris thoracica,White-bibbed Babbler,22,10,0,4,16,2,90.9
+156,Cinnyris solaris,Flame-breasted Sunbird,21,10,0,0,13,7,61.9
+157,Cyornis olivaceus,Fulvous-chested Jungle Flycatcher,21,10,14,1,15,4,76.2
+158,Cyornis unicolor,Pale Blue Flycatcher,21,10,1,0,9,12,42.9
+159,Pachycephala schlegelii,Regent Whistler,21,10,0,12,8,1,95.2
+160,Seleucidis melanoleucus,Twelve-wired Bird-of-paradise,21,10,0,10,11,0,100.0
+161,Peneothello cyanus,Slaty Robin,20,10,0,8,8,3,80.0
+162,Philemon novaeguineae,New Guinea Friarbird,35,9,0,23,11,1,97.1
+163,Hypsipetes longirostris,Northern Golden Bulbul,34,9,0,0,22,10,64.7
+164,Hypothymis puella,Pale-blue Monarch,33,9,0,13,19,1,97.0
+165,Laniellus albonotatus,Spotted Crocias,31,9,0,4,25,2,93.5
+166,Myiagra galeata,Moluccan Flycatcher,31,9,0,13,13,5,83.9
+167,Arses telescopthalmus,Frilled Monarch,30,9,0,14,15,1,96.7
+168,Phylloscopus trivirgatus,Mountain Leaf Warbler,30,9,5,9,20,1,96.7
+169,Prioniturus platurus,Golden-mantled Racket-tail,30,9,0,11,17,2,93.3
+170,Oriolus szalayi,Brown Oriole,28,9,0,14,11,3,89.3
+171,Garrulax bicolor,Sumatran Laughingthrush,27,9,0,6,14,7,74.1
+172,Corvus validus,Long-billed Crow,26,9,0,10,11,3,80.8
+173,Phylloscopus nesophilus,Sulawesi Leaf Warbler,26,9,0,12,12,1,92.3
+174,Rhabdotorrhinus exarhatus,Sulawesi Hornbill,26,9,0,12,12,2,92.3
+175,Centropus goliath,Goliath Coucal,25,9,0,13,6,6,76.0
+176,Mino dumontii,Yellow-faced Myna,24,9,0,11,11,2,91.7
+177,Pachycephala griseonota,Drab Whistler,24,9,0,8,10,6,75.0
+178,Dicrurus leucophaeus,Ashy Drongo,23,9,10,1,18,4,82.6
+179,Rhipidura leucothorax,White-bellied Thicket Fantail,23,9,0,11,10,2,91.3
+180,Halcyon coromanda,Ruddy Kingfisher,22,9,6,4,9,5,59.1
+181,Aethopyga eximia,White-flanked Sunbird,21,9,0,6,12,1,85.7
+182,Myophonus glaucinus,Javan Whistling Thrush,21,9,0,7,9,3,76.2
+183,Scissirostrum dubium,Grosbeak Starling,21,9,0,4,12,5,76.2
+184,Lalage aurea,Rufous-bellied Triller,20,9,0,6,8,6,70.0
+185,Myza sarasinorum,White-eared Myza,20,9,0,9,10,1,95.0
+186,Tanysiptera riedelii,Biak Paradise Kingfisher,20,9,0,12,4,2,80.0
+187,Turdinus macrodactylus,Large Wren-Babbler,20,9,0,5,7,7,60.0
+188,Macropygia amboinensis,Amboyna Cuckoo-Dove,34,8,0,11,12,9,67.6
+189,Todiramphus australasia,Cinnamon-banded Kingfisher,34,8,0,9,17,5,76.5
+190,Toxorhamphus novaeguineae,Yellow-bellied Longbill,32,8,0,16,15,1,96.9
+191,Lorius garrulus,Chattering Lory,29,8,0,8,13,1,72.4
+192,Cyornis hoevelli,Blue-fronted Blue Flycatcher,28,8,0,10,15,3,89.3
+193,Probosciger aterrimus,Palm Cockatoo,27,8,0,16,9,2,92.6
+194,Myiagra ruficollis,Broad-billed Flycatcher,25,8,0,12,10,3,88.0
+195,Heinrichia calligyna,Great Shortwing,24,8,0,12,7,5,79.2
+196,Erythropitta rufiventris,North Moluccan Pitta,23,8,0,17,5,1,95.7
+197,Eumyias panayensis,Turquoise Flycatcher,23,8,0,10,12,0,95.7
+198,Todiramphus funebris,Sombre Kingfisher,23,8,0,10,11,2,91.3
+199,Ducula pinon,Pinon's Imperial Pigeon,21,8,0,6,12,2,85.7
+200,Loriculus stigmatus,Great Hanging Parrot,21,8,0,7,9,5,76.2
+201,Prioniturus flavicans,Yellow-breasted Racket-tail,21,8,0,11,8,2,90.5
+202,Ptiloris magnificus,Magnificent Riflebird,20,8,0,16,4,0,100.0
+203,Zosterops atrifrons,Black-crowned White-eye,39,7,0,13,11,12,61.5
+204,Arborophila orientalis,Grey-breasted Partridge,35,7,0,8,12,13,57.1
+205,Geokichla peronii,Orange-sided Thrush,31,7,0,0,25,5,80.6
+206,Dryocopus javensis,White-bellied Woodpecker,29,7,13,3,21,5,82.8
+207,Cochoa azurea,Javan Cochoa,25,7,0,2,15,8,68.0
+208,Rhipidura teysmanni,Sulawesi Fantail,23,7,0,11,11,1,95.7
+209,Pseudorectes ferrugineus,Rusty Pitohui,21,7,0,11,10,0,100.0
+210,Zosterops chloris,Lemon-bellied White-eye,21,7,0,2,10,8,57.1
+211,Myzomela chloroptera,Sulawesi Myzomela,20,7,0,10,10,0,100.0
+212,Symposiachrus bimaculatus,Moluccan Monarch,20,7,0,7,10,3,85.0
+213,Coracina bicolor,Pied Cuckooshrike,22,6,0,10,10,2,90.9
+214,Machaerirhynchus flaviventer,Yellow-breasted Boatbill,21,6,0,14,6,1,95.2
+215,Halcyon smyrnensis,White-throated Kingfisher,20,6,19,0,16,2,80.0
+216,Lorius lory,Black-capped Lory,20,6,0,6,11,3,85.0
+217,Lichmera squamata,Scaly-breasted Honeyeater,36,5,0,10,21,5,86.1
+218,Zosterops citrinella,Ashy-bellied White-eye,25,5,0,8,15,2,92.0
+219,Otus umbra,Simeulue Scops Owl,20,5,15,9,9,2,90.0
+220,Pachycephala macrorhyncha,Yellow-throated Whistler,20,5,0,8,7,4,75.0
