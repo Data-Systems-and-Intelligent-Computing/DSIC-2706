@@ -1,4 +1,7 @@
-# Protokol Kepatuhan Lisensi Kompetisi BirdCLEF+ 2026 (D-07)
+# Protokol Kepatuhan Lisensi Kompetisi BirdCLEF+ 2026 (D-07) [ARSIP HISTORIS]
+
+> **Catatan Status Dokumen (10 Oktober 2026 / DEC-13):**  
+> Dokumen ini merupakan catatan kepatuhan lisensi historis untuk eksperimen rezim BirdCLEF+ 2026 yang diarsipkan di `results/archive/birdclef_2026/`. Sesuai arahan pembimbing (DEC-13), benchmark aktif beralih ke 20 Spesies Avifauna Kepulauan Indonesia (Xeno-Canto Indonesia, 1.217 berkas audio fisik). Seluruh audio asli tetap tidak disertakan dalam repositori Git (.gitignore).
 
 **Topik Riset:** DSIC27-06 — Mencari Audio yang Mirip Ketika Datanya Terbatas  
 **Nama Kompetisi:** BirdCLEF+ 2026 — Acoustic Species Identification in the Pantanal, South America  
@@ -6,7 +9,7 @@
 **URL Halaman Kompetisi:** <https://www.kaggle.com/competitions/birdclef-2026>  
 **URL Aturan Kompetisi:** <https://www.kaggle.com/competitions/birdclef-2026/rules>  
 **Tanggal Akses & Persetujuan:** 12 September 2026  
-**Status Keputusan Pembimbing:** D-07 (Disetujui untuk Skripsi & Artikel Ilmiah)
+**Status Keputusan Pembimbing:** D-07 (Historis / Diarsipkan per DEC-13)
 
 ---
 

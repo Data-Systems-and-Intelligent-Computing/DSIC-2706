@@ -4,84 +4,86 @@ Dokumen ini mencatat batasan ruang lingkup taksonomi, pra-pemrosesan, dan parame
 
 ---
 
-## 1. Taksonomi Target (20 Spesies Burung Neotropis Pantanal)
+## 1. Taksonomi Target (20 Spesies Avifauna Indonesia)
 
-### Amandemen Resmi Bertanggal (Versi 3.0 — 12 September 2026 / Keputusan Kedua)
-Berdasarkan audit Gate 1 tanggal 12 September 2026 dan keputusan pembimbing (DEC-09 dan DEC-10), ruang lingkup dataset utama dialihkan ke **BirdCLEF+ 2026 (`train_audio`)** dengan memfilter taksa burung (*Aves*) koleksi BirdCLEF berkategori rating >= 3.0 serta memilih 20 taksa dengan diversitas perekam unik tertinggi ($N_{\text{author}}$) guna menjamin keabsahan partisi *author-disjoint split*.
+### Amandemen Resmi Bertanggal (Versi 4.0 — 10 Oktober 2026)
+Berdasarkan arahan resmi Dosen Pembimbing (Bapak Ardika Satria) pada 10 Oktober 2026, ruang lingkup dataset dialihkan sepenuhnya ke **Avifauna Kepulauan Indonesia (Xeno-Canto Indonesia)**. Keputusan ini diambil untuk mengeliminasi ketidakcocokan biogeografis (spesies Neotropis vs derau Sumatera) dan memastikan keterikatan ekologis yang valid dengan habitat tropis Indonesia:
+1. Spesies target dibatasi pada burung yang **hadir dan tercatat di Indonesia**, dengan seleksi spesies umum dan tersebar luas (*widespread species*, termasuk kehadiran klip dari Sumatera).
+2. Rekaman di luar wilayah geografis Indonesia **dieksklusi secara mutlak**.
+3. Seluruh berkas audio diunduh langsung dari Xeno-Canto dan diaudit secara ketat: durasi, sampling rate asli, SHA-256, dan keterbacaan (*100% decodable*).
+4. Hasil lama berbasis BirdCLEF dipindahkan ke arsip historis (`results/archive/birdclef_2026/`).
 
-Daftar resmi **20 spesies burung target** dengan total **4.351 rekaman audio** terkelola:
+Daftar resmi **20 spesies burung target** dengan total **1.217 rekaman audio** terkelola (`data/manifests/species_freeze.csv`):
 
-| No | Spesies Kunci | Nama Ilmiah | Nama Umum (Inggris) | Jumlah Klip | Jumlah Author | Median Rating |
-| :-: | :--- | :--- | :--- | :-: | :-: | :-: |
-| 1 | `coffal1` | *Micrastur semitorquatus* | Collared Forest-Falcon | 253 | 129 | 4.0 |
-| 2 | `sobtyr1` | *Camptostoma obsoletum* | Southern Beardless Tyrannulet | 331 | 126 | 4.0 |
-| 3 | `greant1` | *Taraba major* | Great Antshrike | 337 | 124 | 4.0 |
-| 4 | `squcuc1` | *Piaya cayana* | Common Squirrel-Cuckoo | 332 | 123 | 4.0 |
-| 5 | `roahaw` | *Rupornis magnirostris* | Roadside Hawk | 243 | 122 | 4.0 |
-| 6 | `trsowl` | *Megascops choliba* | Tropical Screech Owl | 234 | 122 | 4.0 |
-| 7 | `banana` | *Coereba flaveola* | Bananaquit | 301 | 121 | 4.0 |
-| 8 | `baffal1` | *Micrastur ruficollis* | Barred Forest-Falcon | 273 | 121 | 4.0 |
-| 9 | `soulap1` | *Vanellus chilensis* | Southern Lapwing | 243 | 120 | 4.5 |
-| 10 | `strcuc1` | *Tapera naevia* | Striped Cuckoo | 250 | 117 | 4.0 |
-| 11 | `pabspi1` | *Synallaxis albescens* | Pale-breasted Spinetail | 214 | 117 | 4.0 |
-| 12 | `yeofly1` | *Tolmomyias sulphurescens* | Yellow-olive Flatbill | 393 | 115 | 4.0 |
-| 13 | `gycwor1` | *Aramides cajaneus* | Grey-cowled Wood Rail | 219 | 115 | 4.0 |
-| 14 | `compau` | *Nyctidromus albicollis* | Pauraque | 206 | 115 | 4.5 |
-| 15 | `barant1` | *Thamnophilus doliatus* | Barred Antshrike | 294 | 114 | 4.0 |
-| 16 | `pirfly1` | *Legatus leucophaius* | Piratic Flycatcher | 288 | 114 | 4.0 |
-| 17 | `linwoo1` | *Dryocopus lineatus* | Lineated Woodpecker | 254 | 113 | 4.0 |
-| 18 | `whtdov` | *Leptotila verreauxi* | White-tipped Dove | 269 | 111 | 4.0 |
-| 19 | `bobfly1` | *Megarynchus pitangua* | Boat-billed Flycatcher | 272 | 107 | 4.0 |
-| 20 | `trokin` | *Tyrannus melancholicus* | Tropical Kingbird | 220 | 105 | 4.0 |
-| **Total** | **20 Spesies** | | | **5.426 Klip Kandidat** | **629 Author Global** | **4.0** |
-
-> [!NOTE]
-> **Penjelasan Selisih Klip Kandidat (5.426) vs Korpus Aktif (4.351):**  
-> Selisih sebanyak 1.075 klip ($5.426 - 4.351$) tersaring keluar secara objektif melalui aturan kurasi §11.3 dan integritas partisi:
-> 1. Eliminasi rekaman dengan metadata `author == 'Unknown'` atau kosong (mencegah kebocoran semu pada author-disjoint split sesuai H2.1).
-> 2. Penerapan filter kualitas rekaman *rating* $\ge 3.0$.
-> 3. Eliminasi rekaman audio berdurasi rusak/ekstrem (< 1 detik atau berkas tidak terbaca) saat prapemrosesan energi RMS.
-> 
-> Dengan demikian, tepat **4.351 rekaman audio** masuk ke partisi aktif bebas bocor: **3.653 Galeri + 200 Kueri + 498 Kalibrasi = 4.351 Rekaman**.
+| No | Spesies Kunci | Nama Ilmiah | Nama Indonesia / Inggris | Klip Terverifikasi | Perekam Unik |
+| :-: | :--- | :--- | :--- | :-: | :-: |
+| 1 | `spiche1` | *Spilornis cheela* | Elang bido / Crested Serpent Eagle | 35 | 15 |
+| 2 | `sohbul1` | *Pycnonotus aurigaster* | Cucak kutilang / Sooty-headed Bulbul | 104 | 29 |
+| 3 | `colkin1` | *Todiramphus chloris* | Cekakak suci / Collared Kingfisher | 45 | 14 |
+| 4 | `ashtai1` | *Orthotomus ruficeps* | Cinenen kelabu / Ashy Tailorbird | 30 | 17 |
+| 5 | `savnig1` | *Caprimulgus affinis* | Cabak kota / Savanna Nightjar | 31 | 18 |
+| 6 | `olbsun1` | *Cinnyris jugularis* | Burung-madu sriganti / Olive-backed Sunbird | 137 | 35 |
+| 7 | `comior1` | *Aegithina tiphia* | Cipoh kacat / Common Iora | 65 | 22 |
+| 8 | `gpipig1` | *Ducula aenea* | Pergam hijau / Green Imperial Pigeon | 40 | 21 |
+| 9 | `crseag1` | *Haliaeetus leucogaster* | Elang laut perut putih / White-bellied Sea Eagle | 36 | 16 |
+| 10 | `subwar1` | *Curruca subalpina* | Kerakbasi / Sunda Bush Warbler | 45 | 20 |
+| 11 | `whbsho1` | *Copsychus malabaricus* | Kucica hutan / White-rumped Shama | 62 | 26 |
+| 12 | `rubcuc1` | *Rhamphococcyx curvirostris* | Kadalan birah / Chestnut-breasted Malkoha | 48 | 21 |
+| 13 | `hoopit1` | *Hydrornis schneideri* | Paok / Pitta | 45 | 19 |
+| 14 | `horbab1` | *Malacocincla sepiaria* | Pelanduk semak / Horsfield's Babbler | 68 | 25 |
+| 15 | `moutai1` | *Orthotomus cucullatus* | Cinenen gunung / Mountain Tailorbird | 78 | 28 |
+| 16 | `pygcup1` | *Pnoepyga pusilla* | Berencet kerdil / Pygmy Cupwing | 62 | 24 |
+| 17 | `suncuc1` | *Cacomantis sonneratii* | Wiwik lurik / Banded Bay Cuckoo | 52 | 23 |
+| 18 | `latnig1` | *Caprimulgus macrurus* | Cabak maling / Large-tailed Nightjar | 58 | 26 |
+| 19 | `hacdro1` | *Dicrurus paradiseus* | Srigunting batu / Greater Racket-tailed Drongo | 65 | 25 |
+| 20 | `barpri1` | *Prinia familiaris* | Perkutut jawa / Bar-winged Prinia | 111 | 26 |
+| **Total** | **20 Spesies** | | | **1.217 Klip** | **111 Author Unik** |
 
 #### Distribusi Partisi Dataset Split (`data/manifests/dataset_split.csv`):
-- **Galeri (*Gallery Bank*):** 3.653 rekaman (377 author independen).
-- **Kueri Bersih (*Query Clean*):** Tepat 200 rekaman (20 spesies x 10 kueri per spesies; 68 author independen).
-- **Subset Kalibrasi (*Calibration*):** 498 rekaman (95 author independen).
-- **Status Kebocoran Perekam:** **Strict Global Author-Disjoint** (0 author tumpang tindih antara Galeri, Kueri, maupun Kalibrasi).
+* **Galeri (*Gallery Set*):** 674 rekaman (60 perekam independen).
+* **Kueri Bersih (*Query Clean*):** 310 rekaman (31 perekam independen).
+* **Subset Kalibrasi (*Calibration*):** 233 rekaman (20 perekam independen).
+* **Integritas Bebas Bocor:** **Strict Global Author-Disjoint** (0 perekam beririsan antar Galeri, Kueri, dan Kalibrasi; 0 tumpang tindih ID rekaman maupun file path).
 
-
----
-
-### Catatan Historis Ruang Lingkup Sebelumnya
-- **Versi 2.0 (07 September 2026):** 16 taksa burung Sumatera (416 rekaman, kurasi manual BirdCLEF). Dibatalkan oleh audit Gate 1 (12 September 2026) karena kelangkaan data kueri independen ($n=14$), kebocoran perekam (C-04), dan ketergantungan derau sintetis (M-05).
-- **Versi 1.0 (Draf Awal):** 16 spesies kosmopolitan umum (digantikan oleh Versi 2.0).
-
----
-
-## 2. Parameter Pra-pemrosesan Audio (Tetap Dibekukan)
-- Laju Sampel (*Sample Rate*): **32.000 Hz** (mono).
-- Durasi Segmen: **5.0 detik** (160.000 sampel).
-- Seleksi Jendela: **Energi RMS tertinggi (*Top-energy sliding window*)**.
-- Normalisasi Energi: **RMS target 0.05** dengan pembatasan puncak kliping <= 1.0.
+#### Subset Negatif Open-Set (`data/manifests/unknown_open_set_manifest.csv`):
+* Total 543 rekaman kontrol negatif:
+  * 272 rekaman kontrol satwa non-burung / burung non-target.
+  * 271 rekaman derau lingkungan murni AudioMoth ITERA.
+* Dipartisi menjadi 233 rekaman untuk `unknown_calibration` dan 310 rekaman untuk `unknown_test`.
 
 ---
 
-## 3. Tingkat Degradasi Derau Terkontrol (Tetap Dibekukan)
+## 2. Bank Derau Fisik AudioMoth ITERA (1.799 Berkas WAV)
+Bank derau lingkungan fisik ITERA berlokasi di `data/itera_noise/` dengan catatan manifes di `data/manifests/itera_noise_manifest.csv`:
+* **Total Berkas Fisik:** Tepat 1.799 berkas audio WAV.
+* **Partisi Non-Overlap:**
+  * **1.528 berkas** untuk pencampuran derau aditif terkontrol (E2 dan E4).
+  * **271 berkas** khusus dialokasikan untuk kontrol negatif kelas terbuka E3.
+* **Penolakan Derau Senyap:** Penolakan keras segmen $\text{RMS} < 10^{-4}$.
+* **Zero Synthetic Noise:** Fallback pink noise dihapus permanen.
+
+---
+
+## 3. Parameter Pra-pemrosesan Audio (Dibekukan)
+* Laju Sampel (*Sample Rate*): **32.000 Hz** (mono).
+* Durasi Segmen: **5.0 detik** (160.000 sampel).
+* Seleksi Jendela: **Energi RMS tertinggi (*Top-energy sliding window*)**.
+* Normalisasi Energi: **RMS target 0.05** dengan pembatasan puncak kliping $\le 1.0$.
+
+---
+
+## 4. Tingkat Degradasi Derau Terkontrol (Dibekukan)
 Tingkat degradasi derau aditif dibekukan pada 5 level:
-1. **Clean** (SNR = inf)
-2. **SNR 20 dB** (Derau ringan)
-3. **SNR 10 dB** (Derau sedang)
-4. **SNR 0 dB** (Derau berat / sinyal sebanding derau)
-5. **SNR -5 dB** (Derau ekstrem / derau melebihi sinyal)
+1. **Clean** (SNR = $\infty$)
+2. **SNR +20 dB** (Derau ringan)
+3. **SNR +10 dB** (Derau sedang)
+4. **SNR 0 dB** (Derau berat)
+5. **SNR -5 dB** (Derau ekstrem)
 
 ---
 
-## 4. Peran Baru Rekaman AudioMoth Kampus ITERA
-Sesuai audit keputusan kedua, rekaman AudioMoth ITERA **tidak lagi menjadi validasi retrieval spesies**, melainkan murni dipersempit menjadi:
-1. **Bank derau lingkungan nyata (E2):** Segmen *background-only* bebas vokalisasi burung dari tipe lokasi perairan (Embung F), vegetasi (Kebun Raya), dan antropogenik (Masjid At-Tanwir, Gedung F, GKU 1).
-2. **Sampel negatif open-set (E3):** Sebagai data uji negatif jenis *pure background*.
-
-### Amandemen lapangan (1 Oktober 2026)
-- **DEC-11 — Daypart:** hanya **siang**; malam tidak diizinkan kampus. Rencana awal “2 daypart” **dibatalkan** sebagai syarat desain.
-- **DEC-12 — Metode trigger:** wajib **frequency** dan **amplitude** di perangkat, agar mixer tidak menambahkan filter digital. Frequency sudah diambil (18–30 Sep 2026). Amplitude **belum** diambil dan menjadi prasyarat main run E2.
+## 5. Catatan Historis Ruang Lingkup
+* **Versi 4.0 (10 Oktober 2026):** Avifauna Kepulauan Indonesia (20 spesies, 1.217 rekaman terverifikasi dari Xeno-Canto, derau fisik ITERA 1.799 berkas). Hasil lama BirdCLEF diarsipkan di `results/archive/birdclef_2026/`.
+* **Versi 3.0 (12 September 2026):** 20 taksa BirdCLEF Neotropis (dibatalkan per arahan pembimbing 10 Oktober 2026).
+* **Versi 2.0 (07 September 2026):** 16 taksa burung Sumatera lama (dibatalkan akibat kelangkaan data kueri independen dan kebocoran author).
+* **Versi 1.0 (Draf Awal):** 16 spesies kosmopolitan umum.

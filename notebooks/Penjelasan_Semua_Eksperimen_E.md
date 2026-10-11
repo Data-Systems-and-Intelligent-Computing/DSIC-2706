@@ -25,10 +25,10 @@ Dokumen ini merangkum fungsi, parameter, pustaka (library), dan hasil dari selur
 - **Parameter Utama:** `Objective = Youden_J`. Memisahkan distribusi skor burung vs distribusi skor non-burung (*Unknown*).
 - **Output:** Nilai `Frozen Tau` ($\tau$) untuk tiap model, serta tabel `threshold_transfer_table.csv`.
 
-## 5. E4: Real Soundscape Domain Shift (Kesenjangan Domain)
-- **Fungsi:** Sangat mirip dengan E2 (pencampuran SNR). Namun, E4 menggunakan derau dari rekaman *soundscape* (hutan alam liar dari Kaggle BirdCLEF) alih-alih derau kampus ITERA. Menguji apakah model kaget dengan suara hutan hujan dibandingkan suara kampus.
-- **Library:** `librosa` (untuk meload file .ogg alam liar secara acak), `numpy`, `pandas`.
-- **Output:** `e4_domain_shift_table.csv`. *Domain shift gap* diperoleh dengan mengurangi mAP@10 milik E2 dengan milik E4.
+## 5. E4: Noise Profile Sensitivity (Sensitivitas Profil Spektral Derau Lintas Habitat)
+- **Fungsi:** Menguji kepekaan representasi audio terhadap perbedaan spektral derau latar nyata dari 3 profil habitat kampus ITERA (Kebun Raya / biophony serangga, Embung F / resonansi air dan angin, Gedung F / koridor antropogenik-struktural). Menguji apakah representasi tetap invarian atau mengalami distorsi ketika karakter spektral derau berubah pada SNR yang setara.
+- **Library:** `librosa`, `numpy`, `pandas`, `matplotlib`.
+- **Output:** `e4_domain_shift_table.csv` dan visualisasi grafik `e4_noise_profile_sensitivity.png`.
 
 ## 6. E5: Failure Analysis (Analisis Kegagalan Nyata)
 - **Fungsi:** Mengambil catatan tebakan AI yang SALAH MENEBAK (Top-1 match = 0) dari *log raw* CSV. Melakukan analisis diagnostik mengapa sistem gagal, misalnya apakah karena tertutup suara derau -5dB (*Low SNR Masking*) atau karena kicauannya mirip dengan spesies sepupu (*Inter-species Confusion*).

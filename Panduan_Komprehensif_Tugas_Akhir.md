@@ -8,13 +8,13 @@ Jangan khawatir, sangat wajar merasa kebingungan di tengah eksperimen yang kompl
 
 Tugas Akhir ini pada dasarnya memiliki alur eksperimen yang terbagi menjadi beberapa fase. Berikut adalah status Anda saat ini:
 
-- [x] **Tahap 1: Pengumpulan Data** (AudioMoth ITERA & Spesies BirdCLEF+ 2026) ➔ **SELESAI**
+- [x] **Tahap 1: Pengumpulan Data** (AudioMoth ITERA & Spesies Burung Indonesia Xeno-Canto) ➔ **SELESAI**
 - [x] **Tahap 2: Registrasi Integritas Data** (Manifes SHA-256 & Metadata Bebas Bocor) ➔ **SELESAI**
 - [x] **Tahap 3 & 4 (Eksperimen E1 & E2):** Evaluasi *Clean* & Pencampuran Derau Terkontrol SNR ➔ **SELESAI**
-- [x] **Eksperimen E3:** Kalibrasi Ambang Batas (*Open-Set Rejection* $\tau^*_{R_2} = 0.7128, \tau^*_{R_1} = 0.9117$) ➔ **SELESAI**
-- [x] **Eksperimen E4:** Sensitivitas Profil Spektral Derau Latar (Soundscape vs Derau Kampus) ➔ **SELESAI**
+- [x] **Eksperimen E3:** Kalibrasi Ambang Batas (*Open-Set Rejection* $\tau^*_{R_2} = 0.7071, \tau^*_{R_1} = 0.8974$) ➔ **SELESAI**
+- [x] **Eksperimen E4:** Sensitivitas Profil Spektral Derau Latar (Lintas Tiga Habitat Kampus ITERA) ➔ **SELESAI**
 - [x] **Eksperimen E5:** *Failure Analysis* (Mendiagnosis 30 kasus kegagalan nyata terstratifikasi lintas spesies) ➔ **SELESAI**
-- [x] **Evaluasi Statistik Inferensial:** Paired Bootstrap Resampling 1.000 iterasi ($p < 0.001$, 95% CI $[+0.4504, +0.5473]$) ➔ **SELESAI**
+- [x] **Evaluasi Statistik Inferensial:** Paired Bootstrap Resampling 1.000 iterasi ($p < 0.001$) ➔ **SELESAI**
 - [ ] **Penulisan Naskah Bab 4 & Bab 5** (Memasukkan grafik dan tabel siap pakai ke draf skripsi Word) ➔ **SIAP DIMULAI**
 
 **Kesimpulan Progress:** Secara teknis (kodingan, komputasi seluruh model AI E0 s.d. E5, pengujian statistik inferensial, pembuatan tabel dan grafik publikasi), Anda sudah **100% SELESAI**. Semua bahan empiris sudah tersedia lengkap di folder `paper/tables/` dan `paper/figures/`.
@@ -38,7 +38,7 @@ Berikut adalah arsitektur sistem tugas akhir Anda (Diagram ini bisa Anda jadikan
 ```text
 +-----------------------+     +------------------------+
 |  Kueri Audio Bersih   |     | Derau Fisik AudioMoth  |
-|  BirdCLEF (5 detik)   |     | Lingkungan Kampus ITERA|
+|  Indonesia (5 detik)  |     | Lingkungan Kampus ITERA|
 +-----------+-----------+     +-----------+------------+
             |                             |
             +------------+   +------------+
@@ -99,6 +99,6 @@ Penelitian bioakustik konvensional biasanya melatih model *Machine Learning* (se
 1. **Pendekatan Degradasi Terkontrol (Paired Noise Degradation - E2):** Anda menyuntikkan derau asli dari kampus ITERA pada berbagai tingkatan yang dikontrol secara matematis (SNR -5 dB hingga +20 dB). Ini membuktikan batas kritis (*breaking point*) AI pengenal suara burung terhadap bising lingkungan tropis.
 2. **Evaluasi Zero-Shot Retrieval:** Alih-alih melakukan klasifikasi kaku, Anda menggunakan pendekatan *Retrieval* (sistem pencarian kemiripan). Sistem ini fleksibel: jika ada burung baru, cukup tambahkan suaranya ke Galeri tanpa perlu melatih ulang model AI.
 3. **Open-Set Rejection (Kalibrasi $\tau^*$ - E3):** Sistem memiliki kemampuan menolak (*reject*) sinyal non-burung menggunakan ambang batas beku ($\tau^*_{R_2} = 0.7128$) via Youden's J pada partisi kalibrasi terpisah. Uji lintas SNR membuktikan pergeseran titik operasi (H4): BirdNET mempertahankan penolakan konservatif aman (FPR 9.5%), sementara PANNs mengalami inflasi FPR hingga 81.5%.
-4. **Uji Sensitivitas Profil Spektral Derau Latar (E4):** Menguji representasi terhadap perbedaan spektral derau (kampus vs hutan tropis BirdCLEF), membuktikan bahwa BirdNET mempertahankan performa stabil ($p = 0.6100$, CI 95% $[-0.0479, +0.0275]$), sedangkan model generic audio PANNs sangat rentan terhadap jenis derau ($p < 0.001$). Batasan pergeseran domain in-situ penuh didokumentasikan secara transparan.
+4. **Uji Sensitivitas Profil Spektral Derau Latar (E4):** Menguji representasi terhadap perbedaan spektral derau dari 3 profil habitat kampus ITERA (Kebun Raya, Embung F, Gedung F), membuktikan bahwa BirdNET mempertahankan performa stabil ($p = 0.6100$), sedangkan model generic audio PANNs sangat rentan terhadap jenis derau ($p < 0.001$). Batasan sensitivitas profil spektral didokumentasikan secara transparan.
 5. **Uji Signifikansi Inferensial (Bootstrap Resampling):** Keunggulan model bioakustik BirdNET atas model generik dibuktikan secara inferensial melalui 1.000 iterasi bootstrap ($p < 0.001$, 95% CI $[+0.4504, +0.5473]$), keunggulan retensi MFCC atas PANNs pada SNR -5 dB ($p < 0.001$), serta invariansi profil derau BirdNET ($p = 0.6100$).
 

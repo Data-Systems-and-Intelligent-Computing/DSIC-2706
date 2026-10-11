@@ -10,7 +10,7 @@ selection,view,channel,begin_time,end_time,low_freq,high_freq,species_key,scient
 1. **Verifikasi Manual:**
    Hanya subset audio yang telah diverifikasi manual oleh pengamat (atau rekaman konfirmasi visual) yang diikutsertakan dalam evaluasi kuantitatif E4.
 2. **Kategori Label:**
-   - E4 memakai `train_soundscapes` BirdCLEF+ 2026, bukan inventarisasi spesies kampus ITERA.
+   - E4 memakai 3 profil habitat kampus ITERA (Kebun Raya, Embung F, Gedung Terpadu Labtek F) dengan bank derau fisik AudioMoth ITERA.
    - Rekaman ITERA dilabeli untuk bank derau: `background_only`, `bird_present` (ditolak dari E2), `anthropophony`, `geophony`, `non_bird_biophony`.
    - `trigger_method` wajib: `frequency` atau `amplitude` (DEC-12).
    - `daypart` pada rezim aktif selalu `siang` (DEC-11).

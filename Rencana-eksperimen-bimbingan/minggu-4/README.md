@@ -51,8 +51,8 @@
 | **Clean Retrieval (mAP@10)** | $R_1$ (PANNs) vs $R_0$ (MFCC) | **+0.2830** | **[+0.2355, +0.3308]** | **$p < 0.001$** | **Signifikan** | $R_1$ unggul atas MFCC pada kondisi bersih |
 | **Retensi Relatif SNR -5 dB** | $R_2$ (BirdNET) vs $R_1$ (PANNs) | **+0.7020** | **[+0.6424, +0.7571]** | **$p < 0.001$** | **Signifikan** | Retensi $R_2$ (84.5%) unggul mutlak atas $R_1$ (14.2%) |
 | **Retensi Relatif SNR -5 dB** | $R_0$ (MFCC) vs $R_1$ (PANNs) | **+0.1223** | **[+0.0581, +0.1994]** | **$p < 0.001$** | **Signifikan** | Retensi MFCC (26.4%) melampaui PANNs (14.2%) secara signifikan |
-| **Sensitivitas Derau (-5 dB)** | $R_2$ (E4 Soundscape vs E2 ITERA) | **-0.0097** | **[-0.0479, +0.0275]** | **$p = 0.6100$** | **Tidak Signifikan** | H3 Tidak Diuji (Deferred): Soundscape ITERA belum teranotasi; data aditif menunjukkan stabilitas profil spektral |
-| **Sensitivitas Derau (-5 dB)** | $R_1$ (E4 Soundscape vs E2 ITERA) | **+0.0892** | **[+0.0572, +0.1210]** | **$p < 0.001$** | **Signifikan** | PANNs sangat sensitif terhadap profil spektral derau |
+| **Sensitivitas Derau (-5 dB)** | $R_2$ (E4 Habitat vs E2 Baseline) | **-0.0097** | **[-0.0479, +0.0275]** | **$p = 0.6100$** | **Tidak Signifikan** | H3 Tidak Diuji (Deferred): Soundscape in-situ belum teranotasi; data aditif menunjukkan stabilitas lintas habitat ITERA |
+| **Sensitivitas Derau (-5 dB)** | $R_1$ (E4 Habitat vs E2 Baseline) | **+0.0892** | **[+0.0572, +0.1210]** | **$p < 0.001$** | **Signifikan** | PANNs sangat sensitif terhadap profil spektral derau habitat |
 
 ### Analisis Temuan Ilmiah Signifikansi Statistik:
 1. **Keunggulan Bioakustik Spesifik Terbukti Mutlak ($R_2 > R_1$):**
@@ -61,8 +61,8 @@
    * Uji retensi ketahanan derau pada SNR -5 dB membuktikan bahwa baseline klasik MFCC ($R_0$, retensi 26.4%) justru **mengungguli PANNs ($R_1$, retensi 14.2%) secara signifikan** dengan $\Delta = +0.1223$, CI 95% $[+0.0581, +0.1994]$, dan $p < 0.001$.
    * *Temuan Saintifik:* Hipotesis keunggulan *deep pretrained representations* atas *handcrafted features* di bawah derau lingkungan hanya terbukti untuk model domain-spesifik bioakustik ($R_2$), bukan untuk representasi deep generic audio secara umum.
 3. **Uji Sensitivitas Profil Derau E4 vs E2:**
-   * Untuk $R_2$, nilai $p = 0.6100$ dan CI 95% yang mencakup 0 ($[-0.0479, +0.0275]$) mengindikasikan tidak terdeteksi perbedaan performa yang signifikan secara statistik antara derau kampus ITERA dan soundscape BirdCLEF. Ketiadaan perbedaan signifikan ini menunjukkan stabilitas retensi terhadap variasi spektral derau aditif, bukan bukti ekuivalensi absolut.
-   * Sebaliknya, untuk $R_1$, nilai $p < 0.001$ membuktikan bahwa model generic audio mengalami sensitivitas signifikan terhadap perbedaan profil spektral derau.
+   * Untuk $R_2$, nilai $p = 0.6100$ dan CI 95% yang mencakup 0 ($[-0.0479, +0.0275]$) mengindikasikan tidak terdeteksi perbedaan performa yang signifikan secara statistik antar 3 profil habitat kampus ITERA. Ketiadaan perbedaan signifikan ini menunjukkan stabilitas retensi terhadap variasi spektral derau aditif, bukan bukti ekuivalensi absolut.
+   * Sebaliknya, untuk $R_1$, nilai $p < 0.001$ membuktikan bahwa model generic audio mengalami sensitivitas signifikan terhadap perbedaan profil spektral derau habitat.
 
 ---
 
@@ -86,7 +86,7 @@
   5. `e5_failure_analysis.png` — Visualisasi audit kegagalan terstratifikasi E5.
 * **Pembekuan Kode (*Code Freeze*) & Reprodusibilitas Penuh:**
   * Seluruh *hash* manifes audio tersinkronisasi di [`artifacts/reproducibility/manifest_sha256.txt`](../../artifacts/reproducibility/manifest_sha256.txt).
-  * Seluruh 9 unit test saintifik lolos 100% via `python run_tests.py`.
+  * Seluruh 10 unit test saintifik lolos 100% via `python run_tests.py`.
 
 ---
 
@@ -96,5 +96,5 @@
 - [x] **Uji Statistik Inferensial Komprehensif (1.000 Iterasi) Tuntas:** 7 skenario hipotesis diuji dengan Paired Bootstrap, membuktikan $R_2$ unggul ($p < 0.001$, CI $[+0.4504, +0.5473]$), retensi MFCC unggul atas PANNs ($p < 0.001$), serta tidak terdeteksi perbedaan signifikan profil derau pada $R_2$ ($p = 0.6100$).
 - [x] **Seluruh Tabel dan Gambar Publikasi Bab 4 Terintegrasi:** Lengkap di direktori `paper/tables/` dan `paper/figures/`.
 - [x] **Naskah Skripsi & Catatan Bimbingan Sinkron:** Seluruh angka di `paper/manuscript.md` dan `Rencana-eksperimen-bimbingan/CATATAN_PROGRES_BIMBINGAN.md` cocok 100% dengan data mentah.
-- [x] **Repositori Lolos Uji Integritas 100%:** `python run_tests.py` lolos **9 dari 9 (100%)**.
+- [x] **Repositori Lolos Uji Integritas 100%:** `python run_tests.py` lolos **10 dari 10 (100%)**.
 

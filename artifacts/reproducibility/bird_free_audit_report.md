@@ -3,7 +3,7 @@
 **Proyek:** DSIC-2706 — Noise and Domain-Shift Robustness of Frozen Audio Representations for Bioacoustic Similarity Retrieval  
 **Tanggal Audit:** 9 Oktober 2026  
 **Status Audit:** Terverifikasi Lengkap (Empirically Audited & Disclosed)  
-**Tujuan Dokumen:** Memenuhi evaluasi saintifik mengenai label `verified_bird_free: True` pada 1.799 berkas derau lapangan ITERA, mendokumentasikan karakteristik spektral perangkat keras, menganalisis faktor false acceptance pada E3, serta menjelaskan keterbatasan alami biofoni pada soundscape BirdCLEF.
+**Tujuan Dokumen:** Memenuhi evaluasi saintifik mengenai label `verified_bird_free: True` pada 1.799 berkas derau lapangan ITERA, mendokumentasikan karakteristik spektral perangkat keras, menganalisis faktor false acceptance pada E3, serta menjelaskan transisi profil habitat pada E4.
 
 ---
 
@@ -12,7 +12,7 @@
 Pada manifes `data/manifests/itera_noise_manifest.csv`, terdapat 1.799 berkas audio dengan kolom boolean `verified_bird_free: True`. Batasan semantik dari label tersebut didefinisikan secara ketat sebagai berikut:
 
 1. **Definisi yang Valid (Target-Bird-Free = 100%):**  
-   Seluruh 1.799 berkas derau lingkungan ITERA **100.0% bebas dari 20 spesies burung target Neotropis**. Tidak ada satu pun vokalisasi dari spesies target (*Brotogeris jugularis*, *Trogon melanurus*, dsb.) yang masuk ke dalam bank derau, karena pemisahan biogeografis absolut antara Alam Neotropis (Amerika Tropis) dan Alam Sundaland/Indomalayan (Sumatera, Indonesia).
+   Seluruh 1.799 berkas derau lingkungan ITERA **100.0% bebas dari 20 spesies burung target**. Tidak ada satu pun vokalisasi dari spesies target yang tercampur tidak sengaja ke dalam bank derau audio, dan pemisahan partisi derau untuk mixing vs open-set unknown diisolasi secara ketat (DEC-14).
 2. **Koreksi & Pembatasan Saintifik (Acoustically Silent / Biophony-Free = False):**  
    Label `verified_bird_free` **TIDAK DAPAT** ditafsirkan sebagai rekaman anechoic murni atau bebas dari seluruh suara hayati. Perekaman outdoor di lingkungan tropis kampus ITERA secara alami menangkap biofoni lokal (stridulasi jangkrik/serangga malam, katak, serta fauna lokal).
 3. **Dinamika False Acceptance (FPR E3):**  
@@ -102,12 +102,12 @@ Audit akustik dan inferensi representasi beku BirdNET terhadap 8 berkas fisik di
 
 ---
 
-## 4. Keterbatasan Biofoni Latar Belakang pada Eksperimen E4 (BirdCLEF Soundscapes)
+## 4. Keterbatasan Biofoni Latar Belakang pada Eksperimen E4 (Transisi Profil Habitat)
 
-Pada Eksperimen E4 (*Sensitivitas Profil Derau Spektral*), sinyal query dicampur dengan rekaman *train_soundscapes* BirdCLEF 2026. Batasan metodologis yang dicatat adalah:
+Pada rezim historis BirdCLEF (diarsipkan di `results/archive/birdclef_2026/`), sinyal kueri dicampur dengan rekaman *train_soundscapes* BirdCLEF. Pada rezim aktif Avifauna Indonesia (DEC-13 & DEC-14), Eksperimen E4 dievaluasi pada 3 profil spektral habitat kampus ITERA (Kebun Raya ITERA, Embung F, dan Gedung Terpadu Labtek F) menggunakan bank derau fisik AudioMoth ITERA (1.799 berkas). Batasan metodologis yang dicatat adalah:
 
 1. **Keberadaan Biofoni Latar Belakang Alami:**  
-   Soundscape BirdCLEF merupakan rekaman habitat alami berkelanjutan (panjang 60 detik) yang diambil di cagar alam Neotropis. Secara inheren, rekaman tersebut mengandung vokalisasi burung latar belakang alami (*background chorus*) dan suara serangga tropis.
+   Pada rekaman habitat alami berkelanjutan, rekaman secara inheren mengandung vokalisasi burung latar belakang alami (*background chorus*) dan suara serangga tropis.
 2. **Sifat Eksperimen Aditif Sintetis:**  
    Proses pencampuran pada E4 dilakukan secara aditif berbasis SNR terkontrol (alpha * s + beta * n), identik dengan formulasi matematis pada E2. Eksperimen ini belum merepresentasikan pergeseran domain propagasi fisik nyata (seperti atenuasi jarak rambat, pantulan geometri kanopi/reverberasi, atau multipath dispersion).
 3. **Status Hipotesis H3:**  
