@@ -31,6 +31,27 @@ from tests.unit.test_manifest_and_models import (
     test_manifest_sha256_integrity,
     test_model_embedding_dimensions,
 )
+from tests.unit.test_raw_split_alignment import (
+    test_retrieval_raw_query_ids_match_split,
+    test_calibration_raw_row_counts,
+)
+from tests.unit.test_manuscript_table_consistency import (
+    test_table_e1_structural_numeric,
+    test_table_e2_structural_numeric,
+    test_table_e3_structural_numeric,
+    test_table_e4_structural_numeric,
+    test_table_significance_structural_numeric,
+    test_text_claims_integrity,
+)
+
+
+def test_manuscript_full_numeric_consistency():
+    test_table_e1_structural_numeric()
+    test_table_e2_structural_numeric()
+    test_table_e3_structural_numeric()
+    test_table_e4_structural_numeric()
+    test_table_significance_structural_numeric()
+    test_text_claims_integrity()
 
 
 def run_all_tests():
@@ -42,6 +63,8 @@ def run_all_tests():
         ("Zero Recording ID Overlap", test_zero_leakage_between_gallery_and_query),
         ("Zero File Path Overlap", test_zero_filepath_leakage),
         ("Strict Global Recordist-Disjoint (Zero Recordist Overlap)", test_zero_recordist_leakage_global),
+        ("Raw Query IDs Alignment with Split (311 queries match query_clean)", test_retrieval_raw_query_ids_match_split),
+        ("Calibration Raw Rows Integrity (465 rows per model)", test_calibration_raw_row_counts),
         ("SNR Controlled Mixing Accuracy (Mathematical Formula)", test_snr_mixing_accuracy),
         ("Physical ITERA AudioMoth Noise Mixing & Integrity (1,799 Files)", test_physical_itera_noise_mixing),
         ("Cosine Similarity Mathematical Bounds", test_cosine_similarity_properties),
@@ -49,6 +72,7 @@ def run_all_tests():
         ("Open-Set Threshold Freeze Validation", test_threshold_frozen_evaluation),
         ("Manifest SHA-256 Integrity Verification (M-06)", test_manifest_sha256_integrity),
         ("Model Embedding Dimension Compliance (C-01)", test_model_embedding_dimensions),
+        ("Manuscript Table & Text Claim Numeric Consistency (CSV-level verification)", test_manuscript_full_numeric_consistency),
     ]
 
     passed = 0

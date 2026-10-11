@@ -77,7 +77,11 @@ Thumbs.db
 
 # Datasets & Binaries
 data/BirdClef/
+data/xeno_canto/
+data/xeno_canto_indonesia/
+data/xeno_canto_indonesia_unknowns/
+data/itera_noise/
 *.exe
 
 *.zip
-data/itera_noise/*/
+

@@ -19,9 +19,9 @@ experiments:
   # E3: Open-Set Threshold & Rejection
   open_set:
     calibration_method: "youden_j"     # Optimasi kurva ROC via indeks Youden (J = TPR - FPR)
-    calibration_target_count: 233      # Kueri target burung kalibrasi
+    calibration_target_count: 232      # Kueri target burung kalibrasi
     calibration_unknown_count: 233     # Kontrol negatif kalibrasi (117 derau ITERA + 116 burung non-target)
-    test_target_count: 310             # Kueri target burung pengujian
+    test_target_count: 311             # Kueri target burung pengujian
     test_unknown_count: 310            # Kontrol negatif pengujian disjoin
     frozen_threshold_tau: true         # Nilai tau dibekukan murni dari kalibrasi sebelum testing
     metrics: ["AUROC", "AUPRC", "F1_at_tau", "FPR_at_tau", "Recall_at_tau"]

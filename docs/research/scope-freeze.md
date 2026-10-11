@@ -13,7 +13,7 @@ Berdasarkan arahan resmi Dosen Pembimbing (Bapak Ardika Satria) pada 10 Oktober 
 3. Seluruh berkas audio diunduh langsung dari Xeno-Canto dan diaudit secara ketat: durasi, sampling rate asli, SHA-256, dan keterbacaan (*100% decodable*).
 4. Hasil lama berbasis BirdCLEF dipindahkan ke arsip historis (`results/archive/birdclef_2026/`).
 
-Daftar resmi **20 spesies burung target** dengan total **1.217 rekaman audio** terkelola (`data/manifests/species_freeze.csv`):
+Daftar resmi **20 spesies burung target** dengan total **1.216 rekaman audio** terkelola (`data/manifests/species_freeze.csv`):
 
 | No | Spesies Kunci | Nama Ilmiah | Nama Indonesia / Inggris | Klip Terverifikasi | Perekam Unik |
 | :-: | :--- | :--- | :--- | :-: | :-: |
@@ -22,7 +22,7 @@ Daftar resmi **20 spesies burung target** dengan total **1.217 rekaman audio** t
 | 3 | `horbab1` | *Malacocincla sepiaria* | Pelanduk semak / Horsfield's Babbler | 68 | 32 |
 | 4 | `moutai1` | *Phyllergates cucullatus* | Cinenen gunung / Mountain Tailorbird | 137 | 29 |
 | 5 | `lessho1` | *Brachypteryx leucophris* | Cingcoang cokelat / Lesser Shortwing | 66 | 26 |
-| 6 | `latnig1` | *Caprimulgus macrurus* | Cabak maling / Large-tailed Nightjar | 48 | 26 |
+| 6 | `latnig1` | *Caprimulgus macrurus* | Cabak maling / Large-tailed Nightjar | 47 | 26 |
 | 7 | `sohbul1` | *Pycnonotus aurigaster* | Cucak kutilang / Sooty-headed Bulbul | 44 | 26 |
 | 8 | `olbsun1` | *Cinnyris jugularis* | Burung-madu sriganti / Olive-backed Sunbird | 123 | 23 |
 | 9 | `hoopit1` | *Pitta sordida* | Paok hijau / Hooded Pitta | 62 | 22 |
@@ -37,12 +37,12 @@ Daftar resmi **20 spesies burung target** dengan total **1.217 rekaman audio** t
 | 18 | `crseag1` | *Spilornis cheela* | Elang-ular bido / Crested Serpent Eagle | 35 | 15 |
 | 19 | `ashtai1` | *Orthotomus ruficeps* | Cinenen kelabu / Ashy Tailorbird | 30 | 15 |
 | 20 | `colkin1` | *Todiramphus chloris* | Cekakak sungai / Collared Kingfisher | 40 | 14 |
-| **Total** | **20 Spesies** | | | **1.217 Klip** | **111 Author Unik** |
+| **Total** | **20 Spesies** | | | **1.216 Klip** | **112 Author Unik** |
 
 #### Distribusi Partisi Dataset Split (`data/manifests/dataset_split.csv`):
-* **Galeri (*Gallery Set*):** 674 rekaman (60 perekam independen).
-* **Kueri Bersih (*Query Clean*):** 310 rekaman (26 perekam independen).
-* **Subset Kalibrasi (*Calibration*):** 233 rekaman (25 perekam independen).
+* **Galeri (*Gallery Set*):** 673 rekaman (59 perekam independen).
+* **Kueri Bersih (*Query Clean*):** 311 rekaman (27 perekam independen / 28 setelah nama gabungan dipecah).
+* **Subset Kalibrasi (*Calibration*):** 232 rekaman (25 perekam independen).
 * **Integritas Bebas Bocor:** **Strict Global Author-Disjoint** (0 perekam beririsan antar Galeri, Kueri, dan Kalibrasi; 0 tumpang tindih ID rekaman maupun file path).
 
 #### Subset Negatif Open-Set (`data/manifests/unknown_open_set_manifest.csv`):
