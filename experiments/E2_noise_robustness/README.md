@@ -9,7 +9,7 @@ Menguji ketahanan (*robustness*) representasi audio ketika kueri bersih mengalam
 * Seluruh berkas telah diverifikasi bebas dari 20 spesies burung target dan diindeks dengan checksum SHA-256 pada [`data/manifests/itera_noise_manifest.csv`](../../data/manifests/itera_noise_manifest.csv).
 
 ## 3. Skema Pengujian Terpasang (*Paired Noise Mixing*)
-* 200 kueri bersih yang sama dari E1 dipasangkan secara deterministik (`seed=42`) dengan segmen derau AudioMoth.
+* 311 kueri bersih yang sama dari E1 dipasangkan secara deterministik (`seed=42`) dengan segmen derau AudioMoth.
 * Formula pencampuran berbasis daya sinyal eksak:
   $$x_{\text{noisy}} = x_{\text{clean}} + \alpha \cdot n_{\text{noise}}, \quad \alpha = \sqrt{\frac{P_{\text{signal}}}{P_{\text{noise}} \cdot 10^{\text{SNR}/10}}}$$
 
@@ -17,15 +17,15 @@ Menguji ketahanan (*robustness*) representasi audio ketika kueri bersih mengalam
 
 | Representasi | Clean | SNR 20 dB | SNR 10 dB | SNR 0 dB | SNR -5 dB | Retensi (-5 dB) |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **$R_2$ (BirdNET Backbone)** | **0.9126** | **0.9068** | **0.8858** | **0.8317** | **0.7707** | **84.45%** (CI: 80.6% – 88.3%) |
-| **$R_1$ (PANNs CNN14)** | 0.4152 | 0.4533 | 0.3700 | 0.1290 | **0.0590** | **14.22%** (CI: 10.1% – 18.6%) |
-| **$R_0$ (MFCC Baseline)** | 0.1319 | 0.1320 | 0.1022 | 0.0587 | **0.0349** | **26.42%** (CI: 20.8% – 33.4%) |
-| **$R_3$ (Random Control)** | 0.0190 | 0.0158 | 0.0148 | 0.0142 | 0.0165 | - |
+| **$R_2$ (BirdNET Backbone)** | **0.6370** | **0.6420** | **0.6213** | **0.5679** | **0.4968** | **77.99%** (CI: 74.0% – 82.1%) |
+| **$R_1$ (PANNs CNN14)** | 0.1771 | 0.1964 | 0.1857 | 0.1326 | **0.0979** | **55.27%** (CI: 46.5% – 64.0%) |
+| **$R_0$ (MFCC Baseline)** | 0.0690 | 0.0774 | 0.0643 | 0.0369 | **0.0248** | **35.89%** (CI: 27.5% – 44.0%) |
+| **$R_3$ (Random Control)** | 0.0231 | 0.0189 | 0.0241 | 0.0213 | 0.0230 | 99.44% (Tebakan Acak) |
 
 ### Catatan Saintifik:
-1. **Keunggulan Bioakustik Spesifik ($R_2$):** $R_2$ mempertahankan retensi tertinggi (84.45%), jauh melampaui seluruh baseline.
-2. **Koreksi Hipotesis H1 ($R_1$ vs $R_0$):** Pada kondisi derau ekstrem (SNR -5 dB), retensi relatif PANNs ($R_1$, 14.22%) justru **kalah signifikan** dari baseline klasik MFCC ($R_0$, 26.42%) dengan selisih $+0.1223$ ($p < 0.001$, CI 95% $[+0.0581, +0.1994]$). Ini menunjukkan bahwa fitur konvolusi generic audio rentan terhadap distorsi derau lingkungan pada rasio sinyal-ke-derau negatif.
-3. **Pengamatan Empiris SNR +20 dB:** Kenaikan performa $R_1$ pada SNR +20 dB (0.4533 vs 0.4152 Clean) dicatat sebagai pengamatan empiris yang belum terjelaskan secara definitif (*unexplained empirical observation*).
+1. **Keunggulan Bioakustik Spesifik ($R_2$):** $R_2$ mempertahankan retensi tertinggi (77.99% / mAP 0.4968), jauh melampaui seluruh baseline.
+2. **Validasi Hipotesis H1 ($R_2 > R_1 > R_0$):** Pada kondisi derau ekstrem (SNR -5 dB), retensi $R_2$ unggul mutlak atas $R_1$ ($\Delta = +0.2244$, $p \le 0.001$), dan retensi $R_1$ (55.27%) unggul atas $R_0$ (35.89%, $\Delta = +0.1946$, $p = 0.0050$).
+3. **Pengamatan Empiris SNR +20 dB:** Kenaikan performa pada derau ringan (SNR +20 dB) teramati akibat efek penghalusan spektral derau latar berdaya sangat rendah.
 
 ## 5. Artefak Terkait
 * Tabel Data: [`paper/tables/snr_robustness_table.csv`](../../paper/tables/snr_robustness_table.csv)

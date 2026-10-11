@@ -49,7 +49,7 @@ def main():
         ("Cosine Similarity Math Properties (Range & Symmetry)", test_cosine_similarity_properties),
         ("SNR Mixing Math Precision (Energy Scaling)", test_snr_mixing_accuracy),
         ("Deterministic Mixing Reproducibility (Fixed Seed)", test_snr_mixing_reproducibility),
-        ("Frozen Threshold tau Invariance", test_threshold_frozen_evaluation),
+        ("Frozen Threshold tau Validation", test_threshold_frozen_evaluation),
         ("Model Latent Embedding Dimensions (C-01)", test_model_embedding_dimensions),
         ("Manuscript Table Consistency: Clean E1", test_clean_retrieval_consistency),
         ("Manuscript Table Consistency: SNR Robustness E2", test_snr_robustness_consistency),

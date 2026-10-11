@@ -26,7 +26,7 @@ Dokumen ini merangkum fungsi, parameter, pustaka (library), dan hasil dari selur
 - **Output:** Nilai `Frozen Tau` ($\tau$) untuk tiap model, serta tabel `threshold_transfer_table.csv`.
 
 ## 5. E4: Noise Profile Sensitivity (Sensitivitas Profil Spektral Derau Lintas Habitat)
-- **Fungsi:** Menguji kepekaan representasi audio terhadap perbedaan spektral derau latar nyata dari 3 profil habitat kampus ITERA (Kebun Raya / biophony serangga, Embung F / resonansi air dan angin, Gedung F / koridor antropogenik-struktural). Menguji apakah representasi tetap invarian atau mengalami distorsi ketika karakter spektral derau berubah pada SNR yang setara.
+- **Fungsi:** Menguji kepekaan representasi audio terhadap perbedaan spektral derau latar nyata dari 3 profil habitat kampus ITERA (Kebun Raya / biophony serangga, Embung F / resonansi air dan angin, Gedung F / koridor antropogenik-struktural). Menguji apakah representasi tetap stabil atau mengalami distorsi ketika karakter spektral derau berubah pada SNR yang setara.
 - **Library:** `librosa`, `numpy`, `pandas`, `matplotlib`.
 - **Output:** `e4_domain_shift_table.csv` dan visualisasi grafik `e4_noise_profile_sensitivity.png`.
 

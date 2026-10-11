@@ -63,7 +63,7 @@ Berikut adalah arsitektur sistem tugas akhir Anda (Diagram ini bisa Anda jadikan
           +--------------+--------------+
           |                             |
           v                             v
-[ Ranking Top-k & mAP@10 ]    [ Ambang Batas tau* (R2: 0.7128) ]
+[ Ranking Top-k & mAP@10 ]    [ Ambang Batas tau* (R2: 0.7071) ]
                               /                                \
                     Skor >= tau*                              Skor < tau*
                          |                                         |
@@ -98,7 +98,7 @@ Penelitian bioakustik konvensional biasanya melatih model *Machine Learning* (se
 ### Kebaruan Skripsi Anda (Novelty)
 1. **Pendekatan Degradasi Terkontrol (Paired Noise Degradation - E2):** Anda menyuntikkan derau asli dari kampus ITERA pada berbagai tingkatan yang dikontrol secara matematis (SNR -5 dB hingga +20 dB). Ini membuktikan batas kritis (*breaking point*) AI pengenal suara burung terhadap bising lingkungan tropis.
 2. **Evaluasi Zero-Shot Retrieval:** Alih-alih melakukan klasifikasi kaku, Anda menggunakan pendekatan *Retrieval* (sistem pencarian kemiripan). Sistem ini fleksibel: jika ada burung baru, cukup tambahkan suaranya ke Galeri tanpa perlu melatih ulang model AI.
-3. **Open-Set Rejection (Kalibrasi $\tau^*$ - E3):** Sistem memiliki kemampuan menolak (*reject*) sinyal non-burung menggunakan ambang batas beku ($\tau^*_{R_2} = 0.7128$) via Youden's J pada partisi kalibrasi terpisah. Uji lintas SNR membuktikan pergeseran titik operasi (H4): BirdNET mempertahankan penolakan konservatif aman (FPR 9.5%), sementara PANNs mengalami inflasi FPR hingga 81.5%.
-4. **Uji Sensitivitas Profil Spektral Derau Latar (E4):** Menguji representasi terhadap perbedaan spektral derau dari 3 profil habitat kampus ITERA (Kebun Raya, Embung F, Gedung F), membuktikan bahwa BirdNET mempertahankan performa stabil ($p = 0.6100$), sedangkan model generic audio PANNs sangat rentan terhadap jenis derau ($p < 0.001$). Batasan sensitivitas profil spektral didokumentasikan secara transparan.
-5. **Uji Signifikansi Inferensial (Bootstrap Resampling):** Keunggulan model bioakustik BirdNET atas model generik dibuktikan secara inferensial melalui 1.000 iterasi bootstrap ($p < 0.001$, 95% CI $[+0.4504, +0.5473]$), keunggulan retensi MFCC atas PANNs pada SNR -5 dB ($p < 0.001$), serta invariansi profil derau BirdNET ($p = 0.6100$).
+3. **Open-Set Rejection (Kalibrasi $\tau^*$ - E3):** Sistem memiliki kemampuan menolak (*reject*) sinyal non-burung menggunakan ambang batas beku ($\tau^*_{R_2} = 0.7071$) via Youden's J pada partisi kalibrasi terpisah ($N=465$). Uji lintas SNR membuktikan pergeseran titik operasi (H4): BirdNET mempertahankan penolakan konservatif aman (FPR turun dari 20.00% ke 9.35%), sementara PANNs mempertahankan FPR tinggi (47.42% ke 27.10%).
+4. **Uji Sensitivitas Profil Spektral Derau Latar (E4):** Menguji representasi terhadap perbedaan spektral derau dari 3 profil habitat kampus ITERA (Kebun Raya, Embung F, Gedung F), membuktikan bahwa BirdNET dipengaruhi biofoni serangga Kebun Raya ($p = 0.0040$), namun rentang ayunan retensinya (6.39%) jauh lebih stabil dibanding keruntuhan model generic audio PANNs (21.98%, disparitas ayunan $\Delta_{\text{obs}} = 0.1560$, $p \le 0.001$).
+5. **Uji Signifikansi Inferensial (Bootstrap Resampling):** Keunggulan model bioakustik BirdNET atas model generik dibuktikan secara inferensial melalui 1.000 iterasi bootstrap ($p \le 0.001$, 95% CI $[+0.4260, +0.4986]$), keunggulan retensi BirdNET atas PANNs ($\Delta = +0.2244$, $p \le 0.001$), keunggulan retensi PANNs atas MFCC pada SNR -5 dB ($\Delta = +0.1946$, $p = 0.0050$), serta disparitas stabilitas habitat terkonfirmasi ($p \le 0.001$).
 

@@ -83,7 +83,7 @@ Tingkat degradasi derau aditif dibekukan pada 5 level:
 ---
 
 ## 5. Catatan Historis Ruang Lingkup
-* **Versi 4.0 (10 Oktober 2026):** Avifauna Kepulauan Indonesia (20 spesies, 1.217 rekaman terverifikasi dari Xeno-Canto, derau fisik ITERA 1.799 berkas). Hasil lama BirdCLEF diarsipkan di `results/archive/birdclef_2026/`.
+* **Versi 4.0 (10 Oktober 2026):** Avifauna Kepulauan Indonesia (20 spesies, 1.216 rekaman terverifikasi dari Xeno-Canto, derau fisik ITERA 1.799 berkas). Hasil lama BirdCLEF diarsipkan di `results/archive/birdclef_2026/`.
 * **Versi 3.0 (12 September 2026):** 20 taksa BirdCLEF Neotropis (dibatalkan per arahan pembimbing 10 Oktober 2026).
 * **Versi 2.0 (07 September 2026):** 16 taksa burung Sumatera lama (dibatalkan akibat kelangkaan data kueri independen dan kebocoran author).
 * **Versi 1.0 (Draf Awal):** 16 spesies kosmopolitan umum.

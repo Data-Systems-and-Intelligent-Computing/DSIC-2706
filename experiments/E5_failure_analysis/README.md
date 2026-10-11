@@ -13,15 +13,16 @@ Mengaudit dan mendiagnosis secara sistematis kasus-kasus di mana sistem retrieva
 
 | Kategori Taksonomi Kegagalan | Proporsi (%) | Jumlah Kasus | Sebaran Model & Kondisi | Karakteristik Bioakustik Utama |
 | :--- | :---: | :---: | :--- | :--- |
-| **1. Top-1 Confusion (Above Tau)** | **36.67%** | **11 kasus** | • $R_1$ Clean (2)<br>• $R_1$ SNR -5 dB (9) | Skor kemiripan melampaui $\tau^*$, namun sistem mencocokkan taksa galeri yang keliru akibat kedekatan manifold laten generik ($R_1$). |
-| **2. Open-Set False Rejection** | **36.67%** | **11 kasus** | • $R_2$ Clean (3)<br>• $R_2$ SNR -5 dB (8) | Top-1 kueri benar mencocokkan taksa target, namun skor kemiripan tertekan sedikit di bawah $\tau^*$ akibat atenuasi energi derau atau variasi vokal. |
-| **3. Total Retrieval Collapse** | **26.67%** | **8 kasus** | • $R_2$ Clean (2)<br>• $R_1$ Clean (3)<br>• $R_2$ SNR -5 dB (2)<br>• $R_1$ SNR -5 dB (1) | Kegagalan ganda di mana skor kemiripan anjlok di bawah ambang batas $\tau^*$ DAN Top-1 memprediksi taksa yang keliru. |
+| **1. Open-Set False Rejection** | **33.33%** | **10 kasus** | • $R_2$ Clean (3)<br>• $R_2$ SNR -5 dB (7) | Top-1 kueri benar mencocokkan taksa target, namun skor kemiripan tertekan sedikit di bawah $\tau^*$ akibat atenuasi energi derau atau variasi vokal. |
+| **2. Top-1 Confusion (Above Tau)** | **30.00%** | **9 kasus** | • $R_1$ Clean (2)<br>• $R_1$ SNR -5 dB (7) | Skor kemiripan melampaui $\tau^*$, namun sistem mencocokkan taksa galeri yang keliru akibat kedekatan manifold laten generik ($R_1$). |
+| **3. Total Retrieval Collapse** | **36.67%** | **11 kasus** | • $R_2$ Clean (2)<br>• $R_1$ Clean (3)<br>• $R_2$ SNR -5 dB (3)<br>• $R_1$ SNR -5 dB (3) | Kegagalan ganda di mana skor kemiripan anjlok di bawah ambang batas $\tau^*$ DAN Top-1 memprediksi taksa yang keliru. |
 
 ## 4. Evaluasi Statistik Inferensial (Paired Bootstrap 1.000 Iterasi)
-* Paired Bootstrap Resampling 1.000 iterasi pada 200 kueri evaluasi (`seed=42`) via [`src/bootstrap_inference.py`](../../src/bootstrap_inference.py):
-  * **$R_2$ vs $R_1$ (Clean mAP@10):** Rata-rata $\Delta = \mathbf{+0.4981}$, CI 95% **$[+0.4504, +0.5473]$**, **$p < 0.001$** (Signifikan).
-  * **Retensi SNR -5 dB ($R_0$ vs $R_1$):** Rata-rata $\Delta = \mathbf{+0.1223}$, CI 95% **$[+0.0581, +0.1994]$**, **$p < 0.001$** (Retensi MFCC mengungguli PANNs secara signifikan).
-  * **Sensitivitas Derau E4 vs E2 ($R_2$):** Rata-rata $\Delta = \mathbf{-0.0097}$, CI 95% **$[-0.0479, +0.0275]$**, **$p = 0.6100$** (Invarian profil derau).
+* Paired Bootstrap Resampling 1.000 iterasi pada 311 kueri evaluasi (`seed=42`) via [`src/bootstrap_inference.py`](../../src/bootstrap_inference.py):
+  * **$R_2$ vs $R_1$ (Clean mAP@10):** Rata-rata $\Delta = \mathbf{+0.4609}$, CI 95% **$[+0.4260, +0.4986]$**, **$p \le 0.001$** (Signifikan).
+  * **Retensi SNR -5 dB ($R_2$ vs $R_1$):** Rata-rata $\Delta = \mathbf{+0.2244}$, CI 95% **$[+0.1182, +0.3217]$**, **$p \le 0.001$** (Retensi BirdNET mengungguli PANNs secara signifikan).
+  * **Retensi SNR -5 dB ($R_1$ vs $R_0$):** Rata-rata $\Delta = \mathbf{+0.1946}$, CI 95% **$[+0.0570, +0.3294]$**, **$p = 0.0050$** (Retensi PANNs mengungguli MFCC).
+  * **Sensitivitas Habitat E4:** Embung F vs Kebun Raya ($p = 0.0040$), dan disparitas ayunan habitat $R_1$ vs $R_2$ ($\Delta_{\text{obs}} = 0.1560$, bootstrap $+0.1692$, $p \le 0.001$).
 
 ## 5. Artefak Terkait
 * Tabel Kasus: [`paper/tables/failure_analysis_table.csv`](../../paper/tables/failure_analysis_table.csv)
