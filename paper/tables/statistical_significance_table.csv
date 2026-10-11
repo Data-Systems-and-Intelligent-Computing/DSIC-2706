@@ -2,6 +2,9 @@ Pengujian,Komparasi,Mean_Diff,CI_95_Lower,CI_95_Upper,p_value,Signifikan_0.05,Ca
 Clean Retrieval (mAP@10),R2 (BirdNET) vs R1 (PANNs),0.4595,0.4246,0.494,< 0.001,True,R2 unggul mutlak atas model generik audio
 Clean Retrieval (mAP@10),R2 (BirdNET) vs R0 (MFCC),0.5668,0.5289,0.6039,< 0.001,True,R2 unggul mutlak atas baseline klasik
 Clean Retrieval (mAP@10),R1 (PANNs) vs R0 (MFCC),0.1074,0.0834,0.1304,< 0.001,True,R1 unggul atas MFCC pada kondisi bersih
+Clean Retrieval (mAP@10),R2 (BirdNET) vs R3 (Random),0.6124,0.5760,0.6504,< 0.001,True,H5 Terpenuhi: R2 unggul mutlak atas kontrol acak
+Clean Retrieval (mAP@10),R1 (PANNs) vs R3 (Random),0.1531,0.1300,0.1782,< 0.001,True,H5 Terpenuhi: R1 unggul atas kontrol acak
+Clean Retrieval (mAP@10),R0 (MFCC) vs R3 (Random),0.0460,0.0349,0.0583,< 0.001,True,H5 Terpenuhi: R0 unggul atas kontrol acak
 Retensi Relatif SNR -5 dB,R2 (BirdNET) vs R1 (PANNs),0.2214,0.119,0.3156,< 0.001,True,Retensi R2 (78.0%) unggul signifikan atas R1 (55.9%)
 Retensi Relatif SNR -5 dB,R1 (PANNs) vs R0 (MFCC),0.1987,0.0598,0.3321,0.0060,True,Retensi R1 (55.9%) unggul signifikan atas MFCC (36.0%)
 Retensi Relatif SNR -5 dB,R2 (BirdNET) vs R0 (MFCC),0.4201,0.299,0.5202,< 0.001,True,Retensi R2 (78.0%) unggul mutlak atas MFCC (36.0%)
@@ -9,5 +12,6 @@ Sensitivitas Habitat E4 (-5 dB),R2 (Embung F vs Kebun Raya),0.04,0.0134,0.0667,0
 Sensitivitas Habitat E4 (-5 dB),R2 (Gedung F vs Kebun Raya),0.022,-0.0029,0.0456,0.0700,False,Gedung F (antropogenik) mempertahankan skor lebih tinggi dari biofoni Kebun Raya
 Sensitivitas Habitat E4 (-5 dB),R1 (Embung F vs Kebun Raya),0.0361,0.019,0.0528,< 0.001,True,PANNs sangat sensitif: Embung F mempertahankan mAP@10 lebih baik dibanding Kebun Raya
 Sensitivitas Habitat E4 (-5 dB),R1 (Gedung F vs Kebun Raya),0.0393,0.0212,0.0585,< 0.001,True,PANNs lebih tahan terhadap derau struktural gedung dibanding biofoni serangga
+Fluktuasi Rentang Habitat (-5 dB),R1 vs R2 (Selisih Ayunan Retensi),0.1707,0.0743,0.2767,0.0010,True,H3 Terdukung Parsial: R1 (ayunan 22.2%) secara signifikan lebih rentan dibanding R2 (ayunan 6.4%)
 "Cluster Bootstrap (per Recordist, K=26)",R2 vs R1 Retensi Relatif (-5 dB),0.2273,0.1445,0.3306,< 0.001,True,Resampling klaster perekam tetap membuktikan keunggulan R2 atas R1 secara signifikan
 Sensitivitas Non-Mike Nelson (N=179),R2 vs R1 Retensi Relatif (-5 dB),0.2445,0.1153,0.3629,< 0.001,True,Menghilangkan perekam mayoritas (42%) tidak mengubah signifikansi keunggulan R2

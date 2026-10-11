@@ -92,7 +92,6 @@ XC660383,horbab1,Malacocincla sepiaria,Horsfield's Babbler,Panji Gusti Akbar,5.0
 XC669917,horbab1,Malacocincla sepiaria,Horsfield's Babbler,Jelle Scharringa,4.0,-6.291,105.8455,data/xeno_canto_indonesia/horbab1/XC669917.mp3,calibration
 XC943927,horbab1,Malacocincla sepiaria,Horsfield's Babbler,Kim Chuah Lim,4.0,-2.3268,101.5399,data/xeno_canto_indonesia/horbab1/XC943927.mp3,calibration
 XC1073400,latnig1,Caprimulgus macrurus,Large-tailed Nightjar,Panji Gusti Akbar,3.0,-8.1003,114.4357,data/xeno_canto_indonesia/latnig1/XC1073400.mp3,calibration
-XC1073401,latnig1,Caprimulgus macrurus,Large-tailed Nightjar,Panji Gusti Akbar,3.0,-8.1003,114.4357,data/xeno_canto_indonesia/latnig1/XC1073401.mp3,calibration
 XC377589,latnig1,Caprimulgus macrurus,Large-tailed Nightjar,Karyadi Baskoro,4.0,-7.0495,110.4412,data/xeno_canto_indonesia/latnig1/XC377589.mp3,calibration
 XC378237,latnig1,Caprimulgus macrurus,Large-tailed Nightjar,Karyadi Baskoro,3.0,-7.0611,110.4473,data/xeno_canto_indonesia/latnig1/XC378237.mp3,calibration
 XC38187,latnig1,Caprimulgus macrurus,Large-tailed Nightjar,Swiss Winnasis,4.0,-7.8317,114.4139,data/xeno_canto_indonesia/latnig1/XC38187.mp3,calibration
@@ -820,7 +819,7 @@ XC156491,savnig1,Caprimulgus affinis,Savanna Nightjar,Frank Lambert,4.0,-8.1646,
 XC176580,savnig1,Caprimulgus affinis,Savanna Nightjar,Stijn Cooleman,4.0,-8.3925,124.1055,data/xeno_canto_indonesia/savnig1/XC176580.mp3,gallery
 XC176586,savnig1,Caprimulgus affinis,Savanna Nightjar,Stijn Cooleman,3.0,-8.3925,124.1055,data/xeno_canto_indonesia/savnig1/XC176586.mp3,gallery
 XC40064,savnig1,Caprimulgus affinis,Savanna Nightjar,Patrik Åberg,5.0,-8.7014,115.1742,data/xeno_canto_indonesia/savnig1/XC40064.mp3,gallery
-XC42472,savnig1,Caprimulgus affinis,Savanna Nightjar,David Marques,5.0,-8.674,115.261,data/xeno_canto_indonesia/savnig1/XC42472.mp3,gallery
+XC42472,savnig1,Caprimulgus affinis,Savanna Nightjar,David Marques,5.0,-8.674,115.261,data/xeno_canto_indonesia/savnig1/XC42472.mp3,query_clean
 XC643733,savnig1,Caprimulgus affinis,Savanna Nightjar,George Sangster,4.0,-8.718,115.169,data/xeno_canto_indonesia/savnig1/XC643733.mp3,gallery
 XC643735,savnig1,Caprimulgus affinis,Savanna Nightjar,George Sangster,4.0,-9.771,120.563,data/xeno_canto_indonesia/savnig1/XC643735.mp3,gallery
 XC954966,savnig1,Caprimulgus affinis,Savanna Nightjar,Arjun Dutta,4.0,-8.6727,115.4696,data/xeno_canto_indonesia/savnig1/XC954966.mp3,gallery

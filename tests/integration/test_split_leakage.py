@@ -62,9 +62,21 @@ def test_zero_recordist_leakage_global():
         f"atau kosong pada {SPLIT_PATH.name}!"
     )
 
-    gallery_recs = set(df[df['split_role'] == 'gallery'][rec_col].dropna().unique())
-    query_recs = set(df[df['split_role'] == 'query_clean'][rec_col].dropna().unique())
-    calib_recs = set(df[df['split_role'] == 'calibration'][rec_col].dropna().unique())
+    import re
+
+    def _extract_individual_authors(series):
+        authors = set()
+        for raw in series.dropna():
+            parts = re.split(r'[,&/]| and ', str(raw))
+            for p in parts:
+                name = p.strip()
+                if name:
+                    authors.add(name)
+        return authors
+
+    gallery_recs = _extract_individual_authors(df[df['split_role'] == 'gallery'][rec_col])
+    query_recs = _extract_individual_authors(df[df['split_role'] == 'query_clean'][rec_col])
+    calib_recs = _extract_individual_authors(df[df['split_role'] == 'calibration'][rec_col])
     
     overlap_g_q = gallery_recs.intersection(query_recs)
     assert len(overlap_g_q) == 0, f"Ditemukan kebocoran author antara Gallery dan Query: {overlap_g_q}"

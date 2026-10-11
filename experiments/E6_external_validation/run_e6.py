@@ -1,6 +1,6 @@
 """
 E6: External Public Validation (Optional)
-- Evaluasi transfer representasi pada benchmark publik (ESC-50 / BirdSet / BirdCLEF).
+- Evaluasi transfer representasi pada benchmark publik eksternal (ESC-50 / BirdSet).
 - Bersifat opsional setelah E0-E5 selesai.
 """
 

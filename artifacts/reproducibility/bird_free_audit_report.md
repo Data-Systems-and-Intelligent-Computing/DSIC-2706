@@ -102,16 +102,16 @@ Audit akustik dan inferensi representasi beku BirdNET terhadap 8 berkas fisik di
 
 ---
 
-## 4. Keterbatasan Biofoni Latar Belakang pada Eksperimen E4 (Transisi Profil Habitat)
+## 4. Karakteristik Profil Akustik Habitat pada Eksperimen E4 (Habitat ITERA)
 
-Pada rezim historis BirdCLEF (diarsipkan di `results/archive/birdclef_2026/`), sinyal kueri dicampur dengan rekaman *train_soundscapes* BirdCLEF. Pada rezim aktif Avifauna Indonesia (DEC-13 & DEC-14), Eksperimen E4 dievaluasi pada 3 profil spektral habitat kampus ITERA (Kebun Raya ITERA, Embung F, dan Gedung Terpadu Labtek F) menggunakan bank derau fisik AudioMoth ITERA (1.799 berkas). Batasan metodologis yang dicatat adalah:
+Pada implementasi aktif Avifauna Indonesia (DEC-13 & DEC-14), Eksperimen E4 dievaluasi pada 3 profil spektral habitat kampus ITERA (Kebun Raya ITERA, Embung F, dan Gedung Terpadu Labtek F) menggunakan bank derau fisik AudioMoth ITERA (1.799 berkas). Batasan metodologis yang dicatat adalah:
 
 1. **Keberadaan Biofoni Latar Belakang Alami:**  
-   Pada rekaman habitat alami berkelanjutan, rekaman secara inheren mengandung vokalisasi burung latar belakang alami (*background chorus*) dan suara serangga tropis.
-2. **Sifat Eksperimen Aditif Sintetis:**  
-   Proses pencampuran pada E4 dilakukan secara aditif berbasis SNR terkontrol (alpha * s + beta * n), identik dengan formulasi matematis pada E2. Eksperimen ini belum merepresentasikan pergeseran domain propagasi fisik nyata (seperti atenuasi jarak rambat, pantulan geometri kanopi/reverberasi, atau multipath dispersion).
+   Pada rekaman habitat alami berkelanjutan, rekaman secara inheren mengandung vokalisasi latar belakang alami (*background chorus*) dan suara serangga tropis.
+2. **Sifat Eksperimen Aditif Fisik Terkontrol:**  
+   Proses pencampuran pada E4 dilakukan secara aditif berbasis SNR terkontrol, identik dengan formulasi matematis pada E2. Eksperimen ini menguji ketahanan spektral namun belum memodelkan pergeseran domain propagasi fisik jarak jauh (seperti atenuasi kanopi atau reverberasi).
 3. **Status Hipotesis H3:**  
-   Oleh karena keterbatasan ini dan belum teranotasinya soundscape lapangan ITERA secara ground-truth bounding box, pengujian domain shift in-situ nyata **DITANGGUHKAN (Deferred)** dan secara jujur diberi status **"Tidak Diuji"** dalam naskah skripsi dan tabel ringkasan hipotesis.
+   Oleh karena keterbatasan ini dan belum teranotasinya soundscape lapangan ITERA secara ground-truth bounding box, pengujian domain shift in-situ rekaman liar kontinu **DITANGGUHKAN (Deferred)** dan secara jujur diberi status **"Sebagian / Ditangguhkan"** dalam naskah skripsi dan tabel ringkasan hipotesis.
 
 ---
 

@@ -16,8 +16,15 @@ import os
 import sys
 import yaml
 import numpy as np
-import soundfile as sf
-import librosa
+try:
+    import soundfile as sf
+except ImportError:
+    sf = None
+
+try:
+    import librosa
+except ImportError:
+    librosa = None
 
 CONFIG_PATH = str(PROJECT_ROOT / "configs/audio.yaml")
 

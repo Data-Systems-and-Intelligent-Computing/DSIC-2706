@@ -29,7 +29,8 @@ representations:
   R2_bioacoustic:
     name: "BirdNET_GlobalBirdsong"
     type: "deep_bioacoustic"
-    checkpoint: "BirdNET_GLOBAL_6K_V2.4_Model_FP32.tflite"
+    checkpoint: "BirdNET_GLOBAL_6K_V2.4_Model_FP32.onnx"
+    architecture: "ResNet-backbone"
     sample_rate: 48000          # Resampled automatically to 48kHz for BirdNET inference
     embedding_dim: 1024         # Intermediate feature vector (bukan output softmax probabilitas spesies)
     frozen: true
@@ -39,4 +40,5 @@ representations:
   R3_random:
     name: "Random_Ranking"
     type: "control"
+    embedding_dim: 40
     metric: "random"

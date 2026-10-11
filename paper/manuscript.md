@@ -72,7 +72,7 @@ Hasil evaluasi 310 kueri bersih terhadap 674 galeri tersaji pada `paper/tables/c
 | **$R_3$** | **Random Control** | 40-d | 6.77% | 0.0232 | 0.1815 | 0.0603 | 0.0163 |
 
 *Pembahasan Saintifik RQ1 & Evaluasi Hipotesis H5:*
-Representasi bioakustik spesifik ($R_2$ BirdNET V2.4) unggul mutlak atas model generik audio ($R_1$ PANNs) dengan selisih mAP@10 sebesar **+0.4595** (95% CI $[+0.4246, +0.4940]$, $p < 0.001$) dan akurasi Top-1 mencapai **81.61%** (vs 37.74% pada PANNs). Keunggulan ini mengonfirmasi **Hipotesis H5**: arsitektur yang dipra-latih khusus pada vokal burung mampu memetakan variasi individu antar-perekam (*author-disjoint*) ke klaster biologis yang kohesif, sedangkan model audio umum AudioSet gagal menangkap fitur spektro-temporal mikro kicauan burung tropis.
+Representasi bioakustik spesifik ($R_2$ BirdNET V2.4) unggul mutlak atas model generik audio ($R_1$ PANNs) dengan selisih mAP@10 sebesar **+0.4595** (95% CI $[+0.4246, +0.4940]$, $p < 0.001$) dan akurasi Top-1 mencapai **81.61%** (vs 37.74% pada PANNs). Keunggulan ini mengonfirmasi **Hipotesis H5**: arsitektur yang dipra-latih khusus pada vokal burung mampu memetakan variasi individu antar-perekam (*author-disjoint*) ke klaster biologis yang kohesif, sedangkan model audio umum AudioSet gagal menangkap fitur spektro-temporal mikro kicauan burung tropis. Selain itu, evaluasi kontrol positif paired bootstrap membuktikan bahwa seluruh representasi terlatih berada jauh di atas ekspektasi tebakan acak ($R_3$) secara sangat signifikan ($p < 0.001$): BirdNET $R_2$ vs $R_3$ memiliki Mean Difference sebesar **+0.6124** (95% CI $[+0.5760, +0.6504]$), PANNs $R_1$ vs $R_3$ sebesar **+0.1531** (95% CI $[+0.1300, +0.1782]$), dan baseline MFCC $R_0$ vs $R_3$ sebesar **+0.0460** (95% CI $[+0.0349, +0.0583]$).
 
 ---
 
@@ -145,7 +145,7 @@ Eksperimen E4 membandingkan ketahanan representasi ketika kueri disuntik derau a
 
 *Pembahasan Saintifik RQ4 & Status Hipotesis H3:*
 1. **Dampak Tumpang Tindih Spektral Biofoni Kebun Raya:** Pada BirdNET ($R_2$), degradasi terdalam terjadi di habitat **Kebun Raya (retensi 69.73%, mAP = 0.4434)**, terpaut signifikan dibanding Embung F (retensi 76.15%, Mean Diff +0.0400, $p = 0.0040$). Biofoni serangga tropis (jangkrik, tonggeret) memiliki konsentrasi energi pada pita frekuensi 2.000–6.000 Hz yang bertumpuk langsung dengan formant vokal utama burung target (*spectral overlap*), mendistorsi representasi laten lebih parah dibanding derau angin atau mesin.
-2. **Sensitivitas Ekstrem Model Generik PANNs ($R_1$):** PANNs mengalami keruntuhan hingga retensi **33.38%** di Kebun Raya (vs 53.69% di Embung F, Mean Diff +0.0361, $p < 0.001$), menegaskan bahwa fitur konvolusional umum sangat rentan terhadap gangguan biofoni frekuensi tinggi.
+2. **Sensitivitas Ekstrem Model Generik PANNs ($R_1$) & Uji Komparasi Stabilitas Rentang Habitat (Hipotesis H3):** PANNs mengalami keruntuhan hingga retensi **33.38%** di Kebun Raya (vs 53.69% di Embung F dan 55.55% di Gedung F, Mean Diff +0.0361 s.d. +0.0393, keduanya $p < 0.001$), menegaskan bahwa fitur konvolusional umum sangat rentan terhadap gangguan biofoni frekuensi tinggi. Fluktuasi rentang ayunan retensi lintas habitat pada PANNs mencapai 22.17% (55.55% - 33.38%), sedangkan ayunan retensi pada BirdNET hanya 6.42% (76.15% - 69.73%). Pengujian bootstrap komparasi rentang ayunan retensi ($R_1$ vs $R_2$) menghasilkan disparitas signifikan sebesar **+0.1707** (95% CI $[+0.0743, +0.2767]$, $p = 0.0010$). Hal ini memberikan bukti inferensial langsung yang **Mendukung Sebagian Hipotesis H3**: representasi bioakustik spesifik ($R_2$) secara signifikan lebih stabil dan tidak fluktuatif terhadap variasi spektral mikro-habitat dibanding model audio generik.
 3. **Integritas Metodologis Hipotesis H3 (Reframed / Deferred):** Sesuai arahan pembimbing (**Pak Ardika Satria**), evaluasi *real in-situ soundscape domain shift* tanpa kontrol aditif dinyatakan **Belum Diuji / Ditangguhkan (Deferred - H3)** karena rekaman bentang alam ITERA belum dilengkapi anotasi kotak batas (*bounding-box ground truth*). Landasan penangguhan ini didukung kuat oleh temuan metodologi bioakustik tropis terkini (*Zabidi et al., 2026c; Stowell, 2022*), yang membuktikan bahwa okupansi vokal burung pada rekaman bentang alam kontinu umumnya di bawah 10%, sementara >90% durasi audio didominasi derau non-target. Tanpa anotasi temporal terverifikasi, evaluasi temu kembali mentah rentan terdistorsi oleh *silent windows* dan tumpang-tindih multi-spesies. Oleh karena itu, pendekatan *Paired In-Situ Evaluation* berbasis injeksi derau fisik ITERA terkontrol (E2 dan E4) menjadi metodologi evaluasi ketahanan paling valid dan terukur secara komputasi.
 
 ---
@@ -160,6 +160,9 @@ Tercatat pada `paper/tables/statistical_significance_table.csv`:
 | **Clean Retrieval (mAP@10)** | $R_2$ (BirdNET) vs $R_1$ (PANNs) | **+0.4595** | **[+0.4246, +0.4940]** | **$p < 0.001$** | Ya | H5 Terpenuhi Mutlak: BirdNET unggul atas PANNs |
 | **Clean Retrieval (mAP@10)** | $R_2$ (BirdNET) vs $R_0$ (MFCC) | **+0.5668** | **[+0.5289, +0.6039]** | **$p < 0.001$** | Ya | $R_2$ melampaui baseline klasik MFCC |
 | **Clean Retrieval (mAP@10)** | $R_1$ (PANNs) vs $R_0$ (MFCC) | **+0.1074** | **[+0.0834, +0.1304]** | **$p < 0.001$** | Ya | $R_1$ unggul atas MFCC pada kondisi bersih |
+| **Clean Retrieval (mAP@10)** | $R_2$ (BirdNET) vs $R_3$ (Random) | **+0.6124** | **[+0.5760, +0.6504]** | **$p < 0.001$** | Ya | H5 Terpenuhi: $R_2$ unggul mutlak atas kontrol acak |
+| **Clean Retrieval (mAP@10)** | $R_1$ (PANNs) vs $R_3$ (Random) | **+0.1531** | **[+0.1300, +0.1782]** | **$p < 0.001$** | Ya | H5 Terpenuhi: $R_1$ unggul atas kontrol acak |
+| **Clean Retrieval (mAP@10)** | $R_0$ (MFCC) vs $R_3$ (Random) | **+0.0460** | **[+0.0349, +0.0583]** | **$p < 0.001$** | Ya | H5 Terpenuhi: $R_0$ unggul atas kontrol acak |
 | **Retensi Relatif SNR -5 dB** | $R_2$ (BirdNET) vs $R_1$ (PANNs) | **+0.2214** | **[+0.1190, +0.3156]** | **$p < 0.001$** | Ya | H1 Terpenuhi: Retensi $R_2$ (78.0%) unggul atas $R_1$ (55.5%) |
 | **Retensi Relatif SNR -5 dB** | $R_1$ (PANNs) vs $R_0$ (MFCC) | **+0.1987** | **[+0.0598, +0.3321]** | **$p = 0.0060$** | Ya | Retensi $R_1$ (55.5%) unggul atas MFCC (35.7%) |
 | **Retensi Relatif SNR -5 dB** | $R_2$ (BirdNET) vs $R_0$ (MFCC) | **+0.4201** | **[+0.2990, +0.5202]** | **$p < 0.001$** | Ya | Retensi $R_2$ unggul mutlak atas MFCC baseline |
@@ -167,6 +170,7 @@ Tercatat pada `paper/tables/statistical_significance_table.csv`:
 | **Sensitivitas Habitat E4 (-5 dB)** | $R_2$ (Gedung F vs Kebun Raya) | **+0.0220** | **[-0.0029, +0.0456]** | **$p = 0.0700$** | Tidak | Derau struktural gedung berdampak serupa dengan biofoni |
 | **Sensitivitas Habitat E4 (-5 dB)** | $R_1$ (Embung F vs Kebun Raya) | **+0.0361** | **[+0.0190, +0.0528]** | **$p < 0.001$** | Ya | PANNs sangat rentan terhadap biofoni Kebun Raya |
 | **Sensitivitas Habitat E4 (-5 dB)** | $R_1$ (Gedung F vs Kebun Raya) | **+0.0393** | **[+0.0212, +0.0585]** | **$p < 0.001$** | Ya | PANNs lebih tahan derau gedung dibanding biofoni serangga |
+| **Fluktuasi Rentang Habitat (-5 dB)** | $R_1$ vs $R_2$ (Selisih Ayunan Retensi) | **+0.1707** | **[+0.0743, +0.2767]** | **$p = 0.0010$** | Ya | H3 Terdukung Parsial: $R_1$ (ayunan 22.2%) secara signifikan lebih rentan dibanding $R_2$ (ayunan 6.4%) |
 | **Cluster Bootstrap (per Recordist, K=26)** | $R_2$ vs $R_1$ Retensi Relatif (-5 dB) | **+0.2273** | **[+0.1445, +0.3306]** | **$p < 0.001$** | Ya | Resampling klaster perekam membuktikan keunggulan $R_2$ bebas bias |
 | **Sensitivitas Non-Mike Nelson (N=179)** | $R_2$ vs $R_1$ Retensi Relatif (-5 dB) | **+0.2445** | **[+0.1153, +0.3629]** | **$p < 0.001$** | Ya | Keunggulan $R_2$ tetap signifikan tanpa perekam dominan (42%) |
 
@@ -174,24 +178,33 @@ Tercatat pada `paper/tables/statistical_significance_table.csv`:
 Tercatat pada `paper/tables/failure_analysis_table.csv` ($N=30$ kasus terstratifikasi acak dari 17 taksa burung Indonesia: 10 kasus Clean dan 20 kasus SNR -5 dB):
 1. **Divergensi Moda Kegagalan per Model:**
    * **Open-Set False Rejection (10 kasus, 33.3%):** Terjadi 100% pada $R_2$ BirdNET (4 pada kondisi Clean, 6 pada SNR -5 dB). Model berhasil menempatkan takson yang benar pada peringkat Top-1, namun skor kosinus tertekan di bawah ambang batas beku $\tau^* = 0.7071$ (margin negatif -0.0044 s.d. -0.0729).
-   * **Top-1 Confusion Above Tau (10 kasus, 33.3%):** Didominasi oleh $R_1$ PANNs (9 dari 10 kasus). Model menghasilkan skor kemiripan semu di atas ambang batas $\tau^* = 0.8974$ namun keliru mencocokkan takson galeri non-target akibat pergeseran representasi laten (*latent representation confusion*).
-   * **Total Retrieval Collapse (10 kasus, 33.3%):** Terjadi pada 6 kasus $R_1$ dan 4 kasus $R_2$ di bawah derau ekstrem, di mana skor jatuh di bawah $\tau^*$ DAN kandidat Top-1 salah spesies.
+   * **Top-1 Confusion Above Tau (9 kasus, 30.0%):** Didominasi oleh $R_1$ PANNs (8 dari 9 kasus, serta 1 kasus $R_2$ kueri bersih). Model menghasilkan skor kemiripan semu di atas ambang batas $\tau^*$ namun keliru mencocokkan takson galeri non-target akibat pergeseran representasi laten (*latent representation confusion*).
+   * **Total Retrieval Collapse (11 kasus, 36.7%):** Terjadi pada 7 kasus $R_1$ (1 Clean + 6 SNR -5 dB) dan 4 kasus $R_2$ (4 SNR -5 dB) di bawah derau ekstrem, di mana skor jatuh di bawah $\tau^*$ DAN kandidat Top-1 salah spesies.
 2. **Taksonomi Penyebab Akustik Terukur:**
-   * *Latent Representation Confusion (10 kasus):* Terjadi 90% pada PANNs akibat distorsi konvolusional umum.
-   * *Severe Noise Distortion (9 kasus):* Sinyal vokal tenggelam di bawah derau lingkungan pada rasio daya negatif.
+   * *Severe Noise Distortion (10 kasus):* Sinyal vokal tenggelam di bawah derau lingkungan pada rasio daya negatif.
+   * *Latent Representation Confusion (9 kasus):* Terjadi 89% pada PANNs akibat distorsi konvolusional fitur akustik umum.
    * *Low-SNR Signal Attenuation (6 kasus):* Terjadi 100% pada BirdNET akibat penekanan energi skor kemiripan kosinus.
    * *Similarity Margin Deficit (4 kasus):* Kueri bersih yang berada marjinal di bawah ambang batas beku.
    * *Acoustic Feature Overlap (1 kasus):* Kedekatan frekuensi formant dengan takson burung sepupu.
 
 ---
 
-## 4. Kesimpulan & Rekomendasi
+## 4. Kesimpulan, Rekomendasi & Ancaman terhadap Validitas
 
+### 4.1 Kesimpulan & Rekomendasi
 1. **Keunggulan Representasi Pra-latih Bioakustik:** $R_2$ (BirdNET V2.4) unggul mutlak pada kueri bersih avifauna kepulauan Indonesia (Top-1 81.61%, mAP@10 0.6358, MRR 0.8646) dan mempertahankan ketahanan derau tertinggi (retensi 78.04% pada SNR -5 dB, mAP = 0.4962), terbukti signifikan secara statistik melalui uji paired bootstrap 1.000 iterasi ($\Delta = +0.2214$, $p < 0.001$) dan cluster bootstrap per perekam ($\Delta = +0.2273$, $p < 0.001$).
 2. **Validasi Hipotesis H1 & H2:** Representasi terlatih bioakustik terbukti secara signifikan lebih tahan derau dibanding model audio generik dan baseline klasik konvensional, membuktikan Hipotesis H1. Degradasi performa berbanding terbalik secara monoton dengan penurunan SNR mulai dari +10 dB ke bawah, membuktikan Hipotesis H2.
 3. **Validasi Hipotesis H4 (Pergeseran Titik Operasi Open-Set):** Ambang batas $\tau^*$ beku menunjukkan bahwa pada derau ekstrem, BirdNET tidak mengalami ledakan alarm palsu (FPR menyusut ke 9.35% dari 20.00%), namun menderita penurunan Target Recall ke 23.87% akibat kompresi energi sinyal secara global. Sebaliknya, model generik PANNs memiliki FPR tinggi (47.42% pada kondisi bersih).
-4. **Sensitivitas Spektral Habitat & Status Hipotesis H3:** Biofoni serangga Kebun Raya terbukti paling destruktif bagi BirdNET (retensi 69.73% vs 76.15% di Embung F, selisih +0.0400, $p = 0.0040$) akibat tumpang tindih spektral pada pita 2–6 kHz. Evaluasi domain shift rekaman bentang alam in-situ dinyatakan **Ditangguhkan (Deferred - H3)** hingga tersedianya anotasi *bounding-box ground truth* pada rekaman ITERA, selaras dengan arahan pembimbing.
-5. **Rekomendasi Penerapan:** Sistem pemantauan bioakustik pasif di wilayah tropis wajib mengadopsi representasi berbasis bioakustik spesifik (BirdNET) disertai mekanisme adaptasi ambang batas berbasis estimasi tingkat derau lingkungan setempat.
+4. **Sensitivitas Spektral Habitat & Status Hipotesis H3:** Biofoni serangga Kebun Raya terbukti paling destruktif bagi BirdNET (retensi 69.73% vs 76.15% di Embung F, selisih +0.0400, $p = 0.0040$) akibat tumpang tindih spektral pada pita 2–6 kHz. Kendati demikian, stabilitas rentang ayunan retensi BirdNET (6.42%) terbukti signifikan lebih kokoh dibanding PANNs (22.17%, selisih ayunan +17.07%, $p = 0.0010$), mendukung H3 secara parsial. Evaluasi domain shift rekaman bentang alam in-situ tanpa kontrol aditif dinyatakan **Ditangguhkan (Deferred - H3)** hingga tersedianya anotasi *bounding-box ground truth* pada rekaman ITERA, selaras dengan arahan pembimbing.
+5. **Rekomendasi Penerapan:** Sistem pemantauan bioakustik pasif di wilayah tropis disarankan mengadopsi representasi berbasis bioakustik spesifik (BirdNET) disertai mekanisme adaptasi ambang batas berbasis estimasi tingkat derau lingkungan setempat.
+
+### 4.2 Ancaman terhadap Validitas (Threats to Validity)
+1. **Potensi Tumpang Tindih Data Pra-Latih (Pre-training Data Overlap - H1/H2):**  
+   Model BirdNET (V2.4) dilatih pada skala global menggunakan korpus audio Xeno-Canto. Kendati penelitian ini menegakkan partisi ketat bebas perekam (*strict recordist-disjoint split*) yang menjamin zero leakage pada level perekam lokal, terdapat kemungkinan rekaman spesies burung Indonesia di Xeno-Canto yang terekam sebelum tahun publikasi model pernah masuk dalam korpus pra-latih BirdNET. Hal ini menjadi ancaman terhadap validitas eksternal H1/H2 bahwa keunggulan BirdNET dapat sebagian dipengaruhi oleh familiaritas representasi terhadap ciri vokal spesies target. Namun demikian, generalisasi kuat yang teramati pada perekam kueri independen yang belum pernah dilihat model membuktikan bahwa representasi tidak mengalami penghafalan identitas individu (*author overfitting*).
+2. **Keterbatasan Seleksi Taksa Berbasis Ketersediaan Data (Protokol DEC-10):**  
+   Pemilihan 20 taksa burung didasarkan pada kehadiran di Pulau Sumatera dan ambang batas kecukupan statistik (minimal 30 rekaman dan 14 perekam independen di Indonesia). Konsekuensinya, sampel penelitian didominasi oleh taksa umum dengan bioakustik yang sering didokumentasikan kontributor warga (*citizen science*). Temuan ini belum tentu dapat digeneralisasi langsung ke taksa terancam punah (*endangered*), kriptik kanopi tinggi, atau nokturnal langka dengan ketersediaan data minim.
+3. **Kesenjangan Propagasi Akustik Lapangan (*In-situ Propagation Gap*):**  
+   Pengujian ketahanan derau dilakukan menggunakan injeksi derau aditif terkontrol pada grid SNR presisi (+20 dB s.d. -5 dB). Metodologi ini efektif untuk mengisolasi dampak interferensi spektral derau latar, namun belum memodelkan transmisi gelombang suara lapangan sesungguhnya yang melibatkan redaman kanopi tropis (*canopy excess attenuation*), pantulan multipath, dan variasi mikroklimat suhu/kelembapan bentang alam liar.
 
 ---
 

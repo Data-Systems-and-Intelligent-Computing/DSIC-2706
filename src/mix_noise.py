@@ -21,8 +21,15 @@ import os
 import sys
 import numpy as np
 import pandas as pd
-import soundfile as sf
-import librosa
+try:
+    import soundfile as sf
+except ImportError:
+    sf = None
+
+try:
+    import librosa
+except ImportError:
+    librosa = None
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 

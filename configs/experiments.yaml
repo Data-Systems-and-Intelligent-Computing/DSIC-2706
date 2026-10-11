@@ -7,39 +7,43 @@ experiments:
   # E1: Clean Retrieval
   clean_retrieval:
     top_k: [1, 5, 10]
-    metrics: ["mAP", "Recall@k", "Precision@k"]
+    metrics: ["mAP", "Recall@k", "Precision@k", "MRR", "Top1_Accuracy"]
 
   # E2: Controlled Environmental Noise (Additive Noise Mixing)
   controlled_noise:
     snr_levels_db: [20, 10, 0, -5]    # Tingkat derau bertahap (high to severe noise)
-    noise_source: "itera_background"  # Bank derau kampus ITERA
+    noise_source: "itera_background"  # Bank derau fisik AudioMoth kampus ITERA (1.799 berkas)
     random_seed: 42
-    metrics: ["mAP@k", "Recall@k", "relative_retention", "absolute_drop"]
+    metrics: ["mAP@10", "Recall@10", "Precision@10", "relative_retention", "absolute_drop"]
 
   # E3: Open-Set Threshold & Rejection
   open_set:
-    calibration_split_ratio: 0.2      # 20% data query dialokasikan untuk kalibrasi tau
-    frozen_threshold_tau: null        # Nilai tau ditentukan dari kalibrasi (dibekukan sebelum testing)
-    target_precision_or_f1: "max_f1"  # Objective pemilihan tau pada calibration split
-    metrics: ["AUROC", "AUPRC", "F1_at_tau", "FPR_at_tau", "FAR"]
+    calibration_method: "youden_j"     # Optimasi kurva ROC via indeks Youden (J = TPR - FPR)
+    calibration_target_count: 233      # Kueri target burung kalibrasi
+    calibration_unknown_count: 233     # Kontrol negatif kalibrasi (117 derau ITERA + 116 burung non-target)
+    test_target_count: 310             # Kueri target burung pengujian
+    test_unknown_count: 310            # Kontrol negatif pengujian disjoin
+    frozen_threshold_tau: true         # Nilai tau dibekukan murni dari kalibrasi sebelum testing
+    metrics: ["AUROC", "AUPRC", "F1_at_tau", "FPR_at_tau", "Recall_at_tau"]
 
-  # E4: Real Domain Shift
-  real_domain_shift:
-    soundscape_target: "itera_soundscapes"
-    metrics: ["candidate_matches", "manual_verification_rate"]
+  # E4: Habitat Spectral Noise Sensitivity
+  habitat_spectral_sensitivity:
+    habitats: ["Kebun_Raya", "Embung_F", "Gedung_F"]
+    snr_levels_db: [20, 10, 0, -5]
+    metrics: ["mAP@10", "Top1_Accuracy", "relative_retention"]
+    in_situ_soundscape_status: "deferred"  # Ditangguhkan hingga tersedianya bounding-box ground truth
 
   # E5: Failure Analysis
   failure_analysis:
     min_failure_cases: 20
+    audit_cases_count: 30              # 30 kasus terstratifikasi nyata lintas taksa (10 Clean, 20 SNR -5 dB)
     categories:
-      - "low_snr"
-      - "anthropogenic_interference"
-      - "overlapping_vocalizations"
-      - "similar_acoustic_structure"
-      - "reverberation_distance"
+      - "open_set_false_rejection"     # Top-1 benar namun sim < tau* akibat kompresi energi derau
+      - "top1_confusion_above_tau"     # sim >= tau* namun salah spesies akibat drift representasi laten
+      - "total_retrieval_collapse"     # sim < tau* dan salah spesies akibat distorsi derau ekstrem
 
   # Statistical Testing
   statistics:
     bootstrap_iterations: 1000
     confidence_interval: 0.95
-    correction: "holm"
+    method: "paired_bootstrap_percentile"  # Uji inferensial paired bootstrap non-parametrik

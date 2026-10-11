@@ -11,7 +11,10 @@ Sesuai:
 import os
 import sys
 import numpy as np
-import librosa
+try:
+    import librosa
+except ImportError:
+    librosa = None
 
 try:
     from src.preprocess import preprocess_audio, TARGET_SR

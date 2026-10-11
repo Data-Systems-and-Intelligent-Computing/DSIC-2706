@@ -123,7 +123,7 @@ def main():
 **Proyek:** DSIC-2706 — Noise and Domain-Shift Robustness of Frozen Audio Representations for Bioacoustic Similarity Retrieval  
 **Tanggal Audit:** 9 Oktober 2026  
 **Status Audit:** Terverifikasi Lengkap (Empirically Audited & Disclosed)  
-**Tujuan Dokumen:** Memenuhi evaluasi saintifik mengenai label `verified_bird_free: True` pada 1.799 berkas derau lapangan ITERA, mendokumentasikan karakteristik spektral perangkat keras, menganalisis faktor false acceptance pada E3, serta menjelaskan keterbatasan alami biofoni pada soundscape BirdCLEF.
+**Tujuan Dokumen:** Memenuhi evaluasi saintifik mengenai label `verified_bird_free: True` pada 1.799 berkas derau lapangan ITERA, mendokumentasikan karakteristik spektral perangkat keras, menganalisis faktor false acceptance pada E3, serta menjelaskan karakteristik biofoni tropis lapangan.
 
 ---
 
@@ -132,7 +132,7 @@ def main():
 Pada manifes `data/manifests/itera_noise_manifest.csv`, terdapat 1.799 berkas audio dengan kolom boolean `verified_bird_free: True`. Batasan semantik dari label tersebut didefinisikan secara ketat sebagai berikut:
 
 1. **Definisi yang Valid (Target-Bird-Free = 100%):**  
-   Seluruh 1.799 berkas derau lingkungan ITERA **100.0% bebas dari 20 spesies burung target Neotropis**. Tidak ada satu pun vokalisasi dari spesies target (*Brotogeris jugularis*, *Trogon melanurus*, dsb.) yang masuk ke dalam bank derau, karena pemisahan biogeografis absolut antara Alam Neotropis (Amerika Tropis) dan Alam Sundaland/Indomalayan (Sumatera, Indonesia).
+   Seluruh 1.799 berkas derau lingkungan ITERA **100.0% bebas dari 20 spesies burung target Avifauna Indonesia**. Tidak ada satu pun vokalisasi dari spesies target (*Anthracoceros albirostris*, *Spilornis cheela*, dsb.) yang masuk ke dalam bank derau audio, dan pemisahan partisi derau untuk mixing vs open-set unknown diisolasi secara ketat (DEC-14).
 2. **Koreksi & Pembatasan Saintifik (Acoustically Silent / Biophony-Free = False):**  
    Label `verified_bird_free` **TIDAK DAPAT** ditafsirkan sebagai rekaman anechoic murni atau bebas dari seluruh suara hayati. Perekaman outdoor di lingkungan tropis kampus ITERA secara alami menangkap biofoni lokal (stridulasi jangkrik/serangga malam, katak, serta fauna lokal).
 3. **Dinamika False Acceptance (FPR E3):**  

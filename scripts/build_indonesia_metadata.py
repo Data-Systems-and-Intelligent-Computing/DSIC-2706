@@ -1,10 +1,9 @@
 """
-Script: scripts/build_indonesia_metadata_matching_birdclef.py
-Fungsi: Membangun metadata 20 kandidat spesies burung Indonesia dengan struktur kolom
-        yang 100% persis menyesuaikan format BirdCLEF:
-        1. data/manifests/Metadata_Indonesia.xlsx (Menyesuaikan Metadata_BirdCLEF.xlsx)
-        2. data/manifests/indonesia_train.csv (Menyesuaikan train.csv)
-        3. data/manifests/indonesia_species_freeze.csv (Menyesuaikan species_freeze.csv)
+Script: scripts/build_indonesia_metadata.py
+Fungsi: Membangun metadata 20 kandidat spesies burung Indonesia dengan struktur standar:
+        1. data/manifests/Metadata_Indonesia.xlsx
+        2. data/manifests/indonesia_train.csv
+        3. data/manifests/indonesia_species_freeze.csv
         4. data/manifests/kandidat_ranking_lengkap_indonesia.csv (Seluruh 220 spesies teranking)
 """
 
@@ -89,7 +88,7 @@ def main():
     print(f"[+] Total rekaman 20 spesies target: {len(df_target):,} klip")
 
     # -------------------------------------------------------------
-    # 1. Format: species_freeze.csv (Menyesuaikan BirdCLEF freeze)
+    # 1. Format: species_freeze.csv (20 Spesies Target Indonesia)
     # -------------------------------------------------------------
     freeze_rows = []
     excel_all_rows = []
@@ -132,7 +131,7 @@ def main():
             loc_name = str(r.get("loc", "Indonesia")).strip()
             xc_url = f"https://xeno-canto.org/{rec_id}"
 
-            # Format 1: Menyesuaikan Metadata_BirdCLEF.xlsx persis
+            # Format 1: Menyesuaikan skema kolom buku kerja Metadata_Indonesia.xlsx
             excel_all_rows.append({
                 "Spesies": sp_sci,
                 "Sub-folder": "kandidat_indonesia",
@@ -153,7 +152,7 @@ def main():
                 "_Common_Name": sp_en
             })
 
-            # Format 2: Menyesuaikan train.csv persis
+            # Format 2: Menyesuaikan skema kolom indonesia_train.csv
             also_list = r.get("also", [])
             also_str = str(also_list) if isinstance(also_list, list) else "[]"
             type_str = f"['{sound_type}']"
@@ -187,7 +186,7 @@ def main():
     print(f"[+] indonesia_train.csv berhasil dibuat di: {OUTPUT_TRAIN_CSV}")
 
     # -------------------------------------------------------------
-    # 2. Format: Metadata_Indonesia.xlsx (Sama persis Metadata_BirdCLEF.xlsx)
+    # 2. Format: Metadata_Indonesia.xlsx
     # -------------------------------------------------------------
     wb = openpyxl.Workbook()
 

@@ -17,32 +17,32 @@ Daftar resmi **20 spesies burung target** dengan total **1.217 rekaman audio** t
 
 | No | Spesies Kunci | Nama Ilmiah | Nama Indonesia / Inggris | Klip Terverifikasi | Perekam Unik |
 | :-: | :--- | :--- | :--- | :-: | :-: |
-| 1 | `spiche1` | *Spilornis cheela* | Elang bido / Crested Serpent Eagle | 35 | 15 |
-| 2 | `sohbul1` | *Pycnonotus aurigaster* | Cucak kutilang / Sooty-headed Bulbul | 104 | 29 |
-| 3 | `colkin1` | *Todiramphus chloris* | Cekakak suci / Collared Kingfisher | 45 | 14 |
-| 4 | `ashtai1` | *Orthotomus ruficeps* | Cinenen kelabu / Ashy Tailorbird | 30 | 17 |
-| 5 | `savnig1` | *Caprimulgus affinis* | Cabak kota / Savanna Nightjar | 31 | 18 |
-| 6 | `olbsun1` | *Cinnyris jugularis* | Burung-madu sriganti / Olive-backed Sunbird | 137 | 35 |
-| 7 | `comior1` | *Aegithina tiphia* | Cipoh kacat / Common Iora | 65 | 22 |
-| 8 | `gpipig1` | *Ducula aenea* | Pergam hijau / Green Imperial Pigeon | 40 | 21 |
-| 9 | `crseag1` | *Haliaeetus leucogaster* | Elang laut perut putih / White-bellied Sea Eagle | 36 | 16 |
-| 10 | `subwar1` | *Curruca subalpina* | Kerakbasi / Sunda Bush Warbler | 45 | 20 |
-| 11 | `whbsho1` | *Copsychus malabaricus* | Kucica hutan / White-rumped Shama | 62 | 26 |
-| 12 | `rubcuc1` | *Rhamphococcyx curvirostris* | Kadalan birah / Chestnut-breasted Malkoha | 48 | 21 |
-| 13 | `hoopit1` | *Hydrornis schneideri* | Paok / Pitta | 45 | 19 |
-| 14 | `horbab1` | *Malacocincla sepiaria* | Pelanduk semak / Horsfield's Babbler | 68 | 25 |
-| 15 | `moutai1` | *Orthotomus cucullatus* | Cinenen gunung / Mountain Tailorbird | 78 | 28 |
-| 16 | `pygcup1` | *Pnoepyga pusilla* | Berencet kerdil / Pygmy Cupwing | 62 | 24 |
-| 17 | `suncuc1` | *Cacomantis sonneratii* | Wiwik lurik / Banded Bay Cuckoo | 52 | 23 |
-| 18 | `latnig1` | *Caprimulgus macrurus* | Cabak maling / Large-tailed Nightjar | 58 | 26 |
-| 19 | `hacdro1` | *Dicrurus paradiseus* | Srigunting batu / Greater Racket-tailed Drongo | 65 | 25 |
-| 20 | `barpri1` | *Prinia familiaris* | Perkutut jawa / Bar-winged Prinia | 111 | 26 |
+| 1 | `pygcup1` | *Pnoepyga pusilla* | Berencet kerdil / Pygmy Cupwing | 105 | 35 |
+| 2 | `rubcuc1` | *Cacomantis sepulcralis* | Wiwik uncuing / Rusty-breasted Cuckoo | 85 | 32 |
+| 3 | `horbab1` | *Malacocincla sepiaria* | Pelanduk semak / Horsfield's Babbler | 68 | 32 |
+| 4 | `moutai1` | *Phyllergates cucullatus* | Cinenen gunung / Mountain Tailorbird | 137 | 29 |
+| 5 | `lessho1` | *Brachypteryx leucophris* | Cingcoang cokelat / Lesser Shortwing | 66 | 26 |
+| 6 | `latnig1` | *Caprimulgus macrurus* | Cabak maling / Large-tailed Nightjar | 48 | 26 |
+| 7 | `sohbul1` | *Pycnonotus aurigaster* | Cucak kutilang / Sooty-headed Bulbul | 44 | 26 |
+| 8 | `olbsun1` | *Cinnyris jugularis* | Burung-madu sriganti / Olive-backed Sunbird | 123 | 23 |
+| 9 | `hoopit1` | *Pitta sordida* | Paok hijau / Hooded Pitta | 62 | 22 |
+| 10 | `suncuc1` | *Cuculus lepidus* | Kangkok sunda / Sunda Cuckoo | 42 | 22 |
+| 11 | `savnig1` | *Caprimulgus affinis* | Cabak kota / Savanna Nightjar | 31 | 20 |
+| 12 | `hacdro1` | *Dicrurus hottentottus* | Srigunting rambut / Hair-crested Drongo | 91 | 19 |
+| 13 | `subwar1` | *Horornis vulcanius* | Kerakbasi sunda / Sunda Bush Warbler | 48 | 19 |
+| 14 | `gpipig1` | *Ducula aenea* | Pergam hijau / Green Imperial Pigeon | 45 | 19 |
+| 15 | `whbsho1` | *Brachypteryx montana* | Cingcoang alis-putih / White-browed Shortwing | 40 | 19 |
+| 16 | `ghcfly1` | *Culicicapa ceylonensis* | Sikatan kepala-kelabu / Grey-headed Canary-flycatcher | 38 | 19 |
+| 17 | `comior1` | *Aegithina tiphia* | Cipoh kacat / Common Iora | 39 | 18 |
+| 18 | `crseag1` | *Spilornis cheela* | Elang-ular bido / Crested Serpent Eagle | 35 | 15 |
+| 19 | `ashtai1` | *Orthotomus ruficeps* | Cinenen kelabu / Ashy Tailorbird | 30 | 15 |
+| 20 | `colkin1` | *Todiramphus chloris* | Cekakak sungai / Collared Kingfisher | 40 | 14 |
 | **Total** | **20 Spesies** | | | **1.217 Klip** | **111 Author Unik** |
 
 #### Distribusi Partisi Dataset Split (`data/manifests/dataset_split.csv`):
 * **Galeri (*Gallery Set*):** 674 rekaman (60 perekam independen).
-* **Kueri Bersih (*Query Clean*):** 310 rekaman (31 perekam independen).
-* **Subset Kalibrasi (*Calibration*):** 233 rekaman (20 perekam independen).
+* **Kueri Bersih (*Query Clean*):** 310 rekaman (26 perekam independen).
+* **Subset Kalibrasi (*Calibration*):** 233 rekaman (25 perekam independen).
 * **Integritas Bebas Bocor:** **Strict Global Author-Disjoint** (0 perekam beririsan antar Galeri, Kueri, dan Kalibrasi; 0 tumpang tindih ID rekaman maupun file path).
 
 #### Subset Negatif Open-Set (`data/manifests/unknown_open_set_manifest.csv`):

@@ -100,6 +100,25 @@ def test_bootstrap_significance_consistency():
     assert f"{clean_r2_r1['Mean_Diff']:.4f}" in text, f"Mean Diff Clean R2-R1 ({clean_r2_r1['Mean_Diff']:.4f}) tidak ditemukan!"
     assert f"{ret_r2_r1['Mean_Diff']:.4f}" in text, f"Mean Diff Retensi R2-R1 ({ret_r2_r1['Mean_Diff']:.4f}) tidak ditemukan!"
 
+    # H5 Kontrol Acak (R2, R1, R0 vs R3)
+    r2_r3 = df_boot[df_boot["Komparasi"].str.contains("R2.*R3")].iloc[0]
+    r1_r3 = df_boot[df_boot["Komparasi"].str.contains("R1.*R3")].iloc[0]
+    r0_r3 = df_boot[df_boot["Komparasi"].str.contains("R0.*R3")].iloc[0]
+    assert f"{r2_r3['Mean_Diff']:.4f}" in text, f"Mean Diff R2-R3 ({r2_r3['Mean_Diff']:.4f}) tidak ditemukan!"
+    assert f"{r1_r3['Mean_Diff']:.4f}" in text, f"Mean Diff R1-R3 ({r1_r3['Mean_Diff']:.4f}) tidak ditemukan!"
+    assert f"{r0_r3['Mean_Diff']:.4f}" in text, f"Mean Diff R0-R3 ({r0_r3['Mean_Diff']:.4f}) tidak ditemukan!"
+
+    # H3 Komparasi Selisih Ayunan Rentang Habitat (R1 vs R2)
+    h3_swing = df_boot[df_boot["Pengujian"].str.contains("Rentang Habitat")].iloc[0]
+    assert f"{h3_swing['Mean_Diff']:.4f}" in text, f"Mean Diff Ayunan Habitat ({h3_swing['Mean_Diff']:.4f}) tidak ditemukan!"
+
+    # Cluster Bootstrap & Mike Nelson Sensitivity
+    cluster_row = df_boot[df_boot["Pengujian"].str.contains("Cluster Bootstrap")].iloc[0]
+    assert f"{cluster_row['Mean_Diff']:.4f}" in text, f"Cluster Bootstrap ({cluster_row['Mean_Diff']:.4f}) tidak ditemukan!"
+
+    nelson_row = df_boot[df_boot["Pengujian"].str.contains("Mike Nelson")].iloc[0]
+    assert f"{nelson_row['Mean_Diff']:.4f}" in text, f"Non-Mike Nelson ({nelson_row['Mean_Diff']:.4f}) tidak ditemukan!"
+
 
 if __name__ == "__main__":
     print("[*] Menjalankan test_manuscript_table_consistency...")
