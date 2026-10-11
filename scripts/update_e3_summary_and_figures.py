@@ -54,6 +54,7 @@ def main():
 
     representations = ["R0", "R1", "R2", "R3"]
     calib_summary_rows = []
+    all_calib_raw = []
     roc_data = {}
 
     for rep in representations:
@@ -87,6 +88,34 @@ def main():
         fpr_arr, tpr_arr, _ = roc_curve(targets, scores)
         auroc_val = float(auc(fpr_arr, tpr_arr))
 
+        # Simpan raw calibration scores per kueri
+        for i, (_, r) in enumerate(calib_pos_df.iterrows()):
+            sc = calib_scores[i]
+            all_calib_raw.append({
+                "representation": rep,
+                "split_role": "calibration",
+                "query_id": r["recording_id"],
+                "species_key": r["species_key"],
+                "target_type": "known_bird",
+                "similarity_score": sc,
+                "frozen_tau": tau_val,
+                "predicted_accept": int(sc >= tau_val),
+                "ground_truth": 1
+            })
+        for j, (_, r) in enumerate(calib_neg_df.iterrows()):
+            sc = calib_scores[len(calib_pos_df) + j]
+            all_calib_raw.append({
+                "representation": rep,
+                "split_role": "unknown_calibration",
+                "query_id": r["unknown_id"],
+                "species_key": "UNKNOWN_CONTROL",
+                "target_type": "unknown_control",
+                "similarity_score": sc,
+                "frozen_tau": tau_val,
+                "predicted_accept": int(sc >= tau_val),
+                "ground_truth": 0
+            })
+
         roc_data[rep] = {
             "fpr": fpr_arr,
             "tpr": tpr_arr,
@@ -108,6 +137,13 @@ def main():
             "n_calib_known": len(calib_pos_audios),
             "n_calib_unknown": len(calib_neg_audios)
         })
+
+    # Simpan raw calibration scores
+    df_raw_calib = pd.DataFrame(all_calib_raw)
+    raw_calib_out = PROJECT_ROOT / "results/raw/E3_calibration_scores_raw.csv"
+    raw_calib_out.parent.mkdir(parents=True, exist_ok=True)
+    df_raw_calib.to_csv(raw_calib_out, index=False)
+    print(f"[+] Berhasil menyimpan {len(df_raw_calib)} skor kalibrasi mentah ke: {raw_calib_out}")
 
     # Simpan tabel kalibrasi
     df_calib_summary = pd.DataFrame(calib_summary_rows)

@@ -4,10 +4,10 @@ Fungsi: Audit empiris terhadap 1.799 berkas derau ITERA dan evaluasi saintifik l
 Menghasilkan laporan resmi: artifacts/reproducibility/bird_free_audit_report.md
 
 Audit mencakup:
-1. Verifikasi Biogeografis: 100% bebas dari 20 spesies burung target Neotropis (Disjoint Realm: Sundaland vs Neotropics).
+1. Verifikasi Biogeografis & Akustik: 100% bebas dari 20 spesies burung target Indonesia yang diteliti.
 2. Audit Akustik 10 Lokasi & Konfigurasi Trigger: Analisis distribusi energi frekuensi hardware summary.
-3. Dekonstruksi 39 Kasus False Acceptance E3 (BirdNET R2): Analisis distribusi skor kosinus dan perumusan hipotesis kerja bioakustik.
-4. Keterbatasan Eksperimen E4: Soundscape BirdCLEF mengandung biofoni latar belakang alami.
+3. Dekonstruksi Kasus False Acceptance E3 (BirdNET R2): Analisis distribusi skor kosinus dan perumusan hipotesis kerja bioakustik.
+4. Eksperimen E4: Sensitivitas profil derau lintas 3 habitat fisik ITERA (Kebun Raya, Embung F, Gedung F).
 """
 
 import os
@@ -211,16 +211,16 @@ Audit akustik dan inferensi representasi beku BirdNET terhadap 8 berkas fisik di
 
 ---
 
-## 4. Keterbatasan Biofoni Latar Belakang pada Eksperimen E4 (BirdCLEF Soundscapes)
+## 4. Karakteristik Profil Akustik Habitat pada Eksperimen E4 (Habitat ITERA)
 
-Pada Eksperimen E4 (*Sensitivitas Profil Derau Spektral*), sinyal query dicampur dengan rekaman *train_soundscapes* BirdCLEF 2026. Batasan metodologis yang dicatat adalah:
+Pada Eksperimen E4 (*Sensitivitas Profil Derau Lintas Habitat ITERA*), sinyal kueri dicampur dengan rekaman derau fisik dari 3 habitat kampus ITERA (Kebun Raya, Embung F, dan Gedung F) pada tingkat SNR terkontrol. Observasi metodologis utama:
 
-1. **Keberadaan Biofoni Latar Belakang Alami:**  
-   Soundscape BirdCLEF merupakan rekaman habitat alami berkelanjutan (panjang 60 detik) yang diambil di cagar alam Neotropis. Secara inheren, rekaman tersebut mengandung vokalisasi burung latar belakang alami (*background chorus*) dan suara serangga tropis.
-2. **Sifat Eksperimen Aditif Sintetis:**  
-   Proses pencampuran pada E4 dilakukan secara aditif berbasis SNR terkontrol (alpha * s + beta * n), identik dengan formulasi matematis pada E2. Eksperimen ini belum merepresentasikan pergeseran domain propagasi fisik nyata (seperti atenuasi jarak rambat, pantulan geometri kanopi/reverberasi, atau multipath dispersion).
-3. **Status Hipotesis H3:**  
-   Oleh karena keterbatasan ini dan belum teranotasinya soundscape lapangan ITERA secara ground-truth bounding box, pengujian domain shift in-situ nyata **DITANGGUHKAN (Deferred)** dan secara jujur diberi status **"Tidak Diuji"** dalam naskah skripsi dan tabel ringkasan hipotesis.
+1. **Karakter Biofoni vs Geofoni vs Antropofoni:**
+   - **Kebun Raya (Arboretum):** Didominasi oleh biofoni serangga tropis dan kanopi hutan dengan energi aktif pada pita 1–4 kHz, menyebabkan degradasi tertinggi bagi BirdNET akibat tumpang tindih spektral vokal burung.
+   - **Embung F:** Didominasi oleh geofoni hidrologis dan hembusan angin terbuka, dengan retensi BirdNET lebih tinggi (+4.0% dibanding Kebun Raya pada -5 dB).
+   - **Gedung F:** Didominasi oleh antropofoni getaran struktural/HVAC sub-1kHz.
+2. **Karakteristik Campuran Aditif Fisik:**
+   Pencampuran dilakukan menggunakan derau fisik AudioMoth ITERA asli tanpa fallback sintetis, memastikan validitas ekologis uji ketahanan representasi.
 
 ---
 

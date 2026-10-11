@@ -342,7 +342,7 @@ Klaim Saintifik di Naskah (paper/manuscript.md)
 * Pembuatan kurva degradasi SNR dan analisis retensi relatif terhadap baseline bersih.
 
 ### Minggu 3 — Gate 3 (Open-Set Rejection & Sensitivitas Habitat)
-* Penyusunan 498 kontrol negatif kalibrasi dan 200 kontrol negatif uji pada `unknown_open_set_manifest.csv`.
+* Penyusunan 233 kontrol negatif kalibrasi dan 310 kontrol negatif uji pada `unknown_open_set_manifest.csv`.
 * Optimasi dan pembekuan ambang batas $\tau^*$ via Youden's Index ($J$) pada kalibrasi bebas bocor.
 * Eksekusi E3 Open-Set Rejection transfer lintas grid SNR (evaluasi dinamika FPR dan recall).
 * Eksekusi E4 Sensitivitas Profil Derau Lintas 3 Habitat Lapangan ITERA (Kebun Raya, Embung F, Gedung Terpadu).
@@ -479,7 +479,7 @@ Himpunan kontrol negatif open-set disusun terpisah pada `unknown_open_set_manife
 | **(b) Unknown Non-Burung** | Biofoni satwa non-aves tropis | Menguji penolakan terhadap suara fauna lingkungan lain |
 | **(c) Derau Murni** | Rekaman lingkungan AudioMoth ITERA tanpa burung target | Menguji penolakan terhadap derau antropofoni dan geofoni |
 
-Partisi kalibrasi (498 sampel) dan partisi uji (200 sampel) diisolasi 100% bebas tumpang tindih.
+Partisi kalibrasi (233 sampel) dan partisi uji (310 sampel) diisolasi 100% bebas tumpang tindih.
 
 #### H16 — Kalibrasi dan Pembekuan Ambang Batas $\tau^*$
 1. Ambang batas $\tau^*$ dioptimasi murni pada subset kalibrasi via Youden's Index ($J = \text{TPR} - \text{FPR}$).

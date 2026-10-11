@@ -33,6 +33,16 @@ def test_snr_mixing_accuracy():
 
 
 def test_snr_mixing_reproducibility():
+    noise_dir = PROJECT_ROOT / "data/itera_noise"
+    manifest_path = PROJECT_ROOT / "data/manifests/itera_noise_manifest.csv"
+    has_physical_noise = (
+        noise_dir.exists()
+        and manifest_path.exists()
+        and len(list(noise_dir.glob("**/*.wav"))) > 0
+    )
+    if not has_physical_noise:
+        print("  [SKIP] Berkas audio fisik ITERA tidak ditemukan di clone, melewati uji reproduktibilitas.")
+        return
     clean = np.random.randn(32000).astype(np.float32)
     m1 = mix_audio_at_snr(clean, snr_db=10, seed=99)
     m2 = mix_audio_at_snr(clean, snr_db=10, seed=99)

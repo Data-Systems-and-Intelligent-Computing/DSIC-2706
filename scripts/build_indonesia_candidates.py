@@ -22,7 +22,7 @@ LOCAL_NAMES = {
     "Malacocincla sepiaria": "Pelanduk semak",
     "Brachypteryx leucophris": "Cingcoang cokelat",
     "Pitta sordida": "Paok hijau",
-    "Psilopogon armillaris": "Takur tohtor",
+    "Spilornis cheela": "Elang-ular bido",
     "Caprimulgus macrurus": "Cabak maling",
     "Horornis vulcanius": "Cerik gunung",
     "Pycnonotus aurigaster": "Cucak kutilang",

@@ -83,6 +83,7 @@ def main():
     results_table_rows = []
     calibration_summary_rows = []
     all_raw_e3_scores = []
+    all_raw_e3_calib_scores = []
 
     for rep in representations:
         print(f"\n" + "-" * 60)
@@ -132,6 +133,31 @@ def main():
             "n_calib_known": len(calib_pos_scores),
             "n_calib_unknown": len(calib_neg_scores)
         })
+
+        for i, sc in enumerate(calib_pos_scores):
+            all_raw_e3_calib_scores.append({
+                "representation": rep,
+                "split_role": "calibration",
+                "query_id": calib_pos_df.iloc[i]["recording_id"],
+                "species_key": calib_pos_df.iloc[i]["species_key"],
+                "target_type": "known_bird",
+                "similarity_score": sc,
+                "frozen_tau": frozen_tau,
+                "predicted_accept": int(sc >= frozen_tau),
+                "ground_truth": 1
+            })
+        for i, sc in enumerate(calib_neg_scores):
+            all_raw_e3_calib_scores.append({
+                "representation": rep,
+                "split_role": "unknown_calibration",
+                "query_id": calib_neg_df.iloc[i]["unknown_id"],
+                "species_key": "UNKNOWN_CONTROL",
+                "target_type": "unknown_control",
+                "similarity_score": sc,
+                "frozen_tau": frozen_tau,
+                "predicted_accept": int(sc >= frozen_tau),
+                "ground_truth": 0
+            })
 
         # 4. Evaluasi Test Set Lintas Tingkat Derau (Clean s/d -5 dB)
         print(f"\n[*] Mengevaluasi Open-Set Rejection pada Test Set dengan Frozen Tau* = {frozen_tau:.4f}...")
@@ -247,6 +273,10 @@ def main():
     df_raw_scores = pd.DataFrame(all_raw_e3_scores)
     df_raw_scores.to_csv(RAW_DIR / "E3_test_scores_raw.csv", index=False)
     print(f"[+] Sukses menyimpan raw query scores E3: {RAW_DIR / 'E3_test_scores_raw.csv'}")
+
+    df_calib_raw_scores = pd.DataFrame(all_raw_e3_calib_scores)
+    df_calib_raw_scores.to_csv(RAW_DIR / "E3_calibration_scores_raw.csv", index=False)
+    print(f"[+] Sukses menyimpan raw calibration scores E3: {RAW_DIR / 'E3_calibration_scores_raw.csv'}")
 
     df_calib_summary = pd.DataFrame(calibration_summary_rows)
     df_calib_summary.to_csv(PROCESSED_DIR / "calibration_summary_table.csv", index=False)

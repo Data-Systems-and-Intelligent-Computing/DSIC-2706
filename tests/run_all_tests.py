@@ -21,6 +21,14 @@ from tests.test_snr_mixing import (
     test_snr_mixing_reproducibility
 )
 from tests.test_threshold_freeze import test_threshold_frozen_evaluation
+from tests.unit.test_manuscript_table_consistency import (
+    test_clean_retrieval_consistency,
+    test_snr_robustness_consistency,
+    test_threshold_transfer_e3_consistency,
+    test_e4_habitat_sensitivity_consistency,
+    test_bootstrap_significance_consistency
+)
+from tests.unit.test_manifest_and_models import test_model_embedding_dimensions
 
 def main():
     print("=" * 70)
@@ -35,6 +43,12 @@ def main():
         ("SNR Mixing Math Precision (Energy Scaling)", test_snr_mixing_accuracy),
         ("Deterministic Mixing Reproducibility (Fixed Seed)", test_snr_mixing_reproducibility),
         ("Frozen Threshold tau Invariance", test_threshold_frozen_evaluation),
+        ("Model Latent Embedding Dimensions (C-01)", test_model_embedding_dimensions),
+        ("Manuscript Table Consistency: Clean E1", test_clean_retrieval_consistency),
+        ("Manuscript Table Consistency: SNR Robustness E2", test_snr_robustness_consistency),
+        ("Manuscript Table Consistency: Threshold Transfer E3", test_threshold_transfer_e3_consistency),
+        ("Manuscript Table Consistency: Habitat Sensitivity E4", test_e4_habitat_sensitivity_consistency),
+        ("Manuscript Table Consistency: Bootstrap Significance", test_bootstrap_significance_consistency),
     ]
 
     passed = 0
