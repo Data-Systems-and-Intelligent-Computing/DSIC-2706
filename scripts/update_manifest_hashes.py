@@ -20,14 +20,17 @@ manifest_files = [
     "species_freeze.csv",
     "species_excluded.csv",
     "itera_noise_manifest.csv",
+    "unknown_open_set_manifest.csv",
+    "download_manifest.csv",
+    "download_audit_log.csv",
 ]
 
 def get_file_sha256(path: Path) -> str:
-    h = hashlib.sha256()
-    with open(path, "rb") as f:
-        for chunk in iter(lambda: f.read(65536), b""):
-            h.update(chunk)
-    return h.hexdigest()
+    """Menghitung SHA-256 dengan normalisasi baris LF (\n) untuk menjamin keterulangan cross-platform."""
+    content = path.read_bytes()
+    if path.suffix.lower() in [".csv", ".txt", ".json", ".yaml", ".yml", ".md"]:
+        content = content.replace(b"\r\n", b"\n")
+    return hashlib.sha256(content).hexdigest()
 
 def main():
     print("=" * 70)

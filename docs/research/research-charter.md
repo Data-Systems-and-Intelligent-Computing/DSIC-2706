@@ -3,7 +3,7 @@
 ## 1. Metadata Proyek
 - **Kode Topik:** DSIC27-06
 - **Judul Resmi:** Mencari Audio yang Mirip Ketika Datanya Terbatas
-- **Judul Kerja Artikel:** *Noise and Domain-Shift Robustness of Frozen Audio Representations for Bioacoustic Similarity Retrieval: A Controlled Evaluation on BirdCLEF+ 2026 with Field-Recorded Tropical Noise*
+- **Judul Kerja Artikel:** *Noise and Spectral Sensitivity of Frozen Audio Representations for Bioacoustic Similarity Retrieval: A Controlled Evaluation on Indonesian Avifauna with Field-Recorded ITERA Tropical Noise*
 - **Peneliti:** Fabio Banyu Cyto (NIM 123450104)
 - **Kelompok Riset:** DSIC Research Group — Program Studi Sains Data ITERA
 - **Pembimbing:** Dosen Pembimbing Tugas Akhir DSIC

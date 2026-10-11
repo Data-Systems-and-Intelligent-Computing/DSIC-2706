@@ -1,36 +1,40 @@
 datasets:
   target_birds:
-    source: BirdCLEF+ 2026 train_audio
-    geographic_focus: Pantanal, Mato Grosso do Sul, Brazil
+    source: "Xeno-Canto Indonesia (Aves Indonesia)"
+    geographic_focus: "Sumatra & Kepulauan Sunda, Indonesia"
     num_species: 20
-    freeze_manifest_path: data/manifests/species_freeze.csv
-    split_manifest_path: data/manifests/dataset_split.csv
-    audio_directory: data/BirdClef/train_audio/
+    split_manifest_path: "data/manifests/dataset_split.csv"
+    audio_directory: "data/xeno_canto_indonesia/"
     selection_rules:
-      class_name: Aves
-      collection: XC
-      rating_min: 3.0
-      n_klip_min: 20
-      n_author_min: 3
+      class_name: "Aves"
+      geographic_filter: "Terverifikasi hadir di Sumatera / Sundaland"
+      n_klip_min: 30
+      n_author_min: 14
+      split_protocol: "Recordist-disjoint (Zero-Author-Overlap) DEC-10"
   open_set_negatives:
     types:
       type_a:
-        description: Unknown birds from BirdCLEF+ 2026 not in gallery
-        source: BirdCLEF+ 2026 train_audio
+        description: "Vokalisasi burung non-target Indonesia di luar 20 target"
+        source: "data/xeno_canto_indonesia_unknowns/"
       type_b:
-        description: Non-bird taxa from BirdCLEF+ 2026 (Amphibia, Reptilia, Mammalia, Insecta)
-        source: BirdCLEF+ 2026 train_audio
-      type_c:
-        description: Pure background environmental noise from ITERA campus
-        source: data/itera_noise/
+        description: "Biofoni dan geofoni lingkungan kampus ITERA bebas target"
+        source: "data/itera_noise/"
+    split_manifest_path: "data/manifests/unknown_open_set_manifest.csv"
+    calibration_count: 233
+    test_count: 310
   itera_noise:
-    directory: data/itera_noise/
-    manifest_path: data/manifests/itera_noise_manifest.csv
+    directory: "data/itera_noise/"
+    manifest_path: "data/manifests/itera_noise_manifest.csv"
+    total_files: 1799
     sampling_rate: 32000
     sub_locations:
-      - Embung ITERA (Aquatic / Amphibian ambient)
-      - Arboretum / Kebun Raya ITERA (Forest canopy biophony)
-      - Area Terbuka / Gedung Kuliah (Anthropogenic traffic/HVAC)
+      - "Embung F ITERA (Aquatic / hydro-wind ambient)"
+      - "Kebun Raya ITERA (Forest canopy biophony / insect chorus)"
+      - "Gedung F ITERA (Anthropogenic traffic / structural rumble)"
   domain_shift_e4:
-    source: BirdCLEF+ 2026 train_soundscapes
-    directory: data/BirdClef/train_soundscapes/
+    source: "Profil derau habitat lapangan ITERA (Eksperimen E4)"
+    directory: "data/itera_noise/"
+    habitats:
+      - "Kebun_Raya"
+      - "Embung_F"
+      - "Gedung_F"

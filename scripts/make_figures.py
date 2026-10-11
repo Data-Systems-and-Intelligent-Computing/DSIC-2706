@@ -77,7 +77,7 @@ def main():
     ax1.set_title("(a) Retrieval Robustness across Noise (95% CI)")
     ax1.set_xticks(snr_x)
     ax1.set_xticklabels(["Clean", "20 dB", "10 dB", "0 dB", "-5 dB"])
-    ax1.set_ylim(-0.02, 0.75)
+    ax1.set_ylim(-0.02, 1.02)
     ax1.legend(loc="upper left", frameon=True)
 
     # 2. Relative Retention Curve (%)
@@ -103,12 +103,73 @@ def main():
     plt.savefig(out_path, dpi=300)
     print(f"[+] Gambar berhasil disimpan di: {out_path}")
 
-    # Salin juga ke paper/figures jika ada
     paper_fig = PROJECT_ROOT / "paper/figures/robustness_curve_map10.png"
     if paper_fig.parent.exists():
         import shutil
         shutil.copy(out_path, paper_fig)
         print(f"[+] Disinkronkan ke: {paper_fig}")
+
+    # Simpan juga relative retention curve secara mandiri
+    fig_ret, ax_ret = plt.subplots(figsize=(7, 5), dpi=300)
+    for rep in ["R2", "R1", "R0", "R3"]:
+        clean_m = compute_bootstrap_ci(rep, "Clean")[0]
+        ret_pct = []
+        for cond in conditions:
+            m = compute_bootstrap_ci(rep, cond)[0]
+            ret_pct.append((m / max(clean_m, 1e-6)) * 100)
+        ax_ret.plot(snr_x, ret_pct, 's--', color=colors[rep], label=labels[rep], linewidth=2.0, markersize=6)
+    ax_ret.set_xlabel("Signal-to-Noise Ratio (SNR in dB)")
+    ax_ret.set_ylabel("Relative Retention (%)")
+    ax_ret.set_title("Relative Retention Curve (% of Clean mAP)")
+    ax_ret.set_xticks(snr_x)
+    ax_ret.set_xticklabels(["Clean", "20 dB", "10 dB", "0 dB", "-5 dB"])
+    ax_ret.set_ylim(0, 110)
+    ax_ret.axhline(100, color='gray', linestyle=':', alpha=0.6)
+    ax_ret.legend(loc="lower left", frameon=True)
+    plt.tight_layout()
+    ret_path = FIG_DIR / "relative_retention_curve.png"
+    plt.savefig(ret_path, dpi=300)
+    paper_ret = PROJECT_ROOT / "paper/figures/relative_retention_curve.png"
+    if paper_ret.parent.exists():
+        import shutil
+        shutil.copy(ret_path, paper_ret)
+    plt.close()
+
+    # Buat Clean Retrieval Benchmark Bar Chart (E1)
+    clean_csv = PROJECT_ROOT / "results/processed/clean_retrieval_table.csv"
+    if clean_csv.exists():
+        df_clean = pd.read_csv(clean_csv)
+        fig_clean, ax_c = plt.subplots(figsize=(8, 5), dpi=300)
+        x_pos = np.arange(len(df_clean))
+        maps = df_clean["mAP@10"].values
+        top1s = [float(str(t).replace("%", "")) / 100.0 for t in df_clean["Top-1 (%)"].values]
+        
+        width = 0.35
+        b1 = ax_c.bar(x_pos - width/2, maps, width, label="mAP@10", color="#1b9e77")
+        b2 = ax_c.bar(x_pos + width/2, top1s, width, label="Top-1 Accuracy", color="#d95f02")
+        
+        for b in b1:
+            h = b.get_height()
+            ax_c.annotate(f"{h:.3f}", (b.get_x() + b.get_width() / 2, h), textcoords="offset points", xytext=(0, 3), ha="center", fontsize=9)
+        for b in b2:
+            h = b.get_height()
+            ax_c.annotate(f"{h*100:.1f}%", (b.get_x() + b.get_width() / 2, h), textcoords="offset points", xytext=(0, 3), ha="center", fontsize=9)
+            
+        ax_c.set_xticks(x_pos)
+        ax_c.set_xticklabels(df_clean["Kode"] + "\n" + df_clean["Arsitektur"].str.split(" ").str[0])
+        ax_c.set_ylabel("Nilai Metrik (0 - 1.0)")
+        ax_c.set_title("E1: Clean Retrieval Performance Benchmark", fontweight="bold")
+        ax_c.set_ylim(0, 1.15)
+        ax_c.legend()
+        plt.tight_layout()
+        c_path = FIG_DIR / "clean_retrieval_benchmark.png"
+        plt.savefig(c_path, dpi=300)
+        paper_c = PROJECT_ROOT / "paper/figures/clean_retrieval_benchmark.png"
+        if paper_c.parent.exists():
+            import shutil
+            shutil.copy(c_path, paper_c)
+        plt.close()
+        print(f"[+] Grafik E1 berhasil disimpan di: {c_path}")
 
 if __name__ == "__main__":
     main()

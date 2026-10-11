@@ -18,7 +18,10 @@ from tests.integration.test_split_leakage import (
     test_zero_filepath_leakage,
     test_zero_recordist_leakage_global,
 )
-from tests.unit.test_snr_mixing import test_snr_mixing_accuracy
+from tests.unit.test_snr_mixing import (
+    test_snr_mixing_accuracy,
+    test_physical_itera_noise_mixing,
+)
 from tests.unit.test_cosine import (
     test_cosine_similarity_properties,
     test_retrieval_ranking_logic,
@@ -39,7 +42,8 @@ def run_all_tests():
         ("Zero Recording ID Overlap", test_zero_leakage_between_gallery_and_query),
         ("Zero File Path Overlap", test_zero_filepath_leakage),
         ("Strict Global Recordist-Disjoint (Zero Recordist Overlap)", test_zero_recordist_leakage_global),
-        ("SNR Controlled Mixing Accuracy", test_snr_mixing_accuracy),
+        ("SNR Controlled Mixing Accuracy (Mathematical Formula)", test_snr_mixing_accuracy),
+        ("Physical ITERA AudioMoth Noise Mixing & Integrity (1,799 Files)", test_physical_itera_noise_mixing),
         ("Cosine Similarity Mathematical Bounds", test_cosine_similarity_properties),
         ("Retrieval Ranking & Metric Logic", test_retrieval_ranking_logic),
         ("Open-Set Threshold Freeze Validation", test_threshold_frozen_evaluation),

@@ -1,0 +1,41 @@
+CATATAN PERBAIKAN KODE (PATCH NOTES)
+=====================================
+Pembaruan ini dilakukan pada skrip orisinal repositori untuk menyesuaikan skema nama kolom (kolom `id` berubah menjadi `recording_id`, dan `recordist` berubah menjadi `author` sesuai dengan format baru BirdCLEF).
+
+1. File: `src/evaluate.py`
+--------------------------
+Garis awal:
+```python
+        row = {
+            "query_id": query_df.iloc[i]["id"],
+            "species_key": query_df.iloc[i]["species_key"],
+            "recordist": query_df.iloc[i]["recordist"],
+```
+Diubah menjadi:
+```python
+        row = {
+            "query_id": query_df.iloc[i]["recording_id"],
+            "species_key": query_df.iloc[i]["species_key"],
+            "recordist": query_df.iloc[i].get("author", "Unknown"),
+```
+
+2. File: `src/analyze_failures.py`
+----------------------------------
+Garis awal:
+```python
+        for _, r in df_split.iterrows():
+            df_meta[str(r["id"])] = {
+                "scientific_name": r.get("scientific_name", ""),
+                "common_name": r.get("common_name", ""),
+                "recordist": r.get("recordist", ""),
+```
+Diubah menjadi:
+```python
+        for _, r in df_split.iterrows():
+            df_meta[str(r["recording_id"])] = {
+                "scientific_name": r.get("scientific_name", ""),
+                "common_name": r.get("common_name", ""),
+                "recordist": r.get("author", ""),
+```
+
+Selain itu, seluruh script operasional (manifes, update cuaca, dan verifikasi WAV) yang saya gunakan sepanjang interaksi ini telah disalin ke dalam folder ini untuk dapat Anda pelajari dan modifikasi sewaktu-waktu.

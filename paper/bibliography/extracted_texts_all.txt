@@ -1,0 +1,573 @@
+
+================================================================================
+FILE: A Case Study Using Passive Acoustic Monitoring Devices In A Growing Urban Landscape To Monitor Avian Diversity.pdf
+================================================================================
+bioRxiv preprint 
+
+https://doi.org/10.1101/2025.07.21.665881
+
+doi: 
+was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. 
+
+this version posted July 24, 2025. 
+
+The copyright holder for this preprint (which
+
+; 
+
+A Case Study: Using Passive Acoustic Monitoring Devices In A Growing 
+Urban Landscape To Monitor Avian Diversity 
+
+Anshul Gupta1, Swathi CS2, Asher Jesudoss3,4, Anusha Shankar2*, Harsha Kumar2* 
+
+1- Chirec International School, Serilingampally, Hyderabad, Telangana 500019  
+2- Tata Institute of Fundamental Research, Serilingampally, Hyderabad, Telangana 500046 
+3- Aloha Ahimsa, Munirka Vihar, New Delhi 110067 
+4- Jawaharlal Nehru University, New Mehrauli Road, New Delhi 110067 
+
+Abstract  
+With  the  increase  of  urbanization  around  the  world,  key  habitats  such  as  grasslands  and 
+scrublands  are  disappearing,  posing  significant  threats  to  species  that  rely  on  such  habitats. 
+Passive acoustic monitoring (PAM) has started to gain interest as a reliable tool for biodiversity 
+monitoring. This  study  assesses  whether  PAM  can  be  an  effective  way  to  monitor  biodiversity 
+with  relatively  low  effort  when  compared  to  traditional  survey  methods.  Using  PAM,  a  mixed 
+grassland and scrubland ecosystem was monitored for five months for avifaunal diversity. Data 
+that was collected from dusk to dawn using audio recorders deployed on the study site were run 
+through  BirdNET  analyzer  under  default  detectors.  Top  detections  for  each  species  were 
+compared with avian vocalization libraries manually. Out of 135 species detected, 76 were true 
+positives, resulting in a species identification accuracy of 56.3%. Notably, among the species that 
+were  true  detections,  21  species  were  found  to  have  confidence  scores  larger  than  0.99.  In 
+addition, 15 of the detected species were found to be migratory in this area, and three were found 
+to be rare. This study demonstrates how PAM can be used to monitor biodiversity in a species-
+rich but understudied area such as Southern India, to identify both cryptic and nocturnal species 
+that might be omitted from standard field surveys. 
+
+Keywords: Passive acoustic monitoring, urbanization, avifaunal diversity, scrublands, grasslands, 
+BirdNET analyzer, rare species, cryptic, nocturnal 
+
+*Co-corresponding authors:  
+Harsha Kumar [tailedpalmfly@gmail.com, harshakumar@tifrh.res.in] 
+Anusha Shankar [nushiamme@gmail.com, ashankar@tifrh.res.in] 
+
+ 
+bioRxiv preprint 
+
+https://doi.org/10.1101/2025.07.21.665881
+
+doi: 
+was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. 
+
+this version posted July 24, 2025. 
+
+The copyright holder for this preprint (which
+
+; 
+
+Introduction 
+In  recent  years,  urbanization  has  increased  rapidly  around  the  world,  changing  landscapes  and 
+promoting the urban heat island effect, leading to increased temperat
+[ERROR reading A Metric Learning Reality Check.pdf]: 'charmap' codec can't encode character '\ufb01' in position 460: character maps to <undefined>[ERROR reading AST Audio Spectrogram Transformer.pdf]: 'charmap' codec can't encode character '\ufb01' in position 106: character maps to <undefined>
+================================================================================
+FILE: BIRB A Generalization Benchmark for Information Retrieval.pdf
+================================================================================
+3
+2
+0
+2
+
+c
+e
+D
+3
+1
+
+]
+
+G
+L
+.
+s
+c
+[
+
+2
+v
+9
+3
+4
+7
+0
+.
+2
+1
+3
+2
+:
+v
+i
+X
+r
+a
+
+Preprint under review
+
+BIRB: A GENERALIZATION BENCHMARK FOR
+INFORMATION RETRIEVAL IN BIOACOUSTICS
+
+Jenny Hamer, Eleni Triantafillou, Bart van Merri¨enboer, Tom Denton, Vincent Dumoulin
+Google Research
+{hamer,etriantafillou,bartvm,tomdenton,vdumoulin}@google.com
+
+Stefan Kahl, Holger Klinck
+K. Lisa Yang Center for Conservation Bioacoustics
+Cornell Lab of Ornithology, Cornell University, Ithaca, NY
+{sk2487,holger.klinck}@cornell.edu
+
+ABSTRACT
+
+The ability for a machine learning model to cope with differences in training and
+deployment conditions—e.g. in the presence of distribution shift or the generaliza-
+tion to new classes altogether—is crucial for real-world use cases. However, most
+empirical work in this area has focused on the image domain with artificial bench-
+marks constructed to measure individual aspects of generalization. We present
+BIRB1: a generalization Benchmark for Information Retrieval in Bioacoustics, a
+complex benchmark centered on the retrieval of bird vocalizations from passively-
+recorded datasets given focal recordings from a large citizen science corpus avail-
+able for training. We propose a baseline system for this collection of tasks using
+representation learning and a nearest-centroid search. Our thorough empirical
+evaluation and analysis surfaces open research directions, suggesting that BIRB
+fills the need for a more realistic and complex benchmark to drive progress on
+robustness to distribution shifts and generalization of ML models.2
+
+1
+
+INTRODUCTION
+
+Generalization is one of the most important properties when deploying machine learning models:
+applications require models which perform reliably when shifting from curated training and evalu-
+ation data to real-world conditions. Generalization is difficult to study and includes many different
+factors (Moreno-Torres et al., 2012) including label shift (changes in the balance of labels between
+training and test time), covariate shift (which subsumes a vast array of data differences, includ-
+ing sensor or environmental changes), and few-shot learning (using a few examples to demonstrate
+generalization to novel concepts or classes). Previous works try to disentangle these aspects of
+model generalization by creating synthetic or artificial datasets. This leads to the development of
+approaches which handle only specific aspects of generalization, and which may not compose well
+into a workable solution for real-world data. Steady improvement on artificial datasets may thus
+give a false sense of overall progress. There is a need for datasets which allow us to study problems
+in model generalization holistically.
+
+ML for bioacoustics has matured rapidly over recent years, and now includes a large and varied
+collection of freely available datasets which provide an ideal sandbox for studying model general-
+ization. Birds are particularly well suited for this study as they include over 10, 000 species (most of
+[ERROR reading Biotic sound SNR influence analysis on acoustic indices.pdf]: 'charmap' codec can't encode character '\ufb02' in position 588: character maps to <undefined>
+================================================================================
+FILE: BirdNET A deep learning solution for avian diversity monitoring.pdf
+================================================================================
+Contents lists available at ScienceDirect 
+
+Ecological Informatics 
+
+journal homepage: www.elsevier.com/locate/ecolinf 
+
+BirdNET: A deep learning solution for avian diversity monitoring 
+
+Stefan Kahl a, *, Connor M. Wood a, Maximilian Eibl b, Holger Klinck a 
+a Center for Conservation Bioacoustics, Cornell Lab of Ornithology, Cornell University, Ithaca, NY 14850, USA 
+b Technische Universit¨at Chemnitz, D-09111 Chemnitz, Germany   
+
+A R T I C L E  I N F O    
+
+A B S T R A C T    
+
+Keywords: 
+Bioacoustics 
+Deep learning 
+Convolutional neural networks 
+Bird sound recognition 
+Avian diversity 
+Passive acoustic monitoring 
+Conservation 
+
+Variation in avian diversity in space and time is commonly used as a metric to assess environmental changes. 
+Conventionally, such data were collected by expert observers, but passively collected acoustic data is rapidly 
+emerging as an alternative survey technique. However, efficiently extracting accurate species richness data from 
+large audio datasets has proven challenging. Recent advances in deep artificial neural networks (DNNs) have 
+transformed the field of machine learning, frequently outperforming traditional signal processing techniques in 
+the  domain  of  acoustic  event  detection  and  classification.  We  developed  a  DNN,  called  BirdNET,  capable  of 
+identifying 984 North American and European bird species by sound. Our task-specific model architecture was 
+derived from the family of residual networks (ResNets), consisted of 157 layers with more than 27 million pa-
+rameters, and was trained using extensive data pre-processing, augmentation, and mixup. We tested the model 
+against three independent datasets: (a) 22,960 single-species recordings; (b) 286 h of fully annotated soundscape 
+data collected by an array of autonomous recording units in a design analogous to what researchers might use to 
+measure  avian  diversity  in  a  field  setting;  and  (c)  33,670  h  of  soundscape  data  from  a  single  high-quality 
+omnidirectional  microphone  deployed  near  four  eBird  hotspots  frequented  by  expert  birders.  We  found  that 
+domain-specific data augmentation is key to build models that are robust against high ambient noise levels and 
+can  cope  with  overlapping  vocalizations.  Task-specific  model  designs  and  training  regimes  for  audio  event 
+recognition  perform  on-par  with  very  complex  architectures  used  in  other  domains  (e.g.,  object  detection  in 
+images). We also found that high temporal resolution of input spectrograms (short FFT window length) improves 
+the classification performance for bird sounds. In summary, BirdNET achieved a mean average precision of 0.791 
+for  single-species  recordings,  a F0.5  score of  0.414 for  annotated soundscapes,  and  an  average  correlation of 
+0.251 with hotspot observation across 121 species and 4 years of audio data. By enabling the efficient extraction 
+of the vocalizations of many hundreds of bird species from poten
+[ERROR reading BirdSet A Large-Scale Dataset for Audio Classification in Avian Bioacoustics.pdf]: 'charmap' codec can't encode character '\ufb01' in position 526: character maps to <undefined>
+================================================================================
+FILE: Deep audio embeddings for vocalisation clustering.pdf
+================================================================================
+RESEARCH ARTICLE
+
+Deep audio embeddings for vocalisation
+clustering
+
+Paul BestID*, Se´ bastien Paris, Herve´ Glotin, Ricard MarxerID
+
+Universite´ de Toulon, Aix Marseille Univ, CNRS, LIS, Toulon, France
+
+* paul.best@univ-tln.fr
+
+Abstract
+
+The study of non-human animals’ communication systems generally relies on the transcrip-
+tion of vocal sequences using a finite set of discrete units. This set is referred to as a vocal
+repertoire, which is specific to a species or a sub-group of a species. When conducted by
+human experts, the formal description of vocal repertoires can be laborious and/or biased.
+This motivates computerised assistance for this procedure, for which machine learning algo-
+rithms represent a good opportunity. Unsupervised clustering algorithms are suited for
+grouping close points together, provided a relevant representation. This paper therefore
+studies a new method for encoding vocalisations, allowing for automatic clustering to allevi-
+ate vocal repertoire characterisation. Borrowing from deep representation learning, we use
+a convolutional auto-encoder network to learn an abstract representation of vocalisations.
+We report on the quality of the learnt representation, as well as of state of the art methods,
+by quantifying their agreement with expert labelled vocalisation types from 8 datasets of
+other studies across 6 species (birds and marine mammals). With this benchmark, we dem-
+onstrate that using auto-encoders improves the relevance of vocalisation representation
+which serves repertoire characterisation using a very limited number of settings. We also
+publish a Python package for the bioacoustic community to train their own vocalisation auto-
+encoders or use a pretrained encoder to browse vocal repertoires and ease unit wise
+annotation.
+
+Introduction
+Context
+
+Many animal species use acoustics to communicate. Often in this context, signals take the
+form of distinct units (or vocalisations) arranged in sequences, with information potentially
+being carried through order and/or rhythm [1]. Like the discrete communication channels for-
+malised by Shannon [2], the elements of the sequences often seem to emerge from a finite set
+of discrete categories. This finite set of possible units is referred to as the repertoire of a com-
+munication system. Vocal repertoires can be specific to groups of individuals (e.g., orca Orci-
+nus orca [3]), populations (e.g., beluga whale Delphinapterus leucas [4] or mountain white-
+crowned sparrows Zonotrichia leucophrys oriantha [5]), or whole species (e.g., common
+
+a1111111111
+a1111111111
+a1111111111
+a1111111111
+a1111111111
+
+OPEN ACCESS
+
+Citation: Best P, Paris S, Glotin H, Marxer R (2023)
+Deep audio embeddings for vocalisation clustering.
+PLoS ONE 18(7): e0283396. https://doi.org/
+10.1371/journal.pone.0283396
+
+Editor: Jie Xie, Nanjing Normal University, CHINA
+
+Received: March 7, 2023
+
+Accepted: June 25, 2023
+
+Published: July 10, 2023
+
+Peer Review History: PLOS recognizes the
+benefits of transparen
+[ERROR reading Domain-Invariant Representation Learning of Bird Sounds.pdf]: 'charmap' codec can't encode character '\ufb01' in position 20: character maps to <undefined>[ERROR reading FSD50K an open dataset of human-labeled sound events.pdf]: 'charmap' codec can't encode character '\ufb01' in position 465: character maps to <undefined>[ERROR reading Few-shot bioacoustic event detection at the DCASE 2023 challenge.pdf]: 'charmap' codec can't encode character '\u0142' in position 359: character maps to <undefined>
+================================================================================
+FILE: Global birdsong embeddings enable superior transfer learning.pdf
+================================================================================
+OPEN
+
+Global birdsong embeddings 
+enable superior transfer learning 
+for bioacoustic classification
+
+Burooj Ghani 1,5*, Tom Denton 2,5*, Stefan Kahl 3,4 & Holger Klinck 3
+
+Automated bioacoustic analysis aids understanding and protection of both marine and terrestrial 
+animals and their habitats across extensive spatiotemporal scales, and typically involves analyzing 
+vast collections of acoustic data. With the advent of deep learning models, classification of important 
+signals from these datasets has markedly improved. These models power critical data analyses for 
+research and decision-making in biodiversity monitoring, animal behaviour studies, and natural 
+resource management. However, deep learning models are often data-hungry and require a significant 
+amount of labeled training data to perform well. While sufficient training data is available for certain 
+taxonomic groups (e.g., common bird species), many classes (such as rare and endangered species, 
+many non-bird taxa, and call-type) lack enough data to train a robust model from scratch. This study 
+investigates the utility of feature embeddings extracted from audio classification models to identify 
+bioacoustic classes other than the ones these models were originally trained on. We evaluate models 
+on diverse datasets, including different bird calls and dialect types, bat calls, marine mammals calls, 
+and amphibians calls. The embeddings extracted from the models trained on bird vocalization data 
+consistently allowed higher quality classification than the embeddings trained on general audio 
+datasets. The results of this study indicate that high-quality feature embeddings from large-scale 
+acoustic bird classifiers can be harnessed for few-shot transfer learning, enabling the learning of new 
+classes from a limited quantity of training data. Our findings reveal the potential for efficient analyses 
+of novel bioacoustic tasks, even in scenarios where available training data is limited to a few samples.
+
+Bioacoustic analysis provides a rich window into biodiversity, animal behavior and ecosystem health. Passive 
+acoustic monitoring (PAM) in particular has become a widely used tool for wildlife conservation. PAM uses 
+autonomous recording devices (ARUs) that collect vast amounts of acoustic data, containing a wealth of informa-
+tion about biological, geophysical, and anthropogenic activities in the deployment area. It allows researchers to 
+study and protect animals and their habitats non-invasively at ecologically-relevant temporal and spatial  scales1. 
+PAM involves recording sound in nature and has been used to study a wide range of species, including whales 
+and  dolphins2,3,  pinnipeds4,5,  birds6,7,  insects8,9,  fish10,11,  frogs12,13, and terrestrial  mammals14,15. In recent years, 
+many automated deep learning-based analysis tools have been developed that are now commonly used to analyze 
+long-term acoustic data  efficiently16. By utilizing these tools, researchers can automatica
+
+================================================================================
+FILE: Identifikasi Jenis Anura dengan Bioakustik.pdf
+================================================================================
+Ulin - J Hut Trop Vol 9 (1): 101-107 
+Maret 2025dkk. – Ru 
+
+pISSN 2599 1205, eISSN 2599 1183 
+ DOI: http://dx.doi.org/10.32522/ujht.v9i1.11718 
+
+Identifikasi jenis-jenis anura pada Kawasan Hutan Lindung Sungai Wain di Kalimantan 
+Timur dengan bantuan suara (bioakuistik)  
+
+Gresya Munda *, Sutedjo, Chandradewana Boer, M. Syoim 
+Fakultas Kehutanan dan Lingkungan Tropis, Universitas Mulawarman. Jl. Ki Hajar Dewantara, Kampus Gunung 
+Kelua, Samarinda 75123, Kalimantan Timur 
+*E-Mail: gresya0808@gmail.com 
+
+Artikel diterima :30 September 2024 Revisi diterima 14 Desember 2024  
+
+ ABSTRACT 
+
+This study aims to determine how to identify amphibians using sound (Bioacuistics) in the Sungai Wain Protected Forest 
+Area for the purpose of collecting amphibious sound databases to facilitate and help other researchers to identify. This 
+study was conducted using the path transect method and recording sound using cellphones at the research location which 
+is suspected to be the habitat of the animal to be observed.The results of the study Recording frog sound according to the 
+data found only be done to 8 types, namely Pulchrana baramica, Indosylvirana nicobariensis, Rhacophorus pardalis, 
+Kurixalus chaseni, Hylarana erythraea, Ingerophrynus divergens, Pulchrana picturata, and Pulchrana laterimaculata. 
+The recordings founded same type, but different individuals and some types can’t be recorded. Based on the data found 
+in the field, each of these species has its own characteristics and sound characters as seen from the variation in frequency 
+and gaps between the pulse tones of each species. For some of the same species found at two points, the frequency of the 
+species  sounds  is  not  much  different  except  in  the  pulse  tone  gap  there  is  a  significant  difference.  Individual  sound 
+variations of frogs of the same type are distinguished by the frequency and duration of each type of voiced frog.  
+
+Keyword: Amphibians, Animal Behavior, Bioacuistics and Herpetofauna 
+
+ABSTRAK 
+
+Penelitian ini bertujuan untuk mengetahui cara identifikasi amfibi menggunakan suara (Bioakuistik) pada Kawasan Hutan 
+Lindung Sungai Wain untuk kepentingan mengumpulkan  database suara amfibi untuk mempermudah dan membantu 
+peneliti-peneliti yang lainnya untuk identifikasi. Penelitian ini dilakukan dengan munggunakan metode transek jalur dan 
+merekam suara dengan menggunakan telepon genggam (handphone) pada lokasi penelitian yang diduga sebagai Habitat 
+satwa  yang  akan  diamati  Hasil  penelitian  perekaman  suara  katak  sesuai  dengan  data  yang  ditemukan  hanya  dapat 
+dilakukan  kepada  8  jenis,  yaitu  Pulchrana  baramica,  Indosylvirana  nicobariensis,  Rhacophorus  pardalis,  Kurixalus 
+chaseni,  Hylarana  erythraea,  Ingerophrynus  divergens,  Pulchrana  picturata,  dan  Pulchrana  laterimaculata.  Adapun 
+rekaman yang ditemukan dengan jenis yang sama tetapi individu yang berbeda dan ada pula beberapa jenis yang tidak 
+dapat direkam suaranya.  Berdasakan data ya
+[ERROR reading Implementasi Model Transfer Learning Arsitektur ConvNeXt untuk Klasifikasi Suara Burung di Taman Nasional Way Kambas.pdf]: 'charmap' codec can't encode character '\u202f' in position 610: character maps to <undefined>
+================================================================================
+FILE: Klasifikasi Jenis Burung Berdasarkan Suara Kicau Menggunakan Ekstraksi MFCC dan BiLSTM.pdf
+================================================================================
+KOMPUTA : Jurnal Ilmiah Komputer dan Informatika 
+ Vol. 14, No. 2, Oktober  2025, ISSN : 2089-9033, e- ISSN : 2715-7849 
+
+42 
+
+DOI: 10.34010/komputa.v14i2.17694 
+
+Klasifikasi Jenis Burung Berdasarkan Suara Kicau Menggunakan 
+Ekstraksi MFCC dan BiLSTM 
+
+Roikhatul Janah1, Eko Budi Susanto2, Tri Agus Setiawan3 
+
+1,2,3 Program Studi Sistem Informasi Fakultas Teknologi Informasi, Institut Widya Pratama 
+E-mail : ekobudi.s@stmik-wp.ac.id 
+
+Abstrak 
+
+Klasifikasi otomatis jenis burung berdasarkan suara kicau menjadi solusi penting untuk mendukung 
+upaya  konservasi  keanekaragaman  hayati  Indonesia  yang  memiliki  1.835  spesies  burung.  Penelitian  ini 
+mengusulkan  sistem  klasifikasi  yang  mengkombinasikan  ekstraksi  fitur  Mel-Frequency  Cepstral 
+Coefficients  (MFCC)  dengan  arsitektur  Bidirectional  Long  Short-Term  Memory  (BiLSTM)  untuk 
+mengidentifikasi 10 spesies burung Indonesia yang umum dijumpai. Dataset penelitian menggunakan 750 
+rekaman  suara  burung  dari  platform  xeno-canto.org  yang  disegmentasi  menjadi  durasi  4  detik  dan 
+diperbanyak menjadi 3.750 sampel melalui teknik augmentasi pitch shift dan time stretch. Ekstraksi fitur 
+MFCC  dengan  40  koefisien  digunakan  untuk  merepresentasikan  karakteristik  spektral  suara  burung, 
+sedangkan model BiLSTM  dipilih untuk menangkap dependensi temporal bi-directional yang kompleks 
+dalam sinyal vokal burung. Dalam proses pengujian dilakukan pembagian data 80:20 untuk training dan 
+testing. Analisis confusion matrix mengkonfirmasi kemampuan model dalam membedakan karakteristik 
+unik setiap spesies dengan tingkat kesalahan minimal. Hasil penelitian menunjukkan bahwa sistem mampu 
+mencapai akurasi klasifikasi sebesar 98%. Kombinasi MFCC dan BiLSTM terbukti efektif untuk aplikasi 
+pemantauan biodiversitas dan konservasi burung Indonesia secara otomatis dan berkelanjutan.  
+Kata kunci : Klasifikasi Burung, MFCC, BiLSTM, Pengolahan Sinyal Audio, Konservasi Biodiversitas 
+
+Bird Species Classification Based on Chirping Sounds Using MFCC 
+Feature Extraction and BiLSTM 
+
+Abstract 
+
+Automatic bird species classification based on chirping sounds has become an important solution 
+to support conservation efforts for Indonesia's biodiversity, which comprises 1.835 bird species. This study 
+proposes  a  classification  system  that  combines  Mel-Frequency  Cepstral  Coefficients  (MFCC)  feature 
+extraction with Bidirectional Long Short-Term Memory (BiLSTM) architecture to identify 10 commonly 
+found  Indonesian  bird  species.  The  research  dataset  utilized  750 bird  sound  recordings  from  the  xeno-
+canto.org platform, segmented into 4-second duration clips and augmented to 3,750 samples through pitch 
+shift and time stretch techniques. MFCC feature extraction with 40 coefficients was employed to represent 
+the spectral characteristics of bird sounds, while the BiLSTM model was selected to capture complex bi-
+directional temporal dependencies in bird vocal signals. In the testin
+
+================================================================================
+FILE: Klasifikasi Jenis Burung Cucak Berdasarkan Suara Menggunakan MFCC Dan Naive Bayes.pdf
+================================================================================
+KOMPUTA : Jurnal Ilmiah Komputer dan Informatika 
+ Vol. 14, No. 2, Oktober  2025, ISSN : 2089-9033, e- ISSN : 2715-7849 
+
+42 
+
+DOI: 10.34010/komputa.v14i2.17694 
+
+Klasifikasi Jenis Burung Berdasarkan Suara Kicau Menggunakan 
+Ekstraksi MFCC dan BiLSTM 
+
+Roikhatul Janah1, Eko Budi Susanto2, Tri Agus Setiawan3 
+
+1,2,3 Program Studi Sistem Informasi Fakultas Teknologi Informasi, Institut Widya Pratama 
+E-mail : ekobudi.s@stmik-wp.ac.id 
+
+Abstrak 
+
+Klasifikasi otomatis jenis burung berdasarkan suara kicau menjadi solusi penting untuk mendukung 
+upaya  konservasi  keanekaragaman  hayati  Indonesia  yang  memiliki  1.835  spesies  burung.  Penelitian  ini 
+mengusulkan  sistem  klasifikasi  yang  mengkombinasikan  ekstraksi  fitur  Mel-Frequency  Cepstral 
+Coefficients  (MFCC)  dengan  arsitektur  Bidirectional  Long  Short-Term  Memory  (BiLSTM)  untuk 
+mengidentifikasi 10 spesies burung Indonesia yang umum dijumpai. Dataset penelitian menggunakan 750 
+rekaman  suara  burung  dari  platform  xeno-canto.org  yang  disegmentasi  menjadi  durasi  4  detik  dan 
+diperbanyak menjadi 3.750 sampel melalui teknik augmentasi pitch shift dan time stretch. Ekstraksi fitur 
+MFCC  dengan  40  koefisien  digunakan  untuk  merepresentasikan  karakteristik  spektral  suara  burung, 
+sedangkan model BiLSTM  dipilih untuk menangkap dependensi temporal bi-directional yang kompleks 
+dalam sinyal vokal burung. Dalam proses pengujian dilakukan pembagian data 80:20 untuk training dan 
+testing. Analisis confusion matrix mengkonfirmasi kemampuan model dalam membedakan karakteristik 
+unik setiap spesies dengan tingkat kesalahan minimal. Hasil penelitian menunjukkan bahwa sistem mampu 
+mencapai akurasi klasifikasi sebesar 98%. Kombinasi MFCC dan BiLSTM terbukti efektif untuk aplikasi 
+pemantauan biodiversitas dan konservasi burung Indonesia secara otomatis dan berkelanjutan.  
+Kata kunci : Klasifikasi Burung, MFCC, BiLSTM, Pengolahan Sinyal Audio, Konservasi Biodiversitas 
+
+Bird Species Classification Based on Chirping Sounds Using MFCC 
+Feature Extraction and BiLSTM 
+
+Abstract 
+
+Automatic bird species classification based on chirping sounds has become an important solution 
+to support conservation efforts for Indonesia's biodiversity, which comprises 1.835 bird species. This study 
+proposes  a  classification  system  that  combines  Mel-Frequency  Cepstral  Coefficients  (MFCC)  feature 
+extraction with Bidirectional Long Short-Term Memory (BiLSTM) architecture to identify 10 commonly 
+found  Indonesian  bird  species.  The  research  dataset  utilized  750 bird  sound  recordings  from  the  xeno-
+canto.org platform, segmented into 4-second duration clips and augmented to 3,750 samples through pitch 
+shift and time stretch techniques. MFCC feature extraction with 40 coefficients was employed to represent 
+the spectral characteristics of bird sounds, while the BiLSTM model was selected to capture complex bi-
+directional temporal dependencies in bird vocal signals. In the testin
+
+================================================================================
+FILE: Klasifikasi Suara Katak Menggunakan Model Deep Learning.pdf
+================================================================================
+Prosiding Seminar Nasional Sains dan Teknologi Seri III 
+Fakultas Sains dan Teknologi, Universitas Terbuka 
+Vol. 2 No. 1 (2025) 
+e-ISSN: 3047-6569 
+
+KLASIFIKASI SUARA KATAK MENGGUNAKAN MODEL DEEP LEARNING 
+MODIFIED DENSENET-121 DAN DENSENET-169 DENGAN FITUR EKSTRAKSI 
+MFCC 
+
+Kharisma Gumilang*, Afwa Fuadi Nugraha, Isyamaetreya Savitri, Nadia Fitri Yani, 
+Yunita Amelia Puspitasari, Jasmine Georgina Sekartaji, Ardika Satria, Christyan Tamaro 
+Nadeak, Ade Lailani 
+Program Studi Sains Data, Institut Teknologi Sumatera, Bandarlampung, Indonesia 
+
+*Penulis korespondensi: afwa.121450019@student.itera.ac.id  
+
+ABSTRAK 
+
+Katak  merupakan  salah  satu  spesies  amfibi,  memiliki  banyak  ciri  khas  yang  menjadikannya 
+makhluk  yang  menarik  untuk  dipelajari.  Keanekaragaman  spesies  katak,  suara  unik  yang 
+dihasilkan,  serta  peran  pentingnya  dalam  ekosistem  menjadikannya  sebagai  bioindikator  yang 
+efektif dalam pemantauan lingkungan dan konservasi keanekaragaman hayati. Setiap spesies katak 
+menghasilkan  suara  yang  berbeda,  yang  dapat  digunakan  untuk  identifikasi  tanpa  observasi 
+langsung. Penelitian ini bertujuan untuk mengklasifikasikan suara katak menggunakan teknologi 
+deep  learning,  dengan  fitur  Mel-frequency  Cepstral  Coefficients  (MFCC)  yang  telah  terbukti 
+efektif dalam representasi suara. Dataset yang digunakan mencakup 1512 rekaman suara dari 9 
+spesies  katak,  yaitu  Dendrosophus  minutus,  Leptodactylus  fuscus,  Rana  temporaria,  Rhinella 
+marina, Scinax rubex, Boana, Pepper frog, Pool frog, dan South frog. Data dibagi menjadi 80% 
+untuk pelatihan, 10% untuk validasi, dan 10% untuk pengujian. Dua model deep learning yang 
+digunakan,  yaitu  Modified  DenseNet-121  dan  Modified  DenseNet-169.  Model  dilatih 
+menggunakan  algoritma  Adam  dengan  learning  rate  1e-4,  weight  decay  1e-4,  dan  mekanisme 
+ReduceLROnPlateau  untuk  penyesuaian  learning  rate.  Hasil  dari  Modified  DenseNet-121 
+menunjukkan  akurasi  68%,  precision  71%,  recall  68%,  dan  F1  score  68%.  Sementara  itu, 
+Modified  DenseNet-169  menghasilkan  akurasi  61%,  precision  68%,  recall  61%,  dan  F1  score 
+62%. Pendekatan ini diharapkan dapat membantu upaya pemantauan keanekaragaman hayati dan 
+konservasi spesies dengan memanfaatkan teknologi deep learning. 
+
+Kata kunci: Deep Learning, DenseNet, MFCC, Klasifikasi Suara, Konservasi 
+
+1  PENDAHULUAN  
+Katak merupakan hewan amfibi yang memiliki keanekaragaman spesies. Di indonesia, terdapat 
+lebih dari 10% jenis katak dari total katak di seluruh dunia atau terdapat lebih dari 7000 spesies 
+katak  di  Indonesia  (Iskandar,1998).  Katak,  sebagai  salah  satu  kelompok  amfibi  yang  memiliki 
+peran penting dalam  ekosistem. Katak berfungsi  sebagai  predator alami  serangga dan berperan 
+juga sebagai bagian dari rantai makanan yang mendukung keseimbangan ekosistem (Rofiq, 2021). 
+Keberadaan katak sering menjadi indikator utama untuk perubahan kualitas lingkungan dan habitat
+[ERROR reading Open-Set Recognition A Good Closed-Set Classifier is All You Need.pdf]: 'charmap' codec can't encode character '\ufb01' in position 581: character maps to <undefined>
+================================================================================
+FILE: Overview of BirdCLEF 2021.pdf
+================================================================================
+Overview of BirdCLEF 2021: Bird call identification
+in soundscape recordings
+
+Stefan Kahl1, Tom Denton2, Holger Klinck1, Hervé Glotin3, Hervé Goëau4,
+Willem-Pier Vellinga5, Robert Planqué5 and Alexis Joly6
+
+1K. Lisa Yang Center for Conservation Bioacoustics, Cornell Lab of Ornithology, Cornell University, Ithaca, USA
+2Google LLC, San Francisco, USA
+3University of Toulon, AMU, CNRS, LIS, Marseille, France
+4CIRAD, UMR AMAP, Montpellier, France
+5Xeno-canto Foundation, Groningen, Netherlands
+6Inria, LIRMM, University of Montpellier, CNRS, Montpellier, France
+
+Abstract
+Conservation of bird species requires detailed knowledge of their spatiotemporal occurrence and dis-
+tribution patterns. Over the past decade, passive acoustic monitoring (PAM) has become an essential
+tool to collect data on birds on ecologically relevant scales. However, these PAM efforts generate ex-
+tensive datasets, and their comprehensive analysis remains challenging. Improved and fully automated
+acoustic analysis frameworks are needed to advance the field of avian conservation. The 2021 BirdCLEF
+challenge focused on developing and assessing automated analysis frameworks for avian vocalizations
+in continuous soundscape data. The primary task of the challenge was to detect and identify all bird
+calls within the hidden test dataset. This paper describes how the various algorithms were evaluated
+and synthesizes the results and lessons learned.
+
+Keywords
+LifeCLEF, bird, song, call, species, retrieval, audio, collection, identification, fine-grained classification,
+evaluation, benchmark, bioacoustics, passive acoustic monitoring
+
+1. Introduction
+
+Birds are widely used to monitor ecosystem health because they live in most environments
+and occupy almost every niche within those environments. Traditionally, human observers
+monitor bird populations by conducting point count surveys in an area of interest. At sampling
+locations along a transect, the domain expert will visually and aurally count every bird in a
+given time window (e.g., 3 or 5 minutes). However, conducting these surveys is time-consuming
+and requires expert knowledge in the identification of birds. Because the number of observers
+is typically limited, the spatiotemporal resolution of the surveys is limited as well.
+
+CLEF 2021 – Conference and Labs of the Evaluation Forum, September 21–24, 2021, Bucharest, Romania
+" sk2487@cornell.edu (S. Kahl); tmd@google.com (T. Denton); Holger.Klinck@cornell.edu (H. Klinck);
+herve.glotin@univ-tln.fr (H. Glotin); herve.goeau@cirad.fr (H. Goëau); wp@xeno-canto.org (W. Vellinga);
+bob@xeno-canto.org (R. Planqué); alexis.joly@inria.fr (A. Joly)
+(cid:18) 0000-0002-2411-8877 (S. Kahl); 0000-0003-1078-7268 (H. Klinck); 0000-0001-7338-8518 (H. Glotin);
+0000-0003-3296-3795 (H. Goëau); 0000-0003-3886-5088 (W. Vellinga); 0000-0002-0489-5425 (R. Planqué);
+0000-0002-2161-9940 (A. Joly)
+
+© 2021 Copyright for this paper by its authors. Use permitted under Creative Commons License Attribution 4.0 Internation
+[ERROR reading PANNs Large-Scale Pretrained Audio Neural Networks for Audio Pattern Recognition.pdf]: 'charmap' codec can't encode character '\ufb01' in position 529: character maps to <undefined>

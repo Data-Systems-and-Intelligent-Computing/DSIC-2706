@@ -1,0 +1,43 @@
+================================================================================
+DOKUMENTASI KODE: E4 (DOMAIN SHIFT REAL SOUNDSCAPE)
+================================================================================
+
+1. DESKRIPSI UMUM
+Eksperimen E4 bertujuan untuk mengukur "Domain Shift" (kesenjangan domain) antara pengujian derau terkontrol (E2) yang menggunakan rekaman lingkungan ITERA, dengan pengujian derau lingkungan alam bebas sesungguhnya yang diambil dari rekaman `train_soundscapes` BirdCLEF (dalam format .ogg). 
+
+2. PUSTAKA (LIBRARIES) YANG DIGUNAKAN
+- os, sys, pathlib: Digunakan untuk manajemen path dan membaca struktur direktori secara dinamis dari folder repositori.
+- numpy (np): Library matematis utama. Digunakan untuk perhitungan logaritma (10 ** (snr_db / 10.0)), menghitung sinyal daya akustik, memotong deretan array suara, serta mengelola bilangan acak (*random generator*).
+- pandas (pd): Digunakan untuk membaca manifes dataset (dataset_split.csv) dan untuk merangkum hasil matriks mAP@10 menjadi format tabel (Dataframe).
+- librosa: Library analisis audio inti. Digunakan memuat (load) file suara `.ogg` dari BirdCLEF dan meresamplingnya secara aman menjadi 32.000 Hz.
+
+3. PARAMETER UTAMA
+- `samples` (Integer): Jumlah sampel amplitudo yang dibutuhkan. Secara default adalah 160.000 sampel, didapat dari durasi 5 detik dikali frekuensi 32.000 Hz.
+- `snr_db` (Float): Signal-to-Noise Ratio dalam Desibel (dB). Rentang uji yang dipakai adalah 20, 10, 0, -5 dB. SNR -5dB berarti volume derau alam jauh lebih bising daripada kicauan burung target.
+- `seed` (Integer): Nilai pengunci acak agar jika kode ini dijalankan 100 kali, file soundscape yang terpotong secara acak akan selalu konsisten.
+
+4. CARA KERJA SETIAP FUNGSI (LOGIKA KODE)
+
+A. Fungsi `get_soundscape_noise_segment(samples, seed)`
+   - Mendaftar semua file berakhiran `.ogg` dari folder `data/BirdClef/train_soundscapes`.
+   - Menggunakan Random Generator untuk memilih satu file OGG secara acak.
+   - Melakukan `librosa.load` pada file tersebut.
+   - Mengambil irisan waktu audio (array slicing) sepanjang tepat 5 detik.
+   - Jika audio ternyata lebih pendek dari 5 detik, ia akan menggandakannya (`np.tile`) sampai mencapai 5 detik.
+
+B. Fungsi `mix_with_soundscape(clean, snr_db, seed)`
+   - Memanggil fungsi (A) di atas untuk mendapatkan potongan derau soundscape.
+   - Menghitung Power/Daya dari sinyal burung bersih (clean) dan daya dari derau soundscape (noise).
+   - Menghitung variabel 'alpha', yaitu koefisien pembesar/pengecil volume derau agar ketika dicampur (clean + alpha * noise), rasio bisingnya pas di angka SNR yang diminta (misal -5 dB).
+   - Menormalisasi hasil akhirnya agar batas amplitudonya tidak melewati 1.0 (mencegah distorsi pecah).
+
+C. Fungsi `main()`
+   - Melakukan iterasi (perulangan) pada ke-4 Representasi Jaringan Saraf Tiruan Anda: R0 (MFCC), R1 (CNN14), R2 (BirdNET), dan R3 (Random).
+   - Pertama, mencari vektor dasar (embedding) dari suara di dalam Gallery.
+   - Kedua, mencampurkan seluruh suara Clean Query dengan derau OGG soundscape.
+   - Terakhir, melakukan pencarian kemiripan Kosinus (Cosine Similarity) antara vektor kueri bising melawan galeri, dan menghitung seberapa akurat mesin menebak spesiesnya (menggunakan metrik mAP@10).
+
+5. OUTPUT YANG DIHASILKAN
+Kode Python dan Jupyter Notebook ini akan mengekspor satu file baru:
+=> `results/processed/e4_domain_shift_table.csv`
+Tabel ini memuat skor performa setiap model dalam menembus keramaian hutan sungguhan. Selanjutnya, nilai mAP@10 dari tabel ini bisa dikurangkan dengan tabel E2 Anda untuk menemukan nilai persis "Domain Shift Gap" (Pergeseran Performa).

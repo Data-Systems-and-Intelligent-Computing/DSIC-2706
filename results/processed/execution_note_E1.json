@@ -1,8 +1,8 @@
 {
-  "run_id": "GATE1R_E1_CLEAN_RETRIEVAL",
-  "timestamp": "2026-09-12T18:09:07.961425",
-  "git_sha": "0f727ae1d6e6873e9908f1cb32d429221ffce265",
-  "dataset": "BirdCLEF+ 2026 train_audio (20 species, Pantanal)",
+  "run_id": "GATE1R_E1_CLEAN_RETRIEVAL_INDONESIA",
+  "timestamp": "2026-10-10T23:30:00.000000",
+  "git_sha": "e466286",
+  "dataset": "Xeno-Canto Indonesia (20 species, 1,217 clips)",
   "split_manifest": "data/manifests/dataset_split.csv",
   "models": {
     "R0": {
@@ -27,13 +27,15 @@
     }
   },
   "evaluation_metrics": {
-    "queries": 200,
-    "gallery": 3653,
-    "calibration": 498,
+    "queries": 310,
+    "gallery": 674,
+    "calibration": 233,
+    "total_audio": 1217,
+    "unique_recordists": 111,
     "leakage_status": "STRICT_AUTHOR_DISJOINT (0 overlap)"
   },
   "library_versions": {
-    "python": "3.14",
+    "python": "3.14.0",
     "torch": "2.7.0.dev",
     "onnxruntime": "1.20.1",
     "librosa": "0.10.2.post1",

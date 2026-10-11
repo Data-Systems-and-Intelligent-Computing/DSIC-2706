@@ -78,3 +78,6 @@ Thumbs.db
 # Datasets & Binaries
 data/BirdClef/
 *.exe
+
+*.zip
+data/itera_noise/*/

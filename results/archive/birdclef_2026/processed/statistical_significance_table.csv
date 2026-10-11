@@ -1,0 +1,8 @@
+Pengujian,Komparasi,Mean_Diff,CI_95_Lower,CI_95_Upper,p_value,Signifikan_0.05,Catatan
+Clean Retrieval (mAP@10),R2 (BirdNET) vs R1 (PANNs),0.4981,0.4504,0.5473,< 0.001,True,R2 unggul mutlak atas model generik audio
+Clean Retrieval (mAP@10),R2 (BirdNET) vs R0 (MFCC),0.7811,0.7421,0.8183,< 0.001,True,R2 unggul mutlak atas baseline klasik
+Clean Retrieval (mAP@10),R1 (PANNs) vs R0 (MFCC),0.283,0.2355,0.3308,< 0.001,True,R1 unggul atas MFCC pada kondisi bersih
+Retensi Relatif SNR -5 dB,R2 (BirdNET) vs R1 (PANNs),0.702,0.6424,0.7571,< 0.001,True,Retensi R2 (84.5%) unggul mutlak atas R1 (14.2%)
+Retensi Relatif SNR -5 dB,R0 (MFCC) vs R1 (PANNs),0.1223,0.0581,0.1994,< 0.001,True,Retensi MFCC (26.4%) melampaui PANNs (14.2%) secara signifikan
+Sensitivitas Sumber Derau (-5 dB),R2 (E4 Soundscape vs E2 ITERA),-0.0097,-0.0479,0.0275,0.6100,False,Tidak ada perbedaan signifikan (invarian profil derau)
+Sensitivitas Sumber Derau (-5 dB),R1 (E4 Soundscape vs E2 ITERA),0.0892,0.0572,0.121,< 0.001,True,PANNs sangat sensitif terhadap profil derau (unggul pada soundscape)
