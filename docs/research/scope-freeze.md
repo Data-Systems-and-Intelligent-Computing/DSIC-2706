@@ -47,7 +47,7 @@ Daftar resmi **20 spesies burung target** dengan total **1.216 rekaman audio** t
 
 #### Subset Negatif Open-Set (`data/manifests/unknown_open_set_manifest.csv`):
 * Total 543 rekaman kontrol negatif:
-  * 272 rekaman kontrol satwa non-burung / burung non-target.
+  * 272 rekaman kontrol satwa non-burung / burung non-target (dipilih secara ketat dari 380 kandidat buffer taksa non-target pada 105 spesies Indonesia untuk menjaga rasio kuota 1:1; 108 berkas sisanya adalah buffer cadangan).
   * 271 rekaman derau lingkungan murni AudioMoth ITERA.
 * Dipartisi menjadi 233 rekaman untuk `unknown_calibration` dan 310 rekaman untuk `unknown_test`.
 
@@ -67,7 +67,7 @@ Bank derau lingkungan fisik ITERA berlokasi di `data/itera_noise/` dengan catata
 ## 3. Parameter Pra-pemrosesan Audio (Dibekukan)
 * Laju Sampel (*Sample Rate*): **32.000 Hz** (mono).
 * Durasi Segmen: **5.0 detik** (160.000 sampel).
-* Seleksi Jendela: **Energi RMS tertinggi (*Top-energy sliding window*)**.
+* Seleksi Jendela: **Energi RMS tertinggi (*Top-energy sliding window*)** dengan hop 1.25s. Terverifikasi secara akustik pada 50 sampel klip fisik (>60s dan <5s) mengunci vokalisasi biologis aktif target (rata-rata gain RMS 1.64×, centroid 4.382,5 Hz).
 * Normalisasi Energi: **RMS target 0.05** dengan pembatasan puncak kliping $\le 1.0$.
 
 ---
