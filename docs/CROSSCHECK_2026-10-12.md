@@ -27,9 +27,9 @@ Pemeriksaan ini membaca sumber data dan artefak aktif di `D:\FILE AND TASK\TA`. 
 3. Angka 109 audio tidak dirujuk pada EDA dan 108 pada audit manifes berbeda karena EDA hanya memakai tiga manifes aktif, sedangkan audit juga membaca `indonesia_train.csv` historis. Berkas pembeda adalah `data/xeno_canto_indonesia/latnig1/XC1073401.mp3`.
 4. Pembuat peta folder tidak lagi menimpa status bimbingan yang telah ditinjau. Kode analisis H3 juga menolak penimpaan bahan laporan yang berbeda bila dijalankan lagi.
 
-## Temuan yang perlu ditangani sebelum GitHub diperbarui
+## Temuan saat crosscheck dan tindak lanjut Git
 
-**Prioritas tinggi — perubahan Git belum ditinjau seluruhnya.** Cabang lokal masih `main` pada commit `930f6f2ea381221ba29fa09227e86d3d3df1eb33`; pembaruan ini belum di-commit atau di-push. `git status` menunjukkan 163 berkas terlacak berstatus terhapus. Sebanyak 45 tercatat dalam [log penghapusan hasil lama yang terimputasi](restart_deleted_results_2026-10-11.json), sedangkan 118 lainnya meliputi notebook/scratch, skrip, hasil, artefak, serta berkas `paper/`. Status penghapusan itu harus ditinjau satu per satu sebelum commit/push. Crosscheck ini tidak menghapus atau memulihkan berkas-berkas tersebut.
+**Status saat audit awal:** Cabang lokal masih `main` pada commit `930f6f2ea381221ba29fa09227e86d3d3df1eb33` dengan 163 berkas terlacak berstatus terhapus. Sebanyak 45 tercatat dalam [log penghapusan hasil lama yang terimputasi](restart_deleted_results_2026-10-11.json); 118 lainnya mencakup notebook/scratch, skrip, hasil, artefak, dan berkas `paper/`. Setelah pengguna meminta penghapusan dan push, seluruh 163 penghapusan beserta hasil pembaruan masuk commit [`7817355`](https://github.com/Data-Systems-and-Intelligent-Computing/DSIC-2706/commit/781735524da76dc2199d8ea5cd1b6a21ff69df48) dan berhasil di-push ke `origin/main`. Berkas audio, checkpoint, dan cache lokal tidak ikut dihapus. Berkas lama tetap dapat ditelusuri melalui riwayat Git.
 
 **Prioritas metode — cakupan kesimpulan.** H3 menguji perbedaan ayunan retensi, bukan penyebab frekuensi tinggi/rendah. Lima profil lokasi bukan uji burung target yang direkam langsung di ITERA. Bootstrap H3 memasangkan query dan memakai segmen noise E4 yang tetap; ia tidak mengukur ketidakpastian terhadap lokasi baru atau sesi lapangan baru.
 
