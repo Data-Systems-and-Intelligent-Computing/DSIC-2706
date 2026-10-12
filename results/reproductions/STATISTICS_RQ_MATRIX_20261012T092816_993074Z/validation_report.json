@@ -1,0 +1,11 @@
+{
+  "status": "PASS_WITH_H3_DESIGN_LIMITATION",
+  "bootstrap_iterations": 10000,
+  "seed": 20261012,
+  "e2_raw_files_checked": 20,
+  "e2_query_count": 311,
+  "e3_test_rows": 12420,
+  "e4_habitat_rows": 20,
+  "matrix_rows": 10,
+  "h3_limit": "E4 is additive mixing of real noise, not a corpus of bird recordings made in real soundscapes."
+}

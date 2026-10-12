@@ -150,6 +150,7 @@ def get_noise_relative_path(abs_or_full_path: str) -> str:
 
 
 def get_noise_segment(samples: int = TARGET_SAMPLES, seed: int = 42, return_path: bool = False,
+                      return_audit_info: bool = False,
                       exclude_e3_unknowns: bool = True):
     """
     Mengambil segmen derau 5.0 detik nyata dari bank rekaman AudioMoth ITERA.
@@ -167,12 +168,13 @@ def get_noise_segment(samples: int = TARGET_SAMPLES, seed: int = 42, return_path
         try:
             y_noise, _ = librosa.load(selected_file, sr=TARGET_SR, mono=True)
             if len(y_noise) >= samples:
-                start = rng.integers(0, len(y_noise) - samples + 1)
+                start = int(rng.integers(0, len(y_noise) - samples + 1))
                 seg = y_noise[start:start + samples].astype(np.float32)
             else:
                 repeats = int(np.ceil(samples / len(y_noise)))
                 y_noise = np.tile(y_noise, repeats)
                 seg = y_noise[:samples].astype(np.float32)
+                start = 0
 
             # Tambalan: Deteksi derau senyap sebelum normalisasi
             raw_rms = np.sqrt(np.mean(seg ** 2))
@@ -183,6 +185,16 @@ def get_noise_segment(samples: int = TARGET_SAMPLES, seed: int = 42, return_path
             seg_norm = normalize_rms(seg, target_rms=TARGET_RMS)
             rel_noise_path = get_noise_relative_path(selected_file)
 
+            audit_info = {
+                "noise_file": rel_noise_path,
+                "noise_start_sample": start,
+                "noise_segment_samples": int(samples),
+                "noise_seed": int(seed),
+                "noise_attempt": attempt + 1,
+                "noise_raw_rms": float(raw_rms),
+            }
+            if return_audit_info:
+                return seg_norm, audit_info
             if return_path:
                 return seg_norm, rel_noise_path
             return seg_norm
@@ -196,6 +208,7 @@ def get_noise_segment(samples: int = TARGET_SAMPLES, seed: int = 42, return_path
 
 
 def mix_audio_at_snr(clean_signal: np.ndarray, snr_db: float, seed: int = 42, return_noise_info: bool = False,
+                     return_audit_info: bool = False,
                      exclude_e3_unknowns: bool = True):
     """
     Mencampur sinyal bersih dengan derau fisik ITERA pada tingkat SNR (dB) eksak.
@@ -205,17 +218,29 @@ def mix_audio_at_snr(clean_signal: np.ndarray, snr_db: float, seed: int = 42, re
     - Jika derau senyap (P_noise <= 1e-10), lempar ValueError.
     - Mengembalikan (mixed_audio, noise_relative_path) jika return_noise_info=True.
     """
-    noise, noise_rel_path = get_noise_segment(
+    noise, audit_info = get_noise_segment(
         samples=len(clean_signal),
         seed=seed,
-        return_path=True,
+        return_audit_info=True,
         exclude_e3_unknowns=exclude_e3_unknowns
     )
+    noise_rel_path = audit_info["noise_file"]
 
     p_signal = compute_signal_power(clean_signal)
     p_noise = compute_signal_power(noise)
 
     if p_signal <= 1e-12:
+        audit_info.update({
+            "snr_db_target": float(snr_db),
+            "snr_db_achieved": None,
+            "signal_power": p_signal,
+            "noise_power_before_scaling": p_noise,
+            "noise_gain": None,
+            "post_mix_gain": 1.0,
+            "mix_skipped_silent_signal": True,
+        })
+        if return_audit_info:
+            return clean_signal.copy(), audit_info
         if return_noise_info:
             return clean_signal.copy(), noise_rel_path
         return clean_signal.copy()
@@ -228,14 +253,31 @@ def mix_audio_at_snr(clean_signal: np.ndarray, snr_db: float, seed: int = 42, re
     alpha = np.sqrt(target_p_noise / p_noise)
 
     # Campurkan
-    noisy = clean_signal + alpha * noise
+    scaled_noise = alpha * noise
+    noisy = clean_signal + scaled_noise
 
     # Jaga agar tidak clipping
     max_amp = np.max(np.abs(noisy))
-    if max_amp > 1.0:
-        noisy = noisy / max_amp
+    post_mix_gain = 1.0 / max_amp if max_amp > 1.0 else 1.0
+    noisy = noisy * post_mix_gain
+
+    signal_after_gain = clean_signal * post_mix_gain
+    noise_after_gain = scaled_noise * post_mix_gain
+    achieved_noise_power = compute_signal_power(noise_after_gain)
+    achieved_snr = 10.0 * np.log10(compute_signal_power(signal_after_gain) / achieved_noise_power)
+    audit_info.update({
+        "snr_db_target": float(snr_db),
+        "snr_db_achieved": float(achieved_snr),
+        "signal_power": p_signal,
+        "noise_power_before_scaling": p_noise,
+        "noise_gain": float(alpha),
+        "post_mix_gain": float(post_mix_gain),
+        "mix_skipped_silent_signal": False,
+    })
 
     result = noisy.astype(np.float32)
+    if return_audit_info:
+        return result, audit_info
     if return_noise_info:
         return result, noise_rel_path
     return result

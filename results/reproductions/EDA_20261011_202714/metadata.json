@@ -1,0 +1,20 @@
+{
+  "artifact_schema": "eda_physical_inventory_v1",
+  "status": "complete",
+  "timestamp_utc": "2026-10-11T20:27:14.798648+00:00",
+  "git_sha": "930f6f2ea381221ba29fa09227e86d3d3df1eb33",
+  "manifest_sha256": {
+    "dataset_split.csv": "7808cdf057f135aaa193f47e27415318edf46c862c09dee4c7394bc5760e8ed8",
+    "unknown_open_set_manifest.csv": "a7cd0b26e87e1eadcf8cc4fe13257a5c9e3cf80d740d9ff0016e46e5479f3266",
+    "itera_noise_manifest.csv": "a4138bd13e437801d18dc7afde52e0dab50aa5d56ac27091ab0a4ba68fb6f72d"
+  },
+  "physical_audio_count": 3396,
+  "manifest_target_count": 1216,
+  "manifest_open_set_rows": 543,
+  "manifest_unknown_bird_rows": 272,
+  "manifest_e3_reserved_noise_rows": 271,
+  "manifest_noise_count": 1799,
+  "soundfile_decode_errors": 0,
+  "extension_container_mismatches": 101,
+  "unreferenced_physical_audio": 109
+}

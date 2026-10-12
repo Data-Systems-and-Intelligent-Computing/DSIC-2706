@@ -1,0 +1,13 @@
+{
+  "schema": "e2_condition_v1",
+  "run_identity_sha256": "0379f6a773595151dcbac7362cfa1d7234cf4f5e1e88b45ee20720ab8b721a72",
+  "rows": 311,
+  "summary": {
+    "num_queries": 311,
+    "Top1_Accuracy": 0.08038585209003216,
+    "MRR": 0.20284722384163975,
+    "mAP@10": 0.03233386923901393,
+    "Recall@10": 0.02358280976337098,
+    "Precision@10": 0.077491961414791
+  }
+}

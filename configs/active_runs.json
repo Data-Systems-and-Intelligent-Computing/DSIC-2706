@@ -1,0 +1,25 @@
+{
+  "schema": "active_runs_v1",
+  "policy": "Indexes only. Results under results/reproductions are immutable source artifacts.",
+  "runs": {
+    "E0": "results/reproductions/E0_20261011_202557",
+    "EDA": [
+      "results/reproductions/EDA_20261011_202714",
+      "results/reproductions/EDA_visuals_20261012T133209_032622Z"
+    ],
+    "E1": [
+      "results/reproductions/E1_R0_20261011_175321",
+      "results/reproductions/E1_R1_cache_20261012T021032_566409Z",
+      "results/reproductions/E1_R2_cache_20261012T021034_128124Z",
+      "results/reproductions/E1_R3_cache_20261012T021035_119528Z"
+    ],
+    "E2": "results/reproductions/E2_controlled_20261012T021600_897497Z",
+    "E3": "results/reproductions/E3_open_set_20261012T022548_802536Z",
+    "E4": [
+      "results/reproductions/E4_5sites_20261011T213404_350219Z",
+      "results/reproductions/H3_habitat_profile_stability_20261012T141344_312163Z"
+    ],
+    "E5": "results/reproductions/E5_diagnostics_20261012T091512_868500Z",
+    "statistics": "results/reproductions/STATISTICS_RQ_MATRIX_20261012T092924_809804Z"
+  }
+}

@@ -32,9 +32,12 @@ datasets:
       - "Kebun Raya ITERA (Forest canopy biophony / insect chorus)"
       - "Gedung F ITERA (Anthropogenic traffic / structural rumble)"
   domain_shift_e4:
-    source: "Profil derau habitat lapangan ITERA (Eksperimen E4)"
+    source: "Profil noise lapangan ITERA untuk additive-mixture sensitivity (E4)"
     directory: "data/itera_noise/"
-    habitats:
+    locations:
       - "Kebun_Raya"
       - "Embung_F"
       - "Gedung_F"
+      - "Masjid_At_Tanwir"
+      - "Sekitar_GKU_1"
+    interpretation_scope: "additive noise-profile sensitivity; supports H3 retention-stability comparison, not an in-situ bird soundscape claim"

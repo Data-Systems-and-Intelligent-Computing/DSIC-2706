@@ -1,0 +1,18 @@
+{
+  "csv_sha256": "3b865d328d57cfcfa410c6cbf35f379288345ee146586dcfa47c34ef37bb8057",
+  "query_count": 311,
+  "run_sha256": "f175751ce0fd5b828f39e7d9f3c57f304793f7af472015fc0ea1f15a4b162d2e",
+  "schema": "E4_condition_snapshot_v1",
+  "summary": {
+    "Precision@10": 0.06430868167202572,
+    "Recall@10": 0.021615215295188932,
+    "Top1_Accuracy": 0.08681672025723473,
+    "condition": "SNR_-5dB",
+    "habitat": "Embung_F",
+    "mAP@10": 0.027005690807941615,
+    "relative_retention": 0.38917226263413773,
+    "repeat_id": 3,
+    "representation": "R0",
+    "snr_db": -5
+  }
+}

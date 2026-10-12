@@ -1,0 +1,160 @@
+source_experiment,representation,condition,failure_mode,n_queries
+E2,R0,Clean,Accepted correct,22
+E2,R0,Clean,Open-set false rejection,35
+E2,R0,Clean,Top-1 confusion above threshold,36
+E2,R0,Clean,Total retrieval collapse,218
+E2,R0,SNR_-5dB,Open-set false rejection,23
+E2,R0,SNR_-5dB,Top-1 confusion above threshold,3
+E2,R0,SNR_-5dB,Total retrieval collapse,285
+E2,R0,SNR_0dB,Accepted correct,1
+E2,R0,SNR_0dB,Open-set false rejection,24
+E2,R0,SNR_0dB,Top-1 confusion above threshold,14
+E2,R0,SNR_0dB,Total retrieval collapse,272
+E2,R0,SNR_10dB,Accepted correct,16
+E2,R0,SNR_10dB,Open-set false rejection,28
+E2,R0,SNR_10dB,Top-1 confusion above threshold,57
+E2,R0,SNR_10dB,Total retrieval collapse,210
+E2,R0,SNR_20dB,Accepted correct,24
+E2,R0,SNR_20dB,Open-set false rejection,37
+E2,R0,SNR_20dB,Top-1 confusion above threshold,51
+E2,R0,SNR_20dB,Total retrieval collapse,199
+E2,R1,Clean,Accepted correct,103
+E2,R1,Clean,Open-set false rejection,14
+E2,R1,Clean,Top-1 confusion above threshold,157
+E2,R1,Clean,Total retrieval collapse,37
+E2,R1,SNR_-5dB,Accepted correct,32
+E2,R1,SNR_-5dB,Open-set false rejection,38
+E2,R1,SNR_-5dB,Top-1 confusion above threshold,105
+E2,R1,SNR_-5dB,Total retrieval collapse,136
+E2,R1,SNR_0dB,Accepted correct,60
+E2,R1,SNR_0dB,Open-set false rejection,28
+E2,R1,SNR_0dB,Top-1 confusion above threshold,127
+E2,R1,SNR_0dB,Total retrieval collapse,96
+E2,R1,SNR_10dB,Accepted correct,89
+E2,R1,SNR_10dB,Open-set false rejection,23
+E2,R1,SNR_10dB,Top-1 confusion above threshold,153
+E2,R1,SNR_10dB,Total retrieval collapse,46
+E2,R1,SNR_20dB,Accepted correct,105
+E2,R1,SNR_20dB,Open-set false rejection,17
+E2,R1,SNR_20dB,Top-1 confusion above threshold,155
+E2,R1,SNR_20dB,Total retrieval collapse,34
+E2,R2,Clean,Accepted correct,168
+E2,R2,Clean,Open-set false rejection,86
+E2,R2,Clean,Top-1 confusion above threshold,20
+E2,R2,Clean,Total retrieval collapse,37
+E2,R2,SNR_-5dB,Accepted correct,67
+E2,R2,SNR_-5dB,Open-set false rejection,143
+E2,R2,SNR_-5dB,Top-1 confusion above threshold,12
+E2,R2,SNR_-5dB,Total retrieval collapse,89
+E2,R2,SNR_0dB,Accepted correct,90
+E2,R2,SNR_0dB,Open-set false rejection,140
+E2,R2,SNR_0dB,Top-1 confusion above threshold,11
+E2,R2,SNR_0dB,Total retrieval collapse,70
+E2,R2,SNR_10dB,Accepted correct,143
+E2,R2,SNR_10dB,Open-set false rejection,110
+E2,R2,SNR_10dB,Top-1 confusion above threshold,10
+E2,R2,SNR_10dB,Total retrieval collapse,48
+E2,R2,SNR_20dB,Accepted correct,158
+E2,R2,SNR_20dB,Open-set false rejection,95
+E2,R2,SNR_20dB,Top-1 confusion above threshold,14
+E2,R2,SNR_20dB,Total retrieval collapse,44
+E2,R3,Clean,Accepted correct,9
+E2,R3,Clean,Open-set false rejection,11
+E2,R3,Clean,Top-1 confusion above threshold,104
+E2,R3,Clean,Total retrieval collapse,187
+E2,R3,SNR_-5dB,Accepted correct,9
+E2,R3,SNR_-5dB,Open-set false rejection,11
+E2,R3,SNR_-5dB,Top-1 confusion above threshold,104
+E2,R3,SNR_-5dB,Total retrieval collapse,187
+E2,R3,SNR_0dB,Accepted correct,9
+E2,R3,SNR_0dB,Open-set false rejection,11
+E2,R3,SNR_0dB,Top-1 confusion above threshold,104
+E2,R3,SNR_0dB,Total retrieval collapse,187
+E2,R3,SNR_10dB,Accepted correct,9
+E2,R3,SNR_10dB,Open-set false rejection,11
+E2,R3,SNR_10dB,Top-1 confusion above threshold,104
+E2,R3,SNR_10dB,Total retrieval collapse,187
+E2,R3,SNR_20dB,Accepted correct,9
+E2,R3,SNR_20dB,Open-set false rejection,11
+E2,R3,SNR_20dB,Top-1 confusion above threshold,104
+E2,R3,SNR_20dB,Total retrieval collapse,187
+E4,R0,Clean,Accepted correct,22
+E4,R0,Clean,Open-set false rejection,35
+E4,R0,Clean,Top-1 confusion above threshold,36
+E4,R0,Clean,Total retrieval collapse,218
+E4,R0,SNR_-5dB,Accepted correct,19
+E4,R0,SNR_-5dB,Open-set false rejection,384
+E4,R0,SNR_-5dB,Top-1 confusion above threshold,93
+E4,R0,SNR_-5dB,Total retrieval collapse,5724
+E4,R0,SNR_0dB,Accepted correct,34
+E4,R0,SNR_0dB,Open-set false rejection,478
+E4,R0,SNR_0dB,Top-1 confusion above threshold,221
+E4,R0,SNR_0dB,Total retrieval collapse,5487
+E4,R0,SNR_10dB,Accepted correct,297
+E4,R0,SNR_10dB,Open-set false rejection,600
+E4,R0,SNR_10dB,Top-1 confusion above threshold,991
+E4,R0,SNR_10dB,Total retrieval collapse,4332
+E4,R0,SNR_20dB,Accepted correct,475
+E4,R0,SNR_20dB,Open-set false rejection,805
+E4,R0,SNR_20dB,Top-1 confusion above threshold,1024
+E4,R0,SNR_20dB,Total retrieval collapse,3916
+E4,R1,Clean,Accepted correct,103
+E4,R1,Clean,Open-set false rejection,14
+E4,R1,Clean,Top-1 confusion above threshold,157
+E4,R1,Clean,Total retrieval collapse,37
+E4,R1,SNR_-5dB,Accepted correct,568
+E4,R1,SNR_-5dB,Open-set false rejection,624
+E4,R1,SNR_-5dB,Top-1 confusion above threshold,2170
+E4,R1,SNR_-5dB,Total retrieval collapse,2858
+E4,R1,SNR_0dB,Accepted correct,938
+E4,R1,SNR_0dB,Open-set false rejection,581
+E4,R1,SNR_0dB,Top-1 confusion above threshold,2683
+E4,R1,SNR_0dB,Total retrieval collapse,2018
+E4,R1,SNR_10dB,Accepted correct,1766
+E4,R1,SNR_10dB,Open-set false rejection,445
+E4,R1,SNR_10dB,Top-1 confusion above threshold,3061
+E4,R1,SNR_10dB,Total retrieval collapse,948
+E4,R1,SNR_20dB,Accepted correct,2086
+E4,R1,SNR_20dB,Open-set false rejection,338
+E4,R1,SNR_20dB,Top-1 confusion above threshold,3132
+E4,R1,SNR_20dB,Total retrieval collapse,664
+E4,R2,Clean,Accepted correct,168
+E4,R2,Clean,Open-set false rejection,86
+E4,R2,Clean,Top-1 confusion above threshold,20
+E4,R2,Clean,Total retrieval collapse,37
+E4,R2,SNR_-5dB,Accepted correct,1400
+E4,R2,SNR_-5dB,Open-set false rejection,2508
+E4,R2,SNR_-5dB,Top-1 confusion above threshold,159
+E4,R2,SNR_-5dB,Total retrieval collapse,2153
+E4,R2,SNR_0dB,Accepted correct,1920
+E4,R2,SNR_0dB,Open-set false rejection,2520
+E4,R2,SNR_0dB,Top-1 confusion above threshold,163
+E4,R2,SNR_0dB,Total retrieval collapse,1617
+E4,R2,SNR_10dB,Accepted correct,2729
+E4,R2,SNR_10dB,Open-set false rejection,2181
+E4,R2,SNR_10dB,Top-1 confusion above threshold,205
+E4,R2,SNR_10dB,Total retrieval collapse,1105
+E4,R2,SNR_20dB,Accepted correct,3148
+E4,R2,SNR_20dB,Open-set false rejection,1911
+E4,R2,SNR_20dB,Top-1 confusion above threshold,270
+E4,R2,SNR_20dB,Total retrieval collapse,891
+E4,R3,Clean,Accepted correct,9
+E4,R3,Clean,Open-set false rejection,11
+E4,R3,Clean,Top-1 confusion above threshold,104
+E4,R3,Clean,Total retrieval collapse,187
+E4,R3,SNR_-5dB,Accepted correct,180
+E4,R3,SNR_-5dB,Open-set false rejection,220
+E4,R3,SNR_-5dB,Top-1 confusion above threshold,2080
+E4,R3,SNR_-5dB,Total retrieval collapse,3740
+E4,R3,SNR_0dB,Accepted correct,180
+E4,R3,SNR_0dB,Open-set false rejection,220
+E4,R3,SNR_0dB,Top-1 confusion above threshold,2080
+E4,R3,SNR_0dB,Total retrieval collapse,3740
+E4,R3,SNR_10dB,Accepted correct,180
+E4,R3,SNR_10dB,Open-set false rejection,220
+E4,R3,SNR_10dB,Top-1 confusion above threshold,2080
+E4,R3,SNR_10dB,Total retrieval collapse,3740
+E4,R3,SNR_20dB,Accepted correct,180
+E4,R3,SNR_20dB,Open-set false rejection,220
+E4,R3,SNR_20dB,Top-1 confusion above threshold,2080
+E4,R3,SNR_20dB,Total retrieval collapse,3740

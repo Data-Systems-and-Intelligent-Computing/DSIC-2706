@@ -57,7 +57,7 @@ def verify_single_command_reproducibility(rep_code="R2", test_snr=0):
     gallery_labels = []
     for _, r in gallery_df.iterrows():
         y = preprocess_audio(r['file_path'])
-        gallery_embs.append(extractor.extract(y))
+        gallery_embs.append(extractor.extract(y, item_id=f"gallery:{r['recording_id']}"))
         gallery_labels.append(r['species_key'])
     gallery_embs = np.array(gallery_embs)
 
@@ -68,7 +68,7 @@ def verify_single_command_reproducibility(rep_code="R2", test_snr=0):
         y = preprocess_audio(r['file_path'])
         if test_snr is not None and test_snr != 999:
             y = mix_audio_at_snr(y, snr_db=test_snr, seed=42 + i)
-        query_embs.append(extractor.extract(y))
+        query_embs.append(extractor.extract(y, item_id=f"query_clean:{r['recording_id']}"))
         query_labels.append(r['species_key'])
     query_embs = np.array(query_embs)
 

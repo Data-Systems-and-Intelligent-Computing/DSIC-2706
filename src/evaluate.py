@@ -30,7 +30,7 @@ if sys.platform == "win32":
         pass
 
 from src.preprocess import preprocess_audio, TARGET_SR
-from src.embeddings import AudioRepresentationExtractor
+from src.embeddings import AudioRepresentationExtractor, R3_CONTROL_VERSION
 from src.mix_noise import mix_audio_at_snr
 from src.retrieve import evaluate_retrieval_corpus, compute_query_retrieval
 from src.calibrate_threshold import calibrate_threshold_tau, evaluate_open_set_with_frozen_tau
@@ -46,7 +46,13 @@ RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 RAW_DIR.mkdir(parents=True, exist_ok=True)
 
 
-def save_raw_query_metrics(rep_code: str, condition: str, raw_metrics: list, query_df: pd.DataFrame, noise_files: list = None):
+def _extract_for_item(extractor, audio: np.ndarray, namespace: str, item_id: str) -> np.ndarray:
+    """Give every extractor a stable item ID; R3 uses it as its random-control seed."""
+    return extractor.extract(audio, item_id=f"{namespace}:{item_id}")
+
+
+def save_raw_query_metrics(rep_code: str, condition: str, raw_metrics: list, query_df: pd.DataFrame,
+                           noise_files: list = None, noise_audits: list = None):
     """Menyimpan hasil pemeringkatan mentah per-kueri ke results/raw/ (S-02)."""
     rows = []
     for i, m in enumerate(raw_metrics):
@@ -68,6 +74,15 @@ def save_raw_query_metrics(rep_code: str, condition: str, raw_metrics: list, que
             "Recall@10": m.get("R@10", 0.0),
             "Precision@10": m.get("P@10", 0.0),
         }
+        if noise_audits is not None and i < len(noise_audits):
+            audit = noise_audits[i]
+            row["noise_file"] = audit.get("noise_file", row["noise_file"])
+            for key in (
+                "noise_start_sample", "noise_segment_samples", "noise_seed", "noise_attempt",
+                "noise_raw_rms", "snr_db_target", "snr_db_achieved", "signal_power",
+                "noise_power_before_scaling", "noise_gain", "post_mix_gain", "mix_skipped_silent_signal",
+            ):
+                row[key] = audit.get(key)
         rows.append(row)
     df_raw = pd.DataFrame(rows)
     raw_path = RAW_DIR / f"{rep_code}_{condition}_raw.csv"
@@ -105,7 +120,7 @@ def run_experiment_for_representation(rep_code: str = "R0", snr_list: list = [20
     gallery_labels = []
     for _, r in gallery_df.iterrows():
         y = preprocess_audio(r['file_path'])
-        emb = extractor.extract(y)
+        emb = _extract_for_item(extractor, y, "gallery", str(r["recording_id"]))
         gallery_embs.append(emb)
         gallery_labels.append(r['species_key'])
     gallery_embs = np.array(gallery_embs, dtype=np.float32)
@@ -121,7 +136,10 @@ def run_experiment_for_representation(rep_code: str = "R0", snr_list: list = [20
 
     # 3. E1: Clean Evaluation
     print("[*] Menjalankan E1: Clean Retrieval...")
-    query_clean_embs = np.array([extractor.extract(y) for y in query_clean_audios], dtype=np.float32)
+    query_clean_embs = np.array([
+        _extract_for_item(extractor, y, "query_clean", str(query_clean_df.iloc[i]["recording_id"]))
+        for i, y in enumerate(query_clean_audios)
+    ], dtype=np.float32)
     clean_summary, clean_raw = evaluate_retrieval_corpus(
         query_embs=query_clean_embs,
         query_labels=query_labels,
@@ -140,7 +158,9 @@ def run_experiment_for_representation(rep_code: str = "R0", snr_list: list = [20
         gal_labels=np.array(gallery_labels),
         qry_labels=np.array(query_labels),
         gal_ids=gallery_df['recording_id'].values,
-        qry_ids=query_clean_df['recording_id'].values
+        qry_ids=query_clean_df['recording_id'].values,
+        representation=np.array(rep_code),
+        r3_control_version=np.array(R3_CONTROL_VERSION if rep_code.upper() == "R3" else "not_applicable"),
     )
     print(f"    [Cache] Embeddings tersimpan di: {cache_path.name}")
     print(f"    [E1 Clean] mAP@10: {clean_map10:.4f}, Recall@10: {clean_summary['Recall@10']:.4f}, Top1: {clean_summary['mean_top1']:.4f}, MRR: {clean_summary.get('MRR', 0.0):.4f}")
@@ -166,12 +186,14 @@ def run_experiment_for_representation(rep_code: str = "R0", snr_list: list = [20
     for snr in snr_list:
         noisy_embs = []
         noise_files_used = []
+        noise_audits = []
         for i, y_clean in enumerate(query_clean_audios):
             # Campurkan noise dengan seed terikat pada index query untuk reproducibility
-            y_noisy, n_path = mix_audio_at_snr(y_clean, snr_db=snr, seed=42 + i, return_noise_info=True)
-            emb_noisy = extractor.extract(y_noisy)
+            y_noisy, audit = mix_audio_at_snr(y_clean, snr_db=snr, seed=42 + i, return_audit_info=True)
+            emb_noisy = _extract_for_item(extractor, y_noisy, "query_clean", str(query_clean_df.iloc[i]["recording_id"]))
             noisy_embs.append(emb_noisy)
-            noise_files_used.append(n_path)
+            noise_files_used.append(audit["noise_file"])
+            noise_audits.append(audit)
         noisy_embs = np.array(noisy_embs)
 
         noisy_summary, noisy_raw = evaluate_retrieval_corpus(
@@ -180,7 +202,10 @@ def run_experiment_for_representation(rep_code: str = "R0", snr_list: list = [20
             gallery_embs=gallery_embs,
             gallery_labels=gallery_labels
         )
-        save_raw_query_metrics(rep_code, f"SNR_{snr}dB", noisy_raw, query_clean_df, noise_files=noise_files_used)
+        save_raw_query_metrics(
+            rep_code, f"SNR_{snr}dB", noisy_raw, query_clean_df,
+            noise_files=noise_files_used, noise_audits=noise_audits,
+        )
 
         noisy_map10 = noisy_summary["mAP@10"]
         rel_ret = noisy_map10 / max(clean_map10, 1e-6)
@@ -208,14 +233,14 @@ def run_experiment_for_representation(rep_code: str = "R0", snr_list: list = [20
 
     for _, r in calib_df.iterrows():
         y = preprocess_audio(r['file_path'])
-        emb = extractor.extract(y)
+        emb = _extract_for_item(extractor, y, "calibration", str(r["recording_id"]))
         res = compute_query_retrieval(emb, r['species_key'], gallery_embs, gallery_labels)
         calib_scores.append(res["max_score"])
         calib_targets.append(1)
 
     for _, r in calib_unk_df.iterrows():
         y = preprocess_audio(r['file_path'])
-        emb = extractor.extract(y)
+        emb = _extract_for_item(extractor, y, "unknown_calibration", str(r["unknown_id"]))
         res = compute_query_retrieval(emb, "UNKNOWN_NON_BIRD", gallery_embs, gallery_labels)
         calib_scores.append(res["max_score"])
         calib_targets.append(0)
@@ -237,7 +262,7 @@ def run_experiment_for_representation(rep_code: str = "R0", snr_list: list = [20
         n_embs = []
         for i, y_c in enumerate(query_clean_audios):
             y_n = mix_audio_at_snr(y_c, snr_db=snr, seed=42 + i)
-            n_embs.append(extractor.extract(y_n))
+            n_embs.append(_extract_for_item(extractor, y_n, "query_clean", str(query_clean_df.iloc[i]["recording_id"])))
         conditions_to_test.append((f"SNR_{snr}dB", np.array(n_embs), snr))
 
     clean_recall = 0.0
@@ -249,12 +274,15 @@ def run_experiment_for_representation(rep_code: str = "R0", snr_list: list = [20
 
         # PERBAIKAN C-02: Ekstraksi audio unknown pada kondisi derau yang sama persis
         if cond_name == "Clean":
-            u_embs = [extractor.extract(y_u) for y_u in unknown_test_audios]
+            u_embs = [
+                _extract_for_item(extractor, y_u, "unknown_test", str(test_unk_df.iloc[j]["unknown_id"]))
+                for j, y_u in enumerate(unknown_test_audios)
+            ]
         else:
             u_embs = []
             for j, y_u in enumerate(unknown_test_audios):
                 y_u_noisy = mix_audio_at_snr(y_u, snr_db=snr_val, seed=1000 + j)
-                u_embs.append(extractor.extract(y_u_noisy))
+                u_embs.append(_extract_for_item(extractor, y_u_noisy, "unknown_test", str(test_unk_df.iloc[j]["unknown_id"])))
 
         unknown_scores = [compute_query_retrieval(e, "UNKNOWN", gallery_embs, gallery_labels)["max_score"] for e in u_embs]
 

@@ -1,0 +1,5 @@
+dataset_role,manifest,rows,note
+known_active_split,data/manifests/dataset_split.csv,1216,673 gallery + 311 query_clean + 232 calibration
+unknown_open_set,data/manifests/unknown_open_set_manifest.csv,543,233 calibration + 310 test negative controls
+itera_noise,data/manifests/itera_noise_manifest.csv,1799,Physical AudioMoth ITERA recordings
+indonesia_species_freeze,data/manifests/indonesia_species_freeze.csv,20,Frozen target species list

@@ -1,0 +1,19 @@
+{
+  "id": "E3",
+  "title": "Open-Set Frozen Threshold",
+  "status": "complete",
+  "notebook": "notebooks/06_E3_Open_Set_Threshold.ipynb",
+  "source_code": "scripts/run_e3_open_set.py",
+  "runs": [
+    "results/reproductions/E3_open_set_20261012T022548_802536Z"
+  ],
+  "figures": [
+    "results/figures/09_e3_threshold_transfer_recall.png"
+  ],
+  "tables": [
+    "results/tables/12_e3_frozen_thresholds.csv",
+    "results/tables/13_e3_threshold_transfer.csv",
+    "results/tables/19_statistics_e3_threshold_transfer.csv"
+  ],
+  "role": "Navigation and provenance index. Source results remain immutable under results/reproductions."
+}

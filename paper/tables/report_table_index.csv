@@ -1,0 +1,9 @@
+table_number,source_report_table
+10,../../results/tables/10_e1_clean_retrieval_summary.csv
+11,../../results/tables/11_e2_snr_robustness.csv
+12,../../results/tables/12_e3_frozen_thresholds.csv
+14,../../results/tables/14_e4_domain_shift.csv
+15,../../results/tables/15_e5_failure_mode_summary.csv
+23,../../results/tables/23_statistics_rq_hypothesis_matrix.csv
+24,../../results/tables/24_h3_habitat_profile_stability.csv
+27,../../results/tables/27_rq_hypothesis_matrix_current.csv

@@ -1,0 +1,17 @@
+{
+  "schema": "e4_read_only_audit_v1",
+  "status": "PASS_WITH_E5_FIELD_LIMITATION",
+  "source_run": "results/reproductions/E4_5sites_20261011T213404_350219Z",
+  "source_run_identity_sha256": "f175751ce0fd5b828f39e7d9f3c57f304793f7af472015fc0ea1f15a4b162d2e",
+  "asset_provenance_pass": true,
+  "condition_files": 320,
+  "aggregate_table_rows": 324,
+  "backup": {
+    "path": "C:\\Users\\Fabio\\Documents\\TA_E4_Backups\\E4_5sites_20261011T213404_350219Z.zip",
+    "entries": 649,
+    "status": "PASS",
+    "first_corrupt_entry": null
+  },
+  "e5_limitation": "Raw E4 stores max_score and top1_match, but not Top-1 species/recording nor true-class and best-other scores. These values must remain unavailable unless reconstructed deterministically from valid source embeddings and exact mixing provenance.",
+  "created_utc": "2026-10-12T02:18:01.997188+00:00"
+}

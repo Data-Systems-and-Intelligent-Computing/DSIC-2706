@@ -1,16 +1,30 @@
 # Hipotesis Penelitian — DSIC-2706
 
-Penelitian ini merumuskan lima hipotesis formal:
+H1, H2, H4, dan H5 diuji pada protokol *controlled additive field-noise mixture*. H3 juga diuji pada E4, sebagai perbandingan stabilitas retensi lintas **profil noise lapangan** ITERA. E4 tidak diklaim sebagai validasi rekaman burung *in-situ*.
 
-- **H1 — Robustness Retention:**
-  Representasi *deep pretrained* mempertahankan proporsi `mAP@k` relatif yang lebih besar daripada representasi parametrik klasik MFCC ketika SNR diturunkan secara progresif.
-- **H2 — Domain-Specific Advantage:**
-  *Bioacoustic pretrained embedding* mengalami penurunan retensi retrieval yang lebih kecil daripada *generic pretrained audio embedding* (seperti PANNs) pada query burung dengan derau lingkungan tropis.
-- **H3 — Real Domain Shift Gap:**
-  Kinerja retrieval pada *real soundscape* ITERA turun lebih tajam daripada kondisi *controlled mixture* pada level SNR sebanding karena pergeseran domain tidak hanya berupa derau aditif, melainkan mencakup propagasi jarak, absorpsi udara, dan *reverberation*.
-- **H4 — Threshold Transfer Instability:**
-  Ambang batas kemiripan ($\tau$) yang optimal pada kondisi bersih (*calibration-clean*) mengalami pergeseran titik operasi (*operating point drift*) saat derau lingkungan bertambah, memicu anjloknya *recall* atau lonjakan *false accept rate*.
-- **H5 — Positive Control Baseline:**
-  Retrieval pada kondisi bersih (*clean retrieval*) untuk seluruh representasi utama (R0, R1, R2) harus secara signifikan mengungguli *random ranking* ($R_3$). Jika tidak, pipeline eksperimen wajib diaudit sebelum interpretasi dilakukan.
+- **H1 — Robustness retention**  
+  Representasi *deep pretrained* mempertahankan proporsi `mAP@10` relatif lebih besar daripada MFCC ketika SNR diturunkan secara progresif.
+- **H2 — Domain-specific advantage under additive noise**  
+  Embedding bioakustik mengalami penurunan retensi retrieval lebih kecil daripada embedding audio generik pada query burung yang dicampur noise ITERA.
+- **H3 — Habitat Profile Stability**  
+  Representasi bioakustik terlatih mempertahankan retensi relatif `mAP@10` yang secara signifikan lebih stabil dan tidak fluktuatif lintas profil spektral habitat (ayunan retensi sempit) dibandingkan representasi audio umum yang rentan terhadap distorsi frekuensi tinggi/rendah.
+- **H4 — Frozen-threshold operating-point change**  
+  Threshold τ* yang optimal pada calibration-clean berubah perilaku operasionalnya saat query diberi noise; perubahan dapat tampak sebagai penurunan recall known-set atau perubahan false-accept rate.
+- **H5 — Positive control baseline**  
+  Clean retrieval R0, R1, dan R2 secara signifikan mengungguli kontrol ID-deterministik R3.
 
-*Catatan Metodologi: Semua hipotesis diuji secara empiris dengan interval kepercayaan 95%. Hasil penolakan hipotesis tetap merupakan temuan ilmiah yang valid.*
+## Operasionalisasi H3
+
+- **Pembanding utama:** R1/PANNs (audio umum) versus R2/BirdNET (bioakustik).
+- **Sumber:** CSV mentah E4 yang tervalidasi, tanpa menghitung ulang pencampuran audio.
+- **Unit:** 311 query yang sama, lima profil lokasi noise ITERA, empat segmen noise acak per lokasi, dan empat SNR.
+- **Ukuran stabilitas:** untuk setiap representasi, `swing = max(relative retention antar lokasi) − min(relative retention antar lokasi)`, dirata-ratakan atas empat pengulangan segmen noise.
+- **Uji:** paired bootstrap 10.000 resampling query, seed 20261012. H3 didukung apabila CI 95% untuk `swing R1 − swing R2` seluruhnya positif.
+
+Hasil rata-rata empat SNR: ayunan R1 = 0.240111; R2 = 0.048607; selisih = 0.191504; CI 95% [0.152203, 0.241969]. H3 **didukung** dalam desain additive ITERA-noise.
+
+Analisis inferensial H3 ditambahkan setelah E4 selesai, sehingga hasil signifikansi ini diperlakukan sebagai analisis eksploratif. Bagian H3 yang menyebut distorsi frekuensi tinggi/rendah belum diuji sebagai mekanisme penyebab: analisis ini membandingkan label lokasi dan retensi, belum mengaitkan ukuran spektral setiap noise dengan perubahan skor retrieval.
+
+## Aturan interpretasi
+
+E4 membuktikan stabilitas atau sensitivitas terhadap **profil noise lapangan** dari lokasi ITERA setelah pencampuran aditif pada SNR terkendali. E4 tidak mendukung klaim tentang jarak burung-mikrofon, propagasi, absorpsi, reverberasi, atau perilaku burung *in-situ*. Bank ITERA bebas spesies target; karenanya anotasi spesies target tidak diperlukan untuk E2/E4.

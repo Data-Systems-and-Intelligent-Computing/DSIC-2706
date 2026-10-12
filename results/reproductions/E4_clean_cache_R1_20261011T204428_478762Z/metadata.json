@@ -1,0 +1,10 @@
+{
+  "representation": "R1",
+  "manifest_sha256": "7808cdf057f135aaa193f47e27415318edf46c862c09dee4c7394bc5760e8ed8",
+  "checkpoint_sha256": "0dc499e40e9761ef5ea061ffc77697697f277f6a960894903df3ada000e34b31",
+  "gallery_count": 673,
+  "query_count": 311,
+  "clean_map10": 0.17626779972439136,
+  "clean_top1": 0.3762057877813505,
+  "purpose": "Clean cache only, no E2/E3/E4 inference"
+}

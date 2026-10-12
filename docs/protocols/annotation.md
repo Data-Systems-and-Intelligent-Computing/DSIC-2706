@@ -1,19 +1,17 @@
-# Pedoman Anotasi Soundscape Lapangan — DSIC-2706
+# Pedoman Metadata Noise ITERA — DSIC-2706
 
-## 1. Format Anotasi
-Anotasi rekaman soundscape lapangan ITERA disimpan dalam format CSV standar Raven Pro / Audacity:
-```text
-selection,view,channel,begin_time,end_time,low_freq,high_freq,species_key,scientific_name,confidence
-```
+## Status anotasi untuk scope aktif
 
-## 2. Aturan Pelabelan Ground Truth
-1. **Verifikasi Manual:**
-   Hanya subset audio yang telah diverifikasi manual oleh pengamat (atau rekaman konfirmasi visual) yang diikutsertakan dalam evaluasi kuantitatif E4.
-2. **Kategori Label:**
-   - E4 memakai 3 profil habitat kampus ITERA (Kebun Raya, Embung F, Gedung Terpadu Labtek F) dengan bank derau fisik AudioMoth ITERA.
-   - Rekaman ITERA dilabeli untuk bank derau: `background_only`, `bird_present` (ditolak dari E2), `anthropophony`, `geophony`, `non_bird_biophony`.
-   - `trigger_method` wajib: `frequency` atau `amplitude` (DEC-12).
-   - `daypart` pada rezim aktif selalu `siang` (DEC-11).
-3. **Pemberian Skor Keyakinan (Confidence):**
-   - `1.0`: Identifikasi vokal jelas, karakteristik spektral khas terlihat di spektrogram.
-   - `0.5`: Vokal sayup-sayup atau terjadi interferensi derau berat.
+Bank `data/itera_noise/` dipakai sebagai noise lapangan dalam pencampuran aditif E2/E4 dan sebagai sebagian kontrol unknown E3. Bank ini bebas spesies target penelitian. Karena itu **anotasi spesies target, bounding box vokalisasi target, atau ground truth focal-bird tidak diminta dan tidak diperlukan** untuk E2 maupun E4.
+
+## Metadata yang digunakan
+
+Metadata aktif berasal dari [itera_noise_manifest.csv](../../data/manifests/itera_noise_manifest.csv): path, checksum, lokasi/folder, sesi, serta atribut teknis yang tersedia. Provenance noise pada hasil E2/E4 dilacak melalui raw CSV dan metadata run.
+
+## Batas interpretasi
+
+E4 membandingkan profil noise lokasi dalam additive mixture. Ia bukan evaluasi rekaman burung in-situ; karenanya protokol ini tidak menetapkan aturan anotasi spesies burung untuk menguji domain shift.
+
+## Jika studi lanjutan dilakukan
+
+Studi real-soundscape baru memerlukan desain terpisah: rekaman target-bird in-situ, anotasi waktu/frekuensi dan spesies, kondisi perangkat/mikrofon, serta pemisahan train/calibration/test. Dataset seperti itu tidak diperlukan untuk penelitian aktif ini.

@@ -1,0 +1,1 @@
+# Cache embedding bersih\n\nArtefak ini hanya menyimpan embedding gallery dan query bersih dari manifes aktif. Artefak ini bukan hasil E4 dan tidak memuat pencampuran derau, metrik kondisi derau, atau kesimpulan penelitian.\n

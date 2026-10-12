@@ -1,0 +1,14 @@
+{
+  "status": "complete",
+  "schema": "eda_visual_supplement_v1",
+  "created_utc": "2026-10-12T13:32:15.449073+00:00",
+  "source_eda": "results\\reproductions\\EDA_20261011_202714",
+  "figures": [
+    "eda_bird_waveform_spectrogram_examples.png",
+    "eda_duration_sampling_rate.png",
+    "eda_itera_noise_spectrogram_profiles.png",
+    "eda_noise_locations.png",
+    "eda_species_distribution.png"
+  ],
+  "input_data": "physical audio and active manifests only"
+}

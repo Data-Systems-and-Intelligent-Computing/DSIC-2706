@@ -1,0 +1,11 @@
+metric,value
+audit_rows,100.0
+unique_species,20.0
+native_duration_min_seconds,4.477458333333334
+native_duration_median_seconds,31.864815901360544
+native_duration_max_seconds,199.15264583333334
+extension_container_mismatches,6.0
+soundfile_decode_errors,0.0
+preprocess_length_failures,0.0
+preprocess_nonfinite_failures,0.0
+target_rms,0.05

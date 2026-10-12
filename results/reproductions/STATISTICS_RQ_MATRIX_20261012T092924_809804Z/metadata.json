@@ -1,0 +1,14 @@
+{
+  "status": "complete",
+  "artifact_schema": "statistics_rq_matrix_v1",
+  "created_utc": "2026-10-12T09:29:26.234064+00:00",
+  "e2": "results\\reproductions\\E2_controlled_20261012T021600_897497Z",
+  "e3": "results\\reproductions\\E3_open_set_20261012T022548_802536Z",
+  "e4": "results\\reproductions\\E4_5sites_20261011T213404_350219Z",
+  "bootstrap": {
+    "iterations": 10000,
+    "seed": 20261012,
+    "unit": "paired query"
+  },
+  "h3_status": "not_testable_with_current_design"
+}

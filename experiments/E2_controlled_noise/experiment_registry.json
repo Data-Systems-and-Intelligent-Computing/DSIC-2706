@@ -1,0 +1,19 @@
+{
+  "id": "E2",
+  "title": "Controlled ITERA Noise Robustness",
+  "status": "complete",
+  "notebook": "notebooks/05_E2_Controlled_Noise.ipynb",
+  "source_code": "scripts/run_e2_controlled_noise.py",
+  "runs": [
+    "results/reproductions/E2_controlled_20261012T021600_897497Z"
+  ],
+  "figures": [
+    "results/figures/08_e2_snr_robustness_map10.png",
+    "results/figures/14_e2_clean_minus5_comparison.png"
+  ],
+  "tables": [
+    "results/tables/11_e2_snr_robustness.csv",
+    "results/tables/18_statistics_e2_retention.csv"
+  ],
+  "role": "Navigation and provenance index. Source results remain immutable under results/reproductions."
+}

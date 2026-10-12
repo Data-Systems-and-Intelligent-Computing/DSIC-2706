@@ -1,15 +1,25 @@
 # Research Charter: DSIC-2706
 
-## 1. Metadata Proyek
+## 1. Metadata proyek
+
 - **Kode Topik:** DSIC27-06
 - **Judul Resmi:** Mencari Audio yang Mirip Ketika Datanya Terbatas
-- **Judul Kerja Artikel:** *Noise and Spectral Sensitivity of Frozen Audio Representations for Bioacoustic Similarity Retrieval: A Controlled Evaluation on Indonesian Avifauna with Field-Recorded ITERA Tropical Noise*
-- **Peneliti:** Fabio Banyu Cyto (NIM 123450104)
+- **Judul Kerja Artikel:** *Noise and Spectral Sensitivity of Frozen Audio Representations for Bioacoustic Similarity Retrieval under Controlled ITERA Field-Noise Mixtures in Indonesian Avifauna*
+- **Peneliti:** Fabio Banyu Cyto (NIM: 123450104)
 - **Kelompok Riset:** DSIC Research Group — Program Studi Sains Data ITERA
 - **Pembimbing:** Dosen Pembimbing Tugas Akhir DSIC
 
-## 2. Latar Belakang & Urgensi
-Pemantauan akustik pasif (*passive acoustic monitoring* / PAM) menghasilkan ribuan jam rekaman lingkungan yang tidak beranotasi. Sebagian besar penelitian kecerdasan buatan berfokus pada klasifikasi tertutup (*closed-set classification*), yang mensyaratkan setiap rekaman uji pasti berasal dari kelas latih. Di alam terbuka (khususnya lanskap tropis Sumatera), kondisi nyata melibatkan query langka data, spesies tak terduga (*unknown species*), interferensi derau lingkungan lokal, dan pergeseran domain perekaman dari rekaman fokus (*focal recording*) ke *soundscape* bentang alam.
+## 2. Fokus penelitian
 
-## 3. Mandat Riset
-Penelitian ini memfokuskan diri pada **ketahanan representasi audio untuk pencarian kemiripan (similarity retrieval robustness)**, mengukur representasi mana yang paling lambat kehilangan kemampuan retrieval ketika derau lingkungan meningkat tajam secara berpasangan (*paired stress-testing*).
+Penelitian ini mengevaluasi ketahanan representasi audio beku untuk *similarity retrieval* ketika focal recording avifauna Indonesia dari Xeno-Canto dicampur secara terkontrol dengan noise lapangan AudioMoth ITERA. Fokusnya adalah penurunan retrieval, transfer threshold open-set, sensitivitas terhadap profil noise dari lokasi berbeda, dan diagnostik kegagalan.
+
+## 3. Batasan desain
+
+- Kueri burung berasal dari focal recording target, bukan rekaman burung in-situ di ITERA.
+- Noise ITERA adalah bank noise bebas spesies target yang dipakai untuk pencampuran aditif dan kontrol unknown.
+- E4 membandingkan profil noise lokasi dalam protokol pencampuran yang sama.
+- Penelitian tidak mengklaim evaluasi *real-soundscape domain shift*, propagasi jarak, absorpsi, reverberasi, atau perubahan perilaku burung.
+
+## 4. Mandat riset
+
+Menentukan representasi mana yang paling mempertahankan kualitas retrieval ketika tingkat dan profil noise lapangan ITERA berubah secara terkontrol, dengan provenance audio, manifest, dan artefak evaluasi yang dapat ditelusuri.

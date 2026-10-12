@@ -1,0 +1,5 @@
+representation,expected_dimension,actual_dimension,finite,l2_norm
+R0,40,40,True,1.0
+R1,2048,2048,True,0.9999999403953552
+R2,1024,1024,True,1.0
+R3,40,40,True,0.9999999403953552

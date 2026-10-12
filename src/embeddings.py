@@ -12,12 +12,13 @@ Sesuai Dokumen Audit (Penyelesaian C-01 Opsi A):
 
 import os
 import sys
+import hashlib
 from pathlib import Path
 import numpy as np
-import librosa
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 CHECKPOINTS_DIR = PROJECT_ROOT / "checkpoints"
+R3_CONTROL_VERSION = "stable_id_v1"
 
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
@@ -31,8 +32,9 @@ except ImportError:
 
 
 class AudioRepresentationExtractor:
-    def __init__(self, rep_code: str = "R0"):
+    def __init__(self, rep_code: str = "R0", random_seed: int = 42):
         self.rep_code = rep_code.upper()
+        self.random_seed = int(random_seed)
         self._model = None
         self._init_model()
 
@@ -52,15 +54,14 @@ class AudioRepresentationExtractor:
 
             try:
                 import torch
-                # Penanganan khusus Windows: unduh class_labels_indices.csv dengan urllib jika belum ada
-                # untuk mencegah panns_inference memanggil perintah 'wget'
+                # Jangan mengunduh diam-diam pada saat eksperimen. Berkas pendukung
+                # harus tersedia lokal agar lingkungan dapat direproduksi.
                 labels_path = Path.home() / "panns_data" / "class_labels_indices.csv"
                 if not labels_path.exists():
-                    labels_path.parent.mkdir(parents=True, exist_ok=True)
-                    import urllib.request
-                    urllib.request.urlretrieve(
-                        "http://storage.googleapis.com/us_audioset/youtube_corpus/v1/csv/class_labels_indices.csv",
-                        labels_path
+                    raise FileNotFoundError(
+                        "[R1 ERROR] class_labels_indices.csv PANNs tidak tersedia secara lokal di "
+                        f"{labels_path}. Siapkan dependensi model sebelum menjalankan eksperimen; "
+                        "pipeline tidak diizinkan mengunduh berkas saat evaluasi."
                     )
                 from panns_inference import AudioTagging
             except ImportError as e:
@@ -112,7 +113,7 @@ class AudioRepresentationExtractor:
         else:
             raise ValueError(f"Kode representasi tidak dikenal: {self.rep_code}")
 
-    def extract(self, y: np.ndarray, sr: int = TARGET_SR) -> np.ndarray:
+    def extract(self, y: np.ndarray, sr: int = TARGET_SR, item_id: str | None = None) -> np.ndarray:
         """
         Mengekstrak vektor embedding ternormalisasi L2 dari sinyal 1D audio y.
         """
@@ -144,6 +145,10 @@ class AudioRepresentationExtractor:
             # Ekstraksi representasi bioakustik BirdNET V2.4 (1024-dimensi)
             # BirdNET beroperasi pada laju sampel 48 kHz dan jendela 3 detik (144.000 sampel)
             if sr != 48000:
+                try:
+                    import librosa
+                except ImportError as error:
+                    raise ImportError("[R2 ERROR] Pustaka 'librosa' diperlukan untuk resampling ke 48 kHz.") from error
                 y_48k = librosa.resample(y, orig_sr=sr, target_sr=48000)
             else:
                 y_48k = y
@@ -179,11 +184,16 @@ class AudioRepresentationExtractor:
             return (emb / max(norm, 1e-8)).astype(np.float32)
 
         elif self.rep_code == "R3":
-            # Kontrol Acak Reproduktif (40 dimensi)
-            seed = int(np.abs(y[:100]).sum() * 1e6) % (2**31 - 1)
-            rng = np.random.RandomState(seed)
-            rnd = rng.randn(40).astype(np.float32)
-            return (rnd / np.linalg.norm(rnd)).astype(np.float32)
+            # Kontrol acak harus independen dari waveform. ID yang stabil membuat
+            # hasil dapat direproduksi dan tetap sama untuk versi clean/noisy dari
+            # rekaman yang sama.
+            if item_id is None or not str(item_id).strip():
+                raise ValueError("R3 membutuhkan item_id stabil; kontrol acak tidak boleh memakai waveform sebagai seed.")
+            seed_material = f"{R3_CONTROL_VERSION}:{self.random_seed}:{item_id}".encode("utf-8")
+            seed = int.from_bytes(hashlib.sha256(seed_material).digest()[:8], byteorder="big", signed=False)
+            rng = np.random.default_rng(seed)
+            rnd = rng.standard_normal(40).astype(np.float32)
+            return (rnd / max(np.linalg.norm(rnd), 1e-8)).astype(np.float32)
 
         else:
             raise ValueError(f"Representasi tidak dikenal: {self.rep_code}")
@@ -197,7 +207,7 @@ if __name__ == "__main__":
     for code in ["R0", "R1", "R2", "R3"]:
         try:
             ext = AudioRepresentationExtractor(code)
-            feat = ext.extract(test_sig)
+            feat = ext.extract(test_sig, item_id="smoke-test")
             print(f"[PASS] {code} -> Dimensi Vektor: {feat.shape} | L2-Norm: {np.linalg.norm(feat):.4f}")
         except Exception as e:
             print(f"[FAIL] {code} -> Error: {e}")

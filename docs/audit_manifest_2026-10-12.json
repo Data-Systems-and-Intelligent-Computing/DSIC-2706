@@ -1,0 +1,207 @@
+{
+  "status": "PASS_WITH_WARNINGS",
+  "root": "D:\\FILE AND TASK\\TA",
+  "manifest_counts": {
+    "dataset_split.csv": 1216,
+    "download_manifest.csv": 1216,
+    "itera_noise_manifest.csv": 1799,
+    "unknown_open_set_manifest.csv": 543,
+    "download_audit_log.csv": 1217,
+    "indonesia_train.csv": 1217,
+    "species_freeze.csv": 20
+  },
+  "manifest_sha256": {
+    "dataset_split.csv": "7808cdf057f135aaa193f47e27415318edf46c862c09dee4c7394bc5760e8ed8",
+    "download_manifest.csv": "3d220c44261829b43fdd589f45f1c90f7778c8f7f0c683b172220b7c45636e21",
+    "itera_noise_manifest.csv": "a4138bd13e437801d18dc7afde52e0dab50aa5d56ac27091ab0a4ba68fb6f72d",
+    "unknown_open_set_manifest.csv": "a7cd0b26e87e1eadcf8cc4fe13257a5c9e3cf80d740d9ff0016e46e5479f3266",
+    "download_audit_log.csv": "b836c7f05bbf5c3a11de7acfd77284be2922416d53dbe15cf5528bdab20eda05",
+    "indonesia_train.csv": "4a11da18e1b80cb0e7c0b018f1727ff2296a546aaf29c92b64ad41f95f84e25d",
+    "species_freeze.csv": "1d6038d31f132fbd83a3bf0300e2de7ba8b8c6252e3151c7b1fbfcace21dfeef"
+  },
+  "split_counts": {
+    "calibration": 232,
+    "gallery": 673,
+    "query_clean": 311
+  },
+  "author_counts": {
+    "calibration": 25,
+    "gallery": 59,
+    "query_clean": 27
+  },
+  "author_overlap": {
+    "calibration / gallery": [],
+    "calibration / query_clean": [],
+    "gallery / query_clean": []
+  },
+  "physical_audio_counts": {
+    "xeno_canto_indonesia": 1217,
+    "xeno_canto_indonesia_unknowns": 380,
+    "itera_noise": 1799
+  },
+  "hashed_physical_files": 3396,
+  "duplicate_groups": [
+    {
+      "sha256": "fd32dbd81e2e7e2105566688c98808ec8c684d80ff0f16bc9d8d1dcf6bf908c0",
+      "paths": [
+        "data\\xeno_canto_indonesia\\latnig1\\XC1073400.mp3",
+        "data\\xeno_canto_indonesia\\latnig1\\XC1073401.mp3"
+      ],
+      "roles": [
+        "target:calibration"
+      ]
+    }
+  ],
+  "unreferenced_audio": [
+    "data\\xeno_canto_indonesia_unknowns\\aegotheles_crinifrons\\XC1074738.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\aegotheles_crinifrons\\XC410516.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\aegotheles_crinifrons\\XC410517.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\aegotheles_crinifrons\\XC615170.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\cacomantis_merulinus\\XC610020.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\cacomantis_merulinus\\XC737840.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\cacomantis_merulinus\\XC90765.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\cacomantis_merulinus\\XC954958.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\cacomantis_variolosus\\XC1029267.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\cacomantis_variolosus\\XC1074290.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\cacomantis_variolosus\\XC1074339.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\cacomantis_variolosus\\XC1164378.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\chrysococcyx_minutillus\\XC156155.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\chrysococcyx_minutillus\\XC40366.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\chrysococcyx_minutillus\\XC66889.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\chrysococcyx_minutillus\\XC954618.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\cracticus_cassicus\\XC1032179.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\cracticus_cassicus\\XC830239.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\cracticus_cassicus\\XC830240.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\cracticus_cassicus\\XC937762.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\cyornis_hoevelli\\XC1075573.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\cyornis_hoevelli\\XC596842.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\cyornis_hoevelli\\XC596844.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\cyornis_hoevelli\\XC615473.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\dryocopus_javensis\\XC490560.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\dryocopus_javensis\\XC490561.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\dryocopus_javensis\\XC490562.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\dryocopus_javensis\\XC835079.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\ficedula_hyperythra\\XC393105.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\ficedula_hyperythra\\XC597815.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\ficedula_hyperythra\\XC660947.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\ficedula_hyperythra\\XC963390.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\ficedula_westermanni\\XC318185.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\ficedula_westermanni\\XC468861.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\ficedula_westermanni\\XC687362.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\ficedula_westermanni\\XC940287.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\hemiprocne_longipennis\\XC193886.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\hemiprocne_longipennis\\XC598508.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\hemiprocne_longipennis\\XC844580.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\hemiprocne_longipennis\\XC926387.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\hypothymis_azurea\\XC1175250.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\hypothymis_azurea\\XC501338.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\hypothymis_azurea\\XC501339.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\hypothymis_azurea\\XC660934.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\locustella_montis\\XC410371.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\locustella_montis\\XC468870.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\locustella_montis\\XC737856.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\locustella_montis\\XC754118.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\mystery_mystery\\XC1066016.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\mystery_mystery\\XC1175831.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\mystery_mystery\\XC1178657.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\mystery_mystery\\XC995803.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\oriolus_szalayi\\XC1032180.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\oriolus_szalayi\\XC1163041.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\oriolus_szalayi\\XC1164447.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\oriolus_szalayi\\XC632715.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\otus_lempiji\\XC757992.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\otus_lempiji\\XC831550.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\otus_lempiji\\XC831553.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\otus_lempiji\\XC831554.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\pachycephala_cinerea\\XC894530.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\pachycephala_cinerea\\XC894531.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\pachycephala_cinerea\\XC894943.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\pachycephala_cinerea\\XC894945.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\pachycephala_nudigula\\XC1174763.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\pachycephala_nudigula\\XC1174764.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\pachycephala_nudigula\\XC1181542.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\pachycephala_nudigula\\XC587704.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\pachycephala_sulfuriventer\\XC597873.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\pachycephala_sulfuriventer\\XC615442.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\pachycephala_sulfuriventer\\XC615524.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\pachycephala_sulfuriventer\\XC823844.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\parus_cinereus\\XC40062.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\parus_cinereus\\XC625317.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\parus_cinereus\\XC776152.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\parus_cinereus\\XC922086.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\pellorneum_celebense\\XC1074979.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\pellorneum_celebense\\XC1074980.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\pellorneum_celebense\\XC932792.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\philemon_buceroides\\XC1032186.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\philemon_buceroides\\XC395427.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\philemon_buceroides\\XC476600.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\philemon_buceroides\\XC830237.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\pitohui_cerviniventris\\XC1165010.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\pitohui_cerviniventris\\XC1165340.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\pitohui_cerviniventris\\XC1165343.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\pitohui_cerviniventris\\XC1165344.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\probosciger_aterrimus\\XC1162878.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\probosciger_aterrimus\\XC1162880.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\probosciger_aterrimus\\XC1166502.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\probosciger_aterrimus\\XC1166504.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\ptilinopus_viridis\\XC631358.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\semioptera_wallacii\\XC1074892.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\semioptera_wallacii\\XC1074893.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\semioptera_wallacii\\XC1074894.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\semioptera_wallacii\\XC1166768.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\syma_torotoro\\XC1164861.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\syma_torotoro\\XC1164994.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\syma_torotoro\\XC1165457.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\syma_torotoro\\XC1165917.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\tesia_everetti\\XC1174145.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\tesia_everetti\\XC1174146.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\tesia_everetti\\XC410386.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\tesia_everetti\\XC410387.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\todiramphus_nigrocyaneus\\XC1164361.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\todiramphus_nigrocyaneus\\XC1164362.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\todiramphus_nigrocyaneus\\XC1164363.mp3",
+    "data\\xeno_canto_indonesia_unknowns\\todiramphus_nigrocyaneus\\XC1164366.mp3"
+  ],
+  "unknown_species_overlap": [],
+  "reserved_noise": 271,
+  "noise_available_for_mixing": 1528,
+  "issues": [
+    {
+      "level": "WARN",
+      "code": "noise_session_overlap",
+      "message": "30 grup folder/tanggal beririsan antara unknown calibration/test; bukan bukti audio identik."
+    },
+    {
+      "level": "WARN",
+      "code": "unknown_authors_not_checked",
+      "message": "Manifes unknown tidak memiliki author; pemisahan perekam known/unknown dan antar unknown belum dibuktikan pemeriksa ini."
+    },
+    {
+      "level": "WARN",
+      "code": "audit_download_ids",
+      "message": "Log unduhan tidak identik dengan manifes aktif; tambahan=['XC1073401']; tidak tercatat=[]. Log dapat berisi riwayat; jangan dihapus otomatis."
+    },
+    {
+      "level": "WARN",
+      "code": "train_split_paths",
+      "message": "indonesia_train berbeda dari split aktif; tambahan=['latnig1/XC1073401.mp3']; tidak tercatat=[]"
+    },
+    {
+      "level": "WARN",
+      "code": "physical_duplicate",
+      "message": "['data\\\\xeno_canto_indonesia\\\\latnig1\\\\XC1073400.mp3', 'data\\\\xeno_canto_indonesia\\\\latnig1\\\\XC1073401.mp3']"
+    },
+    {
+      "level": "INFO",
+      "code": "unreferenced_audio",
+      "message": "108 audio fisik tidak dirujuk manifes yang diperiksa; dapat berupa buffer, bukan otomatis berkas salah."
+    }
+  ],
+  "limitations": [
+    "Checksum sama membuktikan file identik; checksum berbeda tidak menyingkirkan rekaman ulang/hasil transkode/potongan sesi sama.",
+    "Pemisahan sesi/perekam unknown dan kontaminasi pretraining belum dibuktikan.",
+    "Label bird-free tidak diverifikasi dari isi audio.",
+    "Tidak mendekode audio, mengukur durasi, atau menilai hasil eksperimen; semua berkas hanya dibaca."
+  ],
+  "audit_date": "2026-10-12"
+}

@@ -38,7 +38,10 @@ representations:
 
   # R3: Control Negatif
   R3_random:
-    name: "Random_Ranking"
+    name: "Stable_ID_Random_Control"
     type: "control"
     embedding_dim: 40
-    metric: "random"
+    metric: "cosine"
+    control_version: "stable_id_v1"
+    random_seed: 42
+    item_identity: "recording ID and experiment seed"

@@ -26,9 +26,10 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.preprocess import preprocess_audio, TARGET_SR, TARGET_SAMPLES
-from src.embeddings import AudioRepresentationExtractor
+from src.embeddings import AudioRepresentationExtractor, R3_CONTROL_VERSION
 from src.mix_noise import mix_audio_at_snr
 from src.calibrate_threshold import calibrate_threshold_tau, evaluate_open_set_with_frozen_tau
+from src.e3_alignment import align_known_noisy_scores
 
 SPLIT_PATH = PROJECT_ROOT / "data/manifests/dataset_split.csv"
 UNK_PATH = PROJECT_ROOT / "data/manifests/unknown_open_set_manifest.csv"
@@ -53,6 +54,14 @@ def compute_max_similarities(query_embs: np.ndarray, gallery_embs: np.ndarray) -
     sim_matrix = np.dot(q_normed, g_normed.T)
     max_sims = np.max(sim_matrix, axis=1)
     return max_sims
+
+
+def extract_embeddings_for_rows(extractor, audios, rows: pd.DataFrame, id_column: str, namespace: str) -> np.ndarray:
+    """Extract embeddings while giving R3 a stable, audio-independent item ID."""
+    return np.array([
+        extractor.extract(audio, item_id=f"{namespace}:{row[id_column]}")
+        for audio, (_, row) in zip(audios, rows.iterrows())
+    ])
 
 def main():
     print("=" * 80)
@@ -93,6 +102,13 @@ def main():
         # 1. Muat gallery embeddings yang sudah tersimpan
         feat_path = FEATURES_DIR / f"clean_embeddings_{rep}.npz"
         feat_data = np.load(feat_path)
+        if rep == "R3":
+            cache_version = str(feat_data["r3_control_version"].item()) if "r3_control_version" in feat_data.files else "missing"
+            if cache_version != R3_CONTROL_VERSION:
+                raise ValueError(
+                    f"Cache R3 tidak kompatibel ({cache_version}); jalankan E1 R3 baru dengan "
+                    f"kontrol {R3_CONTROL_VERSION} sebelum E3."
+                )
         gallery_embs = feat_data["gal_feats"]
         print(f"[*] Gallery embeddings {rep} dimuat: {gallery_embs.shape}")
 
@@ -100,8 +116,8 @@ def main():
 
         # 2. Ekstrak Calibration Embeddings
         print(f"[*] Mengekstrak embedding kalibrasi ({rep})...")
-        calib_pos_embs = np.array([extractor.extract(y) for y in calib_pos_audios])
-        calib_neg_embs = np.array([extractor.extract(y) for y in calib_neg_audios])
+        calib_pos_embs = extract_embeddings_for_rows(extractor, calib_pos_audios, calib_pos_df, "recording_id", "calibration")
+        calib_neg_embs = extract_embeddings_for_rows(extractor, calib_neg_audios, calib_neg_df, "unknown_id", "unknown_calibration")
 
         calib_pos_scores = compute_max_similarities(calib_pos_embs, gallery_embs)
         calib_neg_scores = compute_max_similarities(calib_neg_embs, gallery_embs)
@@ -168,7 +184,7 @@ def main():
         pos_clean_scores = compute_max_similarities(pos_clean_embs, gallery_embs)
 
         # Unknown test clean
-        neg_clean_embs = np.array([extractor.extract(y) for y in test_neg_audios])
+        neg_clean_embs = extract_embeddings_for_rows(extractor, test_neg_audios, test_neg_df, "unknown_id", "unknown_test")
         neg_clean_scores = compute_max_similarities(neg_clean_embs, gallery_embs)
 
         # Uji kondisi Clean
@@ -212,16 +228,19 @@ def main():
         for snr in snr_list:
             # Baca skor known query dari results/raw/{rep}_SNR_{snr}dB_raw.csv untuk paired consistency
             raw_pos_csv = RAW_DIR / f"{rep}_SNR_{snr}dB_raw.csv"
-            raw_pos_df = pd.read_csv(raw_pos_csv)
-            pos_noisy_scores = raw_pos_df["max_similarity_score"].values
-            pos_noise_files = raw_pos_df["noise_file"].values if "noise_file" in raw_pos_df.columns else ["Unknown"] * len(raw_pos_df)
+            raw_pos_df = align_known_noisy_scores(
+                pd.read_csv(raw_pos_csv), query_pos_df["recording_id"].astype(str).tolist()
+            )
+            pos_noisy_scores = raw_pos_df["max_similarity_score"].to_numpy(dtype=float)
+            pos_noise_files = raw_pos_df["noise_file"].tolist() if "noise_file" in raw_pos_df.columns else ["Unknown"] * len(raw_pos_df)
 
             # Inject noise pada unknown test queries dengan seed berpasangan
             neg_noisy_embs = []
             neg_noise_files = []
             for j, y_neg in enumerate(test_neg_audios):
                 y_neg_noisy, n_path = mix_audio_at_snr(y_neg, snr_db=snr, seed=1000 + j, return_noise_info=True)
-                neg_noisy_embs.append(extractor.extract(y_neg_noisy))
+                unknown_id = test_neg_df.iloc[j]["unknown_id"]
+                neg_noisy_embs.append(extractor.extract(y_neg_noisy, item_id=f"unknown_test:{unknown_id}"))
                 neg_noise_files.append(n_path)
             neg_noisy_embs = np.array(neg_noisy_embs)
             neg_noisy_scores = compute_max_similarities(neg_noisy_embs, gallery_embs)

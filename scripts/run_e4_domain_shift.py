@@ -23,7 +23,7 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.preprocess import preprocess_audio, TARGET_SR
-from src.embeddings import AudioRepresentationExtractor
+from src.embeddings import AudioRepresentationExtractor, R3_CONTROL_VERSION
 from src.mix_noise import compute_signal_power, get_e3_reserved_noise_files
 from src.retrieve import evaluate_retrieval_corpus
 
@@ -69,7 +69,8 @@ def load_habitat_noise_files():
     return habitats
 
 
-def get_habitat_noise_segment(files: list, samples: int, seed: int = 42, return_path: bool = False):
+def get_habitat_noise_segment(files: list, samples: int, seed: int = 42, return_path: bool = False,
+                              return_audit_info: bool = False):
     """Mengambil segmen acak dari daftar berkas derau habitat tertentu dengan penolakan derau senyap."""
     rng = np.random.default_rng(seed)
     max_attempts = 10
@@ -78,12 +79,13 @@ def get_habitat_noise_segment(files: list, samples: int, seed: int = 42, return_
         try:
             y, _ = librosa.load(str(selected), sr=TARGET_SR, mono=True)
             if len(y) >= samples:
-                start = rng.integers(0, len(y) - samples + 1)
+                start = int(rng.integers(0, len(y) - samples + 1))
                 seg = y[start:start + samples].astype(np.float32)
             else:
                 repeats = int(np.ceil(samples / len(y)))
                 y = np.tile(y, repeats)
                 seg = y[:samples].astype(np.float32)
+                start = 0
 
             raw_rms = np.sqrt(np.mean(seg ** 2))
             if raw_rms < 1e-4:
@@ -94,6 +96,16 @@ def get_habitat_noise_segment(files: list, samples: int, seed: int = 42, return_
             except ValueError:
                 rel_path = Path(selected).name
 
+            audit_info = {
+                "noise_file": rel_path,
+                "noise_start_sample": start,
+                "noise_segment_samples": int(samples),
+                "noise_seed": int(seed),
+                "noise_attempt": attempt + 1,
+                "noise_raw_rms": float(raw_rms),
+            }
+            if return_audit_info:
+                return seg, audit_info
             if return_path:
                 return seg, rel_path
             return seg
@@ -104,13 +116,22 @@ def get_habitat_noise_segment(files: list, samples: int, seed: int = 42, return_
     raise ValueError(f"[FATAL] Terdeteksi segmen derau senyap pada habitat setelah {max_attempts} percobaan pengambilan!")
 
 
-def mix_with_habitat_noise(clean: np.ndarray, noise_files: list, snr_db: float, seed: int = 42, return_noise_path: bool = False):
+def mix_with_habitat_noise(clean: np.ndarray, noise_files: list, snr_db: float, seed: int = 42,
+                           return_noise_path: bool = False, return_audit_info: bool = False):
     """Mencampur sinyal bersih dengan derau habitat tertentu pada SNR eksak."""
-    noise, rel_path = get_habitat_noise_segment(noise_files, samples=len(clean), seed=seed, return_path=True)
+    noise, audit_info = get_habitat_noise_segment(noise_files, samples=len(clean), seed=seed, return_audit_info=True)
+    rel_path = audit_info["noise_file"]
     p_signal = compute_signal_power(clean)
     p_noise = compute_signal_power(noise)
 
     if p_signal <= 1e-12:
+        audit_info.update({
+            "snr_db_target": float(snr_db), "snr_db_achieved": None,
+            "signal_power": p_signal, "noise_power_before_scaling": p_noise,
+            "noise_gain": None, "post_mix_gain": 1.0, "mix_skipped_silent_signal": True,
+        })
+        if return_audit_info:
+            return clean.copy(), audit_info
         if return_noise_path:
             return clean.copy(), rel_path
         return clean.copy()
@@ -120,13 +141,24 @@ def mix_with_habitat_noise(clean: np.ndarray, noise_files: list, snr_db: float, 
 
     target_p_noise = p_signal / (10.0 ** (snr_db / 10.0))
     alpha = np.sqrt(target_p_noise / p_noise)
-    noisy = clean + alpha * noise
+    scaled_noise = alpha * noise
+    noisy = clean + scaled_noise
 
     max_amp = np.max(np.abs(noisy))
-    if max_amp > 1.0:
-        noisy = noisy / max_amp
+    post_mix_gain = 1.0 / max_amp if max_amp > 1.0 else 1.0
+    noisy = noisy * post_mix_gain
+    signal_after_gain = clean * post_mix_gain
+    noise_after_gain = scaled_noise * post_mix_gain
+    achieved_snr = 10.0 * np.log10(compute_signal_power(signal_after_gain) / compute_signal_power(noise_after_gain))
+    audit_info.update({
+        "snr_db_target": float(snr_db), "snr_db_achieved": float(achieved_snr),
+        "signal_power": p_signal, "noise_power_before_scaling": p_noise,
+        "noise_gain": float(alpha), "post_mix_gain": float(post_mix_gain), "mix_skipped_silent_signal": False,
+    })
 
     res = noisy.astype(np.float32)
+    if return_audit_info:
+        return res, audit_info
     if return_noise_path:
         return res, rel_path
     return res
@@ -163,6 +195,13 @@ def main():
 
         feat_path = FEATURES_DIR / f"clean_embeddings_{rep}.npz"
         feat_data = np.load(feat_path)
+        if rep == "R3":
+            cache_version = str(feat_data["r3_control_version"].item()) if "r3_control_version" in feat_data.files else "missing"
+            if cache_version != R3_CONTROL_VERSION:
+                raise ValueError(
+                    f"Cache R3 tidak kompatibel ({cache_version}); jalankan E1 R3 baru dengan "
+                    f"kontrol {R3_CONTROL_VERSION} sebelum E4."
+                )
         gallery_embs = feat_data["gal_feats"]
         clean_query_embs = feat_data["qry_feats"]
 
@@ -209,10 +248,10 @@ def main():
                 noisy_embs = []
                 used_noise_paths = []
                 for i, y_c in enumerate(query_audios):
-                    y_n, n_rel = mix_with_habitat_noise(y_c, hab_files, snr_db=snr, seed=5000 + i, return_noise_path=True)
-                    emb_n = extractor.extract(y_n)
+                    y_n, audit = mix_with_habitat_noise(y_c, hab_files, snr_db=snr, seed=5000 + i, return_audit_info=True)
+                    emb_n = extractor.extract(y_n, item_id=f"query_clean:{query_df.iloc[i]['recording_id']}")
                     noisy_embs.append(emb_n)
-                    used_noise_paths.append(n_rel)
+                    used_noise_paths.append(audit)
                 noisy_embs = np.array(noisy_embs, dtype=np.float32)
 
                 h_summary, h_raw = evaluate_retrieval_corpus(
@@ -240,7 +279,10 @@ def main():
                     r_item_dict["query_id"] = query_df.iloc[i]["recording_id"]
                     r_item_dict["species_key"] = query_df.iloc[i]["species_key"]
                     r_item_dict["recordist"] = query_df.iloc[i].get("author", "Unknown")
-                    r_item_dict["noise_file"] = used_noise_paths[i]
+                    audit = used_noise_paths[i]
+                    r_item_dict["noise_file"] = audit["noise_file"]
+                    for key, value in audit.items():
+                        r_item_dict[key] = value
                     r_item_dict["habitat"] = hab_name
                     r_item_dict["condition"] = f"SNR_{snr}dB"
                     r_item_dict["snr_db"] = snr

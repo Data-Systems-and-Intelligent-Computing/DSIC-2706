@@ -5,7 +5,7 @@ Mencakup:
 1. Uji keunggulan performa absolut pada kondisi Clean (R2 vs R1, R2 vs R0, R1 vs R0, dan H5 vs R3)
 2. Uji retensi ketahanan relatif pada kondisi derau ekstrem SNR -5 dB (H1 & H2)
 3. Uji sensitivitas profil spektral sumber derau lintas habitat ITERA E4 pada SNR -5 dB
-4. Uji disparitas rentang ayunan habitat H3 (R1 vs R2) dengan pelaporan Delta observasi & p <= 0.001
+4. Uji disparitas rentang ayunan habitat H3 (R1 vs R2) dengan statistik hasil perhitungan
 5. Cluster Bootstrap per Perekam (K=27)
 6. Analisis Sensitivitas Non-Mike Nelson (subset query tanpa dominasi perekam terbanyak)
 """
@@ -345,9 +345,9 @@ def run_paired_bootstrap(n_iterations: int = 1000, seed: int = 42) -> pd.DataFra
             "Mean_Diff": mean_v,
             "CI_95_Lower": low,
             "CI_95_Upper": high,
-            "p_value": "<= 0.001",
-            "Signifikan_0.05": True,
-            "Catatan": f"H3 Terdukung Parsial: Delta observasi {obs_delta:.4f} (bootstrap {mean_v:.4f}), R1 lebih rentan dibanding R2"
+            "p_value": p_str,
+            "Signifikan_0.05": sig,
+            "Catatan": f"Delta ayunan habitat R1-R2: observasi {obs_delta:.4f}, bootstrap {mean_v:.4f}; interpretasikan arah dan ketidakpastian berdasarkan CI dan p-value."
         })
 
     # 4. Cluster Bootstrap per Perekam (K=27 recordists)

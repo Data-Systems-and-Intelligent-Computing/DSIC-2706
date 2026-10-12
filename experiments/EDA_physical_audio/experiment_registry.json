@@ -1,0 +1,28 @@
+{
+  "id": "EDA",
+  "title": "Physical Audio Exploratory Data Analysis",
+  "status": "verified",
+  "notebook": "notebooks/03_EDA_Physical_Audio.ipynb",
+  "source_code": "scripts/run_eda_formal.py",
+  "runs": [
+    "results/reproductions/EDA_20261011_202714",
+    "results/reproductions/EDA_visuals_20261012T133209_032622Z"
+  ],
+  "figures": [
+    "results/figures/02_eda_overview.png",
+    "results/figures/03_eda_bird_waveform_spectrogram_examples.png",
+    "results/figures/04_eda_duration_sampling_rate.png",
+    "results/figures/05_eda_itera_noise_spectrogram_profiles.png",
+    "results/figures/06_eda_noise_locations.png",
+    "results/figures/07_eda_species_distribution.png"
+  ],
+  "tables": [
+    "results/tables/04_eda_summary_by_source.csv",
+    "results/tables/05_eda_target_species_summary.csv",
+    "results/tables/06_eda_noise_location_summary.csv",
+    "results/tables/07_eda_physical_audio_inventory.csv",
+    "results/tables/08_eda_visual_summary.csv",
+    "results/tables/09_eda_noise_locations.csv"
+  ],
+  "role": "Navigation and provenance index. Source results remain immutable under results/reproductions."
+}

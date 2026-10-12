@@ -8,3 +8,7 @@
 *.yml text eol=lf
 *.py text eol=lf
 *.ipynb text eol=lf
+
+# Keep research data and generated results byte-for-byte identical to recorded SHA-256.
+data/manifests/*.csv -text -eol
+results/** -text -eol

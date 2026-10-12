@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "run_identity_sha256": "0379f6a773595151dcbac7362cfa1d7234cf4f5e1e88b45ee20720ab8b721a72",
+  "manifest_sha256": "7808cdf057f135aaa193f47e27415318edf46c862c09dee4c7394bc5760e8ed8",
+  "conditions": 20,
+  "raw_rows": {
+    "R0_Clean.csv": 311,
+    "R0_SNR_-5dB.csv": 311,
+    "R0_SNR_0dB.csv": 311,
+    "R0_SNR_10dB.csv": 311,
+    "R0_SNR_20dB.csv": 311,
+    "R1_Clean.csv": 311,
+    "R1_SNR_-5dB.csv": 311,
+    "R1_SNR_0dB.csv": 311,
+    "R1_SNR_10dB.csv": 311,
+    "R1_SNR_20dB.csv": 311,
+    "R2_Clean.csv": 311,
+    "R2_SNR_-5dB.csv": 311,
+    "R2_SNR_0dB.csv": 311,
+    "R2_SNR_10dB.csv": 311,
+    "R2_SNR_20dB.csv": 311,
+    "R3_Clean.csv": 311,
+    "R3_SNR_-5dB.csv": 311,
+    "R3_SNR_0dB.csv": 311,
+    "R3_SNR_10dB.csv": 311,
+    "R3_SNR_20dB.csv": 311
+  },
+  "checks": [
+    "cache_manifest",
+    "cache_id_order",
+    "finite_embeddings",
+    "per_condition_query_ids",
+    "snr_audit"
+  ]
+}

@@ -1,23 +1,23 @@
-# Batasan Kebaruan & Kontribusi (Novelty Boundary) — DSIC-2706
+# Batasan Kebaruan dan Kontribusi — DSIC-2706
 
-## Kontribusi Ilmiah Utama
-1. **Paired Robustness Protocol:**
-   Evaluasi ketahanan terhadap derau dilakukan berpasangan (*paired stress-testing*) pada query yang sama persis melintasi tingkat SNR (Clean, 20 dB, 10 dB, 0 dB, -5 dB), memastikan perbedaan skor murni mencerminkan ketahanan representasi, bukan variasi rekaman.
-2. **Controlled Noise Stress-Testing:**
-   Penggunaan bank derau lingkungan riil dari lanskap kampus ITERA (Embung, Arboretum, Area Terbuka).
-3. **Komparasi Representasi Lintas Arsitektur:**
-   Perbandingan langsung representasi parametrik klasik (MFCC), representasi audio generik (PANNs CNN14), representasi bioakustik terspesialisasi, dan kontrol negatif acak (Random Ranking) menggunakan metrik kemiripan tunggal yang adil (*cosine similarity*).
-4. **Analisis Transfer Ambang Batas Open-Set:**
-   Pengujian kestabilan operating point ambang batas $\tau$ terbekukan (*frozen threshold transfer*) di bawah pengaruh derau lingkungan.
-5. **Jembatan Validasi Eksternal:**
-   Membandingkan degradasi derau sintetis terkontrol terhadap pergeseran domain *real field soundscapes*.
+## Kontribusi ilmiah utama
 
----
+1. **Paired robustness protocol**  
+   Query yang sama diuji pada Clean, +20, +10, 0, dan −5 dB sehingga perubahan per-query mencerminkan efek pencampuran noise, bukan variasi rekaman.
+2. **Controlled field-noise stress testing**  
+   Noise berasal dari rekaman lapangan nyata AudioMoth ITERA dan dicampur secara terukur; tidak menggunakan pink noise sintetis sebagai bukti utama.
+3. **Komparasi representasi lintas arsitektur**  
+   MFCC, PANNs CNN14, BirdNET, dan kontrol ID-deterministik dibandingkan dengan cosine similarity dan metrik retrieval yang sama.
+4. **Frozen open-set threshold**  
+   Threshold τ* dikalibrasi pada subset terpisah lalu dibekukan sebelum test.
+5. **Sensitivitas profil noise lokasi**  
+   E4 membandingkan dampak profil noise dari lima lokasi ITERA pada protokol additive mixture yang sama.
+6. **Taksonomi kegagalan yang dapat ditelusuri**  
+   E5 memisahkan false rejection, confusion, dan collapse dengan batas field-data yang eksplisit.
 
-## Yang BUKAN Kontribusi Utama (Non-Goals)
-- Melatih atau membuat arsitektur model bioakustik pondasi baru dari nol (*training from scratch*).
-- Fine-tuning ekstensif pada seluruh lapisan model deep learning.
-- Membangun classifier spesies fauna tertutup baru (*closed-set multi-class classifier*).
-- Pemodelan okupansi (*occupancy modelling*) atau estimasi kelimpahan populasi satwa (*abundance estimation*).
-- Inventarisasi biodiversitas menyeluruh untuk kampus ITERA atau Sumatera.
-- Pengembangan aplikasi mobile atau dashboard pemantauan produksi.
+## Yang bukan kontribusi atau klaim penelitian
+
+- Validasi retrieval pada rekaman burung target yang dibuat langsung dalam real soundscape ITERA.
+- Klaim *domain shift* akibat propagasi jarak, absorpsi, reverberasi, atau perangkat perekam di lapangan.
+- Permintaan anotasi spesies target pada bank noise ITERA; set tersebut bebas spesies target dan tidak dipakai sebagai korpus focal-bird.
+- Pelatihan model dari nol, fine-tuning penuh, classifier tertutup baru, inventarisasi biodiversitas ITERA, atau aplikasi produksi.

@@ -13,3 +13,5 @@ Sesuai arahan pembimbing (Pak Ardika Satria) per 10 Oktober 2026:
 - `raw/`: Skor metrik per-query mentah untuk R0 (MFCC), R1 (PANNs), R2 (BirdNET), R3 (Random).
 - `figures/`: Grafik visualisasi benchmark retrieval dan pergeseran domain.
 - `manifests/`: Manifes partisi `dataset_split.csv` (3.653 galeri, 200 kueri, 498 kalibrasi), `species_freeze.csv`, dan `Metadata_BirdCLEF.xlsx`.
+
+> Status restart 12 Oktober 2026: ini arsip historis rezim BirdCLEF+, bukan hasil untuk dataset Indonesia aktif dan tidak boleh dikutip sebagai hasil penelitian saat ini.

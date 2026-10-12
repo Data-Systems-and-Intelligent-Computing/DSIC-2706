@@ -8,6 +8,13 @@ Fungsi:
    langsung dari data mentah baru dan menyimpannya di results/processed/ dan paper/tables/.
 """
 
+# DINONAKTIFKAN pada restart 2026-10-11. Kode di bawah dipertahankan
+# sebagai bukti historis; hasil eksperimen tidak boleh diisi dari rata-rata.
+raise RuntimeError(
+    "Skrip legacy dinonaktifkan: mengimputasi hasil XC42472 dari rekaman lain. "
+    "Tidak ada berkas yang ditulis. Baca docs/RESTART_STATUS.md."
+)
+
 import os
 import sys
 from pathlib import Path

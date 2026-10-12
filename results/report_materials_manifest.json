@@ -1,0 +1,340 @@
+{
+  "schema": "report_materials_manifest_v2",
+  "purpose": "Checksum-recorded report-friendly copies of verified experiment outputs.",
+  "source_policy": "Source runs under results/reproductions are not modified by this process.",
+  "h3_note": "H3 report materials were added from read-only statistical analysis of validated E4 raw CSV files.",
+  "large_tables_kept_at_source": [
+    "results/reproductions/E5_diagnostics_20261012T091512_868500Z/tables/all_query_diagnostics.csv",
+    "results/reproductions/E5_diagnostics_20261012T091512_868500Z/tables/failure_cases.csv"
+  ],
+  "entries": [
+    {
+      "category": "figure",
+      "target": "results/figures/01_e0_audio_properties.png",
+      "source": "results/reproductions/E0_20261011_202557/figures/e0_audio_properties.png",
+      "sha256": "1bf0c0be1ac40dada09e33c97402c1e3adf85c117cbf5492624d6e29fbf9b44b",
+      "bytes": 109685,
+      "purpose": "E0 preprocessing audit."
+    },
+    {
+      "category": "figure",
+      "target": "results/figures/02_eda_overview.png",
+      "source": "results/reproductions/EDA_20261011_202714/figures/eda_overview.png",
+      "sha256": "4ad6b2d4a6acb066d50a03b0ae9645d7890668972be1822f4c8e1c5dc013d809",
+      "bytes": 221127,
+      "purpose": "EDA overview."
+    },
+    {
+      "category": "figure",
+      "target": "results/figures/03_eda_bird_waveform_spectrogram_examples.png",
+      "source": "results/reproductions/EDA_visuals_20261012T133209_032622Z/figures/eda_bird_waveform_spectrogram_examples.png",
+      "sha256": "de0fcf4480039b82676057ab8138d04382a3cff76c6e2a7bcc6634dc8573cc60",
+      "bytes": 1958949,
+      "purpose": "Bird audio waveform and spectrogram examples."
+    },
+    {
+      "category": "figure",
+      "target": "results/figures/04_eda_duration_sampling_rate.png",
+      "source": "results/reproductions/EDA_visuals_20261012T133209_032622Z/figures/eda_duration_sampling_rate.png",
+      "sha256": "6e5b303a30be1a8a1dc391b3317b14f55992085587a1eaff514b2671a108b594",
+      "bytes": 91199,
+      "purpose": "Duration and sampling-rate distribution."
+    },
+    {
+      "category": "figure",
+      "target": "results/figures/05_eda_itera_noise_spectrogram_profiles.png",
+      "source": "results/reproductions/EDA_visuals_20261012T133209_032622Z/figures/eda_itera_noise_spectrogram_profiles.png",
+      "sha256": "5d8cdbc7d5965130a87f08f1d5269b622daddbc345f0b0c2134c5ce6fc5a1cb7",
+      "bytes": 884856,
+      "purpose": "ITERA noise spectral profiles."
+    },
+    {
+      "category": "figure",
+      "target": "results/figures/06_eda_noise_locations.png",
+      "source": "results/reproductions/EDA_visuals_20261012T133209_032622Z/figures/eda_noise_locations.png",
+      "sha256": "1cfd37aa1663a31ba09930e68028b145274370076b5d1a69fd39a8094ce25641",
+      "bytes": 122919,
+      "purpose": "ITERA noise locations."
+    },
+    {
+      "category": "figure",
+      "target": "results/figures/07_eda_species_distribution.png",
+      "source": "results/reproductions/EDA_visuals_20261012T133209_032622Z/figures/eda_species_distribution.png",
+      "sha256": "858d2540b6468449f8c7ddaf02d8f53ed544948ae97336e7df846d31b47990ff",
+      "bytes": 161079,
+      "purpose": "Target species distribution."
+    },
+    {
+      "category": "figure",
+      "target": "results/figures/08_e2_snr_robustness_map10.png",
+      "source": "results/reproductions/E2_controlled_20261012T021600_897497Z/figures/e2_snr_robustness_map10.png",
+      "sha256": "016626018d12cc9e46e2e8bca71a0c8800ffa7528ff8a9888e31d8735eb8c795",
+      "bytes": 61932,
+      "purpose": "E2 mAP@10 across SNR conditions."
+    },
+    {
+      "category": "figure",
+      "target": "results/figures/09_e3_threshold_transfer_recall.png",
+      "source": "results/reproductions/E3_open_set_20261012T022548_802536Z/figures/e3_threshold_transfer_recall.png",
+      "sha256": "537a303c8a2de04d041a35bb75c3b489df8ddf0da689d50035626baee0d89e2b",
+      "bytes": 75963,
+      "purpose": "E3 threshold-transfer recall."
+    },
+    {
+      "category": "figure",
+      "target": "results/figures/10_e4_noise_profile_sensitivity.png",
+      "source": "results/reproductions/E4_5sites_20261011T213404_350219Z/figures/e4_noise_profile_sensitivity.png",
+      "sha256": "ba07f33122090ddee20f4c7a6f2da9fb9c11ea9af70f5c229f71f3f7f98ffbbc",
+      "bytes": 298774,
+      "purpose": "E4 habitat noise sensitivity."
+    },
+    {
+      "category": "figure",
+      "target": "results/figures/11_e5_failure_modes_by_representation.png",
+      "source": "results/reproductions/E5_diagnostics_20261012T091512_868500Z/figures/failure_modes_by_representation.png",
+      "sha256": "53a0dc0d719d8527e904f8aad2681ceafe355d70312f52664d14f068f36d1380",
+      "bytes": 47646,
+      "purpose": "E5 failure-mode composition."
+    },
+    {
+      "category": "figure",
+      "target": "results/figures/12_e5_margin_distribution_by_failure_type.png",
+      "source": "results/reproductions/E5_diagnostics_20261012T091512_868500Z/figures/margin_distribution_by_failure_type.png",
+      "sha256": "97fcdce6dfbcdf749371d04a8ac27ef004ee4e915bcb52481d8f09b43384035b",
+      "bytes": 62690,
+      "purpose": "E5 similarity-margin distribution."
+    },
+    {
+      "category": "figure",
+      "target": "results/figures/13_e5_spectral_features_by_failure_type.png",
+      "source": "results/reproductions/E5_diagnostics_20261012T091512_868500Z/figures/spectral_features_by_failure_type.png",
+      "sha256": "32567994052c4addd72cf2a7b4b0da223b28084b207fb5efb5985ebc55870764",
+      "bytes": 70364,
+      "purpose": "E5 spectral diagnostics."
+    },
+    {
+      "category": "figure",
+      "target": "results/figures/14_e2_clean_minus5_comparison.png",
+      "source": "results/reproductions/STATISTICS_RQ_MATRIX_20261012T092924_809804Z/figures/e2_clean_minus5_comparison.png",
+      "sha256": "5f39430d3cd471a42409410077627226f23394e5fb392fa2d913409341b4f9fc",
+      "bytes": 42497,
+      "purpose": "Clean versus -5 dB comparison."
+    },
+    {
+      "category": "table",
+      "target": "results/tables/01_e0_summary.csv",
+      "source": "results/reproductions/E0_20261011_202557/tables/summary.csv",
+      "sha256": "be3ed450098704682a04a07567f7caeaa5942b9ccb7ea5cbd46c54044551783b",
+      "bytes": 348,
+      "purpose": "E0 preprocessing summary."
+    },
+    {
+      "category": "table",
+      "target": "results/tables/02_e0_representation_probe.csv",
+      "source": "results/reproductions/E0_20261011_202557/tables/representation_probe.csv",
+      "sha256": "76af8cf6ce4e0f15d2ff3f063a9fb9779a78b815451ba8eef6011846c53c6a44",
+      "bytes": 181,
+      "purpose": "E0 representation probe."
+    },
+    {
+      "category": "table",
+      "target": "results/tables/03_e0_per_recording.csv",
+      "source": "results/reproductions/E0_20261011_202557/tables/per_recording.csv",
+      "sha256": "c6a72ab965446fcfd845f2867fc3198c7b8641e876264b6dce05b6f1c7d75a49",
+      "bytes": 22465,
+      "purpose": "E0 sampled recording audit."
+    },
+    {
+      "category": "table",
+      "target": "results/tables/04_eda_summary_by_source.csv",
+      "source": "results/reproductions/EDA_20261011_202714/tables/summary_by_source.csv",
+      "sha256": "4b42cacd68ac93bf8c3908c48060f503f33eba00c11766dae83d35d00105c314",
+      "bytes": 676,
+      "purpose": "Physical-audio summary by source."
+    },
+    {
+      "category": "table",
+      "target": "results/tables/05_eda_target_species_summary.csv",
+      "source": "results/reproductions/EDA_20261011_202714/tables/target_species_summary.csv",
+      "sha256": "06bdd2d0bdb3f11c5164a64dbca733d2a9b9bde6028a46fb9c804bb7bf487285",
+      "bytes": 1237,
+      "purpose": "Target species summary."
+    },
+    {
+      "category": "table",
+      "target": "results/tables/06_eda_noise_location_summary.csv",
+      "source": "results/reproductions/EDA_20261011_202714/tables/noise_location_summary.csv",
+      "sha256": "ded5a1b8784ecd24e7e81e566bad8d91655d585e7dcff0c66ab2a87092968783",
+      "bytes": 309,
+      "purpose": "Noise location summary."
+    },
+    {
+      "category": "table",
+      "target": "results/tables/07_eda_physical_audio_inventory.csv",
+      "source": "results/reproductions/EDA_20261011_202714/tables/physical_audio_inventory.csv",
+      "sha256": "2f70e2aaff1aa0de78a620be405454caeba1ae2b9f0a6aa4f683446a72ad4f44",
+      "bytes": 537285,
+      "purpose": "Complete physical audio inventory."
+    },
+    {
+      "category": "table",
+      "target": "results/tables/08_eda_visual_summary.csv",
+      "source": "results/reproductions/EDA_visuals_20261012T133209_032622Z/tables/eda_visual_summary.csv",
+      "sha256": "da97959b69241c133cac513265343b9bdf864964ff4acbaaa5e30f5030ce03a2",
+      "bytes": 112,
+      "purpose": "Summary backing EDA figures."
+    },
+    {
+      "category": "table",
+      "target": "results/tables/09_eda_noise_locations.csv",
+      "source": "results/reproductions/EDA_visuals_20261012T133209_032622Z/tables/noise_locations.csv",
+      "sha256": "2a3d337c9d2c3bf2727d72d730d0113c4ab5a65e2a22539f30b185ae743da8b3",
+      "bytes": 309,
+      "purpose": "ITERA location labels for visual EDA."
+    },
+    {
+      "category": "table",
+      "target": "results/tables/11_e2_snr_robustness.csv",
+      "source": "results/reproductions/E2_controlled_20261012T021600_897497Z/tables/e2_snr_robustness.csv",
+      "sha256": "cae143697fbed80c5865fd0de139d371b1e0531cb656d6ac47520ac6e046a82c",
+      "bytes": 2730,
+      "purpose": "E2 controlled-noise results."
+    },
+    {
+      "category": "table",
+      "target": "results/tables/12_e3_frozen_thresholds.csv",
+      "source": "results/reproductions/E3_open_set_20261012T022548_802536Z/tables/frozen_thresholds.csv",
+      "sha256": "01f9a9bbbc3b78fea5fabeb24d5fbcf65b760535999cfeff97647d85c733c9c7",
+      "bytes": 743,
+      "purpose": "Thresholds calibrated then frozen."
+    },
+    {
+      "category": "table",
+      "target": "results/tables/13_e3_threshold_transfer.csv",
+      "source": "results/reproductions/E3_open_set_20261012T022548_802536Z/tables/threshold_transfer.csv",
+      "sha256": "3ff8a20916680c77dd817b30aa9e7f58666b7e51e030ba7f850b52bc3a27a129",
+      "bytes": 3306,
+      "purpose": "Open-set threshold transfer."
+    },
+    {
+      "category": "table",
+      "target": "results/tables/14_e4_domain_shift.csv",
+      "source": "results/reproductions/E4_5sites_20261011T213404_350219Z/tables/e4_domain_shift_table.csv",
+      "sha256": "43c8979db57d1042bec8e506d380d3e1c8ec8fad177259cb7349acbdaf4c2fa5",
+      "bytes": 40269,
+      "purpose": "E4 habitat-noise domain shift."
+    },
+    {
+      "category": "table",
+      "target": "results/tables/15_e5_failure_mode_summary.csv",
+      "source": "results/reproductions/E5_diagnostics_20261012T091512_868500Z/tables/failure_mode_summary.csv",
+      "sha256": "5deb212af57276b3cbad57bcc8db16d861d5e78ff3f84b9c148fb13583e1b6f8",
+      "bytes": 7023,
+      "purpose": "E5 failure-mode summary."
+    },
+    {
+      "category": "table",
+      "target": "results/tables/16_e5_selected_case_manifest.csv",
+      "source": "results/reproductions/E5_diagnostics_20261012T091512_868500Z/tables/selected_case_manifest.csv",
+      "sha256": "1a3892c317adfdfd3c227ae32eb0e5d930f7bf4cbba92d73f5e14531de57798f",
+      "bytes": 65010,
+      "purpose": "Selected E5 cases for inspection."
+    },
+    {
+      "category": "table",
+      "target": "results/tables/17_e5_unknown_open_set_diagnostics.csv",
+      "source": "results/reproductions/E5_diagnostics_20261012T091512_868500Z/tables/unknown_open_set_diagnostics.csv",
+      "sha256": "3e5311ee6f759a5d465d610a1d261b83dccf91063b09b188deb93a38f04bd450",
+      "bytes": 1014336,
+      "purpose": "Unknown-set E5 diagnostics."
+    },
+    {
+      "category": "table",
+      "target": "results/tables/18_statistics_e2_retention.csv",
+      "source": "results/reproductions/STATISTICS_RQ_MATRIX_20261012T092924_809804Z/tables/e2_retention_summary.csv",
+      "sha256": "8a9561df821d0bc2634e8147013f49e2f282571f2d4693d5e22a0d01b71e9116",
+      "bytes": 289,
+      "purpose": "E2 retention summary."
+    },
+    {
+      "category": "table",
+      "target": "results/tables/19_statistics_e3_threshold_transfer.csv",
+      "source": "results/reproductions/STATISTICS_RQ_MATRIX_20261012T092924_809804Z/tables/e3_threshold_transfer_statistics.csv",
+      "sha256": "2225b93ae3b5737d0914aab9abb8ca5aa6051406b0ff212c51a3f219e81d4006",
+      "bytes": 802,
+      "purpose": "E3 statistical summary."
+    },
+    {
+      "category": "table",
+      "target": "results/tables/20_statistics_e4_habitat.csv",
+      "source": "results/reproductions/STATISTICS_RQ_MATRIX_20261012T092924_809804Z/tables/e4_habitat_descriptive.csv",
+      "sha256": "0b17dd28cab87dcd7ed71489416c14268d97e0dd2bd83eb07e94ac739a3e5a0f",
+      "bytes": 1265,
+      "purpose": "E4 descriptive habitat results."
+    },
+    {
+      "category": "table",
+      "target": "results/tables/21_statistics_provenance.csv",
+      "source": "results/reproductions/STATISTICS_RQ_MATRIX_20261012T092924_809804Z/tables/experiment_provenance_status.csv",
+      "sha256": "44ff054f94e6abf88734aa0f7425a5a65325e7f0be21585d2fbdfbb188adabea",
+      "bytes": 1987,
+      "purpose": "Experiment provenance status."
+    },
+    {
+      "category": "table",
+      "target": "results/tables/22_statistics_paired_bootstrap.csv",
+      "source": "results/reproductions/STATISTICS_RQ_MATRIX_20261012T092924_809804Z/tables/paired_bootstrap_results.csv",
+      "sha256": "a7211f8b490810efa9b085b11935b4930ef4784959756632e18a3c3462d4bfea",
+      "bytes": 3217,
+      "purpose": "Paired bootstrap tests."
+    },
+    {
+      "category": "table",
+      "target": "results/tables/23_statistics_rq_hypothesis_matrix.csv",
+      "source": "results/reproductions/STATISTICS_RQ_MATRIX_20261012T092924_809804Z/tables/rq_hypothesis_matrix.csv",
+      "sha256": "fa8245153fd01139e8362f109cc8f238ca5fbcb1a90052f9bdb209f025ec57aa",
+      "bytes": 2830,
+      "purpose": "RQ and hypothesis answer matrix."
+    },
+    {
+      "category": "table",
+      "target": "results/tables/10_e1_clean_retrieval_summary.csv",
+      "source": "metadata.json from four verified E1 runs",
+      "sha256": "03e994779ee647a63ee1c607e0e159dca46c0a2318c12c4699bcde6ec30bc760",
+      "bytes": 1087,
+      "purpose": "Clean retrieval comparison for R0-R3."
+    },
+    {
+      "category": "table",
+      "target": "results/tables/24_h3_habitat_profile_stability.csv",
+      "source": "results/reproductions/H3_habitat_profile_stability_20261012T141344_312163Z/tables/h3_stability_summary.csv",
+      "sha256": "17d414a370d60fe5e1aaec4dc4645cd1081747edc5d8da1c4c1425ed647d7e7a",
+      "bytes": 1341,
+      "purpose": "H3 retention-swing summary and paired-bootstrap inference."
+    },
+    {
+      "category": "table",
+      "target": "results/tables/25_h3_retention_by_habitat_repeat.csv",
+      "source": "results/reproductions/H3_habitat_profile_stability_20261012T141344_312163Z/tables/h3_retention_by_habitat_repeat.csv",
+      "sha256": "c4c3a2ed52a9c3f1352329f41e237007bc360ef602dceb7b5f80e908d92bef77",
+      "bytes": 14773,
+      "purpose": "H3 per-location retention values across noise repeats."
+    },
+    {
+      "category": "table",
+      "target": "results/tables/26_h3_bootstrap_distribution.csv",
+      "source": "results/reproductions/H3_habitat_profile_stability_20261012T141344_312163Z/tables/h3_bootstrap_distribution.csv",
+      "sha256": "7c3373028346a987aecf2424c7f346b349f61fc9a1c46d8d6a9dd017853abc37",
+      "bytes": 2721381,
+      "purpose": "H3 10,000 paired-bootstrap draws."
+    },
+    {
+      "category": "figure",
+      "target": "results/figures/15_h3_habitat_retention_stability.png",
+      "source": "results/reproductions/H3_habitat_profile_stability_20261012T141344_312163Z/figures/h3_habitat_retention_stability.png",
+      "sha256": "6a0ca627921a5fb6cbfb07ab87f358b414b6442e9b9f9f28e52d7aaf9a89124a",
+      "bytes": 392071,
+      "purpose": "H3 report figure: retention profiles and stability swings."
+    }
+  ]
+}

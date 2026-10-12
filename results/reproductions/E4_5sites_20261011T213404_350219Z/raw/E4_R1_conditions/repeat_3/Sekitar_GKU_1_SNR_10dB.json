@@ -1,0 +1,18 @@
+{
+  "csv_sha256": "804b51521058e7a84bc7de14a8f37fc573f2330231787dac33fbf41acea2a9e3",
+  "query_count": 311,
+  "run_sha256": "f175751ce0fd5b828f39e7d9f3c57f304793f7af472015fc0ea1f15a4b162d2e",
+  "schema": "E4_condition_snapshot_v1",
+  "summary": {
+    "Precision@10": 0.2758842443729904,
+    "Recall@10": 0.08544366582222493,
+    "Top1_Accuracy": 0.39228295819935693,
+    "condition": "SNR_10dB",
+    "habitat": "Sekitar_GKU_1",
+    "mAP@10": 0.19353787066809575,
+    "relative_retention": 1.097976323359726,
+    "repeat_id": 3,
+    "representation": "R1",
+    "snr_db": 10
+  }
+}

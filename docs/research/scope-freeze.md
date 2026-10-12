@@ -87,3 +87,7 @@ Tingkat degradasi derau aditif dibekukan pada 5 level:
 * **Versi 3.0 (12 September 2026):** 20 taksa BirdCLEF Neotropis (dibatalkan per arahan pembimbing 10 Oktober 2026).
 * **Versi 2.0 (07 September 2026):** 16 taksa burung Sumatera lama (dibatalkan akibat kelangkaan data kueri independen dan kebocoran author).
 * **Versi 1.0 (Draf Awal):** 16 spesies kosmopolitan umum.
+
+## Amendemen Scope 12 Oktober 2026
+
+E4 dibatasi sebagai sensitivitas profil noise lokasi ITERA dalam additive mixture. H3 diuji sebagai stabilitas retensi lintas lima profil noise lokasi, bukan real-soundscape domain shift. Bank noise ITERA bebas spesies target; anotasi spesies target tidak diminta untuk E2/E4. Lihat `scope-reframe-2026-10-12.md`.

@@ -1,0 +1,18 @@
+folder,role
+.venv,Lingkungan Python lokal; tidak diindeks atau diubah.
+Administrasi,Berkas administrasi akademik; ditambah README navigasi.
+artifacts,Registri artefak tervalidasi.
+Audit Pembaruan,Dokumen audit historis dan indeks workspace saat ini.
+checkpoints,Model beku R1/R2 dan katalog model.
+configs,Parameter beku dan indeks active run.
+data,"Audio asli, manifes, dan registry data."
+docs,"Metode, audit, hasil RQ/H."
+experiments,Registri E0–E5.
+learning,Latihan pembelajaran aman.
+notebooks,Notebook yang dapat dibaca/run per eksperimen.
+paper,Draf artikel serta indeks figure/table terpilih.
+Rencana-eksperimen-bimbingan,Rencana/logbook historis dan status terkini.
+results,"Run sumber, gambar, tabel, dan manifest checksum."
+scripts,Runner dan pembangun indeks.
+src,Fungsi pipeline.
+tests,Validasi integritas serta metode.

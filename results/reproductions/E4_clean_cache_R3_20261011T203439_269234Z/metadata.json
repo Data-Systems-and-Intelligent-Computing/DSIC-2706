@@ -1,0 +1,11 @@
+{
+  "representation": "R3",
+  "manifest_sha256": "7808cdf057f135aaa193f47e27415318edf46c862c09dee4c7394bc5760e8ed8",
+  "checkpoint_sha256": null,
+  "gallery_count": 673,
+  "query_count": 311,
+  "clean_map10": 0.021140713520134743,
+  "clean_top1": 0.06430868167202572,
+  "purpose": "Clean cache only, no E2/E3/E4 inference",
+  "r3_control_version": "stable_id_v1"
+}

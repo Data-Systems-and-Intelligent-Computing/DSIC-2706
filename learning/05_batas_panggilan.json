@@ -1,0 +1,12 @@
+{
+  "purpose": "Pemeriksaan tambahan pasangan XC42472/XC166746, bukan eksperimen resmi.",
+  "chosen_on": "2026-10-12",
+  "selection": "Batas perkiraan dari spektrogram detik 0-5, ditetapkan sebelum skor potongan dihitung. Dua panggilan query sama-sama diuji, tanpa memilih hasil terbaik.",
+  "duration_sec": 0.6,
+  "query": [
+    {"name": "Panggilan query 1", "recording_id": "XC42472", "start_sec": 0.45, "end_sec": 1.05},
+    {"name": "Panggilan query 2", "recording_id": "XC42472", "start_sec": 2.95, "end_sec": 3.55}
+  ],
+  "candidate": {"name": "Panggilan kandidat", "recording_id": "XC166746", "start_sec": 1.8, "end_sec": 2.4},
+  "limitations": "Batas perkiraan visual, belum anotasi ahli. Potongan masih mengandung suara latar. Perubahan durasi dan bingkai turut memengaruhi ringkasan MFCC; perbandingan ini tidak mengisolasi efek derau."
+}

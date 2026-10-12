@@ -1,0 +1,21 @@
+{
+  "analysis": "H3 habitat-profile stability",
+  "source_experiment": "results/reproductions/E4_5sites_20261011T213404_350219Z",
+  "source_raw_sha256": {
+    "E4_R0_raw.csv": "cbb15f0630653641f85189b366fc23c7c8772cec50ab4d0e463725103b6d4779",
+    "E4_R1_raw.csv": "e9baf2e878a584231a801a1c6b6a87f339a84bcb8180d227d01cb7e2e782a06a",
+    "E4_R2_raw.csv": "bc97a0aa5bb3f999d7017896b4115107c2a13d63c2cfc1e78ce01e743df20ba4",
+    "E4_R3_raw.csv": "3587f7024097dfca225e6b1a1c4f4d625f599940559bb386230dd55b0360254c"
+  },
+  "immutable_source_note": "Original E4 files were read only; no E4 run file was modified.",
+  "comparison": "R1 generic pretrained audio (PANN) versus R2 bioacoustic pretrained embedding (BirdNET V2.4)",
+  "outcome_metric": "mAP@10 relative-retention swing = max habitat retention - min habitat retention, averaged over four noise repeats",
+  "inference": "paired query bootstrap percentile CI, 10000 resamples, seed 20261012; H3 supported when R1-R2 swing CI lower bound > 0",
+  "unit": "311 shared query recordings; 5 habitats; 4 noise-segment repeats per habitat and SNR",
+  "outputs": {
+    "summary": "results/reproductions/H3_habitat_profile_stability_20261012T141344_312163Z/tables/h3_stability_summary.csv",
+    "retention": "results/reproductions/H3_habitat_profile_stability_20261012T141344_312163Z/tables/h3_retention_by_habitat_repeat.csv",
+    "bootstrap": "results/reproductions/H3_habitat_profile_stability_20261012T141344_312163Z/tables/h3_bootstrap_distribution.csv",
+    "figure": "results/reproductions/H3_habitat_profile_stability_20261012T141344_312163Z/figures/h3_habitat_retention_stability.png"
+  }
+}

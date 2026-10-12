@@ -1,0 +1,22 @@
+{
+  "artifact_schema": "e0_preprocessing_audit_v1",
+  "status": "complete",
+  "timestamp_utc": "2026-10-12T09:46:49.434269+00:00",
+  "git_sha": "930f6f2ea381221ba29fa09227e86d3d3df1eb33",
+  "manifest_sha256": "7808cdf057f135aaa193f47e27415318edf46c862c09dee4c7394bc5760e8ed8",
+  "preprocess_code_sha256": "6c01850783d294f31a02a915d0497046c6903db7e11c81dc63330b94f982da08",
+  "sample_seed": 20261012,
+  "sample_size": 100,
+  "sample_roles": {
+    "calibration": 19,
+    "gallery": 55,
+    "query_clean": 26
+  },
+  "protocol": {
+    "target_sample_rate_hz": 32000,
+    "target_samples": 160000,
+    "selected_window_seconds": 5.0,
+    "target_rms": 0.05
+  },
+  "representation_probe_recording_id": "XC1076576"
+}

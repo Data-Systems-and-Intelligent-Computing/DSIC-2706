@@ -4,6 +4,8 @@ Jangan khawatir, sangat wajar merasa kebingungan di tengah eksperimen yang kompl
 
 ---
 
+> **Scope aktif per 12 Oktober 2026:** penelitian menguji *controlled additive field-noise mixtures* dengan noise ITERA. E4 menguji sensitivitas lima profil noise lokasi, dan H3 diuji sebagai stabilitas retensi lintas profil tersebut: R2/BirdNET lebih stabil daripada R1/PANNs (Δ ayunan = 0.192; CI 95% [0.152, 0.242]). Bank ITERA bebas spesies target sehingga anotasi spesies target tidak diperlukan.
+
 ## 1. Posisi Anda Saat Ini (*Progress Tracker*)
 
 Tugas Akhir ini pada dasarnya memiliki alur eksperimen yang terbagi menjadi beberapa fase. Berikut adalah status Anda saat ini:
@@ -12,12 +14,12 @@ Tugas Akhir ini pada dasarnya memiliki alur eksperimen yang terbagi menjadi bebe
 - [x] **Tahap 2: Registrasi Integritas Data** (Manifes SHA-256 & Metadata Bebas Bocor) ➔ **SELESAI**
 - [x] **Tahap 3 & 4 (Eksperimen E1 & E2):** Evaluasi *Clean* & Pencampuran Derau Terkontrol SNR ➔ **SELESAI**
 - [x] **Eksperimen E3:** Kalibrasi Ambang Batas (*Open-Set Rejection* $\tau^*_{R_2} = 0.7071, \tau^*_{R_1} = 0.8974$) ➔ **SELESAI**
-- [x] **Eksperimen E4:** Sensitivitas Profil Spektral Derau Latar (Lintas Tiga Habitat Kampus ITERA) ➔ **SELESAI**
+- [x] **Eksperimen E4:** Sensitivitas Profil Noise Lima Lokasi ITERA dalam *additive mixture* ➔ **SELESAI**
 - [x] **Eksperimen E5:** *Failure Analysis* (Mendiagnosis 30 kasus kegagalan nyata terstratifikasi lintas spesies) ➔ **SELESAI**
 - [x] **Evaluasi Statistik Inferensial:** Paired Bootstrap Resampling 1.000 iterasi ($p < 0.001$) ➔ **SELESAI**
 - [ ] **Penulisan Naskah Bab 4 & Bab 5** (Memasukkan grafik dan tabel siap pakai ke draf skripsi Word) ➔ **SIAP DIMULAI**
 
-**Kesimpulan Progress:** Secara teknis (kodingan, komputasi seluruh model AI E0 s.d. E5, pengujian statistik inferensial, pembuatan tabel dan grafik publikasi), Anda sudah **100% SELESAI**. Semua bahan empiris sudah tersedia lengkap di folder `paper/tables/` dan `paper/figures/`.
+**Kesimpulan Progress:** Secara teknis (kodingan, komputasi seluruh model AI E0 s.d. E5, pengujian statistik inferensial, pembuatan tabel dan grafik publikasi), Anda sudah **100% SELESAI**. Bahan empiris laporan tersedia di `results/tables/` dan `results/figures/`; `paper/` masih draf penyusunan naskah.
 
 ---
 
@@ -93,12 +95,12 @@ Metodologi dan arsitektur yang Anda pakai sangat ilmiah dan didasarkan pada jurn
 Jika dosen penguji bertanya: *"Apa bedanya skripsi kamu dengan penelitian klasifikasi suara burung yang sudah ada?"*, inilah senjata utama Anda:
 
 ### Gap Penelitian (Masalah Saat Ini)
-Penelitian bioakustik konvensional biasanya melatih model *Machine Learning* (seperti CNN/ResNet) menggunakan dataset yang sangat bersih. **Namun, ketika model tersebut dibawa ke alam liar (seperti di kampus ITERA), model tersebut gagal total.** Mengapa? Karena di lapangan ada suara angin, hujan lebat, motor, dan serangga (Distorsi Domain Akustik). Selain itu, model konvensional akan "memaksa" menebak spesies burung meskipun yang terekam sebenarnya hanya suara klakson motor (*Closed-set assumption*).
+Penelitian bioakustik konvensional biasanya melatih model *Machine Learning* (seperti CNN/ResNet) menggunakan dataset yang sangat bersih. **Pada protokol penelitian ini, query focal recording dicampur secara terkontrol dengan noise lapangan ITERA.** Derau seperti angin, kendaraan, dan serangga dapat menurunkan retrieval; penelitian ini mengukurnya tanpa mengklaim evaluasi burung yang direkam langsung di alam liar. Selain itu, model konvensional akan "memaksa" menebak spesies burung meskipun yang terekam sebenarnya hanya suara klakson motor (*Closed-set assumption*).
 
 ### Kebaruan Skripsi Anda (Novelty)
 1. **Pendekatan Degradasi Terkontrol (Paired Noise Degradation - E2):** Anda menyuntikkan derau asli dari kampus ITERA pada berbagai tingkatan yang dikontrol secara matematis (SNR -5 dB hingga +20 dB). Ini membuktikan batas kritis (*breaking point*) AI pengenal suara burung terhadap bising lingkungan tropis.
 2. **Evaluasi Zero-Shot Retrieval:** Alih-alih melakukan klasifikasi kaku, Anda menggunakan pendekatan *Retrieval* (sistem pencarian kemiripan). Sistem ini fleksibel: jika ada burung baru, cukup tambahkan suaranya ke Galeri tanpa perlu melatih ulang model AI.
 3. **Open-Set Rejection (Kalibrasi $\tau^*$ - E3):** Sistem memiliki kemampuan menolak (*reject*) sinyal non-burung menggunakan ambang batas beku ($\tau^*_{R_2} = 0.7071$) via Youden's J pada partisi kalibrasi terpisah ($N=465$). Uji lintas SNR membuktikan pergeseran titik operasi (H4): BirdNET mempertahankan penolakan konservatif aman (FPR turun dari 20.00% ke 9.35%), sementara PANNs mempertahankan FPR tinggi (47.42% ke 27.10%).
-4. **Uji Sensitivitas Profil Spektral Derau Latar (E4):** Menguji representasi terhadap perbedaan spektral derau dari 3 profil habitat kampus ITERA (Kebun Raya, Embung F, Gedung F), membuktikan bahwa BirdNET dipengaruhi biofoni serangga Kebun Raya ($p = 0.0040$), namun rentang ayunan retensinya (6.39%) jauh lebih stabil dibanding keruntuhan model generic audio PANNs (21.98%, disparitas ayunan $\Delta_{\text{obs}} = 0.1560$, $p \le 0.001$).
-5. **Uji Signifikansi Inferensial (Bootstrap Resampling):** Keunggulan model bioakustik BirdNET atas model generik dibuktikan secara inferensial melalui 1.000 iterasi bootstrap ($p \le 0.001$, 95% CI $[+0.4260, +0.4986]$), keunggulan retensi BirdNET atas PANNs ($\Delta = +0.2244$, $p \le 0.001$), keunggulan retensi PANNs atas MFCC pada SNR -5 dB ($\Delta = +0.1946$, $p = 0.0050$), serta disparitas stabilitas habitat terkonfirmasi ($p \le 0.001$).
+4. **Uji Sensitivitas Profil Noise Lapangan (E4):** Membandingkan query yang dicampur secara aditif dengan profil noise dari lima lokasi ITERA. Hasilnya menunjukkan variasi mAP@10 menurut lokasi; hasil ini dibatasi pada *noise-profile sensitivity*, bukan domain shift atau rekaman burung in-situ.
+5. **Uji Signifikansi Inferensial (Bootstrap Resampling):** Keunggulan model bioakustik BirdNET atas model generik dibuktikan secara inferensial melalui 10.000 iterasi bootstrap ($p \le 0.001$, 95% CI $[+0.4260, +0.4986]$), keunggulan retensi BirdNET atas PANNs ($\Delta = +0.2244$, $p \le 0.001$), keunggulan retensi PANNs atas MFCC pada SNR -5 dB ($\Delta = +0.1946$, $p = 0.0050$), serta disparitas stabilitas habitat terkonfirmasi ($p \le 0.001$).
 

@@ -69,13 +69,13 @@ def main():
         calib_targets = []
 
         for y, (_, r) in zip(calib_pos_audios, calib_pos_df.iterrows()):
-            emb = extractor.extract(y)
+            emb = extractor.extract(y, item_id=f"calibration:{r['recording_id']}")
             res = compute_query_retrieval(emb, r["species_key"], gallery_embs, gallery_labels)
             calib_scores.append(res["max_score"])
             calib_targets.append(1)
 
         for y, (_, r) in zip(calib_neg_audios, calib_neg_df.iterrows()):
-            emb = extractor.extract(y)
+            emb = extractor.extract(y, item_id=f"unknown_calibration:{r['unknown_id']}")
             res = compute_query_retrieval(emb, "UNKNOWN_NON_BIRD", gallery_embs, gallery_labels)
             calib_scores.append(res["max_score"])
             calib_targets.append(0)

@@ -164,7 +164,7 @@ def extract_real_failures_from_raw():
             y_clean = preprocess_audio(row["file_path"])
             y_noisy, n_path = mix_audio_at_snr(y_clean, snr_db=-5, seed=42 + i, return_noise_info=True)
 
-            emb_noisy = extractor.extract(y_noisy)
+            emb_noisy = extractor.extract(y_noisy, item_id=f"query_clean:{row['recording_id']}")
             q_norm_vec = emb_noisy / max(np.linalg.norm(emb_noisy), 1e-8)
             sims = np.dot(g_norm, q_norm_vec)
 

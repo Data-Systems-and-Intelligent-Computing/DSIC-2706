@@ -1,0 +1,19 @@
+{
+  "id": "E0",
+  "title": "Preprocessing Audit",
+  "status": "verified",
+  "notebook": "notebooks/02_E0_Preprocessing_Audit.ipynb",
+  "source_code": "scripts/run_e0_preprocessing_verification.py",
+  "runs": [
+    "results/reproductions/E0_20261011_202557"
+  ],
+  "figures": [
+    "results/figures/01_e0_audio_properties.png"
+  ],
+  "tables": [
+    "results/tables/01_e0_summary.csv",
+    "results/tables/02_e0_representation_probe.csv",
+    "results/tables/03_e0_per_recording.csv"
+  ],
+  "role": "Navigation and provenance index. Source results remain immutable under results/reproductions."
+}

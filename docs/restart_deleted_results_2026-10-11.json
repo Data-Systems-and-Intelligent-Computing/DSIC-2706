@@ -1,0 +1,280 @@
+{
+  "date": "2026-10-11",
+  "git_head": "930f6f2ea381221ba29fa09227e86d3d3df1eb33",
+  "authorization": "User: hapus aja hasil lama kalau salah",
+  "scope": "45 specifically verified invalidated result files; no recursive deletion",
+  "file_count": 45,
+  "total_bytes": 8909294.0,
+  "files": [
+    {
+      "path": "results/raw/R0_Clean_raw.csv",
+      "bytes": 31573,
+      "sha256": "95de9e97b3d2e5d7e1a9fc147aedfad039a75952a26c312a0b195de96656246b",
+      "reason": "XC42472 matches legacy mean-imputation formula."
+    },
+    {
+      "path": "results/raw/R0_SNR_20dB_raw.csv",
+      "bytes": 49634,
+      "sha256": "05b234570dda040d0b1d0fcb33d46ebca0ce6e0c4ddba0386cc534c0c902668d",
+      "reason": "XC42472 matches legacy mean-imputation formula."
+    },
+    {
+      "path": "results/raw/R0_SNR_10dB_raw.csv",
+      "bytes": 48869,
+      "sha256": "aef03d77f756b7fce188ea45ca719d7559d0d824fd8dc0e10d98f2702703b139",
+      "reason": "XC42472 matches legacy mean-imputation formula."
+    },
+    {
+      "path": "results/raw/R0_SNR_0dB_raw.csv",
+      "bytes": 48443,
+      "sha256": "2dc476582cd615e676dd52cad4e2defdb3be31c8c5b7c1f9900a2c17de8ad241",
+      "reason": "XC42472 matches legacy mean-imputation formula."
+    },
+    {
+      "path": "results/raw/R0_SNR_-5dB_raw.csv",
+      "bytes": 48260,
+      "sha256": "3d7cc698785f086b9d02ba3be0c1af2210fbb0eb63f8e4754a3fec3a4d50e33b",
+      "reason": "XC42472 matches legacy mean-imputation formula."
+    },
+    {
+      "path": "results/raw/E4_R0_raw.csv",
+      "bytes": 855443,
+      "sha256": "5117ef93ae1969de44ac05d9542113c614763515422722e3b848d0e460d8a100",
+      "reason": "XC42472 matches legacy mean-imputation formula."
+    },
+    {
+      "path": "results/raw/R1_Clean_raw.csv",
+      "bytes": 32300,
+      "sha256": "864123bf9df822a380c8ebebe5ee25412cd6c953b1dba946b06ca99a46f7e404",
+      "reason": "XC42472 matches legacy mean-imputation formula."
+    },
+    {
+      "path": "results/raw/R1_SNR_20dB_raw.csv",
+      "bytes": 49727,
+      "sha256": "3ac686ed9f9f9f02e38a754b2e1f03e01b35214aecd5dc744ae0d90059e39ea8",
+      "reason": "XC42472 matches legacy mean-imputation formula."
+    },
+    {
+      "path": "results/raw/R1_SNR_10dB_raw.csv",
+      "bytes": 49630,
+      "sha256": "4c836cc79d7fce8feca1f9a38c0af30a1a76a8c144da4e6d790c6dd697241de9",
+      "reason": "XC42472 matches legacy mean-imputation formula."
+    },
+    {
+      "path": "results/raw/R1_SNR_0dB_raw.csv",
+      "bytes": 49848,
+      "sha256": "95993986f112f04ed592966228d82198544d4007038db2ae543313a03d4477d5",
+      "reason": "XC42472 matches legacy mean-imputation formula."
+    },
+    {
+      "path": "results/raw/R1_SNR_-5dB_raw.csv",
+      "bytes": 49237,
+      "sha256": "23b348ea9fc2840b3e3d06d5ab3bd0a6a33b301097371854d7969928629ae8a7",
+      "reason": "XC42472 matches legacy mean-imputation formula."
+    },
+    {
+      "path": "results/raw/E4_R1_raw.csv",
+      "bytes": 890470,
+      "sha256": "5f57a5148aa2f460f7d6e1600ee50f52800b8cba49a20b5fc78d2bacb1b0f231",
+      "reason": "XC42472 matches legacy mean-imputation formula."
+    },
+    {
+      "path": "results/raw/R2_Clean_raw.csv",
+      "bytes": 31483,
+      "sha256": "3137c9042a945cf3b42568612abdc9852a7707949f06a3623490aefff7f5d2c1",
+      "reason": "XC42472 matches legacy mean-imputation formula."
+    },
+    {
+      "path": "results/raw/R2_SNR_20dB_raw.csv",
+      "bytes": 48632,
+      "sha256": "228a8c97d3d37e03244df7d4cde151dcbdc10f118bb1d0e6afea91503e937988",
+      "reason": "XC42472 matches legacy mean-imputation formula."
+    },
+    {
+      "path": "results/raw/R2_SNR_10dB_raw.csv",
+      "bytes": 48799,
+      "sha256": "853f2cdde67f418c9c60608cfad48688eab783acaed27372c301d2facb66e2ea",
+      "reason": "XC42472 matches legacy mean-imputation formula."
+    },
+    {
+      "path": "results/raw/R2_SNR_0dB_raw.csv",
+      "bytes": 48896,
+      "sha256": "04896108df86776315da97410e3816c8639c5df353022bb478245fb8791921dd",
+      "reason": "XC42472 matches legacy mean-imputation formula."
+    },
+    {
+      "path": "results/raw/R2_SNR_-5dB_raw.csv",
+      "bytes": 49196,
+      "sha256": "14ecfdaff30dcb5764f5bcb9900f90b325224991d89d1d582e16b37496fe6d64",
+      "reason": "XC42472 matches legacy mean-imputation formula."
+    },
+    {
+      "path": "results/raw/E4_R2_raw.csv",
+      "bytes": 918523,
+      "sha256": "4b803768bd9f5bc5f923845f99277f686f346e1c5771cf4b9a7dc1c0188db6b9",
+      "reason": "XC42472 matches legacy mean-imputation formula."
+    },
+    {
+      "path": "results/raw/R3_Clean_raw.csv",
+      "bytes": 30521,
+      "sha256": "02cd62a43c619aeb808ed8a16d524f6880a9b8858940d124fac8911d8c862f79",
+      "reason": "XC42472 matches legacy mean-imputation formula."
+    },
+    {
+      "path": "results/raw/R3_SNR_20dB_raw.csv",
+      "bytes": 48676,
+      "sha256": "388eab8d1838e16e85c3a697e70e7e2b4fd9584264c12e2c856705ee6b1e83a4",
+      "reason": "XC42472 matches legacy mean-imputation formula."
+    },
+    {
+      "path": "results/raw/R3_SNR_10dB_raw.csv",
+      "bytes": 48590,
+      "sha256": "72bcdc6187c414c9ef9a2825b5239e02f80e795d81cf30c3a8a2f20ee2f1549f",
+      "reason": "XC42472 matches legacy mean-imputation formula."
+    },
+    {
+      "path": "results/raw/R3_SNR_0dB_raw.csv",
+      "bytes": 48759,
+      "sha256": "2cc485a364116632e9235fcbb933e5f55ee396a35f910b0f50091928454b14a6",
+      "reason": "XC42472 matches legacy mean-imputation formula."
+    },
+    {
+      "path": "results/raw/R3_SNR_-5dB_raw.csv",
+      "bytes": 48065,
+      "sha256": "8453581dc55c05f84527d5a75c305d02ed700617f462529b19e820bcf0346598",
+      "reason": "XC42472 matches legacy mean-imputation formula."
+    },
+    {
+      "path": "results/raw/E4_R3_raw.csv",
+      "bytes": 836190,
+      "sha256": "54293e92d83b9558c3e33a5233a52f65f0656c15e26705e6941fa0834663f77b",
+      "reason": "XC42472 matches legacy mean-imputation formula."
+    },
+    {
+      "path": "results/raw/E3_test_scores_raw.csv",
+      "bytes": 1747414,
+      "sha256": "719de150a7ff6503fe627b1b00b18bbde82473a8330e3bcaba2efa15203f0ff0",
+      "reason": "XC42472 matches legacy mean-imputation formula."
+    },
+    {
+      "path": "results/processed/clean_retrieval_table.csv",
+      "bytes": 227,
+      "sha256": "415f77b1bedd2b2448719e96d9af0f62d5a9f20bd5b761bf69926c7bf7996b55",
+      "reason": "Derived retrieval/transfer/habitat output invalidated by imputed raw."
+    },
+    {
+      "path": "paper/tables/clean_retrieval_table.csv",
+      "bytes": 227,
+      "sha256": "415f77b1bedd2b2448719e96d9af0f62d5a9f20bd5b761bf69926c7bf7996b55",
+      "reason": "Derived retrieval/transfer/habitat output invalidated by imputed raw."
+    },
+    {
+      "path": "results/processed/snr_robustness_table.csv",
+      "bytes": 1192,
+      "sha256": "0b6346708e360f02aeadf4aec1892dc96537b4d900b50a12e6dc6f7cf677de9a",
+      "reason": "Derived retrieval/transfer/habitat output invalidated by imputed raw."
+    },
+    {
+      "path": "paper/tables/snr_robustness_table.csv",
+      "bytes": 1192,
+      "sha256": "0b6346708e360f02aeadf4aec1892dc96537b4d900b50a12e6dc6f7cf677de9a",
+      "reason": "Derived retrieval/transfer/habitat output invalidated by imputed raw."
+    },
+    {
+      "path": "results/processed/threshold_transfer_table.csv",
+      "bytes": 951,
+      "sha256": "8d061d451147bc2d248e694c3314453588b3e1d0e6771cd8e91f40234acef4a8",
+      "reason": "Derived retrieval/transfer/habitat output invalidated by imputed raw."
+    },
+    {
+      "path": "paper/tables/threshold_transfer_table.csv",
+      "bytes": 951,
+      "sha256": "8d061d451147bc2d248e694c3314453588b3e1d0e6771cd8e91f40234acef4a8",
+      "reason": "Derived retrieval/transfer/habitat output invalidated by imputed raw."
+    },
+    {
+      "path": "results/processed/e4_domain_shift_table.csv",
+      "bytes": 2436,
+      "sha256": "652948bd0a0fd6097d05ccf22c3d527404d0fa94be334cb80b87e056437efaf1",
+      "reason": "Derived retrieval/transfer/habitat output invalidated by imputed raw."
+    },
+    {
+      "path": "paper/tables/e4_domain_shift_table.csv",
+      "bytes": 2436,
+      "sha256": "652948bd0a0fd6097d05ccf22c3d527404d0fa94be334cb80b87e056437efaf1",
+      "reason": "Derived retrieval/transfer/habitat output invalidated by imputed raw."
+    },
+    {
+      "path": "results/processed/statistical_significance_table.csv",
+      "bytes": 2549,
+      "sha256": "4a40ef40864fcbac576b9336ac51fdc5b3684c49c96a3584c295117c89c6356a",
+      "reason": "Derived from imputed raw; H3 p-value and significance hard-coded."
+    },
+    {
+      "path": "paper/tables/statistical_significance_table.csv",
+      "bytes": 2549,
+      "sha256": "4a40ef40864fcbac576b9336ac51fdc5b3684c49c96a3584c295117c89c6356a",
+      "reason": "Derived from imputed raw; H3 p-value and significance hard-coded."
+    },
+    {
+      "path": "results/figures/clean_retrieval_benchmark.png",
+      "bytes": 195414,
+      "sha256": "bcdf817b8e1f2dca69c22664e7c0d21065cbadfe44c8bd49d89833582240f8c5",
+      "reason": "Derived retrieval/transfer/habitat output invalidated by imputed raw."
+    },
+    {
+      "path": "paper/figures/clean_retrieval_benchmark.png",
+      "bytes": 195414,
+      "sha256": "bcdf817b8e1f2dca69c22664e7c0d21065cbadfe44c8bd49d89833582240f8c5",
+      "reason": "Derived retrieval/transfer/habitat output invalidated by imputed raw."
+    },
+    {
+      "path": "results/figures/relative_retention_curve.png",
+      "bytes": 183921,
+      "sha256": "4996dc0566d336d0e9eea5ab07601221a2add2443211de67de6398cf71c714c0",
+      "reason": "Derived retrieval/transfer/habitat output invalidated by imputed raw."
+    },
+    {
+      "path": "paper/figures/relative_retention_curve.png",
+      "bytes": 183921,
+      "sha256": "4996dc0566d336d0e9eea5ab07601221a2add2443211de67de6398cf71c714c0",
+      "reason": "Derived retrieval/transfer/habitat output invalidated by imputed raw."
+    },
+    {
+      "path": "results/figures/robustness_curve_map10.png",
+      "bytes": 378891,
+      "sha256": "f04f540d0e27f68cd2e55e879de9feb57eeafac3793596ab70c60229d51be577",
+      "reason": "Derived retrieval/transfer/habitat output invalidated by imputed raw."
+    },
+    {
+      "path": "paper/figures/robustness_curve_map10.png",
+      "bytes": 378891,
+      "sha256": "f04f540d0e27f68cd2e55e879de9feb57eeafac3793596ab70c60229d51be577",
+      "reason": "Derived retrieval/transfer/habitat output invalidated by imputed raw."
+    },
+    {
+      "path": "results/figures/e3_threshold_transfer_snr.png",
+      "bytes": 296039,
+      "sha256": "c115691fbfd6f4f4b109886d91fcfa0009f11b01fff247e1e6aa85569bc2a66a",
+      "reason": "Derived retrieval/transfer/habitat output invalidated by imputed raw."
+    },
+    {
+      "path": "paper/figures/e3_threshold_transfer_snr.png",
+      "bytes": 296039,
+      "sha256": "c115691fbfd6f4f4b109886d91fcfa0009f11b01fff247e1e6aa85569bc2a66a",
+      "reason": "Derived retrieval/transfer/habitat output invalidated by imputed raw."
+    },
+    {
+      "path": "results/figures/e4_noise_profile_sensitivity.png",
+      "bytes": 314438,
+      "sha256": "9eae1c1e542b707337392ab648d05fb1a99d5f2ad8801bab1741938ca2e6dc21",
+      "reason": "Derived retrieval/transfer/habitat output invalidated by imputed raw."
+    },
+    {
+      "path": "paper/figures/e4_noise_profile_sensitivity.png",
+      "bytes": 314438,
+      "sha256": "9eae1c1e542b707337392ab648d05fb1a99d5f2ad8801bab1741938ca2e6dc21",
+      "reason": "Derived retrieval/transfer/habitat output invalidated by imputed raw."
+    }
+  ]
+}

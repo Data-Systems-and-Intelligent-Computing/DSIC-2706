@@ -1,0 +1,8 @@
+experiment,source_report_figure
+E0,../../results/figures/01_e0_audio_properties.png
+EDA,../../results/figures/02_eda_overview.png
+E2,../../results/figures/08_e2_snr_robustness_map10.png
+E3,../../results/figures/09_e3_threshold_transfer_recall.png
+E4,../../results/figures/10_e4_noise_profile_sensitivity.png
+H3,../../results/figures/15_h3_habitat_retention_stability.png
+E5,../../results/figures/11_e5_failure_modes_by_representation.png

@@ -1,0 +1,32 @@
+{
+  "artifact_schema": "e1_clean_cache_materialization_v1",
+  "status": "complete",
+  "experiment": "E1 Clean Retrieval",
+  "representation": "R2",
+  "timestamp_utc": "2026-10-12T02:10:34.128124+00:00",
+  "git_sha": "930f6f2ea381221ba29fa09227e86d3d3df1eb33",
+  "manifest_sha256": "7808cdf057f135aaa193f47e27415318edf46c862c09dee4c7394bc5760e8ed8",
+  "retrieval_code_sha256": "5a29617317c9ff9735b68cb4e3fc49903fba9070455df48a030de6acd855ff6b",
+  "cache_provenance": {
+    "source_cache_path": "results/features/clean_embeddings_R2.npz",
+    "source_cache_sha256": "12c1e579eb9613446a34188b4ad80320efd00c42d703de82dd6cb6a852166a7f",
+    "source_cache_manifest_sha256": "7808cdf057f135aaa193f47e27415318edf46c862c09dee4c7394bc5760e8ed8",
+    "embedding_dimension": 1024,
+    "gallery_count": 673,
+    "query_count": 311
+  },
+  "summary": {
+    "num_queries": 311.0,
+    "mean_top1": 0.8167202572347267,
+    "MRR": 0.8651577495406133,
+    "mAP@1": 0.8167202572347267,
+    "Recall@1": 0.028796421047539926,
+    "Precision@1": 0.8167202572347267,
+    "mAP@5": 0.7119185423365487,
+    "Recall@5": 0.1286956361910619,
+    "Precision@5": 0.7466237942122186,
+    "mAP@10": 0.6367085183483897,
+    "Recall@10": 0.23310926372838203,
+    "Precision@10": 0.6938906752411576
+  }
+}

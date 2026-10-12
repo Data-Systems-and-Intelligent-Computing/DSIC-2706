@@ -1,0 +1,18 @@
+{
+  "id": "E1",
+  "title": "Clean Similarity Retrieval",
+  "status": "verified_and_consolidated",
+  "notebook": "notebooks/04_E1_Clean_Retrieval.ipynb",
+  "source_code": "scripts/run_e1_clean_r0.py; scripts/materialize_e1_from_cache.py",
+  "runs": [
+    "results/reproductions/E1_R0_20261011_175321",
+    "results/reproductions/E1_R1_cache_20261012T021032_566409Z",
+    "results/reproductions/E1_R2_cache_20261012T021034_128124Z",
+    "results/reproductions/E1_R3_cache_20261012T021035_119528Z"
+  ],
+  "figures": [],
+  "tables": [
+    "results/tables/10_e1_clean_retrieval_summary.csv"
+  ],
+  "role": "Navigation and provenance index. Source results remain immutable under results/reproductions."
+}

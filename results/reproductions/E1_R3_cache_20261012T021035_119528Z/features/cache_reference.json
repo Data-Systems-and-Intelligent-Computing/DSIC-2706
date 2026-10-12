@@ -1,0 +1,8 @@
+{
+  "source_cache_path": "results/features/clean_embeddings_R3.npz",
+  "source_cache_sha256": "1900ed4e6f2a63df51e748af7d4e818cc72abff03df8f975cbd4cc115a44cad6",
+  "source_cache_manifest_sha256": "7808cdf057f135aaa193f47e27415318edf46c862c09dee4c7394bc5760e8ed8",
+  "embedding_dimension": 40,
+  "gallery_count": 673,
+  "query_count": 311
+}

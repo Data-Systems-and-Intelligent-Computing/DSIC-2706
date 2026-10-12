@@ -37,7 +37,7 @@ for rep_code, expected_dim in expected_dims.items():
     print(f"\n[*] Menguji representasi {rep_code}...")
     t0 = time.time()
     extractor = AudioRepresentationExtractor(rep_code)
-    emb = extractor.extract(y)
+    emb = extractor.extract(y, item_id=f"sample:{SAMPLE_AUDIO.stem}")
     elapsed = time.time() - t0
     
     assert emb.shape == (expected_dim,), f"Dimensi salah! Diharapkan {expected_dim}, dapat {emb.shape[0]}"

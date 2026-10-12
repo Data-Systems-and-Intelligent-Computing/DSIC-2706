@@ -38,7 +38,7 @@ def test_model_embedding_dimensions():
     for code, dim in expected.items():
         try:
             ext = AudioRepresentationExtractor(code)
-            emb = ext.extract(test_signal)
+            emb = ext.extract(test_signal, item_id="unit-test")
             assert emb.shape == (dim,), f"Model {code} menghasilkan dimensi {emb.shape}, diharapkan ({dim},)!"
         except (FileNotFoundError, ImportError, ModuleNotFoundError) as e:
             print(f"  [SKIP] Checkpoint/dependensi model {code} tidak ditemukan di clone: {e}")

@@ -1,0 +1,18 @@
+{
+  "csv_sha256": "31e3a4d6946745804589c553c607659778e3546217cee5a44cd3d3d5187aa678",
+  "query_count": 311,
+  "run_sha256": "f175751ce0fd5b828f39e7d9f3c57f304793f7af472015fc0ea1f15a4b162d2e",
+  "schema": "E4_condition_snapshot_v1",
+  "summary": {
+    "Precision@10": 0.2688102893890675,
+    "Recall@10": 0.08543148340622085,
+    "Top1_Accuracy": 0.4180064308681672,
+    "condition": "SNR_20dB",
+    "habitat": "Gedung_F",
+    "mAP@10": 0.19076685550962078,
+    "relative_retention": 1.082255839171419,
+    "repeat_id": 1,
+    "representation": "R1",
+    "snr_db": 20
+  }
+}

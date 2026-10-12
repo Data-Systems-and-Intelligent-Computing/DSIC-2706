@@ -1,0 +1,3 @@
+model,file,bytes,experiment_role
+PANNs CNN14,Cnn14_mAP=0.431.pth,327428481,R1 generic deep audio representation
+BirdNET V2.4,BirdNET_GLOBAL_6K_V2.4_Model_FP32.onnx,24971712,R2 domain-specific bioacoustic representation

@@ -1,52 +1,13 @@
-# Dokumentasi Metodologi & Riset Tugas Akhir (DSIC-2706)
-**Topik:** Mencari Audio yang Mirip Ketika Datanya Terbatas  
-**Judul Kerja:** *Noise and Spectral Sensitivity of Frozen Audio Representations for Bioacoustic Similarity Retrieval: A Controlled Evaluation on Indonesian Avifauna with Field-Recorded ITERA Tropical Noise*  
-**Mahasiswa:** Fabio Banyu Cyto (NIM: 123450104)  
-**Dosen Pembimbing:** Bapak Ardika Satria  
-**Institusi:** Program Studi Sains Data, Institut Teknologi Sumatera (ITERA)  
-**Status Terkini:** Seluruh Eksperimen E0 s.d. E5 Selesai 100% pada Korpus Avifauna Indonesia  
+# Dokumentasi Penelitian
 
----
+Dokumen aktif untuk membaca hasil dan metode:
 
-## 1. Ringkasan Eksekutif Riset
+- `RESULTS_RQ_HYPOTHESES_2026-10-12.md`: hasil E0–E5, statistik, RQ, dan H1–H5.
+- `CROSSCHECK_2026-10-12.md`: hasil pemeriksaan silang data, artefak, notebook, dokumen, dan status Git.
+- `research/`: RQ, hipotesis, ruang lingkup, keputusan, dan batas kebaruan.
+- `protocols/`: prosedur recording ITERA, open-set, dan anotasi.
+- `audit_manifest_2026-10-12.json`: bukti audit dataset/manifes.
 
-Penelitian ini mengevaluasi **ketahanan representasi audio beku (*frozen representations*) untuk temu kembali kemiripan (*similarity retrieval*)** ketika kueri bioakustik mengalami penurunan kualitas akibat derau lingkungan tropis nyata:
+Eksperimen E0–E5 memiliki artefak selesai/terverifikasi. H3 diuji dari raw E4 sebagai stabilitas retensi lintas lima profil noise dan didukung; E4 tetap tidak menguji rekaman burung in-situ.
 
-* **Representasi Audio yang Dibandingkan:**
-  * $R_0$: MFCC Baseline (40-dim, *handcrafted acoustic*)
-  * $R_1$: PANNs CNN14 (2048-dim, *generic deep audio embedding*)
-  * $R_2$: BirdNET V2.4 Backbone (1024-dim, *domain-specific bioacoustic representation*)
-  * $R_3$: Random Control (40-dim, *negative control baseline*)
-* **Korpus Galeri & Kueri (Avifauna Indonesia):** Menggunakan 20 spesies burung Indonesia umum dan tersebar luas dari Xeno-Canto (total 1.216 berkas audio fisik terverifikasi) dengan pembagian *Strict Global Recordist-Disjoint*:
-  * Galeri: 673 rekaman audio (59 perekam unik)
-  * Kueri Bersih: 311 rekaman audio (27 perekam unik / 28 setelah nama gabungan dipecah)
-  * Kalibrasi Open-Set: 232 rekaman audio (25 perekam unik)
-  * Kontrol Negatif Terbuka: 543 rekaman (272 non-bird / non-target + 271 derau ITERA)
-* **Derau Lapangan Fisik AudioMoth:** Menggunakan 1.799 berkas audio WAV fisik dari 5 lokasi kampus ITERA (`data/itera_noise/`), bebas pink noise sintetis. Dipartisi 1.528 berkas untuk mixing (E2/E4) dan 271 berkas untuk kontrol negatif E3.
-* **Hasil Tolok Ukur Bersih E1:** $R_2\text{ (BirdNET 81.67\%)} > R_1\text{ (PANNs 37.94\%)} > R_0\text{ (MFCC 18.01\%)} \gg R_3\text{ (Random 6.75\%)}$.
-* **Ketahanan Derau Ekstrem E2 (-5 dB):** Retensi relatif $R_2\text{ (78.0\%)} > R_1\text{ (55.3\%)} > R_0\text{ (35.9\%)}$.
-* **Integritas Suite Uji:** Seluruh 13 unit test saintifik pada `run_tests.py` lulus 100.0%.
-
----
-
-## 2. Indeks Dokumen Penelitian di `docs/`
-
-### A. Kebijakan, Ruang Lingkup, & Batasan Ilmiah (`docs/research/`)
-1. [`research-charter.md`](./research/research-charter.md) — Piagam penelitian, batasan masalah, dan tujuan utama.
-2. [`rq.md`](./research/rq.md) — Rincian Pertanyaan Penelitian (RQ Utama dan Sub-RQ).
-3. [`hypotheses.md`](./research/hypotheses.md) — 5 Hipotesis kerja ilmiah ($H_1$ s.d. $H_5$).
-4. [`novelty-boundary.md`](./research/novelty-boundary.md) — Batasan kebaruan dan kontribusi ilmiah spesifik.
-5. [`scope-freeze.md`](./research/scope-freeze.md) — Pembekuan ruang lingkup korpus Avifauna Indonesia (20 taksa beku, 1.216 klip).
-6. [`decision-log.md`](./research/decision-log.md) — Register keputusan formal riset (DEC-01 hingga DEC-14).
-
-### B. Protokol Metodologis & Pengujian (`docs/protocols/`)
-1. [`itera-recording.md`](./protocols/itera-recording.md) — Panduan penempatan, konfigurasi, dan kurasi derau AudioMoth ITERA.
-2. [`open-set.md`](./protocols/open-set.md) — Prosedur kalibrasi ambang batas $\tau^*$ menggunakan Youden's J.
-3. [`annotation.md`](./protocols/annotation.md) — Standar anotasi rekaman dan penolakan derau senyap.
-
----
-
-## 3. Rekam Jejak Pelaksanaan & Logbook
-
-Seluruh rekam jejak revisi bimbingan, matriks audit, log eksekusi terminal, dan data numerik empiris tercatat lengkap dan transparan pada:  
-👉 **[`Rencana-eksperimen-bimbingan/CATATAN_PROGRES_BIMBINGAN.md`](../Rencana-eksperimen-bimbingan/CATATAN_PROGRES_BIMBINGAN.md)**
+Peta seluruh folder dan file aktif tersedia di `../PROJECT_STRUCTURE.md`.

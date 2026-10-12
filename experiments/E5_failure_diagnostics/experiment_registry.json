@@ -1,0 +1,21 @@
+{
+  "id": "E5",
+  "title": "Failure-Mode Diagnostics",
+  "status": "complete",
+  "notebook": "notebooks/08_E5_Failure_Diagnostics.ipynb",
+  "source_code": "scripts/run_e5_diagnostics.py",
+  "runs": [
+    "results/reproductions/E5_diagnostics_20261012T091512_868500Z"
+  ],
+  "figures": [
+    "results/figures/11_e5_failure_modes_by_representation.png",
+    "results/figures/12_e5_margin_distribution_by_failure_type.png",
+    "results/figures/13_e5_spectral_features_by_failure_type.png"
+  ],
+  "tables": [
+    "results/tables/15_e5_failure_mode_summary.csv",
+    "results/tables/16_e5_selected_case_manifest.csv",
+    "results/tables/17_e5_unknown_open_set_diagnostics.csv"
+  ],
+  "role": "Navigation and provenance index. Source results remain immutable under results/reproductions."
+}
