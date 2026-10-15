@@ -17,3 +17,8 @@ results/** -text -eol
 scripts/run_e4_five_locations_v10_stage7.py.draft -text -eol
 # Preserve the new theory table bytes referenced by its figure metadata.
 paper/figures/revision_20261015/recall10_ceiling_by_species.csv -text -eol
+
+# Preserve supporting E4 identity modules exactly as hashed by the frozen run.
+scripts/e4_noise_identity_v1.py -text -eol
+scripts/e4_query_identity_v1.py -text -eol
+scripts/e4_run_identity_v2.py -text -eol
