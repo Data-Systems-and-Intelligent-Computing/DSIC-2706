@@ -1,25 +1,27 @@
 # Status Saat Ini untuk Bimbingan
 
-**Tanggal:** 12 Oktober 2026  
-**Status teknis:** E0, EDA, E1, E2, E3, E4, E5, dan analisis H3 memiliki artefak lokal.  
-**Status ilmiah:** H1, H2, H4, H5 didukung oleh uji yang ada. H3 menunjukkan stabilitas retensi R2 yang lebih tinggi daripada R1 dalam campuran noise ITERA; uji H3 ditambahkan setelah E4 selesai dan diperlakukan sebagai analisis eksploratif.
+**Tanggal: 15 Oktober 2026.** Revisi pembimbing dilakukan pada pelaporan, provenance kode E4, dan naskah teori. E4 lima lokasi tidak dijalankan ulang.
 
-## Angka untuk bimbingan
+- Desain E4 tetap 311 query × 5 lokasi × 4 SNR × 4 ulangan per representasi.
+- Runner E4 asli disertakan byte-for-byte; SHA-256: 30cc0ea990e35eda70a98a6928550cb18df39bb4cd9b95837fafe05512f80c2c.
+- H3 dilaporkan dengan ayunan absolut dan relatif, serta sensitivitas tanpa Kebun Raya. Tidak digunakan kesimpulan keunggulan stabilitas R2 yang berlaku umum.
+- H3/H4 hasil reformulasi diberi label eksploratif pada hypotheses.md, rq.md, dan scope-reframe; rumusan asli 6 September dan perubahan 12/15 Oktober dicatat.
+- Naskah teori sendiri serta Gambar 6/8 baru tersedia di paper/. Draf dosen tetap menjadi rujukan.
 
-- Dataset aktif: 673 Gallery, 311 Query, 232 Calibration. E3 memakai 233 unknown calibration dan 310 unknown test.
-- E1 clean `mAP@10`: R0 0,0694; R1 0,1763; R2 0,6367; R3 0,0211.
-- E2 pada −5 dB: retensi `mAP@10` R0 33,45%; R1 48,96%; R2 75,88%.
-- E3 threshold beku R2: τ* = 0,702785; recall known-set turun dari 0,6045 (Clean) menjadi 0,2540 (−5 dB).
-- E4/H3: ayunan retensi lintas lima lokasi, dirata-ratakan pada empat SNR, R1 = 0,240111 dan R2 = 0,048607; selisih = 0,191504, CI 95% [0,152203; 0,241969].
+## Angka utama H3
 
-## Buka bukti berikut saat bimbingan
+Rata-rata ayunan absolut lima lokasi: R1 = 0,042324, R2 = 0,030949, Δ = 0,011375; CI [−0,003993; 0,022140]. Selisih rata-rata ayunan relatif lima lokasi adalah 0,191504, lalu turun menjadi 0,069097 tanpa Kebun Raya.
 
-- [Ringkasan hasil RQ/H1–H5](../docs/RESULTS_RQ_HYPOTHESES_2026-10-12.md)
-- [Matriks RQ/H terkini](../results/tables/27_rq_hypothesis_matrix_current.csv)
-- [Tabel H3 per SNR](../results/tables/24_h3_habitat_profile_stability.csv) dan [grafik H3](../results/figures/15_h3_habitat_retention_stability.png)
-- [Registri eksperimen E0–E5](../experiments/experiment_registry.csv)
-- [Indeks dan checksum 41 bahan laporan](../results/report_materials_manifest.json)
+Pada −5 dB tanpa Kebun Raya, ayunan relatif R1 = 0,065937 dan R2 = 0,083724; CI selisih [−0,041711; 0,050057]. Keunggulan relatif R2 tidak meyakinkan pada kondisi tersebut. Mekanisme serangga/frekuensi masih dugaan.
 
-## Batas kesimpulan
+## Bukti untuk diperiksa
 
-H3 mengukur ayunan retensi akibat pencampuran noise dari lima lokasi ITERA. Analisis ini belum menguji apakah perubahan frekuensi tinggi/rendah menyebabkan selisih tersebut, dan tidak menguji rekaman burung yang dibuat langsung di ITERA. Bank noise ITERA bebas spesies target, sehingga anotasi spesies target tidak diperlukan untuk E2/E4. Beberapa status di [matriks statistik historis](../results/tables/23_statistics_rq_hypothesis_matrix.csv) memakai rumusan RQ/H3 lama; gunakan matriks terkini di atas.
+- [Catatan perubahan rinci](../docs/REVISION_SUPERVISOR_2026-10-15.md).
+- [Tabel sensitivitas dan CI](../results/reproductions/H3_sensitivity_20261015/tables/h3_swing_summary.csv).
+- [Matriks RQ/H revisi](../results/tables/28_rq_hypothesis_matrix_revised_2026-10-15.csv).
+- [Naskah Teori Dasar](../paper/teori_dasar.md).
+- [Riwayat hipotesis](../docs/research/hypotheses.md).
+
+## Batasan yang tetap berlaku
+
+Analisis membaca raw E4 tersimpan, tanpa pengubahan threshold atau data. Lima profil noise bukan rekaman burung target in-situ. Bootstrap memegang lokasi serta segmen noise tetap. Cache baru hanya dapat dibangun pada direktori baru dengan provenance tersendiri; README menjelaskan prasyarat dan perbedaannya dari input historis.

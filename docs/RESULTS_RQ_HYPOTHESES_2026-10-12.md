@@ -17,6 +17,8 @@ Partisi aktif terdiri dari 673 Gallery, 311 Query bersih, dan 232 Calibration. E
 | E5 | VALID_WITH_LIMITATION | results/reproductions/E5_diagnostics_20261012T091512_868500Z | E4 unavailable fields are marked unavailable; no identities or margins are invented. |
 | Legacy BirdCLEF results | SUPERSEDED | results/archive/birdclef_2026 | Retained only as historical archive; not used in current matrix. |
 
+> **Koreksi pelaporan 15 Oktober 2026:** kesimpulan H3/H4 di bawah sudah diperjelas. [Matriks revisi](../results/tables/28_rq_hypothesis_matrix_revised_2026-10-15.csv) menggantikan status naratif tabel 27 sebagai acuan terkini. Angka dan artefak eksperimen asli tetap sama.
+
 ## E0 — audit preprocessing
 
 E0 adalah audit 100 rekaman aktif yang dipilih deterministik. E0 bukan retrieval dan bukan R0.
@@ -105,7 +107,7 @@ Threshold ditentukan hanya dari calibration bersih melalui ROC Youden J, lalu di
 | R3 | Clean | 0.363344 | 0.274194 | 0.547163 | 0.561990 |
 | R3 | SNR_-5dB | 0.363344 | 0.274194 | 0.547163 | 0.561990 |
 
-Untuk R0–R2, recall known-set di threshold beku turun pada −5 dB. False-positive rate unknown justru turun pada kondisi ini; H4 didukung melalui penurunan recall, bukan lonjakan false accept.
+Untuk R0–R2, recall known-set di threshold beku turun pada −5 dB. False-positive rate unknown justru turun pada kondisi ini; Penurunan recall sesuai salah satu klausul H4 asli; interpretasi H4 yang direformulasi setelah hasil tersedia tetap eksploratif. Recall ini mengukur penerimaan known, bukan ketepatan identitas spesies.
 
 ## E4 — sensitivitas profil noise lintas habitat
 
@@ -122,17 +124,15 @@ E4 tervalidasi sebagai 320 snapshot kondisi additive mixture. E4 memakai rekaman
 
 E4 raw menyimpan `top1_match` dan `max_score`. Ia tidak menyimpan identitas Top-1, skor kelas benar, skor pesaing, margin kelas, atau fitur akustik dari audio noisy.
 
-### H3 — stabilitas retensi lintas profil lokasi
+### H3 — ayunan absolut, relatif, dan sensitivitas lokasi
 
-H3 membandingkan ayunan retensi `mAP@10` lintas lima lokasi: `maksimum retensi − minimum retensi`, dirata-ratakan atas empat segmen noise acak per lokasi. Hasil statistik berasal dari CSV mentah E4, memakai 311 query yang sama dan bootstrap berpasangan 10.000 kali. Tidak ada audio yang dicampur ulang.
+Pada lima lokasi, rata-rata ayunan retensi R1 = 0,240111 dan R2 = 0,048607; Δ = 0,191504, CI 95% [0,152203; 0,241969]. Namun rata-rata ayunan **absolut** R1 = 0,042324 dan R2 = 0,030949; Δ = 0,011375, CI [−0,003993; 0,022140], belum membedakan keduanya secara meyakinkan.
 
-| ringkasan 4 SNR | Ayunan R1/PANNs | Ayunan R2/BirdNET | R1 − R2 | CI 95% | Kesimpulan |
-| --- | ---: | ---: | ---: | --- | --- |
-| mAP@10 relative retention | 0.240111 | 0.048607 | 0.191504 | [0.152203, 0.241969] | H3 didukung |
+Tanpa Kebun Raya, selisih ayunan retensi rata-rata turun menjadi 0,069097, CI [0,048683; 0,121152]. Pada −5 dB, ayunan relatif R1 = 0,065937 dan R2 = 0,083724; Δ = −0,017787, CI [−0,041711; 0,050057]. Pada lima lokasi di −5 dB, ayunan absolut R2 (0,061829) lebih besar daripada R1 (0,045596). Karena itu kalimat umum “R2 berayun lebih sempit di semua SNR” tidak digunakan tanpa menyebut metrik dan subset lokasi.
 
-Pada −5 dB, ayunan R1 = 0.258674 dan R2 = 0.097108; selisih 0.161566, CI 95% [0.105339, 0.226667]. Detail tersedia pada `results/tables/24_h3_habitat_profile_stability.csv` dan `results/figures/15_h3_habitat_retention_stability.png`.
+Kesimpulan H3: **bukti eksploratif bergantung pada normalisasi, SNR, dan komposisi lokasi**, bukan keunggulan stabilitas R2 yang berlaku umum. Dugaan peran serangga atau profil frekuensi tetap dugaan; fitur spektral segmen noise belum diuji sebagai mekanisme kausal.
 
-Uji H3 ini ditambahkan setelah E4 selesai dan bersifat eksploratif. Ia menguji kestabilan retensi menurut lokasi noise. Penjelasan bahwa perbedaan berasal dari distorsi frekuensi tinggi/rendah belum diuji secara langsung terhadap fitur spektral setiap segmen noise.
+Definisi ayunan tidak berubah: rentang lokasi dihitung per ulangan, kemudian dirata-ratakan. Analisis tambahan menggunakan paired query bootstrap 10.000 kali, seed 20261012, pada CSV E4 yang sama. H3 reformulasi dan interpretasi H4 reformulasi bersifat eksploratif setelah hasil keluar pada 12 Oktober; H3 asli real-soundscape belum diuji. [Riwayat rumusan](research/hypotheses.md) dan [20 baris hasil sensitivitas](../results/reproductions/H3_sensitivity_20261015/tables/h3_swing_summary.csv) menyediakan rinciannya.
 
 ## E5 — taksonomi kegagalan retrieval
 
@@ -188,8 +188,8 @@ Scope aktif merujuk `docs/research/rq.md`, `docs/research/hypotheses.md`, dan `d
 | Sub-RQ 4 | E5 | failure mode, margin, and spectral diagnostics | E5 reports false rejection, confusion, collapse, and available acoustic diagnostics. | Answered as controlled diagnostics | E4 fields absent in raw outputs remain unavailable. |
 | H1 | E2 | paired bootstrap of -5 dB / Clean mAP@10 | R1 vs R0 p=0.0112989; R2 vs R0 p=9.999e-05. | Supported | R3 excluded: it is an ID-deterministic control, not an audio representation. |
 | H2 | E2 | paired bootstrap of R2-R1 -5 dB retention | difference=0.269212, 95% CI [0.160783, 0.364992], p=9.999e-05. | Supported | No causal statement about the model architecture follows from this comparison. |
-| H3 | E4 raw + H3 analysis | mAP@10 retention swing across five habitat noise profiles | R1 swing 0.240111; R2 swing 0.048607; Δ=0.191504, CI 95% [0.152203, 0.241969]. | Supported for retention stability | Exploratory analysis; high/low-frequency mechanism and in-situ bird soundscapes were not tested. |
-| H4 | E3 | paired change in known accept recall and unknown false-accept rate | Known acceptance recall declines significantly from Clean to -5 dB for R0, R1, and R2; false-accept rate falls rather than rises. | Supported for R0-R2 through recall degradation; R3 is unchanged by design. | Threshold is optimized for clean calibration with Youden J; it is not recalibrated at test SNR. |
+| H3 | E4 raw + sensitivitas 15 Oktober | ayunan absolut dan relatif, lima lokasi dan tanpa Kebun Raya | Rata-rata ayunan absolut: CI selisih mencakup nol; tanpa Kebun Raya pada −5 dB, keunggulan ayunan relatif R2 tidak meyakinkan. | Bukti eksploratif bergantung metrik dan subset | H3 asli real-soundscape belum diuji; mekanisme spektral belum diuji. |
+| H4 | E3 | recall penerimaan known dan false-accept rate unknown | Recall R0–R2 turun; false-accept rate turun, bukan naik. | Interpretasi reformulasi eksploratif | Rumusan berubah setelah hasil 12 Oktober; threshold tetap beku. |
 | H5 | E1/E2 Clean | paired clean AP@10 vs R3 | All primary comparisons significant=True with positive effect=True. | Supported | R3 is a deterministic random-ID control and is not evidence of acoustic noise robustness. |
 
 ## Statistik inferensial
@@ -216,8 +216,8 @@ Seluruh perbandingan memakai paired bootstrap 10.000 iterasi, seed 20261012, den
 ## Kesimpulan yang aman saat ini
 
 - R2/BirdNET memberi retrieval terbaik pada E1 dan seluruh level SNR E2 yang diuji.
-- H1, H2, H3, H4, dan H5 didukung dalam desain additive ITERA-noise yang divalidasi.
-- H3 didukung sebagai stabilitas retensi lintas profil noise lokasi: R2/BirdNET berayun lebih sempit daripada R1/PANNs pada seluruh SNR yang diuji. Sub-RQ3 dijawab oleh E4 dan Sub-RQ4 oleh diagnostik E5.
+- H1, H2, dan H5 memiliki dukungan pada uji tersimpan. H3/H4 hasil reformulasi dilaporkan sebagai eksploratif; statusnya tidak disamakan dengan konfirmasi hipotesis prahasil.
+- H3 bergantung pada metrik, SNR, dan komposisi lokasi. Sub-RQ3 aktif dijawab oleh lima lokasi E4 dan sensitivitas; Sub-RQ4 aktif oleh E5. H3 asli tentang real-soundscape belum diuji.
 - Kesimpulan E4 terbatas pada perbedaan profil noise lapangan yang dicampur secara aditif. Ia tidak membuktikan efek jarak, propagasi, absorpsi, atau reverberasi.
 
 ## Artefak utama

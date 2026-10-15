@@ -3,15 +3,17 @@
   "title": "Habitat Noise Profile Sensitivity",
   "status": "verified_existing_run",
   "notebook": "notebooks/07_E4_Habitat_Noise_Sensitivity.ipynb",
-  "source_code": "scripts/run_e4_five_locations_v10_stage7.py.draft; scripts/run_h3_habitat_profile_stability.py",
+  "source_code": "scripts/run_e4_five_locations_v10_stage7.py.draft; scripts/run_h3_habitat_profile_stability.py; scripts/run_h3_sensitivity_reanalysis.py",
   "runs": [
     "results/reproductions/E4_5sites_20261011T213404_350219Z",
     "results/reproductions/E4_audit_20261012T021801_989259Z",
-    "results/reproductions/H3_habitat_profile_stability_20261012T141344_312163Z"
+    "results/reproductions/H3_habitat_profile_stability_20261012T141344_312163Z",
+    "results/reproductions/H3_sensitivity_20261015"
   ],
   "figures": [
     "results/figures/10_e4_noise_profile_sensitivity.png",
-    "results/figures/15_h3_habitat_retention_stability.png"
+    "results/figures/15_h3_habitat_retention_stability.png",
+    "results/reproductions/H3_sensitivity_20261015/figures/h3_absolute_relative_sensitivity.png"
   ],
   "tables": [
     "results/tables/14_e4_domain_shift.csv",
@@ -19,7 +21,10 @@
     "results/tables/24_h3_habitat_profile_stability.csv",
     "results/tables/25_h3_retention_by_habitat_repeat.csv",
     "results/tables/26_h3_bootstrap_distribution.csv",
-    "results/tables/27_rq_hypothesis_matrix_current.csv"
+    "results/tables/27_rq_hypothesis_matrix_current.csv",
+    "results/reproductions/H3_sensitivity_20261015/tables/h3_swing_summary.csv",
+    "results/tables/28_rq_hypothesis_matrix_revised_2026-10-15.csv"
   ],
-  "role": "Navigation and provenance index. Source results remain immutable under results/reproductions."
+  "role": "Navigation and provenance index. Source results remain immutable under results/reproductions.",
+  "interpretation": "Exploratory, metric- and location-dependent H3; original E4 raw and 12 October H3 preserved."
 }

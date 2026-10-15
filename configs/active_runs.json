@@ -20,6 +20,7 @@
       "results/reproductions/H3_habitat_profile_stability_20261012T141344_312163Z"
     ],
     "E5": "results/reproductions/E5_diagnostics_20261012T091512_868500Z",
-    "statistics": "results/reproductions/STATISTICS_RQ_MATRIX_20261012T092924_809804Z"
+    "statistics": "results/reproductions/STATISTICS_RQ_MATRIX_20261012T092924_809804Z",
+    "H3_sensitivity": "results/reproductions/H3_sensitivity_20261015"
   }
 }

@@ -8,6 +8,6 @@ Dokumen aktif untuk membaca hasil dan metode:
 - `protocols/`: prosedur recording ITERA, open-set, dan anotasi.
 - `audit_manifest_2026-10-12.json`: bukti audit dataset/manifes.
 
-Eksperimen E0–E5 memiliki artefak selesai/terverifikasi. H3 diuji dari raw E4 sebagai stabilitas retensi lintas lima profil noise dan didukung; E4 tetap tidak menguji rekaman burung in-situ.
+Eksperimen E0–E5 memiliki artefak selesai/terverifikasi. Revisi 15 Oktober melaporkan H3 sebagai bukti eksploratif yang bergantung pada metrik dan subset lokasi; H4 reformulasi juga eksploratif. Lihat [catatan revisi](REVISION_SUPERVISOR_2026-10-15.md) dan [matriks revisi](../results/tables/28_rq_hypothesis_matrix_revised_2026-10-15.csv). E4 tidak diulang dan tidak menguji burung in-situ.
 
 Peta seluruh folder dan file aktif tersedia di `../PROJECT_STRUCTURE.md`.

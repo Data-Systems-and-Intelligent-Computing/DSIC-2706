@@ -1,0 +1,17 @@
+{
+  "script_sha256": "db62c53801946f7d8f94e55805f4c9a31a3749b2b4dea98c1cdfdb73cfaf5439",
+  "sources_sha256": {
+    "data/manifests/dataset_split.csv": "7808cdf057f135aaa193f47e27415318edf46c862c09dee4c7394bc5760e8ed8",
+    "results/tables/10_e1_clean_retrieval_summary.csv": "03e994779ee647a63ee1c607e0e159dca46c0a2318c12c4699bcde6ec30bc760",
+    "results/reproductions/E4_5sites_20261011T213404_350219Z/run_identity.json": "f56c8521f5648187af3833176ae2b18a3774aa3c9f50ea12871ba4826e5f7ab0"
+  },
+  "gallery_count": 673,
+  "query_count": 311,
+  "species_mean_ceiling": 0.40690047182465,
+  "query_weighted_mean_ceiling": 0.36399746770303987,
+  "outputs_sha256": {
+    "fig06_e4_noise_profiles.png": "2ce6f99aab4b36175cd0150b14aca4b1259de1ae89bb8aada1879cca32fedf31",
+    "fig08_recall_ceiling_active.png": "6e06371fc4572b4dc32e62cdb6b640556086de7daa0c61466a07c877deeea203",
+    "recall10_ceiling_by_species.csv": "94cf6d4002a168a3b3e6c96da12d90ebb530bbac905a448ecd5328ecca418b24"
+  }
+}

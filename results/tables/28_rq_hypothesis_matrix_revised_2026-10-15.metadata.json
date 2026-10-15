@@ -1,0 +1,11 @@
+{
+  "artifact": "results/tables/28_rq_hypothesis_matrix_revised_2026-10-15.csv",
+  "revision_date": "2026-10-15",
+  "sources_sha256": {
+    "results/tables/27_rq_hypothesis_matrix_current.csv": "027cc95c821b0ce73ddbcf472dd7970e1fcb1369f02d55d838beb030e4f34345",
+    "results/reproductions/H3_sensitivity_20261015/tables/h3_swing_summary.csv": "cef2dd94563d2d5a542436da552df5f9dfe55d77b4d0e0329a6de703821e744a"
+  },
+  "script_sha256": "c1e74c8df300fb0efe84b6471308690d9db82a3a3da49b1dee62dc8e26f0b2c9",
+  "sha256": "1d69462656d1ad4bba9b6818fe17acce6f4df6ee4fe9d6150326adb764b30ec4",
+  "policy": "Previous tables 23 and 27 and original experiment runs preserved unchanged."
+}

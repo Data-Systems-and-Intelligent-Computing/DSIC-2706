@@ -12,3 +12,8 @@
 # Keep research data and generated results byte-for-byte identical to recorded SHA-256.
 data/manifests/*.csv -text -eol
 results/** -text -eol
+
+# Preserve the exact E4 producer bytes recorded in run_identity.json.
+scripts/run_e4_five_locations_v10_stage7.py.draft -text -eol
+# Preserve the new theory table bytes referenced by its figure metadata.
+paper/figures/revision_20261015/recall10_ceiling_by_species.csv -text -eol

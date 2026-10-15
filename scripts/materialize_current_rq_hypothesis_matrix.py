@@ -1,61 +1,33 @@
-"""Materialize the current RQ/H matrix without altering the historical statistics run."""
-from __future__ import annotations
+"""Materialize the revised RQ/H matrix without replacing any previous table."""
 from pathlib import Path
-import hashlib
-import json
+import hashlib,json
 import pandas as pd
+ROOT=Path(__file__).resolve().parents[1]
+HISTORICAL=ROOT/'results/tables/27_rq_hypothesis_matrix_current.csv'
+SENSITIVITY=ROOT/'results/reproductions/H3_sensitivity_20261015/tables/h3_swing_summary.csv'
+OUTPUT=ROOT/'results/tables/28_rq_hypothesis_matrix_revised_2026-10-15.csv'
 
-ROOT = Path(__file__).resolve().parents[1]
-HISTORICAL = ROOT / "results/tables/23_statistics_rq_hypothesis_matrix.csv"
-H3 = ROOT / "results/tables/24_h3_habitat_profile_stability.csv"
-OUTPUT = ROOT / "results/tables/27_rq_hypothesis_matrix_current.csv"
-
-matrix = pd.read_csv(HISTORICAL)
-summary = pd.read_csv(H3)
-row = summary.loc[summary.analysis_scope.eq("mean_over_4_SNR_levels")].iloc[0]
-mask = matrix["item"].eq("H3")
-if mask.sum() != 1:
-    raise RuntimeError("Expected exactly one H3 row in the historical matrix")
-matrix.loc[mask, "experiment"] = "E4 raw + H3 analysis"
-matrix.loc[mask, "metric"] = "mAP@10 relative-retention swing across five habitat profiles"
-matrix.loc[mask, "artifact"] = "24_h3_habitat_profile_stability.csv; 26_h3_bootstrap_distribution.csv"
-matrix.loc[mask, "result"] = (
-    f"R1 swing {row['R1_generic_mean_swing']:.6f}; R2 swing {row['R2_bioacoustic_mean_swing']:.6f}; "
-    f"Δ={row['R1_minus_R2_effect']:.6f}; CI 95% [{row['ci95_low']:.6f}, {row['ci95_high']:.6f}]."
-)
-matrix.loc[mask, "conclusion"] = "Supported for retention stability"
-matrix.loc[mask, "limitation"] = "Exploratory analysis added after E4; high/low-frequency distortion mechanism and in-situ bird soundscapes were not tested."
-subrq3 = matrix["item"].eq("Sub-RQ 3")
-subrq4 = matrix["item"].eq("Sub-RQ 4")
-if subrq3.sum() != 1 or subrq4.sum() != 1:
-    raise RuntimeError("Expected exactly one row for each active Sub-RQ 3 and 4")
-matrix.loc[subrq3, ["experiment", "metric", "artifact", "result", "conclusion", "limitation"]] = [
-    "E4/H3",
-    "habitat-conditioned mAP@10 and relative-retention swing",
-    "14_e4_domain_shift.csv; 24_h3_habitat_profile_stability.csv",
-    "Five ITERA noise-location profiles compared at matched SNR; R2 has a narrower retention swing than R1.",
-    "Answered within additive field-noise mixtures",
-    "Spectral frequency mechanism and in-situ bird recordings are not directly tested.",
-]
-matrix.loc[subrq4, ["experiment", "metric", "artifact", "result", "conclusion", "limitation"]] = [
-    "E5",
-    "failure mode, threshold margin, and available acoustic diagnostics",
-    "15_e5_failure_mode_summary.csv; 16_e5_selected_case_manifest.csv",
-    "E5 reports false rejection, confusion, collapse, and available spectral diagnostics.",
-    "Answered as controlled diagnostics",
-    "Fields absent from E4 raw outputs remain unavailable.",
-]
-matrix.to_csv(OUTPUT, index=False)
-sha256 = lambda path: hashlib.sha256(path.read_bytes()).hexdigest()
-metadata = {
-    "artifact": OUTPUT.relative_to(ROOT).as_posix(),
-    "kind": "current RQ/H matrix derived from historical statistics plus H3 analysis",
-    "sources": {
-        HISTORICAL.relative_to(ROOT).as_posix(): sha256(HISTORICAL),
-        H3.relative_to(ROOT).as_posix(): sha256(H3),
-    },
-    "sha256": sha256(OUTPUT),
-    "historical_matrix_policy": "Original statistics run and table 23 are preserved unchanged.",
-}
-OUTPUT.with_suffix(".metadata.json").write_text(json.dumps(metadata, indent=2) + "\n", encoding="utf-8")
-print(OUTPUT)
+def main():
+    if OUTPUT.exists() or OUTPUT.with_suffix('.metadata.json').exists():raise FileExistsError(OUTPUT)
+    matrix=pd.read_csv(HISTORICAL);summary=pd.read_csv(SENSITIVITY)
+    for item in ('H3','H4','Sub-RQ 3'):
+        if matrix.item.eq(item).sum()!=1:raise ValueError(f'Expected one {item} row')
+    full=summary[summary.location_subset.eq('all_5_locations') & summary.metric.eq('absolute_mAP10') & summary.snr_db.eq('mean_over_4_SNR')].iloc[0]
+    subset=summary[summary.location_subset.eq('without_Kebun_Raya') & summary.metric.eq('relative_retention') & summary.snr_db.eq('-5')].iloc[0]
+    matrix.loc[matrix.item.eq('H3'),['experiment','metric','artifact','result','conclusion','limitation']]=[
+        'E4 stored raw + exploratory H3 sensitivity','Absolute mAP@10 and relative-retention location swing; full and without Kebun Raya',SENSITIVITY.relative_to(ROOT).as_posix(),
+        f"Full-set mean absolute R1-R2={full.R1_minus_R2:.6f}, CI [{full.ci95_low:.6f}, {full.ci95_high:.6f}]; without Kebun Raya at -5 dB relative R1-R2={subset.R1_minus_R2:.6f}, CI [{subset.ci95_low:.6f}, {subset.ci95_high:.6f}].",
+        'Metric- and location-dependent exploratory evidence; no universal R2 stability advantage',
+        'Original real-soundscape H3 untested. H3 reframed after results on 2026-10-12; sensitivity added 2026-10-15. No causal spectral test or new-site uncertainty.']
+    matrix.loc[matrix.item.eq('H4'),'conclusion']='Exploratory revised interpretation: known acceptance recall falls; false-accept rate does not rise'
+    matrix.loc[matrix.item.eq('H4'),'limitation']='H4 operating-point wording changed after results on 2026-10-12; original wording retained in hypotheses.md. Recall at tau measures acceptance, not correct species retrieval. No spectral compression mechanism established.'
+    matrix.loc[matrix.item.eq('Sub-RQ 3'),['metric','artifact','result','limitation']]=[
+        'Location-conditioned mAP@10 plus absolute and relative swings',SENSITIVITY.relative_to(ROOT).as_posix(),
+        'Five locations, four SNRs and four repeats; stability ordering depends on metric and exclusion of Kebun Raya.',
+        'Sub-RQ reformulated after results on 2026-10-12. Original focal-to-soundscape question is not tested.']
+    matrix.to_csv(OUTPUT,index=False)
+    digest=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+    metadata={'artifact':OUTPUT.relative_to(ROOT).as_posix(),'revision_date':'2026-10-15','sources_sha256':{p.relative_to(ROOT).as_posix():digest(p) for p in (HISTORICAL,SENSITIVITY)},'script_sha256':digest(Path(__file__)),'sha256':digest(OUTPUT),'policy':'Previous tables 23 and 27 and original experiment runs preserved unchanged.'}
+    OUTPUT.with_suffix('.metadata.json').write_text(json.dumps(metadata,indent=2)+'\n',encoding='utf8')
+    print(OUTPUT)
+if __name__=='__main__':main()

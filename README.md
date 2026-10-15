@@ -1,6 +1,6 @@
 # DSIC-2706 — Ketahanan Representasi Audio Beku untuk Temu Kembali Bioakustik di Bawah Derau Lingkungan Tropis ITERA
 
-> **Pembaruan 12 Oktober 2026:** Artefak E0–E5, EDA, dan analisis H3 tersedia di [registri eksperimen](experiments/experiment_registry.csv). Angka yang dipakai untuk laporan ada di [hasil RQ/hipotesis terkini](docs/RESULTS_RQ_HYPOTHESES_2026-10-12.md), [tabel](results/tables/), dan [gambar](results/figures/), dengan sumber serta checksum di [manifes bahan laporan](results/report_materials_manifest.json). Suite saat ini lulus 25 tes. E4 menguji pencampuran terkontrol dengan derau dari lima lokasi ITERA; ini bukan uji rekaman burung target *in situ*. H3 didukung untuk kestabilan retensi lintas profil lokasi, sedangkan mekanisme spektral penyebabnya belum diuji secara langsung.
+> **Revisi pembimbing 15 Oktober 2026:** E4 lima lokasi tetap digunakan tanpa run ulang. [Hasil sensitivitas H3](results/reproductions/H3_sensitivity_20261015/tables/h3_swing_summary.csv) melaporkan ayunan absolut dan relatif serta subset tanpa Kebun Raya; kesimpulan bergantung pada metrik dan lokasi. H3/H4 hasil reformulasi ditandai eksploratif, dengan [rumusan asli dan tanggal perubahan](docs/research/hypotheses.md). Gunakan [catatan revisi lengkap](docs/REVISION_SUPERVISOR_2026-10-15.md), [matriks RQ/H revisi](results/tables/28_rq_hypothesis_matrix_revised_2026-10-15.csv), dan [naskah teori](paper/teori_dasar.md). Bahan laporan 12 Oktober beserta checksum tetap dipertahankan sebagai riwayat.
 >
 > **Catatan pembacaan:** Peta folder, contoh perintah, dan rencana/checklist lama pada bagian 8–17 di bawah memuat catatan sebelum konsolidasi. Untuk pelaksanaan sekarang, gunakan [peta proyek terkini](PROJECT_STRUCTURE.md) dan artefak yang ditautkan di atas. Bagian historis dipertahankan agar keputusan dan perkembangan penelitian dapat ditelusuri.
 
@@ -13,6 +13,39 @@ Judul artikel ilmiah terkalibrasi:
 > **Noise and Spectral Sensitivity of Frozen Audio Representations for Bioacoustic Similarity Retrieval: A Controlled Evaluation on Indonesian Avifauna with Field-Recorded ITERA Tropical Noise**
 
 ---
+
+## Sumber E4 dan reproduksi cache
+
+E4 sudah selesai untuk **311 query × 5 lokasi × 4 SNR × 4 ulangan per representasi**: 24.880 evaluasi noisy per representasi, atau 99.520 untuk R0–R3. Jumlah tersebut adalah baris evaluasi, bukan query independen; checkout yang diperiksa berisi 320 snapshot kondisi dan delapan arsip NPZ lokal. Cache besar tidak perlu di-commit.
+
+Runner yang benar-benar menghasilkan run aktif adalah [run_e4_five_locations_v10_stage7.py.draft](scripts/run_e4_five_locations_v10_stage7.py.draft), bukan runner lama tiga habitat. SHA-256 yang tercatat dalam [run_identity.json](results/reproductions/E4_5sites_20261011T213404_350219Z/run_identity.json):
+
+```text
+30cc0ea990e35eda70a98a6928550cb18df39bb4cd9b95837fafe05512f80c2c
+```
+
+Berkas produsen dipertahankan byte-for-byte, termasuk nama dan komentar pembuka lama yang masih menyebut tiga habitat. Desain aktual di dalam kode dan run identity memuat lima lokasi. Atribut Git khusus mencegah konversi akhir baris mengubah hash berkas ini.
+
+Untuk membangun ulang **cache embedding clean saja** pada checkout terpisah yang memiliki audio asli dan checkpoint yang sesuai:
+
+```bash
+# Pemeriksaan hash sumber dan keberadaan audio; belum menulis cache.
+python scripts/rebuild_e4_clean_caches.py --output-dir results/reproductions/E4_clean_cache_rebuild_local --check-only
+
+# Opsional: ekstraksi ulang clean R0–R3 ke direktori baru.
+python scripts/rebuild_e4_clean_caches.py --output-dir results/reproductions/E4_clean_cache_rebuild_local
+```
+
+Siapkan lingkungan sesuai requirements.txt, seluruh audio dalam manifes aktif, dan checkpoint lokal. R1 juga memerlukan class_labels_indices.csv pada direktori panns_data pengguna; extractor menolak mengunduhnya diam-diam. Builder memeriksa sumber terhadap identitas E4, menolak direktori keluaran yang sudah ada, serta menyimpan ID, label, hash manifes/checkpoint dan metadata cache baru. Ia tidak mencampur noise, menjalankan E4, menimpa cache lama, atau mengubah run_identity.json. Pemeriksaan --check-only memvalidasi sumber dan path audio; kesiapan dependensi/inferensi penuh baru diperiksa pada proses ekstraksi.
+
+Cache hasil rekonstruksi adalah provenance baru. Metadata membandingkan hash arsip baru dengan hash cache historis; kesamaan embedding tidak otomatis menjamin kesamaan byte arsip, versi runtime, atau hasil GPU. Runner historis stage7 memakai path dan checksum input yang dibekukan. Untuk resume run historis, pulihkan input historis yang persis cocok dari arsip, bukan mengganti hash identitas dengan hash cache baru. Kebutuhan reproduksi penelitian di kemudian hari dipisahkan dari revisi ini: **E4 tidak dijalankan ulang**.
+
+Arsip NPZ/NPY, audio, checkpoint, dan cache sudah diabaikan oleh .gitignore. Hasil CSV dan metadata yang telah dilacak tetap dipertahankan. Analisis sensitivitas H3 hanya membutuhkan CSV E4 tersimpan:
+
+```bash
+# Gunakan nama baru setiap kali; keluaran yang sudah ada ditolak.
+python scripts/run_h3_sensitivity_reanalysis.py --output-dir results/reproductions/H3_sensitivity_reproduction
+```
 
 ## 1. Pertanyaan Penelitian (Research Questions)
 
@@ -31,8 +64,8 @@ Judul artikel ilmiah terkalibrasi:
 
 * **$H_1$ — Robustness Retention:** Representasi *deep pretrained* (BirdNET dan PANNs) mempertahankan proporsi retensi relatif `mAP@10` yang secara signifikan lebih tinggi daripada representasi klasik *hand-crafted* (MFCC) ketika SNR diturunkan hingga -5 dB.
 * **$H_2$ — Domain-Specific Advantage:** Representasi terlatih bioakustik spesifik domain burung (*BirdNET*) mengalami degradasi temu kembali yang lebih landai dibandingkan representasi audio umum (*PANNs CNN14*) pada kueri avifauna Indonesia yang dicampur derau lingkungan nyata.
-* **$H_3$ — Habitat Profile Stability:** Representasi bioakustik terlatih mempertahankan retensi relatif yang secara signifikan lebih stabil dan tidak fluktuatif lintas profil spektral habitat (ayunan retensi sempit) dibandingkan representasi audio umum yang rentan terhadap distorsi frekuensi tinggi/rendah.
-* **$H_4$ — Threshold Transfer Deficit:** Ambang batas kemiripan $\tau^*$ yang dikalibrasi pada kondisi bersih mengalami penurunan *Recall* yang tajam pada SNR rendah akibat pelemahan skor kemiripan laten (*similarity score compression*).
+* **$H_3$ — Stabilitas profil lokasi (reformulasi eksploratif):** bandingkan ayunan mAP@10 absolut dan retensi relatif R1/R2 pada lima lokasi serta sensitivitas tanpa Kebun Raya. Bukti tidak mendukung keunggulan stabilitas R2 yang berlaku umum.
+* **$H_4$ — Perubahan titik operasi (reformulasi eksploratif):** recall penerimaan known-set turun pada threshold clean yang beku; false-accept rate tidak meningkat. Rumusan asli dan perubahan 12 Oktober dicatat di hypotheses.md.
 * **$H_5$ — Positive Control:** Seluruh representasi terlatih ($R_0, R_1, R_2$) harus secara signifikan melampaui tebakan acak ($R_3$) pada kondisi bersih sebagai bukti validitas pipeline (*pipeline sanity check*).
 
 ---
@@ -160,15 +193,13 @@ Artefak aktif E0–E5 tersedia. Notebook terkini terdapat di [`notebooks/`](note
   * **$R_3$ Random Control:** $\tau^* = 0.4888$ (AUROC kalibrasi 0.5452; Youden J 0.0874).
 * **Hasil Pengujian Transfer:** Lihat [tabel transfer ambang batas beku](results/tables/13_e3_threshold_transfer.csv); ambang tidak disetel ulang berdasarkan kondisi uji.
 
-### E4 — Sensitivitas Profil Spektral Derau Lintas Habitat ITERA
-* **Notebook:** [`notebooks/07_E4_Habitat_Noise_Sensitivity.ipynb`](notebooks/07_E4_Habitat_Noise_Sensitivity.ipynb)
-* Menguji kueri terhadap lima profil lokasi derau fisik kampus ITERA pada SNR terkontrol:
-  1. **Kebun Raya ITERA** (Biophony serangga & kanopi vegetasi)
-  2. **Embung F ITERA** (Hidroakustik perairan & resonansi angin)
-  3. **Gedung F ITERA** (Koridor struktural & antropogenik)
-  4. **Masjid At Tanwir** (profil lokasi tambahan)
-  5. **Sekitar GKU 1** (profil lokasi tambahan)
-* **Hasil:** Analisis tambahan H3 dari raw E4 mencatat rerata ayunan retensi lintas lima profil sebesar 0,048607 untuk BirdNET ($R_2$) dan 0,240111 untuk PANNs ($R_1$), selisih 0,191504 dengan CI bootstrap 95% [0,152203; 0,241969]. Uji ini bersifat eksploratif karena ditambahkan setelah E4; penyebab fisik frekuensi tinggi/rendah dan performa rekaman burung *in situ* belum diuji. Lihat [tabel H3](results/tables/24_h3_habitat_profile_stability.csv).
+### E4 — Sensitivitas Profil Noise Lima Lokasi ITERA
+
+- Lima lokasi: Kebun Raya, Embung F, Gedung F, Masjid At-Tanwir, sekitar GKU 1.
+- Desain: 311 query × 5 lokasi × 4 SNR × 4 ulangan per representasi; E4 tidak diulang.
+- Uji sensitivitas 15 Oktober melengkapi ayunan retensi dengan ayunan absolut. Pada −5 dB, ayunan absolut R1 = 0,045596 dan R2 = 0,061829. Tanpa Kebun Raya, ayunan relatif R1 = 0,065937 dan R2 = 0,083724; CI selisih mencakup nol.
+- [Notebook E4](notebooks/07_E4_Habitat_Noise_Sensitivity.ipynb), [hasil sensitivitas lengkap](results/reproductions/H3_sensitivity_20261015/), dan [penjelasan revisi](docs/REVISION_SUPERVISOR_2026-10-15.md).
+- Peran biofoni serangga atau distorsi frekuensi adalah dugaan; mekanisme itu belum diuji terhadap fitur segmen noise.
 
 ### E5 — Analisis Kasus Kegagalan Terstratifikasi
 * **Notebook:** [`notebooks/08_E5_Failure_Diagnostics.ipynb`](notebooks/08_E5_Failure_Diagnostics.ipynb)
@@ -275,8 +306,8 @@ python src/run_benchmark.py
 # 2. Jalankan evaluasi kalibrasi terbuka E3:
 python scripts/run_e3_calibration.py
 
-# 3. Jalankan eksperimen sensitivitas habitat E4:
-python scripts/run_e4_domain_shift.py
+# 3. E4 sudah selesai; baca hasil sensitivitas, jangan memakai runner lama 3 habitat.
+# Lihat results/reproductions/H3_sensitivity_20261015/
 
 # 4. Sinkronisasi hash manifes integritas:
 python scripts/update_manifest_hashes.py
