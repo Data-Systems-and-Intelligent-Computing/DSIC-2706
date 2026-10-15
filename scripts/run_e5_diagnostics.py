@@ -39,6 +39,22 @@ def mode(top1: pd.Series, score: pd.Series, tau: pd.Series) -> pd.Series:
     )
 
 
+def select_failure_cases(failures: pd.DataFrame) -> pd.DataFrame:
+    """Sample existing E2 failure rows without dropping group-label columns.
+
+    Explicit group iteration preserves representation/condition/failure_mode
+    across pandas versions and keeps the historical within-group sampling seed.
+    """
+    subset = failures.loc[failures.source_experiment.eq("E2")]
+    if subset.empty:
+        return subset.copy()
+    groups = subset.groupby(["representation", "condition", "failure_mode"], sort=True)
+    return pd.concat(
+        [group.sample(n=min(2, len(group)), random_state=20261012) for _, group in groups],
+        ignore_index=True,
+    )
+
+
 def acoustics(y: np.ndarray) -> dict[str, float]:
     return {"spectral_centroid_hz": float(np.mean(librosa.feature.spectral_centroid(y=y, sr=TARGET_SR))),
             "spectral_bandwidth_hz": float(np.mean(librosa.feature.spectral_bandwidth(y=y, sr=TARGET_SR))),
@@ -107,8 +123,7 @@ def main(e2: Path, e3: Path, e4: Path) -> Path:
     unknown = pd.read_csv(e3 / "raw" / "test_scores.csv")
     unknown = unknown[unknown.target_type.eq("unknown_control")].copy()
     unknown["open_set_outcome"] = np.where(unknown.predicted_accept.eq(1), "False accept", "Correct reject")
-    selected = (failures[failures.source_experiment.eq("E2")].groupby(["representation", "condition", "failure_mode"], group_keys=False)
-                .apply(lambda g: g.sample(n=min(2, len(g)), random_state=20261012)).reset_index(drop=True))
+    selected = select_failure_cases(failures)
 
     known.to_csv(output / "tables" / "all_query_diagnostics.csv", index=False)
     failures.to_csv(output / "tables" / "failure_cases.csv", index=False)

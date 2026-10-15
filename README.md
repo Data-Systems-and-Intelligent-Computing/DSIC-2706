@@ -2,7 +2,7 @@
 
 > **Revisi pembimbing 15 Oktober 2026:** E4 lima lokasi tetap digunakan tanpa run ulang. [Hasil sensitivitas H3](results/reproductions/H3_sensitivity_20261015/tables/h3_swing_summary.csv) melaporkan ayunan absolut dan relatif serta subset tanpa Kebun Raya; kesimpulan bergantung pada metrik dan lokasi. H3/H4 hasil reformulasi ditandai eksploratif, dengan [rumusan asli dan tanggal perubahan](docs/research/hypotheses.md). Gunakan [catatan revisi lengkap](docs/REVISION_SUPERVISOR_2026-10-15.md), [matriks RQ/H revisi](results/tables/28_rq_hypothesis_matrix_revised_2026-10-15.csv), dan [naskah teori](paper/teori_dasar.md). Bahan laporan 12 Oktober beserta checksum tetap dipertahankan sebagai riwayat.
 >
-> **Catatan pembacaan:** Peta folder, contoh perintah, dan rencana/checklist lama pada bagian 8–17 di bawah memuat catatan sebelum konsolidasi. Untuk pelaksanaan sekarang, gunakan [peta proyek terkini](PROJECT_STRUCTURE.md) dan artefak yang ditautkan di atas. Bagian historis dipertahankan agar keputusan dan perkembangan penelitian dapat ditelusuri.
+> **Catatan pembacaan:** Peta folder, contoh perintah, dan rencana/checklist lama pada bagian 8–17 di bawah memuat catatan sebelum konsolidasi. Untuk pelaksanaan sekarang, gunakan [peta proyek terkini](PROJECT_STRUCTURE.md) dan artefak yang ditautkan di atas. Bagian historis dipertahankan agar keputusan dan perkembangan penelitian dapat ditelusuri. **Status aktif dan kelulusan Gate terdapat pada §13 yang diperbarui 15–16 Oktober; angka/status lama pada rencana §12 serta §15–17 bukan bukti kelulusan saat ini.**
 
 Repositori penelitian resmi untuk Tugas Akhir topik **DSIC-2706: Mencari Audio yang Mirip Ketika Datanya Terbatas**.
 
@@ -78,7 +78,7 @@ python scripts/run_h3_sensitivity_reanalysis.py --output-dir results/reproductio
 3. Perbandingan sistematis antara *hand-crafted baseline* ($R_0$ MFCC), *generic pretrained* ($R_1$ PANNs CNN14), *domain-specific bioacoustic* ($R_2$ BirdNET V2.4), dan *negative control* ($R_3$ Random Control).
 4. Penyelidikan transfer ambang batas open-set dengan optimasi statistik Youden's J yang dibekukan (*frozen threshold*).
 5. Audit taksonomi kegagalan terstratifikasi berdasarkan parameter akustik nyata (*spectral centroid*, *bandwidth*, dan *margin to tau*).
-6. Pembuktian keterulangan (*reproducibility*) end-to-end dengan pelacakan asal usul berkas derau fisik (`noise_file`) pada setiap kueri.
+6. Pelacakan asal berkas derau fisik (`noise_file`) untuk mendukung reproduksi; reproduksi penuh end-to-end dari lingkungan baru belum dibuktikan.
 
 ### Yang **Bukan** Kontribusi Penelitian:
 * Melatih ulang (*fine-tuning*) arsitektur model baru.
@@ -116,7 +116,7 @@ Korpus data utama menggunakan rekaman vokal burung dari wilayah geografis Indone
 
 ### B. Bank Derau Fisik AudioMoth Kampus ITERA
 * **1.799 Berkas WAV Fisik:** Diambil langsung menggunakan perangkat perekam otonom *AudioMoth* di 5 lokasi kampus ITERA (Kebun Raya ITERA, Embung F, Gedung F, Masjid At-Tanwir, Sekitar GKU 1).
-* **Bebas Vokalisasi Burung (*Bird-Free Verified*):** Seluruh rekaman telah diaudit dan diverifikasi tidak mengandung panggilan vokal burung target.
+* **Status vokalisasi burung:** Bank ini dipakai sebagai noise lingkungan; bukti audit independen yang menyatakan setiap berkas bebas vokalisasi target belum tersedia.
 * **Partisi Bebas Kebocoran (*Noise Pool Separation*):**
   * **1.528 berkas** dialokasikan khusus untuk pencampuran derau aditif E2 dan E4.
   * **271 berkas** dialokasikan khusus untuk kontrol negatif kelas terbuka E3.
@@ -215,7 +215,7 @@ Struktur aktif beserta tautan ke notebook, skrip, gambar, tabel, dan run tercata
 DSIC-2706/
 ├── README.md                                          # Dokumentasi utama proyek
 ├── pyproject.toml / requirements.txt                  # Manajemen dependensi pustaka Python
-├── run_tests.py                                       # Suite pengujian integritas saintifik (25/25 PASS saat pembaruan)
+├── run_tests.py                                       # Suite integritas/metode terpadu (32/32 PASS, 16 Oktober)
 │
 ├── data/
 │   ├── manifests/
@@ -296,7 +296,7 @@ pip install -r requirements.txt
 ```bash
 python run_tests.py
 ```
-*Output pembaruan ini: `25/25 Pengujian Lolos`.*
+*Output pemeriksaan lanjutan 16 Oktober 2026: `32 current integrity tests` lulus, termasuk lima tes H3 dan dua tes E5.*
 
 ### Menjalankan Pipeline Benchmark Penuh
 ```bash
@@ -397,25 +397,27 @@ Klaim Saintifik di Naskah (paper/manuscript.md)
 
 ## 13. Definition of Done (Status Kelulusan Gate 1 s.d. Gate 4)
 
-Checklist ini diperbarui berdasarkan artefak yang tersedia; klaim yang belum dibuktikan secara penuh ditandai terbuka:
+**Pemeriksaan lanjutan: 15–16 Oktober 2026.** Checklist membedakan keluaran komputasional, bukti audit manusia, dan reproduksi penuh. Gate 4 belum dinyatakan tuntas. [Catatan pemeriksaan dan tindak lanjut](Rencana-eksperimen-bimbingan/PEMERIKSAAN_ULANG_GATE_2026-10-15.md) memuat bukti serta alasan butir yang masih terbuka.
 
-- [x] **Daftar taksa & spesies target dibekukan:** 20 spesies Avifauna Indonesia, 1.216 rekaman terverifikasi hash SHA-256 (DEC-13).
-- [x] **Partisi bebas kebocoran (Zero Leakage):** 0 recording ID overlap, 0 file path overlap, 0 recordist overlap terverifikasi otomatis oleh test suite.
-- [x] **Baseline klasik MFCC selesai:** Representasi $R_0$ terekstraksi penuh (40-dim).
-- [x] **Generic pretrained representation selesai:** Representasi $R_1$ PANNs CNN14 AudioSet terekstraksi penuh (2048-dim).
-- [x] **Bioacoustic domain representation selesai:** Representasi $R_2$ BirdNET Backbone terekstraksi penuh (1024-dim).
-- [x] **Clean retrieval E1 selesai:** $R_2$ (mAP@10 0.6367, Top-1 81.67%) > $R_1$ (0.1763, 37.62%) > $R_0$ (0.0694, 18.33%) > $R_3$ (0.0211, 6.43%).
-- [x] **Empat kondisi derau E2 selesai:** Grid SNR (+20, +10, 0, -5 dB) dengan derau fisik ITERA (retensi $R_2$ pada -5 dB sebesar 75,9%).
-- [x] **Metrik mAP@k dan Recall@k dihitung:** Lengkap di seluruh kondisi dan representasi.
-- [x] **Ambang batas $\tau^*$ beku murni dari kalibrasi:** $\tau^*_{R_2} = 0.7028$, $\tau^*_{R_1} = 0.8974$, $\tau^*_{R_0} = 0.9958$ tanpa sentuhan test set.
-- [x] **Metrik open-set E3 tersedia:** FPR, recall, AUROC, F1-score terlapor lengkap per SNR.
-- [x] **Uji sensitivitas E4 selesai:** Lima profil lokasi ITERA dibandingkan pada pencampuran terkontrol; analisis H3 eksploratif menemukan ayunan retensi rata-rata $R_2$ 0,048607 dan $R_1$ 0,240111.
-- [x] **Kasus E5 disiapkan:** 120 kasus pilihan tercatat dengan diagnosis komputasional dan batas ketersediaan fitur.
-- [ ] **Audit pendengaran manusia atas kasus E5:** Belum dibuktikan untuk seluruh kasus pilihan.
-- [x] **Confidence Interval (CI 95%) tersedia:** Analisis H3 memakai 10.000 iterasi bootstrap; rincian uji lain ada dalam metadata masing-masing.
-- [x] **Tes integritas saat pembaruan:** 25/25 tes lulus.
-- [ ] **Reproduksi segar dari klon bersih:** Belum diverifikasi end-to-end pada lingkungan tanpa cache/audio lokal.
-- [x] **Keterbatasan ekologis dinyatakan jujur:** Ketiadaan anotasi bounding box in-situ lapangan dideklarasikan sebagai agenda masa depan.
+- [x] **Daftar taksa & spesies target dibekukan:** 20 spesies avifauna Indonesia, 1.216 rekaman pada manifes aktif beserta catatan SHA-256 dan audit sebelumnya (DEC-13).
+- [x] **Pemisahan internal target terverifikasi:** 0 recording ID, file path, dan nama perekam beririsan antar Gallery, Query, dan Calibration. Ini tidak membuktikan independensi sesi/perekam unknown atau bebas overlap data pralatih.
+- [x] **Baseline klasik MFCC selesai:** cache R0 Gallery 673 × 40 dan Query 311 × 40 terverifikasi.
+- [x] **Generic pretrained representation selesai:** cache R1/PANNs Gallery 673 × 2.048 dan Query 311 × 2.048 terverifikasi.
+- [x] **Bioacoustic domain representation selesai:** cache R2/BirdNET Gallery 673 × 1.024 dan Query 311 × 1.024 terverifikasi.
+- [x] **Clean retrieval E1 selesai:** R2 (mAP@10 0,6367; Top-1 81,67%) > R1 (0,1763; 37,62%) > R0 (0,0694; 18,33%) > R3 (0,0211; 6,43%).
+- [x] **Empat kondisi derau E2 selesai:** +20, +10, 0, −5 dB dengan noise fisik ITERA; retensi R2 pada −5 dB 75,88%.
+- [x] **Cakupan metrik retrieval diperiksa:** AP@k/Recall@k untuk k = 1, 5, 10 tersedia pada 20 CSV E2 dan empat CSV raw E4; metrik primer tetap mAP@10.
+- [x] **Threshold beku dari calibration-clean tersedia:** τ*(R2) = 0,702785; τ*(R1) = 0,897416; τ*(R0) = 0,995752; τ*(R3) = 0,488838. Threshold tidak diubah pada revisi.
+- [x] **Metrik open-set E3 tersedia:** FPR, recall penerimaan known, AUROC, AUPRC, dan F1-score per SNR. Recall penerimaan tidak disamakan dengan ketepatan spesies Top-1.
+- [x] **E4 lima lokasi dan sensitivitas H3 selesai:** 311 query × 5 lokasi × 4 SNR × 4 ulangan per representasi; ayunan absolut/relatif dan subset tanpa Kebun Raya dilaporkan. Kesimpulan H3/H4 hasil reformulasi bersifat eksploratif dan dibatasi oleh metrik serta subset.
+- [x] **Kasus E5 komputasional disiapkan:** 120 baris pilihan tersedia; lembar audit terpisah memulihkan representasi, kondisi, dan moda kegagalan melalui pencocokan persis dengan diagnostik lengkap. Sumber E5 tidak ditimpa.
+- [ ] **Audit pendengaran manusia atas seluruh 120 kasus E5:** lembar formal masih pending, dengan 0/120 ulasan tercatat pada saat disiapkan. Memerlukan pendengar, tanggal, observasi, dan pemeriksaan segmen yang sesuai eksperimen.
+- [x] **CI 95% tersedia dengan batas inferensi:** H3/sensitivitas memakai 10.000 bootstrap query berpasangan; CI eksploratif kondisional pada lokasi dan segmen noise tetap. Tidak ada klaim mekanisme spektral sudah terbukti.
+- [x] **Suite integritas/metode terpadu lulus:** 32/32 tes melalui run_tests.py, mencakup 25 tes sebelumnya, lima tes H3, dan dua tes regresi seleksi kasus E5.
+- [ ] **Reproduksi penuh E0–E5 dari klon bersih dan lingkungan baru:** belum dibuktikan. Reproduksi statistik H3 dari CSV pada klon bersih sudah lulus, tetapi memakai runtime yang sudah tersedia dan tidak mengulang E0–E5, ekstraksi model, atau akuisisi ulang audio.
+- [x] **Batas ekologis dinyatakan sesuai scope:** E2/E4 menguji additive mixture, bukan vokalisasi target in-situ. Pengumpulan/anotasi korpus burung in-situ bukan prasyarat revisi E4 aktif dan tetap di luar scope.
+
+**Verifikasi tambahan:** 19 aset identitas E4 dan 320 snapshot kondisi cocok checksum; 41 bahan laporan lama tetap cocok. CSV hasil H3 dari klon bersih identik byte dengan hasil revisi. Tidak ada audio, checkpoint, NPZ, atau NPY pada klon pemeriksaan.
 
 ---
 
@@ -424,7 +426,7 @@ Checklist ini diperbarui berdasarkan artefak yang tersedia; klaim yang belum dib
 Artikel ilmiah dan naskah skripsi ini secara ketat difokuskan untuk menjawab:  
 **"Ketahanan representasi audio beku terhadap degradasi derau aditif dan stabilitas ambang batas temu kembali bioakustik."**
 
-Luaran pemantauan lapangan di ITERA diposisikan sebagai analisis sensitivitas spektral terkontrol, bukan studi sensus biodiversitas ekologis penuh. Peneliti tidak mengklaim inventarisasi ekologis kampus tanpa protokol survei transek visual dan anotasi bounding box in-situ yang terkalibrasi.
+Rekaman ITERA dipakai sebagai sumber noise untuk pencampuran aditif terkontrol. E4 menguji sensitivitas profil noise lima lokasi, bukan inventarisasi biodiversitas atau rekaman vokalisasi target in-situ. Korpus target in-situ dan anotasinya merupakan penelitian terpisah, bukan pekerjaan wajib untuk menuntaskan E4 aktif.
 
 ### Ancaman terhadap Validitas (Threats to Validity):
 1. **Potensi Kebocoran Pra-latih (Pretraining Data Overlap - H1/H2):**  
@@ -432,7 +434,7 @@ Luaran pemantauan lapangan di ITERA diposisikan sebagai analisis sensitivitas sp
 2. **Keterwakilan Spesies Terpilih (Selection Bias - DEC-10):**  
    Taksa target dibatasi pada 20 spesies umum dan tersebar luas dengan ketersediaan rekaman memadai ($\ge 30$ klip, $\ge 14$ perekam). Spesies langka, pemalu (*cryptic*), atau bernada rendah ekstrem belum tercakup dalam benchmark ini.
 3. **Pencampuran Aditif vs Propagasi Lapangan (In-situ Soundscape Gap - H3):**  
-   Pengujian E2 dan E4 menggunakan derau aditif terkontrol. Dinamika propagasi bentang alam riil (atenuasi jarak, penyerapan kelembapan udara kanopi tropis, dan difraksi multipath) diposisikan sebagai agenda riset lanjutan (*Deferred H3*).
+   Pengujian E2 dan E4 menggunakan derau aditif terkontrol. Dinamika propagasi bentang alam riil (atenuasi jarak, penyerapan kelembapan udara kanopi tropis, dan difraksi multipath) belum diuji; ini adalah H3 asli yang berbeda dari reformulasi eksploratif tentang profil noise lokasi.
 
 ---
 

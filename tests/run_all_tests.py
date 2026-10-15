@@ -15,7 +15,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from tests import test_phase_a_integrity, test_restart_preflight
+from tests import test_phase_a_integrity, test_restart_preflight, test_h3_sensitivity_reanalysis, test_e5_case_selection
 from tests.test_cosine import test_cosine_similarity_properties, test_retrieval_ranking_logic
 from tests.test_snr_mixing import test_snr_mixing_accuracy, test_snr_mixing_reproducibility
 from tests.test_split_leakage import test_zero_filepath_leakage, test_zero_leakage_between_gallery_and_query, test_zero_recordist_leakage_global
@@ -34,6 +34,8 @@ def main() -> None:
     loader = unittest.TestLoader()
     suite.addTests(loader.loadTestsFromModule(test_restart_preflight))
     suite.addTests(loader.loadTestsFromModule(test_phase_a_integrity))
+    suite.addTests(loader.loadTestsFromModule(test_h3_sensitivity_reanalysis))
+    suite.addTests(loader.loadTestsFromModule(test_e5_case_selection))
     result = unittest.TextTestRunner(verbosity=1).run(suite)
     if not result.wasSuccessful():
         raise SystemExit(1)

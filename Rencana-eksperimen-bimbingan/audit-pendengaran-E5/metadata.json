@@ -1,0 +1,22 @@
+{
+  "source_commit": "8bf54415859f3473105c68c369832c2f66522fd8",
+  "source_sha256": {
+    "results/tables/16_e5_selected_case_manifest.csv": "1a3892c317adfdfd3c227ae32eb0e5d930f7bf4cbba92d73f5e14531de57798f",
+    "results/reproductions/E5_diagnostics_20261012T091512_868500Z/tables/all_query_diagnostics.csv": "2893f3d835cd99a6271e00a21c9b21855742a5713dde14c650b866f3eb076550",
+    "data/manifests/dataset_split.csv": "7808cdf057f135aaa193f47e27415318edf46c862c09dee4c7394bc5760e8ed8"
+  },
+  "script_sha256": "f05d5eb45ecb4b58c11bea1a21f180e18fa8ea05c9194721ff58c50ebb22ec4d",
+  "row_count": 120,
+  "unique_query_condition_pairs": 117,
+  "unique_queries": 80,
+  "recovered_columns": [
+    "representation",
+    "condition",
+    "failure_mode"
+  ],
+  "recovery_rule": "Exactly one E2 full-diagnostics row must match every original selected CSV column as text",
+  "completed_human_reviews": 0,
+  "human_observations": "Blank; pending human listening, not inferred by code",
+  "source_files_unchanged": true,
+  "output_sha256": "8f9b400b34d82c516f93a346111607f66c7c02320b299cff571805ba2f602c55"
+}

@@ -1,7 +1,8 @@
 # Catatan Progres Bimbingan — DSIC-2706
 
 **Judul kerja:** *Noise and Spectral Sensitivity of Frozen Audio Representations for Bioacoustic Similarity Retrieval under Controlled ITERA Field-Noise Mixtures in Indonesian Avifauna*  
-**Pembaruan terakhir:** 12 Oktober 2026  
+**Pembaruan terakhir:** 16 Oktober 2026 — pemeriksaan ulang revisi dan Gate 1–4
+
 **Tujuan dokumen:** catatan pelaksanaan yang dapat dicek langsung oleh mahasiswa dan pembimbing melalui file lokal.
 
 ## 1. Cara memeriksa bukti
@@ -9,7 +10,7 @@
 | Apa yang ingin diperiksa | File atau folder langsung |
 |---|---|
 | Status E0–E5 | [experiments/experiment_registry.csv](../experiments/experiment_registry.csv) |
-| Jawaban RQ dan H1–H5 | [docs/RESULTS_RQ_HYPOTHESES_2026-10-12.md](../docs/RESULTS_RQ_HYPOTHESES_2026-10-12.md) |
+| Jawaban RQ dan H1–H5 terkini | [Matriks revisi](../results/tables/28_rq_hypothesis_matrix_revised_2026-10-15.csv) dan [pemeriksaan ulang](PEMERIKSAAN_ULANG_GATE_2026-10-15.md) |
 | Angka CSV yang siap dipakai laporan | [results/tables/](../results/tables/) |
 | Gambar kurva/spektrogram | [results/figures/](../results/figures/) |
 | Artefak sumber per run | [results/reproductions/](../results/reproductions/) |
@@ -19,7 +20,7 @@
 | Data dan manifes | [data/](../data/) |
 | Uji integritas | [run_tests.py](../run_tests.py) dan [tests/](../tests/) |
 
-Setiap bahan laporan di `results/figures/` dan `results/tables/` memiliki sumber serta checksum pada [report_materials_manifest.json](../results/report_materials_manifest.json). Run di `results/reproductions/` tidak ditimpa oleh penataan dokumentasi ini.
+Sebanyak 41 bahan laporan 12 Oktober tercatat pada [report_materials_manifest.json](../results/report_materials_manifest.json); artefak revisi dan tabel 28 mempunyai metadata provenance tersendiri. Run di `results/reproductions/` tidak ditimpa oleh penataan dokumentasi ini.
 
 ## 2. Fondasi data dan audit
 
@@ -79,7 +80,7 @@ E3 menentukan τ* pada calibration terpisah menggunakan Youden J, lalu membekuka
 | R2 | 0,702785 | 0,759953 | 0,590517 | 0,171674 |
 | R3 | 0,488838 | 0,545194 | 0,366379 | 0,278970 |
 
-Pada −5 dB, recall known-set di τ* turun untuk R0–R2. Untuk R2, nilai turun dari 0,604502 pada Clean menjadi 0,254019 pada −5 dB. FPR unknown turun dalam hasil ini; klaim H4 didasarkan pada degradasi recall known-set.
+Pada −5 dB, recall known-set di τ* turun untuk R0–R2. Untuk R2, nilai turun dari 0,604502 pada Clean menjadi 0,254019 pada −5 dB. FPR unknown turun dalam hasil ini. Penurunan recall konsisten dengan salah satu klausul H4 asli; interpretasi hasil reformulasi setelah hasil tersedia diberi label eksploratif.
 
 **Bukti langsung:** [notebook E3](../notebooks/06_E3_Open_Set_Threshold.ipynb), [kode E3](../scripts/run_e3_open_set.py), [tabel threshold](../results/tables/12_e3_frozen_thresholds.csv), [tabel transfer](../results/tables/13_e3_threshold_transfer.csv), [kurva E3](../results/figures/09_e3_threshold_transfer_recall.png), dan [raw E3](../results/reproductions/E3_open_set_20261012T022548_802536Z/raw/).
 
@@ -89,7 +90,7 @@ E4 membandingkan lima lokasi noise ITERA pada kondisi additive mixture. Pada −
 
 **Bukti langsung:** [notebook E4](../notebooks/07_E4_Habitat_Noise_Sensitivity.ipynb), [tabel E4](../results/tables/14_e4_domain_shift.csv), [gambar E4](../results/figures/10_e4_noise_profile_sensitivity.png), [run E4](../results/reproductions/E4_5sites_20261011T213404_350219Z/), dan [audit E4](../results/reproductions/E4_audit_20261012T021801_989259Z/).
 
-**Framing aktif:** E4 adalah uji sensitivitas terhadap profil noise lokasi nyata ITERA dalam additive mixture. H3 diuji sebagai stabilitas retensi lintas lima profil: ayunan R1 = 0.240111, R2 = 0.048607, Δ = 0.191504, CI 95% [0.152203, 0.241969]. Karena bank ITERA bebas spesies target, anotasi target-species tidak diperlukan.
+**Framing aktif:** E4 menguji sensitivitas profil noise lima lokasi melalui additive mixture. Revisi H3 mempertahankan ayunan retensi, tetapi menambahkan ayunan absolut serta sensitivitas tanpa Kebun Raya. Rata-rata ayunan absolut lima lokasi R1 = 0,042324 dan R2 = 0,030949; CI selisih [−0,003993; 0,022140]. Tanpa Kebun Raya pada −5 dB, ayunan relatif R1 = 0,065937 dan R2 = 0,083724; CI [−0,041711; 0,050057]. Kesimpulan bergantung pada metrik, SNR, dan subset.
 
 Uji H3 ditambahkan setelah E4 selesai, sehingga status signifikansinya bersifat eksploratif. Klaim mekanisme distorsi frekuensi tinggi/rendah belum diuji langsung terhadap fitur spektral noise per segmen.
 
@@ -99,9 +100,9 @@ E5 mengelompokkan accepted correct, open-set false rejection, top-1 confusion ab
 
 **Bukti langsung:** [notebook E5](../notebooks/08_E5_Failure_Diagnostics.ipynb), [tabel failure mode](../results/tables/15_e5_failure_mode_summary.csv), [kasus terpilih](../results/tables/16_e5_selected_case_manifest.csv), [gambar modus](../results/figures/11_e5_failure_modes_by_representation.png), [gambar margin](../results/figures/12_e5_margin_distribution_by_failure_type.png), [gambar spektral](../results/figures/13_e5_spectral_features_by_failure_type.png).
 
-Bootstrap berpasangan memakai 10.000 iterasi dan seed 20261012. H1–H5 didukung di bawah desain additive-noise yang tervalidasi. H3 dihitung read-only dari raw E4 dan menunjukkan ayunan retensi R2 lebih sempit daripada R1.
+Bootstrap berpasangan memakai 10.000 iterasi dan seed 20261012. H1, H2, dan H5 memiliki dukungan pada uji tersimpan. H3/H4 hasil reformulasi adalah eksploratif. H3 asli real-soundscape belum diuji; keunggulan stabilitas R2 tidak berlaku umum lintas ukuran dan subset.
 
-**Bukti langsung:** [paired bootstrap](../results/tables/22_statistics_paired_bootstrap.csv), [matriks RQ/H](../results/tables/27_rq_hypothesis_matrix_current.csv), [run statistik](../results/reproductions/STATISTICS_RQ_MATRIX_20261012T092924_809804Z/).
+**Bukti langsung:** [paired bootstrap](../results/tables/22_statistics_paired_bootstrap.csv), [matriks RQ/H revisi](../results/tables/28_rq_hypothesis_matrix_revised_2026-10-15.csv), [run statistik](../results/reproductions/STATISTICS_RQ_MATRIX_20261012T092924_809804Z/).
 
 ## 8. Status jawaban pertanyaan penelitian
 
@@ -112,12 +113,27 @@ Bootstrap berpasangan memakai 10.000 iterasi dan seed 20261012. H1–H5 didukung
 | Sub-RQ2 | Terjawab oleh E3: frozen threshold pada target dan unknown | Unknown bukan korpus focal-bird field soundscape |
 | Sub-RQ3 | Terjawab oleh E4 sebagai sensitivitas profil noise lima lokasi | Tidak mencakup real-soundscape bird recording |
 | Sub-RQ4 | Terjawab oleh E5 sebagai diagnostik kegagalan | Bergantung pada field yang tersedia dalam raw experiment |
-| H3 | Didukung: R2 memiliki ayunan retensi lintas lokasi lebih sempit daripada R1 | Additive mixture, bukan bird recording in-situ |
+| H3 | Eksploratif; bergantung metrik dan subset lokasi | Rata-rata ayunan absolut: CI mencakup nol; H3 asli real-soundscape belum diuji |
 | H1 | Didukung | R3 dikecualikan sebagai kontrol ID |
 | H2 | Didukung | Tidak membuktikan sebab arsitektur model |
-| H4 | Didukung melalui recall degradation | FPR tidak meningkat pada data ini |
+| H4 | Interpretasi reformulasi eksploratif; recall penerimaan turun | FPR tidak meningkat; threshold tidak diubah |
 | H5 | Didukung | R3 bukan representasi audio |
 
 ## 9. Pemeriksaan terakhir
 
-`run_tests.py` menjalankan 25 pemeriksaan integritas/metode dan lulus pada pembaruan ini. Pemeriksaan ini tidak menghapus audio, cache, checkpoint, manifes, atau run eksperimen.
+`run_tests.py` kini menjalankan 32 pemeriksaan integritas/metode (25 sebelumnya + 5 H3 + 2 E5) dan seluruhnya lulus pada pemeriksaan ulang 16 Oktober. Pemeriksaan ini tidak menghapus audio, cache, checkpoint, manifes, atau run eksperimen.
+
+## 10. Progres revisi pembimbing — 15–16 Oktober 2026
+
+Revisi utama telah dipush pada commit [8bf5441](https://github.com/Data-Systems-and-Intelligent-Computing/DSIC-2706/commit/8bf54415859f3473105c68c369832c2f66522fd8): runner E4 asli cocok SHA-256, H3 dilengkapi ayunan absolut dan tanpa Kebun Raya, riwayat eksploratif H3/H4 dicatat, serta naskah teori dan Gambar 6/8 dikoreksi. E4 tetap lima lokasi dan tidak dijalankan ulang.
+
+Pemeriksaan lanjutan menemukan ringkasan lama pada checklist/logbook dan kehilangan tiga kolom kelompok pada ekspor kasus E5. Narasi kini diselaraskan. Seleksi E5 diperbaiki untuk ekspor berikutnya dengan dua tes regresi; pilihan serta nilai 120 kasus historis tetap sama. Sumber hasil E5 tidak ditimpa.
+
+Bukti tambahan: 19 aset identitas E4, 320 snapshot kondisi, dan 41 bahan laporan lama cocok checksum. Analisis H3 dari klon bersih menghasilkan 20 baris identik byte, tanpa audio/cache dalam klon; ini reproduksi statistik parsial dengan runtime yang sudah tersedia.
+
+**Gate 4 belum tuntas.** Audit pendengaran formal masih 0/120 ulasan tercatat. Reproduksi penuh E0–E5 di lingkungan baru belum dibuktikan; arahan tidak mengulang E4 tetap berlaku. Naskah teori tersedia sebagai draf untuk pemeriksaan pembimbing, bukan persetujuan final. Kedua pekerjaan terbuka dapat dikerjakan melalui audit manusia dan protokol reproduksi tersendiri.
+
+- [Laporan rinci: status setiap arahan, alasan belum selesai, dan tindak lanjut](PEMERIKSAAN_ULANG_GATE_2026-10-15.md).
+- [Bukti pemeriksaan terstruktur](BUKTI_PEMERIKSAAN_ULANG_2026-10-15.json).
+- [Lembar dan petunjuk audit pendengaran E5](audit-pendengaran-E5/README.md).
+- [Draf chat pembimbing siap disalin](DRAF_CHAT_PEMBIMBING_2026-10-15.md).

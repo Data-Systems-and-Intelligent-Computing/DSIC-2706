@@ -1,0 +1,285 @@
+{
+  "E4_assets": {
+    "R0_cache": true,
+    "R1_cache": true,
+    "R1_checkpoint": true,
+    "R1_metadata": true,
+    "R2_cache": true,
+    "R2_checkpoint": true,
+    "R2_metadata": true,
+    "R3_cache": true,
+    "R3_metadata": true,
+    "dataset_manifest": true,
+    "e4_script": true,
+    "embeddings_code": true,
+    "mix_noise_code": true,
+    "noise_identity_code": true,
+    "noise_manifest": true,
+    "preprocess_code": true,
+    "query_identity_code": true,
+    "retrieve_code": true,
+    "run_identity_code": true
+  },
+  "E4_design": {
+    "category_seed": 20261012,
+    "locations": [
+      "Kebun_Raya",
+      "Embung_F",
+      "Gedung_F",
+      "Masjid_At_Tanwir",
+      "Sekitar_GKU_1"
+    ],
+    "n_gallery": 673,
+    "n_queries": 311,
+    "noise_categories": [
+      "Amplitudo-High",
+      "Amplitudo-Medium",
+      "Amplitudo-Low",
+      "Frequency-High",
+      "Frequency-Medium",
+      "Frequency-Low"
+    ],
+    "noise_seed_rule": "5000 + 100000 * repeat_id + query_index (0-based)",
+    "r3_seed": 42,
+    "repeat_ids": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "representations": [
+      "R0",
+      "R1",
+      "R2",
+      "R3"
+    ],
+    "snr_db": [
+      20,
+      10,
+      0,
+      -5
+    ]
+  },
+  "clean_embeddings": {
+    "R0": {
+      "gallery_shape": [
+        673,
+        40
+      ],
+      "query_shape": [
+        311,
+        40
+      ]
+    },
+    "R1": {
+      "gallery_shape": [
+        673,
+        2048
+      ],
+      "query_shape": [
+        311,
+        2048
+      ]
+    },
+    "R2": {
+      "gallery_shape": [
+        673,
+        1024
+      ],
+      "query_shape": [
+        311,
+        1024
+      ]
+    },
+    "R3": {
+      "gallery_shape": [
+        673,
+        40
+      ],
+      "query_shape": [
+        311,
+        40
+      ]
+    }
+  },
+  "E4_snapshots_checksum_matched": 320,
+  "raw_metric_coverage": {
+    "E2_controlled_20261012T021600_897497Z": [
+      {
+        "file": "R0_Clean.csv",
+        "rows": 311
+      },
+      {
+        "file": "R0_SNR_-5dB.csv",
+        "rows": 311
+      },
+      {
+        "file": "R0_SNR_0dB.csv",
+        "rows": 311
+      },
+      {
+        "file": "R0_SNR_10dB.csv",
+        "rows": 311
+      },
+      {
+        "file": "R0_SNR_20dB.csv",
+        "rows": 311
+      },
+      {
+        "file": "R1_Clean.csv",
+        "rows": 311
+      },
+      {
+        "file": "R1_SNR_-5dB.csv",
+        "rows": 311
+      },
+      {
+        "file": "R1_SNR_0dB.csv",
+        "rows": 311
+      },
+      {
+        "file": "R1_SNR_10dB.csv",
+        "rows": 311
+      },
+      {
+        "file": "R1_SNR_20dB.csv",
+        "rows": 311
+      },
+      {
+        "file": "R2_Clean.csv",
+        "rows": 311
+      },
+      {
+        "file": "R2_SNR_-5dB.csv",
+        "rows": 311
+      },
+      {
+        "file": "R2_SNR_0dB.csv",
+        "rows": 311
+      },
+      {
+        "file": "R2_SNR_10dB.csv",
+        "rows": 311
+      },
+      {
+        "file": "R2_SNR_20dB.csv",
+        "rows": 311
+      },
+      {
+        "file": "R3_Clean.csv",
+        "rows": 311
+      },
+      {
+        "file": "R3_SNR_-5dB.csv",
+        "rows": 311
+      },
+      {
+        "file": "R3_SNR_0dB.csv",
+        "rows": 311
+      },
+      {
+        "file": "R3_SNR_10dB.csv",
+        "rows": 311
+      },
+      {
+        "file": "R3_SNR_20dB.csv",
+        "rows": 311
+      }
+    ],
+    "E4_5sites_20261011T213404_350219Z": [
+      {
+        "file": "E4_R0_raw.csv",
+        "rows": 25191
+      },
+      {
+        "file": "E4_R1_raw.csv",
+        "rows": 25191
+      },
+      {
+        "file": "E4_R2_raw.csv",
+        "rows": 25191
+      },
+      {
+        "file": "E4_R3_raw.csv",
+        "rows": 25191
+      }
+    ]
+  },
+  "split_counts": {
+    "gallery": 673,
+    "query_clean": 311,
+    "calibration": 232
+  },
+  "known_overlap": {
+    "recording_id": {
+      "gallery vs query_clean": 0,
+      "gallery vs calibration": 0,
+      "query_clean vs calibration": 0
+    },
+    "file_path": {
+      "gallery vs query_clean": 0,
+      "gallery vs calibration": 0,
+      "query_clean vs calibration": 0
+    },
+    "author": {
+      "gallery vs query_clean": 0,
+      "gallery vs calibration": 0,
+      "query_clean vs calibration": 0
+    }
+  },
+  "original_report_materials_checksums": 41,
+  "revised_materials_metadata": "all output checksums matched",
+  "clean_clone_H3": {
+    "commit": "8bf54415859f3473105c68c369832c2f66522fd8",
+    "clone_method": "Local Git transport, --no-local --depth 1; committed content only; commit previously verified on origin/main",
+    "numeric_rows": 20,
+    "maximum_absolute_numeric_difference": 0,
+    "csv_bytes_identical": true,
+    "runtime": "Existing project Python venv reused; not a newly provisioned environment",
+    "scope": "Stored-CSV H3 statistics and five H3 tests only; not end-to-end E0-E5"
+  },
+  "clean_clone_local_audio_checkpoint_embedding_files": 0,
+  "E5_review_preparation": {
+    "rows": 120,
+    "unique_queries": 80,
+    "unique_query_condition_pairs": 117,
+    "exact_source_matches": 120,
+    "formal_human_reviews_recorded": 0,
+    "missing_source_selected_columns": [
+      "representation",
+      "condition",
+      "failure_mode"
+    ]
+  },
+  "tests": {
+    "default_suite": {
+      "passed": 32,
+      "command": "python -B run_tests.py",
+      "breakdown": {
+        "previous_integrity_tests": 25,
+        "H3_method_tests": 5,
+        "E5_case_selection_regression_tests": 2
+      }
+    },
+    "clean_clone_H3_suite": {
+      "passed": 5,
+      "command": "python -B -m unittest tests.test_h3_sensitivity_reanalysis"
+    }
+  },
+  "default_suite_script_sha256": "3eeea40aceb810e5ff09eecd8820aa058ce3fe05014a978bd744a225f3415dcd",
+  "note": "Verification of base commit 8bf5441 plus the documented recheck working-tree changes; no E4 rerun. Human-review fields are pending.",
+  "checked_at_local_date": "2026-10-16",
+  "E5_selector_fix": {
+    "script": "scripts/run_e5_diagnostics.py",
+    "script_sha256": "bd8735fa10b995f01cf1958fe3ceef0b5bfb764df7a9dfffaa2f99136b2135b5",
+    "selection_membership_and_original_values_unchanged": true,
+    "historical_cases": 120,
+    "experiments_rerun": false
+  },
+  "working_tree_scope_check": {
+    "original_files_checked": 4690,
+    "unrelated_file_size_mtime_changes": 0,
+    "new_commit_paths": 17,
+    "preexisting_deleted_files_left_untouched": 3
+  }
+}

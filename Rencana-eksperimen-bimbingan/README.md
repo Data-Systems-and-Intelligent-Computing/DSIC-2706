@@ -1,7 +1,8 @@
 # Rencana Eksperimen dan Logbook Bimbingan — DSIC-2706
 
 **Judul kerja:** *Noise and Spectral Sensitivity of Frozen Audio Representations for Bioacoustic Similarity Retrieval under Controlled ITERA Field-Noise Mixtures in Indonesian Avifauna*  
-**Pembaruan terakhir:** 12 Oktober 2026  
+**Pembaruan terakhir:** 16 Oktober 2026
+
 **Korpus aktif:** 20 spesies avifauna Indonesia, 1.216 rekaman target, 1.799 rekaman derau ITERA.
 
 Folder ini adalah peta pelaksanaan empat minggu. Semua angka dan tautan di bawah merujuk artefak lokal yang benar-benar ada. Hasil lama yang terkait imputasi `XC42472` tidak dipakai sebagai bukti penelitian.
@@ -11,7 +12,8 @@ Folder ini adalah peta pelaksanaan empat minggu. Semua angka dan tautan di bawah
 1. Buka [Catatan Progres Bimbingan](CATATAN_PROGRES_BIMBINGAN.md) untuk kronologi, hasil, dan batasan ilmiah.
 2. Buka README Minggu 1 sampai Minggu 4 sesuai tahap yang ingin dipelajari.
 3. Buka [registri eksperimen](../experiments/experiment_registry.csv) untuk menghubungkan eksperimen, notebook, run, gambar, dan tabel.
-4. Buka [hasil RQ dan hipotesis](../docs/RESULTS_RQ_HYPOTHESES_2026-10-12.md) untuk kesimpulan yang boleh dipakai pada laporan.
+4. Buka [pemeriksaan ulang revisi dan Gate 1–4](PEMERIKSAAN_ULANG_GATE_2026-10-15.md) serta [matriks RQ/H revisi](../results/tables/28_rq_hypothesis_matrix_revised_2026-10-15.csv) untuk kesimpulan terkini; dokumen hasil 12 Oktober tetap menjadi arsip.
+5. Gunakan [draf chat pembimbing](DRAF_CHAT_PEMBIMBING_2026-10-15.md) untuk melaporkan revisi yang siap diperiksa.
 
 ## Status empat minggu
 
@@ -20,7 +22,7 @@ Folder ini adalah peta pelaksanaan empat minggu. Semua angka dan tautan di bawah
 | 1 | Dataset, preprocessing, EDA, E0, E1 | Tervalidasi | [Minggu 1](minggu-1/README.md) |
 | 2 | Noise ITERA dan E2 | Selesai | [Minggu 2](minggu-2/README.md) |
 | 3 | E3 threshold dan E4 habitat mixture | Selesai dengan batasan E4 | [Minggu 3](minggu-3/README.md) |
-| 4 | E5, bootstrap, matriks RQ/H | Selesai | [Minggu 4](minggu-4/README.md) |
+| 4 | E5, bootstrap, matriks RQ/H | Komputasional tersedia; audit manusia dan reproduksi penuh terbuka | [Minggu 4](minggu-4/README.md) |
 
 ## Arah folder yang digunakan
 
@@ -38,6 +40,6 @@ Folder ini adalah peta pelaksanaan empat minggu. Semua angka dan tautan di bawah
 
 ## Catatan batasan yang harus dipertahankan
 
-E4 menggunakan pencampuran aditif dengan noise asli lima lokasi ITERA. H3 diuji sebagai stabilitas ayunan retensi lintas profil noise: R2 lebih stabil daripada R1. Hasilnya tidak diklaim sebagai evaluasi burung yang direkam in-situ.
+E4 menggunakan pencampuran aditif dengan noise asli lima lokasi ITERA. H3 hasil reformulasi bersifat eksploratif; ayunan absolut, relatif, serta sensitivitas tanpa Kebun Raya menunjukkan kesimpulan bergantung metrik dan subset. Hasilnya tidak diklaim sebagai evaluasi burung yang direkam in-situ.
 
 Gunakan [CURRENT_STATUS.md](CURRENT_STATUS.md) sebagai ringkasan satu halaman saat bimbingan.
