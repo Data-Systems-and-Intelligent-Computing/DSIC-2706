@@ -89,3 +89,9 @@ data/itera_noise/
 
 # Local outputs from the isolated 2026-10-16 reproduction; evidence summaries are tracked.
 /results/reproductions/RECHECK_FRESH_20261016/local-output/
+
+# Supervisor message drafts and duplicate review notes are kept local only.
+/Rencana-eksperimen-bimbingan/DRAF_CHAT_PEMBIMBING_2026-10-15.md
+/Rencana-eksperimen-bimbingan/DRAF_CHAT_PEMBIMBING_2026-10-16.md
+/Rencana-eksperimen-bimbingan/PEMENUHAN_REVISI_2026-10-16.md
+/Rencana-eksperimen-bimbingan/PEMERIKSAAN_ULANG_GATE_2026-10-15.md

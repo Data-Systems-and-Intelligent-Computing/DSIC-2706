@@ -10,7 +10,7 @@
 | Apa yang ingin diperiksa | File atau folder langsung |
 |---|---|
 | Status E0–E5 | [experiments/experiment_registry.csv](../experiments/experiment_registry.csv) |
-| Jawaban RQ dan H1–H5 terkini | [Matriks revisi](../results/tables/28_rq_hypothesis_matrix_revised_2026-10-15.csv) dan [pemeriksaan ulang](PEMERIKSAAN_ULANG_GATE_2026-10-15.md) |
+| Jawaban RQ dan H1–H5 terkini | [Matriks revisi](../results/tables/28_rq_hypothesis_matrix_revised_2026-10-15.csv) dan [catatan revisi](../docs/REVISION_SUPERVISOR_2026-10-15.md) |
 | Angka CSV yang siap dipakai laporan | [results/tables/](../results/tables/) |
 | Gambar kurva/spektrogram | [results/figures/](../results/figures/) |
 | Artefak sumber per run | [results/reproductions/](../results/reproductions/) |
@@ -133,10 +133,9 @@ Bukti tambahan: 19 aset identitas E4, 320 snapshot kondisi, dan 41 bahan laporan
 
 **Gate 4 belum tuntas.** Audit pendengaran formal masih 0/120 ulasan tercatat. Reproduksi penuh E0–E5 di lingkungan baru belum dibuktikan; arahan tidak mengulang E4 tetap berlaku. Naskah teori tersedia sebagai draf untuk pemeriksaan pembimbing, bukan persetujuan final. Kedua pekerjaan terbuka dapat dikerjakan melalui audit manusia dan protokol reproduksi tersendiri.
 
-- [Laporan rinci: status setiap arahan, alasan belum selesai, dan tindak lanjut](PEMERIKSAAN_ULANG_GATE_2026-10-15.md).
+- [Rincian revisi pembimbing](../docs/REVISION_SUPERVISOR_2026-10-15.md).
 - [Bukti pemeriksaan terstruktur](BUKTI_PEMERIKSAAN_ULANG_2026-10-15.json).
 - [Lembar dan petunjuk audit pendengaran E5](audit-pendengaran-E5/README.md).
-- [Draf chat pembimbing siap disalin](DRAF_CHAT_PEMBIMBING_2026-10-15.md).
 
 ## 11. Pemeriksaan akhir dan penyelesaian yang dapat diotomasi — 16 Oktober 2026
 
@@ -150,7 +149,6 @@ E4 audio/model inference tetap tidak diulang sesuai arahan pembimbing. Hasil bar
 
 **Persiapan audit pendengaran tuntas:** 120 kasus dipetakan ke 276 klip unik dengan identitas noise, segmen, SNR, dan sampel WAV terverifikasi. Halaman lokal menyediakan pemutar dan pencatatan; importer mengekspor ke CSV baru setelah validasi provenance. **Ulasan manusia masih 0/120 tercatat** dan harus diisi sesudah pendengaran yang benar-benar dilakukan.
 
-- [Laporan pemenuhan setiap arahan pembimbing](PEMENUHAN_REVISI_2026-10-16.md).
+- [Rincian revisi pembimbing](../docs/REVISION_SUPERVISOR_2026-10-15.md).
 - [Protokol dan bukti lingkungan baru](../docs/REPRODUKSI_LINGKUNGAN_BARU_2026-10-16.md).
 - [Paket audit pendengaran](audit-pendengaran-E5/README.md).
-- [Draf chat pembimbing terbaru](DRAF_CHAT_PEMBIMBING_2026-10-16.md).

@@ -12,8 +12,7 @@ Folder ini adalah peta pelaksanaan empat minggu. Semua angka dan tautan di bawah
 1. Buka [Catatan Progres Bimbingan](CATATAN_PROGRES_BIMBINGAN.md) untuk kronologi, hasil, dan batasan ilmiah.
 2. Buka README Minggu 1 sampai Minggu 4 sesuai tahap yang ingin dipelajari.
 3. Buka [registri eksperimen](../experiments/experiment_registry.csv) untuk menghubungkan eksperimen, notebook, run, gambar, dan tabel.
-4. Buka [pemenuhan revisi dan hasil pemeriksaan akhir](PEMENUHAN_REVISI_2026-10-16.md) serta [matriks RQ/H revisi](../results/tables/28_rq_hypothesis_matrix_revised_2026-10-15.csv) untuk kesimpulan terkini; dokumen hasil 12 Oktober tetap menjadi arsip.
-5. Gunakan [draf chat pembimbing](DRAF_CHAT_PEMBIMBING_2026-10-16.md) untuk melaporkan revisi yang siap diperiksa.
+4. Buka [matriks RQ/H revisi](../results/tables/28_rq_hypothesis_matrix_revised_2026-10-15.csv) untuk kesimpulan terkini; dokumen hasil 12 Oktober tetap menjadi arsip.
 
 ## Status empat minggu
 

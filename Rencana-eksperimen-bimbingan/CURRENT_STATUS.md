@@ -33,4 +33,4 @@ Analisis membaca raw E4 tersimpan, tanpa pengubahan threshold atau data. Lima pr
 - **Audit manusia belum selesai:** 120 kasus sudah memiliki 276 klip terverifikasi, halaman pemutar/catatan, dan importer CSV baru. Masih 0/120 ulasan formal tercatat.
 - **Inferensi E4 tidak diulang** sesuai pembimbing. Ini batas reproduksi, bukan kekurangan pelaksanaan E4 aktif. Naskah masih draf untuk pemeriksaan pembimbing.
 
-[Catatan pemenuhan revisi](PEMENUHAN_REVISI_2026-10-16.md), [protokol reproduksi](../docs/REPRODUKSI_LINGKUNGAN_BARU_2026-10-16.md), [paket audit pendengaran](audit-pendengaran-E5/README.md), dan [draf chat terkini](DRAF_CHAT_PEMBIMBING_2026-10-16.md).
+[Catatan progres](CATATAN_PROGRES_BIMBINGAN.md), [protokol reproduksi](../docs/REPRODUKSI_LINGKUNGAN_BARU_2026-10-16.md), dan [paket audit pendengaran](audit-pendengaran-E5/README.md).

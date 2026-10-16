@@ -309,7 +309,7 @@ Analisis H3 dan sensitivitas memakai 10.000 bootstrap, seed 20261012. Terdapat 1
 
 ## 13. Definition of Done (Status Kelulusan Gate 1 s.d. Gate 4)
 
-**Pemeriksaan lanjutan: 16 Oktober 2026.** Reproduksi E0/E1/E2/E3/E5 pada venv baru sudah selesai; E4 dipertahankan tanpa run ulang sesuai arahan pembimbing. Audit pendengaran manusia masih terbuka, sehingga Gate 4 belum dinyatakan tuntas. [Catatan pemeriksaan dan tindak lanjut](Rencana-eksperimen-bimbingan/PEMERIKSAAN_ULANG_GATE_2026-10-15.md) memuat bukti serta alasan butir yang masih terbuka.
+**Pemeriksaan lanjutan: 16 Oktober 2026.** Reproduksi E0/E1/E2/E3/E5 pada venv baru sudah selesai; E4 dipertahankan tanpa run ulang sesuai arahan pembimbing. Audit pendengaran manusia masih terbuka, sehingga Gate 4 belum dinyatakan tuntas. [Catatan pemeriksaan dan tindak lanjut](Rencana-eksperimen-bimbingan/CATATAN_PROGRES_BIMBINGAN.md) memuat bukti serta alasan butir yang masih terbuka.
 
 - [x] **Daftar taksa & spesies target dibekukan:** 20 spesies avifauna Indonesia, 1.216 rekaman pada manifes aktif beserta catatan SHA-256 dan audit sebelumnya (DEC-13).
 - [x] **Pemisahan internal target terverifikasi:** 0 recording ID, file path, dan nama perekam beririsan antar Gallery, Query, dan Calibration. Ini tidak membuktikan independensi sesi/perekam unknown atau bebas overlap data pralatih.
@@ -410,6 +410,6 @@ Arahan revisi pembimbing yang berlaku:
 
 Register keputusan kanonik tersedia pada [decision-log.md](docs/research/decision-log.md). DEC-13 mencatat pivot korpus Indonesia, DEC-14 pemisahan bank noise, dan DEC-16 koreksi pelaporan pembimbing. DEC-15 merupakan keputusan historis sebelum perluasan analisis H3; kesimpulan aktif mengikuti DEC-16 serta [riwayat hipotesis](docs/research/hypotheses.md).
 
-Checklist kelulusan aktif berada pada §13. Bukti pemeriksaan dan keterbatasan dirinci pada [laporan pemeriksaan ulang](Rencana-eksperimen-bimbingan/PEMERIKSAAN_ULANG_GATE_2026-10-15.md), bukan disimpulkan dari rencana kerja lama.
+Checklist kelulusan aktif berada pada §13. Bukti pemeriksaan dan keterbatasan dirinci pada [laporan pemeriksaan ulang](Rencana-eksperimen-bimbingan/CATATAN_PROGRES_BIMBINGAN.md), bukan disimpulkan dari rencana kerja lama.
 
 Arahan dosen merupakan bahan penyusunan dan pemeriksaan penelitian. Draf rujukan dosen tidak diperlakukan sebagai hasil eksperimen mahasiswa. Run sumber, manifes, konfigurasi beku, dan checksum tetap menjadi rujukan utama untuk angka hasil.

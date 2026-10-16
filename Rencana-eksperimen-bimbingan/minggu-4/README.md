@@ -43,8 +43,8 @@ Bootstrap berpasangan menggunakan 10.000 iterasi, seed 20261012, dan unit resamp
 | H4 | Reformulasi eksploratif; recall penerimaan known turun untuk R0–R2 pada −5 dB. FPR tidak meningkat. |
 | H5 | Didukung: R0, R1, dan R2 mengungguli kontrol R3 pada clean AP@10. |
 
-**Pemeriksaan akhir 16 Oktober:** reproduksi E0, ekstraksi clean R0–R3, E1, E2, E3, E5, serta statistik H3 selesai pada klon/venv baru; 41/41 perbandingan cocok, selisih numerik maksimum 0,0. Suite lulus 36/36 tes. Inferensi E4 tidak diulang sesuai arahan. Audit pendengaran 120 kasus tetap terbuka; 276 klip dan alur pencatatan sudah tersedia. [Laporan terkini](../PEMENUHAN_REVISI_2026-10-16.md).
+**Pemeriksaan akhir 16 Oktober:** reproduksi E0, ekstraksi clean R0–R3, E1, E2, E3, E5, serta statistik H3 selesai pada klon/venv baru; 41/41 perbandingan cocok, selisih numerik maksimum 0,0. Suite lulus 36/36 tes. Inferensi E4 tidak diulang sesuai arahan. Audit pendengaran 120 kasus tetap terbuka; 276 klip dan alur pencatatan sudah tersedia. [Laporan terkini](../CATATAN_PROGRES_BIMBINGAN.md).
 
 ## Arah penulisan laporan
 
-Gunakan matriks revisi dan [pemeriksaan ulang](../PEMERIKSAAN_ULANG_GATE_2026-10-15.md) sebagai sumber narasi terkini; hasil 12 Oktober tetap menjadi riwayat. Ambil gambar dari [results/figures](../../results/figures/) dan angka dari [results/tables](../../results/tables/). `paper/` masih draf; jangan memindahkan hasil lama ke naskah sebelum struktur Bab 4/Bab 5 diputuskan.
+Gunakan matriks revisi dan [pemeriksaan ulang](../CATATAN_PROGRES_BIMBINGAN.md) sebagai sumber narasi terkini; hasil 12 Oktober tetap menjadi riwayat. Ambil gambar dari [results/figures](../../results/figures/) dan angka dari [results/tables](../../results/tables/). `paper/` masih draf; jangan memindahkan hasil lama ke naskah sebelum struktur Bab 4/Bab 5 diputuskan.
