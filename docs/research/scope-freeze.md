@@ -37,7 +37,7 @@ Daftar resmi **20 spesies burung target** dengan total **1.216 rekaman audio** t
 | 18 | `crseag1` | *Spilornis cheela* | Elang-ular bido / Crested Serpent Eagle | 35 | 15 |
 | 19 | `ashtai1` | *Orthotomus ruficeps* | Cinenen kelabu / Ashy Tailorbird | 30 | 15 |
 | 20 | `colkin1` | *Todiramphus chloris* | Cekakak sungai / Collared Kingfisher | 40 | 14 |
-| **Total** | **20 Spesies** | | | **1.216 Klip** | **112 Author Unik** |
+| **Total** | **20 Spesies** | | | **1.216 Klip** | **111 nilai nama / 112 orang setelah pemisahan nama gabungan** |
 
 #### Distribusi Partisi Dataset Split (`data/manifests/dataset_split.csv`):
 * **Galeri (*Gallery Set*):** 673 rekaman (59 perekam independen).
@@ -47,7 +47,7 @@ Daftar resmi **20 spesies burung target** dengan total **1.216 rekaman audio** t
 
 #### Subset Negatif Open-Set (`data/manifests/unknown_open_set_manifest.csv`):
 * Total 543 rekaman kontrol negatif:
-  * 272 rekaman kontrol satwa non-burung / burung non-target (dipilih secara ketat dari 380 kandidat buffer taksa non-target pada 105 spesies Indonesia untuk menjaga rasio kuota 1:1; 108 berkas sisanya adalah buffer cadangan).
+  * 272 rekaman kontrol burung non-target (dipilih secara ketat dari 380 kandidat buffer taksa non-target pada 105 spesies Indonesia untuk menjaga rasio kuota 1:1; 108 berkas sisanya adalah buffer cadangan).
   * 271 rekaman derau lingkungan murni AudioMoth ITERA.
 * Dipartisi menjadi 233 rekaman untuk `unknown_calibration` dan 310 rekaman untuk `unknown_test`.
 
@@ -67,7 +67,7 @@ Bank derau lingkungan fisik ITERA berlokasi di `data/itera_noise/` dengan catata
 ## 3. Parameter Pra-pemrosesan Audio (Dibekukan)
 * Laju Sampel (*Sample Rate*): **32.000 Hz** (mono).
 * Durasi Segmen: **5.0 detik** (160.000 sampel).
-* Seleksi Jendela: **Energi RMS tertinggi (*Top-energy sliding window*)** dengan hop 1.25s. Terverifikasi secara akustik pada 50 sampel klip fisik (>60s dan <5s) mengunci vokalisasi biologis aktif target (rata-rata gain RMS 1.64×, centroid 4.382,5 Hz).
+* Seleksi Jendela: **Energi RMS tertinggi (*Top-energy sliding window*)** dengan hop 1.25s. Ini heuristik pemilihan segmen, bukan anotasi vokalisasi; gangguan non-burung yang keras juga dapat terpilih. Audit teknis tidak disamakan dengan verifikasi pendengaran manusia.
 * Normalisasi Energi: **RMS target 0.05** dengan pembatasan puncak kliping $\le 1.0$.
 
 ---
@@ -88,6 +88,15 @@ Tingkat degradasi derau aditif dibekukan pada 5 level:
 * **Versi 2.0 (07 September 2026):** 16 taksa burung Sumatera lama (dibatalkan akibat kelangkaan data kueri independen dan kebocoran author).
 * **Versi 1.0 (Draf Awal):** 16 spesies kosmopolitan umum.
 
-## Amendemen Scope 12 Oktober 2026
+## Amendemen Scope 12 Oktober 2026 — riwayat sebelum revisi pembimbing
 
 E4 dibatasi sebagai sensitivitas profil noise lokasi ITERA dalam additive mixture. H3 diuji sebagai stabilitas retensi lintas lima profil noise lokasi, bukan real-soundscape domain shift. Bank noise ITERA bebas spesies target; anotasi spesies target tidak diminta untuk E2/E4. Lihat `scope-reframe-2026-10-12.md`.
+
+
+## Penjelasan aktif 16 Oktober 2026
+
+Scope E4 tetap pencampuran aditif lima lokasi × empat SNR × empat ulangan atas 311 query per representasi. E4 tidak dijalankan ulang. Kesimpulan retensi saja pada catatan 12 Oktober telah diperluas oleh [revisi 15 Oktober](scope-reframe-2026-10-12.md) dengan ayunan absolut dan sensitivitas tanpa Kebun Raya. H3/H4 hasil reformulasi eksploratif; H3 asli mengenai real-soundscape belum diuji.
+
+Bank AudioMoth mencakup enam kategori konfigurasi (Amplitude/Frequency × Low/Medium/High), bukan satu konfigurasi atau enam unit perangkat yang jumlahnya sudah dibuktikan. Label verified_bird_free pada manifes adalah metadata sumber, bukan bukti tersedianya audit pendengaran independen untuk seluruh berkas. Anotasi korpus burung in-situ tetap di luar scope E4 aktif.
+
+Pemeriksaan baru menyiapkan klip E5 dan reproduksi pada lingkungan terisolasi. Semua keluarannya dicatat terpisah dari artefak beku; parameter di atas, audio sumber, serta identitas E4 tidak diubah.

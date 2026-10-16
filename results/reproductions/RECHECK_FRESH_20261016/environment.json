@@ -1,0 +1,20 @@
+{
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "venv": "C:\\Users\\Fabio\\AppData\\Local\\Temp\\ta-completion-20261016-1792085956966\\fresh-venv",
+  "base_prefix": "C:\\Users\\Fabio\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python",
+  "sys_path": [
+    "C:\\Users\\Fabio\\AppData\\Local\\Temp\\ta-completion-20261016-1792085956966",
+    "C:\\Users\\Fabio\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python312.zip",
+    "C:\\Users\\Fabio\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\DLLs",
+    "C:\\Users\\Fabio\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib",
+    "C:\\Users\\Fabio\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python",
+    "C:\\Users\\Fabio\\AppData\\Local\\Temp\\ta-completion-20261016-1792085956966\\fresh-venv",
+    "C:\\Users\\Fabio\\AppData\\Local\\Temp\\ta-completion-20261016-1792085956966\\fresh-venv\\Lib\\site-packages"
+  ],
+  "pyvenv_cfg": "home = C:\\Users\\Fabio\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\ninclude-system-site-packages = false\nversion = 3.12.14\nexecutable = D:\\FILE AND TASK\\TA\\.venv\\Scripts\\python.exe\ncommand = D:\\FILE AND TASK\\TA\\.venv\\Scripts\\python.exe -m venv C:\\Users\\Fabio\\AppData\\Local\\Temp\\ta-completion-20261016-1792085956966\\fresh-venv\n",
+  "pip_check": "No broken requirements found.",
+  "install_report_sha256": "d167e306f5ab50eedbd40c6d87b2c14fc25b0f0789d08bb715cdc2231421c53c",
+  "new_venv_created_for_this_verification": true,
+  "package_installer_download_cache_reused": true,
+  "original_embedding_caches_used": false
+}

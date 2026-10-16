@@ -1,11 +1,7 @@
 # Tests
 
-`run_all_tests.py` dan `run_tests.py` di akar proyek menjalankan pemeriksaan integritas manifes, leakage split, cosine retrieval, mixing SNR, pembekuan threshold, provenance, lima tes metode H3, dan dua tes regresi seleksi E5.
+Jalankan python -B run_tests.py dari akar proyek. Entry point tests/run_all_tests.py memuat **36 tes**: 25 integritas/metode sebelumnya, lima H3, dua seleksi E5, tiga impor catatan manusia E5, dan satu tes provenance Git E4.
 
-Struktur:
+Validasi 16 Oktober 2026: **36/36 lulus**, baik pada venv proyek maupun venv baru. Tes Git membandingkan seluruh 10 aset sumber E4 terlacak dengan SHA-256 identitas beku pada file lokal dan Git HEAD. Fixture catatan pendengaran bersifat sintetis di memori dan tidak mengisi audit manusia.
 
-- `unit/`: perilaku fungsi kecil.
-- `integration/`: hubungan manifest, retrieval, noise, dan threshold.
-- `reproducibility/`: pemeriksaan provenance dan konfigurasi.
-
-Validasi 16 Oktober 2026: 32 pemeriksaan lulus melalui `python run_tests.py` (25 sebelumnya + 5 H3 + 2 E5). Tes tidak mengunduh data, menghapus data, atau menjalankan ulang E2–E5. Kelulusan ini bukan bukti reproduksi end-to-end E0–E5 pada lingkungan baru. Lima tes H3 juga lulus secara terpisah pada klon bersih yang memakai runtime Python yang sudah tersedia.
+Tes tidak mengunduh data, menghapus data, atau menjalankan E2–E5. Bukti eksekusi ulang eksperimen tersedia terpisah pada [laporan reproduksi](../docs/REPRODUKSI_LINGKUNGAN_BARU_2026-10-16.md). Inferensi E4 tidak diulang sesuai arahan pembimbing.

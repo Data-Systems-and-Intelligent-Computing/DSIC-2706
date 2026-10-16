@@ -1,0 +1,74 @@
+{
+  "base_commit": "3ffce587e85b4c692d42ada1964a4d65ac4a25d5",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "executable": "C:\\Users\\Fabio\\AppData\\Local\\Temp\\ta-completion-20261016-1792085956966\\fresh-venv\\Scripts\\python.exe",
+  "fresh_venv": true,
+  "system_site_packages": false,
+  "initial_embedding_cache_files": 0,
+  "input_source": "SHA-256 verified copies from original local input archive; no original embedding caches",
+  "E4_rerun": false,
+  "stages": {
+    "E0": {
+      "status": "complete",
+      "elapsed_seconds": 15.583512783050537,
+      "output": "C:\\Users\\Fabio\\AppData\\Local\\Temp\\ta-completion-20261016-1792085956966\\clean-clone\\results\\reproductions\\E0_20261015_175343"
+    },
+    "clean_embeddings_R0_R3": {
+      "status": "complete",
+      "elapsed_seconds": 577.5567407608032,
+      "output": "None"
+    },
+    "E1_R0": {
+      "status": "complete",
+      "elapsed_seconds": 0.2395162582397461,
+      "output": "C:\\Users\\Fabio\\AppData\\Local\\Temp\\ta-completion-20261016-1792085956966\\clean-clone\\results\\reproductions\\E1_R0_cache_20261015T180602_935967Z"
+    },
+    "E1_R1": {
+      "status": "complete",
+      "elapsed_seconds": 1.0894286632537842,
+      "output": "C:\\Users\\Fabio\\AppData\\Local\\Temp\\ta-completion-20261016-1792085956966\\clean-clone\\results\\reproductions\\E1_R1_cache_20261015T180604_064195Z"
+    },
+    "E1_R2": {
+      "status": "complete",
+      "elapsed_seconds": 0.6781094074249268,
+      "output": "C:\\Users\\Fabio\\AppData\\Local\\Temp\\ta-completion-20261016-1792085956966\\clean-clone\\results\\reproductions\\E1_R2_cache_20261015T180604_742307Z"
+    },
+    "E1_R3": {
+      "status": "complete",
+      "elapsed_seconds": 0.1963651180267334,
+      "output": "C:\\Users\\Fabio\\AppData\\Local\\Temp\\ta-completion-20261016-1792085956966\\clean-clone\\results\\reproductions\\E1_R3_cache_20261015T180604_941591Z"
+    },
+    "E2": {
+      "status": "complete",
+      "elapsed_seconds": 564.5275537967682,
+      "output": "C:\\Users\\Fabio\\AppData\\Local\\Temp\\ta-completion-20261016-1792085956966\\clean-clone\\results\\reproductions\\FRESH_E2_20261016"
+    },
+    "E3": {
+      "status": "complete",
+      "elapsed_seconds": 1061.309160709381,
+      "output": "C:\\Users\\Fabio\\AppData\\Local\\Temp\\ta-completion-20261016-1792085956966\\clean-clone\\results\\reproductions\\E3_open_set_20261015T181529_586741Z"
+    },
+    "E5": {
+      "status": "complete",
+      "elapsed_seconds": 182.9606740474701,
+      "output": "C:\\Users\\Fabio\\AppData\\Local\\Temp\\ta-completion-20261016-1792085956966\\clean-clone\\results\\reproductions\\E5_diagnostics_20261015T183310_834932Z"
+    },
+    "H3_stored_E4_statistics": {
+      "status": "complete",
+      "elapsed_seconds": 7.318493843078613,
+      "output": "0"
+    },
+    "integrity_suite": {
+      "status": "complete",
+      "elapsed_seconds": 11.02466106414795,
+      "output": "0"
+    }
+  },
+  "torch_cuda_available": false,
+  "torch_threads": 6,
+  "onnx_providers": [
+    "AzureExecutionProvider",
+    "CPUExecutionProvider"
+  ],
+  "status": "COMPLETE_EXCEPT_E4_RERUN_EXCLUDED_BY_SUPERVISOR"
+}

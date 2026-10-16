@@ -1,5 +1,7 @@
 # Draf Chat Laporan kepada Pembimbing
 
+> Catatan tahap sebelumnya. Status lanjutan dan bukti reproduksi baru tersedia pada [pemeriksaan akhir 16 Oktober](PEMENUHAN_REVISI_2026-10-16.md); gunakan [draf chat terbaru](DRAF_CHAT_PEMBIMBING_2026-10-16.md).
+
 Izin melaporkan tindak lanjut revisi TA saya, Pak. Revisi utama sudah saya push ke repository DSIC-2706 pada commit 8bf5441:
 https://github.com/Data-Systems-and-Intelligent-Computing/DSIC-2706/commit/8bf54415859f3473105c68c369832c2f66522fd8
 

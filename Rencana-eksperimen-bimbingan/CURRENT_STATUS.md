@@ -26,12 +26,11 @@ Pada −5 dB tanpa Kebun Raya, ayunan relatif R1 = 0,065937 dan R2 = 0,083724; C
 
 Analisis membaca raw E4 tersimpan, tanpa pengubahan threshold atau data. Lima profil noise bukan rekaman burung target in-situ. Bootstrap memegang lokasi serta segmen noise tetap. Cache baru hanya dapat dibangun pada direktori baru dengan provenance tersendiri; README menjelaskan prasyarat dan perbedaannya dari input historis.
 
-## Pemeriksaan lanjutan dan Gate 4
+## Pemeriksaan akhir dan Gate 4
 
-Suite utama lulus **32/32 tes** (25 sebelumnya + 5 H3 + 2 regresi E5). Sebanyak 19 aset identitas E4, 320 snapshot, dan 41 bahan laporan lama tetap cocok checksum. Reproduksi statistik H3 pada klon bersih menghasilkan CSV identik, tetapi memakai runtime proyek yang sudah tersedia.
+- **Reproduksi yang diizinkan selesai:** klon terpisah, venv baru, 3.289 input salinan terverifikasi, tanpa embedding lama; E0, ekstraksi clean R0–R3, E1, E2, E3, E5, serta statistik H3 selesai. **41/41 perbandingan cocok**, selisih numerik maksimum 0,0.
+- **36/36 tes lulus** pada lingkungan lama dan venv baru. Tes Git memeriksa seluruh 10 aset sumber E4 terlacak. Byte tiga helper kini cocok dengan hash historis setelah checkout.
+- **Audit manusia belum selesai:** 120 kasus sudah memiliki 276 klip terverifikasi, halaman pemutar/catatan, dan importer CSV baru. Masih 0/120 ulasan formal tercatat.
+- **Inferensi E4 tidak diulang** sesuai pembimbing. Ini batas reproduksi, bukan kekurangan pelaksanaan E4 aktif. Naskah masih draf untuk pemeriksaan pembimbing.
 
-**Gate 4 belum tuntas:** audit pendengaran formal 120 kasus E5 dan reproduksi penuh E0–E5 pada lingkungan baru masih terbuka. Lembar audit masih 0/120 ulasan tercatat. Kekurangan kolom kelompok pada ekspor E5 diperbaiki untuk eksekusi berikutnya; pilihan/nilai 120 kasus historis tetap sama dan sumber hasil tidak ditimpa.
-
-- [Laporan pemeriksaan ulang dan alasan pekerjaan terbuka](PEMERIKSAAN_ULANG_GATE_2026-10-15.md).
-- [Petunjuk audit pendengaran E5](audit-pendengaran-E5/README.md).
-- [Draf chat pembimbing](DRAF_CHAT_PEMBIMBING_2026-10-15.md).
+[Catatan pemenuhan revisi](PEMENUHAN_REVISI_2026-10-16.md), [protokol reproduksi](../docs/REPRODUKSI_LINGKUNGAN_BARU_2026-10-16.md), [paket audit pendengaran](audit-pendengaran-E5/README.md), dan [draf chat terkini](DRAF_CHAT_PEMBIMBING_2026-10-16.md).

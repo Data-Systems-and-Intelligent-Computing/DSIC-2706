@@ -1,0 +1,53 @@
+{
+  "checked_local_date": "2026-10-16",
+  "E4_assets": {
+    "R0_cache": true,
+    "R1_cache": true,
+    "R1_checkpoint": true,
+    "R1_metadata": true,
+    "R2_cache": true,
+    "R2_checkpoint": true,
+    "R2_metadata": true,
+    "R3_cache": true,
+    "R3_metadata": true,
+    "dataset_manifest": true,
+    "e4_script": true,
+    "embeddings_code": true,
+    "mix_noise_code": true,
+    "noise_identity_code": true,
+    "noise_manifest": true,
+    "preprocess_code": true,
+    "query_identity_code": true,
+    "retrieve_code": true,
+    "run_identity_code": true
+  },
+  "E4_Git_source_assets": {
+    "dataset_manifest": true,
+    "e4_script": true,
+    "embeddings_code": true,
+    "mix_noise_code": true,
+    "noise_identity_code": true,
+    "noise_manifest": true,
+    "preprocess_code": true,
+    "query_identity_code": true,
+    "retrieve_code": true,
+    "run_identity_code": true
+  },
+  "E4_snapshots_verified": 320,
+  "original_report_materials_verified": 41,
+  "E5_cases": 120,
+  "E5_local_clips_verified": 276,
+  "formal_human_reviews_recorded": 0,
+  "fresh_reproduction_comparisons_matched": 41,
+  "maximum_numeric_difference": 0.0,
+  "tests": {
+    "original_venv": 36,
+    "fresh_venv": 36,
+    "fresh_clone_pipeline_suite_at_base_commit": 32
+  },
+  "no_E4_inference_rerun": true,
+  "source_file_preservation": {
+    "files_in_initial_inventory": 4698,
+    "unexpected_changes": []
+  }
+}

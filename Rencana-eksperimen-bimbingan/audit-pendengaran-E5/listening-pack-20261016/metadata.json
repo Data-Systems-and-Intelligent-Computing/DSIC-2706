@@ -1,0 +1,2195 @@
+{
+  "status": "LISTENING_MATERIALS_VERIFIED_HUMAN_REVIEW_PENDING",
+  "created_utc": "2026-10-15T17:47:30.743348+00:00",
+  "script_sha256": "046fd5b14ceff77d21f54a4fa26e92d789a2423f05816afd336673b5afa781c1",
+  "source_review_sheet_sha256": "8f9b400b34d82c516f93a346111607f66c7c02320b299cff571805ba2f602c55",
+  "cases": 120,
+  "unique_clips": 276,
+  "export_format": "WAV IEEE float32; exact sample roundtrip verified",
+  "sample_rate_hz": 32000,
+  "duration_seconds": 5,
+  "mixture_identity_and_SNR_verified": true,
+  "human_reviews_created": 0,
+  "source_hashes": {
+    "results/reproductions/E2_controlled_20261012T021600_897497Z/raw/R0_Clean.csv": "805c86ce2a784b865405cadee813d43422c27f2bed3525eeed42ca0c685093db",
+    "data/xeno_canto_indonesia/lessho1/XC105844.mp3": "1a45c4a72feacd4f770dff6f8ee512a8e1d347b0551f6486dbb018cf3efd095e",
+    "data/xeno_canto_indonesia/lessho1/XC576635.mp3": "56b6f2197a624b066b2bc833704e5870894e2019b98cd4678372eed3a147e804",
+    "data/xeno_canto_indonesia/colkin1/XC152203.mp3": "f12c9c7d28f502652fa0ee7d853c0d1f0793f7a73c6e8c50eb0244a57cdb3976",
+    "data/xeno_canto_indonesia/colkin1/XC69653.mp3": "cbe36e139f64333393390151f35351dfe42ba3ff72458abe8f621efe25f985d2",
+    "data/xeno_canto_indonesia/rubcuc1/XC19846.mp3": "731d1bf39264b4dde170d9e0a35ab3869adaa0cea912f75d987aea925d24c89d",
+    "data/xeno_canto_indonesia/subwar1/XC737850.mp3": "564aba62be2f817a4f2fd18272772d7c71e97f2927a005d7acec8c5857e11513",
+    "data/xeno_canto_indonesia/comior1/XC214418.mp3": "38ba0864e18643ba514c08fe1d1a419e0f82d991555f8a8d93b377f9943cc134",
+    "data/xeno_canto_indonesia/moutai1/XC179384.mp3": "dabed1336e99d1bf2deae75947866834645afc3baf0db942bc444e939182b431",
+    "data/xeno_canto_indonesia/latnig1/XC612584.mp3": "175edcab31011916f5f3befd8219acdbf201416d86cd0b36c6f740d2cbff72c5",
+    "data/xeno_canto_indonesia/moutai1/XC395510.mp3": "67c1e7a349a7f8e66372b2d511a1cc7b36d6bd44034ad4ecf82a66fb22f77b88",
+    "data/xeno_canto_indonesia/whbsho1/XC70339.mp3": "cf32fc6298729fefc456d5baaaf09a2c5348edfc697eb887f380df2ad1d0cfd2",
+    "data/xeno_canto_indonesia/sohbul1/XC153017.mp3": "13c845ee6d78edcb1b15dc705e86de19cc13a3b7f342807b93e17a8c0ea70b6d",
+    "results/reproductions/E2_controlled_20261012T021600_897497Z/raw/R0_SNR_-5dB.csv": "84149d330150d7b0bb4882bc476bb8c5b5b30c84e00c63fa639fc755e74f0c58",
+    "data/xeno_canto_indonesia/comior1/XC236320.mp3": "b3df5fa4b1d6e2fa0d13f8e09614c42fbb0705d8f59c1fa2e1824201f97540ea",
+    "data/itera_noise/Gedung F Frequency/32 kHz Low Frequency/20260923_101900T.WAV": "b90ccdf9e9a1334b1a12f3ed97bfa183b98824e374cbacb4196359f5d85d2e56",
+    "data/xeno_canto_indonesia/comior1/XC198426.mp3": "aaa82bc0ea1ff0ca78a9104f0bc88760e4e613a3f5961e1ebacf62a0743dcff8",
+    "data/xeno_canto_indonesia/sohbul1/XC233697.mp3": "567d75f75acc2faaba22c99113c602b6ab7f7388a87948175ab6be41da864f51",
+    "data/itera_noise/Sekitar GKU 1 Amplitudo/32 kHz Low Amplitudo/20261005_101900T.WAV": "143fa6db59538ad49fdc583eb1fcc06bdc61b656a5c00df8ea9d9466afc47943",
+    "data/xeno_canto_indonesia/sohbul1/XC110294.mp3": "d42c70c02d0f59c8bcec224e4189c0dc781eaa443f11a4ec259a632d343cca65",
+    "data/xeno_canto_indonesia/moutai1/XC152138.mp3": "1943aa4cff309f77505369c07d6c9983861f1673f94485ff5c5ff79111220a2b",
+    "data/itera_noise/Embung F ITERA Frequency/32 kHz Medium Frequency Embung F/20260920_140600T.WAV": "f75cb9aa549c394dea8617d88892c2189e0d31a5759a6813c6d45ae227b72c90",
+    "data/xeno_canto_indonesia/suncuc1/XC36872.mp3": "2d4feedee850c8ed8d297e234bb4e58f9d0b4c78204f4ccb77d5a1ec8a6ce6e2",
+    "data/xeno_canto_indonesia/pygcup1/XC292408.mp3": "f33f0262000940c87875665e4e54f1aed8a95a9bb8e6114379b1b11bc0e136be",
+    "data/itera_noise/Gedung F Frequency/32 kHz Low Frequency/20260923_105200T.WAV": "2630766bc2ffaabece7fe46866ad143627eddfbfd7ba3e52e9c2b69426836e31",
+    "data/xeno_canto_indonesia/comior1/XC198428.mp3": "27092f958136dc12f0f5757995956e7923bc4b0f73988b9064dc90a4ecfe2c2f",
+    "data/xeno_canto_indonesia/moutai1/XC687359.mp3": "ded40ac44b69ad8cbd26270a3dafd733f781d52ae50d49f5d8743097a1741390",
+    "data/itera_noise/Masjid At-tanwir Amplitudo/32 kHz High Amplitudo/20261002_152500T.WAV": "05c33cbd06bebc6a942a523eb1711d1eb802d1841efc8645ef7c9a10b74dd8c1",
+    "data/xeno_canto_indonesia/subwar1/XC154541.mp3": "277f4a406a19147491c9e182be6276c43977da79ed530fed56da32d754dc67c2",
+    "data/xeno_canto_indonesia/pygcup1/XC691485.mp3": "44280b6ee7e2cdc76b43dcaa6bc735d955f112ee191434ee9fcc2849bbe54f64",
+    "data/itera_noise/Masjid At-tanwir Frequency/32 kHz Medium Frequency/20260918_151000T.WAV": "8bfe5b58e6130afd0a792bda38f7a4d7f589b9894023966bb289faa82303c6e2",
+    "data/xeno_canto_indonesia/moutai1/XC68927.mp3": "885675676023094754576f5ad34e66d3acaf643072d92a37f73bf204ff40b3c5",
+    "results/reproductions/E2_controlled_20261012T021600_897497Z/raw/R0_SNR_0dB.csv": "df35195e0820d19be2987aff11ddc3f8ecae5b64ef11579a88a0bc51638250dc",
+    "data/xeno_canto_indonesia/comior1/XC243350.mp3": "bf881e334dccf039bea28efa421e136524ee01a1091fb38fd01f891796259a16",
+    "data/itera_noise/Gedung F Frequency/32 kHz Medium Frequency/20260923_120100T.WAV": "357da87c0e0e5291f8726111346b542f633c68262fe4d4da5b12e50305ffeeca",
+    "data/xeno_canto_indonesia/comior1/XC152928.mp3": "088d70167f027f0aa92471d75332ba4946ffe6dae452c2196546e4b5637a1e11",
+    "data/xeno_canto_indonesia/rubcuc1/XC618464.mp3": "de602f351137e7fef9d80997474c7279631c881476fef714f8be15abe845cf84",
+    "data/itera_noise/Kebun Raya Frequency/32 kHz Medium Frequency Kebun Raya/20260922_120600T.WAV": "655cbf126c6c96d86f36bea031e2aa2483a151893333c59397a34bb6d24addf5",
+    "data/xeno_canto_indonesia/rubcuc1/XC67797.mp3": "aacd273f62a1aaf44e666fa29d78ec60e848d2c0c27e94dd0714c0588068a708",
+    "data/xeno_canto_indonesia/lessho1/XC241658.mp3": "fde4a2ba70efcda9354126169a96e63dd178d43c8c35e6400906349bb64e6dfe",
+    "data/itera_noise/Embung F ITERA Amplitudo/32 kHz Medium Amplitudo/20261004_140200T.WAV": "188b54279768abbda8f3019eb45113f86bb0c08434495fbecb03a7d45fb17158",
+    "data/xeno_canto_indonesia/moutai1/XC122050.mp3": "579123dff88895dbb32ba1e6f24ba1bf6436df43b79dc83945d825191819d66b",
+    "data/xeno_canto_indonesia/olbsun1/XC823476.mp3": "29ff36c3858103c3298a673523bc507c555d00118e8df019a2442769c0a264e1",
+    "data/itera_noise/Embung F ITERA Frequency/32 kHz High Frequency Embung F/20260920_160900T.WAV": "3ffd2b9fb5d602a691c557783f51986820d51ac4fafc10f5c7a0df61f499205f",
+    "data/xeno_canto_indonesia/subwar1/XC67917.mp3": "c1823d4898096576961e65d048fc6d43a6d8dc5e257c50250c6eb6da09e69f81",
+    "data/xeno_canto_indonesia/latnig1/XC151699.mp3": "3df0cd389da235fd70beae4b977c4d5d46bf511d8345a3698b827fcac3b2a3c9",
+    "data/itera_noise/Gedung F Amplitudo/32 kHz High Amplitudo/20261001_153300T.WAV": "b14059bc27f43db39b9809db8d1b332657adf804f1b092770af37b155a19ce2c",
+    "data/xeno_canto_indonesia/pygcup1/XC69229.mp3": "d20ac4f5280238a1bbc5ed992288011c2a01d029aab4323b6ec05f5d62c6be9b",
+    "data/xeno_canto_indonesia/hacdro1/XC151837.mp3": "7647f085efef63e29d0050f2bfc3f8e98c96ad03932c1aeec9d8742101a4ffad",
+    "data/itera_noise/Gedung F Frequency/32 kHz Medium Frequency/20260923_115300T.WAV": "ba97d133540ea2d46d48c76dc5d7ae12cabe069a51c1cfd223a3c5f30e7c8c57",
+    "results/reproductions/E2_controlled_20261012T021600_897497Z/raw/R0_SNR_10dB.csv": "aed2d8e324df575df44934b0a865c7640564671d8360d4a252d6e3e08a5b2e1f",
+    "data/xeno_canto_indonesia/hoopit1/XC681137.mp3": "6a27134792c9a184deedbcaadc6526cd7637986a9f5b7267d4ccc0c05f07abae",
+    "data/itera_noise/Kebun Raya Frequency/32 kHz Medium Frequency Kebun Raya/20260922_124800T.WAV": "be55e6af25ab98206a9f6d233e7a6a5e85dca5b448cd99df513612ec6dfe2548",
+    "data/xeno_canto_indonesia/hoopit1/XC202672.mp3": "aeaf64ca4f90a602e95b4f103938086672d4a12d4c7d751bfdf680fd8da30fc1",
+    "data/xeno_canto_indonesia/rubcuc1/XC820624.mp3": "ca70fd62ca0bac0283af96066781c167fe03c9e96bd81359b39f67088fa5cb40",
+    "data/itera_noise/Kebun Raya Frequency/32 kHz Medium Frequency Kebun Raya/20260922_122800T.WAV": "f5eaebb0ee5db7ebee021148d566fc9230be236c5c6b619cfb435168a85aa26f",
+    "data/xeno_canto_indonesia/rubcuc1/XC67798.mp3": "cf56e7d48c126a66914aeab898b81547a411003e28712a257ccc6d839a414ef6",
+    "data/xeno_canto_indonesia/moutai1/XC152139.mp3": "0a5dde0386210c1728f2eee4f92e961aa7b0ccaf585f06770b003a4b9dc20096",
+    "data/itera_noise/Embung F ITERA Frequency/32 kHz Medium Frequency Embung F/20260920_144200T.WAV": "fe95bef94d7b73340da5ef4fdf30b5e713345c8266a9e81b37b2a1bcf495b5b1",
+    "data/xeno_canto_indonesia/moutai1/XC289594.mp3": "fdfc872e575118a056e8211c6c2371a2d3688016e06043ebd8e71ae3cafb8b64",
+    "data/xeno_canto_indonesia/whbsho1/XC90803.mp3": "3a24f285a00e010e0e5b0de55aa7500580fa11d283d9cb3fd8c03d9b074c60f1",
+    "data/itera_noise/Kebun Raya Amplitudo/32 kHz High Amplitudo/20261007_134900T.WAV": "87a7d44b35ad39153f6b76d22a1be09c6fe95f02180fe0017390816e3ea906c6",
+    "data/xeno_canto_indonesia/savnig1/XC150446.mp3": "04aa5f90a85cdcb759300d7b955dae1c60a317ec643209320fd6725ab8de28c0",
+    "data/xeno_canto_indonesia/gpipig1/XC611790.mp3": "c75c886bef5bc45df50e72ed443c80c623eea04f2f4217de35c6a6b01039a229",
+    "data/itera_noise/Gedung F Frequency/32 kHz Medium Frequency/20260923_115400T.WAV": "bf1b7177736636d26656a875cda777346b4c07b8eef40977e6fec06883342e35",
+    "data/xeno_canto_indonesia/comior1/XC198430.mp3": "8f7f0f52427a76970711a3f91508ca3992267b1bd05f14f39c6891cc9a9222bb",
+    "results/reproductions/E2_controlled_20261012T021600_897497Z/raw/R0_SNR_20dB.csv": "27610c7c9a14132ffa1fb44b89f0f9a2073809ac0539bf19f45c89de1d4577e0",
+    "data/xeno_canto_indonesia/hoopit1/XC23126.mp3": "8ea157ac49eff60c6c758f26aed3e238308d72df7cc90de7cb978a630ff2cac9",
+    "data/itera_noise/Masjid At-tanwir Amplitudo/32 kHz High Amplitudo/20261002_150100T.WAV": "63dd86b9ca65f7e9cf6af6e9d7c7ba26ea0fc56ccebcc34d1c3ab39d3ff350ae",
+    "data/xeno_canto_indonesia/hoopit1/XC409825.mp3": "ad42539b560a08cff0ad4d3de83a2d4feba08963826f2dae1b6507dbca6fbc4d",
+    "data/xeno_canto_indonesia/ghcfly1/XC204130.mp3": "d1dd1a98c97eb9fcb521fa7408ab7629a7a1d23f7a89a3514758446ced59ad98",
+    "data/itera_noise/Kebun Raya Frequency/32 kHz Medium Frequency Kebun Raya/20260922_124400T.WAV": "60109268ca2dfac83c5ba664898dd11b48670a65c3e18a44f2e75de0d8c1a3cf",
+    "data/xeno_canto_indonesia/ghcfly1/XC197757.mp3": "b000f1aef9201baec125eba00c858d7fae56e95702caebef3669118a354db914",
+    "data/xeno_canto_indonesia/moutai1/XC823486.mp3": "52f4c998818cf8307676910394f7083c337d05e933c9323e81ce6623bad71df8",
+    "data/itera_noise/Embung F ITERA Amplitudo/32 kHz Low Amplitudo/20261004_130900T.WAV": "d7bf7797232b83e9a740668caeb6dbdcfa530c51e8529c65e8a0bc3950c2f8a6",
+    "data/xeno_canto_indonesia/pygcup1/XC737848.mp3": "460aadb6a42bc38c4b69def82ad2c257f6ced6cc0a038697218c826e93cc78a0",
+    "data/itera_noise/Embung F ITERA Frequency/32 kHz High Frequency Embung F/20260920_155200T.WAV": "80483d0db49b8c220e7a06be8c64c0a861a916c50a4b8b3f703fd7728b9f7e84",
+    "data/xeno_canto_indonesia/colkin1/XC204535.mp3": "5dbfa449d7507e3938f0b3c59526cf481edf5ad80f204aa11a0e01ed10494b78",
+    "data/itera_noise/Kebun Raya Frequency/32 kHz Low Frequency Kebun Raya/20260922_150900T.WAV": "8c5fd21e427c6301d773ef5e4e70b81b9fbf128afe34719905205f31fb7d2777",
+    "data/xeno_canto_indonesia/hacdro1/XC413920.mp3": "f7538c3835a7f7540961876257df167f875c52ca8cb981af94540e32ab6872eb",
+    "results/reproductions/E2_controlled_20261012T021600_897497Z/raw/R1_Clean.csv": "b90ea6a6929003a8b9962e2382adbc76ed5e45ed5aec0e42ebffc640dae5a6ad",
+    "data/xeno_canto_indonesia/gpipig1/XC151828.mp3": "9428cca98463fafdbeec6cc57aa7d7f06543c2ba8c288a61b84f87b7563142c0",
+    "data/xeno_canto_indonesia/gpipig1/XC331995.mp3": "a471ba515b7a73d7afad143fba18e8a663d5f9189ed6ef79855ea74bac9ded4f",
+    "data/xeno_canto_indonesia/moutai1/XC203358.mp3": "a78e0b103a01e808cfb94725aba76d8c27c4bfbf6fc247191a2388a190244036",
+    "data/xeno_canto_indonesia/moutai1/XC417893.mp3": "20d603cbff0ea732664fa043a6f07e47ad26f68f87399349eb87ff49dc5777f5",
+    "data/xeno_canto_indonesia/horbab1/XC90931.mp3": "60baf7fdfba9611b1b68eee296f4702e827901ae229ccad13a62b49d4071304b",
+    "data/xeno_canto_indonesia/suncuc1/XC70236.mp3": "b563ec13538d3f90abf6936fea627ea1bda9c30820911ceb5844b5187feaa2c1",
+    "data/xeno_canto_indonesia/moutai1/XC89583.mp3": "b037d2b3f43a580b19a75bf5b5004dfbc46f46c313a46ca71ca3bf416e61ec29",
+    "data/xeno_canto_indonesia/crseag1/XC965048.mp3": "30985598fb001df7e6cbf57a4dd2c181dd2345e6b0cc9f003b321c372a00133f",
+    "data/xeno_canto_indonesia/ghcfly1/XC616845.mp3": "bfa2ff0a19d4f64f1aab3098ac8adc3ee8b309cf27d32f2a7f61dc71ac63ee78",
+    "data/xeno_canto_indonesia/ashtai1/XC236330.mp3": "7fe8e8a868d5977ad1246e564f24947336b59b38d1d2a4303d0643a2a9a75fd4",
+    "data/xeno_canto_indonesia/comior1/XC38504.mp3": "e5773fb40f2630634208323705f4158172535b576583e29392462de6009e3f68",
+    "results/reproductions/E2_controlled_20261012T021600_897497Z/raw/R1_SNR_-5dB.csv": "83acfa5bda958f66eb4bbab491ea36a5631cc505db98f0bcdf911d8b26f1adeb",
+    "data/itera_noise/Masjid At-tanwir Frequency/32 kHz Medium Frequency/20260918_153900T.WAV": "c201deb8c6a118a87d7c9f141d0540b0b5838051dee5e76089514d93dc404a49",
+    "data/xeno_canto_indonesia/latnig1/XC196627.mp3": "d5475f10dfd72b92108726e233ca4c86efa86a172dc656ca08da0a5f67b34470",
+    "data/itera_noise/Sekitar GKU 1 Frequency/32 kHz Low Frequency/20260930_151300T.WAV": "5655500f07da057aff95db02808258b578ff386395c680b4dc75c825ef9b3c3d",
+    "data/xeno_canto_indonesia/crseag1/XC143550.mp3": "1d2309569df0f9e4f6de5e9fb19e92b9c1916f57dbb54ef26d6fa4934a195bc6",
+    "data/xeno_canto_indonesia/crseag1/XC482238.mp3": "cc837709d9859321bbae0995f309a22b8ecbefb3e04f8afe28773b5c54371058",
+    "data/itera_noise/Embung F ITERA Amplitudo/32 kHz High Amplitudo/20261004_152100T.WAV": "2ffc3d9ccd6e407a4730bc7de7364493ac4b7683dc86c11d531af57057b1316c",
+    "data/xeno_canto_indonesia/moutai1/XC201903.mp3": "f19ebc028143d87050302a4b97a4d807239c4e1febcff6815edd45f00f528cba",
+    "data/xeno_canto_indonesia/hacdro1/XC615530.mp3": "5272e3762fe8d5e9d86357220cc183757ccb6bcca866576b44e3dd1460ae7240",
+    "data/itera_noise/Sekitar GKU 1 Frequency/32 kHz Low Frequency/20260930_145800T.WAV": "3f10fe7e914d64a0f232a38f52ff6b08fa372c16fb8eb55a28574567b75e6823",
+    "data/xeno_canto_indonesia/suncuc1/XC195591.mp3": "4d87e3160828600d1fae96a6b4eb985e9d83d9340da755b8979b88a668bb5e82",
+    "data/xeno_canto_indonesia/crseag1/XC618811.mp3": "ef614cdbee1dfbef06506f7bf889fcf9c58020c6eed7b7a12e713aceb707956e",
+    "data/itera_noise/Sekitar GKU 1 Amplitudo/32 kHz Medium Amplitudo/20261005_120400T.WAV": "e181f6f4afd024f15919e6400185fbc9dfa87f59d8e09c183dd73c82788d0557",
+    "data/xeno_canto_indonesia/subwar1/XC30756.mp3": "6e78b39cf6b0312f276491ad185c8fbddc43a8216f770a6c6b2abd2bade7ab42",
+    "results/reproductions/E2_controlled_20261012T021600_897497Z/raw/R1_SNR_0dB.csv": "c379afba9fa230b54db5c0a2f4ddeaa8f5215032c3c2c7ee8bb10e6e137ff7f4",
+    "data/xeno_canto_indonesia/colkin1/XC293219.mp3": "8173d3eb7ad74a7a858136da3736cbf647eb7226ccc3e0788b0f7dbd8acfef72",
+    "data/itera_noise/Embung F ITERA Frequency/32 kHz Low Frequency Embung F/20260920_134200T.WAV": "abedc7d51389f79ad380da6ebeb36137d4fabdbc237dc257a23774c8f00fa235",
+    "data/xeno_canto_indonesia/colkin1/XC151642.mp3": "93582ceb94797f9c8f7dcf8ee539d0d7501a8be5ece81a1c9d6b9cfd72cf9197",
+    "data/xeno_canto_indonesia/rubcuc1/XC40242.mp3": "2ac771c11d0570655b7fa49b5e7b2e800615fae895fb8509b90c8c8b59acd887",
+    "data/itera_noise/Masjid At-tanwir Frequency/32 kHz Low Frequency/20260918_135900T.WAV": "e6e3a51d6bf441b552438faa8f0b9212cd4b19d7b328102c718a5dfb7c4ebf2c",
+    "data/xeno_canto_indonesia/rubcuc1/XC575535.mp3": "0c64af11ce3571595d7ecd8d332f4c34a28ea500daac450e682cb08891c2eb64",
+    "data/xeno_canto_indonesia/hoopit1/XC33651.mp3": "e39b84a79b662ec5e8a59c8369c4e7c3fba408cf1d18c94db8fbf654b4b3ab96",
+    "data/itera_noise/Masjid At-tanwir Amplitudo/32 kHz High Amplitudo/20261002_151200T.WAV": "b1dac5d5b0d6ed7f4714a59dea276749cfd7a49889f7ae4e5f882f05cf9bde0e",
+    "data/xeno_canto_indonesia/olbsun1/XC68830.mp3": "122c2f0a50e9820f3f28b7d1bbd69913a96768f9272b19dc6ddc29f5d3df4a0c",
+    "data/xeno_canto_indonesia/moutai1/XC823688.mp3": "739baadfd79dd9785d9112bfcb3f93a12d62197fe652ea867ce8092f3ee9951f",
+    "data/itera_noise/Gedung F Amplitudo/32 kHz Medium Amplitudo/20261001_090900T.WAV": "028e6540903c83ad0206f5fc2855e9062ea33c392f2efaf9a43d235694dfb26c",
+    "data/xeno_canto_indonesia/pygcup1/XC69232.mp3": "17ba89473bb14ea73869654c567a6a7af14aba735e8b78ea3b7ad7b152079edd",
+    "data/xeno_canto_indonesia/suncuc1/XC204329.mp3": "f67746b1a8df4840d9c1e71ebee30d986800deb5f4c7d07fc41c1cb918bbb51d",
+    "data/itera_noise/Embung F ITERA Amplitudo/32 kHz High Amplitudo/20261004_150100T.WAV": "9b20cd41a3cf216ac29dc7899df73e47cf96a838ad930c65343f005601ce54c5",
+    "data/xeno_canto_indonesia/moutai1/XC200542.mp3": "426dc891feb0ece34ef6c1024c1a420d62c0d71876ae30569594a18aa63a75a1",
+    "data/xeno_canto_indonesia/savnig1/XC1098971.mp3": "3f462633f7dac1371d3a2b915701f4c58a12cc94ed0188ffec081dc73db93416",
+    "data/itera_noise/Sekitar GKU 1 Amplitudo/32 kHz Medium Amplitudo/20261005_120100T.WAV": "9a3a527e79d74f4351a10c9584b2d49ce721e746234afbccd8dd9eadf705d8c0",
+    "data/xeno_canto_indonesia/pygcup1/XC69236.mp3": "a00654f172da4bb19ffa825788e1b30c4f0df1e40f7cfe7edc94b4f64f280e0b",
+    "results/reproductions/E2_controlled_20261012T021600_897497Z/raw/R1_SNR_10dB.csv": "af39e72a26cfedc2d3aecceaf49c4fc01561ff71e5af6573db4cd7eb9e75fa27",
+    "data/xeno_canto_indonesia/crseag1/XC638365.mp3": "cc8b1f50bf81be669be697172dc3109ebcce061c7631e1b7a7adfb5485d621f9",
+    "data/xeno_canto_indonesia/pygcup1/XC204314.mp3": "4a7c2dd7b155d3ca7e8b985a2552cb1ee6cca41048672ab12532bb2052fda678",
+    "data/xeno_canto_indonesia/pygcup1/XC923993.mp3": "45b9c52b3d8836205f72614401f9b07e3508961dacf27fa74ed8618cb032803e",
+    "data/xeno_canto_indonesia/horbab1/XC618419.mp3": "abe9c3c72ba60a9913c921b860f90cc26daebd7412a712250dcc03b863a10402",
+    "data/itera_noise/Sekitar GKU 1 Frequency/32 kHz Medium Frequency/20260930_160400T.WAV": "e4474991f5c2f24339bd86c60d6d1aa48e986c8aa38146b0f57d2386355457c8",
+    "data/xeno_canto_indonesia/sohbul1/XC284505.mp3": "564e683fdd04075ae8d0311a7ef779f62526e7f4874ae2b885f08319a26eb565",
+    "data/xeno_canto_indonesia/whbsho1/XC204332.mp3": "89ee82e13743fd1a9b0ff852ec30c641392e9cc4526691fe8d6f37ddfd638338",
+    "data/itera_noise/Gedung F Frequency/32 kHz Medium Frequency/20260923_122100T.WAV": "7da44f4c744aff97a35fd2ed2eccc62b82f975167eb33a9392d2e847f4f45f59",
+    "data/xeno_canto_indonesia/comior1/XC284767.mp3": "91c891f878ee663dc63ce417dffdc5e1733a5d5f315cf3f84d24734d1b988f5d",
+    "data/xeno_canto_indonesia/hacdro1/XC825283.mp3": "697f2e5e809f21678a56d2b74200d2c9fca0f72ef2d9ab3ffd24f19147e21394",
+    "data/itera_noise/Kebun Raya Amplitudo/32 kHz Low Amplitudo/20261007_103900T.WAV": "122f429b5af1191c91bf1d8c4d51347088e57bbd6d835ac1dfd3b88bd1af82d4",
+    "data/itera_noise/Masjid At-tanwir Frequency/32 kHz Low Frequency/20260918_142200T.WAV": "3f7b53e4224563900a6b485525a7981a1cce167b8ef06c1cdd48dd96535c5005",
+    "data/xeno_canto_indonesia/suncuc1/XC361000.mp3": "b759013df0ff7037355c7458d887c2bdad58059161fcba14e86a0724eeca2367",
+    "results/reproductions/E2_controlled_20261012T021600_897497Z/raw/R1_SNR_20dB.csv": "df8707d6ee04b83c4e042de0865697e781462dfb8bd947c651c8064c41c3e880",
+    "data/xeno_canto_indonesia/gpipig1/XC20214.mp3": "4dccbf15bb5d752184c22e537290e99b969fe71cd25b879db3b8361ad048b101",
+    "data/itera_noise/Masjid At-tanwir Amplitudo/32 kHz Medium Amplitudo/20261002_131900T.WAV": "bdfa62ee3e954f67c3d10e584448445e248f3f0c6f703fa2f62a38bfe62a0b29",
+    "data/xeno_canto_indonesia/gpipig1/XC350930.mp3": "31c1943e3bc5ce295e2f21711ef3c37903d3681bb87dcc6a1820577758d23f31",
+    "data/xeno_canto_indonesia/latnig1/XC204789.mp3": "4f6206bcbcf15d26cc7594a3103462b49134806ab97ffeddb934858543f95761",
+    "data/itera_noise/Embung F ITERA Amplitudo/32 kHz Medium Amplitudo/20261004_134500T.WAV": "b1171f1eebd3e00db657ff45dc56be563a04805a9b1933dd08245624b7285991",
+    "data/xeno_canto_indonesia/latnig1/XC351670.mp3": "6987557fecad882f45a61ad5d313b41542b712d347f0dc98ffdd1bdd38b55ca5",
+    "data/xeno_canto_indonesia/horbab1/XC90930.mp3": "0efa7f4c4b10061270facb915a2c49a5f1087b9a497aafe1f051ae18b3f3e35f",
+    "data/itera_noise/Gedung F Amplitudo/32 kHz High Amplitudo/20261001_152800T.WAV": "ca6ef656a1590756fc852bc73db5d04e531f372f69ffb0bb5f8a9dcd734980f9",
+    "data/xeno_canto_indonesia/moutai1/XC176894.mp3": "ba69f59c323b74e5f9b2a07ec171ef5f85a742d8dfc9911bb4dd7a7df6a4e1fe",
+    "data/xeno_canto_indonesia/suncuc1/XC618722.mp3": "cb4211b425f0fe1bd8ba863a3eac4bdf6455ee7c6930a894ade784e181c4d906",
+    "data/itera_noise/Masjid At-tanwir Frequency/32 kHz High Frequency/20260918_164100T.WAV": "15c2d015fe36dee714625469d9c4e2f46075b5618578da92f611f03e14025bb1",
+    "data/xeno_canto_indonesia/moutai1/XC200539.mp3": "8afa1a9d81af787499a290510a0ae607ada32a3c88898f042ee4a492f56c3324",
+    "data/xeno_canto_indonesia/colkin1/XC205073.mp3": "a98e2930716ad0dd654c1f0434f47334b9cb60d95411c18ac8d0f42560fc50b7",
+    "data/itera_noise/Embung F ITERA Frequency/32 kHz Medium Frequency Embung F/20260920_142600T.WAV": "ee181b08fe4790c3336feb4b62918b302c3d99b3059a5964a3618c3aa559c937",
+    "data/xeno_canto_indonesia/moutai1/XC502210.mp3": "ab22e71c6dc6fa727cf1fc5c21193a1a8ff01ea345eac2d275e4095ec7747934",
+    "data/xeno_canto_indonesia/colkin1/XC205148.mp3": "5eae5587463c90b7285e59c65a6f6d71ced54e8e6747307415b1b6501e6d2d0b",
+    "data/itera_noise/Masjid At-tanwir Amplitudo/32 kHz High Amplitudo/20261002_144500T.WAV": "795a596f2c2c07cb0f12b2c3597b2719e955a238e9e2332c7b51fb4a2f21740c",
+    "data/xeno_canto_indonesia/hacdro1/XC412322.mp3": "88e9e84d87bf7fb53b30975c4e395aa492d0a409dabde3d18e93fdfc8125c914",
+    "results/reproductions/E2_controlled_20261012T021600_897497Z/raw/R2_Clean.csv": "0861336e8b72dae8e3746364928627300891659779ec9f46e5baf2be24916d67",
+    "data/xeno_canto_indonesia/sohbul1/XC1175920.mp3": "5d4858d4c5a59bed727f0ed84d95861621cf32c22d29a5f1cde4aa0461058cb5",
+    "data/xeno_canto_indonesia/sohbul1/XC285032.mp3": "f7d78ca3591d505873b6d2f2f7ec80c578990b051b84a3555f26c6a51d177a02",
+    "data/xeno_canto_indonesia/lessho1/XC241654.mp3": "12a0dbbad0273668324df8f78b83ea81bfbe8caa185cebb50570ef7f753932c7",
+    "data/xeno_canto_indonesia/lessho1/XC206063.mp3": "23090157885bde7296cbae06f28bd610c570d4921b75939435e11ed52b6889ae",
+    "data/xeno_canto_indonesia/comior1/XC1082290.mp3": "d290d73192b2b77d123b4c69097271fed151bd7c699234ae1c3ae670dfebfbaa",
+    "data/xeno_canto_indonesia/crseag1/XC501306.mp3": "2903b39f547d2d3320e3a9b7321437e290df449d201550565b605360dee8124f",
+    "data/xeno_canto_indonesia/gpipig1/XC820629.mp3": "500ae5314bd1a95bdc31c54c772db9f74f3e0f118a4e84a1c803222af77c0e3b",
+    "data/xeno_canto_indonesia/suncuc1/XC141809.mp3": "2b811e96add9d3e882fc070b7070a931fddf68892cb15edba0567ea63b6c62da",
+    "data/xeno_canto_indonesia/crseag1/XC241631.mp3": "e276d5ff392cd22f92ec1ba62bfd0d3be5c5da3ddfce251ff45c8eb1e53097c3",
+    "data/xeno_canto_indonesia/moutai1/XC89270.mp3": "bd6509a300a6fd2598de47c37354c439f8da71cec96a08ea40fe6dc29867fc90",
+    "data/xeno_canto_indonesia/hoopit1/XC168880.mp3": "8d29d3be31c81db91fbd3822ebc9a0e05acb55af094e609056e4a675bc88d076",
+    "results/reproductions/E2_controlled_20261012T021600_897497Z/raw/R2_SNR_-5dB.csv": "20c3cc0e2c982ed2accf9ecf2a8ec339f31dc986c8fb388d754454568321f481",
+    "data/xeno_canto_indonesia/whbsho1/XC70338.mp3": "63df166196593d4bcca8102fc107b4907bd3b3530122f8763d5709b8e973be6b",
+    "data/itera_noise/Masjid At-tanwir Amplitudo/32 kHz Medium Amplitudo/20261002_134000T.WAV": "89481f76d84ebc4f04f9cef66df47c326b5efd18acfa35a861887d296ddb5d70",
+    "data/xeno_canto_indonesia/whbsho1/XC576634.mp3": "d34bf2d2dbb1a0e498b32eb191bfb22b727566216897a03e040a8cf0d58fa7d6",
+    "data/xeno_canto_indonesia/moutai1/XC227687.mp3": "609fcb71755279a106ace55596873a1ba83029759d0c3eaa90a10ca0bb14386b",
+    "data/itera_noise/Gedung F Amplitudo/32 kHz Medium Amplitudo/20261001_092100T.WAV": "978b1ac5ef082863b3192d071b84f7010d98cc4d0c6f917ad14bc8fee14b5c3d",
+    "data/xeno_canto_indonesia/moutai1/XC68928.mp3": "8fdccebc902a48ef6a87fc29dfd9662d3af76ab33af84b350c030c091391c104",
+    "data/xeno_canto_indonesia/lessho1/XC241656.mp3": "f00b326a44261b3cfa9307718317c63cf083ea6999a27416d90d39cfcd127be5",
+    "data/itera_noise/Sekitar GKU 1 Frequency/32 kHz Low Frequency/20260930_143100T.WAV": "f120b773e137d0d91f91e0259014d27cc86c4987e185fba68d32850ca0f83b10",
+    "data/xeno_canto_indonesia/suncuc1/XC410383.mp3": "409833e795abe6c0fda320fe102005e9f009d0ad77612c16980a35572047e5d6",
+    "data/xeno_canto_indonesia/horbab1/XC214643.mp3": "394a4cb6e363d8819febc9a884b176903fc51cba4fc895b378c7310b14e13c54",
+    "data/itera_noise/Gedung F Amplitudo/32 kHz High Amplitudo/20261001_155300T.WAV": "1d205f9a1273b98d54cdf7468bb6682c038808069ecf4d26247a0fd22c560383",
+    "data/xeno_canto_indonesia/ghcfly1/XC468855.mp3": "e4f901c4d4adddca768b095eea71b44baf28f50c791cd3f42c113c176b248099",
+    "data/xeno_canto_indonesia/olbsun1/XC204547.mp3": "48056a93c042d79851e2deb6d9921acb4e9e66bc4ca7ea329ff978c46e313052",
+    "data/itera_noise/Embung F ITERA Frequency/32 kHz Low Frequency Embung F/20260920_132900T.WAV": "2ead0218f9d4a554a4fc08245a6f1abbf33549312f87b683e548b767aefce746",
+    "results/reproductions/E2_controlled_20261012T021600_897497Z/raw/R2_SNR_0dB.csv": "364dd8f7e58bd4db134d7e44243346bfe6061299809819a11fafd7d4bef40c72",
+    "data/xeno_canto_indonesia/pygcup1/XC70243.mp3": "675063d30dad2f097fe7f84f4a7b17eda7d1151a4f9c317121b6d4f996acf7d7",
+    "data/itera_noise/Embung F ITERA Amplitudo/32 kHz Medium Amplitudo/20261004_142000T.WAV": "a40b5237a4c1430d4e1ecec55034223157ff3a1ce2ff4d68a009c78221fe9ce7",
+    "data/xeno_canto_indonesia/pygcup1/XC69237.mp3": "4b2ed5c0073c889583a6a9c41b7be3bbf69e865805e8187726cf3194ff8f6bfa",
+    "data/xeno_canto_indonesia/horbab1/XC204060.mp3": "224ad8d31b8f7ff55ca55ae816a8a13ae3d112bc9c8c9689acf8b9adc4fa67d3",
+    "data/itera_noise/Embung F ITERA Frequency/32 kHz Medium Frequency Embung F/20260920_145200T.WAV": "26dd5ecf10d5e05f4eef7e12ba0b84abfeb722c581d86a0d88da39e38c44aabf",
+    "data/xeno_canto_indonesia/horbab1/XC576404.mp3": "88bf788a039728bf3f077ccc4f70e595505e9e026928e9da8a52433e71228afc",
+    "data/xeno_canto_indonesia/moutai1/XC210756.mp3": "67c6d8d671ac40f3bd94e46c7d54d496496ece02c57d645abed3953dba8d746c",
+    "data/itera_noise/Sekitar GKU 1 Amplitudo/32 kHz Medium Amplitudo/20261005_115900T.WAV": "5f7b0a0d426017f7efb848801c0c477cae4dc92793cbb1cf5855bbfaa58118cc",
+    "data/xeno_canto_indonesia/suncuc1/XC618806.mp3": "1d343c762352b028e9152115bf15c79bb75a6caba95a2098e2c761dd2b654aca",
+    "data/itera_noise/Masjid At-tanwir Amplitudo/32 kHz Low Amplitudo/20261002_121400T.WAV": "5e19b8b464ea5f57c43a7caf9c48a195708b90513d7dffb0d8be5684ca86f90d",
+    "data/xeno_canto_indonesia/pygcup1/XC618714.mp3": "6cff969006a7961234ef641313dad3f85df5bb43f6d77961a6bc38f90f70c5c3",
+    "data/itera_noise/Kebun Raya Amplitudo/32 kHz Medium Amplitudo/20261007_123700T.WAV": "81a312a6ad071bac94f88a0ce3a3044b6058103af6cdf151d4bf705c6b05826c",
+    "results/reproductions/E2_controlled_20261012T021600_897497Z/raw/R2_SNR_10dB.csv": "a4a8f9005aef35faf827cd7954c66d80865232e2e839fe102cb3423bc065e8ac",
+    "data/xeno_canto_indonesia/rubcuc1/XC152159.mp3": "d044b1067a79ded01262b66e0a097ae2692143f04e688fed0f796cde6e01783b",
+    "data/itera_noise/Masjid At-tanwir Frequency/32 kHz High Frequency/20260918_163600T.WAV": "ed59a45af96fa87583656e7d06dbd0867dc715550bf00ef84c02de651bef5f11",
+    "data/xeno_canto_indonesia/rubcuc1/XC255441.mp3": "ed54a51a966aeca9954c25a6b3c568ca3ce261d4c1a0efa31bc19d7e7d9c2271",
+    "data/xeno_canto_indonesia/sohbul1/XC482292.mp3": "68e4dad963f4e04fa526f8a37abd3f6a14645445009d4395be39f9d551faf401",
+    "data/xeno_canto_indonesia/crseag1/XC338727.mp3": "a08baec70e419179371617226b8f06c5f50ca0a221cfed69ab1498a6d1ab6b4c",
+    "data/xeno_canto_indonesia/moutai1/XC70231.mp3": "02a9c7aa82a5b69dc7c9cd2769efe9272d068ce7359e3ddd28a7b9d2eb526eca",
+    "data/itera_noise/Gedung F Amplitudo/32 kHz Low Amplitudo/20261001_113600T.WAV": "d3b66b9632c0b2f071a204a55bb57dca7dffb0bb578e18245ae91031abac3f31",
+    "data/xeno_canto_indonesia/ashtai1/XC214420.mp3": "5c8616295afde762670fbe09d6b86c97cef2f50feaf47edf0de8eb37a3484e9f",
+    "data/itera_noise/Masjid At-tanwir Frequency/32 kHz High Frequency/20260918_163000T.WAV": "abd885f1e59a76391a9a5d1c93fc3ef9b3305267d3a7612bfe585b0914bfe9b4",
+    "data/xeno_canto_indonesia/hacdro1/XC95698.mp3": "96132c8cff0c20c325203a7be47951566093a2718069233f4a2cddfcf60a67df",
+    "results/reproductions/E2_controlled_20261012T021600_897497Z/raw/R2_SNR_20dB.csv": "b333b555daefbee07b6bdbc098050349355d8df331edbe8b6e1a4d7b93e1252d",
+    "data/xeno_canto_indonesia/pygcup1/XC241683.mp3": "ed9b6f723771b84bd179660df0c1afdd35e4e5486a7efcb1216f777007cb71fb",
+    "data/itera_noise/Embung F ITERA Frequency/32 kHz Low Frequency Embung F/20260920_130800T.WAV": "b152138ba9173e287f4ee9f1393cd9fc938e6e8a88271c7f42758ad3c425dee7",
+    "data/xeno_canto_indonesia/pygcup1/XC24108.mp3": "779f99d9eb898c51783869587a179d9fac0664e4928c6b2272e77fea5cfb0d0b",
+    "data/xeno_canto_indonesia/rubcuc1/XC151991.mp3": "24f857e0188f9cbefc2d469a5d1f46c5c0e0ebc48a16c52f8393fc00462b1350",
+    "data/itera_noise/Masjid At-tanwir Frequency/32 kHz High Frequency/20260918_155800T.WAV": "44bae70ee823a2c44ddc1ccd37952e8b70b1b0b14ed0970e5372b8519bbf96f8",
+    "data/xeno_canto_indonesia/rubcuc1/XC596828.mp3": "c2cd5a8c8a09c4bcee15de1621f397eb054fd0bd198f554f86c7f8c0dffcee12",
+    "data/xeno_canto_indonesia/ghcfly1/XC40454.mp3": "109b00e2be6670420615ce1d06a4340bded56abafdbdcf762c48122cb63c0851",
+    "data/itera_noise/Kebun Raya Amplitudo/32 kHz Medium Amplitudo/20261007_120600T.WAV": "adb392392fd525a1427fc0734f4598d8619a24cea0d567df753623d132d63ec3",
+    "data/xeno_canto_indonesia/gpipig1/XC350933.mp3": "0000f3102ad23f5c57e84e57609fde13dbd26e730c2d520b8e9036b711825b2a",
+    "data/xeno_canto_indonesia/lessho1/XC391063.mp3": "91480689c9a4fe393bbbf787da36a8431b4800d964ef949537ee9301333b49c4",
+    "data/itera_noise/Masjid At-tanwir Amplitudo/32 kHz Low Amplitudo/20261002_125300T.WAV": "90ce1f5667d2c2a0808712764f0531ebadf648242b262f85cbfdb7ea0161789f",
+    "data/xeno_canto_indonesia/whbsho1/XC195596.mp3": "c9b5bfbfcfbcbc4129ac97eaab01e407fef94e92ec3096db1da9ae11564e9630",
+    "data/xeno_canto_indonesia/horbab1/XC90717.mp3": "120de3be023757369e72bb652776aea8fa48ab0f3bc898ae15ace0ab32c78c9c",
+    "data/itera_noise/Gedung F Amplitudo/32 kHz Low Amplitudo/20261001_113500T.WAV": "d364739b684f7151159e4d92067b7e0718abcfff53e4c8a61d836cc64cec22c4",
+    "data/xeno_canto_indonesia/crseag1/XC578380.mp3": "6e373a38274ce93e1fc0d00c45af81c026e5e40c8be8a9ef37a8e6a90b7887db",
+    "data/xeno_canto_indonesia/pygcup1/XC528831.mp3": "0338409614f55d3e81ca65c1f0a19e4feb40de3785da0209806d7c31e4f942ed",
+    "results/reproductions/E2_controlled_20261012T021600_897497Z/raw/R3_Clean.csv": "2845dd2f7dea07456c99812533677b13b502c9fe5d70ed6c5ccb1b34ad869bca",
+    "data/xeno_canto_indonesia/moutai1/XC659852.mp3": "a9fb481adbb9e9313700e70fd609a4b22a5d410fe4f70d67ca900c811d089444",
+    "data/xeno_canto_indonesia/suncuc1/XC215404.mp3": "1e0bf8aaa2ff0a7606ae0f9e5b406db947a0b43ac0429a65ad98f65bfbc2815b",
+    "data/xeno_canto_indonesia/suncuc1/XC68067.mp3": "3be9c0f8377bac5844e7eb40319a8a8b11133d57a9cdc66f02a08e8b2fba5544",
+    "data/xeno_canto_indonesia/gpipig1/XC151826.mp3": "2c9c651f41a53885f62c71b63af3b9e772361b01cd1177b093262245f953ad19",
+    "data/xeno_canto_indonesia/olbsun1/XC746427.mp3": "8e4e7752696a52ab2a03612e5959f085b8e2fcdc043ffdd73ef75295fabe5fe4",
+    "data/xeno_canto_indonesia/hoopit1/XC33652.mp3": "1dbeff9ae3650c8e7b18975654d8735ceb5bb7854aeb6e05563a96e855db119b",
+    "data/xeno_canto_indonesia/lessho1/XC737849.mp3": "590eedc97bfaca222a96e4a23e47095d91c6cb0184e18d84d1682eb59d0425c7",
+    "data/xeno_canto_indonesia/suncuc1/XC237111.mp3": "1b801ff0b672ee55efa5d4e05dae2159389306bd87691657dcc372768efe65cc",
+    "data/xeno_canto_indonesia/comior1/XC284766.mp3": "2502085ff05b4ef51552357ee96dfade4932935815cae3d13409957e8ca99ce8",
+    "results/reproductions/E2_controlled_20261012T021600_897497Z/raw/R3_SNR_-5dB.csv": "3dc65252c54768f5f341b457a7c9747a3d75e90fccfaa8e1b3a50ee548a4a5ed",
+    "data/itera_noise/Kebun Raya Frequency/32 kHz Low Frequency Kebun Raya/20260922_150300T.WAV": "b9055f67f60a60ef2b2d712869fb506934db513770ea399cf54c7a72b3ee4517",
+    "data/itera_noise/Embung F ITERA Frequency/32 kHz Medium Frequency Embung F/20260920_144500T.WAV": "3a9d486d2db42977b77de6930650f2759569745045656910220f010633bdb7bf",
+    "data/itera_noise/Embung F ITERA Frequency/32 kHz Medium Frequency Embung F/20260920_141800T.WAV": "a43c245e759af326515b506e514ec5ff7b7887c8d668a7c0000094c7356ef6a1",
+    "data/itera_noise/Masjid At-tanwir Amplitudo/32 kHz Low Amplitudo/20261002_125900T.WAV": "6b5ad47aeacc449f0ee73673c5b745e8bd3e609b754a25263a136654b603223a",
+    "results/reproductions/E2_controlled_20261012T021600_897497Z/raw/R3_SNR_0dB.csv": "c72d135808998be89f1e36c478aca5213529210c1ced412babceed20656f8444",
+    "results/reproductions/E2_controlled_20261012T021600_897497Z/raw/R3_SNR_10dB.csv": "e9756a351696e3c346497056ca9f39b406137a1668416d9bffaa39261cbd48ad",
+    "results/reproductions/E2_controlled_20261012T021600_897497Z/raw/R3_SNR_20dB.csv": "d97dfa00b9f56a66ed3a9a12f4da65366785399f0710d816497b4dc4bee14434"
+  },
+  "clips": {
+    "clips/clean_XC105844.wav": {
+      "sha256": "baed827eb0836df6c204cd2f3edcd62595a28be6ffdfa1f233de8a324d64dec8",
+      "float32_waveform_sha256": "6ac797ba1c5f7b47dced6309c96d59ade84386fdd66a3d41137d6842a359fd65",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.5119909644126892
+    },
+    "clips/query_XC105844_Clean.wav": {
+      "sha256": "baed827eb0836df6c204cd2f3edcd62595a28be6ffdfa1f233de8a324d64dec8",
+      "float32_waveform_sha256": "6ac797ba1c5f7b47dced6309c96d59ade84386fdd66a3d41137d6842a359fd65",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.5119909644126892
+    },
+    "clips/clean_XC576635.wav": {
+      "sha256": "cf8daf54c2662d7b21b81c95891289175ced306dc0ee9344396dd1aad6fdf38a",
+      "float32_waveform_sha256": "b7c596a082d01430925685643788168d4e6d8e16f9e51480cad1fec76fe56146",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.42786628007888794
+    },
+    "clips/clean_XC152203.wav": {
+      "sha256": "7b8a05b3bc906115269a567c97b5942b464bfbb3e0b5b685633eda474453b4aa",
+      "float32_waveform_sha256": "87f1f926704900298047a431bd6e479acd913712b6ec1571ae2d62f8eea64a6d",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.45273953676223755
+    },
+    "clips/query_XC152203_Clean.wav": {
+      "sha256": "7b8a05b3bc906115269a567c97b5942b464bfbb3e0b5b685633eda474453b4aa",
+      "float32_waveform_sha256": "87f1f926704900298047a431bd6e479acd913712b6ec1571ae2d62f8eea64a6d",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.45273953676223755
+    },
+    "clips/clean_XC69653.wav": {
+      "sha256": "8c126792ee1d08b1d359d79f292572e8bdcae2ed0a2064178a1fda1e3f4536d3",
+      "float32_waveform_sha256": "fe8178a35689bec18a1a3b5ba3b302ce6a16c2f9316e9ba79e8372b448c38873",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.29054901003837585
+    },
+    "clips/clean_XC19846.wav": {
+      "sha256": "3388b7cf4d1f8a591d93d4bdc4bf8130420208f08e01c9b1d045022a6916a08e",
+      "float32_waveform_sha256": "a35501c3bb67a1e2034e9a2fc15e322c421fc0ec88532c672cb14e3c76243b2c",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.4615010917186737
+    },
+    "clips/query_XC19846_Clean.wav": {
+      "sha256": "3388b7cf4d1f8a591d93d4bdc4bf8130420208f08e01c9b1d045022a6916a08e",
+      "float32_waveform_sha256": "a35501c3bb67a1e2034e9a2fc15e322c421fc0ec88532c672cb14e3c76243b2c",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.4615010917186737
+    },
+    "clips/clean_XC737850.wav": {
+      "sha256": "0565c29eab39eb950af5348ea35686bfa0ffd69f7d4c2c6ba1ff305c8e3b0872",
+      "float32_waveform_sha256": "1413c32e1e500303330447c9d7f39eaa3420fa150f0f6c3da5cb37d6184e20ba",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.5738990902900696
+    },
+    "clips/clean_XC214418.wav": {
+      "sha256": "163394849f172d112bf3980b892a3edbb599f8d811056e0d8f03c45aeb61a026",
+      "float32_waveform_sha256": "da4700f7e23deada1208e8dc414be3c6024183e43c3612226827d54b62aff48c",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.4554603397846222
+    },
+    "clips/query_XC214418_Clean.wav": {
+      "sha256": "163394849f172d112bf3980b892a3edbb599f8d811056e0d8f03c45aeb61a026",
+      "float32_waveform_sha256": "da4700f7e23deada1208e8dc414be3c6024183e43c3612226827d54b62aff48c",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.4554603397846222
+    },
+    "clips/clean_XC179384.wav": {
+      "sha256": "d45a334378030cc8ef4aaa45a626fa5c726113ab30a9760390faa9dacf654589",
+      "float32_waveform_sha256": "d3870793fdaad4492488e0b6751ea527e99f757e43fa4edd53cefd735ccf3114",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.4477122128009796
+    },
+    "clips/clean_XC612584.wav": {
+      "sha256": "d2c19211858a63509a6185b71aaadf913b128d27cdfac7e95cd4b745bf052d7d",
+      "float32_waveform_sha256": "d974e15bd90cdcf834154d72782ea16cc7299a1e368c8c9434327efbd81b5c66",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.32255998253822327
+    },
+    "clips/query_XC612584_Clean.wav": {
+      "sha256": "d2c19211858a63509a6185b71aaadf913b128d27cdfac7e95cd4b745bf052d7d",
+      "float32_waveform_sha256": "d974e15bd90cdcf834154d72782ea16cc7299a1e368c8c9434327efbd81b5c66",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.32255998253822327
+    },
+    "clips/clean_XC395510.wav": {
+      "sha256": "6583c6f1eb4b156888991c1cd46660d5395419808c6fc958eec610f50366cc71",
+      "float32_waveform_sha256": "7e6d818c95fc140172b2852d9086ef53d1b539492de5b4730227bce37ec9fb92",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.2557087540626526
+    },
+    "clips/clean_XC70339.wav": {
+      "sha256": "4b8d0abd64031c593bca901b33fafa42bad2fcc10f76e9406dad80261d931561",
+      "float32_waveform_sha256": "3eeafd1e024049488e51d3b1bcd87ae5031ef0f533101ec21748c7af653edf95",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.48849114775657654
+    },
+    "clips/query_XC70339_Clean.wav": {
+      "sha256": "4b8d0abd64031c593bca901b33fafa42bad2fcc10f76e9406dad80261d931561",
+      "float32_waveform_sha256": "3eeafd1e024049488e51d3b1bcd87ae5031ef0f533101ec21748c7af653edf95",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.48849114775657654
+    },
+    "clips/clean_XC153017.wav": {
+      "sha256": "11f7343618bc814015d06c4f5ea5530a6633a0efe54e5fdd347741e47fec8952",
+      "float32_waveform_sha256": "3de44c793e3a77630015ae440f6c4897f8ef672e37305cffcc5dd02af46a822f",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.36739516258239746
+    },
+    "clips/clean_XC236320.wav": {
+      "sha256": "7ca3d5c60497a4ac620bb9b18df46b827dfb06a2a30250e99442d417a168dbef",
+      "float32_waveform_sha256": "ad035072188ce7d6ed5a0a3743429b948f4c506cb4be6fbae23c7a08df1d0453",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.3591865003108978
+    },
+    "clips/query_XC236320_SNR_-5dB.wav": {
+      "sha256": "eb7ca3ec114f4856c5bb0f7c182e6fe87ae8b19cfcd90d795c89b0a267758441",
+      "float32_waveform_sha256": "f2d9a56881974a5e19ed0d9a156196c77af2a0cfb6ecd091a23f852fe1c28b90",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.5275821685791016
+    },
+    "clips/clean_XC198426.wav": {
+      "sha256": "e8816e04393f76173e890a01b35c206e5a1ef5b22564e7fde6680c9cdab0e256",
+      "float32_waveform_sha256": "8227c7a6880ed4d183916280fcb934cf081ffb3977b3ef0933236d085edebe71",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.3093523681163788
+    },
+    "clips/clean_XC233697.wav": {
+      "sha256": "476c91965d7ea3f9b53cc952e88b30fcb9a1a845e4a87c29381218bfe7131856",
+      "float32_waveform_sha256": "ccd195d973935407829f27d227edb7470b2d5a85801b94208887afe4446bd9b3",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.29062893986701965
+    },
+    "clips/query_XC233697_SNR_-5dB.wav": {
+      "sha256": "10b913b3eec3a4c3232a6eddfdc168f86a4ab25f8e63563a3b22bb0a29dac017",
+      "float32_waveform_sha256": "34618d6781f9a012e9930c2c95d8e603e451ada8693281f1641ce2a27167a4fc",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.6245038509368896
+    },
+    "clips/clean_XC110294.wav": {
+      "sha256": "3f7045c978208e9f61c9d7fc4b32e2d744ce3ad2ddc201451f1631a78f713490",
+      "float32_waveform_sha256": "76bdb04f55c17a8105791b864e7685963db7b19222d57f2437def16b1e176d75",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.2679687440395355
+    },
+    "clips/clean_XC152138.wav": {
+      "sha256": "14555253ca2d18fdd1db8357a53d164ab2231dcae60091ccced547cde1a30451",
+      "float32_waveform_sha256": "e6c79bdb378b7a700f216d6770f9f2cbb1adcc0d6fc4a192b3282bcfc0041813",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.4604736864566803
+    },
+    "clips/query_XC152138_SNR_-5dB.wav": {
+      "sha256": "aedf3132716a9c5a956a41350e00340fd0faaa591f1947233f129839fcebe878",
+      "float32_waveform_sha256": "3fa4b6f44c6e129ca2612e8a7d5c5736e286de491ab413ea7ea54eeafb489158",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 1.0
+    },
+    "clips/clean_XC36872.wav": {
+      "sha256": "46d0f7b082e5c74debca4f9d1043dd7681a0d906e9f3ff9bc3b13c782c4d1480",
+      "float32_waveform_sha256": "55e18764afb58d03705e7769c0ba61e72e454cef3cf2fdf34c5658fc97bb841a",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.2928470969200134
+    },
+    "clips/clean_XC292408.wav": {
+      "sha256": "a0c58a5ed78703d8674f3ad67728879330ca1281730c5f0ac476586c6961999b",
+      "float32_waveform_sha256": "07a365906f9c39bfb80841baf73001673a734e61adef8c7c6333c6cef46cd37e",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 1.0
+    },
+    "clips/query_XC292408_SNR_-5dB.wav": {
+      "sha256": "422acf29f0ba843d48ecfa5c87d8bfcba515c6b8e4a935a7ca0f933b1ce510d5",
+      "float32_waveform_sha256": "640d2757c9d2fc4a75255e926d8b6c867aca6627a14b76f0b803415a8c3121b9",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 1.0
+    },
+    "clips/clean_XC198428.wav": {
+      "sha256": "45450c0c9fe08c23cf08ec6afd5749f50e750ab79914c96b4983b15fc01935de",
+      "float32_waveform_sha256": "88b12e393c2175a11ad7455e34e65c001b54e9e365ff63d373c12bad572cf727",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.22059793770313263
+    },
+    "clips/clean_XC687359.wav": {
+      "sha256": "01489ed8fbb6666c49e080c7fb2f22c9a869c5e7891b6162096e5fb9700b52b0",
+      "float32_waveform_sha256": "9810685323b1871e5ddbe1b782f6e5c43cfcb74d6b36a48272933362e94ca2ff",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.4504920244216919
+    },
+    "clips/query_XC687359_SNR_-5dB.wav": {
+      "sha256": "afc308671841e6b6828ecdbd5469a137ace3c11ea7d4884cbdd52d965874904e",
+      "float32_waveform_sha256": "aa57cd67eac4c3c2b83dbe2c6fa706848c76f448a61d36e4ce16d2e8da93f0b9",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 1.0
+    },
+    "clips/clean_XC154541.wav": {
+      "sha256": "592d02b74f7e123a5f6b557c7c707a0a910643d7939a29e282335dd7799fccf8",
+      "float32_waveform_sha256": "f15401d1c94f32cec9b457b21abcb481f51a88eb58c68edf5c1c06ab800a772c",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.46827706694602966
+    },
+    "clips/clean_XC691485.wav": {
+      "sha256": "06e49ed7eb7def8817f92aedc4058bc58d8bdf79219e3403550a422eaeb8ea57",
+      "float32_waveform_sha256": "01c41bf6009645612969904b63ba87e150a7a55fc9aec714d7b699f8f5284a99",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.4045608639717102
+    },
+    "clips/query_XC691485_SNR_-5dB.wav": {
+      "sha256": "a2d4327a02bc7d16899c4cbbcd35d7893ac6c14b5beb59be0c4719235a864006",
+      "float32_waveform_sha256": "7b323725d0f06f7d66e404f2b669de5de5b10bafd06d8303cd58b43048c58c14",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.5062752962112427
+    },
+    "clips/clean_XC68927.wav": {
+      "sha256": "db9c231c0f5234914d937d9cf09856a58ee34790edb901cabf42ff2fe9c0a953",
+      "float32_waveform_sha256": "6ee3a00054365088ae4c54655d5de1adabf1da375d3071b77c041ac0d1bbc03d",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.44632989168167114
+    },
+    "clips/clean_XC243350.wav": {
+      "sha256": "949f6f61cd9bce4f2bd1b33b1016572ca71e30dd7e16892c71391c87f4f91cc8",
+      "float32_waveform_sha256": "40fc26ddf13f436cff6aa8b5a625c8a1d16b48a59094ba004ad0b0457575f017",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.6337265372276306
+    },
+    "clips/query_XC243350_SNR_0dB.wav": {
+      "sha256": "68e628739308d7a903b67ae160884371194827edee4f3780622202a5e1565d0a",
+      "float32_waveform_sha256": "7e41a3a77254726c27ebaf75426825f1c1a8c5224d24a8c0dbe561723b3ccca3",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.61418616771698
+    },
+    "clips/clean_XC152928.wav": {
+      "sha256": "051a57effd539f42ecae028540c6fc4cae5a018da5c9c6842002be88bd8e48a9",
+      "float32_waveform_sha256": "02dba2456f27c0e1abdc21e07adb78bf5113cdcf811d0364d6341140463ebb48",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.3569454550743103
+    },
+    "clips/clean_XC618464.wav": {
+      "sha256": "329b237f17d3db1aa23f6671e7485c1a9770fc5592780f4cc2654d443dcac2d2",
+      "float32_waveform_sha256": "cd194932898b321cedaf0de30c5ee4d20bcbe3b7e00e71ea5864cfc343fe5470",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.34877142310142517
+    },
+    "clips/query_XC618464_SNR_0dB.wav": {
+      "sha256": "89272e00da057298d01be66051d5a6c12494c4dd67d2143130a48b7182bd4159",
+      "float32_waveform_sha256": "8c775d5e5b3da910deca3ffcc51e1425313eb74bad4e90ebb10820603e03a788",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.39785531163215637
+    },
+    "clips/clean_XC67797.wav": {
+      "sha256": "92ee3994301176bc98b8bd900ccc72d556669b6af82a685c26a0bfcc7669ab23",
+      "float32_waveform_sha256": "612d809ee75a9c8a7ea1bd369cfc550c22a48e4c7b0f3dae28d5158852d8953b",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.3841950595378876
+    },
+    "clips/clean_XC241658.wav": {
+      "sha256": "7d511b5db6a3ecf1c324d6ff33f27cab27eff8fd5a6e6d0b09e16e25684556eb",
+      "float32_waveform_sha256": "bfd582071a93a65bb1062c695b380e2dd5b7d019cc4e4b9a8901619d33c761b4",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 1.0
+    },
+    "clips/query_XC241658_SNR_0dB.wav": {
+      "sha256": "cd8833ddb5e3a477d325467bb4f82dcc200b4e8b53e1b68cff6f62c746d86892",
+      "float32_waveform_sha256": "f22d26fefb02717354cf29b542441dbde9739c16c40cf6f82ca8ee0012a4faff",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 1.0
+    },
+    "clips/clean_XC122050.wav": {
+      "sha256": "a0894741a8ab3671b748351065e1bdd043ef8a6a78d2df8c3e6e2bd61664e4f0",
+      "float32_waveform_sha256": "a986e712946628f320b72126f957b49037c4480f2077120bddabd2f4b7f0e283",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.3506789803504944
+    },
+    "clips/clean_XC823476.wav": {
+      "sha256": "913114fbd9cb5f7521ff427ed7dcba631002d140b685e243b4323dd9f2cf7d7b",
+      "float32_waveform_sha256": "c551820a8b65420a47473c655997cd11051d85d92a7c039a99344cc3dcb50a42",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.5985939502716064
+    },
+    "clips/query_XC823476_SNR_0dB.wav": {
+      "sha256": "dd9073a11a00f101749e832adea878a864b01fe8fbecac48fd88863248aed2a3",
+      "float32_waveform_sha256": "f925329d7d357388e3f11e35fe536f6c0d94190311bda2a8257ae2c904a9f1f4",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.62195885181427
+    },
+    "clips/clean_XC67917.wav": {
+      "sha256": "82860c86f307680999acf80f55ad489d127b4d1012325847103902704d54a2c1",
+      "float32_waveform_sha256": "67ca87cff66b2c600cabf37ba1cf02328da77e6f16c445a274a49c5a69b4679d",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.475661963224411
+    },
+    "clips/clean_XC151699.wav": {
+      "sha256": "1f6151df155eef2086199512ef2edf44f0afe9a2084159f636451dddc197dad3",
+      "float32_waveform_sha256": "45b0b6af79b2f366f45ba3c0cadcd1a5cbd9c2ac72143c59666c1bb005e2e138",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.28238892555236816
+    },
+    "clips/query_XC151699_SNR_0dB.wav": {
+      "sha256": "3bf77f2319ee2fb1d4dbc36c1941cae52e6e0264ba62a0a038d5f6e96e3b38f8",
+      "float32_waveform_sha256": "99d5adbf50f6767c7531a490adc0aa4d78f52b6b16385f57055d197a04b54a19",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.3878132998943329
+    },
+    "clips/clean_XC69229.wav": {
+      "sha256": "6924d68c054d018a3e506f966eeac83f7910390e5dfed2c36dfe33890375fb48",
+      "float32_waveform_sha256": "96feae8c5b7e7dfbb064f2a4d282f307eb8e48f2fd7240c798cbe163291b6089",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.5728139281272888
+    },
+    "clips/clean_XC151837.wav": {
+      "sha256": "28ce6ffa767a3077a8ea5fe875738485792a3e4aceb04325ad28521be0f87e75",
+      "float32_waveform_sha256": "9b2a0cec71af660d79c104b11bac66939485e42693a69188a49c042ac0f78b1d",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.5474362969398499
+    },
+    "clips/query_XC151837_SNR_0dB.wav": {
+      "sha256": "0b779a15ce53fcdc02257f518df65f19c8affd71ba5a5a3ee6f65ad1737c2c29",
+      "float32_waveform_sha256": "d64b7991ad09de3ba7dda374dec20460270545ec95b43972b20cbeb635518f81",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.5823019742965698
+    },
+    "clips/clean_XC681137.wav": {
+      "sha256": "70435d544898cde1a967111784c84e4013a1051b92bc1e7fe7f4dd54c0c9a313",
+      "float32_waveform_sha256": "1e359c89cc15332be289f88edb8710c19720c2e2955f2f424164e9c9fcfcc059",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.5237770080566406
+    },
+    "clips/query_XC681137_SNR_10dB.wav": {
+      "sha256": "1645a100256cc1526eaafa70b52b51a8eaced60a7c9c24eab65c16727442f03d",
+      "float32_waveform_sha256": "af804fa406be2d6b7d291e1f5a122a4bfdd15a911341d91f71bcf1406e6f6474",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.5210421085357666
+    },
+    "clips/clean_XC202672.wav": {
+      "sha256": "4e19bcaa21472e95c27a0b6c2fb29b6d1a7c6c8d5d60cf26e54b3ea934d6cbc8",
+      "float32_waveform_sha256": "b9c7ed6bccd7d3621a7bd2fcc4c06dc804803e2c3954663ba2b1176500a06fe8",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.4825155436992645
+    },
+    "clips/clean_XC820624.wav": {
+      "sha256": "0303344b3e6e84b68db6ff1a17aa4b9645895bfb6ed4692d1129dc9839672e1e",
+      "float32_waveform_sha256": "4e38caf08cf4261615b9ce6b9968106e86f4ae913a8cb2a1b927fa8bd362ed8c",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.37818318605422974
+    },
+    "clips/query_XC820624_SNR_10dB.wav": {
+      "sha256": "4385029526b0bbb3161310ac41c4d9bce6a4053b431585a2825eda8248090c1c",
+      "float32_waveform_sha256": "6ab57a5103f98903275dfa48f56e63e39f80b34d9968176d1775d8de17ea8e8f",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.3961891829967499
+    },
+    "clips/clean_XC67798.wav": {
+      "sha256": "5961d5f83a635639509a86ca8a082be750631e01a4b86dd2117af6358db41339",
+      "float32_waveform_sha256": "33eb4f04fdec7c7028108ffb3bd5440beebf835721553408de569bfd2d7f7cdc",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.3277055621147156
+    },
+    "clips/clean_XC152139.wav": {
+      "sha256": "6cc6b5916c976d13d502c98e8da985566299b6a9816bc8343ae260d32bb9f0d2",
+      "float32_waveform_sha256": "3525a48bfa5e010165714a6053fbc393fb49d17506927e8f1252809c9b77d7a5",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.26277756690979004
+    },
+    "clips/query_XC152139_SNR_10dB.wav": {
+      "sha256": "f80bb0a8b688e7810cccc63b532f2dbe27d220e85f34acd01a0f14d048ecca6f",
+      "float32_waveform_sha256": "4bf4eefdcba904b83323e6e72180706420ccab2aeb7478e7616de4354a5b2610",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.2933688461780548
+    },
+    "clips/query_XC241658_SNR_10dB.wav": {
+      "sha256": "f47c5d90a3030deea4ed2ac18c66ac21aa1800122b4f98e4431ea2fcc1ac80e3",
+      "float32_waveform_sha256": "1a4e56cbc2d4515ef3b307b21545c4b061ecf29154c742ebb42b887824d9c391",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 1.0
+    },
+    "clips/clean_XC289594.wav": {
+      "sha256": "040f6dd4bd531ecd6732875877a805559d968c6a5fee0948cc9d005cec4975ef",
+      "float32_waveform_sha256": "66133be658a1aa5d3b51cdba3ca583785c6b24d2975cd7e4e9c3d76b5fcb5f03",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.4776207208633423
+    },
+    "clips/clean_XC90803.wav": {
+      "sha256": "6a6af8f5b10465c62f2ee1fbca3f87531a768f66be29d0ca75e0f137541a6f11",
+      "float32_waveform_sha256": "028a0729d180607868ff4f568a2f54dc9287b7b094511cecd6490606ea31f2c0",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.2804185152053833
+    },
+    "clips/query_XC90803_SNR_10dB.wav": {
+      "sha256": "aee1b3ba9925b3a4a897a12a6227c677b5dcaef0505f5c334b5c48cda29296b0",
+      "float32_waveform_sha256": "01b287d1311b1171f4f73ed4bd1bbd354e277aae24dfd0fbf12dd5d1cba666bc",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.29716116189956665
+    },
+    "clips/clean_XC150446.wav": {
+      "sha256": "33e4de23025d41cd30e6fad6d2755b0b58f71be6f9142abfeb395fa6741629c5",
+      "float32_waveform_sha256": "af5d996422a21b988accebd925602504aef15c54f573d175e5df925f1300cf13",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.3119274973869324
+    },
+    "clips/clean_XC611790.wav": {
+      "sha256": "03082beff07a4c0c623ee10fa6c1c7e984430a9ca0af779ebb13fe6128f65df6",
+      "float32_waveform_sha256": "6667615701b02902b3b1e30a4f2d8ad491d901e435935d36ec180439d2dbcfca",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.3569549322128296
+    },
+    "clips/query_XC611790_SNR_10dB.wav": {
+      "sha256": "2ba55c5d1a3a97b577c2ecb92839834da6f0234e9035863a85c89e1db6d04e4d",
+      "float32_waveform_sha256": "5768e46588247fe875cff0ac53dc615a4f1cdcc5cc1ed1fc6a2ca5954ea92bd8",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.3588031232357025
+    },
+    "clips/clean_XC198430.wav": {
+      "sha256": "dcb909a872d1a865adc3ece7f07be831761c20cbd8b16c402db2c7459121988d",
+      "float32_waveform_sha256": "9972b0bd1f78955f08547557766bd023f2a49ba404e1f1434aa0094dad08d92d",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.28919756412506104
+    },
+    "clips/clean_XC23126.wav": {
+      "sha256": "80fa76f9564431b3bd8a7c0932a9b061247685378fc68f41f80e2b4eefcccd4c",
+      "float32_waveform_sha256": "b277a6b0de2c0e1054a2aebe7f93ded70f4d85f489545c8ed117b90ac0021d3b",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.4845370352268219
+    },
+    "clips/query_XC23126_SNR_20dB.wav": {
+      "sha256": "fab3391dc1d1e0e6c1969fa18cd8399bef0cc8c5a2c5ebf882eb2d5a8615bd7f",
+      "float32_waveform_sha256": "1d327ca437fa45e380fb2d9775b82e0ae3d3cc4d85bdcb64145854cbef761ab3",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.4868893325328827
+    },
+    "clips/clean_XC409825.wav": {
+      "sha256": "b72bae0d29ecbd3cb08d97cc8280f6136fc508f2854da2500b8c72f4b91735ac",
+      "float32_waveform_sha256": "7e929dbbeb0fc3fea671d69de6f68dc6bbbcc107fdac6aae0ae7a7b4a738d775",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.46000564098358154
+    },
+    "clips/clean_XC204130.wav": {
+      "sha256": "b86eab6fa0db9f2789dc0e9461eb3f0ecc0e9e46f8fcefe0e85187c05295589c",
+      "float32_waveform_sha256": "2ff87d428e994e966819a6893c11142070ea2d7e1bdf0cf25f3978c360a650e3",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.6046068072319031
+    },
+    "clips/query_XC204130_SNR_20dB.wav": {
+      "sha256": "fbc624b1f46335015740b07a71cf23564454f55b20ce58185e79cb30b2334940",
+      "float32_waveform_sha256": "7b9abcc820468b6016852494966b0a159fe4bf50dda703753885dc5b83f41a01",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.5977405905723572
+    },
+    "clips/clean_XC197757.wav": {
+      "sha256": "cb1a48ac78c42dafc717753d43e8151d8c2ac9f430ea59eaf6349acbc9dfe912",
+      "float32_waveform_sha256": "927c04a5f501ec12c463ebb5d3eabca2640c95901c6a4d38f28cf9e7da19a0e5",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.5492682456970215
+    },
+    "clips/clean_XC823486.wav": {
+      "sha256": "bc8357a42cd521479fab6b49e599c2fb761a963b0b4e8726d9b55e896d74e4ec",
+      "float32_waveform_sha256": "472dce7c6a383dde3e30e24459471869f267d2ad2279d64fa993136aaff82f2d",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.5734840631484985
+    },
+    "clips/query_XC823486_SNR_20dB.wav": {
+      "sha256": "9225912a34f44d7dd806059520f8f2d19d2332db42a207cb7b5a6ef58d588364",
+      "float32_waveform_sha256": "e8d7d6d8b4f2f4a3b36c607cca6f80258bafa1334e22f77f90a7675416f7c4b5",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.5769598484039307
+    },
+    "clips/clean_XC737848.wav": {
+      "sha256": "cf7936172e1a31192f72983505c1b07625fe0b849cdd8991cfcb6f9c18f4ea13",
+      "float32_waveform_sha256": "7321615fb9041f5b409154ebeca5f719dd734f7be94120203fb9752490f3b0fb",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.22221215069293976
+    },
+    "clips/query_XC214418_SNR_20dB.wav": {
+      "sha256": "7b2ddada1ecf73398b269b51d0754e3f62e6a64da3c1eae2dec2647a27e3e88d",
+      "float32_waveform_sha256": "901460adf2081bb8d402afa61d958e5779991b8919c23addfd183217aea82292",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.45395439863204956
+    },
+    "clips/clean_XC204535.wav": {
+      "sha256": "afe2c4f3bb310aafcbade0344db22b8cd386415450cdb2183850db4e5b6f918d",
+      "float32_waveform_sha256": "53e615b96f7579d5e31c475731700f99e91ba994f8962079074caabe651cbda5",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.5117905139923096
+    },
+    "clips/query_XC204535_SNR_20dB.wav": {
+      "sha256": "626249af2ced17f5a03431a941ce530c90069c2ebd80dbddbf49ba3d1123d5cb",
+      "float32_waveform_sha256": "f8639c0a84ee335d9d744c195354bd73a13f56320285e90692367873f584dce1",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.5086959004402161
+    },
+    "clips/clean_XC413920.wav": {
+      "sha256": "ebc3d3c5bf85c3167014e130db156607b2d2e0eee42327507cc70cc29f8d7750",
+      "float32_waveform_sha256": "d59c10be71b443a8e67b1e1943f1bf9e777fadd3e0e011773d42b6b1a434cdf9",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.4607203006744385
+    },
+    "clips/query_XC618464_SNR_20dB.wav": {
+      "sha256": "3acfda955e3664ba7c5745d4f93095ca72597ec66ddce909650e58dbd4129f1f",
+      "float32_waveform_sha256": "c9118e632edc7f2c3983b13e0d12d2ccee31ac5c5f5029774a8b673414dae080",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.33966898918151855
+    },
+    "clips/clean_XC151828.wav": {
+      "sha256": "77401d4c418b9246ae87ebe08846e0fc9464d7096730c21f0af93ac0c1afcb9e",
+      "float32_waveform_sha256": "e074696996dffcc4af8bb0d414d16d199d3b15a133ccbc2ae98383dfee3a8de8",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.30315375328063965
+    },
+    "clips/query_XC151828_Clean.wav": {
+      "sha256": "77401d4c418b9246ae87ebe08846e0fc9464d7096730c21f0af93ac0c1afcb9e",
+      "float32_waveform_sha256": "e074696996dffcc4af8bb0d414d16d199d3b15a133ccbc2ae98383dfee3a8de8",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.30315375328063965
+    },
+    "clips/clean_XC331995.wav": {
+      "sha256": "2c9c847fef8f4c66fbd2ca738fdc404caaa4c27de595abbd3ffb482e21d91a79",
+      "float32_waveform_sha256": "b8b67a2d9b7432a8dfce5664ff9079778781aaae160586b10338b18f69094612",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.39882755279541016
+    },
+    "clips/clean_XC203358.wav": {
+      "sha256": "7d33a5f6484475dff39432fe59a4f262770bb095de72bb7e088d57369de69a59",
+      "float32_waveform_sha256": "6eece3d3128fd372acd0278ab79ab89d63945af9c3c14c8983e0dd6895e19789",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.46779701113700867
+    },
+    "clips/query_XC203358_Clean.wav": {
+      "sha256": "7d33a5f6484475dff39432fe59a4f262770bb095de72bb7e088d57369de69a59",
+      "float32_waveform_sha256": "6eece3d3128fd372acd0278ab79ab89d63945af9c3c14c8983e0dd6895e19789",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.46779701113700867
+    },
+    "clips/clean_XC417893.wav": {
+      "sha256": "2d7f1553bc74eb40140dea790f21902e5528a8eff359469124a177644d7ebb5f",
+      "float32_waveform_sha256": "b62068d0b97f5c9a193d9db992b3bda097b6372c824d9bbf19003429b3effdab",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.5891826152801514
+    },
+    "clips/clean_XC90931.wav": {
+      "sha256": "b1748c6ec88d9062b9342b9e3d2b5922ad996a755d638e9864342f958b8bd496",
+      "float32_waveform_sha256": "31dc8f65b70580312601528a880bb0a601d415034547eea3e04cb4546ecd3634",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.32717394828796387
+    },
+    "clips/query_XC90931_Clean.wav": {
+      "sha256": "b1748c6ec88d9062b9342b9e3d2b5922ad996a755d638e9864342f958b8bd496",
+      "float32_waveform_sha256": "31dc8f65b70580312601528a880bb0a601d415034547eea3e04cb4546ecd3634",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.32717394828796387
+    },
+    "clips/clean_XC70236.wav": {
+      "sha256": "cc5064d00447d16ec249c4a9ecd8d13f09c356228c4a9f7e929b912b6adb2a6a",
+      "float32_waveform_sha256": "63428e97458dcaff5fc05d5dc8c633b6fc3210169e5ec6920a973bc3d2f4f548",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.3252297043800354
+    },
+    "clips/query_XC70236_Clean.wav": {
+      "sha256": "cc5064d00447d16ec249c4a9ecd8d13f09c356228c4a9f7e929b912b6adb2a6a",
+      "float32_waveform_sha256": "63428e97458dcaff5fc05d5dc8c633b6fc3210169e5ec6920a973bc3d2f4f548",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.3252297043800354
+    },
+    "clips/clean_XC89583.wav": {
+      "sha256": "b103db68b553ec7ac734689448516854b6c9ed1acf9ece6f145b42e172350782",
+      "float32_waveform_sha256": "1bec9fc6d06eccbd391199555ec5f54ab325dcc9efbd701e14d51fbcc265833d",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.22471646964550018
+    },
+    "clips/clean_XC965048.wav": {
+      "sha256": "4dc467982b9fee34c8ebae5d2b5a4d3c3d70109caf7bb3d95c638b85b975c577",
+      "float32_waveform_sha256": "ee8f0d2236e00b66954cfc49eddd4b9c06bc5eff7bdf70c8ca9521c11c61f1ab",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.39270395040512085
+    },
+    "clips/query_XC965048_Clean.wav": {
+      "sha256": "4dc467982b9fee34c8ebae5d2b5a4d3c3d70109caf7bb3d95c638b85b975c577",
+      "float32_waveform_sha256": "ee8f0d2236e00b66954cfc49eddd4b9c06bc5eff7bdf70c8ca9521c11c61f1ab",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.39270395040512085
+    },
+    "clips/clean_XC616845.wav": {
+      "sha256": "4cafad3665b12fc9864adccb52219614cf8f0cc07d680cf69c974bce2d150737",
+      "float32_waveform_sha256": "6e37302730a684973ded9113592c0121280d4e5b7f284b94d2f6c6eb6537f581",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.3446998596191406
+    },
+    "clips/clean_XC236330.wav": {
+      "sha256": "f1a97e124b0fbfc0039c9010ae9e2584cf4d65b932e5f8da3828c568d2aff06b",
+      "float32_waveform_sha256": "e15ed8939b46ae49540c24357702593212dd242280d6dc569dc857a47848a426",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.7660230994224548
+    },
+    "clips/query_XC236330_Clean.wav": {
+      "sha256": "f1a97e124b0fbfc0039c9010ae9e2584cf4d65b932e5f8da3828c568d2aff06b",
+      "float32_waveform_sha256": "e15ed8939b46ae49540c24357702593212dd242280d6dc569dc857a47848a426",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.7660230994224548
+    },
+    "clips/clean_XC38504.wav": {
+      "sha256": "70e7e4bfa621009079478508cf49c9896aa62fd563698ef2ab30d5221cbe7a19",
+      "float32_waveform_sha256": "8aeea55e765b632d56af8c9e58350a3af62a1e6e3401ead1c3d1c288ccb3dd80",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.5837381482124329
+    },
+    "clips/query_XC612584_SNR_-5dB.wav": {
+      "sha256": "1e7646d94e6ee6a3ac9a5e2690a204ec8149a0cdee38f0fed8349746fb28914f",
+      "float32_waveform_sha256": "d75ec28c154515532d1c131f7574a6a08a0bc0a0d70bae86effd82ab6242bb42",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.47796717286109924
+    },
+    "clips/clean_XC196627.wav": {
+      "sha256": "921d2e69b476b83f19aa89be160641431ed31ae7db8951ea6d872d216f37e76a",
+      "float32_waveform_sha256": "8de1b9289763512fb28ee7043cbe82a866ecb9fddd0c05be9a364f6faec07571",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.2289159595966339
+    },
+    "clips/query_XC965048_SNR_-5dB.wav": {
+      "sha256": "b6a2b705d7d1e61a055e4f8723509ad149e1929288c3ac77ddc3b1fa498590f0",
+      "float32_waveform_sha256": "0dfce11de2dc5e5f609360b6c4dcfc36ff5b4dc7c0c3dada449f113807510679",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.7651038765907288
+    },
+    "clips/clean_XC143550.wav": {
+      "sha256": "bef799600decf7d2eb54f94cc0d774a140a6c6635a3dc2f94e18d226bbe779f1",
+      "float32_waveform_sha256": "2926d727a669b0728ae64bf057bb1232be46980e3a4272e34de110d2c0ed26b8",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.39788973331451416
+    },
+    "clips/clean_XC482238.wav": {
+      "sha256": "ad46cff611559ec00b0d5396ed6667b90a0a8a43361bdf19837c93b6c0db5409",
+      "float32_waveform_sha256": "a0acddf7f7163829219255a28e7510ae9a16fb54156f7354e9c15c38ed8b0083",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.2479926347732544
+    },
+    "clips/query_XC482238_SNR_-5dB.wav": {
+      "sha256": "e3dbaba82857c8ab8da85c3b5baa3995e99299d9660a60b75095ba85f8a8f3aa",
+      "float32_waveform_sha256": "98eea894c90545f9676f37985febac717d82965c58d5badc9396957d2e918812",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.5599381923675537
+    },
+    "clips/clean_XC201903.wav": {
+      "sha256": "e4e83db6235d171f8ed34dc5cf1f74b2d46b6e8850a9a5003f47c4657cc6525c",
+      "float32_waveform_sha256": "1d7afeb8dda040184193a214d1b10c97758174eaa5bea17aff5d8a34c6a7dcdb",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.2977185547351837
+    },
+    "clips/query_XC681137_SNR_-5dB.wav": {
+      "sha256": "175c1896213f370d0c9d9e69e5cd278caee2fb4ef7fa652f029ebd14d15549e8",
+      "float32_waveform_sha256": "cc32d88a71eebac8f8bd8cec59cf5bfc6743718544991aba0d7639b34dbb6256",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 1.0
+    },
+    "clips/clean_XC615530.wav": {
+      "sha256": "80b9d78ead271bc2921f7380ee3891d1a0c108fea8bdb4a5e98d09f8ae5da8ce",
+      "float32_waveform_sha256": "7c3f66af803c0527e0644b772c568b0ca19316f45011e371627efd31ef3b52da",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.491484671831131
+    },
+    "clips/query_XC615530_SNR_-5dB.wav": {
+      "sha256": "308ab859866d1bc558c7f22f4c7288d892bec3b5c10089675228ad0927a4811e",
+      "float32_waveform_sha256": "cf6550ca27735bbb2fe569f8528bf19d2c1e65827f114eeec8c8c25942b8dda4",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.7221197485923767
+    },
+    "clips/clean_XC195591.wav": {
+      "sha256": "6ab67aad5c97e22be517af8eb0d8e4bf7c4a2fea24b9bd0592ac5d6b594f2dfc",
+      "float32_waveform_sha256": "452df9b4dcd176da27dd63fb313027cdb69497a88a057e2bc224fd81d1043f8f",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.3628707230091095
+    },
+    "clips/clean_XC618811.wav": {
+      "sha256": "5461d2d66cce9322a96538bff1c9a5cf78137c0a30abcd59440d8db9d3d2bb6e",
+      "float32_waveform_sha256": "9dbddb6b21d4a9afc70ac57d2b163f43c7c54c1290745446d8e536376f483063",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.333776593208313
+    },
+    "clips/query_XC618811_SNR_-5dB.wav": {
+      "sha256": "850eebc559279ac6eabf044873747f157d8985733d407103b8ed53d4a2ff96a8",
+      "float32_waveform_sha256": "4041aa623eb43a7aa28ab9a8c5ca1244d9a26d705405617e6c495b91be759001",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.531967282295227
+    },
+    "clips/clean_XC30756.wav": {
+      "sha256": "b984cbb3f64344c0b3a8167d7be5d330ef470b3facc967f7e4528f94da3227ac",
+      "float32_waveform_sha256": "95ba59ac569568b321648347ab7c3f64e9265c69dcc5243aef1e5af281236633",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.7149360775947571
+    },
+    "clips/clean_XC293219.wav": {
+      "sha256": "4f62d5185af45de95e78c69c723b173383552af45fc52b20951c5e1a6c73c5a0",
+      "float32_waveform_sha256": "218ca5571e4fc3b36429402df38ba07d562df6ae62dbe1171d2b115dbb735c13",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.37462857365608215
+    },
+    "clips/query_XC293219_SNR_0dB.wav": {
+      "sha256": "95cf16c2db0b9ccf89c09ea9cde9f99a2f2d11402f0c6a33365f5a39f8dc1cc4",
+      "float32_waveform_sha256": "f8809abbf9f2a0608386c78db64a086393fc07e236103effd5e8368e26e61189",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.5634874701499939
+    },
+    "clips/clean_XC151642.wav": {
+      "sha256": "3c98ee657d8771fda5e460d40002d0cef00c233eb5045d6ba04a868cd4d72ba3",
+      "float32_waveform_sha256": "94eee9962753d467ed89a428fe36b8ff2186289e74c5fedf190bd64bf009d4de",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.31719422340393066
+    },
+    "clips/clean_XC40242.wav": {
+      "sha256": "67c830779c8153a37f03baa61e6dccb011dc526d26226e48254887b5bb9d4803",
+      "float32_waveform_sha256": "35a236ae28698ca16217f6f794c76f2dee32eb22a6398319f798c42c67f0204a",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.47898223996162415
+    },
+    "clips/query_XC40242_SNR_0dB.wav": {
+      "sha256": "f13821bf782663d91dd1e9155756f3a73e701f54cbdd79c20e5c83e7aef38fa1",
+      "float32_waveform_sha256": "ff31c262a6fe091824f5debf66eb25de2954e235e469a78e4da32bdf41403946",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 1.0
+    },
+    "clips/clean_XC575535.wav": {
+      "sha256": "747c106252484fe9bf501dc294dd14f2496a9b9ccb81870e7a6444846ebaf9a8",
+      "float32_waveform_sha256": "b562d11cb7195ccbb6c37f49b657f3b74bf7e7af4e199de5a7c16b66e55510cb",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 1.0
+    },
+    "clips/clean_XC33651.wav": {
+      "sha256": "94282288ade33a922328de769e00e965ff1c2ba03c4c8d07b11def6acd199920",
+      "float32_waveform_sha256": "118ae16afad919d3633638acb86cfacdc39a13f9e32a4d1114628ea7ff785068",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.593232274055481
+    },
+    "clips/query_XC33651_SNR_0dB.wav": {
+      "sha256": "c7c5216682cb5386f52195c73f2af09dd5db8ed6638f208772583e08394cf7e3",
+      "float32_waveform_sha256": "3fb0e064760d3def4d68b2cabae67204e70f6e65e4b6c1983314dea091393476",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.598595142364502
+    },
+    "clips/clean_XC68830.wav": {
+      "sha256": "8ae082238dd9584167baef2735adcabe8bc074f9e19039e76bed8eac4ecdb1f7",
+      "float32_waveform_sha256": "c8e410b6b35811ee6560187ac5c952dd758ba1de777fcf98bb92aec67d1ed639",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.45769715309143066
+    },
+    "clips/clean_XC823688.wav": {
+      "sha256": "5cb69946bc80435939cac55723d18cb0051c1c50b7fc86015f639755dc78d9ff",
+      "float32_waveform_sha256": "b4621b6a281da63c0935300414fd86ac07dc66f9f2a04bf71df984631509b1e1",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.3877771198749542
+    },
+    "clips/query_XC823688_SNR_0dB.wav": {
+      "sha256": "e05706a3487b138b726f2d6193b94d4107dee6f9fd1b579554b1e0e1e9193195",
+      "float32_waveform_sha256": "b66149267f695160f2187aed54300f85d90efd08a949d0be0285161ad2eac1cf",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.5012168884277344
+    },
+    "clips/clean_XC69232.wav": {
+      "sha256": "446f2db116081fcba7a2bfa800a56abb7d8e83ec000c91c9dc884eae6c4b2604",
+      "float32_waveform_sha256": "2db3e9ba95fb1329b1d0cbf5afe2b2860154b8296a62a45cad74dd89b84c2bba",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.41899481415748596
+    },
+    "clips/clean_XC204329.wav": {
+      "sha256": "7cf48b6d62e80fef878de6bd035881277c959528300026566b9186df24887da8",
+      "float32_waveform_sha256": "b50648ea93023cdc2e66f9b5e6b7b70a4d8b55be80f5648fe683b3a40bb7eb8e",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.36509671807289124
+    },
+    "clips/query_XC204329_SNR_0dB.wav": {
+      "sha256": "01cd3a3a067d836fba336609d1baba7cc3e7c82eae6d7830b645b63f30c903cd",
+      "float32_waveform_sha256": "6fd280441652f52c6abb55e9bf604ff1b019e469fcc11db1ca2af53ec9035a82",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.4354764223098755
+    },
+    "clips/clean_XC200542.wav": {
+      "sha256": "a1f48b845976deac0d952818dfe5ec88d5323840a57e5e131aea05e7024374b5",
+      "float32_waveform_sha256": "b49da4ff74291bcc715f48215850e3ac26d5c20f9d2a9fc05d7002eaf590493e",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.40116801857948303
+    },
+    "clips/clean_XC1098971.wav": {
+      "sha256": "8edc703a1263a06ded782617170626ddd55486c423c973db0c86f0f37b03298a",
+      "float32_waveform_sha256": "26408de80dd75904a302bb4db346c5f4222d12e4443353d6f327ea9a28d42414",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.2045184075832367
+    },
+    "clips/query_XC1098971_SNR_0dB.wav": {
+      "sha256": "f8407d80bf616968b7bba57a22b07a16a3e113f110a8a024c465913490a7337d",
+      "float32_waveform_sha256": "b06b213e487c2606b324d61ac2d6d6fd1fa8801869410e5bfd1c9bb6db78e0ad",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.31515511870384216
+    },
+    "clips/clean_XC69236.wav": {
+      "sha256": "ce4ffe40e4d097b489efecdd243299fea1867d7bf28abb10f7599b5b91da953a",
+      "float32_waveform_sha256": "65ab1081c05be2ee4afdd41e201cb3fcb76c8d535837372103b649db443b2fc1",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.38533079624176025
+    },
+    "clips/query_XC618811_SNR_10dB.wav": {
+      "sha256": "c115c0f6f2bdb2e98111f7b590046b50bd4b0e02be7e5d2f641e5451fbf4da22",
+      "float32_waveform_sha256": "aa318f868aea35844aad0c96a674d9438f86484791c2c1b1222d058eb125a433",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.3390001952648163
+    },
+    "clips/clean_XC638365.wav": {
+      "sha256": "ef687b1ef9a2018015842b834f1b92c3088354673154bfbf087d91201eac2f37",
+      "float32_waveform_sha256": "17c24dc8cd2992aa34f3e3f0a4b4d544208c0aca1dc49c70b155fda38fd901c3",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.46620404720306396
+    },
+    "clips/clean_XC204314.wav": {
+      "sha256": "685866e423ffc739066307f5500c65852cd8304ca70b2d1012c69cc1df3620ff",
+      "float32_waveform_sha256": "205497cc00879981866d5bffbbe48a86d31a1831f9b7f5e48fceaa53d0aa0d75",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.307536780834198
+    },
+    "clips/query_XC204314_SNR_10dB.wav": {
+      "sha256": "256173b86bfb2fdc087d6933d6c14d48a296de76f9abd5c29ce9f601a5164a8a",
+      "float32_waveform_sha256": "041bfd3a51b1d49c0ff9c32e6f6eb40958bb51143f46cff1bf42411fd4323083",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.3087753653526306
+    },
+    "clips/clean_XC923993.wav": {
+      "sha256": "7f9a3469e23a6dca686ba095939b145262917d169796b99d3dffd09f8f8468ec",
+      "float32_waveform_sha256": "237a144a2e9a48bbabf3df7b0349bec658e62b1e228047dabfdfcefa9ed8af92",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.48004472255706787
+    },
+    "clips/clean_XC618419.wav": {
+      "sha256": "52afc2e46e889df811d51028179532260d7c6345d46651bcb0048616ebecea66",
+      "float32_waveform_sha256": "800317eb61e498ec5141493db7d6ceecad91f19a35ec548fb756072aa5b9714f",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.575040876865387
+    },
+    "clips/query_XC618419_SNR_10dB.wav": {
+      "sha256": "a703daa6b63115a63a3f6518fea2b7fe8fe912d1890639d8ae6f45b54483d4e3",
+      "float32_waveform_sha256": "3042036cf7287b3279ca5da0d6eb69b90f30f998981ce1969868f563549b4996",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.5782350301742554
+    },
+    "clips/clean_XC284505.wav": {
+      "sha256": "721fa0a7b85390914db7c1de501af20c025be3082151a974b45ce8975a4712c3",
+      "float32_waveform_sha256": "07e77834d9626f23651e45f70434bd91301f18d4b1f0a423048895946b4d8747",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.31381887197494507
+    },
+    "clips/clean_XC204332.wav": {
+      "sha256": "51944f8d7eaaa3a73c7c07d5bec1828a94b76e082d3e36da409501b490180a24",
+      "float32_waveform_sha256": "ec162ff4cffcb74a1cb2cc70ebdf82c2a7e34653dc1e610760357ee1bcf1d79e",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.31902602314949036
+    },
+    "clips/query_XC204332_SNR_10dB.wav": {
+      "sha256": "2a0e0e840ab786a505d3eeb419a64a9277aaba568c24d8485c0d5b9bb0fb8ec6",
+      "float32_waveform_sha256": "df683d000132cde9975fd8c83e30b65abc186c65fe4dc9bac396ce41a316b9d4",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.3245560824871063
+    },
+    "clips/clean_XC284767.wav": {
+      "sha256": "5c9fc5d31c1ff2f26a269293fec3942de8f9f005f35ac6c77207df07abfb9c06",
+      "float32_waveform_sha256": "084384ab908406495143d96de3d3495417eda511c0df21e469832a8c8d858abc",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.4114084541797638
+    },
+    "clips/clean_XC825283.wav": {
+      "sha256": "cd87838e26ec0b4dca2f48de27b65f4aea9b606a04f214fefdcab2678819305c",
+      "float32_waveform_sha256": "4f7162ee4dbf02ecac23c5584133cde7fe920617494fc610ccf5adf5c346f0cf",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.6473899483680725
+    },
+    "clips/query_XC825283_SNR_10dB.wav": {
+      "sha256": "0288a4751e81df76555da6a2505fb79f2db338a9d8aaa97775ff6e56caf52b1f",
+      "float32_waveform_sha256": "6d55e4fa8dc6c3d5df7caf9ae997e16e7494fd13c01531cae49a9ba6c68254f2",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.6362596750259399
+    },
+    "clips/query_XC152203_SNR_10dB.wav": {
+      "sha256": "444ad09887098db6689817fd05cfa7ab40a3cc5af16696a276f7a4764e533145",
+      "float32_waveform_sha256": "fa4a5ed3d39cc169c2105bb55438c683ea547311d7e21c0250ce610898ee739a",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.47785457968711853
+    },
+    "clips/clean_XC361000.wav": {
+      "sha256": "ca6168ca0067d6a5ad05408e81235376d800c660b8573ec1a502bbc529bcf8e2",
+      "float32_waveform_sha256": "576d1b99533a2c2bbb45168e26516ad68e066391d6eca9b4a8a0c650c4e38220",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.5511658191680908
+    },
+    "clips/clean_XC20214.wav": {
+      "sha256": "70c69636b9211f05c1d9c0041eac20a8cb2ca3d184ccdc86fc962874c59e2980",
+      "float32_waveform_sha256": "0ac4f0121aee1a49079f406a166f94f1fa0053b0f4c3bf3f79b5ef5e6f361bb8",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.302055686712265
+    },
+    "clips/query_XC20214_SNR_20dB.wav": {
+      "sha256": "e1e555a6a8cee433c23f095388fc5617996d047929860470a15927354cf7251f",
+      "float32_waveform_sha256": "42b9365c644814783d29e0dc459d9c3404f53aa281c1f39205d7048ca88066dc",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.30408400297164917
+    },
+    "clips/clean_XC350930.wav": {
+      "sha256": "7de983489604b441d78bea5f33ae4dd7881fb98c84b75764a7065a44937b0c78",
+      "float32_waveform_sha256": "ca7dd432f4af25de4167ba8855757165a16e3596835948f249ab4900cce87dbc",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.36395683884620667
+    },
+    "clips/clean_XC204789.wav": {
+      "sha256": "ee37d7467c8af5165fd31ebae66b7134d76f7947bf37a44075cc1487c0b63f3f",
+      "float32_waveform_sha256": "29bde88c7ff2d79febe7b6bd6be56de61fd5eff5b54a7033e088078836a1c19f",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.46283113956451416
+    },
+    "clips/query_XC204789_SNR_20dB.wav": {
+      "sha256": "83eeabf31b0e6a975ae1a80080d464189ddf34fbecad3d4c24790f3b1c1355c8",
+      "float32_waveform_sha256": "cdbf1a58ae4d988d570b190f4e1408ed715a26fd89bfbcdd5762388253624b58",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.45903280377388
+    },
+    "clips/clean_XC351670.wav": {
+      "sha256": "d631974ff6888dfe1a80b4e62ffbfe24651c88eba6ca19d85aebe0ec3be227ae",
+      "float32_waveform_sha256": "3d600b8f6410938b370731579f1cfe0b66b0fcc967408c7db1b6b6b932411e40",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.4512791931629181
+    },
+    "clips/clean_XC90930.wav": {
+      "sha256": "46ae58dc2c429480186a2a241b7fb13fabe5cf439230c34c9da09688d5775fec",
+      "float32_waveform_sha256": "e44dded95c2d4d8f2a3d287fbe2c985be8fabf9a87c119d4ae79a11695d11aca",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.45950114727020264
+    },
+    "clips/query_XC90930_SNR_20dB.wav": {
+      "sha256": "ba70f987ca27ab30d76ff4e276db8b73f602bc1c5e907e0325894b7b728904c1",
+      "float32_waveform_sha256": "11ddb4f1a92e8df98928a0070946b9f068e318634bd7d85706da1d1fcf80a854",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.464290976524353
+    },
+    "clips/clean_XC176894.wav": {
+      "sha256": "a07cf1d63f59c3c563918c747766db4977f24c6bf91a17c3e2797d9405b5ca87",
+      "float32_waveform_sha256": "b3b36f1344176d67b6fcfe54130b506e9d508a05cef3d3ffeeb5683e6c0933c5",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.25409549474716187
+    },
+    "clips/clean_XC618722.wav": {
+      "sha256": "178fffca98b0e238b86803bffdaed99cf54987efd544bd040edc38cec9f3ecb0",
+      "float32_waveform_sha256": "61d5b80d4962a39124ac2961cafee39ac61b7b7cca2202b9337fb6bd7cd98d5d",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.2871040999889374
+    },
+    "clips/query_XC618722_SNR_20dB.wav": {
+      "sha256": "33f022d5b0522cc6dc1a39d54e313f1bf80a3b787a6f6d768e2d2f81f8d36f9c",
+      "float32_waveform_sha256": "542520571b07deecb971a25346a6444db516bc90a161a912f4cb36f73d98c187",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.2897375524044037
+    },
+    "clips/clean_XC200539.wav": {
+      "sha256": "ff30dc663c40b49772e128c65cd2ec5207adf275e932357b19d08fa1f6d5609d",
+      "float32_waveform_sha256": "f1250562c31a4fb747eab2350e2e340f5a5dc8fec778f5a0ed9da4a2696424d5",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.4491604268550873
+    },
+    "clips/clean_XC205073.wav": {
+      "sha256": "05ce1609015eb53b25759ba17274d3a37b0c3450c36ef263883632271f086e5c",
+      "float32_waveform_sha256": "e01a3d6888ebabf6be4065e02499406cff7469abcdd37700f2f9a0cd62766dd7",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.5226101279258728
+    },
+    "clips/query_XC205073_SNR_20dB.wav": {
+      "sha256": "a27c4ccf37bc5dbcecc9dbdcd7a5aeb87c0ead007745bef680c0220ede98e77f",
+      "float32_waveform_sha256": "0cb574352c4352cb3f70db8399dd7c3ab977f22e12d07f4467e05d782277bea2",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.5075922608375549
+    },
+    "clips/clean_XC502210.wav": {
+      "sha256": "f1948a272455764dccaf1c2d4c9e32a81c64fe01b5d141ee3d49a674e21ce4d9",
+      "float32_waveform_sha256": "963ffeb0d7c26ec4766b3990762a45757e595b72734e664796167b567e745994",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.4628604054450989
+    },
+    "clips/clean_XC205148.wav": {
+      "sha256": "c38d6ae8e067fa765554f580559c546c0197b3fccc51d338a21a72326cc2036a",
+      "float32_waveform_sha256": "117f6cb054a704db21392c1edf6d7d0f117754ccf3cd2e845b15ed5da3d03ddb",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.37202921509742737
+    },
+    "clips/query_XC205148_SNR_20dB.wav": {
+      "sha256": "79f0414cec57cba9d3296ca353db61153a065e7903e9c667cdaf4d5bbc3a26bd",
+      "float32_waveform_sha256": "8a1cc3bd686713635e792e3f85032e33287c536ddf33fb62e81fe926e11716e0",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.37907326221466064
+    },
+    "clips/clean_XC412322.wav": {
+      "sha256": "c3a1e9079d6044362cc6aa82f1c1fe22fbf66036d4be154c187109d7a6fcbb9d",
+      "float32_waveform_sha256": "c241e7fc0129110be9375d7d723eb9287db5a2b5cad9effcb2d8861e7781e69f",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.8754583597183228
+    },
+    "clips/clean_XC1175920.wav": {
+      "sha256": "0918cb88b32af472a1ef5745e6ae11d29c942040865538c2364c588f61576eb6",
+      "float32_waveform_sha256": "8403a13a8b3ceffd32f8e3bfea9c1a8da9a1f685ac77d85ddf88e078744277bc",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.3163503110408783
+    },
+    "clips/query_XC1175920_Clean.wav": {
+      "sha256": "0918cb88b32af472a1ef5745e6ae11d29c942040865538c2364c588f61576eb6",
+      "float32_waveform_sha256": "8403a13a8b3ceffd32f8e3bfea9c1a8da9a1f685ac77d85ddf88e078744277bc",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.3163503110408783
+    },
+    "clips/clean_XC285032.wav": {
+      "sha256": "f74a7df9c620d8d63ec3acd9956acde0606dbe7b60d841f9fddb23e6bbd88c68",
+      "float32_waveform_sha256": "51727247df9c4f95ce214800308a080b508f9e7fa9a2225b5016b99439ee61f9",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.37299057841300964
+    },
+    "clips/clean_XC241654.wav": {
+      "sha256": "a04e0edb228224cc9e7c68eaf1c6e5c959eb8caf7f3fabb8be4fb52ceee3639c",
+      "float32_waveform_sha256": "b504fac5fc77f739859044aa389aab416dfa214717320fea9ed5fa6140bbbab6",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.7381834983825684
+    },
+    "clips/query_XC241654_Clean.wav": {
+      "sha256": "719591c604186b3b33cafa77cccc7e6bbcd73c63ac1dcf48dd2273ac16a96a5d",
+      "float32_waveform_sha256": "b504fac5fc77f739859044aa389aab416dfa214717320fea9ed5fa6140bbbab6",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.7381834983825684
+    },
+    "clips/clean_XC206063.wav": {
+      "sha256": "5213dc45abde9f7f3bcbd71d53d3a963f9755bf114b71dbaa8b8baefe477c8fa",
+      "float32_waveform_sha256": "a9adb62cdac0475e5fd6499b787f9db1dccde915a72cffe6252f1db764c75047",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.372266948223114
+    },
+    "clips/clean_XC1082290.wav": {
+      "sha256": "12679906b755b1623c030cb7b2fe73b71945a16ba92027777ba9bb4abee6df1d",
+      "float32_waveform_sha256": "1fd88998564998dcf3413bd89e9bb59a1cf5e115cc8055c99245fa13c758ffa3",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.2701083719730377
+    },
+    "clips/query_XC1082290_Clean.wav": {
+      "sha256": "12679906b755b1623c030cb7b2fe73b71945a16ba92027777ba9bb4abee6df1d",
+      "float32_waveform_sha256": "1fd88998564998dcf3413bd89e9bb59a1cf5e115cc8055c99245fa13c758ffa3",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.2701083719730377
+    },
+    "clips/clean_XC501306.wav": {
+      "sha256": "6184fdde118074aea218734f2809a59ec11642d5628ff2cfef73d1c10de2d1a8",
+      "float32_waveform_sha256": "dbc5912b3055179435b8d50c6f14ae5093aa7428403e89a49719f067d5f35114",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.6222142577171326
+    },
+    "clips/clean_XC820629.wav": {
+      "sha256": "308eb8f901d02c10baf47640a0ee902a4ffce4718e36a3dcce771f767a9a09eb",
+      "float32_waveform_sha256": "56c6456667ef3934b5d56d284b36aff3d8dfadf7a7f4077cfdee97d0c0fca320",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.22321154177188873
+    },
+    "clips/query_XC820629_Clean.wav": {
+      "sha256": "08f286bc3538a27e28a38b4644f576b347b539c217ef633a38d6c693d6420f78",
+      "float32_waveform_sha256": "56c6456667ef3934b5d56d284b36aff3d8dfadf7a7f4077cfdee97d0c0fca320",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.22321154177188873
+    },
+    "clips/clean_XC141809.wav": {
+      "sha256": "5cfc65f0b19f72b16f20d440a7e21eb466ea4bbc22d5c07c899b147d6bdc3405",
+      "float32_waveform_sha256": "96b7ce165fec7a819ccef2249a7d8bf597c30f35a5dc803291eaa7ba878acef3",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.2989741265773773
+    },
+    "clips/clean_XC241631.wav": {
+      "sha256": "6e66824c109d039504bdc6e5fa04e1dd72ae4269d87a6e11e09c56e6e8f7cfed",
+      "float32_waveform_sha256": "99473e881b79fe3b6ea06bded8fabe75651ebda838d78a254e22f4d8b227e59d",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.42552876472473145
+    },
+    "clips/query_XC241631_Clean.wav": {
+      "sha256": "6e66824c109d039504bdc6e5fa04e1dd72ae4269d87a6e11e09c56e6e8f7cfed",
+      "float32_waveform_sha256": "99473e881b79fe3b6ea06bded8fabe75651ebda838d78a254e22f4d8b227e59d",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.42552876472473145
+    },
+    "clips/clean_XC89270.wav": {
+      "sha256": "b2a7f94aa7d67a498ac7c022cf949d4778626ae5525304bceb4245a82dd04019",
+      "float32_waveform_sha256": "4ca3acde9f05c11619bd02848931924a2d349b83e32c7f6fab0ffe412966e521",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.5749789476394653
+    },
+    "clips/query_XC205073_Clean.wav": {
+      "sha256": "08e7f948360f701351a2b8b3def897da031690d18f969f792671c3c2d7653f5a",
+      "float32_waveform_sha256": "e01a3d6888ebabf6be4065e02499406cff7469abcdd37700f2f9a0cd62766dd7",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.5226101279258728
+    },
+    "clips/clean_XC168880.wav": {
+      "sha256": "35486631f3d4c97dcacae9736db05b6e35b876eff6bab9d2e779f6a5a5932a78",
+      "float32_waveform_sha256": "97cc1f1a2966bc9f0fca3e7e5d86f7f086a9acba78e1924761439f1e022567cb",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.6250181794166565
+    },
+    "clips/clean_XC70338.wav": {
+      "sha256": "7c9e034911398869bfc61f081483217f0d6b23bd2852fc2fe32aa9d5295fe1d9",
+      "float32_waveform_sha256": "8505fce5023e487e2139d1bd67519f87a8479490e46d2ea95120b3a0012cf16e",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.22818689048290253
+    },
+    "clips/query_XC70338_SNR_-5dB.wav": {
+      "sha256": "da58b05828fec39a0da19016cc886c924db17ef0919a5ba8ff53a4a94e58a181",
+      "float32_waveform_sha256": "fcc24cf7d795d9a8c81a4a6743fc96cca206b7e39ba860c2d079af45aa098c4c",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.5834627151489258
+    },
+    "clips/clean_XC576634.wav": {
+      "sha256": "c4601ecabb7cc311bc73ef97b4e415331f8a5c47b9f3b0b9d5912f2e81a1e1f8",
+      "float32_waveform_sha256": "ebad965b4277adae5228dcc72903b88b9d040e12bb40ef37779d8691410b2a48",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.30863654613494873
+    },
+    "clips/clean_XC227687.wav": {
+      "sha256": "88d4eb1c7af497c824ff6dcaf5d2d2a73b00ee57eeb8d0ec032840d3de029137",
+      "float32_waveform_sha256": "50d9252f3d91b3296a3c0e3f5cf22f502581cc92de064783a05dd5d9ce15880b",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.3319603204727173
+    },
+    "clips/query_XC227687_SNR_-5dB.wav": {
+      "sha256": "c8f0b5411048b6651c4fd9edec37a941a75e5969a2acb1d214371fcf4d1a8d12",
+      "float32_waveform_sha256": "e0de020b623d934f1dcd3b5098a265b949e38704d274272bb18b2a88fdf44212",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.5879108309745789
+    },
+    "clips/clean_XC68928.wav": {
+      "sha256": "a66926cfd503949f632cc4650be8f99cb9be9a65430a292c6893832c9c168372",
+      "float32_waveform_sha256": "26e580bbe7c870c59a4d56c16b275a432c4b14a8cdb05a93ea2968e20fd7d4e6",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.32249200344085693
+    },
+    "clips/clean_XC241656.wav": {
+      "sha256": "bff52c7df1fb9673616c05dd8181394f7c708aebde9c33c90d3a59b7f0ab4a76",
+      "float32_waveform_sha256": "ec37fba953d94bf3f21f65c9f6b4b5323c7d4d572c8026769bf978950f4d8fae",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.3947553038597107
+    },
+    "clips/query_XC241656_SNR_-5dB.wav": {
+      "sha256": "e1a8063db44fd77058e447a0f57115dc791e3f432cc191b246b304a544514ef0",
+      "float32_waveform_sha256": "46646f5d0d18603c48ac51e52c0e911432dd9be29bea343f22d18aa033af658e",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.517403781414032
+    },
+    "clips/clean_XC410383.wav": {
+      "sha256": "560345fd758785dfa89aeb09faf43aa9e77d7d9040819de11ef4856699202600",
+      "float32_waveform_sha256": "c5cc7d92a7b32a69380dd21e177c9572dea7685b136f492e735f34d2936d4006",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.21736790239810944
+    },
+    "clips/clean_XC214643.wav": {
+      "sha256": "68646d64989cdee076a72fdcc3072d9fa5ac8489eca74b313a855c9e60957ce8",
+      "float32_waveform_sha256": "c48a78c6bba7319f00563f3f45c02c608a0d7af04dd4c24d8d005ce4a55d927a",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.2666758596897125
+    },
+    "clips/query_XC214643_SNR_-5dB.wav": {
+      "sha256": "a2087161c8fe939d0b62ef1922d5e4d8848efb4bc3b0cded09a309e7af3b70b9",
+      "float32_waveform_sha256": "4d4a662967e61b20b92b3fe2ea31f08f3023d6802b86686dcbc3d3f60ad10c72",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.5831908583641052
+    },
+    "clips/clean_XC468855.wav": {
+      "sha256": "bda8fd5caa03d7db3d3faea213b84e2c50cba6c4a354976e87cf574a8666d7df",
+      "float32_waveform_sha256": "63a33ec6131eb5724c9445417e593d8929dc3e5ab2523437e61570312ad8ebfc",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.5826650857925415
+    },
+    "clips/query_XC618722_SNR_-5dB.wav": {
+      "sha256": "f3dbf78ebb14f10021f8b021d3117e3b264cc22159b5ea4237e7b48d525aab79",
+      "float32_waveform_sha256": "dd5d711543ae1b0ff2389f35025391543ab7bdcd589b6debd772ced16c95829f",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.5970462560653687
+    },
+    "clips/clean_XC204547.wav": {
+      "sha256": "b8f9bb7efcb1c817cfd4f24279423bcede6ac3fe733ae26a6158d1ba04999377",
+      "float32_waveform_sha256": "38a3ef42d5790bbfcc7af57b3b1a3c92bccbb3b0d027b004ee3544bb8b58bf84",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.6257802844047546
+    },
+    "clips/query_XC204547_SNR_-5dB.wav": {
+      "sha256": "e2dbf9317a782eff2667c2439e2e27357538a63c62b57d5c6d54b5babc75606b",
+      "float32_waveform_sha256": "371112feb3a4890f636cbed03e2cfd887f1f229e1c5f0cce52cba7a9030ccb6e",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.8551698327064514
+    },
+    "clips/clean_XC70243.wav": {
+      "sha256": "76e2484cf173bb538466844811ed44b6da92b9c7cd0f303f7470e3949bc2de0a",
+      "float32_waveform_sha256": "8eb13f735e55b19d502dacbc3126408be27cbdcb8b726423217b8ca5553ce8bc",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.3589162230491638
+    },
+    "clips/query_XC70243_SNR_0dB.wav": {
+      "sha256": "c8958000498055d7ca63a81483e68282789074836b41b12fdb946426bb3d6311",
+      "float32_waveform_sha256": "b1895b00f5af8ea921e452e5e671a6f395abc9a24be9f6e4abd9fbc517cdf9c0",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 1.0
+    },
+    "clips/clean_XC69237.wav": {
+      "sha256": "ca5cf8496e7920b838206d0dbc556cc4d883d962650f43f358f5b261fb0ec415",
+      "float32_waveform_sha256": "9430107e1955b1e18978ac2a2826faaf7102772a2320eb19de86c4bd733ff25b",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.24737542867660522
+    },
+    "clips/clean_XC204060.wav": {
+      "sha256": "5b2ae701d7aadea5a963c86b4918e58a2d3a195c37f87d9d3499d3a16a5c26df",
+      "float32_waveform_sha256": "a8c2c168114dca009023c27430316f652d23820ad3be13fb85cbdcd9c532df17",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.5992377996444702
+    },
+    "clips/query_XC204060_SNR_0dB.wav": {
+      "sha256": "9b98ed36d3aa5d701251b143115c9de4cc6b45208cb14b81c93c8979fa41b07c",
+      "float32_waveform_sha256": "13194feeaf99f4e50d54af59a420bbb0a4996ec96ebed15beffcad2c32cbc69d",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.6000864505767822
+    },
+    "clips/clean_XC576404.wav": {
+      "sha256": "85e2d7f5dcf649e8a65322b4f7bcb5827d98408113122905a18d506e2b467017",
+      "float32_waveform_sha256": "e23349187cacbb5d1d2369658c36393e046323ee5cf954680b10bcba256d8d28",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.4510100185871124
+    },
+    "clips/clean_XC210756.wav": {
+      "sha256": "d83b5695097fc675a6f99752276b13c6e4133181e24b3623c2fb742814404711",
+      "float32_waveform_sha256": "a07b59feb718aa730ea474239283cfd55c9e2514f38ae84c87b047a11139471f",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.23657850921154022
+    },
+    "clips/query_XC210756_SNR_0dB.wav": {
+      "sha256": "e57494c6e64045c00f18754775d8f4a8b28ccdb381198b0ca8554ae0af777f11",
+      "float32_waveform_sha256": "72bab6e9abbe9b0138d189d6b9a5922a28b4bca8f71903e2efb9239ae894e498",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.39654695987701416
+    },
+    "clips/clean_XC618806.wav": {
+      "sha256": "3d8cb85c87c416553d02ddd22e3d4b7b5181e6317c360c99bf009b36e3caf126",
+      "float32_waveform_sha256": "a361cac4a514217e77cce6c709304c10a94b7ff683fda0423973350adafae2b2",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.3819541931152344
+    },
+    "clips/query_XC618806_SNR_0dB.wav": {
+      "sha256": "8f2bcf9f9ad1b46d3241cffb0134da53b10b437d5f0c2cf1d970e59c56924f7e",
+      "float32_waveform_sha256": "d835bf2b351376c3f131a4b8fd59d2b64652c94cbac556f4b801258184d566ef",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.47553515434265137
+    },
+    "clips/clean_XC618714.wav": {
+      "sha256": "ca5f6c2a841d029cb9812decd96c5a4c817b51edeb9ebf41d946a6108c103976",
+      "float32_waveform_sha256": "dad77ad23795b2742914094f37907f96feae2fd174a504d0552b3f74c6fc0397",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.312157541513443
+    },
+    "clips/query_XC618714_SNR_0dB.wav": {
+      "sha256": "46c0388f3e6c4e9ee1d8e01c44d0fcc4e25452ff07c97b97a95786c8e59fbfee",
+      "float32_waveform_sha256": "520b90c30ca50eb0d4546667f984c2d9a51530bebc02dfceafe453192f32cd64",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.40909263491630554
+    },
+    "clips/clean_XC152159.wav": {
+      "sha256": "3b46fb5a01c7a500ed5b01e09180117cccc0e1c53bfe588c4c49fb55054cc56f",
+      "float32_waveform_sha256": "e5fdda6b8d8833a65d350f63381ecc8d2d2820931b90e5ffbe8c4fbfd54624f7",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.28692975640296936
+    },
+    "clips/query_XC152159_SNR_10dB.wav": {
+      "sha256": "3aec3c7281b85a1343bd7371f87ce6675041efcf303fb9c1a864ff95ab1b0815",
+      "float32_waveform_sha256": "cc8c5f7854e9bbc04cdd3d4b03eaf28f9c98e538a20173d2b1cbba0070631f13",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.30457767844200134
+    },
+    "clips/clean_XC255441.wav": {
+      "sha256": "30b413507c3b5c05d0c2c8d47890288fdd100f3a066b8cd7b72886196656c32d",
+      "float32_waveform_sha256": "ab02afcbc4b69a7349044a2b66d3ddfa37eb8a44fae9dd2d7aa8346d0a46fe55",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.510628342628479
+    },
+    "clips/clean_XC482292.wav": {
+      "sha256": "e2a05d08535525f563f77eced000f0b0ca5978fde3cd65a7249f2cea254ce15a",
+      "float32_waveform_sha256": "4484d6c2f5ee2dd3206b8e39950f7405b433b09ac9204a71b9662f1a82862144",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.4668458104133606
+    },
+    "clips/query_XC482292_SNR_10dB.wav": {
+      "sha256": "9cd7766fc982d9a73ac59f3388c52428857f8bc70a5b864b57235c4bcd670c88",
+      "float32_waveform_sha256": "e4773a63f460a094ec6d8c58f4712f1e830ce9a7a9c21a7d290096c0e6738c60",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.4898919463157654
+    },
+    "clips/query_XC241656_SNR_10dB.wav": {
+      "sha256": "16b8d0f9ae1c657d5bc62c936c75abf286c92cc76ccf94f3090d4de1111406e5",
+      "float32_waveform_sha256": "0ed0c737e60d0a024781ca4f26c593dbf19f4a746aa227a3057f0a7caabc9f42",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.38391998410224915
+    },
+    "clips/query_XC214643_SNR_10dB.wav": {
+      "sha256": "bee543ad33862f201a0722b7a2a3c29426f01e71d24b838a2417d8cbabe637e1",
+      "float32_waveform_sha256": "4b380e4bf2fc03d6fbeff8cf75525e5c823dc507111d6b7843ffe1e6d885856a",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.27767327427864075
+    },
+    "clips/clean_XC338727.wav": {
+      "sha256": "ead79d77878e39fad8e64e8739516452d2e512d424d12a7c30e41aee3a786524",
+      "float32_waveform_sha256": "0e99b9177ac8189f79f0b42bf13be8de758b308d72617f2533fb16bb6c3685e6",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.32823699712753296
+    },
+    "clips/clean_XC70231.wav": {
+      "sha256": "757229d01b810c23266cd0d2c2e25fd1fa13f2a89ff4f43da6d150d927b280e7",
+      "float32_waveform_sha256": "43ed099d99082793c14dffc24de621b93bd33e4b6cb8da6fa2204cc4a005501f",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.6323901414871216
+    },
+    "clips/query_XC70231_SNR_10dB.wav": {
+      "sha256": "ec1bd4e32a75f4fa6c7b3d5c8a2cc744821c1ffbe551207bae02f7721ce4cd2b",
+      "float32_waveform_sha256": "47cec2f54ebbe4bd8b9f73988b3d9cae3bc18226487591fe1753e1722c53b3ec",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.6454665064811707
+    },
+    "clips/clean_XC214420.wav": {
+      "sha256": "db1383a4f0be78df78622bf187911e945eb706fe08749eead039e565b5af6f8a",
+      "float32_waveform_sha256": "4e6cfadcfe7480d36b40ef19cffebb29430399e746c71bbcce4fe0a198bc6def",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 1.0
+    },
+    "clips/query_XC214420_SNR_10dB.wav": {
+      "sha256": "76d2faee4ca287ae07b8c84df0f875502d4bbd708bbaa1a1ac8666533b42c692",
+      "float32_waveform_sha256": "99b3c01cce842159e694754b86a58f6a5768db4153a768296f7a3a7cbacaf9a6",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 1.0
+    },
+    "clips/clean_XC95698.wav": {
+      "sha256": "6302a689fcaaa07ba0924f0a831ed35fc5d2089579d235525bd19fdcc46b7354",
+      "float32_waveform_sha256": "486d8b4c9c3fa4861d2378b1dfed9b42949de6eb0912bc396a8480c3952717eb",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.30636683106422424
+    },
+    "clips/clean_XC241683.wav": {
+      "sha256": "fbb5f20d487077c02855564231e13baf9f3b9d519a5b1a9dd6cdd9cd5b0eaced",
+      "float32_waveform_sha256": "4489885a549a85a68516ed0d34515d5f304544000cc43cc089a4c219c21ab4ec",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.6238808631896973
+    },
+    "clips/query_XC241683_SNR_20dB.wav": {
+      "sha256": "e9337d30a19a09765e4b047f115f70bf086fce874b92ef01874d715bdf9d4358",
+      "float32_waveform_sha256": "0e2e904623ab888e38a735ec485b82b5e6e982eb8e210568ecf5d4e11516b555",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.6270775198936462
+    },
+    "clips/clean_XC24108.wav": {
+      "sha256": "1d584b197c91e3966ff4f79f4c3b7bfc7c0a7c7fcca7fc8f25aae56ffcf8a9f5",
+      "float32_waveform_sha256": "57639730971d9a729e5990dfc47a0326d302658012ead18d45e0672bb29992a8",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.3771510124206543
+    },
+    "clips/clean_XC151991.wav": {
+      "sha256": "598ead1ad5780dc784128991ace4d9670383927b25f0cf9fce296eb965b89a64",
+      "float32_waveform_sha256": "a48d31199945f6ec42b87ea1b1cf7c3c357b430a2817839a9bfcd44dc6f373fc",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.4070160686969757
+    },
+    "clips/query_XC151991_SNR_20dB.wav": {
+      "sha256": "3a5f9796efea43630cc75a9924b897fdc3154550512c15ea9ae98b5a2cecf997",
+      "float32_waveform_sha256": "396c126e81619ffd0935d4bbfa994a666e55be4e74a3e3db4bb31786f0d5bb94",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.4042803943157196
+    },
+    "clips/clean_XC596828.wav": {
+      "sha256": "d125004e385b75cc5531c07c3f9cdad50f2ea1fe7687b59515f1ed86d927dac7",
+      "float32_waveform_sha256": "2281caf331b3f4142b931d50a67d1293b0649dc99aba8cd8d7cac7bab3a28aa1",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.21917688846588135
+    },
+    "clips/clean_XC40454.wav": {
+      "sha256": "2b4714045e7d4b8c01f978a7c6486e25f81758b3e5e24081d4f7b767162cd996",
+      "float32_waveform_sha256": "39361c621d532cd3b8f04ff5dd094c77160dee525c41fedb2098fa2cc4eb9195",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.47180306911468506
+    },
+    "clips/query_XC40454_SNR_20dB.wav": {
+      "sha256": "c889e2105ad67e1c53ed13d16b80b122e2b8bbc558720dbf0cc5ca7cc4f61097",
+      "float32_waveform_sha256": "f24aaa599ecfa32a694d607303d7c3292b749377a7104245440ac58b3eacc945",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.47579923272132874
+    },
+    "clips/clean_XC350933.wav": {
+      "sha256": "f5c18fc928cd28fea6425df12bfd01d8e6f1dc9207bce18af9f69d0373297177",
+      "float32_waveform_sha256": "d4c08fdc2d415813b09be1a0a803caf55fc58507907aae92c0342efacf355f65",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.559929370880127
+    },
+    "clips/clean_XC391063.wav": {
+      "sha256": "c324a6b7d784c410a9fa68a8023966d95edeaff553f237bbb47cdedc1477d699",
+      "float32_waveform_sha256": "6424dd41a93f24c9ae6a85b0f1c47af54d9a3bd4b0f3983dce930f90472868ee",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.44603878259658813
+    },
+    "clips/query_XC391063_SNR_20dB.wav": {
+      "sha256": "6a9753f0e74c52bccfabf6a2f522b61b7bd16b194579c389b462d51446658f8b",
+      "float32_waveform_sha256": "23728e45bf6ede1e85da80bb6a3530a43c604c06cdd245f87d321ac2b36b9de3",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.4462522864341736
+    },
+    "clips/clean_XC195596.wav": {
+      "sha256": "adce0cafbf2802655e259352585a0cba8f12dc42591ee36380c5431e2a85ab9b",
+      "float32_waveform_sha256": "3be2e1d46366f6a329725bf4c385573fd475997098aec62c587b07b973c23c7b",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.28746896982192993
+    },
+    "clips/clean_XC90717.wav": {
+      "sha256": "de31f0247c58ef2550946008d569940d5c06801d0cd497d4bb9eae7a314e410a",
+      "float32_waveform_sha256": "8306d82adacf5868f594fd81bb0b04a298af7632b1f22900cdd9c74eb9bf2101",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.8128280639648438
+    },
+    "clips/query_XC90717_SNR_20dB.wav": {
+      "sha256": "59d606f8edc63c79dd9ce46f915fdee116e463e17056d880fde9c4512d4d8a55",
+      "float32_waveform_sha256": "8e39be6c398c569f6a2c74b59fb131a00f5e876b21944c05e144ba6e72813973",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.8110364079475403
+    },
+    "clips/clean_XC578380.wav": {
+      "sha256": "869cfb7c6daf5e397fc7898ccace55b037df330a0f33b1b57c1ac1fbc3dd552f",
+      "float32_waveform_sha256": "fca7b1d26da325aedc71f86840bd5451653225f51e952a9e67ff4245184536cb",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.42563849687576294
+    },
+    "clips/query_XC152203_SNR_20dB.wav": {
+      "sha256": "3626c199739f64f3593eddd6f27aeab6b984b3faaed3dbb51d45ee84fa534df5",
+      "float32_waveform_sha256": "e9ffac7d5b18367ae9d6276cafa16a915b490f54be0675cb32d7e5e585cceb53",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.45200690627098083
+    },
+    "clips/clean_XC528831.wav": {
+      "sha256": "b3a5f585ade372e0da3203aad64f14d2aa6d9f20f843e1d6fe04f4b8f8d8e333",
+      "float32_waveform_sha256": "0b9c625d8304a5ee65c809129af9e650863cd0da5ede29483a4b52d5621ed938",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.3891114294528961
+    },
+    "clips/query_XC823688_Clean.wav": {
+      "sha256": "c2ff086c8352e0ef3f0c1064f3bb8bcb11e684d1747e50ddd0e064cbe8ae21b9",
+      "float32_waveform_sha256": "b4621b6a281da63c0935300414fd86ac07dc66f9f2a04bf71df984631509b1e1",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.3877771198749542
+    },
+    "clips/clean_XC659852.wav": {
+      "sha256": "0ac359925ecdbb59dff55bdaa10c6b0654426ec40f50244ad91e5664ada1cc8a",
+      "float32_waveform_sha256": "002c6fbdb9bf9b69f49357ed8d2bc171ca75cbc5352edd87b733cbc8675cbf7c",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.3287188410758972
+    },
+    "clips/clean_XC215404.wav": {
+      "sha256": "4a4f18539763486644cc1edb53183ac3d2768349da91be83d5ed45983c528ab4",
+      "float32_waveform_sha256": "d27fc752069571e46342d1a6767c82778f5c413a512b896a2649dc3a77ab3edf",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.38912147283554077
+    },
+    "clips/query_XC215404_Clean.wav": {
+      "sha256": "99c58040039fafefcf848507a9f5a32b55744b25b2d7aca3b63e848a7a04361b",
+      "float32_waveform_sha256": "d27fc752069571e46342d1a6767c82778f5c413a512b896a2649dc3a77ab3edf",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.38912147283554077
+    },
+    "clips/clean_XC68067.wav": {
+      "sha256": "4e7056d58f0d65c9edd3c986665377359c3cbd17893519ed249a960339a99ad7",
+      "float32_waveform_sha256": "ca8b9ededbc2f51ca5326f2e309a1a6d8d64d2b85dfb9175c98a7d34f62b3744",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.30148595571517944
+    },
+    "clips/clean_XC151826.wav": {
+      "sha256": "da465cda491130b7d1c933d4337bed33bf572de47cb8fd44c9d08d5425ff0dd8",
+      "float32_waveform_sha256": "74611b959136cf7037ce41ecabb54552d4fdc40171b7bcb5a769daeb6147adcb",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.2521692216396332
+    },
+    "clips/query_XC151826_Clean.wav": {
+      "sha256": "da465cda491130b7d1c933d4337bed33bf572de47cb8fd44c9d08d5425ff0dd8",
+      "float32_waveform_sha256": "74611b959136cf7037ce41ecabb54552d4fdc40171b7bcb5a769daeb6147adcb",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.2521692216396332
+    },
+    "clips/clean_XC746427.wav": {
+      "sha256": "ed4e4a894d2ed783a1195f22f5d32cd0be45dcef1d0678d501f33439d9908565",
+      "float32_waveform_sha256": "a30ab31a399c54bffd6142676bba0a44dfc3856f09697df1413750a29a991471",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.40266069769859314
+    },
+    "clips/query_XC90717_Clean.wav": {
+      "sha256": "2e8e01d079748b6789f6ea4672b6f6e04260c5abfff3c2ec59628d08bc03d511",
+      "float32_waveform_sha256": "8306d82adacf5868f594fd81bb0b04a298af7632b1f22900cdd9c74eb9bf2101",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.8128280639648438
+    },
+    "clips/clean_XC33652.wav": {
+      "sha256": "41df2e1640b394e041c242ba8f20251951b5958e0d6cae8dbc37d09dcc3d4df3",
+      "float32_waveform_sha256": "2afacc5f0c5497fb8c7a7c89c9134b705545f661bfad3d9a46a3750035162114",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.4792485535144806
+    },
+    "clips/query_XC33652_Clean.wav": {
+      "sha256": "41df2e1640b394e041c242ba8f20251951b5958e0d6cae8dbc37d09dcc3d4df3",
+      "float32_waveform_sha256": "2afacc5f0c5497fb8c7a7c89c9134b705545f661bfad3d9a46a3750035162114",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.4792485535144806
+    },
+    "clips/clean_XC737849.wav": {
+      "sha256": "f83fc55ae2e96eccc93836502b96edce91e5771b6b354ecc4f3d4e46e40ed1ba",
+      "float32_waveform_sha256": "243d6108683bf39e5993a6b681bd6060c7ce93f0b95fb436a85f24905be4d01f",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.24466972053050995
+    },
+    "clips/clean_XC237111.wav": {
+      "sha256": "96487ab16e8071095ae7d894c2003ecee4692d13a44f729038a0ff186340f981",
+      "float32_waveform_sha256": "ddfb20d6e1159c7846e6c225d53c959ab63f510ecc60f9ec370545f2460ce4d0",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.3996250629425049
+    },
+    "clips/query_XC237111_Clean.wav": {
+      "sha256": "96487ab16e8071095ae7d894c2003ecee4692d13a44f729038a0ff186340f981",
+      "float32_waveform_sha256": "ddfb20d6e1159c7846e6c225d53c959ab63f510ecc60f9ec370545f2460ce4d0",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.3996250629425049
+    },
+    "clips/clean_XC284766.wav": {
+      "sha256": "43811217945c5ac9e9c37343d2ef7e531d6575fd421be51abf9d1b0feee3b2a0",
+      "float32_waveform_sha256": "c6b28024056f256fd87ae8d8919ef67e0b5202818c855b57ab0d3dca8e4bfff4",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.38898807764053345
+    },
+    "clips/query_XC823688_SNR_-5dB.wav": {
+      "sha256": "dcad3f623a0cb8591862caeb4cb747320ded96068116773cf947d1c943f78411",
+      "float32_waveform_sha256": "8aead111c135c5cf87a3ef3049fb901626a931895e116e559eac9ab68d4c07e1",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.6466561555862427
+    },
+    "clips/query_XC215404_SNR_-5dB.wav": {
+      "sha256": "48cd79038c6af813c1a157c1e5c37c06da93207dea104ceaabff7b56dd059d81",
+      "float32_waveform_sha256": "cc23f8f7ff266b70a52dce8c0edd8d34c773546deca3592bd56fb17f8378b39e",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.46073371171951294
+    },
+    "clips/query_XC151826_SNR_-5dB.wav": {
+      "sha256": "c6ae5dc2c753f822f11bb0a43b785b0d370bcfacd8df9e7f265f777cca1eb968",
+      "float32_waveform_sha256": "404c7862ca6dbbec30ae1843f1ca1dc56b9f3d9c84d07c965476cf08fd377867",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.728639543056488
+    },
+    "clips/query_XC90717_SNR_-5dB.wav": {
+      "sha256": "38348dd4e7a109a1fe3ec49f1cf98b1acca1c386503875d62a8a8a23a05bc442",
+      "float32_waveform_sha256": "907d2878199e159e8c7299b94492db3274842863db4202d2080bf536e179861e",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.9115085005760193
+    },
+    "clips/query_XC33652_SNR_-5dB.wav": {
+      "sha256": "57d91e580ab012b27f70dd0a8f1db6c98dcb0f0a4c6c398b76360f208b8fd460",
+      "float32_waveform_sha256": "e0ef2da4b7e2a2f671bf6b5534e72b69547fd52b7ccaab7225d091497855801a",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 1.0
+    },
+    "clips/query_XC237111_SNR_-5dB.wav": {
+      "sha256": "7c2eaee67f4d04b74e94557879cc1472c5fd63bf0c171b4b1652cc2e9598d723",
+      "float32_waveform_sha256": "fa941c73dfba322c7be8e0f67fceb51b32997abf05a2e9aeba4a233b8fa1df41",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.8284391164779663
+    },
+    "clips/query_XC215404_SNR_0dB.wav": {
+      "sha256": "099e0ee6001e6edadd870fbab79e1397cf51885bd5ce9f2ed785f23544f76d65",
+      "float32_waveform_sha256": "0776d963820ea97566f2b30f05b682b2e35c013f61cae137e7de3d8603a65ab6",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.395864337682724
+    },
+    "clips/query_XC151826_SNR_0dB.wav": {
+      "sha256": "305ec3ffaf4cc1a059f09f1daeb21115c442c2fe1ff657bd173e39f3b4e7b168",
+      "float32_waveform_sha256": "3ac881c21162673a6d66382f6d1bf6e3e597e4661309e2fa71874930fcc4babb",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.46966034173965454
+    },
+    "clips/query_XC90717_SNR_0dB.wav": {
+      "sha256": "88d3862ae658fbc039ca967f3e6b7d2e45f90e206d8edc535db531a885475641",
+      "float32_waveform_sha256": "c84b6eb98613f058084cc2922b08ac12827fd87e1c67ec7c505ca71418015470",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.8442418575286865
+    },
+    "clips/query_XC33652_SNR_0dB.wav": {
+      "sha256": "d1d00d5eb764559b2f0af827bc5646e1a42941bb7434956843adee8468948aba",
+      "float32_waveform_sha256": "c468fdcb204a44a4f17aa412247eec1794abb8df6876417f463a68206ffec5b9",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.625394880771637
+    },
+    "clips/query_XC237111_SNR_0dB.wav": {
+      "sha256": "74dfa64e58867d7d87238a57c4c8a7f70be2c7ceb4ab5610a58a8514f67d71e8",
+      "float32_waveform_sha256": "d5147b5533abd394a2690dff9cc0fb9a13c0f34cdce4bd3e701cd32973103e82",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.4980456829071045
+    },
+    "clips/query_XC823688_SNR_10dB.wav": {
+      "sha256": "8bbc1bd165905c6162cafdb7c4bae4c1ecd60833841f57dcbf1824153029881b",
+      "float32_waveform_sha256": "3495dd44f4033cf41299cbe554f834ebf2dc625896bbd2aa88750ed037e74b51",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.4129113256931305
+    },
+    "clips/query_XC215404_SNR_10dB.wav": {
+      "sha256": "f234107c8e2a3418896836a64f76df0c0af0bb0259c9ea1790e662e00faf5da0",
+      "float32_waveform_sha256": "656620178d03b30e4f1c76b99048af9a6aea4f8961b038e2a589c6129d9c4b77",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.37709471583366394
+    },
+    "clips/query_XC151826_SNR_10dB.wav": {
+      "sha256": "8f91abea2486f9488cd7437b71d121ae188ae27872d7a07385a907a442150089",
+      "float32_waveform_sha256": "49ea22a4df8c80679a16dea0ae48c547540e89ab132fa36c6ae3f9798f77158a",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.27033641934394836
+    },
+    "clips/query_XC90717_SNR_10dB.wav": {
+      "sha256": "0653fe1c9aecb4a1795d42c2c205826f694ad970961d25159cb146f3cc8e2479",
+      "float32_waveform_sha256": "494b2cc1d4a20e96a1817307e5e4edfcfcf302738d6a9747b1be23d605d460ee",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.807162344455719
+    },
+    "clips/query_XC33652_SNR_10dB.wav": {
+      "sha256": "5a6491a5a2697e4bfb58c307eb1230ccd302178e1924e90f570ab49347d731c5",
+      "float32_waveform_sha256": "4f87a3035bc0a4526aaacb4542bbb90f17532da5395a90a188da2efc9809d8d9",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.4768316447734833
+    },
+    "clips/query_XC237111_SNR_10dB.wav": {
+      "sha256": "bd7746e35eea197e8ca420026bca8d12c9e0c527377b4592b25cc210ba92ac44",
+      "float32_waveform_sha256": "a9fae07abb2307ac636c0db6a7d2129b4ed5fda254712f2ac3c94282d6d19f67",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.40040671825408936
+    },
+    "clips/query_XC823688_SNR_20dB.wav": {
+      "sha256": "7e9a9dcb607a59cd62d9f594d6dd8fdff1568d83a3743926bcc51e0415aa33e8",
+      "float32_waveform_sha256": "4ca2457f0fa7d9100f8f4359b0d5b2119ea0ed9b0b58591284d026396c477e42",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.3932143747806549
+    },
+    "clips/query_XC215404_SNR_20dB.wav": {
+      "sha256": "f1bb73522f9f676c7865845810775d33194eaf7b0b40adc81b7cd7a6c166b12d",
+      "float32_waveform_sha256": "3f8186de255ead213ab19f06554b61b5b49f6e4a3e113fd41c01f47cabfb9d67",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.3853182792663574
+    },
+    "clips/query_XC151826_SNR_20dB.wav": {
+      "sha256": "99000a513bec31552f411a040913f8652ca71b97a9c3a88b7f0d449e174d60ad",
+      "float32_waveform_sha256": "714d3f75b5dc62fb528e6669f227be651ee3c6c0167055a09904543ba4d310c5",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.2579141855239868
+    },
+    "clips/query_XC33652_SNR_20dB.wav": {
+      "sha256": "bd5319cbfc7ee479b069a6b1998b54a99a42a3c5971e28f1e01e1eec0835b9fd",
+      "float32_waveform_sha256": "10aa5e46fa54d44c9c67f1bcd2836b1d4165fc7a3bc5e28eecc8d08fc0631f83",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.47848424315452576
+    },
+    "clips/query_XC237111_SNR_20dB.wav": {
+      "sha256": "c3d5950b582ce12f6392026c7551ab6b416cdfc6ece19defb0c6d7de3a589c0b",
+      "float32_waveform_sha256": "597e823d0a9b6b83ae8895fbd211d8be7e7e38c32218ad7afe49b5334cd15ce2",
+      "samples": 160000,
+      "sample_rate": 32000,
+      "peak": 0.39161649346351624
+    }
+  },
+  "index_sha256": "2628dc84a116191bcbebdb344259c62c0ba977a31108e40135a2f9d4cfa66d76",
+  "html_sha256": "435e21a1773d284407c7d9838f2eb4255253cba5875a1109c84b2a5283b7b981"
+}

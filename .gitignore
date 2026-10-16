@@ -86,3 +86,6 @@ data/itera_noise/
 
 *.zip
 
+
+# Local outputs from the isolated 2026-10-16 reproduction; evidence summaries are tracked.
+/results/reproductions/RECHECK_FRESH_20261016/local-output/

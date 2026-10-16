@@ -43,7 +43,7 @@ Bootstrap berpasangan menggunakan 10.000 iterasi, seed 20261012, dan unit resamp
 | H4 | Reformulasi eksploratif; recall penerimaan known turun untuk R0–R2 pada −5 dB. FPR tidak meningkat. |
 | H5 | Didukung: R0, R1, dan R2 mengungguli kontrol R3 pada clean AP@10. |
 
-**Gate 4 belum tuntas:** audit manusia 120 kasus dan reproduksi penuh E0–E5 di lingkungan baru tetap terbuka. Suite utama lulus 32/32 tes; reproduksi statistik H3 pada klon bersih menghasilkan CSV identik, dengan runtime proyek yang sudah tersedia.
+**Pemeriksaan akhir 16 Oktober:** reproduksi E0, ekstraksi clean R0–R3, E1, E2, E3, E5, serta statistik H3 selesai pada klon/venv baru; 41/41 perbandingan cocok, selisih numerik maksimum 0,0. Suite lulus 36/36 tes. Inferensi E4 tidak diulang sesuai arahan. Audit pendengaran 120 kasus tetap terbuka; 276 klip dan alur pencatatan sudah tersedia. [Laporan terkini](../PEMENUHAN_REVISI_2026-10-16.md).
 
 ## Arah penulisan laporan
 

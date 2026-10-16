@@ -1,5 +1,7 @@
 # Pemeriksaan Ulang Revisi Pembimbing dan Gate 1–4
 
+> Catatan tahap sebelumnya. Status lanjutan dan bukti reproduksi baru tersedia pada [pemeriksaan akhir 16 Oktober](PEMENUHAN_REVISI_2026-10-16.md); gunakan [draf chat terbaru](DRAF_CHAT_PEMBIMBING_2026-10-16.md).
+
 **Pemeriksaan: 15–16 Oktober 2026.** Basis pemeriksaan adalah commit revisi utama **8bf54415859f3473105c68c369832c2f66522fd8**, yang sudah dipush ke GitHub. Pemeriksaan lanjutan ini menyelaraskan dokumentasi, memeriksa ulang artefak, dan menyiapkan audit manusia. E4 tidak dijalankan ulang dan hasil sumber tidak ditimpa.
 
 ## 1. Status setiap arahan pembimbing

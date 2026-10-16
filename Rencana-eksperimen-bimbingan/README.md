@@ -12,8 +12,8 @@ Folder ini adalah peta pelaksanaan empat minggu. Semua angka dan tautan di bawah
 1. Buka [Catatan Progres Bimbingan](CATATAN_PROGRES_BIMBINGAN.md) untuk kronologi, hasil, dan batasan ilmiah.
 2. Buka README Minggu 1 sampai Minggu 4 sesuai tahap yang ingin dipelajari.
 3. Buka [registri eksperimen](../experiments/experiment_registry.csv) untuk menghubungkan eksperimen, notebook, run, gambar, dan tabel.
-4. Buka [pemeriksaan ulang revisi dan Gate 1–4](PEMERIKSAAN_ULANG_GATE_2026-10-15.md) serta [matriks RQ/H revisi](../results/tables/28_rq_hypothesis_matrix_revised_2026-10-15.csv) untuk kesimpulan terkini; dokumen hasil 12 Oktober tetap menjadi arsip.
-5. Gunakan [draf chat pembimbing](DRAF_CHAT_PEMBIMBING_2026-10-15.md) untuk melaporkan revisi yang siap diperiksa.
+4. Buka [pemenuhan revisi dan hasil pemeriksaan akhir](PEMENUHAN_REVISI_2026-10-16.md) serta [matriks RQ/H revisi](../results/tables/28_rq_hypothesis_matrix_revised_2026-10-15.csv) untuk kesimpulan terkini; dokumen hasil 12 Oktober tetap menjadi arsip.
+5. Gunakan [draf chat pembimbing](DRAF_CHAT_PEMBIMBING_2026-10-16.md) untuk melaporkan revisi yang siap diperiksa.
 
 ## Status empat minggu
 
@@ -22,7 +22,7 @@ Folder ini adalah peta pelaksanaan empat minggu. Semua angka dan tautan di bawah
 | 1 | Dataset, preprocessing, EDA, E0, E1 | Tervalidasi | [Minggu 1](minggu-1/README.md) |
 | 2 | Noise ITERA dan E2 | Selesai | [Minggu 2](minggu-2/README.md) |
 | 3 | E3 threshold dan E4 habitat mixture | Selesai dengan batasan E4 | [Minggu 3](minggu-3/README.md) |
-| 4 | E5, bootstrap, matriks RQ/H | Komputasional tersedia; audit manusia dan reproduksi penuh terbuka | [Minggu 4](minggu-4/README.md) |
+| 4 | E5, bootstrap, matriks RQ/H | Reproduksi tahap yang diizinkan selesai; audit manusia terbuka | [Minggu 4](minggu-4/README.md) |
 
 ## Arah folder yang digunakan
 

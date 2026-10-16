@@ -119,11 +119,11 @@ Bootstrap berpasangan memakai 10.000 iterasi dan seed 20261012. H1, H2, dan H5 m
 | H4 | Interpretasi reformulasi eksploratif; recall penerimaan turun | FPR tidak meningkat; threshold tidak diubah |
 | H5 | Didukung | R3 bukan representasi audio |
 
-## 9. Pemeriksaan terakhir
+## 9. Pemeriksaan suite saat ini
 
-`run_tests.py` kini menjalankan 32 pemeriksaan integritas/metode (25 sebelumnya + 5 H3 + 2 E5) dan seluruhnya lulus pada pemeriksaan ulang 16 Oktober. Pemeriksaan ini tidak menghapus audio, cache, checkpoint, manifes, atau run eksperimen.
+`run_tests.py` kini menjalankan 36 pemeriksaan integritas/metode (25 sebelumnya + 5 H3 + 2 seleksi E5 + 3 impor ulasan + 1 provenance Git E4) dan seluruhnya lulus pada pemeriksaan ulang 16 Oktober. Pemeriksaan ini tidak menghapus audio, cache, checkpoint, manifes, atau run eksperimen.
 
-## 10. Progres revisi pembimbing — 15–16 Oktober 2026
+## 10. Progres pemeriksaan awal — 15–16 Oktober 2026 (dilanjutkan §11)
 
 Revisi utama telah dipush pada commit [8bf5441](https://github.com/Data-Systems-and-Intelligent-Computing/DSIC-2706/commit/8bf54415859f3473105c68c369832c2f66522fd8): runner E4 asli cocok SHA-256, H3 dilengkapi ayunan absolut dan tanpa Kebun Raya, riwayat eksploratif H3/H4 dicatat, serta naskah teori dan Gambar 6/8 dikoreksi. E4 tetap lima lokasi dan tidak dijalankan ulang.
 
@@ -137,3 +137,20 @@ Bukti tambahan: 19 aset identitas E4, 320 snapshot kondisi, dan 41 bahan laporan
 - [Bukti pemeriksaan terstruktur](BUKTI_PEMERIKSAAN_ULANG_2026-10-15.json).
 - [Lembar dan petunjuk audit pendengaran E5](audit-pendengaran-E5/README.md).
 - [Draf chat pembimbing siap disalin](DRAF_CHAT_PEMBIMBING_2026-10-15.md).
+
+## 11. Pemeriksaan akhir dan penyelesaian yang dapat diotomasi — 16 Oktober 2026
+
+README dan petunjuk aktif yang masih memuat desain tiga habitat, angka threshold lama, atau klaim reproduksi usang diganti dengan protokol aktif. Perubahan ini merapikan tulisan, tanpa menghapus sumber penelitian yang masih dipakai.
+
+Pengujian lingkungan baru mengungkap perubahan akhir baris pada tiga helper identitas E4 saat checkout. .gitattributes dan penyimpanan blob Git diperbaiki agar hash byte cocok dengan run identity; algoritma serta file lokal sumber tetap sama. Tes baru menguji seluruh 10 aset sumber terlacak pada file lokal dan Git HEAD.
+
+**Reproduksi E0, ekstraksi ulang clean R0–R3, E1, E2, E3, E5, dan statistik H3 sudah selesai pada klon terpisah/venv baru.** Seluruh 3.289 input salinan cocok SHA-256; tidak ada embedding lama yang dipakai. Seluruh 41 perbandingan cocok dan selisih numerik maksimum 0,0. Suite terbaru lulus 36/36 tes pada lingkungan lama dan venv baru.
+
+E4 audio/model inference tetap tidak diulang sesuai arahan pembimbing. Hasil baru disimpan terpisah pada results/reproductions/RECHECK_FRESH_20261016; keluaran besar lokal tidak di-commit. Ini belum diklaim reproduksi seluruh E0–E5 termasuk inferensi E4 atau lingkungan OS baru.
+
+**Persiapan audit pendengaran tuntas:** 120 kasus dipetakan ke 276 klip unik dengan identitas noise, segmen, SNR, dan sampel WAV terverifikasi. Halaman lokal menyediakan pemutar dan pencatatan; importer mengekspor ke CSV baru setelah validasi provenance. **Ulasan manusia masih 0/120 tercatat** dan harus diisi sesudah pendengaran yang benar-benar dilakukan.
+
+- [Laporan pemenuhan setiap arahan pembimbing](PEMENUHAN_REVISI_2026-10-16.md).
+- [Protokol dan bukti lingkungan baru](../docs/REPRODUKSI_LINGKUNGAN_BARU_2026-10-16.md).
+- [Paket audit pendengaran](audit-pendengaran-E5/README.md).
+- [Draf chat pembimbing terbaru](DRAF_CHAT_PEMBIMBING_2026-10-16.md).
