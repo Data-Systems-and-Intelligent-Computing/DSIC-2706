@@ -1,0 +1,20 @@
+{
+  "checked_local_date": "2026-10-18",
+  "command": ".venv/Scripts/python.exe -B run_tests.py",
+  "total_tests": 41,
+  "passed": 41,
+  "skipped": 0,
+  "failures": 0,
+  "errors": 0,
+  "expected_failures": 0,
+  "unexpected_successes": 0,
+  "skipped_cases": [],
+  "previous_suite_tests": 36,
+  "change_in_count": "Split one model-dimension test into four (+3), add two reporting regression tests (+2)",
+  "skip_handling": "unittest.SkipTest; actual successes counted through AuditedTestResult.addSuccess; skip reasons printed",
+  "regression_scenarios": [
+    "One success/one skipped/one assertion failure/one runtime error remain separate in a synthetic nested suite",
+    "Missing model checkpoint raises SkipTest"
+  ],
+  "scope": "Integrity and method suite; not an E4 inference rerun or a human listening audit"
+}

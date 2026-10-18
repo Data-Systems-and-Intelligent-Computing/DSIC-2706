@@ -1,6 +1,6 @@
 # Status Saat Ini untuk Bimbingan
 
-**Tanggal: 16 Oktober 2026.** Revisi pembimbing dilakukan pada pelaporan, provenance kode E4, dan naskah teori. E4 lima lokasi tidak dijalankan ulang.
+**Tanggal: 18 Oktober 2026.** Revisi pembimbing dilakukan pada pelaporan, provenance kode E4, dan naskah teori. E4 lima lokasi tidak dijalankan ulang.
 
 - Desain E4 tetap 311 query × 5 lokasi × 4 SNR × 4 ulangan per representasi.
 - Runner E4 asli disertakan byte-for-byte; SHA-256: 30cc0ea990e35eda70a98a6928550cb18df39bb4cd9b95837fafe05512f80c2c.
@@ -29,8 +29,14 @@ Analisis membaca raw E4 tersimpan, tanpa pengubahan threshold atau data. Lima pr
 ## Pemeriksaan akhir dan Gate 4
 
 - **Reproduksi yang diizinkan selesai:** klon terpisah, venv baru, 3.289 input salinan terverifikasi, tanpa embedding lama; E0, ekstraksi clean R0–R3, E1, E2, E3, E5, serta statistik H3 selesai. **41/41 perbandingan cocok**, selisih numerik maksimum 0,0.
-- **36/36 tes lulus** pada lingkungan lama dan venv baru. Tes Git memeriksa seluruh 10 aset sumber E4 terlacak. Byte tiga helper kini cocok dengan hash historis setelah checkout.
+- **Hasil terbaru 18 Oktober: 41 lulus, 0 dilewati, 0 gagal, 0 error dari 41 tes** pada workspace ini. Hasil 36 tes pada lingkungan lama/baru adalah pemeriksaan 16 Oktober. Tes Git memeriksa seluruh 10 aset sumber E4 terlacak. Byte tiga helper kini cocok dengan hash historis setelah checkout.
 - **Audit manusia belum selesai:** 120 kasus sudah memiliki 276 klip terverifikasi, halaman pemutar/catatan, dan importer CSV baru. Masih 0/120 ulasan formal tercatat.
 - **Inferensi E4 tidak diulang** sesuai pembimbing. Ini batas reproduksi, bukan kekurangan pelaksanaan E4 aktif. Naskah masih draf untuk pemeriksaan pembimbing.
 
 [Catatan progres](CATATAN_PROGRES_BIMBINGAN.md), [protokol reproduksi](../docs/REPRODUKSI_LINGKUNGAN_BARU_2026-10-16.md), dan [paket audit pendengaran](audit-pendengaran-E5/README.md).
+
+## Tindak lanjut umpan balik pembimbing 1 — dicatat 18 Oktober
+
+Menurut umpan balik yang disampaikan Fabio, poin 1–3 telah diperiksa pembimbing dan secara substansi terpenuhi. Tautan laporan pengganti yang masih tersedia adalah [Catatan Progres Bimbingan](CATATAN_PROGRES_BIMBINGAN.md). Runner tiga lokasi ditandai tidak digunakan; pelaporan tes memisahkan lulus dan skipped. [Sensitivitas H3 penghilangan tiap lokasi](../results/reproductions/H3_leave_one_location_out_20261018/README.md) tersedia tanpa run E4 baru.
+
+Pekerjaan utama tetap audit manusia 120 kasus. [Panduan siapa/cara mendengar dan latihan penjelasan lisan](PANDUAN_AUDIT_E5_DAN_PENJELASAN_LISAN.md) menjelaskan langkah yang dilakukan Fabio, H3 absolut/relatif, dan batas Recall@10. Tidak ada observasi manusia yang diisi otomatis.

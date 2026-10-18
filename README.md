@@ -233,7 +233,7 @@ python -m venv .venv
 .\.venv\Scripts\python.exe -B run_tests.py
 ```
 
-Suite utama lulus 36/36 tes pada 16 Oktober 2026. Ini pemeriksaan integritas/metode, bukan pengganti pengujian ulang pipeline dari audio.
+Pemeriksaan 18 Oktober 2026: total 41 tes, **41 lulus, 0 dilewati, 0 gagal, 0 error**. Tes yang kehilangan input/dependensi kini dilaporkan sebagai skipped, bukan lulus. Ini pemeriksaan integritas/metode, bukan pengganti pengujian ulang pipeline dari audio.
 
 Untuk meninjau hasil, buka notebook dan artefak tersimpan. Untuk mengulang statistik H3 saja:
 
@@ -309,7 +309,7 @@ Analisis H3 dan sensitivitas memakai 10.000 bootstrap, seed 20261012. Terdapat 1
 
 ## 13. Definition of Done (Status Kelulusan Gate 1 s.d. Gate 4)
 
-**Pemeriksaan lanjutan: 16 Oktober 2026.** Reproduksi E0/E1/E2/E3/E5 pada venv baru sudah selesai; E4 dipertahankan tanpa run ulang sesuai arahan pembimbing. Audit pendengaran manusia masih terbuka, sehingga Gate 4 belum dinyatakan tuntas. [Catatan pemeriksaan dan tindak lanjut](Rencana-eksperimen-bimbingan/CATATAN_PROGRES_BIMBINGAN.md) memuat bukti serta alasan butir yang masih terbuka.
+**Pemeriksaan lanjutan: 18 Oktober 2026.** Reproduksi E0/E1/E2/E3/E5 pada venv baru sudah selesai; E4 dipertahankan tanpa run ulang sesuai arahan pembimbing. Audit pendengaran manusia masih terbuka, sehingga Gate 4 belum dinyatakan tuntas. [Catatan pemeriksaan dan tindak lanjut](Rencana-eksperimen-bimbingan/CATATAN_PROGRES_BIMBINGAN.md) memuat bukti serta alasan butir yang masih terbuka.
 
 - [x] **Daftar taksa & spesies target dibekukan:** 20 spesies avifauna Indonesia, 1.216 rekaman pada manifes aktif beserta catatan SHA-256 dan audit sebelumnya (DEC-13).
 - [x] **Pemisahan internal target terverifikasi:** 0 recording ID, file path, dan nama perekam beririsan antar Gallery, Query, dan Calibration. Ini tidak membuktikan independensi sesi/perekam unknown atau bebas overlap data pralatih.
@@ -325,7 +325,7 @@ Analisis H3 dan sensitivitas memakai 10.000 bootstrap, seed 20261012. Terdapat 1
 - [x] **Kasus E5 komputasional disiapkan:** 120 baris pilihan tersedia; lembar audit terpisah memulihkan representasi, kondisi, dan moda kegagalan melalui pencocokan persis dengan diagnostik lengkap. Sumber E5 tidak ditimpa.
 - [ ] **Audit pendengaran manusia atas seluruh 120 kasus E5:** lembar formal masih pending, dengan 0/120 ulasan tercatat pada saat disiapkan. Paket 276 klip terverifikasi, halaman pemutar, dan impor catatan sudah tersedia; pengamatan tetap memerlukan pendengar yang benar-benar melakukan audit.
 - [x] **CI 95% tersedia dengan batas inferensi:** H3/sensitivitas memakai 10.000 bootstrap query berpasangan; CI eksploratif kondisional pada lokasi dan segmen noise tetap. Tidak ada klaim mekanisme spektral sudah terbukti.
-- [x] **Suite integritas/metode terpadu lulus:** 36/36 tes melalui run_tests.py: 25 sebelumnya, lima H3, dua seleksi E5, tiga impor ulasan E5, dan satu provenance byte sumber E4 di Git.
+- [x] **Suite integritas/metode terpadu lulus:** total 41 tes: **41 lulus, 0 dilewati, 0 gagal, 0 error** melalui run_tests.py pada 18 Oktober 2026. Empat dimensi representasi diuji terpisah; SkipTest dan ringkasan hasil tidak menghitung tes dilewati sebagai lulus.
 - [x] **Reproduksi pada lingkungan baru dalam scope revisi:** klon terpisah, venv baru, pemulihan 3.289 input terverifikasi, tanpa embedding lama; E0, ekstraksi clean R0–R3, E1, E2, E3, E5, serta statistik H3 selesai. Seluruh 41 perbandingan cocok, selisih numerik maksimum 0,0. [Bukti dan protokol](docs/REPRODUKSI_LINGKUNGAN_BARU_2026-10-16.md).
 - [ ] **Run ulang seluruh E0–E5 termasuk inferensi E4:** tidak dilakukan, karena pembimbing meminta E4 tidak diulang. Ini batas pengujian, bukan klaim reproduksi penuh yang sudah lulus. Input eksternal dipulihkan dari arsip lokal, bukan diunduh ulang.
 - [x] **Batas ekologis dinyatakan sesuai scope:** E2/E4 menguji additive mixture, bukan vokalisasi target in-situ. Pengumpulan/anotasi korpus burung in-situ bukan prasyarat revisi E4 aktif dan tetap di luar scope.
@@ -369,6 +369,8 @@ Audio target Indonesia + manifes/hash
   → bootstrap berpasangan, pelaporan hasil dan batas inferensi
 ```
 
+Tautan laporan aktif untuk dibagikan: [Catatan Progres Bimbingan](Rencana-eksperimen-bimbingan/CATATAN_PROGRES_BIMBINGAN.md). Empat dokumen yang sebelumnya dihapus tidak dipulihkan; gunakan tautan ini sebagai penggantinya.
+
 Arahan revisi pembimbing yang berlaku:
 
 1. E4 menggunakan kelima lokasi. Tidak ada pengulangan E4 untuk revisi ini.
@@ -394,7 +396,7 @@ Arahan revisi pembimbing yang berlaku:
 - Calibration: 232 known + 233 unknown. Test: 311 known + 310 unknown. Unknown aktif terdiri atas burung non-target dan noise ITERA sesuai manifes.
 - Threshold hasil E3: R0 0,995752; R1 0,897416; R2 0,702785; R3 0,488838. Revisi pelaporan tidak mengubah threshold operasional.
 - Recall penerimaan known berbeda dari akurasi spesies. Pada R2, recall clean 0,604502 turun ke 0,254019 pada −5 dB, dan FPR turun dari 0,222581 ke 0,129032.
-- E4: Kebun Raya, Embung F, Gedung F, Masjid At-Tanwir, Sekitar GKU 1. Kelima lokasi dipertahankan; subset tanpa Kebun Raya hanya analisis sensitivitas.
+- E4: Kebun Raya, Embung F, Gedung F, Masjid At-Tanwir, Sekitar GKU 1. Kelima lokasi dipertahankan; penghilangan setiap lokasi secara bergantian hanya analisis sensitivitas, dengan [tabel lengkap](results/reproductions/H3_leave_one_location_out_20261018/README.md).
 - Ayunan dihitung per ulangan kemudian dirata-ratakan. Pada −5 dB, ayunan absolut R1 0,045596 dan R2 0,061829. Klaim R2 selalu lebih sempit tidak digunakan.
 
 ### Gate 4 — audit, inferensi, reproduksi, dan penulisan
@@ -413,3 +415,5 @@ Register keputusan kanonik tersedia pada [decision-log.md](docs/research/decisio
 Checklist kelulusan aktif berada pada §13. Bukti pemeriksaan dan keterbatasan dirinci pada [laporan pemeriksaan ulang](Rencana-eksperimen-bimbingan/CATATAN_PROGRES_BIMBINGAN.md), bukan disimpulkan dari rencana kerja lama.
 
 Arahan dosen merupakan bahan penyusunan dan pemeriksaan penelitian. Draf rujukan dosen tidak diperlakukan sebagai hasil eksperimen mahasiswa. Run sumber, manifes, konfigurasi beku, dan checksum tetap menjadi rujukan utama untuk angka hasil.
+
+[Petunjuk audit pendengaran dan bahan penjelasan lisan H3/Recall@10](Rencana-eksperimen-bimbingan/PANDUAN_AUDIT_E5_DAN_PENJELASAN_LISAN.md).

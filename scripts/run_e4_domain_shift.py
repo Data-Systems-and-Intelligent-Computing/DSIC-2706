@@ -1,4 +1,9 @@
 """
+STATUS: TIDAK DIGUNAKAN / LEGACY — dipensiunkan pada 18 Oktober 2026.
+Bukan produsen hasil E4 lima lokasi. Sumber historis yang sah:
+scripts/run_e4_five_locations_v10_stage7.py.draft (hash lihat run_identity.json).
+Isi berikut dipertahankan sebagai arsip versi tiga lokasi; jangan dieksekusi.
+
 Script: scripts/run_e4_domain_shift.py
 Fungsi: Eksekusi Eksperimen E4 — Sensitivitas Profil Spektral Sumber Derau
         Lintas Habitat Lingkungan Nyata Kampus ITERA.
@@ -8,6 +13,10 @@ Fungsi: Eksekusi Eksperimen E4 — Sensitivitas Profil Spektral Sumber Derau
         2. Embung F ITERA (Perairan Terbuka / Resonansi Air & Angin)
         3. Gedung F ITERA (Koridor Bangunan / Derau Struktural & Antropogenik)
 """
+
+
+if __name__ == "__main__":
+    raise SystemExit("TIDAK DIGUNAKAN: runner arsip tiga lokasi. E4 lima lokasi sudah selesai; baca run_identity.json dan analisis tersimpan. E4 tidak dijalankan ulang.")
 
 import os
 import sys

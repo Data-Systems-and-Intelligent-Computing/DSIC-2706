@@ -1,0 +1,65 @@
+{
+  "source_raw_sha256": {
+    "results/reproductions/E4_5sites_20261011T213404_350219Z/raw/E4_R1_raw.csv": "e9baf2e878a584231a801a1c6b6a87f339a84bcb8180d227d01cb7e2e782a06a",
+    "results/reproductions/E4_5sites_20261011T213404_350219Z/raw/E4_R2_raw.csv": "bc97a0aa5bb3f999d7017896b4115107c2a13d63c2cfc1e78ce01e743df20ba4"
+  },
+  "script_sha256": "61af05acaabe08a4191550e492058586ccd18f104582cb9e47e6fa18ee1a9399",
+  "shared_H3_method_sha256": "ddbbfd18029acc3082e18222914a7af84dffb1d74bb236fff6c7462aec732b24",
+  "seed": 20261012,
+  "bootstrap_iterations": 10000,
+  "resampling": "Shared query indices across representations/SNR/repeats/sites and clean denominator; same draws for all subsets",
+  "scenarios": {
+    "all_5_locations": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "without_Embung_F": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "without_Gedung_F": [
+      0,
+      2,
+      3,
+      4
+    ],
+    "without_Kebun_Raya": [
+      0,
+      1,
+      3,
+      4
+    ],
+    "without_Masjid_At_Tanwir": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "without_Sekitar_GKU_1": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "rows": 60,
+  "historical_rows_reproduced": 20,
+  "maximum_historical_numeric_difference": 9.71445146547012e-17,
+  "previous_summary_sha256": "cef2dd94563d2d5a542436da552df5f9dfe55d77b4d0e0329a6de703821e744a",
+  "E4_rerun": false,
+  "source_files_unchanged": true,
+  "limitations": [
+    "Exploratory, unadjusted intervals",
+    "Conditional on fixed locations and noise segments",
+    "Omission is a sensitivity check, not causal attribution"
+  ],
+  "outputs_sha256": {
+    "README.md": "4cfed67b26ca87d9ac435fc3e7c778787754bbb7cbd8f29f90caf98fc2a0358b",
+    "tables/h3_leave_one_location_out.csv": "096ecdb9cf1432c2f4be7d1cf630fcd8c7d3548fd33a8d29ec1d004367e25e80"
+  }
+}

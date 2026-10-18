@@ -1,5 +1,8 @@
 # Fase A — Perbaikan Pipeline sebelum Reproduksi
 
+> Catatan historis. Sejak 18 Oktober 2026, scripts/run_e4_domain_shift.py ditandai TIDAK DIGUNAKAN dan eksekusinya diblokir. Sumber E4 aktif adalah runner stage7 lima lokasi dengan hash yang tercatat di run_identity.json. Pernyataan tentang runner tiga lokasi di bawah tidak menjadi instruksi eksekusi aktif.
+
+
 Tanggal: 12 Oktober 2026.
 
 Fase ini mengubah kode dan menambahkan tes sintetis saja. Tidak ada audio,

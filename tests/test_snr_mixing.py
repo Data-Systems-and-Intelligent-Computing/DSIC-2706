@@ -4,6 +4,7 @@ Memvalidasi keakuratan formula SNR mixing dan determinisme random seed.
 """
 
 import sys
+from unittest import SkipTest
 from pathlib import Path
 import numpy as np
 
@@ -38,11 +39,10 @@ def test_snr_mixing_reproducibility():
     has_physical_noise = (
         noise_dir.exists()
         and manifest_path.exists()
-        and len(list(noise_dir.glob("**/*.wav"))) > 0
+        and any(p.is_file() and p.suffix.lower() == ".wav" for p in noise_dir.rglob("*"))
     )
     if not has_physical_noise:
-        print("  [SKIP] Berkas audio fisik ITERA tidak ditemukan di clone, melewati uji reproduktibilitas.")
-        return
+        raise SkipTest("Berkas audio fisik ITERA tidak tersedia; reproduktibilitas mixing tidak dijalankan.")
     clean = np.random.randn(32000).astype(np.float32)
     m1 = mix_audio_at_snr(clean, snr_db=10, seed=99)
     m2 = mix_audio_at_snr(clean, snr_db=10, seed=99)

@@ -24,21 +24,27 @@ def test_manifest_sha256_integrity():
     content = manifest_txt.read_text(encoding="utf-8")
     assert actual_hash in content, f"Hash aktual dataset_split.csv ({actual_hash}) tidak cocok dengan catatan di {manifest_txt}!"
 
-def test_model_embedding_dimensions():
-    """Memverifikasi dimensi embedding asli R0=40, R1=2048, R2=1024, R3=40 (C-01)."""
+def check_model_embedding_dimension(code):
+    """One representation is one reported test; missing inputs are explicit skips."""
+    from unittest import SkipTest
     try:
         from src.embeddings import AudioRepresentationExtractor
-    except (ImportError, ModuleNotFoundError) as e:
-        print(f"  [SKIP] Dependensi audio/model tidak tersedia di clone: {e}")
-        return
-    
-    test_signal = np.zeros(160000, dtype=np.float32)
+        extractor = AudioRepresentationExtractor(code)
+        embedding = extractor.extract(np.zeros(160000, dtype=np.float32), item_id="unit-test")
+    except (FileNotFoundError, ImportError, ModuleNotFoundError) as error:
+        raise SkipTest(f"{code}: checkpoint/dependensi tidak tersedia: {error}") from error
     expected = {"R0": 40, "R1": 2048, "R2": 1024, "R3": 40}
-    
-    for code, dim in expected.items():
-        try:
-            ext = AudioRepresentationExtractor(code)
-            emb = ext.extract(test_signal, item_id="unit-test")
-            assert emb.shape == (dim,), f"Model {code} menghasilkan dimensi {emb.shape}, diharapkan ({dim},)!"
-        except (FileNotFoundError, ImportError, ModuleNotFoundError) as e:
-            print(f"  [SKIP] Checkpoint/dependensi model {code} tidak ditemukan di clone: {e}")
+    assert embedding.shape == (expected[code],), f"Dimensi {code} tidak sesuai: {embedding.shape}"
+    assert np.isfinite(embedding).all(), f"Embedding {code} tidak finite"
+
+
+import unittest
+class ModelEmbeddingDimensionTests(unittest.TestCase):
+    def test_r0_dimension(self):
+        check_model_embedding_dimension("R0")
+    def test_r1_dimension(self):
+        check_model_embedding_dimension("R1")
+    def test_r2_dimension(self):
+        check_model_embedding_dimension("R2")
+    def test_r3_dimension(self):
+        check_model_embedding_dimension("R3")

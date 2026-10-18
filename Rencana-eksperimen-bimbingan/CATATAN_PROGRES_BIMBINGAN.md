@@ -1,7 +1,7 @@
 # Catatan Progres Bimbingan — DSIC-2706
 
 **Judul kerja:** *Noise and Spectral Sensitivity of Frozen Audio Representations for Bioacoustic Similarity Retrieval under Controlled ITERA Field-Noise Mixtures in Indonesian Avifauna*  
-**Pembaruan terakhir:** 16 Oktober 2026 — pemeriksaan ulang revisi dan Gate 1–4
+**Pembaruan terakhir:** 18 Oktober 2026 — tindak lanjut pembimbing dan panduan audit
 
 **Tujuan dokumen:** catatan pelaksanaan yang dapat dicek langsung oleh mahasiswa dan pembimbing melalui file lokal.
 
@@ -152,3 +152,13 @@ E4 audio/model inference tetap tidak diulang sesuai arahan pembimbing. Hasil bar
 - [Rincian revisi pembimbing](../docs/REVISION_SUPERVISOR_2026-10-15.md).
 - [Protokol dan bukti lingkungan baru](../docs/REPRODUKSI_LINGKUNGAN_BARU_2026-10-16.md).
 - [Paket audit pendengaran](audit-pendengaran-E5/README.md).
+
+## 12. Tindak lanjut pembimbing 1 — dicatat 18 Oktober 2026
+
+Fabio menyampaikan umpan balik bahwa poin 1–3 secara substansi telah terpenuhi: hash E4 cocok, angka H3 sesuai hitungan ulang, dan Teori Dasar benar. Ini catatan umpan balik pembimbing, bukan klaim seluruh Gate 4 sudah selesai.
+
+- **Tautan laporan pengganti:** dokumen Catatan Progres Bimbingan ini tetap tersedia di GitHub. Empat laporan/draf chat yang diminta dihapus tidak dipulihkan. Tautan yang sudah dikirim ke pembimbing perlu diganti dengan URL dokumen ini.
+- **Runner tidak digunakan:** run_e4_domain_shift.py diberi label arsip tiga lokasi dan eksekusi langsung dihentikan sebelum impor/pembuatan output. Runner stage7 serta hash identitas aktif tidak berubah.
+- **Tes:** total 41, lulus 41, dilewati 0, gagal 0, error 0 pada workspace ini. Missing input/model sekarang menjadi SkipTest, dan alasan skip dicetak. Penambahan lima hitungan berasal dari pemisahan empat dimensi model dan dua regresi pelaporan. [Ringkasan terstruktur](../artifacts/reproducibility/test_summary_2026-10-18.json). Hasil 36 tes pada 16 Oktober tetap riwayat, bukan pengganti hasil saat ini.
+- **Opsional H3 selesai:** lima lokasi dihilangkan satu per satu, dengan baseline lima lokasi, dua metrik, empat SNR serta rata-rata SNR. Total 60 baris; 10.000 bootstrap query berpasangan, seed sama. Dua skenario historis direproduksi dalam toleransi 1e-12. [Tabel dan metadata](../results/reproductions/H3_leave_one_location_out_20261018/README.md). Semua CI selisih rata-rata absolut mencakup nol; hasil relatif rata-rata tetap bergantung skala dan tidak boleh digeneralisasi ke tiap SNR. Penghilangan lokasi tidak menguji sebab-akibat.
+- **Audit manusia:** paket 120 kasus tetap siap, tetapi observasi harus ditulis oleh Fabio/pendengar yang benar-benar mendengarkan. Tidak ada kasus yang otomatis ditandai reviewed. [Panduan praktis dan latihan penjelasan lisan](PANDUAN_AUDIT_E5_DAN_PENJELASAN_LISAN.md).

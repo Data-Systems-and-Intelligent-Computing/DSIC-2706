@@ -1,7 +1,7 @@
 # Rencana Eksperimen dan Logbook Bimbingan — DSIC-2706
 
 **Judul kerja:** *Noise and Spectral Sensitivity of Frozen Audio Representations for Bioacoustic Similarity Retrieval under Controlled ITERA Field-Noise Mixtures in Indonesian Avifauna*  
-**Pembaruan terakhir:** 16 Oktober 2026
+**Pembaruan terakhir:** 18 Oktober 2026
 
 **Korpus aktif:** 20 spesies avifauna Indonesia, 1.216 rekaman target, 1.799 rekaman derau ITERA.
 
@@ -42,3 +42,7 @@ Folder ini adalah peta pelaksanaan empat minggu. Semua angka dan tautan di bawah
 E4 menggunakan pencampuran aditif dengan noise asli lima lokasi ITERA. H3 hasil reformulasi bersifat eksploratif; ayunan absolut, relatif, serta sensitivitas tanpa Kebun Raya menunjukkan kesimpulan bergantung metrik dan subset. Hasilnya tidak diklaim sebagai evaluasi burung yang direkam in-situ.
 
 Gunakan [CURRENT_STATUS.md](CURRENT_STATUS.md) sebagai ringkasan satu halaman saat bimbingan.
+
+## Persiapan bimbingan dan audit E5
+
+[Siapa yang mendengarkan, langkah audit, dan penjelasan lisan H3/Recall@10](PANDUAN_AUDIT_E5_DAN_PENJELASAN_LISAN.md). Tautan laporan yang dapat dibagikan kepada pembimbing adalah [Catatan Progres Bimbingan](CATATAN_PROGRES_BIMBINGAN.md); laporan PEMENUHAN_REVISI yang dihapus tidak digunakan.

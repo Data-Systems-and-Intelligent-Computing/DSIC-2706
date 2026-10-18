@@ -4,6 +4,12 @@ Lembar E5_AUDIT_PENDENGARAN.csv berisi 120 kasus dari artefak E5 yang sudah ada.
 
 Kolom representasi, kondisi, dan moda kegagalan komputasional dipulihkan dari diagnostik lengkap dengan pencocokan persis terhadap seluruh kolom sumber kasus pilihan. Metadata mencatat hash sumber serta output. Berkas sumber E5 tidak diubah.
 
+## Siapa yang mendengarkan?
+
+Fabio sebagai peneliti utama mendengarkan dan mencatat pengamatannya sendiri. Pembimbing dapat memeriksa contoh saat bimbingan; pendengar kedua boleh membantu jika tersedia, dengan namanya dicatat. Asisten menyiapkan klip dan memvalidasi data, tetapi tidak mengisi pengamatan atas nama manusia. Tidak perlu menebak spesies jika tidak yakin: gunakan uncertain.
+
+[Langkah praktis dan contoh penjelasan lisan H3/Recall@10](../PANDUAN_AUDIT_E5_DAN_PENJELASAN_LISAN.md).
+
 ## Audio yang perlu diperiksa
 
 Untuk query clean dan audio Top-1, gunakan hasil preprocessing resmi: mono 32 kHz, jendela lima detik berenergi tertinggi dengan hop 1,25 detik, padding bila pendek, dan normalisasi RMS sesuai kode. Jangan menggantinya dengan lima detik pertama file asli.

@@ -20,3 +20,9 @@ Skrip pendukung penyelesaian 16 Oktober:
 - import_e5_human_review.py memvalidasi JSON catatan pendengar dan menulis CSV baru, tanpa menimpa sumber.
 - restore_reproduction_inputs.py memulihkan hanya input eksternal yang cocok SHA-256 pada klon terpisah, termasuk target VERIFIED_EXISTING, tanpa menyalin embedding lama.
 - [Protokol reproduksi lingkungan baru](../docs/REPRODUKSI_LINGKUNGAN_BARU_2026-10-16.md).
+
+## Status E4 dan pembaruan 18 Oktober 2026
+
+**run_e4_domain_shift.py TIDAK DIGUNAKAN**. Ini arsip runner tiga lokasi; eksekusi langsung dihentikan sebelum impor audio atau pembuatan output. Produsen run E4 lima lokasi yang sah adalah run_e4_five_locations_v10_stage7.py.draft, dipertahankan dengan hash historis; E4 tidak dijalankan ulang.
+
+run_h3_leave_one_location_out.py menambah tabel sensitivitas dengan menghilangkan masing-masing dari lima lokasi secara bergantian, memakai raw AP@10 tersimpan, tanpa pencampuran audio/inferensi. [Hasil 60 baris dan metadata](../results/reproductions/H3_leave_one_location_out_20261018/README.md).
