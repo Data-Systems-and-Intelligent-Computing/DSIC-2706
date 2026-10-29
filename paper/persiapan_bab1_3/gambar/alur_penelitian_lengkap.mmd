@@ -1,0 +1,47 @@
+flowchart TB
+    start["MULAI"]
+    problem["1. Studi pustaka dan perumusan penelitian<br/>Masalah umum → kebutuhan retrieval burung pada derau ITERA → RQ, tujuan, dan batas penelitian.<br/>Tetapkan rancangan; dokumentasikan perubahan H3/H4 setelah hasil sebagai eksploratif."]
+    target["2a. Audio burung target<br/>Xeno-Canto Indonesia<br/>20 spesies; 1.216 rekaman"]
+    noise["2b. Derau fisik ITERA<br/>AudioMoth; 1.799 berkas<br/>5 lokasi; 6 kategori konfigurasi"]
+    unknown["2c. Kontrol unknown<br/>272 burung non-target<br/>+ 271 derau khusus dari bank ITERA"]
+    audit["3. Audit sumber dan pembagian data<br/>Periksa metadata, SHA-256, keterbacaan audio, identitas rekaman, dan asal derau.<br/>Pisahkan galeri/kueri/kalibrasi target tanpa irisan rekaman, path, atau perekam."]
+    split_target["4a. Target<br/>Galeri 673; kueri 311<br/>Kalibrasi known 232"]
+    split_noise["4b. Bank derau<br/>Pool pencampuran 1.528<br/>Cadangan unknown 271"]
+    split_unknown["4c. Unknown: 543<br/>Kalibrasi 233; uji 310<br/>Terpisah dari kelas target galeri"]
+    preprocess["5. Standardisasi audio dan audit praproses E0<br/>Mono; 32 kHz; 5 detik; jendela energi tertinggi atau padding; normalisasi RMS.<br/>E0 memeriksa 100 rekaman serta probe representasi. R3 menggunakan ID, bukan waveform."]
+    embedding["6. Representasi beku dan galeri referensi<br/>R0: MFCC mean + std (40-d) | R1: PANNs CNN14 (2.048-d) | R2: BirdNET v2.4 (1.024-d).<br/>R3: kontrol ID (40-d). R2 memakai adapter 48 kHz dan jendela 3 detik.<br/>Galeri 673 tetap; normalisasi L2 dan cosine similarity dalam ruang representasi masing-masing."]
+    e1["7a. E1: acuan clean<br/>311 kueri; galeri tetap<br/>Ranking → mAP@10, Top-1,<br/>Recall@10, P@10, MRR<br/>Acuan untuk retensi"]
+    e2["7b. E2: derau terkontrol<br/>311 kueri + noise pool<br/>SNR +20, +10, 0, −5 dB<br/>Ranking dengan galeri tetap<br/>Skor absolut dan retensi"]
+    e3["7c. E3: ambang beku<br/>Kalibrasi clean: 232 known<br/>+ 233 unknown → J → τ beku<br/>Uji: 311 known + 310 unknown<br/>Clean dan 4 SNR; recall/FPR"]
+    e4["7d. E4: lima lokasi<br/>311 kueri × 5 lokasi<br/>× 4 SNR × 4 ulangan<br/>24.880 evaluasi / representasi<br/>Baca hasil E4 yang tersimpan"]
+    stats["8a. Analisis statistik<br/>E1/E2: perbandingan berpasangan.<br/>H3 dari E4: ayunan absolut/relatif;<br/>10.000 bootstrap dan subset lokasi.<br/>H3/H4 reformulasi: eksploratif."]
+    e5["8b. E5: diagnosis dan audit pendengaran<br/>Diagnosis dari E2/E3 dan metadata E4 yang tersedia.<br/>120 kasus pilihan E2: dengarkan segmen kueri dan Top-1;<br/>catat pendengar, tanggal, pengamatan, dan ketidakpastian.<br/>Kolom E4 yang tidak tersedia tetap ditandai tidak tersedia."]
+    synthesis["9. Sintesis, pemeriksaan integritas, dan reproduksi yang diizinkan<br/>Hubungkan hasil dengan RQ/H; periksa sumber tabel/gambar serta batas klaim.<br/>E4 historis tidak dijalankan ulang; campuran ini belum menguji burung target in-situ."]
+    write["10. Penulisan BAB 1–5, bimbingan, kesimpulan/saran, dan arsip akhir"]
+    start --> problem
+    problem --> target
+    target --> audit
+    problem --> noise
+    noise --> audit
+    problem --> unknown
+    unknown --> audit
+    audit --> split_target
+    split_target --> preprocess
+    audit --> split_noise
+    split_noise --> preprocess
+    audit --> split_unknown
+    split_unknown --> preprocess
+    preprocess --> embedding
+    embedding --> e1
+    embedding --> e2
+    embedding --> e3
+    embedding --> e4
+    e1 --> stats
+    e2 --> stats
+    e4 --> stats
+    e2 --> e5
+    e3 --> e5
+    e4 --> e5
+    stats --> synthesis
+    e5 --> synthesis
+    synthesis --> write

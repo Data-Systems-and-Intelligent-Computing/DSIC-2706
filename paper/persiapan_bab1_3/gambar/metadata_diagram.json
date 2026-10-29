@@ -1,0 +1,28 @@
+{
+  "created_utc": "2026-10-29T18:41:30.704996+00:00",
+  "scope": "New protocol illustration only; no experiment execution",
+  "reason_new": "Existing local flowcharts are partial or contain historical gallery/threshold/soundscape assumptions",
+  "outputs": {
+    "alur_penelitian_lengkap.png": "51edf7058310b1456acaaff5b28877ce9a43374619df1c50f8feb0754cd511fa",
+    "alur_penelitian_lengkap.svg": "0a650881630dbaa97d4726cfdc9c0cd6c5c42f6a2cd70f81c5a000f0b4b0e15d",
+    "alur_penelitian_lengkap.mmd": "60ec1844d7d9025cd2c6c513eb1d0788986eab133a249cbc54d3be2a9a2cf6a8"
+  },
+  "sources_sha256": {
+    "data/manifests/dataset_split.csv": "7808cdf057f135aaa193f47e27415318edf46c862c09dee4c7394bc5760e8ed8",
+    "data/manifests/unknown_open_set_manifest.csv": "a7cd0b26e87e1eadcf8cc4fe13257a5c9e3cf80d740d9ff0016e46e5479f3266",
+    "data/manifests/itera_noise_manifest.csv": "a4138bd13e437801d18dc7afde52e0dab50aa5d56ac27091ab0a4ba68fb6f72d",
+    "src/preprocess.py": "6c01850783d294f31a02a915d0497046c6903db7e11c81dc63330b94f982da08",
+    "src/mfcc.py": "502a1900bccd39688f65990eae557901a3737ce6f485511c57fcf0e4bcca8f4c",
+    "src/embeddings.py": "1e5dfcdf51bc26fb3a3895e19534a18570f587ff9f14d961c27254e8db3338b7",
+    "src/retrieve.py": "5a29617317c9ff9735b68cb4e3fc49903fba9070455df48a030de6acd855ff6b",
+    "src/calibrate_threshold.py": "86ec82e19fb85f5b985d93a139985cdee35ff57475157bf9e290eddf988902d7",
+    "scripts/run_e5_diagnostics.py": "bd8735fa10b995f01cf1958fe3ceef0b5bfb764df7a9dfffaa2f99136b2135b5",
+    "docs/research/hypotheses.md": "bbd1788bf406e6db1e37351b88ce736617bf04d2ca58a4229ac2d4ec6463e36c",
+    "results/reproductions/E4_5sites_20261011T213404_350219Z/run_identity.json": "f56c8521f5648187af3833176ae2b18a3774aa3c9f50ea12871ba4826e5f7ab0",
+    "Rencana-eksperimen-bimbingan/audit-pendengaran-E5/hasil-20261030/ringkasan_pendengaran.json": "6eb81051d0df17394c1c654089b7d2ed3e138a11abe074bd8965bd0bef58d980"
+  },
+  "generator_sha256": "3bd1f30bc6be4fd196d153f19b29d63496eb3e955a043f3a82070abf2766c8a3",
+  "interpretation": "Arrows show research dependencies. Review/write is a subsequent phase, not a claim of approved chapters. R3 is an ID control; E4 is stored historical output.",
+  "text_fit_checks": 36,
+  "text_fit_passed": true
+}
