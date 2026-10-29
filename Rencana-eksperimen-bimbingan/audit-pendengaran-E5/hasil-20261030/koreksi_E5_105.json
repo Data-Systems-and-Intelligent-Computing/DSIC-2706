@@ -1,0 +1,16 @@
+{
+  "schema": "e5_confirmed_human_amendment_v1",
+  "confirmation_date_local": "2026-10-30",
+  "applied_at_utc": "2026-10-29T18:21:40.626464+00:00",
+  "confirmed_by": "Fabio Banyu Cyto",
+  "authorization_source": "Explicit user confirmation in this chat",
+  "confirmation_quote": "itu kepencet yang ragu (aslinya terdengar jelas)",
+  "case_id": "E5_105",
+  "field": "query_vocalisation_audible",
+  "before": "uncertain",
+  "after": "yes",
+  "source_sha256": "3e74ef9999aee896f6bd3f31b2dbbc2ab4bfb48cd8ede9e769a02d9072d2695c",
+  "corrected_sha256": "69831b5e15ac76b0659cde2ac431734de33956f73c0e178afc5883e0909860bf",
+  "other_review_fields_unchanged": true,
+  "original_listening_timestamps_preserved": true
+}

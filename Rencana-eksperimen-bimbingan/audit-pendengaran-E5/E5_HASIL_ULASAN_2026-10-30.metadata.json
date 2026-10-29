@@ -1,0 +1,12 @@
+{
+  "source_sheet_sha256": "8f9b400b34d82c516f93a346111607f66c7c02320b299cff571805ba2f602c55",
+  "human_notes_json_sha256": "69831b5e15ac76b0659cde2ac431734de33956f73c0e178afc5883e0909860bf",
+  "output_sha256": "3bd4b8a6ccc1d530df9b2e918b55b26f4284182a0cf8c638c99b389a249788a6",
+  "counts": {
+    "pending": 0,
+    "reviewed": 120,
+    "needs_follow_up": 0
+  },
+  "validation_scope": "Structure/provenance only; human observations are self-reported and not verified by software",
+  "script_sha256": "9ce3db28e7e9c204c0033ca14580829b639dc2aeea7b29a34dd8d2b1c9882cfc"
+}

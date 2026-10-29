@@ -1,0 +1,230 @@
+{
+  "schema": "e5_human_audit_summary_v1",
+  "analysis_unit": "Selected case row; counts are descriptive, not population failure rates",
+  "overall": {
+    "n_cases": 120,
+    "query_vocalisation_audible": {
+      "yes": 116,
+      "no": 4,
+      "uncertain": 0
+    },
+    "top1_vocalisation_audible": {
+      "yes": 109,
+      "no": 8,
+      "uncertain": 3
+    },
+    "both_audible_yes": 106
+  },
+  "audio_representations_R0_R1_R2": {
+    "n_cases": 90,
+    "query_vocalisation_audible": {
+      "yes": 87,
+      "no": 3,
+      "uncertain": 0
+    },
+    "top1_vocalisation_audible": {
+      "yes": 84,
+      "no": 3,
+      "uncertain": 3
+    },
+    "both_audible_yes": 81
+  },
+  "review_status": {
+    "reviewed": 120
+  },
+  "reviewers": {
+    "Fabio Banyu Cyto": 120
+  },
+  "listening_local_first": "2026-10-25T13:15:40.565000+07:00",
+  "listening_local_last": "2026-10-30T01:12:44.845000+07:00",
+  "unique_queries": 80,
+  "unique_query_condition_pairs": 117,
+  "by_representation": {
+    "R0": {
+      "n_cases": 30,
+      "query_vocalisation_audible": {
+        "yes": 29,
+        "no": 1,
+        "uncertain": 0
+      },
+      "top1_vocalisation_audible": {
+        "yes": 26,
+        "no": 2,
+        "uncertain": 2
+      },
+      "both_audible_yes": 25
+    },
+    "R1": {
+      "n_cases": 30,
+      "query_vocalisation_audible": {
+        "yes": 30,
+        "no": 0,
+        "uncertain": 0
+      },
+      "top1_vocalisation_audible": {
+        "yes": 28,
+        "no": 1,
+        "uncertain": 1
+      },
+      "both_audible_yes": 28
+    },
+    "R2": {
+      "n_cases": 30,
+      "query_vocalisation_audible": {
+        "yes": 28,
+        "no": 2,
+        "uncertain": 0
+      },
+      "top1_vocalisation_audible": {
+        "yes": 30,
+        "no": 0,
+        "uncertain": 0
+      },
+      "both_audible_yes": 28
+    },
+    "R3": {
+      "n_cases": 30,
+      "query_vocalisation_audible": {
+        "yes": 29,
+        "no": 1,
+        "uncertain": 0
+      },
+      "top1_vocalisation_audible": {
+        "yes": 25,
+        "no": 5,
+        "uncertain": 0
+      },
+      "both_audible_yes": 25
+    }
+  },
+  "by_condition": {
+    "Clean": {
+      "n_cases": 24,
+      "query_vocalisation_audible": {
+        "yes": 21,
+        "no": 3,
+        "uncertain": 0
+      },
+      "top1_vocalisation_audible": {
+        "yes": 22,
+        "no": 2,
+        "uncertain": 0
+      },
+      "both_audible_yes": 20
+    },
+    "SNR_-5dB": {
+      "n_cases": 24,
+      "query_vocalisation_audible": {
+        "yes": 24,
+        "no": 0,
+        "uncertain": 0
+      },
+      "top1_vocalisation_audible": {
+        "yes": 20,
+        "no": 2,
+        "uncertain": 2
+      },
+      "both_audible_yes": 20
+    },
+    "SNR_0dB": {
+      "n_cases": 24,
+      "query_vocalisation_audible": {
+        "yes": 23,
+        "no": 1,
+        "uncertain": 0
+      },
+      "top1_vocalisation_audible": {
+        "yes": 22,
+        "no": 1,
+        "uncertain": 1
+      },
+      "both_audible_yes": 21
+    },
+    "SNR_10dB": {
+      "n_cases": 24,
+      "query_vocalisation_audible": {
+        "yes": 24,
+        "no": 0,
+        "uncertain": 0
+      },
+      "top1_vocalisation_audible": {
+        "yes": 22,
+        "no": 2,
+        "uncertain": 0
+      },
+      "both_audible_yes": 22
+    },
+    "SNR_20dB": {
+      "n_cases": 24,
+      "query_vocalisation_audible": {
+        "yes": 24,
+        "no": 0,
+        "uncertain": 0
+      },
+      "top1_vocalisation_audible": {
+        "yes": 23,
+        "no": 1,
+        "uncertain": 0
+      },
+      "both_audible_yes": 23
+    }
+  },
+  "by_failure_mode": {
+    "Open-set false rejection": {
+      "n_cases": 40,
+      "query_vocalisation_audible": {
+        "yes": 40,
+        "no": 0,
+        "uncertain": 0
+      },
+      "top1_vocalisation_audible": {
+        "yes": 38,
+        "no": 1,
+        "uncertain": 1
+      },
+      "both_audible_yes": 38
+    },
+    "Top-1 confusion above threshold": {
+      "n_cases": 40,
+      "query_vocalisation_audible": {
+        "yes": 37,
+        "no": 3,
+        "uncertain": 0
+      },
+      "top1_vocalisation_audible": {
+        "yes": 33,
+        "no": 5,
+        "uncertain": 2
+      },
+      "both_audible_yes": 31
+    },
+    "Total retrieval collapse": {
+      "n_cases": 40,
+      "query_vocalisation_audible": {
+        "yes": 39,
+        "no": 1,
+        "uncertain": 0
+      },
+      "top1_vocalisation_audible": {
+        "yes": 38,
+        "no": 2,
+        "uncertain": 0
+      },
+      "both_audible_yes": 37
+    }
+  },
+  "query_not_audible_cases": [
+    "E5_018",
+    "E5_063",
+    "E5_064",
+    "E5_093"
+  ],
+  "top1_uncertain_cases": [
+    "E5_010",
+    "E5_015",
+    "E5_037"
+  ],
+  "within_listener_query_category_differences": [],
+  "within_listener_top1_category_differences": [],
+  "within_listener_note": "Repeated-audio category differences are reported, not silently resolved or treated as inter-rater agreement."
+}

@@ -1,0 +1,37 @@
+{
+  "checked_at_utc": "2026-10-29T18:23:35.304002+00:00",
+  "status": "PASS",
+  "previously_tracked_paths_checked": 1227,
+  "previously_tracked_paths_changed": [],
+  "original_download_and_archive_identical": true,
+  "only_human_field_change": [
+    "E5_105",
+    "query_vocalisation_audible",
+    "uncertain",
+    "yes"
+  ],
+  "csv_rows": 120,
+  "source_experiment_columns_unchanged": true,
+  "all_human_prose_and_listening_timestamps_preserved": true,
+  "independent_counts_and_groups_match": true,
+  "failure_mode_mapping_matches_metadata": true,
+  "local_report_links_valid": 7,
+  "existing_manifest_hashes_match": true,
+  "tests": {
+    "command": "python -B -m unittest tests.test_e5_human_review_import tests.test_e5_human_review_finalize -v",
+    "passed": 7,
+    "skipped": 0,
+    "failed": 0,
+    "errors": 0,
+    "scope": "Importer and finalizer only; no claim of rerunning the full historical suite"
+  },
+  "inference_or_audio_processing_performed": false,
+  "source_whitespace_preserved": {
+    "cases": [
+      "E5_062",
+      "E5_119"
+    ],
+    "reason": "Trailing spaces belong to verbatim human notes; no unconfirmed text normalization",
+    "git_check": "Standard check for code/JSON/Markdown; CSV end-of-line whitespace exempted only to preserve source values"
+  }
+}

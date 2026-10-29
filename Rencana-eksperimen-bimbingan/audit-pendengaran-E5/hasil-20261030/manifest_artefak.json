@@ -1,0 +1,39 @@
+{
+  "schema": "e5_human_audit_artifact_manifest_v1",
+  "created_at_utc": "2026-10-29T18:21:40.693885+00:00",
+  "source_git_head": "3988078e75d311259463b012531298c59e78076d",
+  "sha256": {
+    "Rencana-eksperimen-bimbingan/audit-pendengaran-E5/E5_AUDIT_PENDENGARAN.csv": "8f9b400b34d82c516f93a346111607f66c7c02320b299cff571805ba2f602c55",
+    "Rencana-eksperimen-bimbingan/audit-pendengaran-E5/E5_HASIL_ULASAN_2026-10-30.csv": "3bd4b8a6ccc1d530df9b2e918b55b26f4284182a0cf8c638c99b389a249788a6",
+    "Rencana-eksperimen-bimbingan/audit-pendengaran-E5/E5_HASIL_ULASAN_2026-10-30.metadata.json": "a91a411f4a6b22b5c089eedd2afe54763be0fac2433a212fedf0d8f34c9676f2",
+    "Rencana-eksperimen-bimbingan/audit-pendengaran-E5/hasil-20261030/E5_catatan_pendengaran_asli.json": "3e74ef9999aee896f6bd3f31b2dbbc2ab4bfb48cd8ede9e769a02d9072d2695c",
+    "Rencana-eksperimen-bimbingan/audit-pendengaran-E5/hasil-20261030/E5_catatan_pendengaran_terkoreksi.json": "69831b5e15ac76b0659cde2ac431734de33956f73c0e178afc5883e0909860bf",
+    "Rencana-eksperimen-bimbingan/audit-pendengaran-E5/hasil-20261030/koreksi_E5_105.json": "b0e1be5a742f312961568e45a5b9dcd2222267fe500f6ea78fa028eade3c52cb",
+    "Rencana-eksperimen-bimbingan/audit-pendengaran-E5/hasil-20261030/README.md": "ac7ea6cb761df66395bf298245248157da2e79774cc3787eeb31771143dcb4b7",
+    "Rencana-eksperimen-bimbingan/audit-pendengaran-E5/hasil-20261030/ringkasan_pendengaran.json": "6eb81051d0df17394c1c654089b7d2ed3e138a11abe074bd8965bd0bef58d980",
+    "scripts/finalize_e5_human_review.py": "a4149680b5c4ccd56e0706308e26db53f03822b5c7696ecd3e0152e80d35246c",
+    "Rencana-eksperimen-bimbingan/audit-pendengaran-E5/hasil-20261030/verifikasi_akhir.json": "4844f6da82706963b9e8fd0738b28fcaabae30d309676288cc9e046ae26f7613",
+    "tests/test_e5_human_review_finalize.py": "b4467f4b03dedd44712bd18889c3ac56fd1053866e6e97eb0757459c0ac19f24"
+  },
+  "hash_exclusions": [
+    "This manifest (self-reference)",
+    "LOG_AUDIT.md (append-only progress including publication steps)"
+  ],
+  "validation": {
+    "reviewed": 120,
+    "pending": 0,
+    "needs_follow_up": 0,
+    "human_field_changes": [
+      [
+        "E5_105",
+        "query_vocalisation_audible",
+        "uncertain",
+        "yes"
+      ]
+    ],
+    "experiment_columns_unchanged": true,
+    "original_download_unchanged": true,
+    "final_verification": "verifikasi_akhir.json"
+  },
+  "scope": "Human-note processing only; no audio/inference/metric/threshold/ground-truth changes"
+}
