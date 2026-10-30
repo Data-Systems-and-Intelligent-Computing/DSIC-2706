@@ -19,3 +19,9 @@ Nol skip di komputer ini berarti input/dependensi pemeriksaan tersedia saat peng
 [Bukti ringkasan terbaru](../artifacts/reproducibility/test_summary_2026-10-18.json). Tes Git membandingkan seluruh 10 aset sumber E4 terlacak dengan SHA-256 beku pada file lokal dan Git HEAD. Fixture pengamatan pendengaran bersifat sintetis di memori dan tidak mengisi audit manusia.
 
 Suite ini tidak menjalankan ulang E2–E5. [Reproduksi eksperimen](../docs/REPRODUKSI_LINGKUNGAN_BARU_2026-10-16.md) dicatat terpisah. Inferensi E4 tetap tidak diulang.
+
+## Pemeriksaan audit 30 Oktober 2026
+
+[Verifikasi audit manusia](../Rencana-eksperimen-bimbingan/audit-pendengaran-E5/hasil-20261030/verifikasi_akhir.json) mencatat tujuh tes importer/finalizer lulus, nol dilewati/gagal/error, melalui `python -B -m unittest tests.test_e5_human_review_import tests.test_e5_human_review_finalize -v`. Ini pengujian khusus, bukan pengulangan seluruh suite 41 tes. Finalizer belum dimasukkan pada daftar modul `run_tests.py`; jangan menjumlahkan tujuh tes itu dengan 41 karena tes importer beririsan.
+
+Catatan pendengaran Fabio tersedia untuk 120/120 kasus, tetapi lulus tes hanya memvalidasi logika/struktur/provenance, bukan pengalaman mendengar atau identitas spesies secara independen. Pembaruan README ini tidak menjalankan tes atau eksperimen lagi. Angka 41 pembandingan reproduksi juga berbeda dari 41 tes suite historis.

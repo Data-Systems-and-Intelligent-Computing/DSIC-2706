@@ -14,3 +14,7 @@ Semua notebook ada di `D:\FILE AND TASK\TA\notebooks`. Satu eksperimen memakai s
 | `08_E5_Failure_Diagnostics.ipynb` | E5 | gambar 11–13; tabel 15–17 |
 
 Notebook E4 hanya menampilkan run tervalidasi dan tidak menjalankan ulang 320 kondisi. Hasil RQ dan H1–H5 ada di `docs/RESULTS_RQ_HYPOTHESES_2026-10-12.md`.
+
+Untuk kesimpulan gunakan [matriks revisi 28](../results/tables/28_rq_hypothesis_matrix_revised_2026-10-15.csv), [sensitivitas H3 15 Oktober](../results/reproductions/H3_sensitivity_20261015/README.md), dan [penghilangan tiap lokasi 18 Oktober](../results/reproductions/H3_leave_one_location_out_20261018/README.md). Grafik/tabel H3 12 Oktober tetap historis; hasil reformulasi H3/H4 bersifat eksploratif.
+
+[Catatan audit pendengaran E5 30 Oktober](../Rencana-eksperimen-bimbingan/audit-pendengaran-E5/hasil-20261030/README.md) tersedia untuk 120/120 kasus pilihan oleh Fabio. Audit ini terpisah dari notebook diagnostik; lembar kosong persiapan tidak menunjukkan status ulasan terbaru. Tidak ada eksekusi ulang notebook atau eksperimen dalam pembaruan README ini.

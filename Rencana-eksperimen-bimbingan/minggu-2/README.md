@@ -13,6 +13,8 @@ Bank noise berisi 1.799 rekaman AudioMoth ITERA dari lima lokasi: Embung F, Gedu
 - Kode mixing: [src/mix_noise.py](../../src/mix_noise.py)
 - Konfigurasi E2: [configs/experiments.yaml](../../configs/experiments.yaml)
 
+Bank 1.799 berkas terbagi menjadi 1.528 untuk pool pencampuran dan 271 untuk unknown E3. Gambar distribusi lokasi di atas mencakup pool 1.528, bukan seluruh bank. Status bebas vokalisasi target setiap rekaman belum dibuktikan secara independen. Untuk parameter pelaksanaan, utamakan kode dan metadata run; beberapa komentar konfigurasi masih historis.
+
 ## Desain E2
 
 Setiap 311 query clean dipasangkan secara deterministik dengan noise ITERA pada Clean, +20, +10, 0, dan −5 dB. Gallery tetap sama. Metrik yang dicatat adalah Top-1, MRR, mAP@10, Recall@10, dan Precision@10. Dua puluh raw CSV menyimpan hasil per-query untuk empat representasi dan lima kondisi.

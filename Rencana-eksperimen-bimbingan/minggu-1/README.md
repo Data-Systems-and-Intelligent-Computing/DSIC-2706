@@ -34,7 +34,7 @@ Audit deterministik 100 rekaman menemukan 20 spesies, durasi asli median 31,8648
 
 ## EDA fisik
 
-EDA menginventaris 3.396 audio fisik: 1.216 target aktif, 1.799 noise ITERA, dan 543 unknown/open-set. Tidak ditemukan error decode soundfile. Terdapat 101 mismatch ekstensi/container serta 109 audio fisik yang belum dirujuk oleh manifes yang diaudit; keduanya dicatat untuk audit dan bukan alasan menghapus file.
+EDA menginventaris 3.396 audio fisik. Peran aktif mencakup 1.216 target, 543 unknown/open-set, dan 1.528 noise pool pencampuran, ditambah 109 audio yang tidak dirujuk tiga manifes aktif. Sebanyak 271 derau unknown sudah termasuk bank 1.799 noise ITERA, sehingga tidak dijumlahkan dua kali. Tidak ditemukan error decode soundfile; 101 mismatch ekstensi/container dan audio tidak dirujuk dicatat sebagai temuan audit, bukan alasan menghapus file.
 
 - Notebook: [03_EDA_Physical_Audio.ipynb](../../notebooks/03_EDA_Physical_Audio.ipynb)
 - Inventaris lengkap: [EDA physical audio inventory](../../results/tables/07_eda_physical_audio_inventory.csv)
@@ -60,3 +60,5 @@ Empat representasi dievaluasi pada 311 query terhadap 673 Gallery: R0 MFCC, R1 P
 - Run konsolidasi cache: [E1 R1](../../results/reproductions/E1_R1_cache_20261012T021032_566409Z/), [R2](../../results/reproductions/E1_R2_cache_20261012T021034_128124Z/), [R3](../../results/reproductions/E1_R3_cache_20261012T021035_119528Z/)
 
 **Keputusan Minggu 1:** R2 menjadi representasi dengan retrieval bersih tertinggi. Hasil ini menjadi baseline untuk E2, bukan bukti ketahanan terhadap noise.
+
+**Provenance E1:** R0 memiliki run tersendiri. R1–R3 dikonsolidasikan dari cache clean tervalidasi pada 12 Oktober, bukan diklaim sebagai run historis sebelumnya. Reproduksi 16 Oktober kemudian menghitung E1 dari embedding yang diekstrak ulang pada venv baru; lihat [laporan reproduksi](../../docs/REPRODUKSI_LINGKUNGAN_BARU_2026-10-16.md).

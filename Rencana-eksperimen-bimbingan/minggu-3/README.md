@@ -27,6 +27,8 @@ Pada −5 dB, recall known-set turun untuk R0–R2; misalnya R2 dari 0,6045 menj
 
 E4 memakai noise asli dari Embung F, Gedung F, Kebun Raya, Masjid At-Tanwir, dan Sekitar GKU 1 untuk additive mixture pada query focal. Run tervalidasi menyimpan 320 snapshot kondisi dan 324 baris tabel komparatif.
 
+Desainnya 311 query × 5 lokasi × 4 SNR × 4 ulangan per representasi: 24.880 evaluasi noisy per representasi, 99.520 untuk R0–R3. Ini pengukuran berulang atas 311 query, bukan jumlah query independen. Nama tabel `domain_shift` adalah nama historis; hasilnya tidak menguji burung yang direkam in-situ.
+
 - Notebook: [07_E4_Habitat_Noise_Sensitivity.ipynb](../../notebooks/07_E4_Habitat_Noise_Sensitivity.ipynb)
 - Run sumber: [E4 five sites](../../results/reproductions/E4_5sites_20261011T213404_350219Z/)
 - Audit run: [E4 audit](../../results/reproductions/E4_audit_20261012T021801_989259Z/)
@@ -54,3 +56,4 @@ H3 hasil reformulasi adalah eksploratif; H3 asli mengenai real-soundscape belum 
 - [Riwayat rumusan H3/H4](../../docs/research/hypotheses.md)
 - [Catatan revisi utama](../../docs/REVISION_SUPERVISOR_2026-10-15.md)
 - [Tabel H3 historis 12 Oktober](../../results/tables/24_h3_habitat_profile_stability.csv)
+- [Sensitivitas penghilangan setiap lokasi, 18 Oktober](../../results/reproductions/H3_leave_one_location_out_20261018/README.md): semua lima lokasi tetap dipertahankan dalam E4 asli. CI eksploratif kondisional pada lokasi/segmen yang dipilih, bukan ketidakpastian untuk lokasi baru.

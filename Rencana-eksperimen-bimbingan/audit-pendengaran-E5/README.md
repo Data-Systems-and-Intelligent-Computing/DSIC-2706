@@ -1,5 +1,7 @@
 # Petunjuk Audit Pendengaran E5
 
+> **Status 30 Oktober 2026:** [hasil audit Fabio](hasil-20261030/README.md) tersedia untuk **120/120 kasus pilihan**, dengan [CSV terisi](E5_HASIL_ULASAN_2026-10-30.csv), ringkasan, dan jejak koreksi E5_105. Audit melibatkan satu pendengar dan sampel kegagalan terpilih; tidak mengestimasi frekuensi kegagalan populasi. Petunjuk berikut menjelaskan prosedur dan lembar persiapan, bukan status pending terkini.
+
 Lembar E5_AUDIT_PENDENGARAN.csv berisi 120 kasus dari artefak E5 yang sudah ada. Saat disiapkan, semua berstatus pending dan kolom pengamatan manusia kosong. Label spesies merupakan metadata dataset, bukan hasil identifikasi baru oleh pendengar.
 
 Kolom representasi, kondisi, dan moda kegagalan komputasional dipulihkan dari diagnostik lengkap dengan pencocokan persis terhadap seluruh kolom sumber kasus pilihan. Metadata mencatat hash sumber serta output. Berkas sumber E5 tidak diubah.
@@ -49,7 +51,7 @@ Builder prepare_e5_listening_review.py hanya menyiapkan lembar kosong dan menola
 .\.venv\Scripts\python.exe -B scripts/import_e5_human_review.py --review-json PATH_KE/E5_catatan_pendengaran.json --output Rencana-eksperimen-bimbingan/audit-pendengaran-E5/E5_HASIL_ULASAN_BARU.csv
 ```
 
-Semua 120 kasus masih pending pada saat paket disiapkan. Tidak ada nama, tanggal pendengaran, atau observasi manusia yang direka. Kriteria audit penuh tetap 120/120 kasus benar-benar diulas.
+Pada persiapan 16 Oktober, semua 120 kasus berstatus pending. Lembar kosong itu dipertahankan sebagai sumber; catatan pendengaran 25–30 Oktober diimpor ke berkas baru dan kini mencakup 120/120 reviewed. Validasi perangkat lunak memeriksa struktur/identitas sumber, bukan mengesahkan identitas spesies atau pengalaman pendengaran secara independen. Tidak ada pengamatan manusia yang diisi otomatis.
 
 ## Membangun ulang klip pada checkout lain
 
