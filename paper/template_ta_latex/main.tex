@@ -1,0 +1,327 @@
+\documentclass[12pt,a4paper,oneside]{report}
+
+\usepackage[english,indonesian]{babel}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\usepackage[bookmarks,hidelinks]{hyperref}
+\urlstyle{same}
+
+% Daftar pustaka bernomor sesuai urutan sitasi pertama di naskah.
+\addto\captionsindonesian{\renewcommand{\bibname}{DAFTAR PUSTAKA}}
+
+\geometry{left=4cm,right=3cm,top=3cm,bottom=3cm}
+\onehalfspacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+% Nomor BAB Romawi; nomor subbab tetap 1.1, 1.2, dan seterusnya.
+\renewcommand{\thechapter}{\Roman{chapter}}
+\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
+\renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
+\renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
+\renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
+
+% Judul BAB dan subbab: Times New Roman 12 pt.
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries\centering\normalsize}
+  {BAB \Roman{chapter}}
+  {0.5em}
+  {}
+\titlespacing*{\chapter}{0pt}{0pt}{12pt}
+
+\titleformat{\section}
+  {\normalfont\bfseries\normalsize}
+  {\thesection}
+  {1em}
+  {}
+% Kompensasi parskip agar judul ke kalimat pertama berjarak satu baris biasa.
+\titlespacing*{\section}{0pt}{10pt}{-\parskip}
+
+\titleformat{\subsection}
+  {\normalfont\bfseries\normalsize}
+  {\thesubsection}
+  {1em}
+  {}
+\titlespacing*{\subsection}{0pt}{8pt}{-\parskip}
+
+% Daftar rapat: nomor sejajar margin kiri, baris lanjutan sejajar teks.
+\newenvironment{daftarBernomor}{%
+  \par\begingroup
+  \setlength{\parskip}{0pt}%
+  \begin{list}{\arabic{enumi}.}{%
+    \usecounter{enumi}%
+    \settowidth{\labelwidth}{9.}%
+    \setlength{\labelsep}{0.6em}%
+    \setlength{\leftmargin}{\dimexpr\labelwidth+\labelsep\relax}%
+    \setlength{\rightmargin}{0pt}%
+    \setlength{\topsep}{0pt}%
+    \setlength{\partopsep}{0pt}%
+    \setlength{\itemsep}{0pt}%
+    \setlength{\parsep}{0pt}%
+    \setlength{\listparindent}{0pt}%
+  }%
+}{%
+  \end{list}\endgroup
+}
+
+% ============================================================
+%  PENGATURAN DAFTAR ISI, DAFTAR GAMBAR, & DAFTAR TABEL (RAPI)
+% ============================================================
+% Titik-titik penghubung (leader dots) rapat dan seragam
+\renewcommand{\cftdotsep}{1}
+
+% Margin kanan untuk nomor halaman agar tidak overfull
+\makeatletter
+\renewcommand{\@tocrmarg}{3.5em}
+\makeatother
+
+% --- Tingkat BAB (chapter):
+% Hanya entri \chapter bernomor yang mendapatkan prefiks "BAB "
+\renewcommand{\cftchapfont}{\normalfont\bfseries}
+\renewcommand{\cftchappagefont}{\normalfont\bfseries}
+\renewcommand{\cftchappresnum}{BAB }
+\renewcommand{\cftchapaftersnum}{\enspace}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\setlength{\cftbeforechapskip}{6pt}     % Jarak pemisah yang proporsional antarbab
+\setlength{\cftchapindent}{0em}         % Rata kiri sempurna
+\setlength{\cftchapnumwidth}{4.2em}     % Lebar pas untuk "BAB I" s.d. "BAB V", teks mulai di 4.2em
+
+% --- Tingkat Subbab (section):
+% Nomor subbab (1.1) menjorok 1.5em; teks judul subbab mulai tepat di 1.5em + 2.7em = 4.2em (sejajar dengan teks BAB)
+\renewcommand{\cftsecfont}{\normalfont}
+\renewcommand{\cftsecpagefont}{\normalfont}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\setlength{\cftbeforesecskip}{2pt}
+\setlength{\cftsecindent}{1.5em}        % Menjorok rapi di bawah "BAB"
+\setlength{\cftsecnumwidth}{2.7em}      % Lebar kolom nomor "1.1", judul subbab sejajar di 4.2em
+
+\makeatletter
+\renewcommand*{\l@section}[2]{%
+  \ifnum \c@tocdepth >\z@
+    \vskip \cftbeforesecskip
+    {\leftskip \cftsecindent\relax
+     \advance\leftskip \cftsecnumwidth\relax
+     \rightskip \@tocrmarg
+     \parfillskip -\rightskip
+     \interlinepenalty\@M
+     \noindent\hskip -\cftsecnumwidth\relax
+     \let\@cftbsnum \cftsecpresnum
+     \let\@cftasnum \cftsecaftersnum
+     \let\@cftasnumb \cftsecaftersnumb
+     \@tempdima \cftsecnumwidth\relax
+     {\cftsecfont #1}\nobreak
+     \cftsecfillnum{#2}}%
+  \fi}
+\makeatother
+
+% --- Tingkat Sub-subbab (subsection):
+\renewcommand{\cftsubsecfont}{\normalfont}
+\renewcommand{\cftsubsecpagefont}{\normalfont}
+\renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
+\setlength{\cftbeforesubsecskip}{1pt}
+\setlength{\cftsubsecindent}{4.2em}     % Sejajar di bawah teks subbab
+\setlength{\cftsubsecnumwidth}{3.0em}
+
+\makeatletter
+\renewcommand*{\l@subsection}[2]{%
+  \ifnum \c@tocdepth >1\relax
+    \vskip \cftbeforesubsecskip
+    {\leftskip \cftsubsecindent\relax
+     \advance\leftskip \cftsubsecnumwidth\relax
+     \rightskip \@tocrmarg
+     \parfillskip -\rightskip
+     \interlinepenalty\@M
+     \noindent\hskip -\cftsubsecnumwidth\relax
+     \let\@cftbsnum \cftsubsecpresnum
+     \let\@cftasnum \cftsubsecaftersnum
+     \let\@cftasnumb \cftsubsecaftersnumb
+     \@tempdima \cftsubsecnumwidth\relax
+     {\cftsubsecfont #1}\nobreak
+     \cftsubsecfillnum{#2}}%
+  \fi}
+\makeatother
+
+% --- Daftar Gambar
+\renewcommand{\cftfigpresnum}{Gambar }
+\renewcommand{\cftfigaftersnum}{\quad}
+\renewcommand{\cftfigleader}{\cftdotfill{\cftdotsep}}
+\setlength{\cftfignumwidth}{6.5em}
+
+% --- Daftar Tabel
+\renewcommand{\cfttabpresnum}{Tabel }
+\renewcommand{\cfttabaftersnum}{\quad}
+\renewcommand{\cfttableader}{\cftdotfill{\cftdotsep}}
+\setlength{\cfttabnumwidth}{5.5em}
+
+% ============================================================
+%  IDENTITAS TUGAS AKHIR
+% ============================================================
+\newcommand{\judulTA}{NOISE AND SPECTRAL SENSITIVITY OF FROZEN AUDIO REPRESENTATIONS FOR BIOACOUSTIC SIMILARITY RETRIEVAL UNDER CONTROLLED ITERA FIELD-NOISE MIXTURES IN INDONESIAN AVIFAUNA}
+\newcommand{\namaPenulis}{Fabio Banyu Cyto}
+\newcommand{\nomorInduk}{123450104}
+\newcommand{\programStudi}{PROGRAM STUDI SAINS DATA}
+\newcommand{\fakultas}{FAKULTAS SAINS}
+\newcommand{\institusi}{INSTITUT TEKNOLOGI SUMATERA}
+\newcommand{\lokasiTA}{LAMPUNG SELATAN}
+\newcommand{\tahunTA}{2026}
+
+% Logo kampus
+\newcommand{\logoKampus}{%
+  \IfFileExists{Gambar/png_likkqg_5387.png}{%
+    \includegraphics[height=4.2cm,keepaspectratio]
+      {Gambar/png_likkqg_5387.png}%
+  }{%
+    \fbox{\parbox[c][4.2cm][c]{4.2cm}{\centering LOGO ITERA}}%
+  }%
+}
+
+% ============================================================
+%  PERINTAH BANTU HALAMAN AWAL (FRONT MATTER)
+% ============================================================
+% Halaman awal masuk ke Daftar Isi tanpa nomor bab dan tanpa kata "BAB"
+% Menerima argumen opsional untuk penamaan di Daftar Isi jika judul halaman panjang.
+\newcommand{\halamanAwal}[2][]{%
+  \clearpage
+  \thispagestyle{plain}
+  \phantomsection
+  \if\relax\detokenize{#1}\relax
+    \addcontentsline{toc}{chapter}{#2}%
+  \else
+    \addcontentsline{toc}{chapter}{#1}%
+  \fi
+  \begin{center}
+    {\bfseries\normalsize #2\par}
+  \end{center}
+  \vspace{0.8cm}
+}
+
+\makeatletter
+\newcommand{\halamanDaftar}[2]{%
+  \clearpage
+  \thispagestyle{plain}
+  \phantomsection
+  \addcontentsline{toc}{chapter}{#1}%
+  \begin{center}
+    {\bfseries\normalsize #1\par}
+  \end{center}
+  \vspace{0.8cm}
+  \begingroup
+    \parindent\z@
+    \parskip\cftparskip
+    \@starttoc{#2}%
+  \endgroup
+}
+\makeatother
+
+% ============================================================
+%  DOKUMEN UTAMA
+% ============================================================
+\begin{document}
+\pagenumbering{roman}
+
+% Tata letak cover sampul dan cover dalam
+\newcommand{\isiSampulTA}{%
+  \begin{center}
+    \setstretch{1}
+    \vspace*{0.2cm}
+
+    \parbox[c][2.9cm][c]{\textwidth}{%
+      \centering\bfseries\normalsize \judulTA\par
+    }\par
+
+    \vspace{2.7cm}
+    {\bfseries TUGAS AKHIR\par}
+
+    \vspace{2.5cm}
+    {\bfseries \namaPenulis\par}
+    \vspace{0.15cm}
+    {\bfseries \nomorInduk\par}
+
+    \vspace{2.3cm}
+    \logoKampus\par
+
+    \vspace{2.8cm}
+    {\bfseries \programStudi\par}
+    \vspace{0.25cm}
+    {\bfseries \fakultas\par}
+    \vspace{0.25cm}
+    {\bfseries \institusi\par}
+    \vspace{0.25cm}
+    {\bfseries \lokasiTA\par}
+    \vspace{0.25cm}
+    {\bfseries \tahunTA\par}
+  \end{center}
+}
+
+% HALAMAN SAMPUL (Cover Luar)
+\begin{titlepage}
+  \thispagestyle{empty}
+  \isiSampulTA
+\end{titlepage}
+
+% HALAMAN JUDUL (Cover Dalam)
+\begin{titlepage}
+  \thispagestyle{empty}
+  \phantomsection
+  \addcontentsline{toc}{chapter}{HALAMAN JUDUL}
+  \isiSampulTA
+\end{titlepage}
+
+\setcounter{page}{3}
+
+\halamanAwal{HALAMAN PENGESAHAN}
+% Isi halaman pengesahan.
+
+\halamanAwal{HALAMAN PERNYATAAN ORISINALITAS}
+% Isi pernyataan orisinalitas.
+
+\halamanAwal[HALAMAN PERSETUJUAN PUBLIKASI]{HALAMAN PERNYATAAN PERSETUJUAN PUBLIKASI UNTUK KEPENTINGAN AKADEMIS}
+% Isi pernyataan persetujuan publikasi.
+
+\halamanAwal{ABSTRAK}
+% Isi abstrak Bahasa Indonesia.
+
+\halamanAwal{ABSTRACT}
+% Isi abstract Bahasa Inggris.
+
+\halamanAwal{MOTTO}
+% Isi motto.
+
+\halamanAwal{HALAMAN PERSEMBAHAN}
+% Isi persembahan.
+
+\halamanAwal{KATA PENGANTAR}
+% Isi kata pengantar.
+
+\halamanDaftar{DAFTAR ISI}{toc}
+\halamanDaftar{DAFTAR GAMBAR}{lof}
+\halamanDaftar{DAFTAR TABEL}{lot}
+
+\clearpage
+\pagenumbering{arabic}
+% Faktor baris eksplisit pada isi, mengikuti contoh visual pengguna.
+\setstretch{1.5}
+\setlength{\parskip}{6pt}
+\clubpenalties 2 10000 0
+\widowpenalties 2 10000 0
+
+\input{chapters/bab1.tex}
+\input{chapters/bab2.tex}
+\input{chapters/bab3.tex}
+
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{\bibname}
+\bibliographystyle{unsrt}
+\begingroup
+\interlinepenalty=10000
+\bibliography{references}
+\endgroup
+
+\end{document}

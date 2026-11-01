@@ -18,6 +18,7 @@
 | `paper/` | Draf naskah dan indeks figure/table terpilih. |
 | `tests/` | Pengujian integritas dan metode. |
 | `learning/` | Latihan pembelajaran yang tidak mengubah hasil resmi. |
+| `Teori Dasar/` | Draf teori dan panduan historis; periksa penanda status sebelum memakai angka atau klaimnya. |
 | `Audit Pembaruan/`, `Rencana-eksperimen-bimbingan/` | Catatan audit dan logbook historis. |
 | `Administrasi/` | Dokumen administrasi akademik. |
 

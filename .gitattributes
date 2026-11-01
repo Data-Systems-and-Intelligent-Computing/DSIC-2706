@@ -15,6 +15,8 @@ results/** -text -eol
 
 # Preserve the exact E4 producer bytes recorded in run_identity.json.
 scripts/run_e4_five_locations_v10_stage7.py.draft -text -eol
+# Earlier E4 drafts are historical source snapshots, preserved byte-for-byte too.
+scripts/*.py.draft -text -eol
 # Preserve the new theory table bytes referenced by its figure metadata.
 paper/figures/revision_20261015/recall10_ceiling_by_species.csv -text -eol
 
@@ -22,3 +24,9 @@ paper/figures/revision_20261015/recall10_ceiling_by_species.csv -text -eol
 scripts/e4_noise_identity_v1.py -text -eol
 scripts/e4_query_identity_v1.py -text -eol
 scripts/e4_run_identity_v2.py -text -eol
+
+# Keep document and image bytes intact, including PDFs with mostly ASCII streams.
+*.pdf binary
+*.png binary
+*.xlsx binary
+*.docx binary

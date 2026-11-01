@@ -1,5 +1,7 @@
 # Panduan Komprehensif Tugas Akhir DSIC-2706
 
+> **ARSIP HISTORIS — bukan status hasil terkini.** Panduan ini memuat ambang BirdNET, jumlah kasus E5, dan klaim H3 lama. Gunakan [catatan folder dan rujukan terbaru](README.md) untuk penulisan. PDF pendamping tetap versi historis; isi di bawah tidak menggantikan artefak aktif.
+
 Jangan khawatir, sangat wajar merasa kebingungan di tengah eksperimen yang kompleks. Dokumen ini saya susun agar Anda bisa memahami secara utuh dari kacamata "helikopter" (gambaran besar) tentang apa yang sebenarnya sedang Anda teliti, seberapa jauh *progress* Anda, dan apa kebaruan (*novelty*) yang bisa Anda banggakan di depan dosen penguji.
 
 ---

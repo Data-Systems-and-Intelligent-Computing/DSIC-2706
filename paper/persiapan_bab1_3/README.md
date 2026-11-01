@@ -42,7 +42,7 @@ Tautan di bawah menunjuk sumber yang sudah ada; tidak ada penyalinan atau pengga
 | Distribusi spesies | [07_eda_species_distribution.png](../../results/figures/07_eda_species_distribution.png) | Sudah ada. Bila dipakai BAB 3, jelaskan sebagai deskripsi data; tabel 20 spesies biasanya lebih hemat ruang. |
 | Jumlah rekaman derau menurut lokasi | [06_eda_noise_locations.png](../../results/figures/06_eda_noise_locations.png) | Sudah ada. Cakupannya pool pencampuran 1.528 berkas; bukan total bank 1.799. |
 
-**Catatan akses:** folder `Teori Dasar/`, template LaTeX, dan paket belajar memiliki berkas lokal yang belum dilacak Git pada saat pemeriksaan. Tautan relatifnya berfungsi dari folder TA lokal; keberadaannya di komputer tidak berarti sudah tersedia pada GitHub. Perubahan lokal pustaka juga tidak otomatis ikut publikasi paket ini.
+**Catatan akses diperbarui 1 November 2026:** folder `Teori Dasar/`, sumber dan ekspor LaTeX, paket belajar, serta pembaruan pustaka disertakan dalam sinkronisasi repositori. [Bahan teori lama](../../Teori%20Dasar/README.md) tetap bertanda historis; keterlacakan berkas tidak menjadikan angka atau klaim lamanya berlaku kembali. Audio, checkpoint, dan cache tetap lokal.
 
 ## 3. Gambar lama yang perlu dibedakan dari bahan aktif
 
@@ -125,7 +125,7 @@ Gunakan diagram baru sebagai gambar utama Tahapan Penelitian, kemudian gambar E2
 - Spesifikasi alat/hardware yang tidak tercatat, bila diwajibkan. Peta/foto lokasi bukan gambar yang boleh direka dari nama lokasi; gunakan foto atau koordinat terverifikasi jika nanti diperlukan.
 - Pemakaian gambar dari draf pembimbing mengikuti atribusi dan penyesuaian yang disepakati. Gambar berparameter lama tidak dipakai sebagai hasil aktif.
 
-Template [BAB 1](../template_ta_latex/chapters/bab1.tex), [BAB 2](../template_ta_latex/chapters/bab2.tex), dan [BAB 3](../template_ta_latex/chapters/bab3.tex) **sudah ada tetapi masih kerangka berkomentar/kosong**. Paket ini menyiapkan bahan dan gambar, bukan mengisi atau mengesahkan bab tersebut.
+Pembaruan penulisan sampai 31 Oktober sudah mengisi [BAB 1](../template_ta_latex/chapters/bab1.tex): Latar Belakang, Rumusan Masalah, Tujuan, dan Batasan Penelitian. [BAB 2](../template_ta_latex/chapters/bab2.tex) dan [BAB 3](../template_ta_latex/chapters/bab3.tex) masih kerangka berkomentar/kosong. [Status template dan ekspor PDF](../template_ta_latex/README.md) menjelaskan hasil penulisan terbaru. Paket persiapan ini tetap bahan bantu, bukan pengesahan bab.
 
 ## 8. Catatan perubahan paket ini
 

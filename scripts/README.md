@@ -13,6 +13,8 @@ Runner aktif yang sudah menghasilkan artefak tervalidasi:
 
 `run_e4_five_locations_v10_stage7.py.draft` adalah sumber run E4 historis yang tervalidasi; run E4 tidak dijalankan ulang. Berkas `build_experiment_registry.py` dan `curate_report_materials.py` hanya membuat indeks dan salinan bahan laporan dengan checksum.
 
+Sinkronisasi 1 November 2026 juga menyimpan draf E4 sebelumnya (`run_e4_five_locations*.py.draft` dan `e4_noise_identity_v1.py.draft`) sebagai riwayat pengembangan. Draf selain produsen stage7 tersebut tidak menjadi runner atau bukti run aktif. Byte berkas draf dipertahankan melalui `.gitattributes`; menyertakannya ke Git tidak menjalankan eksperimen.
+
 Jangan menjalankan runner eksperimen untuk sekadar membuka notebook atau melihat hasil: gunakan artefak di `results/`.
 
 Skrip pendukung penyelesaian 16 Oktober:

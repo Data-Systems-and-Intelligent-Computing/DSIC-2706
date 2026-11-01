@@ -1,0 +1,87 @@
+% !TeX root = ../main.tex
+\chapter{PENDAHULUAN}
+
+\section{Latar Belakang}
+Pemantauan keanekaragaman hayati membutuhkan informasi mengenai keberadaan dan aktivitas satwa pada suatu lingkungan. Salah satu sumber informasi tersebut adalah suara yang dihasilkan satwa, termasuk vokalisasi burung. Rekaman suara memungkinkan peneliti mempelajari aktivitas satwa dan menyediakan bahan pemeriksaan yang dapat dianalisis kembali. Perkembangan perangkat perekam digital dan metode pembelajaran mesin telah memperluas pemanfaatan data akustik untuk mendukung pemantauan biodiversitas. Namun, peningkatan jumlah rekaman juga menimbulkan tantangan dalam menyediakan waktu dan tenaga ahli untuk menganalisisnya secara manual~\cite{stowell2022bioacoustics}.
+
+Pemanfaatan rekaman akustik juga telah dilakukan dalam penelitian burung di Indonesia. Ningrum, Mulyani, dan Mardiastuti melaporkan deteksi 40 spesies burung melalui pemantauan akustik pasif selama 15 hari di Cikaniki, Taman Nasional Gunung Halimun-Salak, Jawa Barat. Penelitian tersebut mencatat keberadaan burung dari berbagai kelompok, termasuk burung nokturnal. Temuan ini memperlihatkan bahwa rekaman suara dapat menyediakan informasi mengenai komunitas burung pada lingkungan hutan yang memiliki keterbatasan untuk pengamatan langsung~\cite{ningrum2026cikaniki}.
+
+Seiring berkembangnya pengumpulan data, analisis suara burung menghadapi kebutuhan pengolahan rekaman dalam skala besar. Sebagai gambaran, BirdSet menyediakan lebih dari 6.800 jam rekaman untuk pelatihan dan lebih dari 400 jam rekaman pada delapan dataset evaluasi. Besarnya koleksi tersebut menunjukkan skala data yang digunakan dalam penelitian pengenalan suara burung. Selain jumlahnya, rekaman juga memiliki keragaman kondisi akustik, perangkat, dan sumber suara yang dapat muncul secara bersamaan. Oleh sebab itu, ketersediaan rekaman perlu diikuti metode analisis yang mampu bekerja pada kondisi data yang beragam~\cite{rauch2025birdset}.
+
+Salah satu persoalan dalam analisis tersebut adalah keberadaan suara latar yang menyertai vokalisasi burung. Clark dkk., dalam evaluasi \textit{soundscape} yang mencakup 37 spesies, menemukan bahwa suara aktivitas manusia berasosiasi dengan meningkatnya kesalahan deteksi spesies atau \textit{false positive}. Sementara itu, gangguan fisik pada perekam dan suara geofisik seperti angin berasosiasi dengan vokalisasi yang tidak terdeteksi atau \textit{false negative}. Hasil tersebut menunjukkan bahwa komposisi suara latar berkaitan dengan kesalahan sistem pengenalan burung. Dengan demikian, penilaian kemampuan sistem perlu memperhatikan kondisi gangguan yang terdapat pada rekaman~\cite{clark2023soundscape}.
+
+Selain pemberian label spesies, analisis rekaman mencakup \textit{similarity retrieval}, yaitu pencarian rekaman relevan menggunakan kueri suara. BIRB mengevaluasi tugas ini melalui pembelajaran representasi dan pencarian \textit{nearest centroid}, sekaligus menunjukkan tantangan generalisasi antarkondisi rekaman~\cite{hamer2023birb}. Representasi dapat diperoleh sebagai vektor fitur atau \textit{embedding} dari model pralatih. Ghani dkk.\ membekukan \textit{encoder} dan melatih klasifikator sederhana menggunakan \textit{embedding}; pada dataset yang diuji, representasi khusus burung menghasilkan klasifikasi lebih baik daripada representasi audio umum~\cite{ghani2023embeddings}. Temuan ini menjadi dasar pemilihan pembanding, sedangkan ketahanannya pada \textit{retrieval} berderau diuji dalam penelitian ini.
+
+Ketahanan terhadap derau dan aturan penerimaan juga perlu dievaluasi. Melalui pengujian delapan jenis gangguan, Ghaffari dan Devos menunjukkan peran normalisasi serta kompresi pada ketahanan \textit{frontend} terhadap derau yang tidak digunakan saat pelatihan. Temuan ini menekankan perlunya protokol perbandingan yang konsisten, karena keunggulan tidak dapat langsung dikaitkan dengan jenis representasi~\cite{ghaffari2024frontends}. Sementara itu, Fairbairn dkk.\ menguji 24 kombinasi pengaturan BirdNET pada empat tingkat agregasi waktu dan melaporkan F1 sebesar 0,46--0,84. Dalam analisis mereka, ambang kepercayaan memiliki pengaruh paling kuat terhadap F1~\cite{fairbairn2025birdnet}. Kedua studi tersebut berfokus pada klasifikasi; ambang kepercayaan klasifikator juga berbeda dari ambang kemiripan \textit{retrieval}. Perbedaan ini mendasari evaluasi ketahanan pencarian dan keputusan penerimaan pada penelitian ini.
+
+Perbedaan tugas dan kondisi evaluasi pada literatur tersebut mendasari kebutuhan pengujian khusus untuk protokol yang digunakan dalam penelitian ini~\cite{hamer2023birb,ghani2023embeddings,ghaffari2024frontends,fairbairn2025birdnet}. Penelitian ini berfokus pada perubahan kualitas \textit{retrieval} burung Indonesia ketika kueri yang sama dicampur dengan derau ITERA pada tingkat dan profil berbeda. Representasi dibandingkan menggunakan kueri, koleksi referensi, dan ukuran evaluasi yang sama agar perubahan hasil dapat ditelaah secara berpasangan. Fokus ini merupakan batas rancangan penelitian, tanpa mengklaim bahwa pengujian ketahanan derau belum pernah dilakukan.
+
+\begingroup
+\setlength{\emergencystretch}{2em}
+Penelitian ini menetapkan tiga jenis representasi audio sebagai pembanding, yaitu fitur klasik \foreignlanguage{english}{\textit{Mel-Frequency Cepstral Coefficients}} (MFCC), PANNs CNN14 sebagai representasi audio umum, dan BirdNET sebagai representasi khusus burung. PANNs dikembangkan melalui prapelatihan pada AudioSet untuk mendukung berbagai tugas pengenalan pola audio~\cite{kong2020panns}, sedangkan BirdNET dikembangkan untuk pengenalan suara burung~\cite{kahl2021birdnet}. Model pralatih digunakan tanpa pembaruan bobot agar evaluasi berfokus pada representasi yang sudah tersedia. Kontrol acak deterministik berbasis identitas rekaman turut digunakan sebagai pembanding. Kualitas pencarian dinilai berdasarkan kesesuaian spesies pada hasil yang diurutkan menggunakan kemiripan vektor.
+\par
+\endgroup
+
+% Sumber rancangan/data sendiri: data/manifests/dataset_split.csv,
+% data/manifests/itera_noise_manifest.csv, src/mix_noise.py,
+% dan docs/research/rq.md. Bukan angka yang diambil dari jurnal lain.
+Dalam rancangan penelitian ini, evaluasi menggunakan rekaman 20 spesies burung Indonesia dari Xeno-Canto dengan penambahan rekaman derau lapangan ITERA secara aditif pada beberapa tingkat \textit{signal-to-noise ratio} (SNR). Kueri yang sama digunakan untuk menilai perubahan kualitas \textit{retrieval}, sementara koleksi referensi dipertahankan. Penelitian juga mengevaluasi perilaku ambang kemiripan dari subset kalibrasi terpisah, sensitivitas terhadap profil derau lima lokasi, serta bentuk kegagalan pencarian. Identitas rekaman dan parameter pencampuran dicatat agar sumber gangguan dapat ditelusuri. Cakupan ini terbatas pada campuran aditif dan belum menguji seluruh kondisi perekaman burung secara langsung di lapangan.
+
+Oleh karena itu, penelitian ini dilakukan untuk mengevaluasi ketahanan representasi audio beku pada tugas temu kembali kemiripan rekaman burung Indonesia terhadap pencampuran derau lapangan ITERA secara terkontrol. Evaluasi diarahkan untuk menjelaskan perubahan kualitas pencarian, perilaku penerimaan dan penolakan pada ambang beku, sensitivitas terhadap profil derau, serta karakteristik kegagalannya. Kontribusi yang ditawarkan berupa bukti perbandingan dan batas penggunaan representasi pada kondisi yang diuji, sehingga pemilihan representasi untuk \textit{retrieval} bioakustik memiliki dasar evaluasi yang dapat ditelusuri.
+
+\section{Rumusan Masalah}
+Berdasarkan latar belakang tersebut, rumusan masalah dalam penelitian ini adalah sebagai berikut:
+
+\begin{daftarBernomor}
+    \setlength{\emergencystretch}{2em}
+    \item Bagaimana perbandingan ketahanan representasi MFCC, PANNs CNN14, dan BirdNET dalam temu kembali rekaman burung Indonesia ketika kueri dicampur secara terkontrol dengan derau lapangan ITERA pada berbagai tingkat SNR dan profil lokasi?
+
+    \item Bagaimana perubahan kualitas temu kembali dan retensi ketiga representasi audio pada SNR $+20$, $+10$, $0$, dan $-5$ dB dibandingkan dengan kondisi tanpa penambahan derau?
+
+    \item Bagaimana perubahan penerimaan kueri target dan penerimaan keliru kontrol di luar target ketika ambang kemiripan hasil kalibrasi bersih dibekukan dan diterapkan pada kondisi bising?
+
+    \item Bagaimana perbedaan kualitas dan kestabilan temu kembali ketika kueri dicampur dengan derau dari lima lokasi ITERA pada SNR yang sama?
+
+    \item Bagaimana pola kegagalan temu kembali ditinjau dari margin terhadap ambang, ciri spektral yang tersedia, dan catatan audit pendengaran pada kasus pilihan?
+\end{daftarBernomor}
+
+\section{Tujuan}
+Berdasarkan rumusan masalah tersebut, tujuan penelitian ini adalah sebagai berikut:
+
+\begin{daftarBernomor}
+    \setlength{\emergencystretch}{2em}
+    \interlinepenalty=10000
+    \item Membandingkan ketahanan representasi MFCC, PANNs CNN14, dan BirdNET dalam temu kembali rekaman burung Indonesia pada campuran derau lapangan ITERA yang terkontrol di berbagai tingkat SNR dan profil lokasi.
+
+    \item Mengukur perubahan kualitas temu kembali dan retensi ketiga representasi pada SNR $+20$, $+10$, $0$, dan $-5$ dB terhadap kondisi tanpa penambahan derau, dengan mAP@10 sebagai metrik utama dan metrik temu kembali lainnya sebagai pendukung.
+
+    \item Menganalisis perubahan penerimaan kueri target dan penerimaan keliru kontrol di luar target pada kondisi bising menggunakan ambang kemiripan yang dikalibrasi dari data bersih terpisah dan kemudian dibekukan.
+
+    \item Membandingkan kualitas dan kestabilan temu kembali pada campuran derau dari lima lokasi ITERA pada SNR yang sama, berdasarkan kualitas absolut dan retensi relatif serta analisis sensitivitas terhadap komposisi lokasi.
+
+    \item Mengidentifikasi pola kegagalan temu kembali berdasarkan margin terhadap ambang dan ciri spektral yang tersedia, serta melengkapinya dengan catatan audit pendengaran pada kasus pilihan.
+\end{daftarBernomor}
+
+\section{Batasan Penelitian}
+Agar pembahasan terarah dan sesuai dengan tujuan penelitian, batasan penelitian ini ditetapkan sebagai berikut:
+
+\begin{daftarBernomor}
+    \setlength{\emergencystretch}{2em}
+    \interlinepenalty=10000
+    \item Data penelitian dibatasi pada rekaman 20 spesies burung dari wilayah Indonesia yang diperoleh melalui Xeno-Canto dan diolah menjadi potongan audio berdurasi lima detik.
+
+    \item Representasi yang dibandingkan adalah MFCC, PANNs CNN14, dan BirdNET. Model pralatih digunakan tanpa pembaruan bobot, sedangkan vektor acak berbasis identitas rekaman digunakan sebagai kontrol pembanding.
+
+    \item Penelitian berfokus pada temu kembali rekaman menggunakan kemiripan kosinus. Relevansi hasil ditentukan berdasarkan kesamaan spesies pada metadata, dengan koleksi referensi yang dipertahankan selama pengujian.
+
+    \item Derau bersumber dari lima lokasi ITERA, yaitu Kebun Raya, Embung F, Gedung F, Masjid At-Tanwir, dan sekitar GKU 1. Derau dicampurkan secara aditif pada kueri dengan SNR $+20$, $+10$, $0$, dan $-5$ dB, serta dibandingkan dengan kondisi tanpa penambahan derau.
+
+    \item Pengujian dibatasi pada campuran aditif terkontrol dan belum mencakup vokalisasi burung target yang direkam langsung di lingkungan ITERA. Pengaruh jarak, perambatan, dan pantulan suara tidak diuji secara terpisah.
+
+    \item Ambang kemiripan ditentukan menggunakan data kalibrasi bersih yang terpisah dan dibekukan selama pengujian. Evaluasi penerimaan dan penolakan dibatasi pada data target serta kontrol di luar target yang digunakan dalam penelitian.
+
+    \item Evaluasi kualitas temu kembali menggunakan mAP@10 sebagai metrik utama, didukung Precision@10, Recall@10, MRR, dan ketepatan hasil pertama. Analisis ketahanan dan kestabilan mempertimbangkan perubahan kualitas absolut serta retensi relatif terhadap kondisi tanpa penambahan derau.
+
+    \item Analisis kegagalan menggunakan margin terhadap ambang dan ciri spektral yang tersedia, dilengkapi audit pendengaran terhadap 120 kasus pilihan oleh satu pendengar. Hasil audit bersifat deskriptif dan tidak digunakan untuk membuktikan penyebab kegagalan maupun menggeneralisasi frekuensi kegagalan pada seluruh data.
+\end{daftarBernomor}
+

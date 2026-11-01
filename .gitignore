@@ -75,6 +75,17 @@ temp/
 *~
 .DS_Store
 Thumbs.db
+__MACOSX/
+._*
+*.inspect.ndjson
+
+# Share the LaTeX build recipes while keeping other IDE state local.
+!paper/.vscode/
+paper/.vscode/*
+!paper/.vscode/settings.json
+!paper/template_ta_latex/.vscode/
+paper/template_ta_latex/.vscode/*
+!paper/template_ta_latex/.vscode/settings.json
 
 # Datasets & Binaries
 data/BirdClef/
