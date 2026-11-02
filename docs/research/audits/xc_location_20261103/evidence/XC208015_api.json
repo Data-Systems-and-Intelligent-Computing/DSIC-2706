@@ -1,0 +1,58 @@
+{
+  "numRecordings": "1",
+  "numSpecies": "1",
+  "page": 1,
+  "numPages": 1,
+  "recordings": [
+    {
+      "id": "208015",
+      "gen": "Orthotomus",
+      "sp": "ruficeps",
+      "ssp": "borneoensis",
+      "grp": "birds",
+      "status": "identified",
+      "en": "Ashy Tailorbird",
+      "rec": "Frank Lambert",
+      "cnt": "Indonesia",
+      "loc": "Bakalalan-Bario Rd, Sarawak",
+      "lat": "3.9459",
+      "lon": "115.6019",
+      "alt": "1030",
+      "type": "call",
+      "sex": "",
+      "stage": "",
+      "method": "field recording",
+      "url": "https://xeno-canto.org/208015",
+      "file": "https://xeno-canto.org/208015/download",
+      "file-name": "XC208015-Orthotomus_ruficeps_borneoensis-FL calls Bakalalan-Bario Rd, Sarawak 14Apr14 13.22pm 1030m LS112106+7a.mp3",
+      "sono": {
+        "small": "https://xeno-canto.org/sounds/spectrograms/YTUXOCTUEM/208015/grey-small.png",
+        "med": "https://xeno-canto.org/sounds/spectrograms/YTUXOCTUEM/208015/grey-medium.png",
+        "large": "https://xeno-canto.org/sounds/spectrograms/YTUXOCTUEM/208015/colour.png",
+        "full": "https://xeno-canto.org/sounds/spectrograms/YTUXOCTUEM/208015/colour.png"
+      },
+      "osci": {
+        "small": null,
+        "med": null,
+        "large": null
+      },
+      "lic": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+      "q": "B",
+      "length": "0:38",
+      "time": "13:22",
+      "date": "2014-04-14",
+      "uploaded": "2014-12-26",
+      "also": [],
+      "rmk": "Same bird as XC208014. Two cuts joined.",
+      "animal-seen": "yes",
+      "playback-used": "no",
+      "temp": null,
+      "regnr": "",
+      "auto": "no",
+      "dvc": "",
+      "mic": "",
+      "smp": "44100",
+      "annotation-set": []
+    }
+  ]
+}

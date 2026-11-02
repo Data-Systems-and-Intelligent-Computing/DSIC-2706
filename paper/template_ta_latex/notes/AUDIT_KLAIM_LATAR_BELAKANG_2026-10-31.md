@@ -1,5 +1,7 @@
 # Audit klaim Latar Belakang — 31 Oktober 2026
 
+> **Catatan historis:** audit ini merujuk draf 31 Oktober. Revisi 2 November memperjelas manfaat pemantauan, transisi satwa–burung, serta hubungan rancangan evaluasi dengan Rumusan Masalah; pengulangan fokus dikurangi dan kalimat penghubung yang diminta dihapus sudah dihilangkan. Sepuluh sumber dan urutannya tetap. Lihat [catatan revisi serta perbandingan penelitian](REVISI_PB2_DAN_KONTRIBUSI_2026-11-02.md); isi audit lama dipertahankan sebagai riwayat.
+
 ## Cakupan dan hasil
 
 Pemeriksaan membaca ulang sepuluh paragraf Latar Belakang pada [bab1.tex](../chapters/bab1.tex), entri [references.bib](../references.bib), bagian relevan dari PDF lokal, serta sumber penerbit/repository di bawah. Ini pemeriksaan kesesuaian klaim dengan sumber, bukan tinjauan sistematis seluruh publikasi atau pengesahan independen seluruh metode jurnal.

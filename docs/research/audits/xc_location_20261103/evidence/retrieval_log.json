@@ -1,0 +1,122 @@
+[
+  {
+    "id": "208014",
+    "checked_utc": "2026-11-02T17:32:20.198403+00:00",
+    "api_http_status": 200,
+    "num_recordings": "1",
+    "record": {
+      "id": "208014",
+      "gen": "Orthotomus",
+      "sp": "ruficeps",
+      "ssp": "borneoensis",
+      "en": "Ashy Tailorbird",
+      "rec": "Frank Lambert",
+      "cnt": "Indonesia",
+      "loc": "Bakalalan-Bario Rd, Sarawak",
+      "lat": "3.9459",
+      "lon": "115.6019",
+      "date": "2014-04-14",
+      "uploaded": "2014-12-26",
+      "url": "https://xeno-canto.org/208014",
+      "rmk": ""
+    },
+    "page_http_status": 200,
+    "page_bytes": 24747
+  },
+  {
+    "id": "208015",
+    "checked_utc": "2026-11-02T17:32:20.198751+00:00",
+    "api_http_status": 200,
+    "num_recordings": "1",
+    "record": {
+      "id": "208015",
+      "gen": "Orthotomus",
+      "sp": "ruficeps",
+      "ssp": "borneoensis",
+      "en": "Ashy Tailorbird",
+      "rec": "Frank Lambert",
+      "cnt": "Indonesia",
+      "loc": "Bakalalan-Bario Rd, Sarawak",
+      "lat": "3.9459",
+      "lon": "115.6019",
+      "date": "2014-04-14",
+      "uploaded": "2014-12-26",
+      "url": "https://xeno-canto.org/208015",
+      "rmk": "Same bird as XC208014. Two cuts joined."
+    },
+    "page_http_status": 200,
+    "page_bytes": 24859
+  },
+  {
+    "id": "207989",
+    "checked_utc": "2026-11-02T17:32:20.198997+00:00",
+    "api_http_status": 200,
+    "num_recordings": "1",
+    "record": {
+      "id": "207989",
+      "gen": "Spilornis",
+      "sp": "cheela",
+      "ssp": "pallidus",
+      "en": "Crested Serpent Eagle",
+      "rec": "Frank Lambert",
+      "cnt": "Indonesia",
+      "loc": "Bakalalan-Bario Rd, Sarawak",
+      "lat": "3.9459",
+      "lon": "115.6019",
+      "date": "2014-04-14",
+      "uploaded": "2014-12-26",
+      "url": "https://xeno-canto.org/207989",
+      "rmk": ""
+    },
+    "page_http_status": 200,
+    "page_bytes": 24738
+  },
+  {
+    "id": "207820",
+    "checked_utc": "2026-11-02T17:32:20.199185+00:00",
+    "api_http_status": 200,
+    "num_recordings": "1",
+    "record": {
+      "id": "207820",
+      "gen": "Dicrurus",
+      "sp": "hottentottus",
+      "ssp": "borneensis",
+      "en": "Hair-crested Drongo",
+      "rec": "Frank Lambert",
+      "cnt": "Indonesia",
+      "loc": "Bakalalan-Bario Rd, Sarawak",
+      "lat": "3.9459",
+      "lon": "115.6019",
+      "date": "2014-04-15",
+      "uploaded": "2014-12-25",
+      "url": "https://xeno-canto.org/207820",
+      "rmk": "[Can't be 100% sure of the ID since bird was not seen, but this species in the vicinity]"
+    },
+    "page_http_status": 200,
+    "page_bytes": 25255
+  },
+  {
+    "id": "207964",
+    "checked_utc": "2026-11-02T17:32:20.199386+00:00",
+    "api_http_status": 200,
+    "num_recordings": "1",
+    "record": {
+      "id": "207964",
+      "gen": "Cinnyris",
+      "sp": "jugularis",
+      "ssp": "ornatus",
+      "en": "Olive-backed Sunbird",
+      "rec": "Frank Lambert",
+      "cnt": "Indonesia",
+      "loc": "Bakalalan-Bario Rd, Sarawak",
+      "lat": "3.9459",
+      "lon": "115.6019",
+      "date": "2014-04-15",
+      "uploaded": "2014-12-26",
+      "url": "https://xeno-canto.org/207964",
+      "rmk": "Not sure if this is a song or call"
+    },
+    "page_http_status": 200,
+    "page_bytes": 24826
+  }
+]

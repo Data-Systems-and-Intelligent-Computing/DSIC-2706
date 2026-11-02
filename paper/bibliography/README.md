@@ -1,17 +1,21 @@
 # Referensi penelitian DSIC-2706
 
-Diperiksa dan diperbarui pada **26 Oktober 2026**. Ruang lingkup pembaruan hanya folder pustaka ini. Kode eksperimen, audio, hasil E0-E5, dan naskah penelitian tidak diubah oleh pembaruan pustaka.
+Diperiksa dan diperbarui pada **3 November 2026**. Pembaruan pustaka menambah enam artikel terbitan jurnal untuk dasar teori dan evaluasi. Kode eksperimen, audio, manifes, dan hasil E0-E5 dipertahankan.
 
-**Pemeriksaan lanjutan 27 Oktober 2026:** [status koreksi dan pencarian alternatif dua PDF](PEMERIKSAAN_REFERENSI_2026-10-27.md). Jumlah tetap 28 entri dan 26 PDF; tersedia pula [paket belajar teori dan perhitungan](../../learning/PAKET_BELAJAR_UJIAN/README.md).
+**Riwayat 27 Oktober 2026:** [status koreksi dan pencarian alternatif dua PDF](PEMERIKSAAN_REFERENSI_2026-10-27.md) mencatat 28 entri dan 26 PDF pada tanggal tersebut. **Pembaruan 3 November:** [enam artikel dan versi PDF yang diverifikasi](PEMERIKSAAN_REFERENSI_2026-11-03.md); jumlah kini 34 entri dan 32 PDF. Tersedia pula [paket belajar teori dan perhitungan](../../learning/PAKET_BELAJAR_UJIAN/README.md).
 
 ## Daftar aktif
 
-- [Tabel Excel](referensi_jurnal_modern.xlsx) dan [tabel CSV](referensi_jurnal_modern.csv) memuat **28 referensi** dengan isi yang sama.
-- **21 referensi terbit pada 2022-2026**, diprioritaskan untuk penelitian terdahulu. Ini mencakup jurnal, prosiding, dan preprint; jenis publikasinya ditandai terpisah.
-- **7 referensi lebih lama** dipertahankan sebagai landasan asal model, metode, atau konteks evaluasi. Jangan menyebutnya sebagai kajian terbaru.
-- **26 PDF berbeda** tersedia dan dicocokkan dengan entri tabel. Dua entri belum memiliki PDF: Putra dkk. (2024) dan Fluss dkk. (2005).
-- Kolom `No` mempertahankan ID lama; nomor yang terputus menandai referensi yang dikeluarkan. Artikel tambahan memakai ID 33 dan 34.
+- [Tabel Excel](referensi_jurnal_modern.xlsx) dan [tabel CSV](referensi_jurnal_modern.csv) memuat **34 referensi** dengan isi yang sama. Dua puluh delapan baris lama dipertahankan; enam baris baru ditambahkan.
+- **23 referensi terbit pada 2022-2026**, diprioritaskan untuk penelitian terdahulu. Ini mencakup jurnal, prosiding, dan preprint; jenis publikasinya ditandai terpisah.
+- **11 referensi lebih lama** dipertahankan sebagai landasan asal model, metode, atau konteks evaluasi. Jangan menyebutnya sebagai kajian terbaru.
+- **32 PDF berbeda** tersedia dan dicocokkan dengan entri tabel. Dua entri belum memiliki PDF: Putra dkk. (2024) dan Fluss dkk. (2005).
+- Kolom `No` mempertahankan ID lama; nomor yang terputus menandai referensi yang dikeluarkan. Penambahan 3 November memakai ID 35-40.
 - Kolom baru mencatat jenis publikasi, peran, prioritas tahun, nama PDF, status PDF, sumber verifikasi, dan catatan versi/batas pemeriksaan.
+
+Enam artikel tambahan mencakup Davis dan Mermelstein (1980), Efron (1979), Peeters dkk. (2011), Salton dkk. (1975), Moffat (2022), serta van Merrienboer dkk. (2024). Semuanya mempunyai identitas publikasi jurnal yang dicocokkan dengan metadata DOI. Lima PDF berupa salinan artikel terbit; PDF Moffat merupakan naskah penulis arXiv v1 dari artikel yang kemudian terbit di IEEE Access, dan perbedaan itu ditulis pada CSV/Excel. [Audit terstruktur](VERIFIKASI_TAMBAHAN_2026-11-03.json) mencatat sumber unduhan, versi, jumlah halaman, dan hash.
+
+Enam kunci baru disiapkan pada `../template_ta_latex/references.bib`, bersama Lostanlen (2019) yang sudah tersedia pada koleksi sebelumnya. Total BibTeX 17 entri: sepuluh telah dikutip dalam BAB I, sedangkan tujuh disiapkan untuk penulisan BAB II. Daftar pustaka tercetak tetap mengikuti sumber yang benar-benar dikutip; nomor sitasi tidak dibuat pada tabel kosong.
 
 Keberadaan artikel, relevansi, status penelaahan ilmiah, dan mutu metode merupakan hal yang berbeda. Pemeriksaan ini tidak menetapkan peringkat SINTA/Scopus atau mengesahkan seluruh klaim setiap artikel. Tidak ada artikel atau PDF yang dibuat sebagai pengganti sumber ilmiah asli.
 

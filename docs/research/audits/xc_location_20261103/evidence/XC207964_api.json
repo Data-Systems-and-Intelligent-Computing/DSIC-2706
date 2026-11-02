@@ -1,0 +1,58 @@
+{
+  "numRecordings": "1",
+  "numSpecies": "1",
+  "page": 1,
+  "numPages": 1,
+  "recordings": [
+    {
+      "id": "207964",
+      "gen": "Cinnyris",
+      "sp": "jugularis",
+      "ssp": "ornatus",
+      "grp": "birds",
+      "status": "identified",
+      "en": "Olive-backed Sunbird",
+      "rec": "Frank Lambert",
+      "cnt": "Indonesia",
+      "loc": "Bakalalan-Bario Rd, Sarawak",
+      "lat": "3.9459",
+      "lon": "115.6019",
+      "alt": "1130",
+      "type": "call, song",
+      "sex": "",
+      "stage": "",
+      "method": "field recording",
+      "url": "https://xeno-canto.org/207964",
+      "file": "https://xeno-canto.org/207964/download",
+      "file-name": "XC207964-cf Cinnyris_jugularis_ornatus-FL X calls Bakalalan-Bario Rd, Sarawak 15Apr14 8.10am 1130m LS112126a.mp3",
+      "sono": {
+        "small": "https://xeno-canto.org/sounds/spectrograms/YTUXOCTUEM/207964/grey-small.png",
+        "med": "https://xeno-canto.org/sounds/spectrograms/YTUXOCTUEM/207964/grey-medium.png",
+        "large": "https://xeno-canto.org/sounds/spectrograms/YTUXOCTUEM/207964/colour.png",
+        "full": "https://xeno-canto.org/sounds/spectrograms/YTUXOCTUEM/207964/colour.png"
+      },
+      "osci": {
+        "small": null,
+        "med": null,
+        "large": null
+      },
+      "lic": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+      "q": "B",
+      "length": "0:26",
+      "time": "08:10",
+      "date": "2014-04-15",
+      "uploaded": "2014-12-26",
+      "also": [],
+      "rmk": "Not sure if this is a song or call",
+      "animal-seen": "no",
+      "playback-used": "no",
+      "temp": null,
+      "regnr": "",
+      "auto": "no",
+      "dvc": "",
+      "mic": "",
+      "smp": "44100",
+      "annotation-set": []
+    }
+  ]
+}

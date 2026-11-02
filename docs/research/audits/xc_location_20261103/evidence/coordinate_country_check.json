@@ -1,0 +1,38 @@
+{
+  "verification_date_local": "2026-11-03",
+  "coordinate_input": {
+    "latitude": 3.9459,
+    "longitude": 115.6019
+  },
+  "method": "Ray casting against full-detail geoBoundaries ADM0 exterior and interior rings; GeoJSON longitude/latitude order.",
+  "checks": [
+    {
+      "iso": "MYS",
+      "boundary_id": "MYS-ADM0-87038898",
+      "year_represented": "2017",
+      "source": "OpenStreetMap, Wambacher",
+      "geometry_source_url": "https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/MYS/ADM0/geoBoundaries-MYS-ADM0.geojson",
+      "sha256": "20ffa28d8b7980060d43418a6a4a250ffdbcd805c514189accec9f799a181d77",
+      "contains_input_point": true,
+      "matching_features": [
+        {
+          "shapeName": "Malaysia",
+          "shapeISO": "MYS",
+          "shapeID": "87038898B63284295545115",
+          "shapeGroup": "MYS",
+          "shapeType": "ADM0"
+        }
+      ]
+    },
+    {
+      "iso": "IDN",
+      "boundary_id": "IDN-ADM0-11942859",
+      "year_represented": "2017",
+      "source": "OpenStreetMap, Wambacher",
+      "geometry_source_url": "https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/IDN/ADM0/geoBoundaries-IDN-ADM0.geojson",
+      "sha256": "b2e253c47038aec319eb82b12e73e22e5562848688e676b399be6c59828c4a56",
+      "contains_input_point": false,
+      "matching_features": []
+    }
+  ]
+}
