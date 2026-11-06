@@ -6,7 +6,7 @@ Disiapkan 31 Oktober 2026. Catatan ini bahan belajar pribadi, terpisah dari nask
 
 **Kita menguji cara mengubah suara burung menjadi angka yang paling membantu komputer mencari rekaman sejenis ketika contoh suara ditambahkan gangguan.** Model yang sudah dilatih dipakai dengan bobot tetap. Kita membandingkan hasil pencariannya, bukan melatih model burung baru.
 
-Istilah pada naskah adalah **representasi audio beku untuk temu kembali**. Kata “beku” menjelaskan bobot model yang tidak dilatih ulang. File suara tetap berupa rekaman biasa. Ketika suara ditambah derau, vektor hasil ekstraksinya dapat berubah meskipun bobot model tetap. Ini berlaku pada model audio R1/R2; R3 hanya menggunakan ID.
+Sejak revisi bahasa 4 November 2026, naskah memakai **pencarian rekaman berdasarkan kemiripan suara** untuk menjelaskan tugas yang sebelumnya disebut “temu kembali”. Model pralatih dijelaskan sebagai model yang telah dilatih sebelumnya dan digunakan tanpa pembaruan bobot. File suara tetap berupa rekaman biasa. Ketika suara ditambah derau, vektor hasil ekstraksinya dapat berubah meskipun bobot model tetap. Ini berlaku pada model audio R1/R2; R3 hanya menggunakan ID.
 
 Contoh cerita: Fabio memiliki satu contoh suara burung dan koleksi rekaman referensi. Komputer mengubah keduanya menjadi vektor, membandingkan kemiripannya, lalu menyusun urutan hasil. Kita memeriksa apakah rekaman berspesies sama muncul di urutan atas dan apakah skor hasil melewati ambang penerimaan. Langkah itu diulangi ketika contoh suara diberi derau pada kondisi terkontrol.
 
@@ -25,7 +25,7 @@ Contoh cerita: Fabio memiliki satu contoh suara burung dan koleksi rekaman refer
 | Query / kueri | Contoh suara yang menjadi bahan pencarian. | Ada 311 kueri clean pada partisi aktif. |
 | Gallery / galeri | Koleksi rekaman yang dicari oleh sistem. | Ada 673 rekaman galeri; galeri tetap saat kondisi kueri berubah. |
 | Calibration / kalibrasi | Data terpisah untuk memilih aturan keputusan sebelum aturan diuji. | Sebanyak 232 target calibration dan 233 unknown calibration digunakan pada E3; ambang lalu dibekukan. |
-| Temu kembali / retrieval | Mengambil dan mengurutkan rekaman relevan dari koleksi. Ejaan Inggrisnya **retrieval**, bukan “retribal”. | Ini tugas utama kita. |
+| Pencarian rekaman / retrieval | Mengambil dan mengurutkan rekaman relevan dari koleksi berdasarkan kemiripan suara. Sebelumnya disebut “temu kembali”; ejaan Inggrisnya **retrieval**, bukan “retribal”. | Ini tugas utama kita; naskah BAB I memakai istilah Indonesia yang lebih mudah dipahami. |
 | Similarity retrieval | Pencarian berdasarkan skor kemiripan terhadap contoh. | Relevansi hasil TA dinilai dari kesamaan label spesies. Skor mirip tinggi belum selalu berarti spesiesnya sama. |
 | Klasifikasi | Memberi label pada masukan, misalnya “burung A”. | Berbeda tugas dari menyusun daftar rekaman galeri. Akurasi klasifikasi jurnal tidak disamakan dengan mAP TA. |
 | Top-1 / ranking | Top-1 ialah hasil urutan pertama; ranking ialah keseluruhan urutan hasil. | Top-1 benar berarti spesies hasil pertama sama dengan spesies kueri. |
@@ -217,3 +217,29 @@ Ilustrasi: model A turun dari mAP 0,60 menjadi 0,30, sehingga retensinya 50%. Mo
 Kasus audit dipilih menurut kelompok representasi, kondisi, dan jenis kegagalan; bukan sampel acak yang proporsinya mewakili seluruh evaluasi. Audit juga memuat audio yang berulang pada beberapa kasus dan dilakukan oleh satu pendengar. Karena itu, misalnya 40 dari 120 kasus berlabel confusion tidak dapat dibaca sebagai tingkat confusion seluruh sistem sebesar 33,3%. Mendengar kicauan belum mengesahkan bahwa sumbernya spesies target pada metadata.
 
 Untuk bimbingan, coba jawab: **“Kosinus memilih hasil berdasarkan apa?”**, **“Apakah skor 0,90 berarti benar 90%?”**, dan **“Apa bedanya hasil benar, hasil diterima, dan suara terdengar?”** Jawaban singkatnya: arah vektor; bukan probabilitas; ketiganya memakai aturan penilaian yang berbeda.
+
+## 10. Penyesuaian bahasa BAB I — 4 November 2026
+
+Revisi mengikuti arahan pembimbing yang disampaikan Fabio: istilah dibuat mudah dipahami atau tetap memakai istilah Inggris yang ditulis miring. Susunan paragraf, lima rumusan masalah, lima tujuan, delapan batasan, serta kunci dan urutan sitasi dipertahankan. Perubahan berfokus pada pilihan kata dan penjelasan singkat; tidak mengubah rancangan atau hasil eksperimen.
+
+| Istilah sebelumnya | Penulisan atau penjelasan pada BAB I |
+|---|---|
+| Temu kembali / retrieval | Pencarian rekaman; diperkenalkan sebagai pencarian rekaman berdasarkan kemiripan suara. |
+| Kueri | Contoh suara yang dipakai untuk pencarian. |
+| Biodiversitas | Keanekaragaman hayati. |
+| Nokturnal | Aktif pada malam hari. |
+| Dataset / korpus | Kumpulan data / kumpulan rekaman target, sesuai konteks. |
+| Vokalisasi burung | Suara burung. |
+| Embedding | Vektor fitur berupa deretan angka; istilah Inggris tetap ditulis miring. |
+| Model pralatih | Model yang telah dilatih sebelumnya; model penelitian digunakan tanpa pembaruan bobot. |
+| Frontend | Bagian pengolahan awal audio; istilah Inggris tetap ditulis miring. |
+| Kontrol acak deterministik | Vektor acak yang dapat dihasilkan ulang berdasarkan identitas rekaman. |
+| Pencampuran aditif | Penjumlahan sinyal kueri dan derau. |
+| SNR | Perbandingan daya sinyal terhadap derau; kepanjangan Inggris ditulis miring. |
+| Retensi | Proporsi kualitas yang dipertahankan dibandingkan kondisi tanpa penambahan derau. |
+| Ambang dibekukan | Nilai ambang dipertahankan selama pengujian. |
+| Kalibrasi bersih | Kalibrasi tanpa penambahan derau; bukan jaminan rekaman sumber bebas suara latar. |
+| Margin terhadap ambang | Selisih skor kemiripan terhadap ambang. |
+| Kemiripan kosinus | Ukuran kemiripan arah dua vektor fitur. |
+
+Nama model dan sumber data, seperti BirdNET, PANNs, AudioSet, dan Xeno-Canto, tetap memakai ejaan aslinya. Akronim MFCC, SNR, dan MRR dipertahankan; istilah Inggris seperti *soundscape*, *false positive*, *false negative*, *nearest centroid*, *encoder*, *precision*, dan *recall* ditulis miring. Penulisan BAB II dan BAB III dilanjutkan satu per satu setelah instruksi Fabio.

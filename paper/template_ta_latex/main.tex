@@ -7,6 +7,7 @@
 \usepackage{geometry}
 \usepackage{setspace}
 \usepackage{graphicx}
+\usepackage{float}
 \usepackage{array}
 \usepackage{longtable}
 \usepackage{titlesec}
@@ -22,18 +23,39 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
 
+% Jarak gambar terhadap teks dibuat seragam untuk gambar mengambang dan [H].
+\setlength{\textfloatsep}{6pt plus 2pt minus 2pt}
+\setlength{\intextsep}{6pt plus 2pt minus 2pt}
+% Gunakan pada awal setiap gambar agar jarak atas konsisten.
+\newcommand{\jarakSebelumGambar}{\vspace*{6pt}}
+
+% Keterangan simbol dibuat rapat dan seragam setelah setiap persamaan.
+\newenvironment{keteranganRumus}{%
+  \par\begingroup
+  \setlength{\parskip}{0pt}%
+  \setlength{\topsep}{0pt}%
+  \setlength{\partopsep}{0pt}%
+  Keterangan:\par\nobreak
+  \begin{tabbing}%
+}{%
+  \end{tabbing}\endgroup\par\addvspace{6pt}%
+}
+
 % Nomor BAB Romawi; nomor subbab tetap 1.1, 1.2, dan seterusnya.
 \renewcommand{\thechapter}{\Roman{chapter}}
 \renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
 \renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
 \renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
 \renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
+% Persamaan dinomori berurutan tanpa awalan nomor bab.
+\counterwithout{equation}{chapter}
+\renewcommand{\theequation}{\arabic{equation}}
 
 % Judul BAB dan subbab: Times New Roman 12 pt.
 \titleformat{\chapter}[display]
   {\normalfont\bfseries\centering\normalsize}
   {BAB \Roman{chapter}}
-  {0.5em}
+  {-0.2em}
   {}
 \titlespacing*{\chapter}{0pt}{0pt}{12pt}
 
@@ -164,14 +186,8 @@
 % ============================================================
 %  IDENTITAS TUGAS AKHIR
 % ============================================================
-\newcommand{\judulTA}{NOISE AND SPECTRAL SENSITIVITY OF FROZEN AUDIO REPRESENTATIONS FOR BIOACOUSTIC SIMILARITY RETRIEVAL UNDER CONTROLLED ITERA FIELD-NOISE MIXTURES IN INDONESIAN AVIFAUNA}
-\newcommand{\namaPenulis}{Fabio Banyu Cyto}
-\newcommand{\nomorInduk}{123450104}
-\newcommand{\programStudi}{PROGRAM STUDI SAINS DATA}
-\newcommand{\fakultas}{FAKULTAS SAINS}
-\newcommand{\institusi}{INSTITUT TEKNOLOGI SUMATERA}
-\newcommand{\lokasiTA}{LAMPUNG SELATAN}
-\newcommand{\tahunTA}{2026}
+\input{identitas.tex}
+\hypersetup{pdftitle={\judulIndonesia},pdfauthor={\namaPenulis}}
 
 % Logo kampus
 \newcommand{\logoKampus}{%
@@ -186,6 +202,8 @@
 % ============================================================
 %  PERINTAH BANTU HALAMAN AWAL (FRONT MATTER)
 % ============================================================
+\newcommand{\isianNaskah}[1]{\textit{[#1]}}
+
 % Halaman awal masuk ke Daftar Isi tanpa nomor bab dan tanpa kata "BAB"
 % Menerima argumen opsional untuk penamaan di Daftar Isi jika judul halaman panjang.
 \newcommand{\halamanAwal}[2][]{%
@@ -198,7 +216,7 @@
     \addcontentsline{toc}{chapter}{#1}%
   \fi
   \begin{center}
-    {\bfseries\normalsize #2\par}
+    {\setstretch{1}\bfseries\normalsize #2\par}
   \end{center}
   \vspace{0.8cm}
 }
@@ -227,79 +245,19 @@
 \begin{document}
 \pagenumbering{roman}
 
-% Tata letak cover sampul dan cover dalam
-\newcommand{\isiSampulTA}{%
-  \begin{center}
-    \setstretch{1}
-    \vspace*{0.2cm}
-
-    \parbox[c][2.9cm][c]{\textwidth}{%
-      \centering\bfseries\normalsize \judulTA\par
-    }\par
-
-    \vspace{2.7cm}
-    {\bfseries TUGAS AKHIR\par}
-
-    \vspace{2.5cm}
-    {\bfseries \namaPenulis\par}
-    \vspace{0.15cm}
-    {\bfseries \nomorInduk\par}
-
-    \vspace{2.3cm}
-    \logoKampus\par
-
-    \vspace{2.8cm}
-    {\bfseries \programStudi\par}
-    \vspace{0.25cm}
-    {\bfseries \fakultas\par}
-    \vspace{0.25cm}
-    {\bfseries \institusi\par}
-    \vspace{0.25cm}
-    {\bfseries \lokasiTA\par}
-    \vspace{0.25cm}
-    {\bfseries \tahunTA\par}
-  \end{center}
-}
-
-% HALAMAN SAMPUL (Cover Luar)
-\begin{titlepage}
-  \thispagestyle{empty}
-  \isiSampulTA
-\end{titlepage}
-
-% HALAMAN JUDUL (Cover Dalam)
-\begin{titlepage}
-  \thispagestyle{empty}
-  \phantomsection
-  \addcontentsline{toc}{chapter}{HALAMAN JUDUL}
-  \isiSampulTA
-\end{titlepage}
-
+% Halaman awal disimpan terpisah agar mudah disunting.
+% Acuan dan batas penyesuaian ada di notes/FORMAT_HALAMAN_AWAL_ITERA_2026-11-04.md.
+\input{halaman_awal/sampul.tex}
+\input{halaman_awal/judul.tex}
 \setcounter{page}{3}
-
-\halamanAwal{HALAMAN PENGESAHAN}
-% Isi halaman pengesahan.
-
-\halamanAwal{HALAMAN PERNYATAAN ORISINALITAS}
-% Isi pernyataan orisinalitas.
-
-\halamanAwal[HALAMAN PERSETUJUAN PUBLIKASI]{HALAMAN PERNYATAAN PERSETUJUAN PUBLIKASI UNTUK KEPENTINGAN AKADEMIS}
-% Isi pernyataan persetujuan publikasi.
-
-\halamanAwal{ABSTRAK}
-% Isi abstrak Bahasa Indonesia.
-
-\halamanAwal{ABSTRACT}
-% Isi abstract Bahasa Inggris.
-
-\halamanAwal{MOTTO}
-% Isi motto.
-
-\halamanAwal{HALAMAN PERSEMBAHAN}
-% Isi persembahan.
-
-\halamanAwal{KATA PENGANTAR}
-% Isi kata pengantar.
+\input{halaman_awal/pengesahan.tex}
+\input{halaman_awal/orisinalitas.tex}
+\input{halaman_awal/publikasi.tex}
+\input{halaman_awal/abstrak.tex}
+\input{halaman_awal/abstract.tex}
+\input{halaman_awal/motto.tex}
+\input{halaman_awal/persembahan.tex}
+\input{halaman_awal/kata_pengantar.tex}
 
 \halamanDaftar{DAFTAR ISI}{toc}
 \halamanDaftar{DAFTAR GAMBAR}{lof}
@@ -310,6 +268,8 @@
 % Faktor baris eksplisit pada isi, mengikuti contoh visual pengguna.
 \setstretch{1.5}
 \setlength{\parskip}{6pt}
+\setlength{\abovedisplayskip}{12pt}
+\setlength{\abovedisplayshortskip}{12pt}
 \clubpenalties 2 10000 0
 \widowpenalties 2 10000 0
 

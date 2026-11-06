@@ -1,8 +1,10 @@
 # Referensi penelitian DSIC-2706
 
+**Status 7 November 2026:** CSV referensi memuat 52 entri dan folder ini berisi 50 PDF. BAB I–II mengutip 26 sumber, termasuk artikel jurnal, satu makalah konferensi, dan satu preprint. Jumlah koleksi berbeda dari jumlah sumber yang dikutip; catatan bertanggal di bawah merupakan riwayat pemeriksaan pada saat itu.
+
 Diperiksa dan diperbarui pada **3 November 2026**. Pembaruan pustaka menambah enam artikel terbitan jurnal untuk dasar teori dan evaluasi. Kode eksperimen, audio, manifes, dan hasil E0-E5 dipertahankan.
 
-**Riwayat 27 Oktober 2026:** [status koreksi dan pencarian alternatif dua PDF](PEMERIKSAAN_REFERENSI_2026-10-27.md) mencatat 28 entri dan 26 PDF pada tanggal tersebut. **Pembaruan 3 November:** [enam artikel dan versi PDF yang diverifikasi](PEMERIKSAAN_REFERENSI_2026-11-03.md); jumlah kini 34 entri dan 32 PDF. Tersedia pula [paket belajar teori dan perhitungan](../../learning/PAKET_BELAJAR_UJIAN/README.md).
+**Riwayat 27 Oktober 2026:** [status koreksi dan pencarian alternatif dua PDF](PEMERIKSAAN_REFERENSI_2026-10-27.md) mencatat 28 entri dan 26 PDF pada tanggal tersebut. **Pembaruan 3 November:** [enam artikel dan versi PDF yang diverifikasi](PEMERIKSAAN_REFERENSI_2026-11-03.md); jumlah pada tanggal tersebut 34 entri dan 32 PDF. Tersedia pula [paket belajar teori dan perhitungan](../../learning/PAKET_BELAJAR_UJIAN/README.md).
 
 ## Daftar aktif
 
@@ -15,7 +17,7 @@ Diperiksa dan diperbarui pada **3 November 2026**. Pembaruan pustaka menambah en
 
 Enam artikel tambahan mencakup Davis dan Mermelstein (1980), Efron (1979), Peeters dkk. (2011), Salton dkk. (1975), Moffat (2022), serta van Merrienboer dkk. (2024). Semuanya mempunyai identitas publikasi jurnal yang dicocokkan dengan metadata DOI. Lima PDF berupa salinan artikel terbit; PDF Moffat merupakan naskah penulis arXiv v1 dari artikel yang kemudian terbit di IEEE Access, dan perbedaan itu ditulis pada CSV/Excel. [Audit terstruktur](VERIFIKASI_TAMBAHAN_2026-11-03.json) mencatat sumber unduhan, versi, jumlah halaman, dan hash.
 
-Enam kunci baru disiapkan pada `../template_ta_latex/references.bib`, bersama Lostanlen (2019) yang sudah tersedia pada koleksi sebelumnya. Total BibTeX 17 entri: sepuluh telah dikutip dalam BAB I, sedangkan tujuh disiapkan untuk penulisan BAB II. Daftar pustaka tercetak tetap mengikuti sumber yang benar-benar dikutip; nomor sitasi tidak dibuat pada tabel kosong.
+Enam kunci baru disiapkan pada `../template_ta_latex/references.bib`, bersama Lostanlen (2019) yang sudah tersedia pada koleksi sebelumnya. Pada pembaruan 3 November, BibTeX berisi 17 entri. Pembaruan tabel 2.1 tanggal 5 November menambahkan entri Ghani (2025) dari koleksi yang sudah ada, sehingga menjadi **18 entri BibTeX dan 11 sumber yang dikutip pada BAB I–II setelah tabel diringkas menjadi lima studi**. Jumlah koleksi tetap 34 referensi dan 32 PDF. Daftar pustaka tercetak mengikuti sumber yang benar-benar dikutip.
 
 Keberadaan artikel, relevansi, status penelaahan ilmiah, dan mutu metode merupakan hal yang berbeda. Pemeriksaan ini tidak menetapkan peringkat SINTA/Scopus atau mengesahkan seluruh klaim setiap artikel. Tidak ada artikel atau PDF yang dibuat sebagai pengganti sumber ilmiah asli.
 

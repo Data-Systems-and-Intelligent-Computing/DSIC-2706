@@ -1,10 +1,68 @@
+% !TeX root = ../main.tex
 \chapter{METODOLOGI PENELITIAN}
+% Kerangka saja; uraian, diagram, tabel, dan rumus ditambahkan pada tahap berikutnya.
 
 \section{Data Penelitian}
-% Tulis asal data, kriteria, dan pembagian data di sini.
+
+\subsection{Data Rekaman Suara Burung}
+% Sumber Xeno-Canto, 20 label spesies, metadata, dan unit rekaman aktif.
+% Bedakan persebaran spesies dari negara asal tiap rekaman.
+
+\subsection{Data Derau Lapangan ITERA}
+% Lima lokasi, proses perekaman, dan peran bank derau pada eksperimen.
+% Bedakan pool pencampuran dari derau yang digunakan sebagai kontrol di luar target.
+
+\subsection{Kriteria Pemilihan dan Pembagian Data}
+% Galeri, kueri, kalibrasi, dan kontrol di luar target mengikuti manifes aktif.
+% Jelaskan pemisahan perekam dan pencegahan kebocoran data.
+
+\section{Diagram Alir Penelitian}
+% Diagram alir akan disusun berdasarkan data, tahapan, dan eksperimen yang benar-benar dilakukan.
+% Bagian ini masih berupa kerangka; gambar dan penjelasan belum ditambahkan.
 
 \section{Tahapan Penelitian}
-% Tulis alur penelitian, prapemrosesan, eksperimen, dan evaluasi di sini.
+
+\subsection{Rancangan Eksperimen}
+% Pendekatan kuantitatif, variabel, kondisi acuan, kontrol, dan kelompok eksperimen.
+% Bedakan rancangan awal dari analisis eksploratif setelah hasil tersedia.
+
+\subsection{Perangkat Penelitian}
+% Perangkat perekaman serta perangkat keras/lunak sesuai bukti yang tersedia.
+
+\subsection{Prapemrosesan Audio}
+% Penyeragaman kanal, laju sampel, durasi, dan tingkat sinyal sesuai kode aktif.
+
+\subsection{Ekstraksi Representasi Audio}
+% MFCC, PANNs CNN14, BirdNET, serta vektor acak berbasis identitas sebagai kontrol.
+% Bobot model pralatih tetap; MFCC merupakan fitur hitungan.
+
+\subsection{Pencarian Rekaman Berdasarkan Kemiripan Suara}
+% Penyusunan galeri tetap, kemiripan kosinus, dan pengurutan hasil pencarian.
+
+\subsection{Evaluasi Kualitas Pencarian}
+% mAP@10 sebagai metrik utama; precision@10, recall@10, MRR, dan Top-1 sebagai pendukung.
+% Penilaian relevansi mengikuti label spesies dan hasil pencarian untuk setiap kueri.
+
+\subsection{Pengujian Ketahanan pada Berbagai Tingkat Derau}
+% Kondisi tanpa derau tambahan dan pencampuran aditif pada empat SNR.
+% Bandingkan kueri yang sama dengan galeri tetap menggunakan kualitas dan retensi.
+
+\subsection{Kalibrasi Ambang dan Pengujian Penerimaan Kueri}
+% Kalibrasi terpisah tanpa penambahan derau; nilai ambang dipertahankan saat uji.
+% Pisahkan penerimaan target, penerimaan keliru kontrol, dan ketepatan hasil pertama.
+
+\subsection{Pengujian Profil Derau Lima Lokasi}
+% Bandingkan lima profil pada kueri dan SNR yang sama dengan empat ulangan.
+% Laporkan ayunan absolut dan relatif, serta sensitivitas tanpa Kebun Raya sebagai analisis eksploratif.
+
+\subsection{Analisis Kegagalan dan Audit Pendengaran}
+% Margin terhadap ambang, ciri spektral, dan audit 120 kasus pilihan oleh satu pendengar.
+% Analisis deskriptif; bukan bukti penyebab kegagalan atau validasi spesies independen.
+% Ciri akustik tersedia pada E2 yang direkonstruksi, tidak disimpulkan untuk E4.
+
+\subsection{Analisis Statistik dan Interpretasi}
+% Analisis bootstrap berpasangan pada kueri untuk sensitivitas kestabilan profil.
+% Jelaskan unit analisis, interval kepercayaan, keterlacakan, dan batas interpretasi.
 
 \section{Jadwal Penelitian}
-% Tulis jadwal penelitian di sini.
+% Jadwal mengikuti kegiatan dan catatan pelaksanaan yang dapat ditelusuri.
