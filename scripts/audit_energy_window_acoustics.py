@@ -23,8 +23,8 @@ import librosa
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 SAMPLE_CSV = PROJECT_ROOT / "data" / "manifests" / "energy_audit_50_sample.csv"
-OUTPUT_REPORT_CSV = PROJECT_ROOT / "artifacts" / "reproducibility" / "energy_window_audit_results.csv"
-OUTPUT_REPORT_MD = PROJECT_ROOT / "artifacts" / "reproducibility" / "energy_window_audit_report.md"
+OUTPUT_REPORT_CSV = PROJECT_ROOT / "results" / "artifacts" / "reproducibility" / "energy_window_audit_results.csv"
+OUTPUT_REPORT_MD = PROJECT_ROOT / "results" / "artifacts" / "reproducibility" / "energy_window_audit_report.md"
 
 # Folder audio fisik
 AUDIO_BASE = Path(r"D:\FILE AND TASK\TA\data\xeno_canto_indonesia")

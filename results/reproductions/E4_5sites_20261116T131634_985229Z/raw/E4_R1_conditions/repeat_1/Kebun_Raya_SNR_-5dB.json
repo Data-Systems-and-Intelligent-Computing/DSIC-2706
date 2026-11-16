@@ -1,0 +1,18 @@
+{
+  "csv_sha256": "30439bcf3ae858aa4323979626a2ec10ccaf2d308c04f97e6154f29e0c9889fd",
+  "query_count": 311,
+  "run_sha256": "f175751ce0fd5b828f39e7d9f3c57f304793f7af472015fc0ea1f15a4b162d2e",
+  "schema": "E4_condition_snapshot_v1",
+  "summary": {
+    "Precision@10": 0.10418006430868167,
+    "Recall@10": 0.032760838403091845,
+    "Top1_Accuracy": 0.1189710610932476,
+    "condition": "SNR_-5dB",
+    "habitat": "Kebun_Raya",
+    "mAP@10": 0.049760246006226715,
+    "relative_retention": 0.28229912714648275,
+    "repeat_id": 1,
+    "representation": "R1",
+    "snr_db": -5
+  }
+}

@@ -9,7 +9,7 @@ Dokumen ini memakai satu `main.tex` yang memanggil halaman awal dan berkas setia
 - `halaman_awal/`: sampul, halaman judul, pengesahan, orisinalitas, persetujuan publikasi, abstrak/abstract, motto, persembahan, dan kata pengantar.
 - `chapters/bab1.tex`: Pendahuluan.
 - `chapters/bab2.tex`: Tinjauan Pustaka; tabel 2.1 memuat lima studi dan teori ditulis hingga 2.13.
-- `chapters/bab3.tex`: Metodologi Penelitian dengan [diagram alir utama](../figures/Diagram%20Utama.drawio.png) dan [peta lokasi rekaman](../figures/Gambar/peta_rekaman_xenocanto.png).
+- `chapters/bab3.tex`: Metodologi Penelitian dengan [diagram alir utama](../figures/bab3/Diagram%20Utama.drawio.png) dan [peta lokasi rekaman](../figures/bab3/peta_rekaman_xenocanto.png).
 
 **Status lokal 4 November 2026:** dokumen memakai XeLaTeX, `fontspec`, dan Times New Roman. BAB I memuat Latar Belakang, lima Rumusan Masalah, lima Tujuan yang berpadanan, dan delapan Batasan Penelitian, dengan istilah pencarian rekaman yang telah dirapikan. Tujuan dan batasan mengikuti evaluasi campuran aditif terkontrol dan diagnostik yang telah dilakukan. BAB II bagian 2.1 berisi tabel lima jurnal dan bagian 2.2 masih kerangka. Atas instruksi pengguna, kerangka BAB III dirinci menjadi tiga subbab utama dan 12 sub-subbab tanpa uraian; isinya dilanjutkan setelah instruksi berikutnya.
 

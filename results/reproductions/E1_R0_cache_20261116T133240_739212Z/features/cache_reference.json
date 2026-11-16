@@ -1,0 +1,8 @@
+{
+  "source_cache_path": "results/reproductions/FRESH_CLEAN_20261116_201632/clean_embeddings_R0.npz",
+  "source_cache_sha256": "51685f5908dd4c9a8e29b962ffc18b73e2d6250a4b89b9b3b504cbba1025c9f8",
+  "source_cache_manifest_sha256": "7808cdf057f135aaa193f47e27415318edf46c862c09dee4c7394bc5760e8ed8",
+  "embedding_dimension": 40,
+  "gallery_count": 673,
+  "query_count": 311
+}

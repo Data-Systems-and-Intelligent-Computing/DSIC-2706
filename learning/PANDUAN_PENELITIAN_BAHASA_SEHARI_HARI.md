@@ -497,6 +497,6 @@ Jawaban singkat: (1) Top-1 salah, ukuran urutan masih dapat memberi kredit. (2) 
 - [Matriks RQ/hipotesis revisi](../results/tables/28_rq_hypothesis_matrix_revised_2026-10-15.csv), [H3 tanpa/sama Kebun Raya](../results/reproductions/H3_sensitivity_20261015/tables/h3_swing_summary.csv), [analisis membuang satu lokasi bergantian](../results/reproductions/H3_leave_one_location_out_20261018/).
 - [Kode metrik yang digunakan](../src/retrieve.py), [MFCC](../src/mfcc.py), [embedding](../src/embeddings.py), [persiapan audio](../src/preprocess.py), [pencampuran](../src/mix_noise.py).
 - [Pelaksana E3 aktif](../scripts/run_e3_open_set.py), [pelaksana E5 aktif dan aturan kategorinya](../scripts/run_e5_diagnostics.py).
-- [Catatan pembimbing aktif](../Rencana-eksperimen-bimbingan/CATATAN_PROGRES_BIMBINGAN.md), [bukti reproduksi](../docs/REPRODUKSI_LINGKUNGAN_BARU_2026-10-16.md), [ringkasan tes](../artifacts/reproducibility/test_summary_2026-10-18.json).
+- [Catatan pembimbing aktif](../Rencana-eksperimen-bimbingan/CATATAN_PROGRES_BIMBINGAN.md), [bukti reproduksi](../docs/REPRODUKSI_LINGKUNGAN_BARU_2026-10-16.md), [ringkasan tes](../results/artifacts/reproducibility/test_summary_2026-10-18.json).
 
 Jika narasi lama berbeda dengan hasil/scope aktif, gunakan sumber aktif dan catatan revisinya. Panduan ini membedakan hasil yang telah diamati, alasan rancangan yang dapat dijelaskan, dan dugaan yang belum diuji.

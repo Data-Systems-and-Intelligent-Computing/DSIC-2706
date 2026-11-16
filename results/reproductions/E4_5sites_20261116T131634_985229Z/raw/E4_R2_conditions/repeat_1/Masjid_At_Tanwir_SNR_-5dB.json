@@ -1,0 +1,18 @@
+{
+  "csv_sha256": "7fd14b6dc159fedc1ec44c139ab6459305063f17d190fc89e9eede5345259578",
+  "query_count": 311,
+  "run_sha256": "f175751ce0fd5b828f39e7d9f3c57f304793f7af472015fc0ea1f15a4b162d2e",
+  "schema": "E4_condition_snapshot_v1",
+  "summary": {
+    "Precision@10": 0.5752411575562701,
+    "Recall@10": 0.18760640576609813,
+    "Top1_Accuracy": 0.6752411575562701,
+    "condition": "SNR_-5dB",
+    "habitat": "Masjid_At_Tanwir",
+    "mAP@10": 0.5083504312764763,
+    "relative_retention": 0.7984036912135682,
+    "repeat_id": 1,
+    "representation": "R2",
+    "snr_db": -5
+  }
+}

@@ -10,14 +10,14 @@
 
 Karena itu dibuat **satu diagram baru**, tersedia sebagai:
 
-- [PNG 300 dpi untuk dimasukkan ke Word](gambar/alur_penelitian_lengkap.png).
-- [SVG vektor untuk diperbesar tanpa pecah](gambar/alur_penelitian_lengkap.svg).
-- [Sumber Mermaid yang dapat diedit](gambar/alur_penelitian_lengkap.mmd).
-- [Metadata sumber dan hash](gambar/metadata_diagram.json); [pembuat gambar](gambar/buat_diagram.py).
+- [PNG 300 dpi untuk dimasukkan ke Word](../figures/diagram_persiapan/alur_penelitian_lengkap.png).
+- [SVG vektor untuk diperbesar tanpa pecah](../figures/diagram_persiapan/alur_penelitian_lengkap.svg).
+- [Sumber Mermaid yang dapat diedit](../figures/diagram_persiapan/alur_penelitian_lengkap.mmd).
+- [Metadata sumber dan hash](../figures/diagram_persiapan/metadata_diagram.json); [pembuat gambar](../figures/diagram_persiapan/buat_diagram.py).
 
 Ketiga format visual/sumber tersebut menggambarkan diagram yang sama. Ini bukan tiga diagram atau eksperimen baru.
 
-![Alur penelitian lengkap](gambar/alur_penelitian_lengkap.png)
+![Alur penelitian lengkap](../figures/diagram_persiapan/alur_penelitian_lengkap.png)
 
 **Usulan penempatan:** BAB 3, subbab Tahapan Penelitian. Nomor gambar mengikuti urutan gambar dalam naskah final, jadi tidak dibekukan menjadi Gambar 3.1 di nama berkas.
 
@@ -36,25 +36,25 @@ Tautan di bawah menunjuk sumber yang sudah ada; tidak ada penyalinan atau pengga
 | Contoh waveform dan spektrogram burung | [03_eda_bird_waveform_spectrogram_examples.png](../../results/figures/03_eda_bird_waveform_spectrogram_examples.png) | BAB 2 untuk menjelaskan representasi waktu–frekuensi; BAB 3 untuk contoh data. Gambar memakai contoh fisik yang tercatat. |
 | Contoh spektrogram derau lima lokasi | [05_eda_itera_noise_spectrogram_profiles.png](../../results/figures/05_eda_itera_noise_spectrogram_profiles.png) | BAB 3 untuk memperkenalkan sumber derau. Ini contoh segmen, bukan bukti sebab kausal perbedaan performa. |
 | Hubungan rancangan E2 dan E4 | [fig06_e4_noise_profiles.png](../figures/revision_20261015/fig06_e4_noise_profiles.png) | BAB 3 untuk menjelaskan campuran terkontrol dan lima lokasi. Sudah mengikuti korpus aktif; tidak perlu dibuat ulang. |
-| Ilustrasi cosine pada vektor ternormalisasi | [fig07_cosine_unit_sphere.png](../../Teori%20Dasar/figures/fig07_cosine_unit_sphere.png) | BAB 2, sebagai ilustrasi konseptual. Berasal dari draf pembimbing dan tersedia lokal; beri atribusi sesuai sumber, bukan klaim data eksperimen. |
-| Rantai MFCC | [fig01_rantai_mfcc.png](../../Teori%20Dasar/figures/fig01_rantai_mfcc.png) | Ilustrasi sinyal sintetis, bukan rekaman burung. Panel menyebut 64 filter Mel; jangan menyalinnya sebagai parameter implementasi aktif. Lihat catatan §5. Tidak digambar ulang. |
+| Ilustrasi cosine pada vektor ternormalisasi | [fig07_cosine_unit_sphere.png](../../learning/teori_dasar/figures/fig07_cosine_unit_sphere.png) | BAB 2, sebagai ilustrasi konseptual. Berasal dari draf pembimbing dan tersedia lokal; beri atribusi sesuai sumber, bukan klaim data eksperimen. |
+| Rantai MFCC | [fig01_rantai_mfcc.png](../../learning/teori_dasar/figures/fig01_rantai_mfcc.png) | Ilustrasi sinyal sintetis, bukan rekaman burung. Panel menyebut 64 filter Mel; jangan menyalinnya sebagai parameter implementasi aktif. Lihat catatan §5. Tidak digambar ulang. |
 | Batas Recall@10 korpus aktif | [fig08_recall_ceiling_active.png](../figures/revision_20261015/fig08_recall_ceiling_active.png) | Sudah ada. Gabungan teori dan hasil E1; lebih cocok BAB 4/pembahasan. Untuk BAB 2 cukup jelaskan rumus batasnya tanpa menyajikan hasil sebagai teori. |
 | Distribusi spesies | [07_eda_species_distribution.png](../../results/figures/07_eda_species_distribution.png) | Sudah ada. Bila dipakai BAB 3, jelaskan sebagai deskripsi data; tabel 20 spesies biasanya lebih hemat ruang. |
 | Jumlah rekaman derau menurut lokasi | [06_eda_noise_locations.png](../../results/figures/06_eda_noise_locations.png) | Sudah ada. Cakupannya pool pencampuran 1.528 berkas; bukan total bank 1.799. |
 
-**Catatan akses diperbarui 1 November 2026:** folder `Teori Dasar/`, sumber dan ekspor LaTeX, paket belajar, serta pembaruan pustaka disertakan dalam sinkronisasi repositori. [Bahan teori lama](../../Teori%20Dasar/README.md) tetap bertanda historis; keterlacakan berkas tidak menjadikan angka atau klaim lamanya berlaku kembali. Audio, checkpoint, dan cache tetap lokal.
+**Catatan akses diperbarui 1 November 2026:** folder `Teori Dasar/`, sumber dan ekspor LaTeX, paket belajar, serta pembaruan pustaka disertakan dalam sinkronisasi repositori. [Bahan teori lama](../../learning/teori_dasar/README.md) tetap bertanda historis; keterlacakan berkas tidak menjadikan angka atau klaim lamanya berlaku kembali. Audio, checkpoint, dan cache tetap lokal.
 
 ## 3. Gambar lama yang perlu dibedakan dari bahan aktif
 
 | Berkas lama | Mengapa tidak langsung dimasukkan ke naskah |
 |---|---|
-| [fig02_pipeline_retrieval.png](../../Teori%20Dasar/figures/fig02_pipeline_retrieval.png) | Masih menuliskan galeri 3.653; galeri aktif 673. Diagram lengkap baru di atas memakai jumlah aktif dan membedakan R3. |
-| [fig03_paired_noise_snr.png](../../Teori%20Dasar/figures/fig03_paired_noise_snr.png) | Masih menuliskan BirdCLEF+ dan 200 kueri. Rancangan aktif memakai Xeno-Canto Indonesia, 311 kueri. Hubungan E2/E4 sudah dijelaskan oleh gambar aktif yang tersedia. |
-| [fig04_kurva_degradasi_hipotetis.png](../../Teori%20Dasar/figures/fig04_kurva_degradasi_hipotetis.png) | Kurva hipotetis. Untuk BAB 4, gunakan [grafik E2 aktual](../../results/figures/08_e2_snr_robustness_map10.png) yang sudah tersedia. |
-| [fig05_open_set_threshold.png](../../Teori%20Dasar/figures/fig05_open_set_threshold.png) | Distribusi sintetis dan ambang lama 0,7128. Bukan hasil E3 aktif. Jelaskan prosedur secara konseptual di BAB 2–3; nilai hasil E3 dirujuk dari tabel aktif. |
-| [fig06_focal_vs_soundscape.png](../../Teori%20Dasar/figures/fig06_focal_vs_soundscape.png) | Tidak menggambarkan E4 aktif yang berupa campuran aditif. Gunakan fig06 revisi yang ditunjukkan pada §2. |
-| [fig08_recall_ceiling.png](../../Teori%20Dasar/figures/fig08_recall_ceiling.png) | Gunakan versi revisi `paper/figures/revision_20261015/fig08_recall_ceiling_active.png` untuk korpus aktif. |
-| Diagram teks pada [Panduan_Komprehensif_Tugas_Akhir.md](../../Teori%20Dasar/Panduan_Komprehensif_Tugas_Akhir.md) | Memuat ambang R2 lama 0,7071 dan beberapa status lama. Rujukan konsep saja; tidak menjadi sumber angka aktif. |
+| [fig02_pipeline_retrieval.png](../../learning/teori_dasar/figures/fig02_pipeline_retrieval.png) | Masih menuliskan galeri 3.653; galeri aktif 673. Diagram lengkap baru di atas memakai jumlah aktif dan membedakan R3. |
+| [fig03_paired_noise_snr.png](../../learning/teori_dasar/figures/fig03_paired_noise_snr.png) | Masih menuliskan BirdCLEF+ dan 200 kueri. Rancangan aktif memakai Xeno-Canto Indonesia, 311 kueri. Hubungan E2/E4 sudah dijelaskan oleh gambar aktif yang tersedia. |
+| [fig04_kurva_degradasi_hipotetis.png](../../learning/teori_dasar/figures/fig04_kurva_degradasi_hipotetis.png) | Kurva hipotetis. Untuk BAB 4, gunakan [grafik E2 aktual](../../results/figures/08_e2_snr_robustness_map10.png) yang sudah tersedia. |
+| [fig05_open_set_threshold.png](../../learning/teori_dasar/figures/fig05_open_set_threshold.png) | Distribusi sintetis dan ambang lama 0,7128. Bukan hasil E3 aktif. Jelaskan prosedur secara konseptual di BAB 2–3; nilai hasil E3 dirujuk dari tabel aktif. |
+| [fig06_focal_vs_soundscape.png](../../learning/teori_dasar/figures/fig06_focal_vs_soundscape.png) | Tidak menggambarkan E4 aktif yang berupa campuran aditif. Gunakan fig06 revisi yang ditunjukkan pada §2. |
+| [fig08_recall_ceiling.png](../../learning/teori_dasar/figures/fig08_recall_ceiling.png) | Gunakan versi revisi `paper/figures/revision_20261015/fig08_recall_ceiling_active.png` untuk korpus aktif. |
+| Diagram teks pada [Panduan_Komprehensif_Tugas_Akhir.md](../../learning/teori_dasar/Panduan_Komprehensif_Tugas_Akhir.md) | Memuat ambang R2 lama 0,7071 dan beberapa status lama. Rujukan konsep saja; tidak menjadi sumber angka aktif. |
 
 Berkas historis tersebut dipertahankan. Tidak ada perubahan pada draf pembimbing atau gambar aslinya dalam persiapan ini.
 
@@ -67,7 +67,7 @@ Daftar berikut adalah **indeks lokasi**, bukan pembuatan ulang tabel penelitian.
 | BAB 2: penelitian terdahulu | [referensi_jurnal_modern.xlsx](../bibliography/referensi_jurnal_modern.xlsx) atau [CSV yang sama](../bibliography/referensi_jurnal_modern.csv) | Versi lokal memuat 28 referensi. Pilih judul/penulis/tahun, data, metode, hasil, dan relevansi. Jangan memindahkan seluruh kolom audit ke skripsi. Jenisnya mencakup jurnal/prosiding/preprint. |
 | BAB 2–3: jenis representasi | [tabel R0–R3 pada panduan teori sederhana](../../learning/PAKET_BELAJAR_UJIAN/02_TEORI_DAN_ALUR_METODE.md) | Tabel Markdown sudah ada: fitur klasik, audio generik, bioakustik, dan kontrol ID; dimensi serta alasan pembanding. |
 | BAB 3: variabel dan rancangan E0–E5 | [tabel variabel dan eksperimen](../../learning/PAKET_BELAJAR_UJIAN/01_PENELITIAN_DAN_RANCANGAN.md) | Tabel Markdown sudah tersedia; gunakan bagian variabel dan fungsi eksperimen sebagai bahan metode, bukan sebagai persetujuan RQ resmi. |
-| BAB 3: daftar 20 spesies dan jumlah rekaman | [05_eda_target_species_summary.csv](../../results/tables/05_eda_target_species_summary.csv) | Memuat 20 baris spesies, nama ilmiah/umum, rekaman, perekam, dan rating median. |
+| BAB 3: daftar 20 spesies dan jumlah rekaman | [05_eda_target_species_summary.csv](../../results/tables/05_eda_target_species_summary.csv) | Memuat 20 baris spesies, nama ilmiah dan nama umum, jumlah rekaman, serta jumlah perekam. |
 | BAB 3: pembagian target | [dataset_split.csv](../../data/manifests/dataset_split.csv) dan uraian [README bagian 6](../../README.md) | Manifes 1.216 baris adalah sumber pembagian galeri 673, kueri 311, dan kalibrasi 232. Tidak perlu menaruh semua 1.216 baris dalam bab. |
 | BAB 3: data unknown | [unknown_open_set_manifest.csv](../../data/manifests/unknown_open_set_manifest.csv) | Ada 543 baris kontrol, 233 kalibrasi dan 310 uji; kategori burung non-target/derau tercatat. |
 | BAB 3: ringkasan sumber data dan partisi | [04_eda_summary_by_source.csv](../../results/tables/04_eda_summary_by_source.csv) | Sudah memuat peran dan jumlah sumber serta ringkasan durasi. Pilih baris yang sesuai korpus aktif. |

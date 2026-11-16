@@ -4,4 +4,6 @@ Mulai dari [panduan penelitian dalam bahasa sehari-hari](PANDUAN_PENELITIAN_BAHA
 
 Latihan 01–06 adalah jalur belajar bertahap: mengenal file audio, menyamakan bentuk audio, MFCC, retrieval kecil, inspeksi panggilan, dan audit manifes.
 
+[Arsip teori dan ilustrasi](teori_dasar/README.md) menyimpan draf serta panduan terdahulu.
+
 Latihan tidak menghasilkan bukti E0–E5 dan tidak mengubah audio. Catatan pembelajaran ada di `CATATAN_BELAJAR.md`; eksperimen resmi dipetakan dari `experiments/` dan divisualkan di `notebooks/`.

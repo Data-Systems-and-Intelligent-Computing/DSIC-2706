@@ -11,7 +11,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 def test_manifest_sha256_integrity():
     """Memverifikasi bahwa hash aktual dataset_split.csv cocok dengan rekam jejak audit (M-06)."""
     split_csv = PROJECT_ROOT / "data/manifests/dataset_split.csv"
-    manifest_txt = PROJECT_ROOT / "artifacts/reproducibility/manifest_sha256.txt"
+    manifest_txt = PROJECT_ROOT / "results/artifacts/reproducibility/manifest_sha256.txt"
     
     assert split_csv.exists(), f"File {split_csv} tidak ditemukan!"
     assert manifest_txt.exists(), f"File {manifest_txt} tidak ditemukan!"

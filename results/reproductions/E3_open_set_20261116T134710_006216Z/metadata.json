@@ -1,0 +1,15 @@
+{
+  "artifact_schema": "e3_open_set_v1",
+  "status": "complete",
+  "created_utc": "2026-11-16T13:47:10.006216+00:00",
+  "manifest_sha256": "7808cdf057f135aaa193f47e27415318edf46c862c09dee4c7394bc5760e8ed8",
+  "unknown_manifest_sha256": "a7cd0b26e87e1eadcf8cc4fe13257a5c9e3cf80d740d9ff0016e46e5479f3266",
+  "e2_reference": {
+    "path": "results/reproductions/E2_controlled_20261116T132030_189809Z",
+    "metadata_sha256": "2375b0401a1fac8353bdb241289c16b258e1a788251d9396072a55873990122f",
+    "identity_sha256": "50288a61706a26ca5aa5918adec6fc724a5ec53325c21cb137bfba25728feb89"
+  },
+  "calibration_protocol": "clean calibration split; empirical ROC Youden J; frozen before test",
+  "noise_seed_rule_unknown_test": "30261012 + unknown_test_index",
+  "r3_control_version": "stable_id_v1"
+}

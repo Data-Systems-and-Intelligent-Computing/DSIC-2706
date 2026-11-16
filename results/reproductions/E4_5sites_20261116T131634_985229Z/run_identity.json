@@ -1,0 +1,126 @@
+{
+  "identity": {
+    "assets": {
+      "R0_cache": {
+        "path": "results/features/clean_embeddings_R0.npz",
+        "sha256": "1d3a1ca4ce74beea548174e01d97986afff6629c613d09549a498ceff8b74acc"
+      },
+      "R1_cache": {
+        "path": "results/reproductions/E4_clean_cache_R1_20261011T204428_478762Z/clean_embeddings_R1.npz",
+        "sha256": "ec74fee9bcaa077216428a8f9094aaef65bc755bb5c8706bfa316542dc37182c"
+      },
+      "R1_checkpoint": {
+        "path": "checkpoints/Cnn14_mAP=0.431.pth",
+        "sha256": "0dc499e40e9761ef5ea061ffc77697697f277f6a960894903df3ada000e34b31"
+      },
+      "R1_metadata": {
+        "path": "results/reproductions/E4_clean_cache_R1_20261011T204428_478762Z/metadata.json",
+        "sha256": "88de4fc91358b0c861c4c6fbc5e92cf41e62cb6b16264eda4331ac05f09a03ec"
+      },
+      "R2_cache": {
+        "path": "results/reproductions/E4_clean_cache_R2_20261011T204031_982072Z/clean_embeddings_R2.npz",
+        "sha256": "12c1e579eb9613446a34188b4ad80320efd00c42d703de82dd6cb6a852166a7f"
+      },
+      "R2_checkpoint": {
+        "path": "checkpoints/BirdNET_GLOBAL_6K_V2.4_Model_FP32.onnx",
+        "sha256": "015344d3662d262e56dc52975523f1ea9b5e3852c1fd8ceb789f5cbbfba1dc25"
+      },
+      "R2_metadata": {
+        "path": "results/reproductions/E4_clean_cache_R2_20261011T204031_982072Z/metadata.json",
+        "sha256": "8c0086b74330e73290a07e9a79e3329a4cac3ab191ea787962d00bb2065b8b20"
+      },
+      "R3_cache": {
+        "path": "results/reproductions/E4_clean_cache_R3_20261011T203439_269234Z/clean_embeddings_R3.npz",
+        "sha256": "1900ed4e6f2a63df51e748af7d4e818cc72abff03df8f975cbd4cc115a44cad6"
+      },
+      "R3_metadata": {
+        "path": "results/reproductions/E4_clean_cache_R3_20261011T203439_269234Z/metadata.json",
+        "sha256": "763aa8f907dafedc5e0256e7497e604794cfece7c6cbc92ab3860639fff85567"
+      },
+      "dataset_manifest": {
+        "path": "data/manifests/dataset_split.csv",
+        "sha256": "7808cdf057f135aaa193f47e27415318edf46c862c09dee4c7394bc5760e8ed8"
+      },
+      "e4_script": {
+        "path": "scripts/run_e4_five_locations_v10_stage7.py.draft",
+        "sha256": "30cc0ea990e35eda70a98a6928550cb18df39bb4cd9b95837fafe05512f80c2c"
+      },
+      "embeddings_code": {
+        "path": "src/embeddings.py",
+        "sha256": "1e5dfcdf51bc26fb3a3895e19534a18570f587ff9f14d961c27254e8db3338b7"
+      },
+      "mix_noise_code": {
+        "path": "src/mix_noise.py",
+        "sha256": "c17362724c6953bf0ea4fb354ac4f6b65c26215345b1b09c0141594e5925a644"
+      },
+      "noise_identity_code": {
+        "path": "scripts/e4_noise_identity_v1.py",
+        "sha256": "1fe8faa3b911b5fcfdabe393d0ccefaf8a85cbc9d108dd52f8df4dc69124479d"
+      },
+      "noise_manifest": {
+        "path": "data/manifests/itera_noise_manifest.csv",
+        "sha256": "a4138bd13e437801d18dc7afde52e0dab50aa5d56ac27091ab0a4ba68fb6f72d"
+      },
+      "preprocess_code": {
+        "path": "src/preprocess.py",
+        "sha256": "6c01850783d294f31a02a915d0497046c6903db7e11c81dc63330b94f982da08"
+      },
+      "query_identity_code": {
+        "path": "scripts/e4_query_identity_v1.py",
+        "sha256": "5ceb8244dbe938f1823a50d6cb1cc1298df3b27b6274000f7f3656c01bbe3d49"
+      },
+      "retrieve_code": {
+        "path": "src/retrieve.py",
+        "sha256": "5a29617317c9ff9735b68cb4e3fc49903fba9070455df48a030de6acd855ff6b"
+      },
+      "run_identity_code": {
+        "path": "scripts/e4_run_identity_v2.py",
+        "sha256": "a8da4c086c3b49a9e0c976fea47b3447dbd07eae0f8cd10e6486511ff13ea310"
+      }
+    },
+    "design": {
+      "category_seed": 20261012,
+      "locations": [
+        "Kebun_Raya",
+        "Embung_F",
+        "Gedung_F",
+        "Masjid_At_Tanwir",
+        "Sekitar_GKU_1"
+      ],
+      "n_gallery": 673,
+      "n_queries": 311,
+      "noise_categories": [
+        "Amplitudo-High",
+        "Amplitudo-Medium",
+        "Amplitudo-Low",
+        "Frequency-High",
+        "Frequency-Medium",
+        "Frequency-Low"
+      ],
+      "noise_seed_rule": "5000 + 100000 * repeat_id + query_index (0-based)",
+      "r3_seed": 42,
+      "repeat_ids": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "representations": [
+        "R0",
+        "R1",
+        "R2",
+        "R3"
+      ],
+      "snr_db": [
+        20,
+        10,
+        0,
+        -5
+      ]
+    },
+    "noise_fingerprint": "468a15e18ee716cee1e21e5c8ca8779a4fa14ce13679b2cde6bcbd5c4f2f2b9e",
+    "query_fingerprint": "3d6d505f90bcc23a2a4f933e7e9b04c63fcc664e0980b38226bdf8a5cf8e26f9",
+    "schema": "E4_run_identity_v1"
+  },
+  "sha256": "f175751ce0fd5b828f39e7d9f3c57f304793f7af472015fc0ea1f15a4b162d2e"
+}

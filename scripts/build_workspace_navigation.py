@@ -178,19 +178,21 @@ Eksperimen E0–E5 memiliki artefak selesai/terverifikasi. H3 diuji dari raw E4 
 Peta seluruh folder dan file aktif tersedia di `../PROJECT_STRUCTURE.md`.
 ''')
 
-write(ROOT / 'Audit Pembaruan/README.md', '''# Audit Pembaruan
+audit_dir = ROOT / 'docs/research/audits/Audit Pembaruan'
+audit_dir.mkdir(parents=True, exist_ok=True)
+write(audit_dir / 'README.md', '''# Audit Pembaruan
 
 Folder ini menyimpan dokumen audit historis dan keputusan revisi. Dokumen tidak diubah agar jejak keputusan tetap utuh.
 
 Status implementasi saat ini diringkas dalam `current_workspace_index.csv`, yang menunjuk audit dataset, run E0–E5 tervalidasi, statistik, dan dokumen hasil terbaru.
 ''')
-with (ROOT / 'Audit Pembaruan/current_workspace_index.csv').open('w', newline='', encoding='utf-8') as handle:
+with (audit_dir / 'current_workspace_index.csv').open('w', newline='', encoding='utf-8') as handle:
     writer = csv.writer(handle); writer.writerow(['item', 'current_path', 'status']); writer.writerows([
-        ('dataset audit', '../docs/audit_manifest_2026-10-12.json', 'verified'),
-        ('experiment registry', '../experiments/experiment_registry.csv', 'current'),
-        ('report figures', '../results/figures', 'checksum copied'),
-        ('report tables', '../results/tables', 'checksum copied'),
-        ('RQ and hypotheses', '../docs/RESULTS_RQ_HYPOTHESES_2026-10-12.md', 'current'),
+        ('dataset audit', '../../../../docs/audit_manifest_2026-10-12.json', 'verified'),
+        ('experiment registry', '../../../../experiments/experiment_registry.csv', 'current'),
+        ('report figures', '../../../../results/figures', 'checksum copied'),
+        ('report tables', '../../../../results/tables', 'checksum copied'),
+        ('RQ and hypotheses', '../../../../docs/RESULTS_RQ_HYPOTHESES_2026-10-12.md', 'current'),
     ])
 
 # CURRENT_STATUS.md contains a reviewed briefing with current figures. Navigation
@@ -199,18 +201,16 @@ with (ROOT / 'Audit Pembaruan/current_workspace_index.csv').open('w', newline=''
 folders = [
     ('.venv', 'Lingkungan Python lokal; tidak diindeks atau diubah.'),
     ('Administrasi', 'Berkas administrasi akademik; ditambah README navigasi.'),
-    ('artifacts', 'Registri artefak tervalidasi.'),
-    ('Audit Pembaruan', 'Dokumen audit historis dan indeks workspace saat ini.'),
     ('checkpoints', 'Model beku R1/R2 dan katalog model.'),
     ('configs', 'Parameter beku dan indeks active run.'),
     ('data', 'Audio asli, manifes, dan registry data.'),
-    ('docs', 'Metode, audit, hasil RQ/H.'),
+    ('docs', 'Dokumen metode, catatan keputusan, dan audit historis di docs/research/audits/.'),
     ('experiments', 'Registri E0–E5.'),
-    ('learning', 'Latihan pembelajaran aman.'),
+    ('learning', 'Latihan, panduan, dan arsip teori di learning/teori_dasar/.'),
     ('notebooks', 'Notebook yang dapat dibaca/run per eksperimen.'),
-    ('paper', 'Draf artikel serta indeks figure/table terpilih.'),
+    ('paper', 'Naskah, pustaka, dan bahan naskah di paper/figures/ serta paper/tables/.'),
     ('Rencana-eksperimen-bimbingan', 'Rencana/logbook historis dan status terkini.'),
-    ('results', 'Run sumber, gambar, tabel, dan manifest checksum.'),
+    ('results', 'Run, keluaran kode, dan bukti di results/artifacts/.'),
     ('scripts', 'Runner dan pembangun indeks.'),
     ('src', 'Fungsi pipeline.'),
     ('tests', 'Validasi integritas serta metode.'),
@@ -231,16 +231,15 @@ write(ROOT / 'PROJECT_STRUCTURE.md', '''# Peta Folder Aktif
 | `notebooks/` | Satu notebook langsung per tahap/eksperimen. |
 | `experiments/` | Registri E0–E5 yang menghubungkan notebook, run, figure, dan table. |
 | `results/reproductions/` | Artefak sumber per run yang tidak ditimpa. |
-| `results/figures/`, `results/tables/` | Bahan laporan yang mudah dicari, dengan checksum. |
-| `artifacts/` | Registry bukti dan provenance. |
-| `docs/` | Metode, hasil RQ/H, audit. |
-| `paper/` | Draf naskah dan indeks figure/table terpilih. |
+| `results/figures/`, `results/tables/` | Grafik dan tabel keluaran kode eksperimen. |
+| `results/artifacts/` | Registri bukti dan keluaran audit eksperimen. |
+| `docs/` | Dokumen metode, catatan keputusan, dan audit historis di `docs/research/audits/`. |
+| `paper/` | Naskah dan pustaka. `paper/figures/` menyimpan gambar untuk naskah dan `paper/tables/` untuk tabel naskah. |
 | `tests/` | Pengujian integritas dan metode. |
-| `learning/` | Latihan pembelajaran yang tidak mengubah hasil resmi. |
-| `Audit Pembaruan/`, `Rencana-eksperimen-bimbingan/` | Catatan audit dan logbook historis. |
+| `learning/` | Latihan, panduan, dan arsip teori di `learning/teori_dasar/`. |
+| `Rencana-eksperimen-bimbingan/` | Catatan pembimbing, logbook, dan audit pendengaran. |
 | `Administrasi/` | Dokumen administrasi akademik. |
-
-Tidak ada data audio, checkpoint, cache, manifest, atau run eksperimen yang dipindahkan atau ditimpa oleh penataan ini.
+| `tmp/` | Pratinjau, berkas kerja sementara, dan cache alat. |
 ''')
 
 write(ROOT / 'Administrasi/README.md', '''# Administrasi

@@ -16,7 +16,7 @@ Isi suite: 28 pemeriksaan integritas/metode dasar termasuk empat dimensi model; 
 
 Nol skip di komputer ini berarti input/dependensi pemeriksaan tersedia saat pengujian. Pada checkout tanpa input, jumlah lulus dan skip dapat berbeda dan harus disalin dari hasil aktual. Catatan 16 Oktober tetap menjadi riwayat suite sebelumnya, bukan hasil baru untuk setiap lingkungan.
 
-[Bukti ringkasan terbaru](../artifacts/reproducibility/test_summary_2026-10-18.json). Tes Git membandingkan seluruh 10 aset sumber E4 terlacak dengan SHA-256 beku pada file lokal dan Git HEAD. Fixture pengamatan pendengaran bersifat sintetis di memori dan tidak mengisi audit manusia.
+[Bukti ringkasan terbaru](../results/artifacts/reproducibility/test_summary_2026-10-18.json). Tes Git membandingkan seluruh 10 aset sumber E4 terlacak dengan SHA-256 beku pada file lokal dan Git HEAD. Fixture pengamatan pendengaran bersifat sintetis di memori dan tidak mengisi audit manusia.
 
 Suite ini tidak menjalankan ulang E2–E5. [Reproduksi eksperimen](../docs/REPRODUKSI_LINGKUNGAN_BARU_2026-10-16.md) dicatat terpisah. Inferensi E4 tetap tidak diulang.
 

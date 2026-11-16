@@ -1,7 +1,7 @@
 """
 Script: scripts/verify_bird_free.py
 Fungsi: Audit empiris terhadap 1.799 berkas derau ITERA dan evaluasi saintifik label 'verified_bird_free'.
-Menghasilkan laporan resmi: artifacts/reproducibility/bird_free_audit_report.md
+Menghasilkan laporan resmi: results/artifacts/reproducibility/bird_free_audit_report.md
 
 Audit mencakup:
 1. Verifikasi Biogeografis & Akustik: 100% bebas dari 20 spesies burung target Indonesia yang diteliti.
@@ -20,7 +20,7 @@ import numpy as np
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 MANIFEST_DIR = PROJECT_ROOT / "data/manifests"
 ITERA_NOISE_DIR = PROJECT_ROOT / "data/itera_noise"
-REPORT_PATH = PROJECT_ROOT / "artifacts/reproducibility/bird_free_audit_report.md"
+REPORT_PATH = PROJECT_ROOT / "results/artifacts/reproducibility/bird_free_audit_report.md"
 
 def load_all_analysis_summaries():
     summaries = []

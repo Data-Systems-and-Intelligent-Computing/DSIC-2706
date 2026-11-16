@@ -11,7 +11,7 @@ import datetime
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 MANIFEST_DIR = PROJECT_ROOT / "data/manifests"
-OUTPUT_FILE = PROJECT_ROOT / "artifacts/reproducibility/manifest_sha256.txt"
+OUTPUT_FILE = PROJECT_ROOT / "results/artifacts/reproducibility/manifest_sha256.txt"
 
 OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
 

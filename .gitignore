@@ -48,9 +48,10 @@ wheels/
 data/xeno_canto/**/Screenshot*.png
 
 # Local legacy scratch & audit folders
-Audit Pembaruan/
+/docs/research/audits/Audit Pembaruan/
 Dataset/
-Administrasi/
+/Administrasi/*
+!/Administrasi/Tugas Akhir AS Ganjil 2026.xlsx
 
 # Pretrained model checkpoints & weights
 *.pt

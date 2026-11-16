@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "calibration_rows": 1860,
+  "test_rows": 12420,
+  "thresholds": 4,
+  "e2_reference": {
+    "path": "results/reproductions/E2_controlled_20261116T132030_189809Z",
+    "metadata_sha256": "2375b0401a1fac8353bdb241289c16b258e1a788251d9396072a55873990122f",
+    "identity_sha256": "50288a61706a26ca5aa5918adec6fc724a5ec53325c21cb137bfba25728feb89"
+  },
+  "manifest_sha256": "7808cdf057f135aaa193f47e27415318edf46c862c09dee4c7394bc5760e8ed8"
+}

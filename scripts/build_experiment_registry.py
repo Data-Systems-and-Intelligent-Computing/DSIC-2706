@@ -7,7 +7,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 EXPERIMENTS = ROOT / 'experiments'
-ARTIFACTS = ROOT / 'artifacts'
+ARTIFACTS = ROOT / 'results' / 'artifacts'
 
 items = [
     {

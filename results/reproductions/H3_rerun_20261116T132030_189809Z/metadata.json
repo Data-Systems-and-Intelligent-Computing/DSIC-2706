@@ -1,0 +1,26 @@
+{
+  "analysis": "Exploratory H3 absolute/relative swing and exclusion of Kebun Raya",
+  "source_raw_sha256": {
+    "results/reproductions/E4_5sites_20261116T131634_985229Z/raw/E4_R1_raw.csv": "05c2abdfdf563ce22af28ed509f3c78b346254d12eaab7bf1a348e921f66c75b",
+    "results/reproductions/E4_5sites_20261116T131634_985229Z/raw/E4_R2_raw.csv": "406d424a82bd51bcfb583ff15aa7d7f392d25cf56b54a973b653c5cab5d2160a"
+  },
+  "script_sha256": "ddbbfd18029acc3082e18222914a7af84dffb1d74bb236fff6c7462aec732b24",
+  "seed": 20261012,
+  "bootstrap_iterations": 10000,
+  "numpy_version": "2.5.2",
+  "pandas_version": "3.0.5",
+  "estimand": "mean_repeat(max_location(mean_query AP10) - min_location(mean_query AP10)); retention divides by each representation clean mAP10",
+  "resampling": "Shared query indices across both representations and all conditions; fixed locations and noise draws; clean denominator re-estimated in each draw",
+  "limitations": [
+    "Post-hoc, unadjusted descriptive percentile intervals; not preregistered confirmation",
+    "Conditional on these locations and sampled noise segments; not uncertainty over new locations or recording sessions",
+    "Excluding Kebun Raya is a requested sensitivity subset, not removal from E4",
+    "No spectral causal mechanism tested"
+  ],
+  "source_files_unchanged": true,
+  "outputs_sha256": {
+    "figures/h3_absolute_relative_sensitivity.png": "2f2a1613536ccf1f420ed491ca59fe612e0074c3ce6cec55380c1322014fb4e0",
+    "tables/h3_swing_summary.csv": "9cc13ba62b937f1b9117a660645a29be866978562f3d26659a7ab2269465c7bd",
+    "tables/location_map10_by_repeat.csv": "819876d2bdfd9c47ed622310dfffff6f46e98f6b1bcfd46827fc69ecee66a4d6"
+  }
+}

@@ -87,7 +87,6 @@ def analyze_feasibility(records):
     df["scientific_name"] = df["gen"].str.strip() + " " + df["sp"].str.strip()
     df["common_name"] = df["en"].fillna("").str.strip()
     df["author"] = df["rec"].fillna("Unknown").str.strip()
-    df["quality"] = df["q"].fillna("no score").str.strip().str.upper()
 
     # Eksklusi author Unknown
     df = df[df["author"].str.lower() != "unknown"].copy()
@@ -98,9 +97,6 @@ def analyze_feasibility(records):
     for (sci_name, com_name), g in grouped:
         total_clips = len(g)
         n_authors = g["author"].nunique()
-        q_counts = g["quality"].value_counts().to_dict()
-        q_high = q_counts.get("A", 0) + q_counts.get("B", 0)
-        q_acceptable = q_high + q_counts.get("C", 0)
         
         # Lokasi / persebaran
         valid_locs = g["loc"].dropna().tolist()
@@ -115,26 +111,22 @@ def analyze_feasibility(records):
             "common_name": com_name,
             "total_clips": total_clips,
             "n_authors": n_authors,
-            "q_A_B": q_high,
-            "q_A_B_C": q_acceptable,
             "has_sumatra_records": has_sumatra,
             "sample_locations": locs
         })
 
     df_sum = pd.DataFrame(summary)
 
-    # Filter kriteria kelayakan mirip DEC-10:
+    # Saring kandidat menurut jumlah rekaman dan perekam.
     # 1. Total klip >= 25
     # 2. n_author >= 5 (agar author-disjoint split aman: Gallery, Query, Calibration)
-    # 3. Kualitas A, B, atau C >= 20
     df_eligible = df_sum[
         (df_sum["total_clips"] >= 25) &
-        (df_sum["n_authors"] >= 5) &
-        (df_sum["q_A_B_C"] >= 20)
+        (df_sum["n_authors"] >= 5)
     ].copy()
 
     print(f"[+] Jumlah total spesies burung yang terekam di Indonesia: {df_sum['scientific_name'].nunique():,} spesies")
-    print(f"[+] Spesies yang memenuhi ambang kelayakan (Klip >= 25, Author >= 5, Kualitas A-C >= 20): {len(df_eligible)} spesies")
+    print(f"[+] Spesies yang memenuhi ambang kelayakan (Klip >= 25, Perekam >= 5): {len(df_eligible)} spesies")
 
     # Ranking kandidat: urutkan berdasarkan keragaman author independen dan volume klip
     # Prioritaskan spesies yang tersebar luas (termasuk ada rekaman di Sumatera)

@@ -92,16 +92,12 @@ def main():
     with open(RAW_JSON, "r", encoding="utf-8") as f:
         raw_records = json.load(f)
 
-    # 3. Filter raw records untuk burung non-target dengan rating valid
+    # 3. Kelompokkan rekaman dari spesies di luar daftar target
     print("[*] Mengelompokkan rekaman non-target...")
     species_to_records = {}
     for r in raw_records:
         sci = f"{r.get('gen', '')} {r.get('sp', '')}".strip().lower()
         if not sci or sci in target_scis:
-            continue
-        q = r.get("q", "")
-        # Filter rating A, B, C (setara >= 3.0)
-        if q not in ["A", "B", "C"]:
             continue
         if sci not in species_to_records:
             species_to_records[sci] = []

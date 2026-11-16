@@ -1,0 +1,8 @@
+{
+  "status": "PASS_WITH_E4_FIELD_LIMITATION",
+  "e2_known_rows": 6220,
+  "e4_known_rows": 100764,
+  "unknown_rows": 6200,
+  "selected_cases": 120,
+  "e4_limitation": "Top-1 identity, class margins, and acoustic features are unavailable in E4 raw and not inferred."
+}
