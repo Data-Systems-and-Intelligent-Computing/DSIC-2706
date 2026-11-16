@@ -1,6 +1,6 @@
 # Template TA LaTeX sampai Bab III
 
-**Status 7 November 2026:** BAB I telah ditulis; BAB II memuat penelitian terdahulu dan teori hingga 2.13; BAB III berisi kerangka, termasuk bagian diagram alir, tanpa uraian metodologi. Daftar pustaka dibuat dari sumber yang dikutip. Judul dan naskah masih untuk pembahasan bersama pembimbing. Lihat [draf PDF gabungan](Draf_Skripsi.pdf); PDF ini adalah salinan hasil kompilasi, sedangkan `build/` tetap lokal.
+**Status 16 November 2026:** BAB I telah ditulis. BAB II memuat penelitian terdahulu dan teori hingga 2.13. Draf BAB III memuat deskripsi penelitian, sumber dan variabel data, diagram alir, serta uraian pengumpulan data. Judul dan naskah masih untuk pembahasan bersama pembimbing.
 
 Dokumen ini memakai satu `main.tex` yang memanggil halaman awal dan berkas setiap bab. Gaya draf A4 mengikuti contoh TA Sains Data pada [Repository ITERA](https://repo.itera.ac.id/depan/submission/SB2604150015). Struktur halaman pengesahan dan pernyataan dilengkapi dengan adaptasi [contoh LaTeX ITERA versi 2026.1](https://github.com/rdhnk/Latex-TA-IF-ITERA/tree/v2026.1). Sumber dan batas penyesuaiannya dicatat pada [catatan halaman awal](notes/FORMAT_HALAMAN_AWAL_ITERA_2026-11-04.md); adaptasi ini belum diklaim sebagai template resmi Fakultas Sains.
 
@@ -9,13 +9,13 @@ Dokumen ini memakai satu `main.tex` yang memanggil halaman awal dan berkas setia
 - `halaman_awal/`: sampul, halaman judul, pengesahan, orisinalitas, persetujuan publikasi, abstrak/abstract, motto, persembahan, dan kata pengantar.
 - `chapters/bab1.tex`: Pendahuluan.
 - `chapters/bab2.tex`: Tinjauan Pustaka; tabel 2.1 memuat lima studi dan teori ditulis hingga 2.13.
-- `chapters/bab3.tex`: kerangka Metodologi Penelitian dengan bagian data, diagram alir, tahapan, dan jadwal; uraian belum ditulis.
+- `chapters/bab3.tex`: Metodologi Penelitian dengan [diagram alir utama](../figures/Diagram%20Utama.drawio.png) dan [peta lokasi rekaman](../figures/Gambar/peta_rekaman_xenocanto.png).
 
 **Status lokal 4 November 2026:** dokumen memakai XeLaTeX, `fontspec`, dan Times New Roman. BAB I memuat Latar Belakang, lima Rumusan Masalah, lima Tujuan yang berpadanan, dan delapan Batasan Penelitian, dengan istilah pencarian rekaman yang telah dirapikan. Tujuan dan batasan mengikuti evaluasi campuran aditif terkontrol dan diagnostik yang telah dilakukan. BAB II bagian 2.1 berisi tabel lima jurnal dan bagian 2.2 masih kerangka. Atas instruksi pengguna, kerangka BAB III dirinci menjadi tiga subbab utama dan 12 sub-subbab tanpa uraian; isinya dilanjutkan setelah instruksi berikutnya.
 
 Halaman pengesahan dan pernyataan kini berisi template dengan kolom isian. Identitas dosen, tanggal, tanda tangan, dan foto masih berupa isian. Sesuai arahan terbaru, abstrak/abstract, motto, persembahan, dan kata pengantar hanya memuat judul halaman; isinya ditunda. Pembaruan 5 November mengisi tabel 2.1 dan menambahkan entri Ghani (2025) yang artikelnya sudah ada pada koleksi. `references.bib` kini memuat 18 entri; 11 sumber dikutip pada BAB I–II. `main.tex` mencetak DAFTAR PUSTAKA dengan gaya numerik `unsrt`: nomor mengikuti urutan kemunculan sitasi pertama, dan sumber yang dikutip ulang tetap memakai nomor yang sama. Entri yang belum dikutip tidak dipaksakan muncul pada daftar pustaka tercetak. Bab IV dan seterusnya belum dibuat. Direktori `build/` tetap lokal.
 
-Untuk membaca, gunakan [draf PDF gabungan](Draf_Skripsi.pdf), yang memuat halaman awal, BAB I–II, kerangka BAB III, dan daftar pustaka. PDF BAB I yang sudah ada dipertahankan sebagai ekspor terdahulu dan tidak menjadi keluaran utama lagi.
+[Draf PDF gabungan](Draf_Skripsi.pdf) dan PDF BAB I merupakan ekspor terdahulu. Untuk melihat revisi terbaru, kompilasi `main.tex`.
 
 Di Antigravity dengan LaTeX Workshop/MiKTeX, buka `main.tex` sebagai dokumen utama dan jalankan recipe **XeLaTeX + BibTeX + XeLaTeX x2**. Pengaturan lokal disediakan pada folder `paper/.vscode/` dan `template_ta_latex/.vscode/`, sehingga berlaku saat salah satu folder tersebut dibuka sebagai workspace. Penanda root pada `bab1.tex` mengarahkan build ke `main.tex`.
 

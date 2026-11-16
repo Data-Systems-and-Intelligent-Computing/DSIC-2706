@@ -7,6 +7,7 @@
 \usepackage{geometry}
 \usepackage{setspace}
 \usepackage{graphicx}
+\graphicspath{{../figures/}}
 \usepackage{float}
 \usepackage{array}
 \usepackage{longtable}
@@ -23,11 +24,25 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
 
-% Jarak gambar terhadap teks dibuat seragam untuk gambar mengambang dan [H].
-\setlength{\textfloatsep}{6pt plus 2pt minus 2pt}
-\setlength{\intextsep}{6pt plus 2pt minus 2pt}
-% Gunakan pada awal setiap gambar agar jarak atas konsisten.
-\newcommand{\jarakSebelumGambar}{\vspace*{6pt}}
+% Jarak gambar dan tabel isi mengikuti jarak paragraf ke judul Tabel 3.2.
+\makeatletter
+\newenvironment{gambarPenelitian}{%
+  \setlength{\intextsep}{10pt}%
+  \begin{figure}[H]
+  \centering
+  \vspace*{4pt}%
+  \long\def\@makecaption##1##2{%
+    \vskip15.7pt
+    \nointerlineskip
+    {\setlength{\parskip}{0pt}\setstretch{1.1}\centering ##1: ##2\par}%
+  }%
+}{\end{figure}\nointerlineskip}
+\makeatother
+
+\newenvironment{jarakTabelPenelitian}{%
+  \setlength{\LTpre}{12pt}%
+  \setlength{\LTpost}{9.5pt}%
+}{\nointerlineskip}
 
 % Keterangan simbol dibuat rapat dan seragam setelah setiap persamaan.
 \newenvironment{keteranganRumus}{%
@@ -191,7 +206,7 @@
 
 % Logo kampus
 \newcommand{\logoKampus}{%
-  \IfFileExists{Gambar/png_likkqg_5387.png}{%
+  \IfFileExists{../figures/Gambar/png_likkqg_5387.png}{%
     \includegraphics[height=4.2cm,keepaspectratio]
       {Gambar/png_likkqg_5387.png}%
   }{%

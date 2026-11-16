@@ -1,33 +1,313 @@
 % !TeX root = ../main.tex
 \chapter{METODOLOGI PENELITIAN}
-% Kerangka saja; uraian, diagram, tabel, dan rumus ditambahkan pada tahap berikutnya.
+% Bagian 3.1 telah diisi; uraian bagian berikutnya ditambahkan secara bertahap.
 
-\section{Data Penelitian}
+\section{Deskripsi Penelitian}
 
-\subsection{Data Rekaman Suara Burung}
-% Sumber Xeno-Canto, 20 label spesies, metadata, dan unit rekaman aktif.
-% Bedakan persebaran spesies dari negara asal tiap rekaman.
+Penelitian ini menggunakan pendekatan kuantitatif untuk membandingkan ketahanan tiga representasi audio, yaitu MFCC, PANNs CNN14, dan BirdNET, dalam pencarian rekaman suara burung. Ketiganya mengubah rekaman menjadi kumpulan nilai yang digunakan untuk mengukur kemiripan suara. PANNs CNN14 dan BirdNET digunakan sebagai model pralatih tanpa pembaruan bobot, sedangkan MFCC dihitung sebagai fitur akustik. Penelitian ini juga menggunakan vektor acak berdasarkan identitas rekaman sebagai kontrol pembanding. Pencarian dilakukan dengan membandingkan rekaman contoh atau kueri terhadap kumpulan rekaman referensi, lalu mengurutkan hasil berdasarkan kemiripannya.
 
-\subsection{Data Derau Lapangan ITERA}
-% Lima lokasi, proses perekaman, dan peran bank derau pada eksperimen.
-% Bedakan pool pencampuran dari derau yang digunakan sebagai kontrol di luar target.
+Untuk menguji ketahanan pencarian tersebut, rekaman burung dari Xeno-Canto digunakan sebagai kueri dan dicampur dengan derau lapangan Itera pada beberapa tingkat SNR. Kueri yang sama diuji tanpa dan dengan penambahan derau, sementara kumpulan referensi tetap digunakan. Kualitas hasil dinilai berdasarkan kesesuaian label spesies, dengan mAP@10 sebagai ukuran utama. Pengujian juga mencakup penerimaan kueri berdasarkan ambang kemiripan, perbandingan derau dari lima lokasi, serta penelaahan kasus kegagalan. Analisis tambahan terhadap komposisi lokasi dilakukan secara eksploratif untuk melihat perubahan kestabilan hasil.
 
-\subsection{Kriteria Pemilihan dan Pembagian Data}
-% Galeri, kueri, kalibrasi, dan kontrol di luar target mengikuti manifes aktif.
-% Jelaskan pemisahan perekam dan pencegahan kebocoran data.
+\section{Data dan Variabel Penelitian}
 
-\section{Diagram Alir Penelitian}
-% Diagram alir akan disusun berdasarkan data, tahapan, dan eksperimen yang benar-benar dilakukan.
-% Bagian ini masih berupa kerangka; gambar dan penjelasan belum ditambahkan.
+Penelitian ini menggunakan rekaman suara burung dari Xeno-Canto dan rekaman derau lapangan dari Itera. Rekaman burung target menyediakan referensi dan kueri untuk mengukur kualitas pencarian. Rekaman derau digunakan untuk menyiapkan kondisi berderau. Untuk menguji keputusan penerimaan kueri, penelitian juga menggunakan rekaman burung di luar daftar spesies target dan sebagian rekaman derau sebagai kontrol.
+
+\subsection{Sumber dan Karakteristik Data}
+
+Data rekaman burung target diambil dari situs resmi bernama Xeno-Canto~\cite{xenocantoArchive} melalui pencarian spesies yang hanya berada di negara Indonesia. Pada proses penyaringan data, setiap spesies harus memiliki minimal 25 rekaman dari lima perekam yang berbeda. Hal ini dapat membantu untuk memastikan setiap spesies dapat terwakili di galeri referensi, data kalibrasi, dan data uji dengan menggunakan data rekaman yang berbeda.
+
+Dari hasil kurasi, penelitian ini menggunakan 20 spesies burung sebagai spesies target. Identitas perekam dicatat dan setiap berkas diperiksa untuk memastikan audionya dapat dibaca. Pemeriksaan SHA-256 digunakan untuk mencari berkas yang memiliki suara atau isi yang identik. Total data akhir berisi 1.216 rekaman sebagai data target dengan 111 nama perekam unik yang tersedia pada Tabel~\ref{tab:data-spesies}.
+
+\begin{jarakTabelPenelitian}
+\setstretch{1.2}
+\setlength{\tabcolsep}{3pt}
+\setlength{\parskip}{0pt}
+\setlength{\emergencystretch}{2em}
+\makeatletter
+\def\LT@makecaption#1#2#3{%
+  \LT@mcol\LT@cols c{\hbox to\z@{\hss\parbox[t]\LTcapwidth{%
+    \reset@font\bfseries
+    \sbox\@tempboxa{#1{#2: }#3}%
+    \ifdim\wd\@tempboxa>\hsize #1{#2: }#3%
+    \else \hbox to\hsize{\hfil\box\@tempboxa\hfil}\fi
+    \endgraf\vskip6pt}%
+  \hss}}}
+\makeatother
+\begin{longtable}{@{}>{\centering\arraybackslash}p{0.75cm}>{\raggedright\arraybackslash}p{3.9cm}>{\centering\arraybackslash}p{2.1cm}>{\raggedright\arraybackslash}p{3.4cm}>{\centering\arraybackslash}p{1.5cm}@{}}
+\caption{Data Rekaman Target Xeno-Canto}\label{tab:data-spesies}\\
+\hline
+\textbf{No.} & \multicolumn{1}{c}{\textbf{Label spesies}} & \textbf{Contoh ID} & \multicolumn{1}{c}{\textbf{Perekam contoh}} & \textbf{Jumlah} \\
+\hline
+\endfirsthead
+\multicolumn{5}{c}{\textbf{\tablename~\thetable: Data Rekaman Target Xeno-Canto (lanjutan)}}\\[3pt]
+\hline
+\textbf{No.} & \multicolumn{1}{c}{\textbf{Label spesies}} & \textbf{Contoh ID} & \multicolumn{1}{c}{\textbf{Perekam contoh}} & \textbf{Jumlah} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+1 & \textit{Aegithina tiphia} & XC1003838 & Lucas-Chen & 39 \\
+2 & \textit{Brachypteryx leucophris} & XC103157 & Colin Trainor & 66 \\
+3 & \textit{Brachypteryx montana} & XC113308 & Peter Collaerts & 40 \\
+4 & \textit{Cacomantis sepulcralis} & XC105141 & Colin Trainor & 85 \\
+5 & \textit{Caprimulgus affinis} & XC105677 & Kevin Darras & 31 \\
+6 & \textit{Caprimulgus macrurus} & XC1000904 & Untung Sarmawi & 47 \\
+7 & \textit{Cinnyris jugularis} & XC1029902 & Kelle Moreau & 123 \\
+8 & \textit{Cuculus lepidus} & XC1048038 & Untung Sarmawi & 42 \\
+9 & \textit{Culicicapa ceylonensis} & XC115271 & Frank Lambert & 38 \\
+10 & \textit{Dicrurus hottentottus} & XC1018479 & Nick Brown & 91 \\
+11 & \textit{Ducula aenea} & XC1075681 & Richard E. Webster & 45 \\
+12 & \textit{Horornis vulcanius} & XC145300 & Heru Cahyono & 48 \\
+13 & \textit{Malacocincla sepiaria} & XC1074018 & Panji Gusti Akbar & 68 \\
+14 & \textit{Orthotomus ruficeps} & XC1003648 & Lucas-Chen & 30 \\
+15 & \textit{Phyllergates cucullatus} & XC1000483 & Untung Sarmawi & 137 \\
+16 & \textit{Pitta sordida} & XC1029886 & Kelle Moreau & 62 \\
+17 & \textit{Pnoepyga pusilla} & XC1076302 & Jelle Scharringa & 105 \\
+18 & \textit{Pycnonotus aurigaster} & XC1003835 & Lucas-Chen & 44 \\
+19 & \textit{Spilornis cheela} & XC143550 & Heru Cahyono & 35 \\
+20 & \textit{Todiramphus chloris} & XC1003705 & Lucas-Chen & 40 \\
+\hline
+\noalign{\vskip2pt}
+\multicolumn{4}{@{}l}{\textbf{Total rekaman}} & \textbf{1.216} \\[2pt]
+\end{longtable}
+\end{jarakTabelPenelitian}
+
+Persebaran dari ke-20 spesies tersebut dapat dibuktikan pada peta yang telah disajikan pada Gambar~\ref{fig:lokasi-data-burung} untuk memudahkan dalam identifikasi lokasi dari masing-masing spesies sebagai berikut.  
+
+\begin{gambarPenelitian}
+    \includegraphics[width=\linewidth]{Gambar/peta_rekaman_xenocanto.png}
+    \caption[Lokasi rekaman burung berdasarkan metadata]{Lokasi rekaman burung berdasarkan metadata.\\ Koordinat dari Xeno-Canto dan peta dasar dari Natural Earth~\cite{xenocantoArchive,naturalearth2026countries}}
+    \label{fig:lokasi-data-burung}
+\end{gambarPenelitian}
+
+Untuk menguji kualitas pencarian saat kueri terganggu suara latar, penelitian menggunakan 1.799 berkas derau yang direkam dengan AudioMoth di lima lokasi Itera. Setiap lokasi mewakili lingkungan berbeda, yaitu lingkungan aktivitas manusia, lingkungan perairan, dan lingkungan yang mewakili alam liar atau area hutan.  
+
+\begin{jarakTabelPenelitian}
+\setstretch{1.2}
+\setlength{\tabcolsep}{5pt}
+\setlength{\parskip}{0pt}
+\makeatletter
+\def\LT@makecaption#1#2#3{%
+  \LT@mcol\LT@cols c{\hbox to\z@{\hss\parbox[t]\LTcapwidth{%
+    \reset@font\bfseries
+    \sbox\@tempboxa{#1{#2: }#3}%
+    \ifdim\wd\@tempboxa>\hsize #1{#2: }#3%
+    \else \hbox to\hsize{\hfil\box\@tempboxa\hfil}\fi
+    \endgraf\vskip6pt}%
+  \hss}}}
+\makeatother
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{3.4cm}>{\centering\arraybackslash}p{3.2cm}>{\centering\arraybackslash}p{3.2cm}>{\centering\arraybackslash}p{1.5cm}@{}}
+\caption{Data Derau pada Lima Lokasi Itera}\label{tab:data-derau}\\
+\hline
+\multicolumn{1}{c}{\textbf{Lokasi}} & \textbf{Tanggal pertama} & \textbf{Tanggal terakhir} & \textbf{Jumlah} \\
+\hline
+\endfirsthead
+\multicolumn{4}{c}{\textbf{\tablename~\thetable\ (lanjutan)}}\\[3pt]
+\hline
+\multicolumn{1}{c}{\textbf{Lokasi}} & \textbf{Tanggal pertama} & \textbf{Tanggal terakhir} & \textbf{Jumlah} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+Kebun Raya & 21/09/2026 & 07/10/2026 & 359 \\
+Embung F & 20/09/2026 & 04/10/2026 & 360 \\
+Gedung F & 23/09/2026 & 01/10/2026 & 360 \\
+Masjid At-Tanwir & 18/09/2026 & 02/10/2026 & 360 \\
+Sekitar GKU 1 & 30/09/2026 & 05/10/2026 & 360 \\
+\hline
+\noalign{\vskip2pt}
+\multicolumn{3}{@{}l}{\textbf{Total berkas}} & \textbf{1.799} \\[2pt]
+\end{longtable}
+\end{jarakTabelPenelitian}
+
+Dari 1.799 berkas derau Itera pada Tabel~\ref{tab:data-derau}, 1.528 berkas digunakan untuk menambahkan suara latar pada kueri burung dan 271 berkas disisihkan sebagai kueri kontrol. Kontrol derau ini digunakan untuk melihat apakah sistem keliru menerima rekaman lingkungan. Jenis kontrol lainnya adalah 272 rekaman burung dari Xeno-Canto~\cite{xenocantoArchive} yang spesiesnya tidak ada dalam galeri. Rekaman tersebut digunakan untuk melihat apakah sistem keliru menerima burung di luar 20 spesies target. Jumlah rekaman dari kedua jenis kontrol ditunjukkan pada Tabel~\ref{tab:data-kontrol}.
+\begingroup
+\setlength{\intextsep}{10pt}
+\begin{table}[H]
+\centering
+\setstretch{1.2}
+\setlength{\tabcolsep}{4pt}
+\makeatletter
+\long\def\@makecaption#1#2{%
+  {\centering\bfseries #1: #2\par}%
+  \vskip6pt
+}
+\makeatother
+\caption{Rekaman Kontrol di Luar Target}\label{tab:data-kontrol}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{4.6cm}*{3}{>{\centering\arraybackslash}p{2.1cm}}@{}}
+\hline
+\multicolumn{1}{c}{\textbf{Jenis kontrol}} & \textbf{Kalibrasi} & \textbf{Pengujian} & \textbf{Total} \\
+\hline
+Burung non-target & 117 & 155 & 272 \\
+Derau lingkungan Itera & 116 & 155 & 271 \\
+\hline
+\noalign{\vskip2pt}
+\textbf{Total rekaman} & \textbf{233} & \textbf{310} & \textbf{543} \\[2pt]
+\hline
+\end{tabular}
+\end{table}
+\endgroup
+
+Rekaman kontrol pada kolom kalibrasi digunakan bersama rekaman target untuk menentukan ambang kemiripan. Rekaman pada kolom pengujian digunakan untuk mengukur seberapa sering kueri kontrol masih diterima ketika ambang tersebut diterapkan.
+
+Kandidat burung non-target berasal dari spesies yang tidak tercakup dalam 20 spesies target. Pada seleksi awal, spesies yang memiliki minimal empat rekaman di Xeno-Canto diurutkan dari yang jumlah rekamannya paling banyak. Data akhir memuat 272 rekaman dari 69 spesies. Nama spesies dan jumlah rekaman yang digunakan disajikan pada Tabel~\ref{tab:spesies-nontarget}.
+
+\begin{jarakTabelPenelitian}
+\setstretch{1.1}
+\setlength{\tabcolsep}{3pt}
+\setlength{\parskip}{0pt}
+\begin{longtable}{@{}clc@{\hspace{10pt}}clc@{}}
+\caption{Spesies Burung Non-Target dan Jumlah Rekaman}\label{tab:spesies-nontarget}\\
+\hline
+\textbf{No.} & \multicolumn{1}{c}{\textbf{Spesies}} & \textbf{Jumlah} &
+\textbf{No.} & \multicolumn{1}{c}{\textbf{Spesies}} & \textbf{Jumlah} \\
+\hline
+\endfirsthead
+\multicolumn{6}{c}{\textbf{\tablename~\thetable\ (lanjutan)}}\\[3pt]
+\hline
+\textbf{No.} & \multicolumn{1}{c}{\textbf{Spesies}} & \textbf{Jumlah} &
+\textbf{No.} & \multicolumn{1}{c}{\textbf{Spesies}} & \textbf{Jumlah} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+1 & \textit{Accipiter hiogaster} & 4 & 36 & \textit{Melidora macrorrhina} & 4 \\
+2 & \textit{Actenoides monachus} & 4 & 37 & \textit{Myiagra alecto} & 4 \\
+3 & \textit{Alcippe pyrrhoptera} & 4 & 38 & \textit{Myiagra galeata} & 4 \\
+4 & \textit{Amaurornis moluccana} & 4 & 39 & \textit{Napothera epilepidota} & 4 \\
+5 & \textit{Aplonis metallica} & 4 & 40 & \textit{Ninox ios} & 4 \\
+6 & \textit{Arses telescopthalmus} & 4 & 41 & \textit{Origma murina} & 4 \\
+7 & \textit{Cacatua galerita} & 4 & 42 & \textit{Oriolus phaeochromus} & 4 \\
+8 & \textit{Centropus celebensis} & 4 & 43 & \textit{Orthotomus sepium} & 4 \\
+9 & \textit{Corvus enca} & 4 & 44 & \textit{Otus magicus} & 4 \\
+10 & \textit{Corvus typicus} & 4 & 45 & \textit{Otus manadensis} & 4 \\
+11 & \textit{Culicicapa helianthea} & 4 & 46 & \textit{Pachycephala fulvotincta} & 4 \\
+12 & \textit{Cyanoderma melanothorax} & 4 & 47 & \textit{Paradisaea minor} & 4 \\
+13 & \textit{Cyornis omissus} & 4 & 48 & \textit{Paradisaea rubra} & 4 \\
+14 & \textit{Dicrurus bracteatus} & 4 & 49 & \textit{Pellorneum celebense} & 1 \\
+15 & \textit{Dicrurus paradiseus} & 4 & 50 & \textit{Philemon novaeguineae} & 4 \\
+16 & \textit{Diphyllodes magnificus} & 4 & 51 & \textit{Phylloscopus grammiceps} & 4 \\
+17 & \textit{Diphyllodes respublica} & 4 & 52 & \textit{Phylloscopus poliocephalus} & 4 \\
+18 & \textit{Ducula basilica} & 4 & 53 & \textit{Phylloscopus trivirgatus} & 4 \\
+19 & \textit{Eclectus roratus} & 4 & 54 & \textit{Pitta concinna} & 4 \\
+20 & \textit{Eudynamys melanorhynchus} & 4 & 55 & \textit{Pitta maxima} & 4 \\
+21 & \textit{Gallus varius} & 4 & 56 & \textit{Poecilodryas hypoleuca} & 4 \\
+22 & \textit{Geoffroyus geoffroyi} & 4 & 57 & \textit{Psilopogon armillaris} & 4 \\
+23 & \textit{Geokichla peronii} & 4 & 58 & \textit{Ptilinopus melanospilus} & 4 \\
+24 & \textit{Gypsophila rufipectus} & 4 & 59 & \textit{Ptilinopus viridis} & 3 \\
+25 & \textit{Hypothymis puella} & 4 & 60 & \textit{Rhipidura dryas} & 4 \\
+26 & \textit{Hypsipetes longirostris} & 4 & 61 & \textit{Rhipidura leucophrys} & 4 \\
+27 & \textit{Leptocoma aspasia} & 4 & 62 & \textit{Rhipidura rufiventris} & 4 \\
+28 & \textit{Lichmera squamata} & 4 & 63 & \textit{Rhyticeros plicatus} & 4 \\
+29 & \textit{Locustella castanea} & 4 & 64 & \textit{Tanysiptera galatea} & 4 \\
+30 & \textit{Lycocorax pyrrhopterus} & 4 & 65 & \textit{Tesia superciliaris} & 4 \\
+31 & \textit{Lyncornis macrotis} & 4 & 66 & \textit{Todiramphus australasia} & 4 \\
+32 & \textit{Macropygia amboinensis} & 4 & 67 & \textit{Toxorhamphus novaeguineae} & 4 \\
+33 & \textit{Macropygia doreya} & 4 & 68 & \textit{Zosterops atrifrons} & 4 \\
+34 & \textit{Malia grata} & 4 & 69 & \textit{Zosterops japonicus} & 4 \\
+35 & \textit{Megapodius freycinet} & 4 &  &  &  \\
+\hline
+\multicolumn{5}{@{}l}{\textbf{Total rekaman}} & \textbf{272} \\
+\end{longtable}
+\end{jarakTabelPenelitian}
+
+\subsection{Definisi Operasional Variabel}
+
+Rekaman burung dari Xeno-Canto dan derau lapangan Itera digunakan untuk membandingkan kinerja representasi audio pada kondisi acuan dan berderau. Pada setiap kondisi, semua representasi dibandingkan menggunakan kueri dan galeri referensi yang sama. Kondisi berderau dibedakan berdasarkan tingkat SNR dan profil derau dari lima lokasi Itera. Tabel~\ref{tab:variabel-penelitian} menjelaskan cara setiap variabel ditetapkan atau diukur.
+
+\begin{jarakTabelPenelitian}
+\setstretch{1.2}
+\setlength{\tabcolsep}{4pt}
+\addtolength{\LTpre}{2.5pt}
+\setlength{\parskip}{0pt}
+\setlength{\emergencystretch}{2em}
+\makeatletter
+\def\LT@makecaption#1#2#3{%
+  \LT@mcol\LT@cols c{\hbox to\z@{\hss\parbox[t]\LTcapwidth{%
+    \reset@font\bfseries
+    \sbox\@tempboxa{#1{#2: }#3}%
+    \ifdim\wd\@tempboxa>\hsize #1{#2: }#3%
+    \else \hbox to\hsize{\hfil\box\@tempboxa\hfil}\fi
+    \endgraf\vskip6pt}%
+  \hss}}}
+\makeatother
+\begin{longtable}{@{}p{3.4cm}p{\dimexpr\linewidth-3.4cm-2\tabcolsep\relax}@{}}
+\caption{Definisi Operasional Variabel Penelitian}\label{tab:variabel-penelitian}\\
+\hline
+\multicolumn{1}{c}{\textbf{Variabel}} & \multicolumn{1}{c}{\textbf{Definisi operasional}} \\
+\hline
+\endfirsthead
+\multicolumn{2}{c}{\textbf{\tablename~\thetable: Definisi Operasional Variabel Penelitian (lanjutan)}}\\[3pt]
+\hline
+\multicolumn{1}{c}{\textbf{Variabel}} & \multicolumn{1}{c}{\textbf{Definisi operasional}} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+Representasi audio & MFCC, PANNs CNN14, dan BirdNET menghasilkan vektor fitur untuk pencarian. Vektor acak yang dibentuk dari identitas rekaman digunakan sebagai pembanding. \\[6pt]
+Tingkat derau & Kueri diuji pada kondisi acuan dan setelah ditambah derau pada SNR $+20$, $+10$, $0$, dan $-5$ dB. \\[6pt]
+Profil derau lokasi & Campuran dari lima lokasi Itera dibandingkan pada SNR yang sama. Setiap kombinasi lokasi dan SNR diuji dengan empat ulangan pemilihan segmen derau. \\[6pt]
+Kualitas pencarian & Hasil dinilai berdasarkan kesesuaian label spesies dengan kueri. Ukuran utamanya adalah mAP@10, dengan \textit{precision}@10, \textit{recall}@10, MRR, dan Top-1 sebagai ukuran pendukung. \\[6pt]
+Ketahanan dan kestabilan & Ketahanan diukur dari perubahan mAP@10 dan proporsi nilainya yang bertahan terhadap acuan. Kestabilan dinilai dari rentang mAP@10 antarlokasi pada SNR yang sama. \\[6pt]
+Penerimaan kueri & Kueri diterima jika skor kemiripan tertinggi mencapai ambang kalibrasi. Ukurannya adalah tingkat penerimaan kueri target dan tingkat penerimaan keliru kueri kontrol. \\[6pt]
+Pola kegagalan & Kasus dikelompokkan berdasarkan kesesuaian spesies pada peringkat pertama dan keputusan ambang. Penelaahan menggunakan selisih skor terhadap ambang, ciri spektral yang tersedia, dan audit pendengaran pada kasus terpilih. \\
+\end{longtable}
+\end{jarakTabelPenelitian}
+
+Perubahan kualitas pencarian diukur dengan membandingkan hasil pada kondisi berderau terhadap kondisi acuan. Pada kondisi acuan, kueri digunakan tanpa derau tambahan dan masih dapat mengandung suara latar dari rekaman asal. Keputusan menerima kueri dinilai menggunakan ambang hasil kalibrasi yang tetap selama pengujian.
 
 \section{Tahapan Penelitian}
 
-\subsection{Rancangan Eksperimen}
-% Pendekatan kuantitatif, variabel, kondisi acuan, kontrol, dan kelompok eksperimen.
-% Bedakan rancangan awal dari analisis eksploratif setelah hasil tersedia.
+Penelitian dimulai dengan menyeleksi dan membagi rekaman ke dalam kelompok sesuai perannya. Rekaman dari 20 spesies target digunakan untuk menyusun galeri referensi, menyiapkan kueri uji, dan menyediakan data kalibrasi. Rekaman derau dari lima lokasi Itera digunakan untuk membuat kueri berderau, sedangkan sebagian derau dan rekaman burung di luar spesies target digunakan sebagai kontrol. Setelah prapemrosesan audio, kueri uji disiapkan dalam kondisi acuan tanpa penambahan derau dan dalam kondisi berderau dengan variasi SNR dan lokasi. Fitur dari setiap kueri kemudian dibandingkan dengan fitur galeri untuk mengurutkan hasil pencarian berdasarkan kemiripan kosinus.
 
-\subsection{Perangkat Penelitian}
-% Perangkat perekaman serta perangkat keras/lunak sesuai bukti yang tersedia.
+Urutan hasil pencarian digunakan untuk menghitung mAP@10 dan metrik pendukung. Perbandingan dengan kondisi acuan menunjukkan besarnya perubahan kinerja dan proporsi kinerja yang bertahan setelah penambahan derau. Kinerja juga dibandingkan antarlokasi pada SNR yang sama. Selain menilai urutan hasil, penelitian menguji penerimaan kueri target dan penerimaan keliru kueri kontrol dengan ambang kemiripan yang ditentukan dari data kalibrasi terpisah dan dipertahankan selama pengujian. Kasus kegagalan kemudian dikelompokkan dan kasus terpilih ditelaah melalui audit pendengaran. Seluruh hasil tersebut digunakan untuk menjawab rumusan masalah. Rangkaian tahapannya ditunjukkan pada Gambar~\ref{fig:alur-penelitian}.
+
+\begin{gambarPenelitian}
+    \includegraphics[width=\linewidth,height=0.86\textheight,keepaspectratio]{Diagram Utama.drawio.png}
+    \caption{Diagram Alir Tahapan Penelitian}
+    \label{fig:alur-penelitian}
+\end{gambarPenelitian}
+
+\subsection{Pengumpulan Data}
+\label{subsec:pengumpulan-data}
+
+Pengumpulan rekaman burung target dimulai dengan menelusuri metadata Xeno-Canto menggunakan filter negara Indonesia~\cite{xenocantoArchive}. Metadata digunakan untuk mengelompokkan rekaman menurut spesies dan melihat jumlah rekaman serta perekam yang tersedia. Dari penelusuran tersebut, berkas audio untuk 20 spesies pada Tabel~\ref{tab:data-spesies} diunduh dalam format MP3. Identitas rekaman dan nama perekam dicatat, sedangkan berkas audio diperiksa untuk memastikan dapat dibaca dan untuk mengenali berkas dengan isi yang sama.
+
+Rekaman derau dikumpulkan secara langsung menggunakan AudioMoth di lima lokasi Itera pada Tabel~\ref{tab:data-derau}. Lokasi tersebut mencakup area bervegetasi, perairan, dan area dengan aktivitas manusia, sehingga rekaman memuat beragam suara latar. Sesi perekaman dijadwalkan sekitar satu jam dalam rentang pagi hingga sore. Di setiap lokasi, dua mode pemicu perekaman dikombinasikan dengan tiga tingkat penguatan (\textit{gain}), yaitu rendah, sedang, dan tinggi.
+
+\begingroup
+\setlength{\intextsep}{10pt}
+\begin{table}[H]
+\centering
+\setstretch{1.2}
+\setlength{\tabcolsep}{5pt}
+\makeatletter
+\long\def\@makecaption#1#2{%
+  {\centering\bfseries #1: #2\par}%
+  \vskip6pt
+}
+\makeatother
+\caption{Konfigurasi Perekaman Derau dengan AudioMoth}\label{tab:konfigurasi-audiomoth}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{4.2cm}*{2}{>{\centering\arraybackslash}p{3.9cm}}@{}}
+\hline
+\multicolumn{1}{c}{\textbf{Parameter}} & \textbf{Pemicu frekuensi} & \textbf{Pemicu amplitudo} \\
+\hline
+Penguatan & Rendah, sedang, tinggi & Rendah, sedang, tinggi \\
+Pengaturan frekuensi & Pusat 4{,}0 atau 4{,}1~kHz,\newline jendela 64 sampel & Filter \textit{high-pass}\newline 0{,}5~kHz \\
+Ambang pemicu & 0{,}1\% & 0{,}1\% \\
+Durasi minimum pemicu & 1 detik & 1 detik \\
+Jumlah berkas & 899 & 900 \\
+\hline
+\end{tabular}
+\end{table}
+\endgroup
+
+Penggunaan kedua mode memungkinkan kumpulan derau mencakup suara latar yang dipilih berdasarkan frekuensi maupun amplitudo. Pemicu frekuensi menyimpan segmen ketika respons sinyal pada pita di sekitar frekuensi pusat melampaui ambang. Pemicu amplitudo menyimpan segmen ketika amplitudo sinyal setelah penyaringan \textit{high-pass} melampaui ambang. Filter tersebut meredam komponen di bawah frekuensi batas. Setelah pemicu aktif, perangkat menyimpan segmen dengan durasi minimum sesuai pengaturan. Tingkat penguatan menentukan besarnya penguatan sinyal saat direkam dan dapat memengaruhi segmen yang mencapai ambang~\cite{oad2024audiomothmanual}.
+
+Kemudian, data di luar target dikumpulkan dari dua sumber. Rekaman burung di luar 20 spesies target ditelusuri pada arsip Xeno-Canto yang sama. Kandidat diurutkan menurut ketersediaan rekaman, lalu berkas diunduh dan diperiksa keterbacaannya. Selain itu, 271 berkas dari kumpulan derau Itera disisihkan sebagai kontrol berupa suara lingkungan. Kedua jenis rekaman digunakan untuk menguji apakah sistem keliru menerima kueri di luar target. Pembagian rekaman menurut perannya dijelaskan pada tahap berikutnya.
+
+\subsection{Pemilihan dan Pembagian Data}
+\label{subsec:pemilihan-data}
 
 \subsection{Prapemrosesan Audio}
 % Penyeragaman kanal, laju sampel, durasi, dan tingkat sinyal sesuai kode aktif.

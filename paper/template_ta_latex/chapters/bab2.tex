@@ -5,12 +5,11 @@
 Penelitian terdahulu yang berkaitan dengan representasi audio, gangguan suara, dan pencarian rekaman burung dirangkum pada Tabel~\ref{tab:penelitian-terdahulu}.
 
 % Ringkasan dan batas klaim: notes/SUMBER_TABEL_2_1_2026-11-05.md.
-\begingroup
+\begin{jarakTabelPenelitian}
 \setstretch{1.25}
+\addtolength{\LTpre}{-0.5pt}
 \setlength{\tabcolsep}{3pt}
 \setlength{\parskip}{0pt}
-\setlength{\LTpre}{18pt}
-\setlength{\LTpost}{12pt}
 \setlength{\emergencystretch}{2em}
 \renewcommand{\arraystretch}{1.0}
 % Penyesuaian caption hanya untuk tabel ini: tebal dan rapat ke garis atas.
@@ -77,7 +76,7 @@ Penelitian terdahulu yang berkaitan dengan representasi audio, gangguan suara, d
   & Ekstraksi MFCC dan klasifikasi menggunakan BiLSTM.
   & Penulis melaporkan akurasi klasifikasi sebesar 98\% pada data uji mereka. \\
 \end{longtable}
-\endgroup
+\end{jarakTabelPenelitian}
 
 \section{Bioakustik dan Vokalisasi Burung}
 
@@ -93,13 +92,11 @@ Sinyal audio digital merupakan representasi suara sebagai urutan nilai amplitudo
 
 Suara burung dapat berubah selama rekaman berlangsung, sehingga informasi frekuensi perlu diamati pada bagian-bagian waktu yang berbeda. Salah satu metode untuk memperoleh informasi tersebut adalah \textit{short-time Fourier transform} (STFT). Metode ini membagi sinyal menjadi bagian pendek atau \textit{frame}, mengalikan setiap bagian dengan fungsi jendela, kemudian menerapkan transformasi Fourier pada setiap bagian. Jendela digeser dengan jarak tertentu (\textit{hop length}) sehingga bagian yang berurutan dapat saling tumpang tindih~\cite{jeon2020stft}. Alur tersebut ditunjukkan pada Gambar~\ref{fig:alur-stft}.
 
-\begin{figure}[htbp]
-    \centering
-    \jarakSebelumGambar
+\begin{gambarPenelitian}
     \includegraphics[width=0.65\textwidth]{Gambar/jeon2020_stft.png}
     \caption[Alur analisis sinyal menggunakan STFT]{Alur analisis sinyal menggunakan STFT~\cite{jeon2020stft}}
     \label{fig:alur-stft}
-\end{figure}
+\end{gambarPenelitian}
 
 Menurut Jeon dkk., STFT dapat dinyatakan sebagai berikut~\cite{jeon2020stft}:
 \begin{equation}
@@ -167,13 +164,11 @@ Perbandingan daya sinyal terhadap daya derau dinyatakan sebagai \textit{signal-t
 
 SNR yang lebih besar menunjukkan daya sinyal lebih besar dibandingkan dengan daya derau. Pada SNR 0 dB, daya keduanya sama; pada SNR negatif, daya derau lebih besar daripada daya sinyal. Sebagai contoh, Chen dkk. menunjukkan perubahan tampilan sinyal dan spektrogram ketika SNR berubah dari 35 dB menjadi 0 dB~\cite{chen2023biotic}. Pada Gambar~\ref{fig:contoh-snr}, bagian A dan B menampilkan gelombang, sedangkan C dan D menampilkan spektrogramnya. Skala amplitudo pada bagian A dan B berbeda, sehingga tinggi gelombangnya tidak dibandingkan secara langsung.
 
-\begin{figure}[htbp]
-    \centering
-    \jarakSebelumGambar
+\begin{gambarPenelitian}
     \includegraphics[width=0.93\textwidth]{Gambar/chen2023_snr.png}
     \caption[Contoh sinyal dan spektrogram pada SNR berbeda]{Sinyal dan spektrogram pada SNR 0 dB dan 35 dB~\cite{chen2023biotic}}
     \label{fig:contoh-snr}
-\end{figure}
+\end{gambarPenelitian}
 
 Dalam penelitian ini, rekaman burung tanpa penambahan derau digunakan sebagai sinyal acuan, kemudian dicampur secara aditif dengan rekaman derau lapangan Itera pada SNR $+20$, $+10$, $0$, dan $-5$ dB. Daya derau yang ditambahkan disesuaikan terhadap daya sinyal acuan untuk memperoleh tingkat SNR yang ditentukan. Rekaman acuan tetap dapat mengandung suara latar asalnya, sehingga SNR tersebut menyatakan perbandingan terhadap derau Itera yang ditambahkan, bukan SNR vokalisasi murni. Kondisi tanpa penambahan derau digunakan sebagai pembanding untuk menilai perubahan hasil pencarian.
 
@@ -183,13 +178,11 @@ Dalam penelitian ini, rekaman burung tanpa penambahan derau digunakan sebagai si
 
 Proses ekstraksi MFCC dimulai dengan pembagian audio menjadi \textit{frame} dan penerapan fungsi jendela. Setiap \textit{frame} dianalisis menggunakan STFT, kemudian energinya dirangkum dalam sejumlah pita frekuensi menggunakan \textit{mel-filter bank}. Setelah operasi logaritma, \textit{discrete cosine transform} (DCT) menghasilkan koefisien MFCC. Peng dkk. menggambarkan tahapan tersebut bersama alur ekstraksi \textit{filter bank} (FBank) pada Gambar~\ref{fig:alur-mfcc}~\cite{peng2025birdfbank}.
 
-\begin{figure}[H]
-    \centering
-    \jarakSebelumGambar
+\begin{gambarPenelitian}
     \includegraphics[width=0.95\textwidth]{Gambar/peng2025_mfcc_fbank.png}
     \caption[Contoh tahapan ekstraksi MFCC dan FBank]{Contoh tahapan ekstraksi MFCC dan FBank dari Peng dkk.~\cite{peng2025birdfbank}}
     \label{fig:alur-mfcc}
-\end{figure}
+\end{gambarPenelitian}
 
 Gambar tersebut merupakan alur dalam penelitian Peng dkk. dan juga memuat pengurangan derau (\textit{denoising}) serta \textit{pre-emphasis}. Kedua tahap tersebut tidak diterapkan pada jalur MFCC penelitian ini. Skala mel mengikuti pendekatan pendengaran manusia, sehingga penggunaannya untuk suara burung tetap perlu dievaluasi sesuai data dan tugas yang diteliti~\cite{ghaffari2024frontends}.
 
