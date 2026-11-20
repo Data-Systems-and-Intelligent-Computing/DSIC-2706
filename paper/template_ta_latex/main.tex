@@ -10,6 +10,8 @@
 \graphicspath{{../figures/}}
 \usepackage{float}
 \usepackage{array}
+\usepackage{tabularx}
+\usepackage{amsmath}
 \usepackage{longtable}
 \usepackage{titlesec}
 \usepackage{tocloft}
@@ -55,16 +57,20 @@
 }{\end{table}\nointerlineskip}
 
 % Keterangan simbol dibuat rapat dan seragam setelah setiap persamaan.
-\newenvironment{keteranganRumus}{%
-  \par\begingroup
-  \setlength{\parskip}{0pt}%
-  \setlength{\topsep}{0pt}%
-  \setlength{\partopsep}{0pt}%
-  Keterangan:\par\nobreak
-  \begin{tabbing}%
-}{%
-  \end{tabbing}\endgroup\par\addvspace{6pt}%
-}
+\NewDocumentEnvironment{keteranganRumus}{+b}{%
+  \par\nopagebreak[3]\noindent
+  \begin{minipage}{\linewidth}
+  \setstretch{1.1}\setlength{\parskip}{0pt}%
+  \textnormal{Keterangan:}\par\nobreak\smallskip
+  \renewcommand{\arraystretch}{1.12}%
+  \noindent\hspace*{0.65cm}%
+  % Lebar kolom simbol mengikuti simbol terpanjang di blok ini.
+  \begin{tabularx}{\dimexpr\linewidth-0.65cm\relax}
+    {@{}l@{\hspace{0.35em}:\hspace{0.65em}}>{\raggedright\arraybackslash}X@{}}
+    #1
+  \end{tabularx}
+  \end{minipage}\par\addvspace{6pt}%
+}{}
 
 % Nomor BAB Romawi; nomor subbab tetap 1.1, 1.2, dan seterusnya.
 \renewcommand{\thechapter}{\Roman{chapter}}
