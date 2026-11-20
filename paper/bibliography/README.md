@@ -6,6 +6,27 @@ Diperiksa dan diperbarui pada **3 November 2026**. Pembaruan pustaka menambah en
 
 **Riwayat 27 Oktober 2026:** [status koreksi dan pencarian alternatif dua PDF](PEMERIKSAAN_REFERENSI_2026-10-27.md) mencatat 28 entri dan 26 PDF pada tanggal tersebut. **Pembaruan 3 November:** [enam artikel dan versi PDF yang diverifikasi](PEMERIKSAAN_REFERENSI_2026-11-03.md); jumlah pada tanggal tersebut 34 entri dan 32 PDF. Tersedia pula [paket belajar teori dan perhitungan](../../learning/PAKET_BELAJAR_UJIAN/README.md).
 
+## Persiapan landasan teori BAB II — 17 November 2026
+
+Dua artikel jurnal versi terbit ditambahkan untuk susunan BAB II yang direncanakan. Setelah pembaruan ini, CSV dan Excel memuat **57 entri**, dengan **55 PDF** dalam koleksi.
+
+- **2.8 Open-Set Recognition, ID 62.** You, Wu, dan Lee (2024) menjelaskan kelas suara yang dikenal dan tidak dikenal pada hlm. 1–2 dan Gambar 1. Dalam TA, konsep tersebut diterapkan pada penerimaan kueri berdasarkan skor kemiripan terhadap galeri tetap. Hassanzad dan Hajian-Tilaki tetap menjadi acuan pemilihan ambang dengan ROC dan indeks Youden. [Artikel Scientific Reports](https://doi.org/10.1038/s41598-023-50639-7) · [PDF](You_2024_Open_Set_Classification_of_Sound_Event.pdf).
+- **2.10 Kebocoran Data, Ketertelusuran, dan Reproduksibilitas, ID 63.** Kapoor dan Narayanan (2023), khususnya bagian L3.2, membahas ketergantungan antarbagian data dan pentingnya pembagian yang memperhitungkan unit terkait. Artikel juga membahas dokumentasi sebagai bagian dari pemeriksaan reproduksibilitas. Penerapannya pada TA dijelaskan melalui pemisahan berdasarkan perekam, pemeriksaan berkas identik, serta pencatatan manifes dan parameter eksperimen. [Artikel Patterns](https://doi.org/10.1016/j.patter.2023.100804) · [PDF](Kapoor_Narayanan_2023_Data_Leakage_Reproducibility.pdf).
+
+## Persiapan revisi BAB I dan Tabel 2.1 — 17 November 2026
+
+CSV dan Excel diselaraskan menjadi **55 entri**. Koleksi memuat **53 PDF**, termasuk satu PDF bagian awal dan abstrak tesis. Empat karya berikut disiapkan untuk penelaahan sebelum penulisan.
+
+| ID | Karya | Bahan |
+|---|---|---|
+| 2 | Bennovry dkk. (2025), klasifikasi suara burung di Way Kambas dengan ConvNeXt | [Prosiding Universitas Terbuka](https://conference.ut.ac.id/index.php/saintek/article/view/5073). PDF lokal identik dengan unduhan penerbit. |
+| 59 | Satria (2022), identifikasi suara burung di Sumatera dengan transfer learning | [Repositori ITB](https://digilib.itb.ac.id/gdl/view_data/implementasi-transfer-learning-pada-deep-neural-network-untuk-identifikasi-suara-burung-di-pulau-sumatera/) dan [PDF bagian awal dan abstrak](Satria_2022_Identifikasi_Suara_Burung_Sumatera_Abstrak_ITB.pdf). |
+| 60 | Gumilang dkk. (2025), klasifikasi suara katak dengan DenseNet dan MFCC | [Prosiding Universitas Terbuka](https://conference.ut.ac.id/index.php/saintek/article/view/5065) dan [PDF](Gumilang_2025_Klasifikasi_Suara_Katak_DenseNet_MFCC.pdf). Karya ini pernah dicatat dengan ID 4 dan dikoleksi kembali sebagai konteks bioakustik. |
+| 61 | Gultom dkk. (2025), klasifikasi suara nyamuk berbasis CNN | [Prosiding Universitas Terbuka](https://conference.ut.ac.id/index.php/saintek/article/view/5063) dan [PDF](Gultom_2025_Klasifikasi_Suara_Nyamuk_CNN.pdf). |
+
+- **BAB I.** Bennovry dkk. memberi contoh identifikasi suara burung dalam konteks Lampung, sedangkan Satria memberi konteks Sumatera. Kajian katak dan nyamuk disiapkan sebagai bahan pendukung bila dibutuhkan untuk pembuka umum. Fokus perbandingan ketahanan tiga representasi audio menjadi penutup latar belakang, lalu RQ lama 2–5 menjadi Rumusan Masalah 1–4.
+- **Tabel 2.1, baris 3.** Siapkan Bennovry dkk. (2025) untuk menggantikan Clark dkk. (2023) pada baris ini. Data berasal dari Xeno-Canto berdasarkan daftar 10 spesies di Way Kambas. Metodenya transfer learning ConvNeXt dengan mel-spektrogram dan augmentasi. Akurasi klasifikasi yang dilaporkan sebesar 71% pada 150 sampel uji. Rincian data ada di hlm. 640 dan hasil di Tabel 3 pada hlm. 648.
+
 ## Daftar aktif
 
 - [Tabel Excel](referensi_jurnal_modern.xlsx) dan [tabel CSV](referensi_jurnal_modern.csv) memuat **34 referensi** dengan isi yang sama. Dua puluh delapan baris lama dipertahankan; enam baris baru ditambahkan.

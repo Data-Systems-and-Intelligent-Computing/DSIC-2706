@@ -39,10 +39,20 @@
 }{\end{figure}\nointerlineskip}
 \makeatother
 
+\newlength{\jarakBawahTabel}
+\setlength{\jarakBawahTabel}{9.5pt}
+\newlength{\jarakSetelahSubbab}
+\setlength{\jarakSetelahSubbab}{\jarakBawahTabel}
+
 \newenvironment{jarakTabelPenelitian}{%
   \setlength{\LTpre}{12pt}%
-  \setlength{\LTpost}{9.5pt}%
+  \setlength{\LTpost}{\jarakBawahTabel}%
 }{\nointerlineskip}
+
+\newenvironment{tabelPenelitian}{%
+  \setlength{\intextsep}{\jarakBawahTabel}%
+  \begin{table}[H]%
+}{\end{table}\nointerlineskip}
 
 % Keterangan simbol dibuat rapat dan seragam setelah setiap persamaan.
 \newenvironment{keteranganRumus}{%
@@ -79,15 +89,22 @@
   {\thesection}
   {1em}
   {}
-% Kompensasi parskip agar judul ke kalimat pertama berjarak satu baris biasa.
-\titlespacing*{\section}{0pt}{10pt}{-\parskip}
+% Kompensasi parskip agar jarak setelah judul mengikuti acuan tabel.
+\titlespacing*{\section}{0pt}{10pt}{\jarakSetelahSubbab}
 
 \titleformat{\subsection}
   {\normalfont\bfseries\normalsize}
   {\thesubsection}
   {1em}
   {}
-\titlespacing*{\subsection}{0pt}{8pt}{-\parskip}
+\titlespacing*{\subsection}{0pt}{8pt}{\jarakSetelahSubbab}
+
+\titleformat{\subsubsection}
+  {\normalfont\bfseries\normalsize}
+  {\thesubsubsection}
+  {1em}
+  {}
+\titlespacing*{\subsubsection}{0pt}{8pt}{\jarakSetelahSubbab}
 
 % Daftar rapat: nomor sejajar margin kiri, baris lanjutan sejajar teks.
 \newenvironment{daftarBernomor}{%
@@ -283,6 +300,7 @@
 % Faktor baris eksplisit pada isi, mengikuti contoh visual pengguna.
 \setstretch{1.5}
 \setlength{\parskip}{6pt}
+\addtolength{\jarakSetelahSubbab}{-\parskip}
 \setlength{\abovedisplayskip}{12pt}
 \setlength{\abovedisplayshortskip}{12pt}
 \clubpenalties 2 10000 0
