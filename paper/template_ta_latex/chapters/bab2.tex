@@ -3,7 +3,7 @@
 
 \section{Penelitian Terdahulu}
 
-Penelitian ini membandingkan ketahanan tiga representasi audio terhadap derau pada pencarian rekaman burung berdasarkan kemiripan suara. Untuk menempatkan posisi penelitian, Tabel~\ref{tab:penelitian-terdahulu} merangkum studi terdahulu yang berkaitan dengan representasi audio pralatih, pencarian bioakustik, dan ketahanan terhadap derau.
+Tabel~\ref{tab:penelitian-terdahulu} merangkum lima penelitian yang menjadi acuan dalam membandingkan representasi audio, mencari rekaman burung berdasarkan kemiripan suara, dan menguji pengaruh derau. Setiap penelitian dirangkum berdasarkan data, metode, dan temuan utamanya.
 
 \begin{jarakTabelPenelitian}
 \setstretch{1.1}
@@ -18,31 +18,28 @@ Penelitian ini membandingkan ketahanan tiga representasi audio terhadap derau pa
     #1{#2: }#3\par\vskip6pt}%
   \hss}}}
 \makeatother
-\begin{longtable}{@{}>{\centering\arraybackslash}p{0.6cm}>{\raggedright\arraybackslash}p{1.9cm}>{\raggedright\arraybackslash}p{2.4cm}>{\raggedright\arraybackslash}p{2.6cm}>{\raggedright\arraybackslash}p{2.2cm}>{\raggedright\arraybackslash}p{2.5cm}@{}}
+\begin{longtable}{@{}>{\centering\arraybackslash}p{0.6cm}>{\raggedright\arraybackslash}p{4.3cm}>{\raggedright\arraybackslash}p{2.35cm}>{\raggedright\arraybackslash}p{2.9cm}>{\raggedright\arraybackslash}p{2.75cm}@{}}
 \caption{Penelitian Terdahulu yang Relevan}\label{tab:penelitian-terdahulu}\\
 \hline
-\textbf{No.} & \multicolumn{1}{c}{\textbf{Peneliti}} & \multicolumn{1}{c}{\textbf{Data}} & \textbf{Metode dan evaluasi} & \textbf{Temuan utama} & \textbf{Relevansi dan pembeda} \\
+\textbf{No.} & \textbf{Referensi} & \textbf{Data} & \textbf{Metode dan evaluasi} & \textbf{Temuan utama} \\
 \hline
 \endfirsthead
-\multicolumn{6}{c}{\textbf{\tablename~\thetable: Penelitian Terdahulu yang Relevan (lanjutan)}}\\[3pt]
+\multicolumn{5}{c}{\textbf{\tablename~\thetable: Penelitian Terdahulu yang Relevan (lanjutan)}}\\[3pt]
 \hline
-\textbf{No.} & \multicolumn{1}{c}{\textbf{Peneliti}} & \multicolumn{1}{c}{\textbf{Data}} & \textbf{Metode dan evaluasi} & \textbf{Temuan utama} & \textbf{Relevansi dan pembeda} \\
+\textbf{No.} & \textbf{Referensi} & \textbf{Data} & \textbf{Metode dan evaluasi} & \textbf{Temuan utama} \\
 \hline
 \endhead
 \hline
 \endlastfoot
-1 & Hamer dkk. (2023)~\cite{hamer2023birb} & Rekaman Xeno-Canto; benchmark BIRB mencakup banyak spesies & Retrieval bioakustik dengan embedding pralatih; cmAP sebagai metrik & Embedding pralatih mengungguli baseline non-pralatih pada retrieval & Acuan tugas retrieval bioakustik; TA menggunakan mAP@10 pada kueri berderau, bukan cmAP lintas-dataset \\[6pt]
-2 & Ghani dkk. (2023)~\cite{ghani2023embeddings} & Rekaman burung; beberapa dataset transfer & Perbandingan embedding BirdNET, PANNs, dan lainnya untuk klasifikasi transfer & Embedding khusus burung menghasilkan transfer yang lebih baik daripada audio umum & Dasar pemilihan representasi; TA mengukur kemiripan kosinus pada retrieval, bukan akurasi klasifikasi \\[6pt]
-3 & Ghaffari dan Devos (2024)~\cite{ghaffari2024frontends} & Rekaman burung dengan derau alami dan perkotaan & Evaluasi frontend audio terhadap ketahanan klasifikasi; normalisasi dan kompresi & Kompresi dan normalisasi frontend mempertahankan kinerja saat derau ditambahkan & Pembanding ketahanan terhadap derau; TA menguji retrieval dan beberapa tingkat SNR terkontrol, bukan klasifikasi \\[6pt]
-4 & Clark dkk. (2023)~\cite{clark2023soundscape} & Rekaman citizen science; soundscape beragam & Klasifikasi BirdNET pada komposisi soundscape berbeda & Suara manusia berkaitan dengan \textit{false positive}; derau angin dengan \textit{false negative} & Dasar pengujian profil derau lokasi; TA memakai campuran aditif terkontrol, bukan asosiasi observasional \\[6pt]
-5 & Fairbairn dkk. (2025)~\cite{fairbairn2025birdnet} & Rekaman perkotaan Eropa; pemantauan burung & Evaluasi BirdNET dengan ambang confidence berbeda & Pemilihan ambang memengaruhi keseimbangan presisi dan recall deteksi & Dasar kalibrasi ambang; TA menggunakan ambang kemiripan kosinus, bukan confidence klasifikator \\[6pt]
-6 & Kong dkk. (2020)~\cite{kong2020panns} & AudioSet; audio umum skala besar & PANNs CNN14 pralatih untuk klasifikasi audio; mAP pada AudioSet & CNN14 menghasilkan embedding 2.048 dimensi dengan kinerja klasifikasi tinggi & Asal representasi audio umum yang dipakai; TA menggunakan bobot tetap untuk embedding retrieval, bukan klasifikasi \\[6pt]
-7 & Kahl dkk. (2021)~\cite{kahl2021birdnet} & Rekaman burung Xeno-Canto & BirdNET untuk identifikasi burung; arsitektur deep learning & Model pralatih mengidentifikasi ratusan spesies burung & Asal representasi khusus burung; TA menggunakan embedding beku v2.4 untuk retrieval \\[6pt]
-8 & Allen-Ankins dkk. (2025)~\cite{allenankins2025retrieval} & Rekaman lapangan; audio panjang belum berlabel & BirdNET embedding untuk pencarian kelas baru; jarak Euclidean & Embedding BirdNET dapat menemukan suara baru dalam rekaman panjang & Acuan langsung retrieval embedding; TA membandingkan tiga representasi dengan kemiripan kosinus dan menguji ketahanan derau \\
+1 & \textit{BIRB: A Generalization Benchmark for Information Retrieval in Bioacoustics}\par Hamer dkk. (2023)~\cite{hamer2023birb} & Rekaman Xeno-Canto dan rekaman lingkungan. & Pencarian berdasarkan contoh suara. ROC-AUC dirangkum antarspesies menjadi cROC-AUC. & Kinerja pencarian berubah menurut kondisi perekaman dan spesies yang diuji. \\[6pt]
+2 & \textit{Global birdsong embeddings enable superior transfer learning for bioacoustic classification}\par Ghani dkk. (2023)~\cite{ghani2023embeddings} & Enam himpunan data bioakustik. & Klasifikasi linear menggunakan fitur tetap dari model khusus burung dan model audio umum. & Fitur BirdNET dan Perch memberikan hasil lebih baik daripada fitur model audio umum pada data uji. \\[6pt]
+3 & \textit{Implementasi Model Transfer Learning Arsitektur ConvNeXt untuk Klasifikasi Suara Burung di Taman Nasional Way Kambas}\par Bennovry dkk. (2025)~\cite{bennovry2025waykambas} & Rekaman Xeno-Canto untuk spesies burung yang terdapat di Way Kambas. & Klasifikasi spesies dengan ConvNeXt dan augmentasi data. & Model dengan augmentasi data mencapai akurasi 71\%. \\[6pt]
+4 & \textit{The use of BirdNET embeddings as a fast solution to find novel sound classes in audio recordings}\par Allen-Ankins dkk. (2025)~\cite{allenankins2025retrieval} & Contoh suara dan rekaman panjang tanpa label. & Fitur BirdNET dibandingkan menggunakan jarak Euclidean. & Satu contoh suara dapat digunakan untuk menemukan potongan rekaman yang serupa. \\[6pt]
+5 & \textit{On the role of audio frontends in bird species recognition}\par Ghaffari dan Devos (2024)~\cite{ghaffari2024frontends} & Rekaman burung dengan tambahan derau alami dan perkotaan. & Perbandingan pengolahan awal audio untuk klasifikasi dalam kondisi berderau. & Kompresi dan normalisasi membantu mempertahankan kinerja klasifikasi. \\
 \end{longtable}
 \end{jarakTabelPenelitian}
 
-Sebagian besar studi pada Tabel~\ref{tab:penelitian-terdahulu} mengevaluasi representasi audio dalam konteks klasifikasi atau deteksi. Penelitian ini berbeda karena berfokus pada pencarian rekaman berdasarkan kemiripan kosinus, dengan pengujian ketahanan yang membandingkan kondisi berderau terhadap acuan tanpa penambahan derau secara berpasangan untuk kueri yang sama. Selain itu, penerimaan kueri diuji dengan ambang kemiripan pada kelas terbuka, dan derau dari lima lokasi dibandingkan pada SNR yang sama.
+Bennovry dkk. menggunakan suara untuk mengenali spesies burung, sedangkan Allen-Ankins dkk. menggunakan satu contoh suara untuk menemukan potongan rekaman yang serupa. Dalam pencarian seperti ini, kualitas hasil bergantung pada ciri suara yang dibandingkan. BIRB dan penelitian Ghani dkk. menjadi acuan untuk membandingkan representasi audio, sementara pengujian Ghaffari dan Devos menunjukkan pentingnya mempertimbangkan derau pada rekaman. Berdasarkan kelima studi tersebut, penelitian ini menguji apakah rekaman dari spesies yang sama tetap muncul di urutan atas ketika tingkat dan sumber derau pada kueri berubah.
 
 \section{Sinyal Audio Digital dan Prapemrosesan}
 
@@ -157,7 +154,7 @@ Gambar~\ref{fig:stft} mengilustrasikan proses penerapan jendela dan DFT pada bin
 
 \subsection{Skala Mel dan Bank Filter}
 
-Persepsi manusia terhadap frekuensi tidak linear: perbedaan frekuensi yang sama terasa lebih besar pada frekuensi rendah daripada tinggi. Bank filter mel menyusun pita frekuensi menurut skala perseptual~\cite{peng2025birdfbank}. Untuk membentuk bank filter pada ekstraksi MFCC, pustaka \textit{librosa} menggunakan pemetaan Slaney berikut.\footnote{\url{https://librosa.org/doc/0.11.0/generated/librosa.mel_frequencies.html}}
+Skala mel menggambarkan hubungan antara frekuensi bunyi dan persepsi tinggi nada. Pada ekstraksi MFCC, bank filter mel merangkum energi spektrum ke dalam pita frekuensi yang disusun menurut skala tersebut~\cite{peng2025birdfbank}. Pustaka \textit{librosa} menggunakan pemetaan Slaney yang bersifat linear di bawah 1.000~Hz dan logaritmik mulai dari 1.000~Hz~\cite{librosa011mel}. Hubungan antara frekuensi $f$ dan nilai mel $m(f)$ dinyatakan dalam Persamaan~(\ref{eq:mel}).
 \begin{equation}\label{eq:mel}
 m(f) =
 \begin{cases}
@@ -255,7 +252,7 @@ Vektor hasil penjumlahan kemudian diproses melalui lapisan linear dan aktivasi R
 
 \subsection{BirdNET}
 
-BirdNET adalah model \textit{deep learning} yang dilatih khusus pada rekaman suara burung untuk identifikasi spesies~\cite{kahl2021birdnet}. Model menerima segmen audio dan memprosesnya dalam jendela 3 detik dengan pergeseran 1 detik. Setiap jendela menghasilkan satu vektor embedding. Ketika segmen menghasilkan beberapa jendela, vektor antarjendela dirata-ratakan~\cite{allenankins2025retrieval}:
+BirdNET merupakan model pralatih untuk mengidentifikasi spesies burung dari rekaman suara~\cite{kahl2021birdnet}. Selain menghasilkan prediksi spesies, BirdNET dapat menghasilkan vektor fitur untuk setiap jendela audio berdurasi 3 detik. Allen-Ankins dkk. menggunakan vektor ini untuk mencari potongan rekaman yang menyerupai contoh suara~\cite{allenankins2025retrieval}. Dalam penelitian ini, vektor dari beberapa jendela dirata-ratakan agar setiap rekaman memiliki satu vektor pembanding. Jika sebuah rekaman menghasilkan $W$ jendela, rata-ratanya dihitung sebagai berikut.
 \begin{equation}\label{eq:birdnet-avg}
 \bar{\mathbf{e}} = \frac{1}{W}\sum_{w=1}^{W}\mathbf{e}_w
 \end{equation}
@@ -266,7 +263,7 @@ $\mathbf e_w$ & vektor BirdNET dari jendela ke-$w$ \\
 $\bar{\mathbf e}$ & vektor rata-rata seluruh jendela sebelum normalisasi L2
 \end{keteranganRumus}
 
-Rata-rata ini menghasilkan satu embedding 1.024 dimensi per rekaman. Seperti PANNs CNN14, BirdNET digunakan dengan bobot model tetap. Perbedaannya, BirdNET dilatih pada suara burung sehingga embeddingnya diharapkan menangkap informasi yang lebih spesifik untuk membedakan spesies.
+Pada BirdNET v2.4 yang digunakan dalam penelitian ini, setiap jendela menghasilkan 1.024 nilai fitur. Perataan dilakukan untuk setiap dimensi sehingga panjang vektor tetap 1.024. Pengaturan jendela untuk rekaman penelitian dijelaskan pada Subbab~\ref{subsec:e1}.
 
 \section{Ruang \textit{Embedding}, Normalisasi L2, dan Kemiripan Kosinus}
 \label{sec:kemiripan-kosinus}
@@ -275,7 +272,7 @@ Setiap rekaman direpresentasikan sebagai vektor dalam ruang berdimensi tinggi. K
 
 \subsection{Vektor Kueri dan Galeri}
 
-Dalam pencarian berdasarkan kemiripan, rekaman yang dicari padanannya disebut kueri, sedangkan kumpulan rekaman pembanding berlabel disebut galeri~\cite{allenankins2025retrieval}. Kueri dan galeri diproses oleh representasi audio yang sama untuk menghasilkan vektor fitur. Vektor kueri kemudian dibandingkan dengan seluruh vektor galeri menggunakan ukuran kemiripan, dan rekaman galeri diurutkan berdasarkan skor kemiripan dari yang tertinggi.
+Pencarian berdasarkan contoh suara dapat dilakukan dengan membandingkan vektor fitur rekaman masukan dengan vektor fitur rekaman lain~\cite{allenankins2025retrieval}. Dalam penelitian ini, rekaman masukan disebut kueri dan kumpulan rekaman pembanding berlabel spesies disebut galeri. Kueri dan galeri diproses menggunakan representasi audio yang sama agar vektornya dapat dibandingkan. Rekaman galeri kemudian diurutkan dari skor kemiripan tertinggi hingga terendah.
 
 Kontrol acak $R_3$ memberikan acuan kinerja pencarian ketika vektor dibentuk hanya dari peran dan identitas rekaman dengan nilai awal acak tetap. Penambahan derau mempertahankan identitas kueri. Karena vektor kueri dan galeri tetap sama, urutan hasil pencarian kontrol ini juga tetap pada setiap SNR.
 
@@ -335,7 +332,7 @@ Setelah skor kemiripan dihitung, rekaman galeri diurutkan berdasarkan skor terti
 
 \subsection{Pemeringkatan dan Relevansi Hasil}
 
-Untuk setiap kueri, seluruh rekaman galeri diurutkan berdasarkan skor kemiripan kosinus dari yang tertinggi. Rekaman galeri dinilai relevan jika label spesiesnya sama dengan label spesies kueri~\cite{allenankins2025retrieval}. Dengan definisi ini, relevansi bersifat biner: relevan atau tidak relevan.
+Untuk menilai urutan hasil pencarian, penelitian ini menggunakan label spesies sebagai acuan. Sebuah rekaman galeri dinilai relevan jika spesiesnya sama dengan spesies kueri. Dengan aturan ini, setiap hasil pencarian memperoleh nilai relevansi 1 jika spesiesnya sama dan 0 jika berbeda.
 
 \subsection{Precision@10 dan Recall@10}
 
