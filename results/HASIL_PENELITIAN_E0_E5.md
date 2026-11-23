@@ -10,11 +10,19 @@ Sebanyak 1.216 rekaman Xeno-Canto mencakup 20 spesies target dan 111 perekam. Pe
 
 Satu berkas derau lapangan rusak dikeluarkan. Dari 1.799 berkas derau Itera yang dapat digunakan, 1.528 disediakan untuk dicampur dengan kueri dan 271 disisihkan sebagai kontrol suara lingkungan. Bersama 272 rekaman dari 69 spesies burung non-target, tersedia 543 kontrol. Kalibrasi memakai 117 rekaman burung non-target dan 116 derau lingkungan. Pengujian memakai 155 rekaman dari masing-masing sumber. [Manifes target](../data/manifests/dataset_split.csv) · [Manifes kontrol](../data/manifests/unknown_open_set_manifest.csv)
 
+![Contoh bentuk gelombang dan spektrogram rekaman burung](figures/03_eda_bird_waveform_spectrogram_examples.png)
+
+*Gambar 1. Contoh bentuk gelombang dan spektrogram rekaman burung. Bentuk gelombang menunjukkan perubahan amplitudo sepanjang rekaman. Spektrogram memperlihatkan kapan suara muncul dan frekuensi yang terkandung di dalamnya.*
+
 ## E0 · Hasil prapemrosesan dan audit
 
 Seluruh 100 rekaman yang diperiksa (55 galeri, 26 kueri uji, dan 19 kalibrasi) dapat dibaca. Durasi asli berkisar dari 4,48 hingga 199,15 detik dengan median 31,86 detik. Enam berkas memiliki ekstensi yang berbeda dari format isinya, tetapi seluruh keluaran audit tetap mencapai 160.000 sampel bernilai hingga, setara dengan 5 detik pada 32 kHz. Pemeriksaan vektor menghasilkan dimensi 40 untuk MFCC (R0), 2.048 untuk PANNs CNN14 (R1), 1.024 untuk BirdNET (R2), dan 40 untuk kontrol acak berbasis ID (R3). Norma L2 hasil pemeriksaan mendekati satu pada keempatnya.
 
 [e0_summary](tables/01_e0_summary.csv) · [e0_representation_probe](tables/02_e0_representation_probe.csv) · [e0_per_recording](tables/03_e0_per_recording.csv) · [eda_summary_by_source](tables/04_eda_summary_by_source.csv) · [eda_target_species_summary](tables/05_eda_target_species_summary.csv) · [eda_noise_location_summary](tables/06_eda_noise_location_summary.csv) · [eda_physical_audio_inventory](tables/07_eda_physical_audio_inventory.csv)
+
+![Karakteristik audio pada sampel audit E0](figures/01_e0_audio_properties.png)
+
+*Gambar 2. Karakteristik audio pada sampel audit E0. Audit mencakup 100 rekaman dengan durasi asli yang beragam. Setelah prapemrosesan, seluruh rekaman yang diperiksa menghasilkan segmen 5 detik.*
 
 ## E1 · Kualitas pencarian tanpa penambahan derau
 
@@ -29,6 +37,10 @@ Untuk setiap kueri, 673 rekaman galeri diurutkan berdasarkan kemiripan kosinus. 
 
 BirdNET menempati urutan pertama pada seluruh metrik. Ketiga representasi audio mengungguli kontrol acak pada AP@10 dalam pembandingan berpasangan atas 311 kueri. [e1_clean_retrieval_summary](tables/10_e1_clean_retrieval_summary.csv) · [statistics_paired_bootstrap](tables/22_statistics_paired_bootstrap.csv)
 
+![Perbandingan mAP@10 pada kondisi acuan dan −5 dB](figures/14_e2_clean_minus5_comparison.png)
+
+*Gambar 3. Perbandingan mAP@10 pada kondisi acuan dan −5 dB. Nilai acuan memperlihatkan kualitas pencarian sebelum kueri diberi derau tambahan. Nilai pada −5 dB menunjukkan hasil untuk kueri yang sama pada kondisi terberat di E2.*
+
 ## E2 · Perubahan kualitas setelah kueri dicampur derau
 
 Setiap sel memuat **mAP@10 / retensi (%)**. Retensi membagi mAP@10 kondisi berderau dengan mAP@10 acuan dari representasi yang sama. Untuk setiap kueri, segmen derau dipertahankan ketika tingkat SNR diubah. Galeri tetap sama.
@@ -41,6 +53,10 @@ Setiap sel memuat **mAP@10 / retensi (%)**. Retensi membagi mAP@10 kondisi berde
 | R3 | 0,0211 / 100,00 | 0,0211 / 100,00 | 0,0211 / 100,00 | 0,0211 / 100,00 |
 
 Pada −5 dB, selisih retensi BirdNET dan PANNs mencapai 26,92 poin persentase (interval kepercayaan 95% dari 16,08 hingga 36,50 poin). R3 menghasilkan vektor dari ID rekaman sehingga nilainya tetap ketika audio berubah. [e2_snr_robustness](tables/11_e2_snr_robustness.csv) · [statistics_e2_retention](tables/18_statistics_e2_retention.csv) · [statistics_paired_bootstrap](tables/22_statistics_paired_bootstrap.csv)
+
+![mAP@10 pada setiap tingkat SNR](figures/08_e2_snr_robustness_map10.png)
+
+*Gambar 4. mAP@10 pada setiap tingkat SNR. Pada −5 dB, mAP@10 BirdNET mencapai 0,4832, diikuti PANNs CNN14 sebesar 0,0863 dan MFCC sebesar 0,0232.*
 
 ## E3 · Kalibrasi ambang dan penerimaan kueri
 
@@ -64,6 +80,10 @@ Pada pengujian, kueri diterima jika skor kemiripan tertingginya mencapai ambang.
 
 Dari acuan ke −5 dB, penerimaan target turun pada ketiga representasi audio. Penerimaan kontrol juga turun. Pada BirdNET, penurunan penerimaan target sebesar 35,05 poin persentase menunjukkan bahwa ambang dari kondisi acuan semakin sulit dicapai pada kueri berderau. [e3_frozen_thresholds](tables/12_e3_frozen_thresholds.csv) · [e3_threshold_transfer](tables/13_e3_threshold_transfer.csv) · [statistics_e3_threshold_transfer](tables/19_statistics_e3_threshold_transfer.csv)
 
+![Penerimaan kueri target dengan ambang tetap pada berbagai kondisi derau](figures/09_e3_threshold_transfer_recall.png)
+
+*Gambar 5. Penerimaan kueri target dengan ambang tetap pada berbagai kondisi derau. Untuk BirdNET, proporsi target yang mencapai ambang turun dari 60,45% pada kondisi acuan menjadi 25,40% pada −5 dB.*
+
 ## E4 · Perbedaan kinerja menurut sumber derau
 
 Di setiap lokasi, 311 kueri diuji pada empat SNR dengan empat ulangan. Rancangan ini menghasilkan 80 kombinasi atau 24.880 evaluasi kueri berderau per representasi. Berikut rata-rata mAP@10 BirdNET atas empat ulangan pada setiap kombinasi lokasi dan SNR.
@@ -76,7 +96,15 @@ Di setiap lokasi, 311 kueri diuji pada empat SNR dengan empat ulangan. Rancangan
 | Masjid At Tanwir | 0,6442 | 0,6302 | 0,5643 | 0,5025 |
 | Sekitar GKU 1 | 0,6419 | 0,6244 | 0,5391 | 0,4547 |
 
+![Kinerja pencarian menurut profil derau lokasi](figures/10_e4_noise_profile_sensitivity.png)
+
+*Gambar 6. Kinerja pencarian menurut profil derau lokasi. Lokasi pada grafik menunjukkan asal rekaman derau yang dicampurkan ke kueri. Perbandingan antarlokasi dilakukan pada SNR yang sama.*
+
 Untuk membandingkan kestabilan, rentang dihitung dari selisih mAP@10 lokasi tertinggi dan terendah pada SNR dan ulangan yang sama. Rentang relatif membagi selisih itu dengan mAP@10 acuan representasi tersebut. Pada lima lokasi, selisih rentang relatif PANNs dikurangi BirdNET adalah 0,1915 (IK 95% dari 0,1522 hingga 0,2420). Untuk rentang absolut, IK 95% mencakup nol (−0,0040 hingga 0,0221). Ketika Kebun Raya dikeluarkan, selisih rentang relatif pada −5 dB juga memiliki interval yang mencakup nol. Maka, keunggulan BirdNET dalam kualitas pencarian lebih konsisten daripada kesimpulan tentang kestabilannya antarlokasi. Analisis kestabilan ini bersifat eksploratif. [e4_domain_shift](tables/14_e4_domain_shift.csv) · [h3_habitat_profile_stability](tables/24_h3_habitat_profile_stability.csv) · [h3_retention_by_habitat_repeat](tables/25_h3_retention_by_habitat_repeat.csv) · [Analisis sensitivitas lokasi](reproductions/H3_leave_one_location_out_20261018/README.md)
+
+![Retensi kinerja dan rentang variasi antarlokasi](figures/15_h3_habitat_retention_stability.png)
+
+*Gambar 7. Retensi kinerja dan rentang variasi antarlokasi. Rentang yang lebih kecil menunjukkan bahwa perbedaan kinerja antarlokasi lebih kecil. Pembacaan rentang relatif memperhitungkan kinerja acuan masing-masing representasi.*
 
 ## E5 · Pola kegagalan dan hasil audit pendengaran
 
@@ -89,6 +117,10 @@ Setiap hasil dikelompokkan menurut kecocokan spesies pada peringkat pertama dan 
 | R2 | 626 | 574 | 67 | 288 |
 | R3 | 45 | 55 | 520 | 935 |
 
+![Jenis hasil pencarian menurut representasi](figures/11_e5_failure_modes_by_representation.png)
+
+*Gambar 8. Jenis hasil pencarian menurut representasi. Hasil dikelompokkan dengan memeriksa spesies pada peringkat pertama serta apakah skornya mencapai ambang penerimaan.*
+
 Untuk BirdNET, tabel berikut merangkum kasus gagal di E2 dengan median. Margin adalah skor tertinggi dikurangi ambang. Sentroid merangkum pusat frekuensi spektrum kueri, sedangkan lebar pita menggambarkan sebarannya. Angka spektral menjelaskan ciri kasus yang diamati dan belum menetapkan penyebab kegagalannya.
 
 | Kasus BirdNET | Margin | Sentroid (Hz) | Lebar pita (Hz) |
@@ -98,6 +130,10 @@ Untuk BirdNET, tabel berikut merangkum kasus gagal di E2 dengan median. Margin a
 | Berbeda, ditolak | -0,0693 | 4541 | 3893 |
 
 [e5_failure_mode_summary](tables/15_e5_failure_mode_summary.csv) · [e5_selected_case_manifest](tables/16_e5_selected_case_manifest.csv) · [e5_unknown_open_set_diagnostics](tables/17_e5_unknown_open_set_diagnostics.csv) · [Hasil diagnosis per kueri](reproductions/E5_diagnostics_20261012T091512_868500Z/tables/all_query_diagnostics.csv)
+
+![Distribusi margin skor terhadap ambang menurut jenis hasil](figures/12_e5_margin_distribution_by_failure_type.png)
+
+*Gambar 9. Distribusi margin skor terhadap ambang menurut jenis hasil. Margin negatif menandakan skor di bawah ambang. Hasil pertama dengan spesies yang sesuai pun dapat memiliki margin negatif dan kuerinya ditolak.*
 
 **Audit pendengaran.** Peneliti mendengarkan 120 kasus yang mencakup 80 kueri unik. Dua kasus dipilih dari setiap kombinasi empat representasi, lima kondisi uji, dan tiga jenis kegagalan. Pada kueri, suara burung terdengar dalam 116 kasus dan tidak terdengar dalam empat kasus. Pada rekaman galeri peringkat pertama, suara burung terdengar dalam 109 kasus, tidak terdengar dalam delapan kasus, dan diragukan dalam tiga kasus. Dalam 106 kasus, suara burung terdengar pada kedua rekaman. Artinya, pencarian dapat gagal meskipun suara burung masih terdengar. Audit oleh satu pendengar ini menggambarkan kasus terpilih. Identitas spesies tetap mengacu pada label rekaman. [Hasil audit dan rincian menurut kondisi](../Rencana-eksperimen-bimbingan/audit-pendengaran-E5/hasil-20261030/README.md)
 
