@@ -1,7 +1,7 @@
 # Rencana Eksperimen dan Logbook Bimbingan — DSIC-2706
 
 **Judul kerja:** *Noise and Spectral Sensitivity of Frozen Audio Representations for Bioacoustic Similarity Retrieval under Controlled ITERA Field-Noise Mixtures in Indonesian Avifauna*  
-**Pembaruan dokumentasi:** 30 Oktober 2026
+**Pembaruan dokumentasi:** 23 November 2026
 
 **Korpus aktif:** 20 spesies avifauna Indonesia, 1.216 rekaman target, 1.799 rekaman derau ITERA.
 
@@ -43,7 +43,7 @@ E4 menggunakan pencampuran aditif dengan noise asli lima lokasi ITERA. H3 hasil 
 
 **Acuan status 30 Oktober:** E0–E5 mempunyai artefak, H1/H2/H5 didukung, H3/H4 reformulasi eksploratif, dan H3 asli real-soundscape belum diuji. Reproduksi terpisah menghasilkan [41/41 pembandingan cocok](../docs/REPRODUKSI_LINGKUNGAN_BARU_2026-10-16.md), tanpa inferensi E4 ulang. Audit satu pendengar mencakup 120 kasus pilihan; tidak mengestimasi frekuensi kegagalan seluruh populasi. Bahan cukup untuk mulai menulis dalam scope aktif; judul/RQ final, sistematika, sitasi, dan naskah tetap perlu pembimbing.
 
-[CURRENT_STATUS.md](CURRENT_STATUS.md) bertanggal 18 Oktober masih mencatat 0/120 audit. Baca sebagai ringkasan historis dan gunakan laporan 30 Oktober untuk status audit terkini. [Paket BAB 1–3](../paper/persiapan_bab1_3/README.md) menyediakan diagram alir dan indeks gambar/tabel; template bab masih kerangka.
+[CURRENT_STATUS.md](CURRENT_STATUS.md) bertanggal 18 Oktober masih mencatat 0/120 audit. Baca sebagai ringkasan historis dan gunakan laporan 30 Oktober untuk status audit terkini. [Paket BAB 1–3](../paper/persiapan_bab1_3/README.md) menyediakan indeks gambar dan tabel. Untuk bimbingan, gunakan [naskah LaTeX](../paper/template_ta_latex/main.tex) dan [log keputusan](../docs/research/decision-log.md).
 
 ## Persiapan bimbingan dan audit E5
 

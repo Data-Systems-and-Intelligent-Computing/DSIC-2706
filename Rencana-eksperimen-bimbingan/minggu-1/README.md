@@ -62,3 +62,5 @@ Empat representasi dievaluasi pada 311 query terhadap 673 Gallery: R0 MFCC, R1 P
 **Keputusan Minggu 1:** R2 menjadi representasi dengan retrieval bersih tertinggi. Hasil ini menjadi baseline untuk E2, bukan bukti ketahanan terhadap noise.
 
 **Provenance E1:** R0 memiliki run tersendiri. R1–R3 dikonsolidasikan dari cache clean tervalidasi pada 12 Oktober, bukan diklaim sebagai run historis sebelumnya. Reproduksi 16 Oktober kemudian menghitung E1 dari embedding yang diekstrak ulang pada venv baru; lihat [laporan reproduksi](../../docs/REPRODUKSI_LINGKUNGAN_BARU_2026-10-16.md).
+
+[Audit E0 November](../../results/reproductions/E0_20261116_131535/tables/summary.csv) memuat hasil pemeriksaan 100 rekaman. Untuk kondisi acuan yang digunakan dalam laporan, lihat [ringkasan empat representasi](../../results/tables/10_e1_clean_retrieval_summary.csv).

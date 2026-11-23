@@ -1,12 +1,14 @@
 # Bahan penulisan BAB 1–3
 
-**Pemeriksaan folder lokal: 30 Oktober 2026.** Paket ini menunjukkan bahan yang sudah ada dan menambah satu diagram alir lengkap yang belum tersedia dalam versi protokol aktif. Tabel penelitian, gambar lama, naskah teori, dan template bab tidak dibuat ulang atau diubah.
+[Naskah LaTeX](../template_ta_latex/README.md) memuat Bab I–III. Berkas [rumus Bab II](RUMUS_BAB_II.md) dan indeks di bawah membantu menelusuri bahan awalnya. Diagram yang dipakai di naskah tersedia pada [gambar Bab III](../figures/bab3/Diagram%20Utama.drawio.png).
+
+## Inventaris persiapan 30 Oktober 2026
 
 ## 1. Yang ditemukan dan yang baru disiapkan
 
 **Sudah ada:** naskah teori; tabel referensi CSV/Excel; manifes dan tabel data; tabel variabel serta representasi dalam Markdown; gambar waveform/spektrogram; diagram hubungan E2–E4; ilustrasi cosine; dan template LaTeX BAB 1–3.
 
-**Belum ada dalam versi lengkap dan sesuai protokol aktif:** diagram alir yang mencakup perumusan masalah, sumber dan pembagian data, E0–E5, kalibrasi terpisah, analisis, audit manusia, serta pelaporan. Diagram Mermaid pada panduan sehari-hari baru menggambarkan alur retrieval ringkas. Diagram pada draf lama masih membawa beberapa angka/desain historis.
+**Kebutuhan pada tahap persiapan Oktober:** diagram alir yang mencakup perumusan masalah, sumber dan pembagian data, E0–E5, kalibrasi terpisah, analisis, audit manusia, serta pelaporan. Diagram Mermaid pada panduan sehari-hari baru menggambarkan alur retrieval ringkas. Diagram pada draf lama masih membawa beberapa angka/desain historis.
 
 Karena itu dibuat **satu diagram baru**, tersedia sebagai:
 
@@ -125,7 +127,7 @@ Gunakan diagram baru sebagai gambar utama Tahapan Penelitian, kemudian gambar E2
 - Spesifikasi alat/hardware yang tidak tercatat, bila diwajibkan. Peta/foto lokasi bukan gambar yang boleh direka dari nama lokasi; gunakan foto atau koordinat terverifikasi jika nanti diperlukan.
 - Pemakaian gambar dari draf pembimbing mengikuti atribusi dan penyesuaian yang disepakati. Gambar berparameter lama tidak dipakai sebagai hasil aktif.
 
-Pembaruan penulisan sampai 31 Oktober sudah mengisi [BAB 1](../template_ta_latex/chapters/bab1.tex): Latar Belakang, Rumusan Masalah, Tujuan, dan Batasan Penelitian. [BAB 2](../template_ta_latex/chapters/bab2.tex) dan [BAB 3](../template_ta_latex/chapters/bab3.tex) masih kerangka berkomentar/kosong. [Status template dan ekspor PDF](../template_ta_latex/README.md) menjelaskan hasil penulisan terbaru. Paket persiapan ini tetap bahan bantu, bukan pengesahan bab.
+Pada 31 Oktober, isi Bab I sudah tersedia dan dua bab berikutnya masih berupa kerangka. Perkembangan sesudahnya tercantum dalam [panduan naskah LaTeX](../template_ta_latex/README.md).
 
 ## 8. Catatan perubahan paket ini
 

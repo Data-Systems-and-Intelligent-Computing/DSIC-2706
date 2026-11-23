@@ -39,3 +39,5 @@ Setiap 311 query clean dipasangkan secara deterministik dengan noise ITERA pada 
 ## Interpretasi dan lanjut
 
 R2 mempunyai mAP@10 tertinggi pada semua SNR yang diuji dan retensi −5 dB paling tinggi di antara representasi audio. Bukti statistik untuk H1 dan H2 tersedia di [paired bootstrap](../../results/tables/22_statistics_paired_bootstrap.csv). Minggu berikutnya memakai data E2 untuk memeriksa threshold terbuka E3 dan variasi profil noise E4.
+
+Untuk menjawab RM1, baca kolom mAP@10 bersama retensi pada [tabel E2](../../results/tables/11_e2_snr_robustness.csv). Pada −5 dB, BirdNET menghasilkan mAP@10 0,4832 dan mempertahankan 75,88% dari kinerja acuannya.

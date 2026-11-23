@@ -1,5 +1,7 @@
 # Referensi penelitian DSIC-2706
 
+**Inventaris 23 November 2026.** Folder ini memuat 57 PDF dan [katalog CSV](referensi_jurnal_modern.csv) memuat 57 entri. [Daftar sumber LaTeX](../template_ta_latex/references.bib) memuat 53 entri, termasuk sumber perangkat lunak dan dokumentasi. Lima studi untuk perbandingan penelitian terdahulu tercantum pada [Tabel 2.1](../template_ta_latex/chapters/bab2.tex). Angka pada catatan bertanggal di bawah merujuk pada inventaris saat itu.
+
 **Status 7 November 2026:** CSV referensi memuat 52 entri dan folder ini berisi 50 PDF. BAB I–II mengutip 26 sumber, termasuk artikel jurnal, satu makalah konferensi, dan satu preprint. Jumlah koleksi berbeda dari jumlah sumber yang dikutip; catatan bertanggal di bawah merupakan riwayat pemeriksaan pada saat itu.
 
 Diperiksa dan diperbarui pada **3 November 2026**. Pembaruan pustaka menambah enam artikel terbitan jurnal untuk dasar teori dan evaluasi. Kode eksperimen, audio, manifes, dan hasil E0-E5 dipertahankan.

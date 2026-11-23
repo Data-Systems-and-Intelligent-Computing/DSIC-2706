@@ -1,6 +1,6 @@
 # Paper
 
-`manuscript.md` adalah draf naskah. `bibliography/` menyimpan referensi.
+Naskah kerja Bab I–III disusun di [main.tex](template_ta_latex/main.tex). Sunting isi pada [folder bab](template_ta_latex/chapters/) dan sumber sitasi pada [references.bib](template_ta_latex/references.bib). `manuscript.md` merupakan draf pendamping. PDF artikel tersedia di [bibliografi](bibliography/README.md).
 
 `paper/figures/` adalah tempat gambar untuk naskah, termasuk gambar yang dipakai LaTeX, diagram BAB III yang dapat diedit, dan gambar eksperimen yang sudah dipilih untuk laporan. `results/reproductions/` menyimpan keluaran asli setiap run. Indeks gambar laporan di `figures/report_figure_index.csv` menautkan gambar ke sumber eksperimennya. Tabel naskah disimpan di `paper/tables/`. [Grafik hasil eksperimen](figures/hasil_eksperimen/) disertai [tabel sumber](figures/hasil_eksperimen/sumber_gambar.json).
 

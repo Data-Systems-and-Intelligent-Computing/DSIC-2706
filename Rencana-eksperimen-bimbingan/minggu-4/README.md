@@ -54,3 +54,5 @@ Bootstrap berpasangan menggunakan 10.000 iterasi, seed 20261012, dan unit resamp
 Gunakan matriks revisi dan [pemeriksaan ulang](../CATATAN_PROGRES_BIMBINGAN.md) sebagai sumber narasi terkini; hasil 12 Oktober tetap menjadi riwayat. Ambil gambar dari [results/figures](../../results/figures/) dan angka dari [results/tables](../../results/tables/). `paper/` masih draf; jangan memindahkan hasil lama ke naskah sebelum struktur Bab 4/Bab 5 diputuskan.
 
 Untuk status audit gunakan laporan 30 Oktober; angka 0/120 pada catatan bimbingan/CURRENT_STATUS lama sudah kedaluwarsa. [Paket BAB 1–3](../../paper/persiapan_bab1_3/README.md) menyediakan diagram alir dan indeks bahan. Bukti penelitian cukup untuk mulai menulis dalam scope controlled additive mixtures; finalisasi judul/RQ, framing H3/H4, sistematika, sitasi, dan persetujuan pembimbing tetap perlu diselesaikan.
+
+[Bab III](../../paper/template_ta_latex/chapters/bab3.tex) menjelaskan dasar pemilihan kasus audit. Empat representasi, lima kondisi, dan tiga jenis kegagalan membentuk 60 kelompok. [Daftar audit](../audit-pendengaran-E5/E5_AUDIT_PENDENGARAN.csv) memuat dua kasus per kelompok.

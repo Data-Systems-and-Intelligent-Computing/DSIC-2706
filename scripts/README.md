@@ -31,3 +31,5 @@ Skrip pendukung penyelesaian 16 Oktober:
 run_h3_leave_one_location_out.py menambah tabel sensitivitas dengan menghilangkan masing-masing dari lima lokasi secara bergantian, memakai raw AP@10 tersimpan, tanpa pencampuran audio/inferensi. [Hasil 60 baris dan metadata](../results/reproductions/H3_leave_one_location_out_20261018/README.md).
 
 **Status dokumentasi 30 Oktober:** hasil tersedia untuk mulai menyusun naskah dalam scope campuran aditif terkontrol. Menjalankan runner kembali bukan langkah untuk sekadar memperbarui status README; gunakan bukti tersimpan, [matriks revisi](../results/tables/28_rq_hypothesis_matrix_revised_2026-10-15.csv), dan laporan audit terbaru.
+
+[Notebook terpadu](../notebooks/09_Penelitian_Terpadu_E0_E5.ipynb) menghubungkan tahap-tahap tersebut. Hasil pelaksanaan E4 pada November dapat ditelusuri dari [identitas pengulangan](../results/reproductions/E4_5sites_20261116T131634_985229Z/run_identity.json).

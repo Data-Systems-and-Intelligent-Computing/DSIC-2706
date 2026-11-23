@@ -1,6 +1,16 @@
 # Kumpulan gambar BAB III
 
-Gambar disiapkan untuk ditinjau sebelum dipilih dan dimasukkan ke naskah. Penanda A–F menghubungkan diagram utama dengan diagram lanjutan; penomoran gambar skripsi ditentukan ketika gambar dipilih. PNG untuk peninjauan dan SVG untuk penyuntingan tersedia untuk setiap gambar.
+[Bab III](../../template_ta_latex/chapters/bab3.tex) memakai [diagram alir utama](Diagram%20Utama.drawio.png). Peta rekaman, tampilan pencarian Xeno-Canto, foto AudioMoth, dan tab konfigurasi aplikasi menyertai uraian pengumpulan data.
+
+| Gambar dalam naskah | Kegunaan |
+|---|---|
+| [Peta rekaman](peta_rekaman_xenocanto.png) | Lokasi rekaman target yang memiliki koordinat. |
+| [Pencarian Xeno-Canto](penelusuran_xeno_canto.jpg) | Contoh penelusuran sumber data. |
+| [Perangkat](audiomoth_perangkat.jpg), [Recording](audiomoth_tab_recording.png), [Schedule](audiomoth_tab_schedule.png), [Filtering](audiomoth_tab_filtering.png) | Perangkat dan tampilan aplikasi. Nilai pengambilan lapangan mengikuti tabel konfigurasi di Bab III. |
+
+## Ilustrasi tahap persiapan
+
+Tabel berikut menginventarisasi diagram cabang dan peta versi awal.
 
 | Berkas | Cakupan |
 |---|---|

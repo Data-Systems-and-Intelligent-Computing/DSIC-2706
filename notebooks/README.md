@@ -1,6 +1,6 @@
 # Notebooks
 
-Semua notebook ada di `D:\FILE AND TASK\TA\notebooks`. Notebook 01–08 memisahkan eksperimen dan memuat salinan kode runner pada code cell. Notebook 09 menggabungkan alur penelitian dalam satu dokumen dan memanggil fungsi asli dari `src/` serta `scripts/`, tanpa subprocess; notebook ini tetap membutuhkan repositori, data, model, dan cache yang sesuai.
+[Notebook terpadu](09_Penelitian_Terpadu_E0_E5.ipynb) dapat dibuka dari folder ini pada salinan proyek di PC maupun laptop. Notebook 01–08 memisahkan eksperimen dan memuat salinan kode runner pada code cell. Notebook 09 menggabungkan alur penelitian dalam satu dokumen dan memanggil fungsi asli dari `src/` serta `scripts/`, tanpa subprocess; notebook ini tetap membutuhkan repositori, data, model, dan cache yang sesuai.
 
 | Notebook | Fungsi | Hasil yang dibaca |
 |---|---|---|

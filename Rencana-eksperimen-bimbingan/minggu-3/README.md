@@ -57,3 +57,5 @@ H3 hasil reformulasi adalah eksploratif; H3 asli mengenai real-soundscape belum 
 - [Catatan revisi utama](../../docs/REVISION_SUPERVISOR_2026-10-15.md)
 - [Tabel H3 historis 12 Oktober](../../results/tables/24_h3_habitat_profile_stability.csv)
 - [Sensitivitas penghilangan setiap lokasi, 18 Oktober](../../results/reproductions/H3_leave_one_location_out_20261018/README.md): semua lima lokasi tetap dipertahankan dalam E4 asli. CI eksploratif kondisional pada lokasi/segmen yang dipilih, bukan ketidakpastian untuk lokasi baru.
+
+Bukti pengulangan November tersedia pada [tabel penerimaan E3](../../results/reproductions/E3_open_set_20261116T134710_006216Z/tables/threshold_transfer.csv) dan [tabel E4 per kondisi](../../results/reproductions/E4_5sites_20261116T131634_985229Z/tables/e4_domain_shift_table.csv). Untuk RM3, bandingkan lokasi pada SNR dan ulangan yang sama.

@@ -9,3 +9,5 @@ Audit formal 100 rekaman aktif, dipilih deterministik dengan seed `20261012`.
 - `figures/e0_audio_properties.png`: grafik siap dilihat atau di-screenshot.
 
 Status: selesai. Ini bukan hasil retrieval E1–E5.
+
+[Tabel audit](tables/summary.csv) mencatat 100 rekaman, 0 kesalahan pembacaan, 0 ketidaksesuaian panjang segmen, dan 0 keluaran dengan nilai tak berhingga atau NaN.

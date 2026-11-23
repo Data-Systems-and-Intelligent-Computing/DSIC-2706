@@ -15,3 +15,5 @@ Sesuai arahan pembimbing (Pak Ardika Satria) per 10 Oktober 2026:
 - `manifests/`: Manifes partisi `dataset_split.csv` (3.653 galeri, 200 kueri, 498 kalibrasi), `species_freeze.csv`, dan `Metadata_BirdCLEF.xlsx`.
 
 > Status restart 12 Oktober 2026: ini arsip historis rezim BirdCLEF+, bukan hasil untuk dataset Indonesia aktif dan tidak boleh dikutip sebagai hasil penelitian saat ini.
+
+Untuk membandingkan cakupan arsip ini dengan penelitian Indonesia, lihat [pembagian data Xeno-Canto](../../../data/manifests/dataset_split.csv) dan [keputusan perubahan cakupan](../../../docs/research/decision-log.md).

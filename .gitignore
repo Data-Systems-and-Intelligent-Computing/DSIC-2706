@@ -68,6 +68,7 @@ Dataset/
 cache/
 tmp/
 temp/
+/paper/persiapan_bab1_3/cadangan_lokal/
 
 # IDE & OS
 .idea/

@@ -18,7 +18,7 @@ Nol skip di komputer ini berarti input/dependensi pemeriksaan tersedia saat peng
 
 [Bukti ringkasan terbaru](../results/artifacts/reproducibility/test_summary_2026-10-18.json). Tes Git membandingkan seluruh 10 aset sumber E4 terlacak dengan SHA-256 beku pada file lokal dan Git HEAD. Fixture pengamatan pendengaran bersifat sintetis di memori dan tidak mengisi audit manusia.
 
-Suite ini tidak menjalankan ulang E2–E5. [Reproduksi eksperimen](../docs/REPRODUKSI_LINGKUNGAN_BARU_2026-10-16.md) dicatat terpisah. Inferensi E4 tetap tidak diulang.
+Suite ini tidak menjalankan ulang E2–E5. [Reproduksi eksperimen](../docs/REPRODUKSI_LINGKUNGAN_BARU_2026-10-16.md) dicatat terpisah. Pada pemeriksaan Oktober tersebut, inferensi E4 dikecualikan. [Identitas pengulangan E4 November](../results/reproductions/E4_5sites_20261116T131634_985229Z/run_identity.json) mendokumentasikan pelaksanaan berikutnya.
 
 ## Pemeriksaan audit 30 Oktober 2026
 

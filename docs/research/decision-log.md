@@ -1,5 +1,12 @@
 # Catatan Keputusan Riset (Decision Log) — DSIC-2706
 
+## Revisi naskah untuk bimbingan, 22 November 2026
+
+| ID | Keputusan | Letak dalam naskah |
+|---|---|---|
+| DEC-28 | Pertanyaan utama dijelaskan di latar belakang. Empat rumusan masalah membahas retensi pada variasi SNR, penerimaan dengan ambang tetap, kestabilan antarlokasi, dan pola kegagalan. Tabel 2.1 merangkum lima studi terdahulu. | [Bab I](../../paper/template_ta_latex/chapters/bab1.tex) dan [Bab II](../../paper/template_ta_latex/chapters/bab2.tex) |
+| DEC-29 | Laporkan mAP@10 untuk kualitas pada suatu kondisi dan retensi untuk proporsi kinerja acuan yang bertahan. Gunakan rentang mAP@10 pada SNR yang sama untuk kestabilan antarlokasi. Daftar audit berisi dua kasus dari masing-masing 60 kelompok, sesuai rancangan maksimal dua kasus per kelompok. | [Metode dan evaluasi](../../paper/template_ta_latex/chapters/bab3.tex) dan [daftar audit](../../Rencana-eksperimen-bimbingan/audit-pendengaran-E5/E5_AUDIT_PENDENGARAN.csv) |
+
 ## Keputusan dan hasil untuk laporan 20 November 2026
 
 Penelitian ini membandingkan kemampuan MFCC, PANNs CNN14, dan BirdNET dalam mempertahankan kualitas pencarian rekaman burung ketika kueri diberi derau lingkungan Institut Teknologi Sumatera (Itera). Hasil utama mengacu pada eksperimen Oktober 2026 yang tercatat dalam registri dan indeks keluaran. Pengulangan pada 16 November dicatat sebagai pemeriksaan atas hasil tersebut. [Registri eksperimen](../../configs/active_runs.json) · [Indeks keluaran](../../results/artifacts/README.md)

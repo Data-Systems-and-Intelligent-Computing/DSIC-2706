@@ -37,3 +37,5 @@ Paket ini melengkapi [panduan bahasa sehari-hari yang sudah ada](../PANDUAN_PENE
 4. [Status hasil audit pendengaran 30 Oktober](../../Rencana-eksperimen-bimbingan/audit-pendengaran-E5/hasil-20261030/README.md): catatan tersedia untuk 120/120 kasus oleh satu pendengar. `CURRENT_STATUS.md` 18 Oktober tetap riwayat dan masih menyebut status audit lama; gunakan laporan hasil saat membahas progres terbaru.
 
 **Jangan menghafal angka tanpa memahami penyebutnya.** Contohnya, 81,67% Top-1, 0,6367 mAP@10, 23,31% Recall@10, dan 60,45% recall penerimaan open-set mengukur hal yang berbeda.
+
+Untuk latihan lisan, bedakan mAP@10 sebagai kualitas urutan hasil, retensi sebagai proporsi kinerja acuan yang bertahan, dan rentang antarlokasi sebagai ukuran kestabilan. [Evaluasi penelitian](../../paper/template_ta_latex/chapters/bab3.tex) memuat definisi operasional, sedangkan [log keputusan](../../docs/research/decision-log.md) menghubungkannya dengan hasil.
