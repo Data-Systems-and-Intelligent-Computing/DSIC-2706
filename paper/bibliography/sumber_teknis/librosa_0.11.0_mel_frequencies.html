@@ -1,0 +1,100 @@
+<!doctype html><html><head><meta charset="utf-8"><title>librosa.mel_frequencies — librosa 0.11.0 documentation</title></head><body><p>Salinan teks sumber resmi, 24 November 2026. <a href="https://librosa.org/doc/0.11.0/generated/librosa.mel_frequencies.html">librosa.mel_frequencies — librosa 0.11.0 documentation</a></p><div>
+           <div>
+             
+
+
+  <section id="librosa-mel-frequencies">
+<h1>librosa.mel_frequencies<a href="#librosa-mel-frequencies"></a></h1>
+<dl>
+<dt id="librosa.mel_frequencies">
+<span><span>librosa.</span></span><span><span>mel_frequencies</span></span><span>(</span><em><span><span>n_mels</span></span><span><span>=</span></span><span><span>128</span></span></em>, <em><span><abbr><span>*</span></abbr></span></em>, <em><span><span>fmin</span></span><span><span>=</span></span><span><span>0.0</span></span></em>, <em><span><span>fmax</span></span><span><span>=</span></span><span><span>11025.0</span></span></em>, <em><span><span>htk</span></span><span><span>=</span></span><span><span>False</span></span></em><span>)</span><a href="https://librosa.org/doc/0.11.0/_modules/librosa/core/convert.html#mel_frequencies"><span><span>[source]</span></span></a><a href="#librosa.mel_frequencies"></a></dt>
+<dd><p>Compute an array of acoustic frequencies tuned to the mel scale.</p>
+<p>The mel scale is a quasi-logarithmic function of acoustic frequency
+designed such that perceptually similar pitch intervals (e.g. octaves)
+appear equal in width over the full hearing range.</p>
+<p>Because the definition of the mel scale is conditioned by a finite number
+of subjective psychoaoustical experiments, several implementations coexist
+in the audio signal processing literature <a id="id1" href="#id4"><span>[</span>1<span>]</span></a>. By default, librosa replicates
+the behavior of the well-established MATLAB Auditory Toolbox of Slaney <a id="id2" href="#id5"><span>[</span>2<span>]</span></a>.
+According to this default implementation,  the conversion from Hertz to mel is
+linear below 1 kHz and logarithmic above 1 kHz. Another available implementation
+replicates the Hidden Markov Toolkit <a id="id3" href="#id6"><span>[</span>3<span>]</span></a> (HTK) according to the following formula:</p>
+<div><div><pre><span></span><span>mel</span> <span>=</span> <span>2595.0</span> <span>*</span> <span>np</span><span>.</span><span>log10</span><span>(</span><span>1.0</span> <span>+</span> <span>f</span> <span>/</span> <span>700.0</span><span>)</span><span>.</span>
+</pre></div>
+</div>
+<p>The choice of implementation is determined by the <code><span>htk</span></code> keyword argument: setting
+<code><span>htk=False</span></code> leads to the Auditory toolbox implementation, whereas setting it <code><span>htk=True</span></code>
+leads to the HTK implementation.</p>
+<aside>
+<aside id="id4">
+<span><span>[</span><a href="#id1">1</a><span>]</span></span>
+<p>Umesh, S., Cohen, L., &amp; Nelson, D. Fitting the mel scale.
+In Proc. International Conference on Acoustics, Speech, and Signal Processing
+(ICASSP), vol. 1, pp. 217-220, 1998.</p>
+</aside>
+<aside id="id5">
+<span><span>[</span><a href="#id2">2</a><span>]</span></span>
+<p>Slaney, M. Auditory Toolbox: A MATLAB Toolbox for Auditory
+Modeling Work. Technical Report, version 2, Interval Research Corporation, 1998.</p>
+</aside>
+<aside id="id6">
+<span><span>[</span><a href="#id3">3</a><span>]</span></span>
+<p>Young, S., Evermann, G., Gales, M., Hain, T., Kershaw, D., Liu, X.,
+Moore, G., Odell, J., Ollason, D., Povey, D., Valtchev, V., &amp; Woodland, P.
+The HTK book, version 3.4. Cambridge University, March 2009.</p>
+</aside>
+</aside>
+<dl>
+<dt>Parameters<span>:</span></dt>
+<dd><dl>
+<dt><strong>n_mels</strong><span>int &gt; 0 [scalar]</span></dt><dd><p>Number of mel bins.</p>
+</dd>
+<dt><strong>fmin</strong><span>float &gt;= 0 [scalar]</span></dt><dd><p>Minimum frequency (Hz).</p>
+</dd>
+<dt><strong>fmax</strong><span>float &gt;= 0 [scalar]</span></dt><dd><p>Maximum frequency (Hz).</p>
+</dd>
+<dt><strong>htk</strong><span>bool</span></dt><dd><p>If True, use HTK formula to convert Hz to mel.
+Otherwise (False), use Slaney’s Auditory Toolbox.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns<span>:</span></dt>
+<dd><dl>
+<dt><strong>bin_frequencies</strong><span>ndarray [shape=(n_mels,)]</span></dt><dd><p>Vector of <code><span>n_mels</span></code> frequencies in Hz which are uniformly spaced on the Mel
+axis.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div>
+<p>See also</p>
+<dl>
+<dt><a href="https://librosa.org/doc/0.11.0/generated/librosa.hz_to_mel.html#librosa.hz_to_mel"><code><span>hz_to_mel</span></code></a></dt><dd></dd>
+<dt><a href="https://librosa.org/doc/0.11.0/generated/librosa.mel_to_hz.html#librosa.mel_to_hz"><code><span>mel_to_hz</span></code></a></dt><dd></dd>
+<dt><a href="https://librosa.org/doc/0.11.0/generated/librosa.feature.melspectrogram.html#librosa.feature.melspectrogram"><code><span>librosa.feature.melspectrogram</span></code></a></dt><dd></dd>
+<dt><a href="https://librosa.org/doc/0.11.0/generated/librosa.feature.mfcc.html#librosa.feature.mfcc"><code><span>librosa.feature.mfcc</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p>Examples</p>
+<div><div><pre><span></span><span>&gt;&gt;&gt; </span><span>librosa</span><span>.</span><span>mel_frequencies</span><span>(</span><span>n_mels</span><span>=</span><span>40</span><span>)</span>
+<span>array([     0.   ,     85.317,    170.635,    255.952,</span>
+<span>          341.269,    426.586,    511.904,    597.221,</span>
+<span>          682.538,    767.855,    853.173,    938.49 ,</span>
+<span>         1024.856,   1119.114,   1222.042,   1334.436,</span>
+<span>         1457.167,   1591.187,   1737.532,   1897.337,</span>
+<span>         2071.84 ,   2262.393,   2470.47 ,   2697.686,</span>
+<span>         2945.799,   3216.731,   3512.582,   3835.643,</span>
+<span>         4188.417,   4573.636,   4994.285,   5453.621,</span>
+<span>         5955.205,   6502.92 ,   7101.009,   7754.107,</span>
+<span>         8467.272,   9246.028,  10096.408,  11025.   ])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+
+
+
+           </div>
+          </div>
+          </body></html>

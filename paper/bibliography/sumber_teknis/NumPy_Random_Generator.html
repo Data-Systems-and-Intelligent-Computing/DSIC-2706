@@ -1,0 +1,449 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Random Generator — NumPy v2.5 Manual</title></head><body><p>Salinan teks sumber resmi, 24 November 2026. <a href="https://numpy.org/doc/stable/reference/random/generator.html">Random Generator — NumPy v2.5 Manual</a></p><article>
+                  
+  <section id="random-generator">
+<h1>Random <code><span>Generator</span></code><a href="#random-generator">#</a></h1>
+<p>The <a href="#numpy.random.Generator"><code><span>Generator</span></code></a> provides access to
+a wide range of distributions, and served as a replacement for
+<a href="https://numpy.org/doc/stable/reference/random/legacy.html#numpy.random.RandomState"><code><span>RandomState</span></code></a>.  The main difference between
+the two is that <a href="#numpy.random.Generator"><code><span>Generator</span></code></a> relies on an additional BitGenerator to
+manage state and generate the random bits, which are then transformed into
+random values from useful distributions. The default BitGenerator used by
+<a href="#numpy.random.Generator"><code><span>Generator</span></code></a> is <a href="https://numpy.org/doc/stable/reference/random/bit_generators/pcg64.html#numpy.random.PCG64"><code><span>PCG64</span></code></a>.  The BitGenerator
+can be changed by passing an instantized BitGenerator to <a href="#numpy.random.Generator"><code><span>Generator</span></code></a>.</p>
+<dl>
+<dt id="numpy.random.default_rng">
+<span><span>numpy.random.</span></span><span><span>default_rng</span></span><span>(</span><em><span><span>seed</span></span><span><span>=</span></span><span><span>None</span></span></em><span>)</span><a href="#numpy.random.default_rng">#</a></dt>
+<dd><p>Construct a new Generator with the default BitGenerator (PCG64).</p>
+<dl>
+<dt>Parameters<span>:</span></dt>
+<dd><dl>
+<dt><strong>seed</strong><span>{None, int, array_like[ints], SeedSequence, BitGenerator, Generator, RandomState}, optional</span></dt><dd><p>A seed to initialize the <a href="https://numpy.org/doc/stable/reference/random/bit_generators/generated/numpy.random.BitGenerator.html#numpy.random.BitGenerator"><code><span>BitGenerator</span></code></a>. If None, then fresh,
+unpredictable entropy will be pulled from the OS. If an <code><span>int</span></code> or
+<code><span>array_like[ints]</span></code> is passed, then all values must be non-negative and will be
+passed to <a href="https://numpy.org/doc/stable/reference/random/bit_generators/generated/numpy.random.SeedSequence.html#numpy.random.SeedSequence"><code><span>SeedSequence</span></code></a> to derive the initial <a href="https://numpy.org/doc/stable/reference/random/bit_generators/generated/numpy.random.BitGenerator.html#numpy.random.BitGenerator"><code><span>BitGenerator</span></code></a> state. One may also
+pass in a <a href="https://numpy.org/doc/stable/reference/random/bit_generators/generated/numpy.random.SeedSequence.html#numpy.random.SeedSequence"><code><span>SeedSequence</span></code></a> instance.
+Additionally, when passed a <a href="https://numpy.org/doc/stable/reference/random/bit_generators/generated/numpy.random.BitGenerator.html#numpy.random.BitGenerator"><code><span>BitGenerator</span></code></a>, it will be wrapped by
+<a href="#numpy.random.Generator"><code><span>Generator</span></code></a>. If passed a <a href="#numpy.random.Generator"><code><span>Generator</span></code></a>, it will be returned unaltered.
+When passed a legacy <a href="https://numpy.org/doc/stable/reference/random/legacy.html#numpy.random.RandomState"><code><span>RandomState</span></code></a> instance it will be coerced to a <a href="#numpy.random.Generator"><code><span>Generator</span></code></a>.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns<span>:</span></dt>
+<dd><dl>
+<dt>Generator</dt><dd><p>The initialized generator object.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>Notes</p>
+<p>If <code><span>seed</span></code> is not a <a href="https://numpy.org/doc/stable/reference/random/bit_generators/generated/numpy.random.BitGenerator.html#numpy.random.BitGenerator"><code><span>BitGenerator</span></code></a> or a <a href="#numpy.random.Generator"><code><span>Generator</span></code></a>, a new <a href="https://numpy.org/doc/stable/reference/random/bit_generators/generated/numpy.random.BitGenerator.html#numpy.random.BitGenerator"><code><span>BitGenerator</span></code></a>
+is instantiated. This function does not manage a default global instance.</p>
+<p>See <a href="https://numpy.org/doc/stable/reference/random/bit_generators/index.html#seeding-and-entropy"><span>Seeding and entropy</span></a> for more information about seeding.</p>
+<p>Examples</p>
+<div id="8e131dc9-6e8e-4738-b46b-81f6096af324">
+<div></div><div>
+<p><a href="#numpy.random.default_rng"><code><span>default_rng</span></code></a> is the recommended constructor for the random number class
+<a href="#numpy.random.Generator"><code><span>Generator</span></code></a>. Here are several ways we can construct a random
+number generator using <a href="#numpy.random.default_rng"><code><span>default_rng</span></code></a> and the <a href="#numpy.random.Generator"><code><span>Generator</span></code></a> class.</p>
+<p>Here we use <a href="#numpy.random.default_rng"><code><span>default_rng</span></code></a> to generate a random float:</p>
+<div><div><pre><span></span><span>&gt;&gt;&gt; </span><span>import</span><span> </span><span>numpy</span><span> </span><span>as</span><span> </span><span>np</span>
+<span>&gt;&gt;&gt; </span><span>rng</span> <span>=</span> <span>np</span><span>.</span><span>random</span><span>.</span><span>default_rng</span><span>(</span><span>12345</span><span>)</span>
+<span>&gt;&gt;&gt; </span><span>print</span><span>(</span><span>rng</span><span>)</span>
+<span>Generator(PCG64)</span>
+<span>&gt;&gt;&gt; </span><span>rfloat</span> <span>=</span> <span>rng</span><span>.</span><span>random</span><span>()</span>
+<span>&gt;&gt;&gt; </span><span>rfloat</span>
+<span>0.22733602246716966</span>
+<span>&gt;&gt;&gt; </span><span>type</span><span>(</span><span>rfloat</span><span>)</span>
+<span>&lt;class 'float'&gt;</span>
+</pre></div>
+</div>
+<p>Here we use <a href="#numpy.random.default_rng"><code><span>default_rng</span></code></a> to generate 3 random integers between 0
+(inclusive) and 10 (exclusive):</p>
+<div><div><pre><span></span><span>&gt;&gt;&gt; </span><span>import</span><span> </span><span>numpy</span><span> </span><span>as</span><span> </span><span>np</span>
+<span>&gt;&gt;&gt; </span><span>rng</span> <span>=</span> <span>np</span><span>.</span><span>random</span><span>.</span><span>default_rng</span><span>(</span><span>12345</span><span>)</span>
+<span>&gt;&gt;&gt; </span><span>rints</span> <span>=</span> <span>rng</span><span>.</span><span>integers</span><span>(</span><span>low</span><span>=</span><span>0</span><span>,</span> <span>high</span><span>=</span><span>10</span><span>,</span> <span>size</span><span>=</span><span>3</span><span>)</span>
+<span>&gt;&gt;&gt; </span><span>rints</span>
+<span>array([6, 2, 7])</span>
+<span>&gt;&gt;&gt; </span><span>type</span><span>(</span><span>rints</span><span>[</span><span>0</span><span>])</span>
+<span>&lt;class 'numpy.int64'&gt;</span>
+</pre></div>
+</div>
+<p>Here we specify a seed so that we have reproducible results:</p>
+<div><div><pre><span></span><span>&gt;&gt;&gt; </span><span>import</span><span> </span><span>numpy</span><span> </span><span>as</span><span> </span><span>np</span>
+<span>&gt;&gt;&gt; </span><span>rng</span> <span>=</span> <span>np</span><span>.</span><span>random</span><span>.</span><span>default_rng</span><span>(</span><span>seed</span><span>=</span><span>42</span><span>)</span>
+<span>&gt;&gt;&gt; </span><span>print</span><span>(</span><span>rng</span><span>)</span>
+<span>Generator(PCG64)</span>
+<span>&gt;&gt;&gt; </span><span>arr1</span> <span>=</span> <span>rng</span><span>.</span><span>random</span><span>((</span><span>3</span><span>,</span> <span>3</span><span>))</span>
+<span>&gt;&gt;&gt; </span><span>arr1</span>
+<span>array([[0.77395605, 0.43887844, 0.85859792],</span>
+<span>       [0.69736803, 0.09417735, 0.97562235],</span>
+<span>       [0.7611397 , 0.78606431, 0.12811363]])</span>
+</pre></div>
+</div>
+<p>If we exit and restart our Python interpreter, we’ll see that we
+generate the same random numbers again:</p>
+<div><div><pre><span></span><span>&gt;&gt;&gt; </span><span>import</span><span> </span><span>numpy</span><span> </span><span>as</span><span> </span><span>np</span>
+<span>&gt;&gt;&gt; </span><span>rng</span> <span>=</span> <span>np</span><span>.</span><span>random</span><span>.</span><span>default_rng</span><span>(</span><span>seed</span><span>=</span><span>42</span><span>)</span>
+<span>&gt;&gt;&gt; </span><span>arr2</span> <span>=</span> <span>rng</span><span>.</span><span>random</span><span>((</span><span>3</span><span>,</span> <span>3</span><span>))</span>
+<span>&gt;&gt;&gt; </span><span>arr2</span>
+<span>array([[0.77395605, 0.43887844, 0.85859792],</span>
+<span>       [0.69736803, 0.09417735, 0.97562235],</span>
+<span>       [0.7611397 , 0.78606431, 0.12811363]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div id="f1fe93ad-1333-41a6-8751-a14a49ae5c00"><div></div><div id="222ea994-bba6-4aca-b4d1-bd2d125bd1aa"></div></div></dd></dl>
+
+<dl>
+<dt id="numpy.random.Generator">
+<em><span>class</span><span> </span></em><span><span>numpy.random.</span></span><span><span>Generator</span></span><span>(</span><em><span><span>bit_generator</span></span></em><span>)</span><a href="#numpy.random.Generator">#</a></dt>
+<dd><p>Container for the BitGenerators.</p>
+<p><a href="#numpy.random.Generator"><code><span>Generator</span></code></a> exposes a number of methods for generating random
+numbers drawn from a variety of probability distributions. In addition to
+the distribution-specific arguments, each method takes a keyword argument
+<em>size</em> that defaults to <code><span>None</span></code>. If <em>size</em> is <code><span>None</span></code>, then a single
+value is generated and returned. If <em>size</em> is an integer, then a 1-D
+array filled with generated values is returned. If <em>size</em> is a tuple,
+then an array with that shape is filled and returned.</p>
+<p>The function <a href="#numpy.random.default_rng"><code><span>numpy.random.default_rng</span></code></a> will instantiate
+a <a href="#numpy.random.Generator"><code><span>Generator</span></code></a> with numpy’s default <a href="https://numpy.org/doc/stable/reference/random/bit_generators/generated/numpy.random.BitGenerator.html#numpy.random.BitGenerator"><code><span>BitGenerator</span></code></a>.</p>
+<p><strong>No Compatibility Guarantee</strong></p>
+<p><a href="#numpy.random.Generator"><code><span>Generator</span></code></a> does not provide a version compatibility guarantee. In
+particular, as better algorithms evolve the bit stream may change.</p>
+<dl>
+<dt>Parameters<span>:</span></dt>
+<dd><dl>
+<dt><strong>bit_generator</strong><span>BitGenerator</span></dt><dd><p>BitGenerator to use as the core generator.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div>
+<p>See also</p>
+<dl>
+<dt><a href="#numpy.random.default_rng"><code><span>default_rng</span></code></a></dt><dd><p>Recommended constructor for <a href="#numpy.random.Generator"><code><span>Generator</span></code></a>.</p>
+</dd>
+</dl>
+</div>
+<p>Notes</p>
+<p>The Python stdlib module <a href="https://docs.python.org/3/library/random.html#module-random"><code><span>random</span></code></a> contains
+pseudo-random number generator with a number of methods that are similar
+to the ones available in <a href="#numpy.random.Generator"><code><span>Generator</span></code></a>.
+It uses Mersenne Twister, and this bit generator can
+be accessed using <a href="https://numpy.org/doc/stable/reference/random/bit_generators/mt19937.html#numpy.random.MT19937"><code><span>MT19937</span></code></a>. <a href="#numpy.random.Generator"><code><span>Generator</span></code></a>, besides being
+NumPy-aware, has the advantage that it provides a much larger number
+of probability distributions to choose from.</p>
+<p>Examples</p>
+<div id="e12e80ae-0035-4a72-8ec9-b6926de6f73e">
+<div></div><div>
+<div><div><pre><span></span><span>&gt;&gt;&gt; </span><span>from</span><span> </span><span>numpy.random</span><span> </span><span>import</span> <span>Generator</span><span>,</span> <span>PCG64</span>
+<span>&gt;&gt;&gt; </span><span>rng</span> <span>=</span> <span>Generator</span><span>(</span><span>PCG64</span><span>())</span>
+<span>&gt;&gt;&gt; </span><span>rng</span><span>.</span><span>standard_normal</span><span>()</span>
+<span>-0.203  # random</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div id="c7bd072d-5b32-4516-972d-05905389cf3c"><div></div><div id="6d1fcf1d-fcd0-4f60-982d-129a6d1e2ba0"></div></div></dd></dl>
+
+<section id="accessing-the-bitgenerator-and-spawning">
+<h2>Accessing the BitGenerator and spawning<a href="#accessing-the-bitgenerator-and-spawning">#</a></h2>
+<div><table>
+<tbody>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.bit_generator.html#numpy.random.Generator.bit_generator"><code><span>bit_generator</span></code></a></p></td>
+<td><p>Gets the bit generator instance used by the generator</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.spawn.html#numpy.random.Generator.spawn"><code><span>spawn</span></code></a>(n_children)</p></td>
+<td><p>Create new independent child generators.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="simple-random-data">
+<h2>Simple random data<a href="#simple-random-data">#</a></h2>
+<div><table>
+<tbody>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.integers.html#numpy.random.Generator.integers"><code><span>integers</span></code></a>(low[, high, size, dtype, endpoint])</p></td>
+<td><p>Return random integers from <em>low</em> (inclusive) to <em>high</em> (exclusive), or if endpoint=True, <em>low</em> (inclusive) to <em>high</em> (inclusive).</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.random.html#numpy.random.Generator.random"><code><span>random</span></code></a>([size, dtype, out])</p></td>
+<td><p>Return random floats in the half-open interval [0.0, 1.0).</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.choice.html#numpy.random.Generator.choice"><code><span>choice</span></code></a>(a[, size, replace, p, axis, shuffle])</p></td>
+<td><p>Generates a random sample from a given array</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.bytes.html#numpy.random.Generator.bytes"><code><span>bytes</span></code></a>(length)</p></td>
+<td><p>Return random bytes.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="permutations">
+<h2>Permutations<a href="#permutations">#</a></h2>
+<p>The methods for randomly permuting a sequence are</p>
+<div><table>
+<tbody>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.shuffle.html#numpy.random.Generator.shuffle"><code><span>shuffle</span></code></a>(x[, axis])</p></td>
+<td><p>Modify an array or sequence in-place by shuffling its contents.</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.permutation.html#numpy.random.Generator.permutation"><code><span>permutation</span></code></a>(x[, axis])</p></td>
+<td><p>Randomly permute a sequence, or return a permuted range.</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.permuted.html#numpy.random.Generator.permuted"><code><span>permuted</span></code></a>(x[, axis, out])</p></td>
+<td><p>Randomly permute <em>x</em> along axis <em>axis</em>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The following table summarizes the behaviors of the methods.</p>
+<div><table>
+<thead>
+<tr><th><p>method</p></th>
+<th><p>copy/in-place</p></th>
+<th><p>axis handling</p></th>
+</tr>
+</thead>
+<tbody>
+<tr><td><p>shuffle</p></td>
+<td><p>in-place</p></td>
+<td><p>as if 1d</p></td>
+</tr>
+<tr><td><p>permutation</p></td>
+<td><p>copy</p></td>
+<td><p>as if 1d</p></td>
+</tr>
+<tr><td><p>permuted</p></td>
+<td><p>either (use ‘out’
+for in-place)</p></td>
+<td><p>axis independent</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The following subsections provide more details about the differences.</p>
+<section id="in-place-vs-copy">
+<h3>In-place vs. copy<a href="#in-place-vs-copy">#</a></h3>
+<p>The main difference between <a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.shuffle.html#numpy.random.Generator.shuffle"><code><span>Generator.shuffle</span></code></a> and <a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.permutation.html#numpy.random.Generator.permutation"><code><span>Generator.permutation</span></code></a>
+is that <a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.shuffle.html#numpy.random.Generator.shuffle"><code><span>Generator.shuffle</span></code></a> operates in-place, while <a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.permutation.html#numpy.random.Generator.permutation"><code><span>Generator.permutation</span></code></a>
+returns a copy.</p>
+<p>By default, <a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.permuted.html#numpy.random.Generator.permuted"><code><span>Generator.permuted</span></code></a> returns a copy.  To operate in-place with
+<a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.permuted.html#numpy.random.Generator.permuted"><code><span>Generator.permuted</span></code></a>, pass the same array as the first argument <em>and</em> as
+the value of the <code><span>out</span></code> parameter.  For example,</p>
+<div id="6d93abd0-ba72-4d57-ac60-c29e5910d03d">
+<div></div><div>
+<div><div><pre><span></span><span>&gt;&gt;&gt; </span><span>import</span><span> </span><span>numpy</span><span> </span><span>as</span><span> </span><span>np</span>
+<span>&gt;&gt;&gt; </span><span>rng</span> <span>=</span> <span>np</span><span>.</span><span>random</span><span>.</span><span>default_rng</span><span>()</span>
+<span>&gt;&gt;&gt; </span><span>x</span> <span>=</span> <span>np</span><span>.</span><span>arange</span><span>(</span><span>0</span><span>,</span> <span>15</span><span>)</span><span>.</span><span>reshape</span><span>(</span><span>3</span><span>,</span> <span>5</span><span>)</span>
+<span>&gt;&gt;&gt; </span><span>x</span> 
+<span>array([[ 0,  1,  2,  3,  4],</span>
+<span>       [ 5,  6,  7,  8,  9],</span>
+<span>       [10, 11, 12, 13, 14]])</span>
+<span>&gt;&gt;&gt; </span><span>y</span> <span>=</span> <span>rng</span><span>.</span><span>permuted</span><span>(</span><span>x</span><span>,</span> <span>axis</span><span>=</span><span>1</span><span>,</span> <span>out</span><span>=</span><span>x</span><span>)</span>
+<span>&gt;&gt;&gt; </span><span>x</span> 
+<span>array([[ 1,  0,  2,  4,  3],  # random</span>
+<span>       [ 6,  7,  8,  9,  5],</span>
+<span>       [10, 14, 11, 13, 12]])</span>
+</pre></div>
+</div>
+<p>Note that when <code><span>out</span></code> is given, the return value is <code><span>out</span></code>:</p>
+<div><div><pre><span></span><span>&gt;&gt;&gt; </span><span>y</span> <span>is</span> <span>x</span>
+<span>True</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div id="49a2db73-2fb8-4c4d-bfb6-68f3355cc5f7"><div></div><div id="08069310-5a25-493b-842b-330c58251dc6"></div></div></section>
+<section id="handling-the-axis-parameter">
+<span id="generator-handling-axis-parameter"></span><h3>Handling the <code><span>axis</span></code> parameter<a href="#handling-the-axis-parameter">#</a></h3>
+<p>An important distinction for these methods is how they handle the <code><span>axis</span></code>
+parameter.  Both <a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.shuffle.html#numpy.random.Generator.shuffle"><code><span>Generator.shuffle</span></code></a> and <a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.permutation.html#numpy.random.Generator.permutation"><code><span>Generator.permutation</span></code></a> treat the
+input as a one-dimensional sequence, and the <code><span>axis</span></code> parameter determines
+which dimension of the input array to use as the sequence. In the case of a
+two-dimensional array, <code><span>axis=0</span></code> will, in effect, rearrange the rows of the
+array, and  <code><span>axis=1</span></code> will rearrange the columns.  For example</p>
+<div id="713febfd-d60e-4989-86df-ec3002a97aa5">
+<div></div><div>
+<div><div><pre><span></span><span>&gt;&gt;&gt; </span><span>import</span><span> </span><span>numpy</span><span> </span><span>as</span><span> </span><span>np</span>
+<span>&gt;&gt;&gt; </span><span>rng</span> <span>=</span> <span>np</span><span>.</span><span>random</span><span>.</span><span>default_rng</span><span>()</span>
+<span>&gt;&gt;&gt; </span><span>x</span> <span>=</span> <span>np</span><span>.</span><span>arange</span><span>(</span><span>0</span><span>,</span> <span>15</span><span>)</span><span>.</span><span>reshape</span><span>(</span><span>3</span><span>,</span> <span>5</span><span>)</span>
+<span>&gt;&gt;&gt; </span><span>x</span>
+<span>array([[ 0,  1,  2,  3,  4],</span>
+<span>       [ 5,  6,  7,  8,  9],</span>
+<span>       [10, 11, 12, 13, 14]])</span>
+<span>&gt;&gt;&gt; </span><span>rng</span><span>.</span><span>permutation</span><span>(</span><span>x</span><span>,</span> <span>axis</span><span>=</span><span>1</span><span>)</span> 
+<span>array([[ 1,  3,  2,  0,  4],  # random</span>
+<span>       [ 6,  8,  7,  5,  9],</span>
+<span>       [11, 13, 12, 10, 14]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div id="5fe106e8-b7b0-4180-a3ea-9e65bf031860"><div></div><div id="c07b97ef-0d86-4f7d-ac60-37b4d9e51f89"></div></div><p>Note that the columns have been rearranged “in bulk”: the values within
+each column have not changed.</p>
+<p>The method <a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.permuted.html#numpy.random.Generator.permuted"><code><span>Generator.permuted</span></code></a> treats the <code><span>axis</span></code> parameter similar to
+how <a href="https://numpy.org/doc/stable/reference/generated/numpy.sort.html#numpy.sort"><code><span>numpy.sort</span></code></a> treats it.  Each slice along the given axis is shuffled
+independently of the others.  Compare the following example of the use of
+<a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.permuted.html#numpy.random.Generator.permuted"><code><span>Generator.permuted</span></code></a> to the above example of <a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.permutation.html#numpy.random.Generator.permutation"><code><span>Generator.permutation</span></code></a>:</p>
+<div id="39522657-e895-4e2a-8fb4-3d3580a28571">
+<div></div><div>
+<div><div><pre><span></span><span>&gt;&gt;&gt; </span><span>import</span><span> </span><span>numpy</span><span> </span><span>as</span><span> </span><span>np</span>
+<span>&gt;&gt;&gt; </span><span>rng</span> <span>=</span> <span>np</span><span>.</span><span>random</span><span>.</span><span>default_rng</span><span>()</span>
+<span>&gt;&gt;&gt; </span><span>rng</span><span>.</span><span>permuted</span><span>(</span><span>x</span><span>,</span> <span>axis</span><span>=</span><span>1</span><span>)</span> 
+<span>array([[ 1,  0,  2,  4,  3],  # random</span>
+<span>       [ 5,  7,  6,  9,  8],</span>
+<span>       [10, 14, 12, 13, 11]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div id="1f0856ac-c26f-445d-a0a5-ab93b13e47d4"><div></div><div id="3684eee0-8cf4-46d4-b7bf-ddbe321cbd7e"></div></div><p>In this example, the values within each row (i.e. the values along
+<code><span>axis=1</span></code>) have been shuffled independently.  This is not a “bulk”
+shuffle of the columns.</p>
+</section>
+<section id="shuffling-non-numpy-sequences">
+<h3>Shuffling non-NumPy sequences<a href="#shuffling-non-numpy-sequences">#</a></h3>
+<p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.shuffle.html#numpy.random.Generator.shuffle"><code><span>Generator.shuffle</span></code></a> works on non-NumPy sequences.  That is, if it is given
+a sequence that is not a NumPy array, it shuffles that sequence in-place.</p>
+<div id="6651c5cd-fcfb-4490-8a26-01bcf3fc4f5a">
+<div></div><div>
+<div><div><pre><span></span><span>&gt;&gt;&gt; </span><span>import</span><span> </span><span>numpy</span><span> </span><span>as</span><span> </span><span>np</span>
+<span>&gt;&gt;&gt; </span><span>rng</span> <span>=</span> <span>np</span><span>.</span><span>random</span><span>.</span><span>default_rng</span><span>()</span>
+<span>&gt;&gt;&gt; </span><span>a</span> <span>=</span> <span>[</span><span>'A'</span><span>,</span> <span>'B'</span><span>,</span> <span>'C'</span><span>,</span> <span>'D'</span><span>,</span> <span>'E'</span><span>]</span>
+<span>&gt;&gt;&gt; </span><span>rng</span><span>.</span><span>shuffle</span><span>(</span><span>a</span><span>)</span>  <span># shuffle the list in-place</span>
+<span>&gt;&gt;&gt; </span><span>a</span> 
+<span>['B', 'D', 'A', 'E', 'C']  # random</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div id="c533bd6d-41fe-4bfa-bcdd-c1d14af57837"><div></div><div id="5cb2f213-6c6d-4852-b3ba-11aea67026c7"></div></div></section>
+</section>
+<section id="distributions">
+<h2>Distributions<a href="#distributions">#</a></h2>
+<div><table>
+<tbody>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.beta.html#numpy.random.Generator.beta"><code><span>beta</span></code></a>(a, b[, size])</p></td>
+<td><p>Draw samples from a Beta distribution.</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.binomial.html#numpy.random.Generator.binomial"><code><span>binomial</span></code></a>(n, p[, size])</p></td>
+<td><p>Draw samples from a binomial distribution.</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.chisquare.html#numpy.random.Generator.chisquare"><code><span>chisquare</span></code></a>(df[, size])</p></td>
+<td><p>Draw samples from a chi-square distribution.</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.dirichlet.html#numpy.random.Generator.dirichlet"><code><span>dirichlet</span></code></a>(alpha[, size])</p></td>
+<td><p>Draw samples from the Dirichlet distribution.</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.exponential.html#numpy.random.Generator.exponential"><code><span>exponential</span></code></a>([scale, size])</p></td>
+<td><p>Draw samples from an exponential distribution.</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.f.html#numpy.random.Generator.f"><code><span>f</span></code></a>(dfnum, dfden[, size])</p></td>
+<td><p>Draw samples from an F distribution.</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.gamma.html#numpy.random.Generator.gamma"><code><span>gamma</span></code></a>(shape[, scale, size])</p></td>
+<td><p>Draw samples from a Gamma distribution.</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.geometric.html#numpy.random.Generator.geometric"><code><span>geometric</span></code></a>(p[, size])</p></td>
+<td><p>Draw samples from the geometric distribution.</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.gumbel.html#numpy.random.Generator.gumbel"><code><span>gumbel</span></code></a>([loc, scale, size])</p></td>
+<td><p>Draw samples from a Gumbel distribution.</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.hypergeometric.html#numpy.random.Generator.hypergeometric"><code><span>hypergeometric</span></code></a>(ngood, nbad, nsample[, size])</p></td>
+<td><p>Draw samples from a Hypergeometric distribution.</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.laplace.html#numpy.random.Generator.laplace"><code><span>laplace</span></code></a>([loc, scale, size])</p></td>
+<td><p>Draw samples from the Laplace or double exponential distribution with specified location (or mean) and scale (decay).</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.logistic.html#numpy.random.Generator.logistic"><code><span>logistic</span></code></a>([loc, scale, size])</p></td>
+<td><p>Draw samples from a logistic distribution.</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.lognormal.html#numpy.random.Generator.lognormal"><code><span>lognormal</span></code></a>([mean, sigma, size])</p></td>
+<td><p>Draw samples from a log-normal distribution.</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.logseries.html#numpy.random.Generator.logseries"><code><span>logseries</span></code></a>(p[, size])</p></td>
+<td><p>Draw samples from a logarithmic series distribution.</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.multinomial.html#numpy.random.Generator.multinomial"><code><span>multinomial</span></code></a>(n, pvals[, size])</p></td>
+<td><p>Draw samples from a multinomial distribution.</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.multivariate_hypergeometric.html#numpy.random.Generator.multivariate_hypergeometric"><code><span>multivariate_hypergeometric</span></code></a>(colors, nsample)</p></td>
+<td><p>Generate variates from a multivariate hypergeometric distribution.</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.multivariate_normal.html#numpy.random.Generator.multivariate_normal"><code><span>multivariate_normal</span></code></a>(mean, cov[, size, ...])</p></td>
+<td><p>Draw random samples from a multivariate normal distribution.</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.negative_binomial.html#numpy.random.Generator.negative_binomial"><code><span>negative_binomial</span></code></a>(n, p[, size])</p></td>
+<td><p>Draw samples from a negative binomial distribution.</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.noncentral_chisquare.html#numpy.random.Generator.noncentral_chisquare"><code><span>noncentral_chisquare</span></code></a>(df, nonc[, size])</p></td>
+<td><p>Draw samples from a noncentral chi-square distribution.</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.noncentral_f.html#numpy.random.Generator.noncentral_f"><code><span>noncentral_f</span></code></a>(dfnum, dfden, nonc[, size])</p></td>
+<td><p>Draw samples from the noncentral F distribution.</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.normal.html#numpy.random.Generator.normal"><code><span>normal</span></code></a>([loc, scale, size])</p></td>
+<td><p>Draw random samples from a normal (Gaussian) distribution.</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.pareto.html#numpy.random.Generator.pareto"><code><span>pareto</span></code></a>(a[, size])</p></td>
+<td><p>Draw samples from a Pareto II (AKA Lomax) distribution with specified shape.</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.poisson.html#numpy.random.Generator.poisson"><code><span>poisson</span></code></a>([lam, size])</p></td>
+<td><p>Draw samples from a Poisson distribution.</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.power.html#numpy.random.Generator.power"><code><span>power</span></code></a>(a[, size])</p></td>
+<td><p>Draws samples in [0, 1] from a power distribution with positive exponent a - 1.</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.rayleigh.html#numpy.random.Generator.rayleigh"><code><span>rayleigh</span></code></a>([scale, size])</p></td>
+<td><p>Draw samples from a Rayleigh distribution.</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.standard_cauchy.html#numpy.random.Generator.standard_cauchy"><code><span>standard_cauchy</span></code></a>([size])</p></td>
+<td><p>Draw samples from a standard Cauchy distribution with mode = 0.</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.standard_exponential.html#numpy.random.Generator.standard_exponential"><code><span>standard_exponential</span></code></a>([size, dtype, method, out])</p></td>
+<td><p>Draw samples from the standard exponential distribution.</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.standard_gamma.html#numpy.random.Generator.standard_gamma"><code><span>standard_gamma</span></code></a>(shape[, size, dtype, out])</p></td>
+<td><p>Draw samples from a standard Gamma distribution.</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.standard_normal.html#numpy.random.Generator.standard_normal"><code><span>standard_normal</span></code></a>([size, dtype, out])</p></td>
+<td><p>Draw samples from a standard Normal distribution (mean=0, stdev=1).</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.standard_t.html#numpy.random.Generator.standard_t"><code><span>standard_t</span></code></a>(df[, size])</p></td>
+<td><p>Draw samples from a standard Student's t distribution with <em>df</em> degrees of freedom.</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.triangular.html#numpy.random.Generator.triangular"><code><span>triangular</span></code></a>(left, mode, right[, size])</p></td>
+<td><p>Draw samples from the triangular distribution over the interval <code><span>[left,</span> <span>right]</span></code>.</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.uniform.html#numpy.random.Generator.uniform"><code><span>uniform</span></code></a>([low, high, size])</p></td>
+<td><p>Draw samples from a uniform distribution.</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.vonmises.html#numpy.random.Generator.vonmises"><code><span>vonmises</span></code></a>(mu, kappa[, size])</p></td>
+<td><p>Draw samples from a von Mises distribution.</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.wald.html#numpy.random.Generator.wald"><code><span>wald</span></code></a>(mean, scale[, size])</p></td>
+<td><p>Draw samples from a Wald, or inverse Gaussian, distribution.</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.weibull.html#numpy.random.Generator.weibull"><code><span>weibull</span></code></a>(a[, size])</p></td>
+<td><p>Draw samples from a Weibull distribution.</p></td>
+</tr>
+<tr><td><p><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.zipf.html#numpy.random.Generator.zipf"><code><span>zipf</span></code></a>(a[, size])</p></td>
+<td><p>Draw samples from a Zipf distribution.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                </body></html>

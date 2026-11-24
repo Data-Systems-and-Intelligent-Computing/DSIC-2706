@@ -1,10 +1,8 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (MiKTeX 26.5) (preloaded format=xelatex 2026.11.17)  23 NOV 2026 20:57
+This is XeTeX, Version 3.141592653-2.6-0.999998 (MiKTeX 26.5) (preloaded format=xelatex 2026.11.17)  24 NOV 2026 14:51
 entering extended mode
- restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
-**"d:/FILE AND TASK/TA/paper/Penulisan Pak ardika/main.tex"
-(d:/FILE AND TASK/TA/paper/Penulisan Pak ardika/main.tex
+**./main.tex
+(main.tex
 LaTeX2e <2026-11-01>
 L3 programming layer <2026-09-09>
 (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/base\report.cls
@@ -24,8 +22,7 @@ File: size12.clo 2026-06-04 v1.4n Standard LaTeX file (size option)
 \abovecaptionskip=\skip49
 \belowcaptionskip=\skip50
 \bibindent=\dimen150
-)
-(C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
+) (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
 Package: babel 2026/11/10 v26.16 The multilingual framework for LuaLaTeX, pdfLa
 TeX and XeLaTeX
 \babel@savecnt=\count282
@@ -45,14 +42,12 @@ LaTeX Encoding Info:    Ignoring declaration for text command \SS (encoding ?)
 on input line 2133.
 \U@D=\dimen151
 \l@unhyphenated=\language79
-
 (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/generic/babel\xebabel.def)
 \bbl@readstream=\read2
 \bbl@dirlevel=\count283
 Package babel Info: Configuration files are deprecated, as
 (babel)             they can break document portability.
 (babel)             Reported on input line 4357.
-
 *************************************
 * Local config file bblopts.cfg used
 *
@@ -84,8 +79,8 @@ Package babel Info: Importing font and identification data for 'indonesian'
 sian.ldf
 Language: indonesian 2025/06/01 v1.0n Bahasa Indonesia support from the babel s
 ystem
-))
-(C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/fontspec\fontspec.sty
+)) (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/fontspec\fontspec.st
+y
 Package: fontspec 2026/08/11 v2.9h Font selection for XeLaTeX and LuaLaTeX
 
 (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/fontspec\fontspec-xetex
@@ -106,11 +101,10 @@ X
 \l__fontspec_tmpa_dim=\dimen152
 \l__fontspec_tmpb_dim=\dimen153
 \l__fontspec_tmpc_dim=\dimen154
- (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
+(C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
 Package: fontenc 2026-07-31 v2.2a Standard LaTeX package
-)
-(C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/fontspec\fontspec.cfg))
-)
+) (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/fontspec\fontspec.cfg
+)))
 
 Package fontspec Info: 
 (fontspec)             Font family 'TimesNewRoman(0)' created for font 'Times
@@ -144,15 +138,13 @@ ext;"
 (fontspec)             Roman/BI/OT:script=latn;language=dflt;+smcp;mapping=tex-
 text;"
 
- (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+(C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
 Package: geometry 2026/11/03 v6.1 Page Geometry
 (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
 Package: keyval 2026-06-01 v1.15 key=value parser (DPC)
 \KV@toks@=\toks17
-)
-(C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+) (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
-
 (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
 Package: iftex 2024/12/12 v1.0g TeX engine tests
 ))
@@ -168,17 +160,13 @@ Package: iftex 2024/12/12 v1.0g TeX engine tests
 \Gm@layouthoffset=\dimen161
 \Gm@layoutvoffset=\dimen162
 \Gm@dimlist=\toks18
-
 (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
 (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/setspace\setspace.sty
 Package: setspace 2022/12/04 v6.7b set line spacing
-)
-(C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+) (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
 Package: graphicx 2026-06-26 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
-
 (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
 Package: graphics 2026-05-17 v1.4h Standard LaTeX Graphics (DPC,SPQR)
-
 (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
 Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
 )
@@ -187,7 +175,6 @@ fg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: xetex.def on input line 106.
-
 (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\xetex.def
 File: xetex.def 2025/11/01 v5.0p Graphics/color driver for xetex
 ))
@@ -200,8 +187,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \float@box=\box53
 \@float@everytoks=\toks20
 \@floatcapt=\box54
-)
-(C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
+) (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
 Package: array 2026/06/26 v2.7b Tabular extension package (FMi)
 \col@sep=\dimen165
 \ar@mcellbox=\box55
@@ -210,8 +196,7 @@ Package: array 2026/06/26 v2.7b Tabular extension package (FMi)
 \extratabsurround=\skip51
 \backup@length=\skip52
 \ar@cellbox=\box56
-)
-(C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/tools\tabularx.sty
+) (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/tools\tabularx.sty
 Package: tabularx 2026-06-01 v2.12a `tabularx' package (DPC)
 \TX@col@width=\dimen167
 \TX@old@table=\dimen168
@@ -220,25 +205,20 @@ Package: tabularx 2026-06-01 v2.12a `tabularx' package (DPC)
 \TX@delta=\dimen171
 \TX@cols=\count299
 \TX@ftn=\toks22
-)
-(C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+) (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
 Package: amsmath 2026-08-26 v2.18e AMS math features
 \@mathmargin=\skip53
-
 For additional information on amsmath, use the `?' option.
 (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
 Package: amstext 2026/06/26 v2.01 AMS text
-
 (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks23
 \ex@=\dimen172
-))
-(C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
+)) (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen173
-)
-(C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
+) (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
 \inf@bad=\count300
@@ -288,8 +268,7 @@ LaTeX Info: Redefining \Relbar on input line 942.
 \mathdisplay@stack=\toks27
 LaTeX Info: Redefining \[ on input line 2937.
 LaTeX Info: Redefining \] on input line 2938.
-)
-(C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty
+) (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty
 Package: longtable 2026-10-05 v4.28 Multi-page Table package (DPC)
 \LTleft=\skip56
 \LTright=\skip57
@@ -307,8 +286,7 @@ Package: longtable 2026-10-05 v4.28 Multi-page Table package (DPC)
 \c@LT@tables=\count315
 \c@LT@chunks=\count316
 \LT@p@ftn=\toks28
-)
-(C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/titlesec\titlesec.sty
+) (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/titlesec\titlesec.sty
 Package: titlesec 2025/01/04 v2.17 Sectioning titles
 \ttl@box=\box64
 \beforetitleunit=\skip60
@@ -319,10 +297,8 @@ Package: titlesec 2025/01/04 v2.17 Sectioning titles
 \titlewidth=\dimen184
 \titlewidthlast=\dimen185
 \titlewidthfirst=\dimen186
-)
-(C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/tocloft\tocloft.sty
+) (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/tocloft\tocloft.sty
 Package: tocloft 2026-10-30 v3.0d parameterised ToC, etc., typesetting
-
 (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
 Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count317
@@ -377,7 +353,6 @@ Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
 (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.s
 ty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
-
 (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
 Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
 )
@@ -393,13 +368,10 @@ Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode not found.
-))
-(C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
+)) (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
-)
-(C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/nameref\nameref.sty
+) (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/nameref\nameref.sty
 Package: nameref 2026-11-03 v2.60 Cross-referencing by name of section
-
 (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 )
@@ -420,13 +392,13 @@ Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 \@linkdim=\dimen187
 \Hy@linkcounter=\count321
 \Hy@pagecounter=\count322
- (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+(C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
 File: pd1enc.def 2026-11-03 v7.01t Hyperref: PDFDocEncoding definition (HO)
 ) (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
 \Hy@SavedSpaceFactor=\count323
- (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
+(C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
 File: puenc.def 2026-11-03 v7.01t Hyperref: PDF Unicode definition (HO)
 )
 Package hyperref Info: Option `bookmarks' set `true' on input line 4070.
@@ -438,14 +410,12 @@ Package hyperref Info: Backreferencing OFF on input line 4219.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4466.
 \c@Hy@tempcnt=\count324
-
 (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
 \Urlmuskip=\muskip18
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4805.
 \XeTeXLinkMargin=\dimen188
-
 (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 
@@ -469,7 +439,6 @@ Package hyperref Info: PDF/A mode OFF on input line 6121.
 \c@Hfootnote=\count328
 )
 Package hyperref Info: Driver (autodetected): hxetex.
-
 (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hxetex.def
 File: hxetex.def 2026-11-03 v7.01t Hyperref driver for XeTeX
 \pdfm@box=\box65
@@ -493,7 +462,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \jarakBawahTabel=\skip97
 \jarakSetelahSubbab=\skip98
- (identitas.tex)
+(identitas.tex)
 (C:\Users\Fabio\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\l3backend-xete
 x.def
 File: l3backend-xetex.def 2026-09-09 L3 backend support: XeTeX
@@ -588,7 +557,6 @@ LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 (Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 283.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 283.
-
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
@@ -629,37 +597,32 @@ Package hyperref Info: Link coloring OFF on input line 283.
 \openout3 = `main.out'.
 
 Package babel Info: Main language set to 'indonesian'.
- (halaman_awal/sampul.tex
+(halaman_awal/sampul.tex
 File: ../figures/Gambar/png_likkqg_5387.png Graphic file (type bmp)
 <../figures/Gambar/png_likkqg_5387.png>
- [1
+[1
 
 ]) (halaman_awal/judul.tex
 File: ../figures/Gambar/png_likkqg_5387.png Graphic file (type bmp)
 <../figures/Gambar/png_likkqg_5387.png>
-
 [1]) (halaman_awal/pengesahan.tex [3
 
 ]) (halaman_awal/orisinalitas.tex [4
 
 
-])
-(halaman_awal/publikasi.tex [5
+]) (halaman_awal/publikasi.tex [5
 
 
-]) (halaman_awal/abstrak.tex)
-(halaman_awal/abstract.tex [6
+]) (halaman_awal/abstrak.tex) (halaman_awal/abstract.tex [6
 
 
 ]) (halaman_awal/motto.tex [7
 
-])
-(halaman_awal/persembahan.tex [8
+]) (halaman_awal/persembahan.tex [8
 
 ]) (halaman_awal/kata_pengantar.tex [9
 
-])
-[10
+]) [10
 
 ] (main.toc [11
 
@@ -667,7 +630,7 @@ File: ../figures/Gambar/png_likkqg_5387.png Graphic file (type bmp)
 \tf@toc=\write4
 \openout4 = `main.toc'.
 
- [13] (main.lof
+[13] (main.lof
 Overfull \hbox (9.54031pt too wide) in paragraph at lines 10--10
  [] [][]\TU/TimesNewRoman(0)/m/n/12 Halaman pencarian rekaman burung di Indones
 ia pada Xeno- 
@@ -677,13 +640,13 @@ ia pada Xeno-
 \tf@lof=\write5
 \openout5 = `main.lof'.
 
- [14
+[14
 
 ] (main.lot)
 \tf@lot=\write6
 \openout6 = `main.lot'.
 
- [15
+[15
 
 ] (chapters/bab1.tex
 Bab I.
@@ -716,38 +679,36 @@ File: ../figures/bab2/stft_adaptasi_jeon_2020.png Graphic file (type bmp)
 File: ../figures/bab2/ekstraksi_mfcc_fbank_adaptasi_peng_2025.png Graphic file 
 (type bmp)
 <../figures/bab2/ekstraksi_mfcc_fbank_adaptasi_peng_2025.png>
- [15] [16] [17] [18] [19] [20] [21] [22]
+[15] [16] [17] [18] [19] [20] [21] [22]
 File: ../figures/bab2/gelombang_spektrogram_snr_adaptasi_chen_2023.png Graphic 
 file (type bmp)
 <../figures/bab2/gelombang_spektrogram_snr_adaptasi_chen_2023.png>
- [23] [24] [25] [26]
-[27] [28] [29]) (chapters/bab3.tex [30]
+[23] [24] [25] [26] [27] [28] [29]) (chapters/bab3.tex [30]
 Bab III.
 [31
 
 ] [32] [33] [34] [35]
 File: ../figures/bab3/Diagram Utama.drawio.png Graphic file (type bmp)
 <../figures/bab3/Diagram Utama.drawio.png>
- [36] [37]
+[36] [37]
 File: ../figures/bab3/penelusuran_xeno_canto.jpg Graphic file (type bmp)
 <../figures/bab3/penelusuran_xeno_canto.jpg>
 File: ../figures/bab3/peta_rekaman_xenocanto.png Graphic file (type bmp)
 <../figures/bab3/peta_rekaman_xenocanto.png>
- [38]
+[38]
 File: ../figures/bab3/audiomoth_perangkat.jpg Graphic file (type bmp)
 <../figures/bab3/audiomoth_perangkat.jpg>
- [39]
+[39]
 File: ../figures/bab3/audiomoth_tab_recording.png Graphic file (type bmp)
 <../figures/bab3/audiomoth_tab_recording.png>
 File: ../figures/bab3/audiomoth_tab_schedule.png Graphic file (type bmp)
 <../figures/bab3/audiomoth_tab_schedule.png>
 File: ../figures/bab3/audiomoth_tab_filtering.png Graphic file (type bmp)
 <../figures/bab3/audiomoth_tab_filtering.png>
- [40] [41] [42]
+[40] [41] [42]
 File: gambar/pembagian_target.pdf Graphic file (type pdf)
 <use gambar/pembagian_target.pdf>
- [43] [44] [45]
-[46] [47] [48] [49] [50] [51]) [52] [53] (main.bbl [54
+[43] [44] [45] [46] [47] [48] [49] [50] [51] [52]) [53] (main.bbl [54
 
 
 ] [55] [56]
@@ -775,7 +736,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 217--221
 ] []
  []
 
-) [58] (main.aux)
+[58]) [59] (main.aux)
  ***********
 LaTeX2e <2026-11-01>
 L3 programming layer <2026-09-09>
@@ -784,12 +745,12 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 845282EC30CC1F09E1E4C6ECB5190AD2;15017.
  ) 
 Here is how much of TeX's memory you used:
- 14459 strings out of 402429
- 282641 string characters out of 5433152
- 822323 words of memory out of 5000000
- 43503 multiletter control sequences out of 15000+600000
+ 14468 strings out of 402429
+ 282702 string characters out of 5433152
+ 822747 words of memory out of 5000000
+ 43513 multiletter control sequences out of 15000+600000
  633599 words of font info for 82 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 71i,12n,93p,1430b,527s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 71i,12n,93p,1131b,527s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.pdf (73 pages).
+Output written on main.pdf (74 pages).

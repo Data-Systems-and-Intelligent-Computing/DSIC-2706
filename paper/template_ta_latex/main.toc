@@ -67,10 +67,10 @@
 \contentsline {subsubsection}{\numberline {3.2.1.4}Rekaman Kontrol di Luar Target}{42}{subsubsection.3.2.1.4}%
 \contentsline {subsection}{\numberline {3.2.2}Pembagian Data}{42}{subsection.3.2.2}%
 \contentsline {subsection}{\numberline {3.2.3}Prapemrosesan dan Audit Audio}{44}{subsection.3.2.3}%
-\contentsline {subsection}{\numberline {3.2.4}Pencarian Kemiripan Audio pada Kondisi Acuan}{45}{subsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.2.4}Pencarian Kemiripan Audio pada Kondisi Acuan}{46}{subsection.3.2.4}%
 \contentsline {subsection}{\numberline {3.2.5}Pengujian Ketahanan terhadap Derau pada SNR Terkontrol}{47}{subsection.3.2.5}%
 \contentsline {subsection}{\numberline {3.2.6}Kalibrasi Ambang dan Pengujian Penerimaan Kueri}{48}{subsection.3.2.6}%
-\contentsline {subsection}{\numberline {3.2.7}Pengujian Kestabilan Pencarian pada Lima Profil Derau Lokasi}{49}{subsection.3.2.7}%
+\contentsline {subsection}{\numberline {3.2.7}Pengujian Kestabilan Pencarian pada Lima Profil Derau Lokasi}{50}{subsection.3.2.7}%
 \contentsline {subsection}{\numberline {3.2.8}Diagnosis Kegagalan Pencarian dan Audit Pendengaran}{50}{subsection.3.2.8}%
-\contentsline {subsection}{\numberline {3.2.9}Evaluasi Penelitian}{51}{subsection.3.2.9}%
+\contentsline {subsection}{\numberline {3.2.9}Evaluasi Penelitian}{52}{subsection.3.2.9}%
 \contentsline {chapter}{DAFTAR PUSTAKA}{54}{section*.13}%
