@@ -6,7 +6,7 @@ Penelitian ini membandingkan MFCC, PANNs CNN14, dan BirdNET untuk mencari rekama
 
 \subsection{Dataset}
 
-Dataset terdiri atas 3.287 rekaman yang mencakup burung target, derau Itera, dan burung non-target. Tabel~\ref{tab:proporsi-dataset} menyajikan jumlah rekaman dan proporsi setiap kelompok dalam persen bulat.
+Dataset terdiri atas 3.287 rekaman yang mencakup burung target, derau Itera, dan burung non-target. Tabel~\ref{tab:proporsi-dataset} menyajikan jumlah rekaman, proporsi setiap kelompok dalam persen bulat, dan nama manifes sumbernya. Pada manifes kontrol, hanya rekaman berlabel \nolinkurl{non_target_species} yang dihitung pada baris burung non-target. Sebanyak 271 kontrol lingkungan sudah tercakup dalam baris derau Itera.
 
 \begin{tabelPenelitian}
 \centering
@@ -18,17 +18,23 @@ Dataset terdiri atas 3.287 rekaman yang mencakup burung target, derau Itera, dan
 }
 \makeatother
 \caption{Proporsi Dataset Penelitian}\label{tab:proporsi-dataset}
-\begin{tabular}{@{}lcc@{}}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{@{}
+  >{\hsize=.95\hsize\linewidth=\hsize\centering\arraybackslash}X
+  >{\hsize=.70\hsize\linewidth=\hsize\centering\arraybackslash}X
+  >{\hsize=.65\hsize\linewidth=\hsize\centering\arraybackslash}X
+  >{\hsize=1.70\hsize\linewidth=\hsize\centering\arraybackslash}X@{}}
 \hline
-\multicolumn{1}{c}{\textbf{Jenis data}} & \textbf{Jumlah rekaman} & \textbf{Proporsi} \\
+\textbf{Jenis data} & \textbf{Rekaman} & \textbf{Proporsi} & \textbf{Manifes} \\
 \hline
-Burung target & 1.216 & 37\% \\
-Derau Itera & 1.799 & 55\% \\
-Burung non-target & 272 & 8\% \\
+Burung target & 1.216 & 37\% & \nolinkurl{dataset_split.csv} \\
+Derau Itera & 1.799 & 55\% & \nolinkurl{itera_noise_manifest.csv} \\
+Burung non-target & 272 & 8\% & \nolinkurl{unknown_open_set_manifest.csv} \\
 \hline
-\textbf{Total} & \textbf{3.287} & \textbf{100\%} \\
+\textbf{Total} & \textbf{3.287} & \textbf{100\%} & \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{tabelPenelitian}
 
 Data burung target berisi 1.216 rekaman dari Xeno-Canto dengan 20 label spesies dan 111 nama perekam unik~\cite{xenocantoArchive}. Label spesies mengikuti metadata yang digunakan dalam eksperimen. Jumlah rekaman per spesies beserta contoh kode katalog dan nama perekam disajikan pada Tabel~\ref{tab:data-spesies}.
@@ -207,7 +213,7 @@ Pengujian penerimaan juga memerlukan kueri di luar cakupan galeri. Untuk itu, ko
 
 Perbandingan dilakukan dengan mengganti representasi audio, tingkat SNR, atau asal derau. Saat representasi dibandingkan, kueri dan galeri yang digunakan tetap sama. Saat asal derau dibandingkan, SNR juga disamakan agar perbandingan mencerminkan perbedaan suara latar dari lokasi yang diuji.
 
-Kualitas urutan hasil dinilai dari posisi rekaman yang relevan. Keputusan penerimaan dinilai dari jumlah kueri target dan kontrol yang lolos ambang. Kasus kegagalan diperiksa melalui skor kemiripan, ciri akustik yang tersedia, dan catatan pendengaran. Definisi operasional dan kriteria keberhasilan disajikan pada Tabel~\ref{tab:variabel-penelitian}.
+Kualitas urutan hasil dinilai dari posisi rekaman yang relevan. Keputusan penerimaan dinilai dari jumlah kueri target dan kontrol yang lolos ambang. Kasus kegagalan diperiksa melalui skor kemiripan, ciri akustik yang tersedia, dan catatan pendengaran. Jenis variabel, definisi operasional, nilai yang digunakan, dan kriteria penilaiannya disajikan pada Tabel~\ref{tab:variabel-penelitian}.
 
 \begin{jarakTabelPenelitian}
 \setstretch{1.2}
@@ -225,26 +231,29 @@ Kualitas urutan hasil dinilai dari posisi rekaman yang relevan. Keputusan peneri
     \endgraf\vskip6pt}%
   \hss}}}
 \makeatother
-\begin{longtable}{@{}p{2.7cm}p{5.5cm}p{\dimexpr\linewidth-2.7cm-5.5cm-4\tabcolsep\relax}@{}}
+\small
+\setstretch{1.06}
+\setlength{\tabcolsep}{3pt}
+\newcolumntype{V}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcommand{\kepalaVariabel}{\textbf{Variabel} & \textbf{Jenis} & \textbf{Definisi operasional} & \textbf{Nilai} & \textbf{Kriteria penilaian}}
+\begin{longtable}{@{}V{1.96cm}V{1.16cm}V{3.27cm}V{3.10cm}V{\dimexpr\linewidth-9.49cm-8\tabcolsep\relax}@{}}
 \caption{Definisi Operasional Variabel Penelitian}\label{tab:variabel-penelitian}\\
 \hline
-\multicolumn{1}{c}{\textbf{Variabel}} & \multicolumn{1}{c}{\textbf{Definisi operasional}} & \multicolumn{1}{c}{\textbf{Kriteria keberhasilan}} \\
-\hline
+\kepalaVariabel \\ \hline
 \endfirsthead
-\multicolumn{3}{c}{\textbf{\tablename~\thetable: Definisi Operasional Variabel Penelitian (lanjutan)}}\\[3pt]
+\multicolumn{5}{c}{\textbf{\tablename~\thetable: Definisi Operasional Variabel Penelitian (lanjutan)}}\\[3pt]
 \hline
-\multicolumn{1}{c}{\textbf{Variabel}} & \multicolumn{1}{c}{\textbf{Definisi operasional}} & \multicolumn{1}{c}{\textbf{Kriteria keberhasilan}} \\
-\hline
+\kepalaVariabel \\ \hline
 \endhead
 \hline
 \endlastfoot
-Representasi audio & MFCC, PANNs CNN14, dan BirdNET menghasilkan vektor fitur. Vektor acak berbasis identitas rekaman digunakan sebagai kontrol. & Ketiga representasi dinilai informatif jika mAP@10 pada kondisi acuan lebih tinggi daripada kontrol acak. \\[6pt]
-Tingkat derau & Kueri diuji tanpa derau tambahan dan pada SNR $+20$, $+10$, $0$, dan $-5$ dB. & SNR campuran diperiksa terhadap sasaran. Perbandingan memakai kueri dan galeri yang sama. \\[6pt]
-Profil derau lokasi & Derau berasal dari lima lokasi Itera. Setiap kombinasi lokasi dan SNR diuji dengan empat ulangan pemilihan segmen. & Kelima lokasi dapat dibandingkan pada SNR yang setara dengan cakupan ulangan yang sama. \\[6pt]
-Kualitas pencarian & Hasil dinilai dari kesesuaian label spesies. Metrik utama adalah mAP@10, dengan \textit{precision}@10, \textit{recall}@10, MRR, dan Top-1 sebagai pendukung. & mAP@10 yang lebih tinggi menunjukkan bahwa rekaman relevan lebih banyak muncul di urutan atas. \\[6pt]
-Ketahanan dan kestabilan & Ketahanan diukur dari perubahan mAP@10 dan retensi terhadap acuan. Kestabilan diukur dari rentang mAP@10 antarlokasi pada SNR yang sama. & Retensi yang lebih tinggi menunjukkan ketahanan yang lebih baik. Rentang yang lebih kecil menunjukkan kinerja yang lebih stabil antarlokasi. \\[6pt]
-Penerimaan kueri & Kueri diterima jika skor kemiripan tertinggi mencapai ambang kalibrasi. & Dengan ambang tetap, penerimaan target diharapkan tetap tinggi dan penerimaan keliru kontrol tetap rendah dibandingkan kondisi acuan. \\[6pt]
-Pola kegagalan & Kasus dikelompokkan menurut kesesuaian spesies pada peringkat pertama dan keputusan ambang. & Setiap kasus ditelusuri melalui skor dan keputusan. Kasus pilihan dilengkapi dengan ciri akustik yang tersedia dan catatan pendengaran. \\
+Representasi audio & Bebas & Cara mengubah rekaman menjadi vektor untuk pencarian. & MFCC, PANNs CNN14, BirdNET, dan kontrol acak. & Pada kondisi acuan, mAP@10 setiap representasi dibandingkan dengan kontrol acak. \\[6pt]
+Tingkat derau & Bebas & Rasio daya kueri terhadap daya derau yang ditambahkan. & Acuan tanpa derau tambahan. SNR $+20$, $+10$, $0$, dan $-5$~dB. & SNR campuran diperiksa terhadap sasaran dengan kueri dan galeri yang sama. \\[6pt]
+Profil derau lokasi & Bebas & Asal sesi perekaman derau yang dicampurkan ke kueri. & Kebun Raya, Embung F, Gedung F, Masjid At-Tanwir, dan sekitar GKU~1. & Lokasi dibandingkan pada SNR dan konfigurasi yang sama per kueri, dengan empat ulangan per kondisi. \\[6pt]
+Kualitas pencarian & Terikat & Posisi rekaman galeri yang label spesiesnya sesuai dengan kueri. & mAP@10, \textit{Precision}@10, \textit{Recall}@10, MRR, dan Top-1. & mAP@10 yang lebih tinggi menunjukkan hasil relevan lebih banyak atau lebih awal di sepuluh peringkat teratas. \\[6pt]
+Ketahanan dan kestabilan & Terikat & Perubahan kualitas terhadap acuan dan variasi kualitas antarlokasi pada SNR yang sama. & Selisih mAP@10, retensi, serta rentang absolut dan relatif antarlokasi. & Retensi lebih tinggi berarti lebih banyak kinerja acuan bertahan. Rentang lebih kecil berarti kinerja lebih stabil. \\[6pt]
+Penerimaan kueri & Terikat & Keputusan berdasarkan skor tertinggi dan ambang kalibrasi tetap. & Diterima atau ditolak. Proporsi penerimaan dihitung untuk target dan kontrol. & Penerimaan target diharapkan tinggi dan penerimaan keliru kontrol rendah dibandingkan dengan acuan. \\[6pt]
+Pola kegagalan & Terikat & Kesesuaian spesies Top-1 dan keputusan ambang untuk kueri target yang gagal. & Top-1 benar tetapi ditolak, Top-1 salah tetapi diterima, atau Top-1 salah dan ditolak. & Kasus ditelaah melalui margin, ciri akustik yang tersedia, dan catatan audit pendengaran pada kasus pilihan. \\
 \end{longtable}
 \end{jarakTabelPenelitian}
 
@@ -359,6 +368,14 @@ Untuk menguji apakah sistem akan menerima kueri di luar cakupan galeri, rekaman 
 
 Data target terdiri atas 673 rekaman galeri (55\%), 232 rekaman kalibrasi (19\%), dan 311 kueri uji (26\%). Galeri digunakan sebagai referensi pencarian, data kalibrasi untuk memilih ambang, dan kueri uji untuk mengukur kinerja. Persentase tersebut merupakan hasil pembagian berdasarkan perekam, dibulatkan ke persen terdekat. Ketiga kelompok mencakup 20 spesies target, sehingga setiap rekaman target pada data kalibrasi dan pengujian memiliki pembanding dari spesies yang sama di galeri.
 
+Gambar~\ref{fig:pembagian-target-spesies} memperlihatkan jumlah klip untuk setiap peran pada masing-masing spesies. Sebagai contoh, dari 137 klip \textit{Phyllergates cucullatus}, 86 masuk ke galeri, 38 menjadi kueri uji, dan 13 digunakan untuk kalibrasi.
+
+\begin{gambarPenelitian}
+    \includegraphics[width=\linewidth]{gambar/pembagian_target.pdf}
+    \caption[Pembagian klip target per spesies dan peran]{Pembagian klip per spesies menurut manifes \nolinkurl{dataset_split.csv}. Angka di sebelah kanan menunjukkan jumlah klip galeri (G), kueri uji (U), dan kalibrasi (K).}
+    \label{fig:pembagian-target-spesies}
+\end{gambarPenelitian}
+
 Seluruh rekaman dari perekam yang sama ditempatkan dalam satu kelompok untuk mengurangi pengaruh kesamaan perangkat, cara merekam, atau suara latar terhadap hasil pencarian~\cite{kapoor2023leakage}. Untuk memeriksa pembagian ini, nama perekam diseragamkan terlebih dahulu, lalu dibandingkan antarkelompok. Selain nama perekam, kode katalog dan lokasi berkas diperiksa untuk menelusuri rekaman yang tercatat lebih dari sekali. Nilai SHA-256 digunakan untuk memeriksa apakah ada berkas dengan isi identik di kelompok yang berbeda.
 
 Kueri uji dari pembagian tersebut digunakan untuk melihat bagaimana kualitas pencarian berubah ketika derau ditambahkan. Untuk membentuk kondisi uji ini, 1.528 dari 1.799 berkas derau Itera digunakan sebagai bahan pencampuran. Sebanyak 271 berkas sisanya disisihkan sebagai kontrol suara lingkungan. Rekaman tersebut digabungkan dengan 272 rekaman burung non-target, sehingga tersedia 543 rekaman kontrol di luar cakupan galeri.
@@ -394,7 +411,7 @@ Derau lingkungan Itera & 116 & 155 & 271 \\
 
 Setelah data dibagi, rekaman galeri, kueri, dan kalibrasi disiapkan dengan prosedur yang sama. Penyeragaman diperlukan karena rekaman dapat memiliki jumlah kanal, laju pencuplikan, dan durasi yang berbeda. Setiap rekaman dibaca sebagai audio mono pada 32~kHz, mengikuti laju masukan PANNs CNN14~\cite{kong2020panns}. Dari setiap rekaman yang telah diseragamkan, segmen berdurasi 5 detik disiapkan sebagai masukan bagi semua metode ekstraksi fitur. Ketika segmen yang sama diproses oleh BirdNET, laju pencuplikannya disesuaikan ke 48~kHz untuk memenuhi kebutuhan masukan model.
 
-Cara menyiapkan segmen ditentukan oleh durasi rekaman. Jika rekaman lebih panjang dari 5 detik, jendela 5 detik digeser setiap 1{,}25 detik dan tingkat amplitudo sinyal pada setiap jendela diukur dengan RMS~\cite{lu2025dusafnet}. Jendela dengan RMS tertinggi diambil sebagai segmen masukan. Nilai RMS mencakup seluruh suara dalam jendela, sehingga segmen terpilih juga dapat memuat suara latar yang kuat. Rekaman yang berdurasi tepat 5 detik digunakan langsung, sedangkan rekaman yang lebih pendek dilengkapi dengan sampel bernilai nol di bagian akhir. Pada laju 32~kHz, ketiga cara tersebut menghasilkan segmen sepanjang 160.000 sampel.
+Tingkat sinyal pada setiap jendela audio diukur dengan RMS~\cite{lu2025dusafnet}. Untuk rekaman yang lebih panjang dari 5 detik, penelitian ini menggunakan jendela 5 detik yang digeser setiap 1{,}25 detik. Jendela dengan RMS tertinggi dipilih sebagai segmen masukan. Nilai RMS mencakup seluruh suara dalam jendela, sehingga segmen terpilih juga dapat memuat suara latar yang kuat. Rekaman yang berdurasi tepat 5 detik digunakan langsung, sedangkan rekaman yang lebih pendek dilengkapi dengan sampel bernilai nol di bagian akhir. Pada laju 32~kHz, ketiga cara tersebut menghasilkan segmen sepanjang 160.000 sampel.
 
 Setelah panjang segmen diseragamkan, amplitudo disesuaikan agar tingkat sinyal antarrekaman lebih sebanding sebelum fitur dihitung. Jika RMS awal melebihi $10^{-6}$, setiap sampel dikalikan dengan rasio antara target RMS 0{,}05 dan RMS awal segmen. Segmen dengan RMS yang lebih kecil atau sama dengan batas tersebut melewati tahap ini tanpa penyesuaian amplitudo agar sinyal yang sangat senyap tidak diperkuat secara berlebihan. Setelah itu, seluruh nilai sampel dibatasi pada rentang $[-1,1]$. Jika pembatasan memotong puncak sinyal, RMS akhir dapat berbeda dari nilai target.
 
@@ -421,7 +438,7 @@ Setelah hasil diurutkan, rekaman galeri dinilai relevan jika label spesiesnya sa
 \subsection{Pengujian Ketahanan terhadap Derau pada SNR Terkontrol}
 \label{subsec:e2}
 
-Setelah kinerja acuan diukur, 311 kueri target yang sama dicampur dengan derau Itera untuk melihat seberapa baik pencarian bertahan ketika derau bertambah. Kekuatan derau tambahan diatur menggunakan SNR, yaitu perbandingan daya kueri terhadap daya derau~\cite{chen2023biotic,ghaffari2024frontends}. Penelitian ini menggunakan SNR $+20$, $+10$, $0$, dan $-5$~dB untuk mencakup daya derau yang lebih rendah, sama, dan lebih tinggi daripada daya kueri. Daya kueri dihitung dari seluruh segmen acuan, termasuk suara latar yang sudah terekam.
+Setelah kinerja acuan diukur, 311 kueri target yang sama dicampur dengan derau Itera untuk melihat seberapa baik pencarian bertahan ketika derau bertambah. Kekuatan derau tambahan diatur menggunakan SNR, yaitu perbandingan daya kueri terhadap daya derau~\cite{chen2023biotic}. Penelitian ini menggunakan SNR $+20$, $+10$, $0$, dan $-5$~dB untuk mencakup daya derau yang lebih rendah, sama, dan lebih tinggi daripada daya kueri. Daya kueri dihitung dari seluruh segmen acuan, termasuk suara latar yang sudah terekam.
 
 Untuk setiap kueri, potongan derau 5 detik dipilih dari 1.528 berkas yang dialokasikan untuk pencampuran. Pemilihan berkas dan titik awal potongan menggunakan nilai awal acak tetap (\textit{seed}) agar dapat diulang dengan data dan pengaturan yang sama~\cite{numpyRandomGenerator}. Dalam kode penelitian, nilai awal untuk setiap kueri target diperoleh dari nilai dasar 20261012 ditambah indeks kueri. Apabila RMS potongan berada di bawah $10^{-4}$, pemilihan diulang agar segmen yang terlalu senyap tidak digunakan. Potongan yang terpilih dipertahankan pada seluruh SNR dan representasi untuk kueri tersebut, sehingga perbandingan antar-SNR menggunakan isi derau yang sama dengan daya yang berbeda.
 

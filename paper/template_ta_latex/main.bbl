@@ -1,0 +1,246 @@
+\begin{thebibliography}{10}
+
+\bibitem{mayta2024seedrain}
+Cesar Mayta, Cecilia~L. L{\'o}pez, Mariana Villegas, Luis~F. Aguirre, Isabell
+  Hensen, and Silvia~C. Gallegos.
+\newblock Bird perches and artificial bat roosts increase seed rain and
+  seedling establishment in tropical bracken-dominated deforested areas.
+\newblock {\em Restoration Ecology}, 32(7):e14197, 2024.
+\newblock doi: \url{https://doi.org/10.1111/rec.14197}.
+
+\bibitem{hatfield2024seeddispersal}
+Jack~H. Hatfield, Cristina Banks-Leite, Jos Barlow, Alexander~C. Lees, and
+  Joseph~A. Tobias.
+\newblock Constraints on avian seed dispersal reduce potential for resilience
+  in degraded tropical forests.
+\newblock {\em Functional Ecology}, 38(2):315--326, 2024.
+\newblock doi: \url{https://doi.org/10.1111/1365-2435.14471}.
+
+\bibitem{lewis2021vocalizations}
+Rebecca~N. Lewis, Leah~J. Williams, and R.~Tucker Gilman.
+\newblock The uses and implications of avian vocalizations for conservation
+  planning.
+\newblock {\em Conservation Biology}, 35(1):50--63, 2021.
+\newblock doi: \url{https://doi.org/10.1111/cobi.13465}.
+
+\bibitem{stowell2022bioacoustics}
+Dan Stowell.
+\newblock Computational bioacoustics with deep learning: a review and roadmap.
+\newblock {\em PeerJ}, 10:e13152, 2022.
+\newblock doi: \url{https://doi.org/10.7717/peerj.13152}.
+
+\bibitem{ningrum2026cikaniki}
+Indah~Puspita Ningrum, Yeni~Aryati Mulyani, and Ani Mardiastuti.
+\newblock Single-station passive acoustic monitoring of bird diversity and
+  vocal activity in {Cikaniki}, {Gunung Halimun-Salak National Park}, {West
+  Java}.
+\newblock {\em Journal of Wildlife and Conservation Medicine}, 2(1):32--39,
+  2026.
+\newblock doi: \url{https://doi.org/10.29244/jwcm.2.1.32}.
+
+\bibitem{bennovry2025waykambas}
+Rizki~Adrian Bennovry, Alber Analafean, Nabilah~Andika Fitriati, Helma~Lia
+  Putri, Catherine Firdhasari~Maulida Sinaga, Christyan~Tamaro Nadeak, Ardika
+  Satria, and Ade Lailani.
+\newblock Implementasi model transfer learning arsitektur {ConvNeXt} untuk
+  klasifikasi suara burung di taman nasional way kambas.
+\newblock In {\em Prosiding Seminar Nasional Sains dan Teknologi Seri III},
+  volume~2, pages 638--650. Universitas Terbuka, 2025.
+\newblock
+  \url{https://conference.ut.ac.id/index.php/saintek/article/view/5073}.
+
+\bibitem{allenankins2025retrieval}
+Slade Allen-Ankins, Sebastian Hoefer, Jacopo Bartholomew, Sheryn Brodie, and
+  Lin Schwarzkopf.
+\newblock The use of {BirdNET} embeddings as a fast solution to find novel
+  sound classes in audio recordings.
+\newblock {\em Frontiers in Ecology and Evolution}, 12:1409407, 2025.
+\newblock doi: \url{https://doi.org/10.3389/fevo.2024.1409407}.
+
+\bibitem{clark2023soundscape}
+Matthew~L. Clark, Leonardo Salas, Shrishail Baligar, Colin~A. Quinn, Rose~L.
+  Snyder, David Leland, Wendy Schackwitz, Scott~J. Goetz, and Shawn Newsam.
+\newblock The effect of soundscape composition on bird vocalization
+  classification in a citizen science biodiversity monitoring project.
+\newblock {\em Ecological Informatics}, 75:102065, 2023.
+\newblock doi: \url{https://doi.org/10.1016/j.ecoinf.2023.102065}.
+
+\bibitem{ghaffari2024frontends}
+Houtan Ghaffari and Paul Devos.
+\newblock On the role of audio frontends in bird species recognition.
+\newblock {\em Ecological Informatics}, 81:102573, 2024.
+\newblock doi: \url{https://doi.org/10.1016/j.ecoinf.2024.102573}.
+
+\bibitem{hamer2023birb}
+Jenny Hamer, Eleni Triantafillou, Bart van Merri{\"e}nboer, Stefan Kahl, Holger
+  Klinck, Tom Denton, and Vincent Dumoulin.
+\newblock {BIRB}: A generalization benchmark for information retrieval in
+  bioacoustics.
+\newblock arXiv preprint arXiv:2312.07439, versi 2, 2023.
+\newblock \url{https://arxiv.org/abs/2312.07439v2}.
+
+\bibitem{ghani2023embeddings}
+Burooj Ghani, Tom Denton, Stefan Kahl, and Holger Klinck.
+\newblock Global birdsong embeddings enable superior transfer learning for
+  bioacoustic classification.
+\newblock {\em Scientific Reports}, 13:22876, 2023.
+\newblock doi: \url{https://doi.org/10.1038/s41598-023-49989-z}.
+
+\bibitem{xenocantoArchive}
+{Xeno-canto Foundation}.
+\newblock {Xeno-Canto}.
+\newblock Arsip daring rekaman suara satwa.
+\newblock \url{https://xeno-canto.org/}.
+
+\bibitem{peng2025birdfbank}
+Chizhou Peng, Yan Zhang, Jing Lu, Danjv Lv, and Yanjiao Xiong.
+\newblock A bird vocalization classification method based on bidirectional
+  {FBank} with enhanced robustness.
+\newblock {\em Applied Sciences}, 15(9):4913, 2025.
+\newblock doi: \url{https://doi.org/10.3390/app15094913}.
+
+\bibitem{kong2020panns}
+Qiuqiang Kong, Yin Cao, Turab Iqbal, Yuxuan Wang, Wenwu Wang, and Mark~D.
+  Plumbley.
+\newblock {PANNs}: Large-scale pretrained audio neural networks for audio
+  pattern recognition.
+\newblock {\em IEEE/ACM Transactions on Audio, Speech, and Language
+  Processing}, 28:2880--2894, 2020.
+\newblock doi: \url{https://doi.org/10.1109/TASLP.2020.3030497}.
+
+\bibitem{kahl2021birdnet}
+Stefan Kahl, Connor~M. Wood, Maximilian Eibl, and Holger Klinck.
+\newblock {BirdNET}: A deep learning solution for avian diversity monitoring.
+\newblock {\em Ecological Informatics}, 61:101236, 2021.
+\newblock doi: \url{https://doi.org/10.1016/j.ecoinf.2021.101236}.
+
+\bibitem{lu2025dusafnet}
+Zhengyang Lu, Huan Li, Min Liu, Yibin Lin, Yao Qin, Xuanyu Wu, Nanbo Xu, and
+  Haibo Pu.
+\newblock {DuSAFNet}: A multi-path feature fusion and spectral--temporal
+  attention-based model for bird audio classification.
+\newblock {\em Animals}, 15(15):2228, 2025.
+\newblock doi: \url{https://doi.org/10.3390/ani15152228}.
+
+\bibitem{jeon2020stft}
+Hohyub Jeon, Yongchul Jung, Seongjoo Lee, and Yunho Jung.
+\newblock Area-efficient short-time fourier transform processor for
+  time--frequency analysis of non-stationary signals.
+\newblock {\em Applied Sciences}, 10(20):7208, 2020.
+\newblock doi: \url{https://doi.org/10.3390/app10207208}.
+
+\bibitem{librosa011mel}
+{librosa development team}.
+\newblock \texttt{librosa.mel\_frequencies}: Mel scale frequencies.
+\newblock Dokumentasi librosa versi 0.11.0.
+\newblock
+  \url{https://librosa.org/doc/0.11.0/generated/librosa.mel_frequencies.html}.
+
+\bibitem{akinci2026mfcc}
+Nida Ak{\i}nc{\i} and Erdal {\"O}zbay.
+\newblock A comparative investigation of cepstral feature extraction methods
+  for deepfake speech detection.
+\newblock {\em Applied Sciences}, 16(13):6707, 2026.
+\newblock doi: \url{https://doi.org/10.3390/app16136707}.
+
+\bibitem{ghani2021bagbirds}
+Burooj Ghani and Sarah Hallerberg.
+\newblock A randomized bag-of-birds approach to study robustness of automated
+  audio based bird species classification.
+\newblock {\em Applied Sciences}, 11(19):9226, 2021.
+\newblock doi: \url{https://doi.org/10.3390/app11199226}.
+
+\bibitem{milewski2023cosine}
+Krzysztof Milewski, Szymon Zaporowski, and Andrzej Czy{\.{z}}ewski.
+\newblock Comparison of the ability of neural network model and humans to
+  detect a cloned voice.
+\newblock {\em Electronics}, 12(21):4458, 2023.
+\newblock doi: \url{https://doi.org/10.3390/electronics12214458}.
+
+\bibitem{musgrave2020metric}
+Kevin Musgrave, Serge Belongie, and Ser-Nam Lim.
+\newblock A metric learning reality check.
+\newblock In {\em Computer Vision -- ECCV 2020}, pages 681--699. Springer,
+  2020.
+\newblock doi: \url{https://doi.org/10.1007/978-3-030-58595-2_41}.
+
+\bibitem{moffat2022metrics}
+Alistair Moffat.
+\newblock Batch evaluation metrics in information retrieval: Measures, scales,
+  and meaning.
+\newblock {\em IEEE Access}, 10:105564--105577, 2022.
+\newblock doi: \url{https://doi.org/10.1109/ACCESS.2022.3211668}.
+
+\bibitem{chen2023biotic}
+Lei Chen, Zhiyong Xu, and Zhao Zhao.
+\newblock Biotic sound {SNR} influence analysis on acoustic indices.
+\newblock {\em Frontiers in Remote Sensing}, 3:1079223, 2023.
+\newblock doi: \url{https://doi.org/10.3389/frsen.2022.1079223}.
+
+\bibitem{you2024openset}
+Jie You, Wenqin Wu, and Joonwhoan Lee.
+\newblock Open set classification of sound event.
+\newblock {\em Scientific Reports}, 14:1282, 2024.
+\newblock doi: \url{https://doi.org/10.1038/s41598-023-50639-7}.
+
+\bibitem{hassanzad2024youden}
+Mojtaba Hassanzad and Karimollah Hajian-Tilaki.
+\newblock Methods of determining optimal cut-point of diagnostic biomarkers
+  with application of clinical data in {ROC} analysis: an update review.
+\newblock {\em BMC Medical Research Methodology}, 24:84, 2024.
+\newblock doi: \url{https://doi.org/10.1186/s12874-024-02198-2}.
+
+\bibitem{kapoor2023leakage}
+Sayash Kapoor and Arvind Narayanan.
+\newblock Leakage and the reproducibility crisis in machine-learning-based
+  science.
+\newblock {\em Patterns}, 4(9):100804, 2023.
+\newblock doi: \url{https://doi.org/10.1016/j.patter.2023.100804}.
+
+\bibitem{rousselet2021bootstrap}
+Guillaume~A. Rousselet, Cyril~R. Pernet, and Rand~R. Wilcox.
+\newblock The percentile bootstrap: A primer with step-by-step instructions in
+  {R}.
+\newblock {\em Advances in Methods and Practices in Psychological Science},
+  4(1):1--10, 2021.
+\newblock doi: \url{https://doi.org/10.1177/2515245920911881}.
+
+\bibitem{naturalearth2026countries}
+{Natural Earth}.
+\newblock Admin 0 -- countries, 1:50m.
+\newblock Data peta digital.
+\newblock
+  \url{https://www.naturalearthdata.com/downloads/50m-cultural-vectors/50m-admin-0-countries/},
+  diakses 10 November 2026.
+
+\bibitem{oad2024audiomothmanual}
+{Open Acoustic Devices}.
+\newblock {\em {AudioMoth} Operation Manual}, 2024.
+\newblock
+  \url{https://raw.githubusercontent.com/OpenAcousticDevices/Application-Notes/master/AudioMoth_Operation_Manual.pdf}.
+
+\bibitem{numpyRandomGenerator}
+{NumPy Developers}.
+\newblock Random {Generator}.
+\newblock Dokumentasi {NumPy}.
+\newblock \url{https://numpy.org/doc/stable/reference/random/generator.html},
+  diakses 19 November 2026.
+
+\bibitem{peeters2011timbre}
+Geoffroy Peeters, Bruno~L. Giordano, Patrick Susini, Nicolas Misdariis, and
+  Stephen McAdams.
+\newblock The timbre toolbox: Extracting audio descriptors from musical
+  signals.
+\newblock {\em The Journal of the Acoustical Society of America},
+  130(5):2902--2916, 2011.
+\newblock doi: \url{https://doi.org/10.1121/1.3642604}.
+
+\bibitem{fairbairn2025birdnet}
+Andrew~J. Fairbairn, Josija-Simeon Burmeister, Wolfgang~W. Weisser, and
+  Sebastian~T. Meyer.
+\newblock {BirdNET} can be as good as experts for acoustic bird monitoring in a
+  {European} city.
+\newblock {\em PLOS ONE}, 20(9):e0330836, 2025.
+\newblock doi: \url{https://doi.org/10.1371/journal.pone.0330836}.
+
+\end{thebibliography}

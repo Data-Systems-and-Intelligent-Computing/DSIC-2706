@@ -43,7 +43,7 @@ Bennovry dkk. menggunakan suara untuk mengenali spesies burung, sedangkan Allen-
 
 \section{Sinyal Audio Digital dan Prapemrosesan}
 
-Bagian ini membahas dasar pengolahan sinyal audio digital yang digunakan untuk menyiapkan rekaman sebelum fitur diekstraksi. Prapemrosesan mencakup pencuplikan, penyeragaman kanal, pemilihan segmen, dan normalisasi amplitudo~\cite{lu2025dusafnet}.
+Bagian ini membahas dasar pengolahan sinyal audio digital yang digunakan untuk menyiapkan rekaman sebelum fitur diekstraksi. Prapemrosesan mencakup pencuplikan, penyeragaman kanal, pemilihan segmen, dan normalisasi amplitudo. Lu dkk.\ menggunakan \textit{root mean square} (RMS) untuk mengukur tingkat sinyal pada tiap bingkai audio~\cite{lu2025dusafnet}.
 
 \subsection{Sinyal Audio Digital dan Laju Pencuplikan}
 
@@ -66,7 +66,7 @@ Laju pencuplikan menentukan rentang frekuensi yang dapat direpresentasikan. Berd
 
 \subsection{Penyeragaman Kanal dan Pemilihan Segmen}
 
-Rekaman dari berbagai sumber dapat memiliki jumlah kanal yang berbeda. Untuk menyeragamkan masukan, rekaman stereo digabungkan menjadi mono dengan merata-ratakan kedua kanal~\cite{lu2025dusafnet}:
+Rekaman dari berbagai sumber dapat memiliki jumlah kanal yang berbeda. Untuk menyeragamkan masukan, rekaman stereo digabungkan menjadi mono dengan merata-ratakan kedua kanal:
 \begin{equation}\label{eq:mono}
 x[n] = \frac{x_L[n] + x_R[n]}{2}
 \end{equation}
@@ -77,7 +77,7 @@ $x_R[n]$ & amplitudo kanal kanan pada sampel ke-$n$ \\
 $x[n]$ & amplitudo sinyal mono
 \end{keteranganRumus}
 
-Dari rekaman yang telah diseragamkan, segmen berdurasi tetap dipilih untuk memastikan panjang masukan yang sama bagi semua metode. Jika rekaman lebih panjang dari durasi target, jendela digeser sepanjang rekaman dan tingkat sinyal pada setiap jendela diukur dengan \textit{root mean square} (RMS). RMS pada jendela ke-$j$ dengan panjang $M$ sampel dihitung sebagai
+Dari rekaman yang telah diseragamkan, segmen berdurasi tetap dipilih untuk memastikan panjang masukan yang sama bagi semua metode. Tingkat sinyal pada bagian yang berbeda dari rekaman dapat dibandingkan melalui RMS~\cite{lu2025dusafnet}. Untuk jendela ke-$j$ sepanjang $M$ sampel, RMS dihitung sebagai
 \begin{equation}\label{eq:rms-jendela}
 \mathrm{RMS}_j = \sqrt{\frac{1}{M}\sum_{n=0}^{M-1} x_j[n]^2}
 \end{equation}
@@ -88,11 +88,11 @@ $x_j[n]$ & amplitudo sampel ke-$n$ pada jendela ke-$j$ \\
 $\mathrm{RMS}_j$ & akar rata-rata kuadrat amplitudo jendela
 \end{keteranganRumus}
 
-Jendela dengan nilai RMS tertinggi dipilih sebagai segmen masukan~\cite{lu2025dusafnet}. Pemilihan ini bertujuan mengambil bagian rekaman dengan tingkat sinyal tertinggi, meskipun segmen terpilih juga dapat memuat suara latar yang kuat.
+Nilai RMS yang tinggi menunjukkan bahwa tingkat sinyal pada jendela tersebut juga tinggi. Suara latar yang kuat dapat menaikkan RMS meskipun suara burung terdengar lemah.
 
 \subsection{Normalisasi Amplitudo dengan RMS}
 
-Setelah segmen dipilih, amplitudo dinormalisasi agar tingkat sinyal antarrekaman lebih sebanding sebelum fitur dihitung. Normalisasi menggunakan faktor pengali yang membawa RMS segmen menuju nilai target~\cite{lu2025dusafnet}:
+Setelah segmen dipilih, amplitudo dinormalisasi agar tingkat sinyal antarrekaman lebih sebanding sebelum fitur dihitung. Normalisasi menggunakan faktor pengali yang membawa RMS segmen menuju nilai target:
 \begin{equation}\label{eq:normalisasi-rms}
 x'[n] = x[n] \times \frac{\mathrm{RMS}_{\mathrm{target}}}{\mathrm{RMS}_{\mathrm{asal}}}
 \end{equation}
@@ -401,7 +401,7 @@ Nilai MRR dan Top-1 yang tinggi menunjukkan bahwa hasil teratas cenderung berasa
 \section{Ketahanan terhadap Derau dengan SNR Terkontrol dan Desain Berpasangan}
 \label{sec:ketahanan-derau}
 
-Rekaman lapangan sering kali memuat suara latar yang ikut terekam bersama suara burung. Untuk menguji seberapa baik representasi audio mempertahankan kualitas pencarian di bawah derau, kueri dicampur dengan derau pada tingkat SNR yang terkontrol~\cite{ghaffari2024frontends}.
+Rekaman lapangan sering kali memuat suara latar yang ikut terekam bersama suara burung. Ghaffari dan Devos menguji pengaruh derau alami dan perkotaan pada klasifikasi suara burung~\cite{ghaffari2024frontends}. Tingkat derau tambahan dapat dinyatakan melalui SNR.
 
 \subsection{Daya Sinyal, SNR, dan Pencampuran Derau}
 
@@ -449,7 +449,7 @@ Gambar~\ref{fig:snr-contoh} menampilkan contoh gelombang dan spektrogram pada be
 
 \subsection{Perbandingan Berpasangan dan Retensi Kinerja}
 
-Pengaruh derau diukur dengan membandingkan kinerja pada kondisi berderau terhadap kondisi acuan (tanpa penambahan derau) untuk kueri yang sama~\cite{ghaffari2024frontends}. Selisih mAP@10 menunjukkan perubahan pada skala asli metrik:
+Dalam penelitian ini, kinerja pencarian pada kueri berderau dibandingkan dengan kinerja pada kueri yang sama tanpa penambahan derau. Selisih mAP@10 menunjukkan perubahan pada skala asli metrik:
 \begin{equation}\label{eq:noise-delta}
 \Delta\;\mathrm{mAP@10} = \mathrm{mAP@10}_{\mathrm{berderau}} - \mathrm{mAP@10}_{\mathrm{acuan}}
 \end{equation}
@@ -555,7 +555,7 @@ Setiap lokasi perekaman memiliki profil derau yang khas. Lokasi bervegetasi cend
 
 \subsection{Rentang Kinerja pada SNR yang Sama}
 
-Kestabilan pencarian antarlokasi diukur dari rentang mAP@10 antara lokasi dengan kinerja tertinggi dan terendah pada SNR yang sama~\cite{ghaffari2024frontends}. Karena setiap kombinasi lokasi dan SNR diuji dengan empat ulangan, rentang dirata-ratakan dari empat ulangan tersebut:
+Dalam penelitian ini, kestabilan pencarian antarlokasi diukur melalui selisih antara mAP@10 tertinggi dan terendah pada SNR yang sama. Karena setiap kombinasi lokasi dan SNR diuji dengan empat ulangan, rentang dirata-ratakan dari empat ulangan tersebut:
 \begin{equation}\label{eq:range-abs}
 \overline{\Delta}_{\mathrm{lokasi}} = \frac{1}{4}\sum_{r=1}^{4}\bigl(\mathrm{mAP@10}_{\max,r} - \mathrm{mAP@10}_{\min,r}\bigr)
 \end{equation}

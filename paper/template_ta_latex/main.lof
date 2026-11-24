@@ -1,0 +1,15 @@
+\babel@toc {indonesian}{}\relax 
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Ilustrasi proses STFT}}{13}{figure.2.1}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Ilustrasi alur ekstraksi MFCC}}{15}{figure.2.2}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Ilustrasi normalisasi L2 dan kemiripan kosinus}}{19}{figure.2.3}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Contoh gelombang dan spektrogram pada beberapa tingkat SNR}}{23}{figure.2.4}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Diagram Alir Tahapan Penelitian}}{37}{figure.3.1}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Halaman pencarian rekaman burung di Indonesia pada Xeno-Canto}}{38}{figure.3.2}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Lokasi rekaman burung berdasarkan metadata}}{39}{figure.3.3}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Bentuk perangkat AudioMoth. Sumber \href {https://www.openacousticdevices.info/audiomoth}{Open Acoustic Devices}}}{39}{figure.3.4}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Contoh tab \textit {Recording} (kiri) dan \textit {Schedule} (kanan) pada AudioMoth Configuration App}}{40}{figure.3.5}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Contoh pengaturan pemicu frekuensi pada tab \textit {Filtering}}}{41}{figure.3.6}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Pembagian klip target per spesies dan peran}}{43}{figure.3.7}%
