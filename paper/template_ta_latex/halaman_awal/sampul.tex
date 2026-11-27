@@ -1,6 +1,6 @@
 % !TeX root = ../main.tex
-% Layout sampul yang telah disetujui; judul mengambil versi Indonesia.
-\newcommand{\isiSampulTA}{%
+% Tata letak sampul depan dan halaman judul dalam.
+\newcommand{\isiSampulTA}[1][]{%
   \begin{center}
     \setstretch{1}
     \vspace*{0.2cm}
@@ -10,7 +10,12 @@
     }\par
 
     \vspace{2.7cm}
-    {\bfseries TUGAS AKHIR\par}
+    {\bfseries
+      \makebox[\linewidth][c]{%
+        \makebox[0pt][c]{PROPOSAL SKRIPSI}%
+        \makebox[0pt][c]{\raisebox{-1.1cm}[0pt][0pt]{#1}}%
+      }\par
+    }
 
     \vspace{2.5cm}
     {\bfseries \namaPenulis\par}

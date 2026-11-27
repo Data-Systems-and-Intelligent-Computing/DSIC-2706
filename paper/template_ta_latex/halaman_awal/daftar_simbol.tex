@@ -1,0 +1,32 @@
+% !TeX root = ../main.tex
+\halamanAwal{DAFTAR SIMBOL}
+\begingroup
+\setstretch{1.13}
+\setlength{\LTpre}{0pt}
+\setlength{\LTpost}{0pt}
+\begin{longtable}{@{}p{3.4cm}p{\dimexpr\linewidth-3.4cm-2\tabcolsep\relax}@{}}
+  $f_s$ & Laju pencuplikan audio\\
+  $T$ & Durasi sinyal pada pencuplikan atau jumlah bingkai pada peringkasan MFCC\\
+  $N, M$ & Jumlah sampel pada sinyal dan pada jendela pengukuran RMS\\
+  $n$ & Indeks sampel audio\\
+  $x[n]$ & Amplitudo sinyal pada sampel ke-$n$\\
+  $m,k$ & Indeks bingkai waktu dan bin frekuensi pada STFT. Pada evaluasi pencarian, $k$ menyatakan peringkat hasil\\
+  $N_{\mathrm{FFT}}, H$ & Panjang FFT dan besar pergeseran antarbingkai\\
+  $w[n]$ & Bobot fungsi jendela pada sampel ke-$n$\\
+  $X(m,k), P(m,k)$ & Koefisien STFT dan daya pada bingkai $m$ serta bin $k$\\
+  $H_i(k), E_i(m)$ & Bobot filter mel ke-$i$ pada bin $k$ dan energi keluarannya pada bingkai $m$\\
+  $c_i(m)$ & Koefisien MFCC ke-$i$ pada bingkai $m$\\
+  $\bar{c}_i, \sigma_i$ & Rata-rata dan simpangan baku koefisien MFCC ke-$i$ antarbingkai\\
+  $\mathbf{z}, \bar{\mathbf{e}}$ & Vektor fitur PANNs CNN14 dan rata-rata vektor fitur BirdNET\\
+  $\mathbf{q}, \mathbf{g}$ & Vektor fitur kueri dan rekaman galeri\\
+  $P_s, P_d$ & Daya rata-rata sinyal kueri dan derau sebelum pencampuran\\
+  $\gamma, \alpha$ & SNR target dan faktor pengali amplitudo derau\\
+  $d[n],y[n]$ & Sampel derau dan hasil campuran pada indeks $n$\\
+  $R,Q$ & Jumlah rekaman galeri yang relevan untuk satu kueri dan jumlah kueri yang dievaluasi\\
+  $\mathrm{rel}(k)$ & Indikator relevansi rekaman pada peringkat ke-$k$\\
+  $s_{\max}$ & Skor kemiripan tertinggi untuk satu kueri\\
+  $\tau, \tau^*$ & Ambang kemiripan dan ambang yang dipilih dari data kalibrasi\\
+  $J(\tau)$ & Indeks Youden pada ambang $\tau$\\
+  $\overline{\Delta}_{\mathrm{lokasi}}$ & Rata-rata rentang absolut kinerja antarlokasi dari empat ulangan pencampuran\\
+\end{longtable}
+\endgroup

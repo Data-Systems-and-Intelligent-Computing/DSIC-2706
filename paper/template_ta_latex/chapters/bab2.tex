@@ -11,6 +11,7 @@ Tabel~\ref{tab:penelitian-terdahulu} merangkum lima penelitian yang menjadi acua
 \setlength{\parskip}{0pt}
 \setlength{\emergencystretch}{2em}
 \setlength{\LTcapwidth}{\linewidth}
+\newcommand{\kepalaPenelitian}[1]{{\centering\bfseries #1\par}}
 \makeatletter
 \def\LT@makecaption#1#2#3{%
   \LT@mcol\LT@cols c{\hbox to\z@{\hss\parbox[t]\LTcapwidth{%
@@ -18,28 +19,50 @@ Tabel~\ref{tab:penelitian-terdahulu} merangkum lima penelitian yang menjadi acua
     #1{#2: }#3\par\vskip6pt}%
   \hss}}}
 \makeatother
-\begin{longtable}{@{}>{\centering\arraybackslash}p{0.6cm}>{\raggedright\arraybackslash}p{4.3cm}>{\raggedright\arraybackslash}p{2.35cm}>{\raggedright\arraybackslash}p{2.9cm}>{\raggedright\arraybackslash}p{2.75cm}@{}}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{4.2cm}
+  >{\raggedright\arraybackslash}p{2.5cm}
+  >{\raggedright\arraybackslash}p{2.8cm}
+  >{\raggedright\arraybackslash}p{\dimexpr\linewidth-9.5cm-6\tabcolsep\relax}@{}}
 \caption{Penelitian Terdahulu yang Relevan}\label{tab:penelitian-terdahulu}\\
 \hline
-\textbf{No.} & \textbf{Referensi} & \textbf{Data} & \textbf{Metode dan evaluasi} & \textbf{Temuan utama} \\
+\kepalaPenelitian{Peneliti \& judul} & \kepalaPenelitian{Data} & \kepalaPenelitian{Metode} & \kepalaPenelitian{Temuan utama} \\
 \hline
 \endfirsthead
-\multicolumn{5}{c}{\textbf{\tablename~\thetable: Penelitian Terdahulu yang Relevan (lanjutan)}}\\[3pt]
+\multicolumn{4}{c}{\textbf{\tablename~\thetable: Penelitian Terdahulu yang Relevan (lanjutan)}}\\[3pt]
 \hline
-\textbf{No.} & \textbf{Referensi} & \textbf{Data} & \textbf{Metode dan evaluasi} & \textbf{Temuan utama} \\
+\kepalaPenelitian{Peneliti \& judul} & \kepalaPenelitian{Data} & \kepalaPenelitian{Metode} & \kepalaPenelitian{Temuan utama} \\
 \hline
 \endhead
 \hline
 \endlastfoot
-1 & \textit{BIRB: A Generalization Benchmark for Information Retrieval in Bioacoustics}\par Hamer dkk. (2023)~\cite{hamer2023birb} & Rekaman Xeno-Canto dan rekaman lingkungan. & Pencarian berdasarkan contoh suara. ROC-AUC dirangkum antarspesies menjadi cROC-AUC. & Kinerja pencarian berubah menurut kondisi perekaman dan spesies yang diuji. \\[6pt]
-2 & \textit{Global birdsong embeddings enable superior transfer learning for bioacoustic classification}\par Ghani dkk. (2023)~\cite{ghani2023embeddings} & Enam himpunan data bioakustik. & Klasifikasi linear menggunakan fitur tetap dari model khusus burung dan model audio umum. & Fitur BirdNET dan Perch memberikan hasil lebih baik daripada fitur model audio umum pada data uji. \\[6pt]
-3 & \textit{Implementasi Model Transfer Learning Arsitektur ConvNeXt untuk Klasifikasi Suara Burung di Taman Nasional Way Kambas}\par Bennovry dkk. (2025)~\cite{bennovry2025waykambas} & Rekaman Xeno-Canto untuk spesies burung yang terdapat di Way Kambas. & Klasifikasi spesies dengan ConvNeXt dan augmentasi data. & Model dengan augmentasi data mencapai akurasi 71\%. \\[6pt]
-4 & \textit{The use of BirdNET embeddings as a fast solution to find novel sound classes in audio recordings}\par Allen-Ankins dkk. (2025)~\cite{allenankins2025retrieval} & Contoh suara dan rekaman panjang tanpa label. & Fitur BirdNET dibandingkan menggunakan jarak Euclidean. & Satu contoh suara dapat digunakan untuk menemukan potongan rekaman yang serupa. \\[6pt]
-5 & \textit{On the role of audio frontends in bird species recognition}\par Ghaffari dan Devos (2024)~\cite{ghaffari2024frontends} & Rekaman burung dengan tambahan derau alami dan perkotaan. & Perbandingan pengolahan awal audio untuk klasifikasi dalam kondisi berderau. & Kompresi dan normalisasi membantu mempertahankan kinerja klasifikasi. \\
+Hamer dkk. (2023)~\cite{hamer2023birb}\par \textit{BIRB: A Generalization Benchmark for Information Retrieval in Bioacoustics}
+& Lebih dari 750.000 rekaman Xeno-Canto dan 458 jam rekaman lingkungan.
+& Kemiripan kosinus dengan fitur Conformer, EfficientNet, AudioMAE, dan YAMNet.
+& Skor pencarian Conformer S (cROC-AUC) turun dari 0,87 pada rekaman terfokus menjadi 0,75 pada rekaman lingkungan. \\
+\noalign{\vskip 10pt}
+Ghani dkk. (2023)~\cite{ghani2023embeddings}\par \textit{Global birdsong embeddings enable superior transfer learning for bioacoustic classification}
+& Enam dataset bioakustik, termasuk 13 kelas burung RFCX.
+& Regresi logistik dari fitur model berbobot tetap, termasuk Perch, BirdNET, dan AudioMAE.
+& Pada RFCX Birds, akurasi Top-1 mencapai 83\% dengan Perch dan 78\% dengan BirdNET 2.3. \\
+\noalign{\vskip 10pt}
+Bennovry dkk. (2025)~\cite{bennovry2025waykambas}\par \textit{Implementasi Model Transfer Learning Arsitektur ConvNeXt untuk Klasifikasi Suara Burung di Taman Nasional Way Kambas}
+& 1.912 rekaman Xeno-Canto dari 10 spesies. Dipilih 100 per spesies.
+& \textit{Transfer learning} ConvNeXt dengan dan tanpa augmentasi audio.
+& Pada 50 \textit{epoch}, akurasi ConvNeXt mencapai 71\% dengan augmentasi dan 69\% tanpa augmentasi. \\
+\noalign{\vskip 10pt}
+Allen-Ankins dkk. (2025)~\cite{allenankins2025retrieval}\par \textit{The use of BirdNET embeddings as a fast solution to find novel sound classes in audio recordings}
+& Tiga studi kasus dengan rekaman lingkungan.
+& Pencarian dengan fitur BirdNET dan jarak Euclidean.
+& Satu contoh panggilan membantu menemukan suara nuri sayap biru di 9 dari 10 lokasi uji. \\
+\noalign{\vskip 10pt}
+Ghaffari dan Devos (2024)~\cite{ghaffari2024frontends}\par \textit{On the role of audio frontends in bird species recognition}
+& 11.995 rekaman Xeno-Canto (10 spesies) dan 8 jenis derau ESC-50.
+& EfficientNet-B0 dengan pengolahan awal STFT, Mel, LEAF, atau SincNet+.
+& Pada uji acuan, akurasi mencapai 92,52\% dengan Mel + PCEN dan 77,84\% dengan Mel + kompresi logaritmik. \\
 \end{longtable}
 \end{jarakTabelPenelitian}
 
-Bennovry dkk. menggunakan suara untuk mengenali spesies burung, sedangkan Allen-Ankins dkk. menggunakan satu contoh suara untuk menemukan potongan rekaman yang serupa. Dalam pencarian seperti ini, kualitas hasil bergantung pada ciri suara yang dibandingkan. BIRB dan penelitian Ghani dkk. menjadi acuan untuk membandingkan representasi audio, sementara pengujian Ghaffari dan Devos menunjukkan pentingnya mempertimbangkan derau pada rekaman. Berdasarkan kelima studi tersebut, penelitian ini menguji apakah rekaman dari spesies yang sama tetap muncul di urutan atas ketika tingkat dan sumber derau pada kueri berubah.
+Kelima penelitian terdahulu memberi dasar untuk membandingkan representasi audio dalam pencarian suara burung dan menilai pengaruh derau terhadap hasilnya. Penelitian ini menguji apakah rekaman dari spesies yang sama tetap muncul di urutan atas ketika tingkat dan sumber derau pada kueri berubah.
 
 \section{Sinyal Audio Digital dan Prapemrosesan}
 

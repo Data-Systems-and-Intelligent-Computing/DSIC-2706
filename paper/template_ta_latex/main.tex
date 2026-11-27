@@ -213,6 +213,7 @@
 \renewcommand{\cftfigpresnum}{Gambar }
 \renewcommand{\cftfigaftersnum}{\quad}
 \renewcommand{\cftfigleader}{\cftdotfill{\cftdotsep}}
+\setlength{\cftfigindent}{0pt}
 \setlength{\cftfignumwidth}{6.5em}
 
 % --- Daftar Tabel
@@ -272,6 +273,7 @@
   \begingroup
     \parindent\z@
     \parskip\cftparskip
+    \emergencystretch=2em
     \@starttoc{#2}%
   \endgroup
 }
@@ -291,8 +293,6 @@
 \input{halaman_awal/pengesahan.tex}
 \input{halaman_awal/orisinalitas.tex}
 \input{halaman_awal/publikasi.tex}
-\input{halaman_awal/abstrak.tex}
-\input{halaman_awal/abstract.tex}
 \input{halaman_awal/motto.tex}
 \input{halaman_awal/persembahan.tex}
 \input{halaman_awal/kata_pengantar.tex}
@@ -300,6 +300,10 @@
 \halamanDaftar{DAFTAR ISI}{toc}
 \halamanDaftar{DAFTAR GAMBAR}{lof}
 \halamanDaftar{DAFTAR TABEL}{lot}
+\input{halaman_awal/daftar_singkatan.tex}
+\input{halaman_awal/daftar_simbol.tex}
+\input{halaman_awal/abstrak.tex}
+\input{halaman_awal/abstract.tex}
 
 \clearpage
 \pagenumbering{arabic}
